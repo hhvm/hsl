@@ -1,0 +1,86 @@
+<?hh // strict
+/*
+ *  Copyright (c) 2004-present, Facebook, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree. An additional grant
+ *  of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+use HH\Lib\Math;
+use function Facebook\FBExpect\expect;
+
+/**
+ * @emails oncall+hack_prod_infra
+ */
+final class MathSelectTest extends PHPUnit_Framework_TestCase {
+  public static function provideTestMax(): array<mixed> {
+    return array(
+      tuple(1, vec[2], 2),
+      tuple(2, vec[1], 2),
+      tuple(1.0, vec[2.0], 2.0),
+      tuple(2.0, vec[1.0], 2.0),
+      tuple(1, vec[1], 1),
+      tuple(-2, vec[-1], -1),
+      tuple(1.0, vec[2], 2),
+      tuple(1, vec[2.0], 2.0),
+      tuple(-1, vec[1, 2, 3, 4, 5], 5),
+      tuple(-1, vec[5, 4, 3, 2, 1], 5),
+    );
+  }
+
+  /** @dataProvider provideTestMax */
+  public function testMax<T as num>(
+    T $first_number,
+    Container<T> $numbers,
+    T $expected,
+  ): void {
+    expect(Math\max($first_number, ...$numbers))->toBeSame($expected);
+  }
+
+  public static function provideTestMedian(): array<mixed> {
+    return array(
+      tuple(1, vec[], 1.0),
+      tuple(1, vec[2], 1.5),
+      tuple(1, vec[2, 3], 2.0),
+      tuple(9, vec[-1], 4.0),
+      tuple(200, vec[-500, 3], 3.0),
+      tuple(0, vec[1, 0, 0], 0.0),
+    );
+  }
+
+  /** @dataProvider provideTestMedian */
+  public function testMedian(
+    num $first_number,
+    Container<num> $numbers,
+    float $expected,
+  ): void {
+    expect(Math\median($first_number, ...$numbers))->toBeSame($expected);
+  }
+
+  public static function provideTestMin(): array<mixed> {
+    return array(
+      tuple(1, vec[2], 1),
+      tuple(2, vec[1], 1),
+      tuple(1.0, vec[2.0], 1.0),
+      tuple(2.0, vec[1.0], 1.0),
+      tuple(1, vec[1], 1),
+      tuple(-2, vec[-1], -2),
+      tuple(1.0, vec[2], 1.0),
+      tuple(1, vec[2.0], 1),
+      tuple(1, vec[-1, -2, -3, -4, -5], -5),
+      tuple(1, vec[-5, -4, -3, -2, -1], -5),
+    );
+  }
+
+  /** @dataProvider provideTestMin */
+  public function testMin<T as num>(
+    T $first_number,
+    Container<T> $numbers,
+    T $expected,
+  ): void {
+    expect(Math\min($first_number, ...$numbers))->toBeSame($expected);
+  }
+}

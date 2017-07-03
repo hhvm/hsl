@@ -1,0 +1,30 @@
+{
+  "repositories": [
+    {
+      "type":"package",
+      "package": {
+        "name": "facebook/fbexpect",
+        "version":"master",
+        "source": {
+          "url": "git@github.com:hhvm/fbexpect.git",
+          "type": "git",
+          "reference":"master"
+        }
+      }
+    }
+  ],
+  "require-dev": {
+    "91carriage/phpunit-hhi": "^5.7",
+    "phpunit/phpunit": "^5.7",
+    "facebook/fbexpect": "dev-master",
+    "facebook/definition-finder": "^1.5"
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "require": {
+    "facebook/hhvm-autoload": "^1.3"
+  }
+}
