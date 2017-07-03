@@ -17,14 +17,9 @@
     "91carriage/phpunit-hhi": "^5.7",
     "phpunit/phpunit": "^5.7",
     "facebook/fbexpect": "dev-master",
-    "facebook/definition-finder": "^1.5"
-  },
-  "autoload-dev": {
-    "classmap": [
-      "tests/"
-    ]
+    "facebook/definition-finder": "^1.6"
   },
   "require": {
-    "facebook/hhvm-autoload": "^1.3"
+    "facebook/hhvm-autoload": "^1.4"
   }
 }
