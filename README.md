@@ -66,6 +66,13 @@ Automatically-generated documentation is available at
 
 ## Installation
 
+This project uses function autoloading, so requires that your projects use
+[hhvm-autoload](https://github.com/hhvm/hhvm-autoload) instead of Composer's
+built-in autoloading; if you are not already using hhvm-autoload, you will need
+to add an
+[hh_autoload.json](https://github.com/hhvm/hhvm-autoload#configuration-hh_autoloadjson)
+to your project first.
+
 ```
 $ composer require hhvm/hsl
 ```
