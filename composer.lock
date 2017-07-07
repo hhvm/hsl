@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2ae56e39e7c436058ea458f1fb5aad0",
+    "content-hash": "fbe547062a4c92cba00f9efa20eda3c4",
     "packages": [
         {
             "name": "91carriage/phpunit-hhi",
@@ -57,16 +57,16 @@
         },
         {
             "name": "facebook/definition-finder",
-            "version": "v1.5.2",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/definition-finder.git",
-                "reference": "b94f265ff8df574f66a11a1ccd207ce4c09a6286"
+                "reference": "2e9e924ad7baa78beaee305103e122bcd5436502"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/definition-finder/zipball/b94f265ff8df574f66a11a1ccd207ce4c09a6286",
-                "reference": "b94f265ff8df574f66a11a1ccd207ce4c09a6286",
+                "url": "https://api.github.com/repos/hhvm/definition-finder/zipball/2e9e924ad7baa78beaee305103e122bcd5436502",
+                "reference": "2e9e924ad7baa78beaee305103e122bcd5436502",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
             },
             "require-dev": {
                 "91carriage/phpunit-hhi": "~5.1",
-                "hhvm/systemlib-extractor": "^0.1.0",
+                "hhvm/systemlib-extractor": "~1.0",
                 "phpunit/phpunit": "~5.1"
             },
             "type": "library",
@@ -95,20 +95,20 @@
                 "hack",
                 "hhvm"
             ],
-            "time": "2017-06-23T23:55:40+00:00"
+            "time": "2017-06-30T19:35:28+00:00"
         },
         {
             "name": "facebook/hhvm-autoload",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhvm-autoload.git",
-                "reference": "7c998b32421b083837e810dd736b8cb092b52f22"
+                "reference": "4221f6ca0ed46a0eb6cf2e582e5e4fb8a1b1ed44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/7c998b32421b083837e810dd736b8cb092b52f22",
-                "reference": "7c998b32421b083837e810dd736b8cb092b52f22",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/4221f6ca0ed46a0eb6cf2e582e5e4fb8a1b1ed44",
+                "reference": "4221f6ca0ed46a0eb6cf2e582e5e4fb8a1b1ed44",
                 "shasum": ""
             },
             "require": {
@@ -122,6 +122,9 @@
             "require-dev": {
                 "phpunit/phpunit": "^5.1"
             },
+            "bin": [
+                "bin/hh-autoload"
+            ],
             "type": "composer-plugin",
             "extra": {
                 "class": [
@@ -139,7 +142,7 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-06-23T19:40:44+00:00"
+            "time": "2017-07-03T18:03:30+00:00"
         },
         {
             "name": "fredemmott/hack-error-suppressor",
@@ -280,8 +283,7 @@
                 "url": "git@github.com:hhvm/fbexpect.git",
                 "reference": "master"
             },
-            "type": "library",
-            "time": "2017-06-15 22:32:26"
+            "type": "library"
         },
         {
             "name": "myclabs/deep-copy",
@@ -785,16 +787,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.20",
+            "version": "5.7.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b"
+                "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
-                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3b91adfb64264ddec5a2dee9851f354aa66327db",
+                "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db",
                 "shasum": ""
             },
             "require": {
@@ -863,20 +865,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-05-22T07:42:55+00:00"
+            "time": "2017-06-21T08:11:54+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.4.3",
+            "version": "3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "3ab72b65b39b491e0c011e2e09bb2206c2aa8e24"
+                "reference": "a23b761686d50a560cc56233b9ecf49597cc9118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/3ab72b65b39b491e0c011e2e09bb2206c2aa8e24",
-                "reference": "3ab72b65b39b491e0c011e2e09bb2206c2aa8e24",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/a23b761686d50a560cc56233b9ecf49597cc9118",
+                "reference": "a23b761686d50a560cc56233b9ecf49597cc9118",
                 "shasum": ""
             },
             "require": {
@@ -922,7 +924,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-12-08T20:27:08+00:00"
+            "time": "2017-06-30T09:13:00+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

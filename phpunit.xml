@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit bootstrap="phpunit_bootstrap.php">
+<phpunit bootstrap="vendor/hh_autoload.php">
   <testsuites>
     <testsuite name="Hack Standard Library Tests">
       <directory>tests/</directory>
