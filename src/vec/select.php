@@ -181,6 +181,27 @@ function slice<Tv>(
 }
 
 /**
+ * Returns a new vec containing the first `$length` elements of the given
+ * Traversable.
+ */
+function take<Tv>(
+  Traversable<Tv> $traversable,
+  int $length,
+): vec<Tv> {
+  invariant($length >= 0, 'Expected non-negative length, got %d.', $length);
+  $result = vec[];
+  $ii = 0;
+  foreach ($traversable as $value) {
+    if ($ii === $length) {
+      break;
+    }
+    $result[] = $value;
+    $ii++;
+  }
+  return $result;
+}
+
+/**
  * Returns a new vec containing each element of the given Traversable exactly
  * once. The Traversable must contain arraykey values, and strict equality will
  * be used.

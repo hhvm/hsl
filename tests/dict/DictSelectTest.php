@@ -379,6 +379,61 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(DictHSL\slice($traversable, $offset, $length))->toBeSame($expected);
   }
 
+  public static function provideTake(): array<mixed> {
+    return array(
+      tuple(
+        dict[],
+        5,
+        dict[],
+      ),
+      tuple(
+        Vector {0, 1, 2, 3, 4},
+        0,
+        dict[],
+      ),
+      tuple(
+        HackLibTestTraversables::getKeyedIterator(array(
+          'foo' => 'oof',
+          'bar' => 'rab',
+          'baz' => 'zab',
+          'qux' => 'xuq',
+        )),
+        3,
+        dict[
+          'foo' => 'oof',
+          'bar' => 'rab',
+          'baz' => 'zab',
+        ],
+      ),
+      tuple(
+        Map {
+          'foo' => 'oof',
+          'bar' => 'rab',
+          'baz' => 'zab',
+          'qux' => 'xuq',
+          'yap' => 'pay',
+        },
+        10,
+        dict[
+          'foo' => 'oof',
+          'bar' => 'rab',
+          'baz' => 'zab',
+          'qux' => 'xuq',
+          'yap' => 'pay',
+        ],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTake */
+  public function testTake<Tk as arraykey, Tv>(
+    KeyedTraversable<Tk, Tv> $traversable,
+    int $length,
+    dict<Tk, Tv> $expected,
+  ): void {
+    expect(DictHSL\take($traversable, $length))->toBeSame($expected);
+  }
+
   public static function provideTestUnique(): array<mixed> {
     return array(
       tuple(

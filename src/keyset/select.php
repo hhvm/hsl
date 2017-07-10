@@ -147,3 +147,27 @@ function slice<Tv as arraykey>(
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   return keyset(\array_slice($container, $offset, $length));
 }
+
+/**
+ * Returns a new keyset containing the first `$length` elements of the given
+ * Traversable.
+ *
+ * If there are duplicate values in the Traversable, the keyset may be shorter
+ * than the specified length.
+ */
+function take<Tv as arraykey>(
+  Traversable<Tv> $traversable,
+  int $length,
+): keyset<Tv> {
+  invariant($length >= 0, 'Expected non-negative length, got %d.', $length);
+  $result = keyset[];
+  $ii = 0;
+  foreach ($traversable as $value) {
+    if ($ii === $length) {
+      break;
+    }
+    $result[] = $value;
+    $ii++;
+  }
+  return $result;
+}

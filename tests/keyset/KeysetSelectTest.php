@@ -13,7 +13,6 @@ use \HH\Lib\Keyset as KeysetHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
-/**
  * @emails oncall+hack_prod_infra
  */
 final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
@@ -337,5 +336,44 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     keyset<Tv> $expected,
   ): void {
     expect(KeysetHSL\slice($container, $offset, $length))->toBeSame($expected);
+  }
+
+  public static function provideTake(): array<mixed> {
+    return array(
+      tuple(
+        keyset[],
+        5,
+        keyset[],
+      ),
+      tuple(
+        range(0, 5),
+        0,
+        keyset[],
+      ),
+      tuple(
+        new Vector(range(0, 5)),
+        10,
+        keyset[0, 1, 2, 3, 4, 5],
+      ),
+      tuple(
+        new Set(range(0, 5)),
+        2,
+        keyset[0, 1],
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(array(0, 0, 1, 1, 2, 2, 3, 3)),
+        5,
+        keyset[0, 1, 2],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTake */
+  public function testTake<Tv as arraykey>(
+    Traversable<Tv> $traversable,
+    int $length,
+    keyset<Tv> $expected,
+  ): void {
+    expect(KeysetHSL\take($traversable, $length))->toBeSame($expected);
   }
 }

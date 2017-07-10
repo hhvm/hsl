@@ -148,6 +148,27 @@ function slice<Tk, Tv>(
 }
 
 /**
+ * Returns a new dict containing the first `$length` entries of the given
+ * KeyedTraversable.
+ */
+function take<Tk as arraykey, Tv>(
+  KeyedTraversable<Tk, Tv> $traversable,
+  int $length,
+): dict<Tk, Tv> {
+  invariant($length >= 0, 'Expected non-negative length, got %d.', $length);
+  $result = dict[];
+  $ii = 0;
+  foreach ($traversable as $key => $value) {
+    if ($ii === $length) {
+      break;
+    }
+    $result[$key] = $value;
+    $ii++;
+  }
+  return $result;
+}
+
+/**
  * Returns a new dict in which each value appears exactly once. In case of
  * duplicate values, later keys will overwrite the previous ones.
  *
