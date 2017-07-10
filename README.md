@@ -62,7 +62,7 @@ the C namespace and find `C\max` and `C\max_by`.
 ## Full Documentation
 
 Automatically-generated documentation is available at
-[https://hhvm.github.io/hsl/api/](https://hvm.github.io/hsl/api/').
+[https://hhvm.github.io/hsl/api/](https://hhvm.github.io/hsl/api/).
 
 ## Installation
 
