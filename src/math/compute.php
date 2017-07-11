@@ -53,7 +53,7 @@ function base_convert(string $value, int $from_base, int $to_base): string {
 
   $from_alphabet = Str\slice(ALPHABET_ALPHANUMERIC, 0, $from_base);
   $result_decimal = '0';
-  $place_value = \bcpow($from_base, Str\length($value) - 1);
+  $place_value = \bcpow((string)$from_base, (string)(Str\length($value) - 1));
   foreach (Str\chunk($value) as $digit) {
     $digit_numeric = Str\search_ci($from_alphabet, $digit);
     invariant(
@@ -66,7 +66,7 @@ function base_convert(string $value, int $from_base, int $to_base): string {
       $result_decimal,
       \bcmul((string)$digit_numeric, $place_value),
     );
-    $place_value = \bcdiv($place_value, $from_base);
+    $place_value = \bcdiv((string)$place_value, (string)$from_base);
   }
 
   if ($to_base === 10) {
@@ -77,7 +77,7 @@ function base_convert(string $value, int $from_base, int $to_base): string {
   $result = '';
   do {
     $result = $to_alphabet[\bcmod($result_decimal, (string)$to_base)] . $result;
-    $result_decimal = \bcdiv($result_decimal, (string)$to_base);
+    $result_decimal = \bcdiv((string)$result_decimal, (string)$to_base);
   } while (\bccomp($result_decimal, '0') > 0);
 
   return $result;
