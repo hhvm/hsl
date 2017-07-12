@@ -21,14 +21,14 @@ function chunk<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   int $size,
 ): vec<dict<Tk, Tv>> {
-  invariant($size > 0, 'Chunk size must be positive.');
+  invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
   $result = vec[];
   $ii = 0;
   foreach ($traversable as $key => $value) {
     if ($ii % $size === 0) {
       $result[] = dict[];
     }
-    $result[(int)($ii / $size)][$key] = $value;
+    $result[\intdiv($ii, $size)][$key] = $value;
     $ii++;
   }
   return $result;

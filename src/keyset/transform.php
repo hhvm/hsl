@@ -13,6 +13,31 @@
 namespace HH\Lib\Keyset;
 
 /**
+ * Returns a vec containing the given Traversable split into chunks of the
+ * given size.
+ *
+ * If the given Traversable doesn't divide evenly, the final chunk will be
+ * smaller than the specified size. If there are duplicate values in the
+ * Traversable, some chunks may be smaller than the specified size.
+ */
+function chunk<Tv as arraykey>(
+  Traversable<Tv> $traversable,
+  int $size,
+): vec<keyset<Tv>> {
+  invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
+  $result = vec[];
+  $ii = 0;
+  foreach ($traversable as $value) {
+    if ($ii % $size === 0) {
+      $result[] = keyset[];
+    }
+    $result[\intdiv($ii, $size)][] = $value;
+    $ii++;
+  }
+  return $result;
+}
+
+/**
  * Returns a new keyset where each value is the result of calling the given
  * function on the original value.
  */

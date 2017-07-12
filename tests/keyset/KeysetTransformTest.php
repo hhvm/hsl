@@ -13,10 +13,57 @@ use \HH\Lib\Keyset as KeysetHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
-/**
  * @emails oncall+hack_prod_infra
  */
 final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
+
+  public static function provideTestChunk(): array<mixed> {
+    return array(
+      tuple(
+        Map {},
+        10,
+        vec[],
+      ),
+      tuple(
+        array(0, 1, 2, 3, 4),
+        2,
+        vec[
+          keyset[0, 1],
+          keyset[2, 3],
+          keyset[4],
+        ],
+      ),
+      tuple(
+        HackLibTestTraversables::getKeyedIterator(
+          array('foo' => 'bar', 'baz' => 'qux'),
+        ),
+        1,
+        vec[
+          keyset['bar'],
+          keyset['qux'],
+        ],
+      ),
+      tuple(
+        vec[0, 0, 1, 1, 1, 2, 3, 4, 5, 6],
+        3,
+        vec[
+          keyset[0, 1],
+          keyset[1, 2],
+          keyset[3, 4, 5],
+          keyset[6],
+        ],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestChunk */
+  public function testChunk<Tv as arraykey>(
+    Traversable<Tv> $traversable,
+    int $size,
+    vec<keyset<Tv>> $expected,
+  ): void {
+    expect(KeysetHSL\chunk($traversable, $size))->toBeSame($expected);
+  }
 
   public static function provideTestMap(): array<mixed> {
     $doubler = $x ==> $x * 2;
