@@ -82,7 +82,7 @@ function strip_suffix(
  * To only strip from the right, see Str\trim_right.
  */
 function trim(
-  string $string,
+  \Stringish $string,
   ?string $char_mask = null,
 ): string {
   return $char_mask === null
