@@ -60,6 +60,58 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(DictHSL\diff_by_key($first, $second, ...$rest))->toBeSame($expected);
   }
 
+  public static function provideDrop(): array<mixed> {
+    return array(
+      tuple(
+        dict[],
+        5,
+        dict[],
+      ),
+      tuple(
+        Vector {0, 1, 2, 3},
+        0,
+        dict[
+          0 => 0,
+          1 => 1,
+          2 => 2,
+          3 => 3,
+        ],
+      ),
+      tuple(
+        HackLibTestTraversables::getKeyedIterator(array(
+          'foo' => 'oof',
+          'bar' => 'rab',
+          'baz' => 'zab',
+          'qux' => 'xuq',
+        )),
+        3,
+        dict[
+          'qux' => 'xuq',
+        ],
+      ),
+      tuple(
+        Map {
+          'foo' => 'oof',
+          'bar' => 'rab',
+          'baz' => 'zab',
+          'qux' => 'xuq',
+          'yap' => 'pay',
+        },
+        10,
+        dict[],
+      ),
+    );
+  }
+
+  /** @dataProvider provideDrop */
+  public function testDrop<Tk as arraykey, Tv>(
+    KeyedTraversable<Tk, Tv> $traversable,
+    int $n,
+    dict<Tk, Tv> $expected,
+  ): void {
+    expect(DictHSL\drop($traversable, $n))->toBeSame($expected);
+  }
+
   public static function provideTestFilter(): array<mixed> {
     return array(
       tuple(
@@ -428,10 +480,10 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   /** @dataProvider provideTake */
   public function testTake<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    int $length,
+    int $n,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(DictHSL\take($traversable, $length))->toBeSame($expected);
+    expect(DictHSL\take($traversable, $n))->toBeSame($expected);
   }
 
   public static function provideTestUnique(): array<mixed> {

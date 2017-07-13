@@ -35,6 +35,29 @@ function diff_by_key<Tk1, Tk2, Tv>(
 }
 
 /**
+ * Returns a new dict containing all except the first `$n` entries of the
+ * given KeyedTraversable.
+ *
+ * To take only the first `$n` entries, see `Dict\take`.
+ */
+function drop<Tk as arraykey, Tv>(
+  KeyedTraversable<Tk, Tv> $traversable,
+  int $n,
+): dict<Tk, Tv> {
+  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
+  $result = dict[];
+  $ii = -1;
+  foreach ($traversable as $key => $value) {
+    $ii++;
+    if ($ii < $n) {
+      continue;
+    }
+    $result[$key] = $value;
+  }
+  return $result;
+}
+
+/**
  * Returns a new dict containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
@@ -148,18 +171,20 @@ function slice<Tk, Tv>(
 }
 
 /**
- * Returns a new dict containing the first `$length` entries of the given
+ * Returns a new dict containing the first `$n` entries of the given
  * KeyedTraversable.
+ *
+ * To drop the first `$n` entries, see `Dict\drop`.
  */
 function take<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
-  int $length,
+  int $n,
 ): dict<Tk, Tv> {
-  invariant($length >= 0, 'Expected non-negative length, got %d.', $length);
+  invariant($n >= 0, 'Expected non-negative length, got %d.', $n);
   $result = dict[];
   $ii = 0;
   foreach ($traversable as $key => $value) {
-    if ($ii === $length) {
+    if ($ii === $n) {
       break;
     }
     $result[$key] = $value;

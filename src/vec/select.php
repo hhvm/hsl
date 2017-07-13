@@ -67,6 +67,29 @@ function diff_by<Tv, Ts as arraykey>(
 }
 
 /**
+ * Returns a new vec containing all except the first `$n` elements of the
+ * given Traversable.
+ *
+ * To take only the first `$n` elements, see `Vec\take`.
+ */
+function drop<Tv>(
+  Traversable<Tv> $traversable,
+  int $n,
+): vec<Tv> {
+  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
+  $result = vec[];
+  $ii = -1;
+  foreach ($traversable as $value) {
+    $ii++;
+    if ($ii < $n) {
+      continue;
+    }
+    $result[] = $value;
+  }
+  return $result;
+}
+
+/**
  * Returns a new vec containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
@@ -169,6 +192,9 @@ function sample<Tv>(
  *
  * If no length is given or it exceeds the upper bound of the Traversable,
  * the vec will contain every element after the offset.
+ *
+ * To take only the first `$n` elements, see `Vec\take`.
+ * To drop the first `$n` elements, see `Vec\drop`.
  */
 function slice<Tv>(
   Container<Tv> $container,
@@ -181,18 +207,20 @@ function slice<Tv>(
 }
 
 /**
- * Returns a new vec containing the first `$length` elements of the given
+ * Returns a new vec containing the first `$n` elements of the given
  * Traversable.
+ *
+ * To drop the first `$n` elements, see `Vec\drop`.
  */
 function take<Tv>(
   Traversable<Tv> $traversable,
-  int $length,
+  int $n,
 ): vec<Tv> {
-  invariant($length >= 0, 'Expected non-negative length, got %d.', $length);
+  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
   $result = vec[];
   $ii = 0;
   foreach ($traversable as $value) {
-    if ($ii === $length) {
+    if ($ii === $n) {
       break;
     }
     $result[] = $value;

@@ -84,6 +84,45 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
+  public static function provideDrop(): array<mixed> {
+    return array(
+      tuple(
+        vec[],
+        5,
+        vec[],
+      ),
+      tuple(
+        range(0, 5),
+        0,
+        vec[0, 1, 2, 3, 4, 5],
+      ),
+      tuple(
+        new Vector(range(0, 5)),
+        10,
+        vec[],
+      ),
+      tuple(
+        new Set(range(0, 5)),
+        2,
+        vec[2, 3, 4, 5],
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(range(0, 5)),
+        5,
+        vec[5],
+      ),
+    );
+  }
+
+  /** @dataProvider provideDrop */
+  public function testDrop<Tv>(
+    Traversable<Tv> $traversable,
+    int $n,
+    vec<Tv> $expected,
+  ): void {
+    expect(VecHSL\drop($traversable, $n))->toBeSame($expected);
+  }
+
   public static function provideTestFilter(): array<mixed> {
     return array(
       tuple(
@@ -434,10 +473,10 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   /** @dataProvider provideTake */
   public function testTake<Tv>(
     Traversable<Tv> $traversable,
-    int $length,
+    int $n,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\take($traversable, $length))->toBeSame($expected);
+    expect(VecHSL\take($traversable, $n))->toBeSame($expected);
   }
 
   public static function provideTestUnique(): array<mixed> {

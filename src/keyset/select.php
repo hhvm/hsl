@@ -37,6 +37,29 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
 }
 
 /**
+ * Returns a new keyset containing all except the first `$n` elements of
+ * the given Traversable.
+ *
+ * To take only the first `$n` elements, see `Keyset\take`.
+ */
+function drop<Tv as arraykey>(
+  Traversable<Tv> $traversable,
+  int $n,
+): keyset<Tv> {
+  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
+  $result = keyset[];
+  $ii = -1;
+  foreach ($traversable as $value) {
+    $ii++;
+    if ($ii < $n) {
+      continue;
+    }
+    $result[] = $value;
+  }
+  return $result;
+}
+
+/**
  * Returns a new keyset containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
@@ -149,21 +172,23 @@ function slice<Tv as arraykey>(
 }
 
 /**
- * Returns a new keyset containing the first `$length` elements of the given
+ * Returns a new keyset containing the first `$n` elements of the given
  * Traversable.
  *
  * If there are duplicate values in the Traversable, the keyset may be shorter
  * than the specified length.
+ *
+ * To drop the first `$n` elements, see `Keyset\drop`.
  */
 function take<Tv as arraykey>(
   Traversable<Tv> $traversable,
-  int $length,
+  int $n,
 ): keyset<Tv> {
-  invariant($length >= 0, 'Expected non-negative length, got %d.', $length);
+  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
   $result = keyset[];
   $ii = 0;
   foreach ($traversable as $value) {
-    if ($ii === $length) {
+    if ($ii === $n) {
       break;
     }
     $result[] = $value;

@@ -54,6 +54,45 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
+  public static function provideDrop(): array<mixed> {
+    return array(
+      tuple(
+        vec[],
+        5,
+        keyset[],
+      ),
+      tuple(
+        range(0, 5),
+        0,
+        keyset[0, 1, 2, 3, 4, 5],
+      ),
+      tuple(
+        new Vector(range(0, 5)),
+        10,
+        keyset[],
+      ),
+      tuple(
+        new Set(range(0, 5)),
+        2,
+        keyset[2, 3, 4, 5],
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(array(0, 1, 2, 3, 4, 5, 5, 5)),
+        5,
+        keyset[5],
+      ),
+    );
+  }
+
+  /** @dataProvider provideDrop */
+  public function testDrop<Tv as arraykey>(
+    Traversable<Tv> $traversable,
+    int $n,
+    keyset<Tv> $expected,
+  ): void {
+    expect(KeysetHSL\drop($traversable, $n))->toBeSame($expected);
+  }
+
   public static function provideTestFilter(): array<mixed> {
     return array(
       tuple(
@@ -371,9 +410,9 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   /** @dataProvider provideTake */
   public function testTake<Tv as arraykey>(
     Traversable<Tv> $traversable,
-    int $length,
+    int $n,
     keyset<Tv> $expected,
   ): void {
-    expect(KeysetHSL\take($traversable, $length))->toBeSame($expected);
+    expect(KeysetHSL\take($traversable, $n))->toBeSame($expected);
   }
 }
