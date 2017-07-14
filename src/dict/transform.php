@@ -158,17 +158,6 @@ function group_by<Tk as arraykey, Tv>(
 }
 
 /**
- * Temporary alias. See `Dict\group_by`.
- */
-<<__Deprecated('renamed to Dict\\group_by')>>
-function group<Tk as arraykey, Tv>(
-  Traversable<Tv> $values,
-  (function(Tv): ?Tk) $key_func,
-): dict<Tk, vec<Tv>> {
-  return namespace\group_by($values, $key_func);
-}
-
-/**
  * Returns a new dict where each value is the result of calling the given
  * function on the original value.
  *
