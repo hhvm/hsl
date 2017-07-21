@@ -9,7 +9,6 @@
  *
  */
 
-/* HH_IGNORE_ERROR[5547] Hack Standard Lib is an exception */
 namespace HH\Lib\Math;
 use HH\Lib\Str;
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;

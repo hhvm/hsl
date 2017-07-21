@@ -9,7 +9,6 @@
  *
  */
 
-/* HH_IGNORE_ERROR[5547] Hack Standard Lib is an exception */
 namespace HH\Lib\Keyset;
 
 /**

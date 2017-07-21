@@ -13,7 +13,6 @@
  * C is for Containers. This file contains functions that run a calculation
  * over containers and traversables to get a single value result.
  */
-/* HH_IGNORE_ERROR[5547] Hack Standard Lib is an exception */
 namespace HH\Lib\C;
 
 /**

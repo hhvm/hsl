@@ -13,7 +13,6 @@
  * C is for Containers. This file contains functions that ask
  * questions of (i.e. introspect) containers and traversables.
  */
-/* HH_IGNORE_ERROR[5547] Hack Standard Lib is an exception */
 namespace HH\Lib\C;
 
 /**
