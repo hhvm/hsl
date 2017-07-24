@@ -19,11 +19,6 @@ the tests pass.
 
 ## Examples
 
-WARNING: `use namespace` does not yet exist; it is a potential future feature.
-For now, replace `use namespace HH\Lib\Dict;` with `use HH\Lib\Dict as DictHSL`
-to avoid creating a collision with the `dict` type. The same approach is
-also neccessary to work with the Vec and Keyset namespaces.
-
 ```Hack
 <?hh // strict
 
