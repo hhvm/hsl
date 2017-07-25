@@ -15,11 +15,9 @@ namespace HH\Lib\Keyset;
  * Returns a new keyset sorted by the values of the given Traversable. If the
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
- *
- * TODO(#13270869) Accept Traversable when keyset() correctly handles Iterators.
  */
 function sort<Tv as arraykey>(
-  Container<Tv> $traversable,
+  Traversable<Tv> $traversable,
   ?(function(Tv, Tv): int) $comparator = null,
 ): keyset<Tv> {
   $keyset = keyset($traversable);

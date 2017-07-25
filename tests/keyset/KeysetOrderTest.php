@@ -34,12 +34,17 @@ final class KeysetOrderTest extends PHPUnit_Framework_TestCase {
         null,
         keyset[0, 3, 5, 6, 7, 8, 9],
       ),
+      tuple(
+        HackLibTestTraversables::getIterator(array(8, 6, 7, 5, 3, 0, 9)),
+        null,
+        keyset[0, 3, 5, 6, 7, 8, 9],
+      ),
     );
   }
 
   /** @dataProvider provideSort */
   public function testSort<Tv as arraykey>(
-    Container<Tv> $traversable,
+    Traversable<Tv> $traversable,
     ?(function(Tv, Tv): int) $comparator,
     keyset<Tv> $expected,
   ): void {
