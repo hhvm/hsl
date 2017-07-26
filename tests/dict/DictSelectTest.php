@@ -486,6 +486,14 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(DictHSL\take($traversable, $n))->toBeSame($expected);
   }
 
+  public function testTakeIter(): void {
+    $iter = HackLibTestTraversables::getKeyedIterator(range(0, 4));
+    expect(DictHSL\take($iter, 2))->toBeSame(dict[0=>0, 1=>1]);
+    expect(DictHSL\take($iter, 0))->toBeSame(dict[]);
+    expect(DictHSL\take($iter, 2))->toBeSame(dict[2=>2, 3=>3]);
+    expect(DictHSL\take($iter, 2))->toBeSame(dict[4=>4]);
+  }
+
   public static function provideTestUnique(): array<mixed> {
     return array(
       tuple(

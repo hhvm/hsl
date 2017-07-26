@@ -215,15 +215,18 @@ function take<Tv>(
   Traversable<Tv> $traversable,
   int $n,
 ): vec<Tv> {
-  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
+  if ($n === 0) {
+    return vec[];
+  }
+  invariant($n > 0, 'Expected non-negative N, got %d.', $n);
   $result = vec[];
   $ii = 0;
   foreach ($traversable as $value) {
+    $result[] = $value;
+    $ii++;
     if ($ii === $n) {
       break;
     }
-    $result[] = $value;
-    $ii++;
   }
   return $result;
 }

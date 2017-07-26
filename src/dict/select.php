@@ -179,15 +179,18 @@ function take<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 ): dict<Tk, Tv> {
-  invariant($n >= 0, 'Expected non-negative length, got %d.', $n);
+  if ($n === 0) {
+    return dict[];
+  }
+  invariant($n > 0, 'Expected non-negative length, got %d.', $n);
   $result = dict[];
   $ii = 0;
   foreach ($traversable as $key => $value) {
+    $result[$key] = $value;
+    $ii++;
     if ($ii === $n) {
       break;
     }
-    $result[$key] = $value;
-    $ii++;
   }
   return $result;
 }

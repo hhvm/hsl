@@ -415,4 +415,12 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   ): void {
     expect(KeysetHSL\take($traversable, $n))->toBeSame($expected);
   }
+
+  public function testTakeIter(): void {
+    $iter = HackLibTestTraversables::getIterator(range(0, 4));
+    expect(KeysetHSL\take($iter, 2))->toBeSame(keyset[0, 1]);
+    expect(KeysetHSL\take($iter, 0))->toBeSame(keyset[]);
+    expect(KeysetHSL\take($iter, 2))->toBeSame(keyset[2, 3]);
+    expect(KeysetHSL\take($iter, 2))->toBeSame(keyset[4]);
+  }
 }

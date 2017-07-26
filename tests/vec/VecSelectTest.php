@@ -479,6 +479,14 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     expect(VecHSL\take($traversable, $n))->toBeSame($expected);
   }
 
+  public function testTakeIter(): void {
+    $iter = HackLibTestTraversables::getIterator(range(0, 4));
+    expect(VecHSL\take($iter, 2))->toBeSame(vec[0, 1]);
+    expect(VecHSL\take($iter, 0))->toBeSame(vec[]);
+    expect(VecHSL\take($iter, 2))->toBeSame(vec[2, 3]);
+    expect(VecHSL\take($iter, 2))->toBeSame(vec[4]);
+  }
+
   public static function provideTestUnique(): array<mixed> {
     return array(
       tuple(

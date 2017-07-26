@@ -183,15 +183,18 @@ function take<Tv as arraykey>(
   Traversable<Tv> $traversable,
   int $n,
 ): keyset<Tv> {
-  invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
+  if ($n === 0) {
+    return keyset[];
+  }
+  invariant($n > 0, 'Expected non-negative N, got %d.', $n);
   $result = keyset[];
   $ii = 0;
   foreach ($traversable as $value) {
+    $result[] = $value;
+    $ii++;
     if ($ii === $n) {
       break;
     }
-    $result[] = $value;
-    $ii++;
   }
   return $result;
 }
