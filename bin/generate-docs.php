@@ -233,7 +233,11 @@ final class DocsGen {
     }
 
     if ($t->isNullable()) {
-      return '?'.$text;
+      invariant(
+        Str\slice($text, 0, 1) === '?',
+        "'%s' is nullable, but doesn't start with '?'",
+        $text,
+      );
     }
     return $text;
   }
