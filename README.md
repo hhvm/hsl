@@ -9,10 +9,11 @@ This library is especially useful for working with the Hack arrays (`vec`,
 
 ## Project Status
 
-This is an experimental preview release. While we are not currently expecting to
-be making major changes, the API should not be considered stable until a future
-1.0 release, and backwards compatiblity will not be a concern of the developers
-until that time.
+This is an experimental preview release. The API should not be considered stable
+until a future 1.0 release, and backwards compatiblity will not be a concern of
+the developers until that time. For planned/likely BC-breaking changes,
+see the
+[issues labelled 'volatile api'](https://github.com/hhvm/hsl/issues?q=is%3Aopen+is%3Aissue+label%3A%22volatile+API%22).
 
 New v0.x releases will be automatically made weekly, if there are changes and
 the tests pass.
