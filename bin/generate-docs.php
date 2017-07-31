@@ -234,7 +234,7 @@ final class DocsGen {
 
     if ($t->isNullable()) {
       invariant(
-        Str\slice($text, 0, 1) === '?',
+        Str\starts_with($text, '?'),
         "'%s' is nullable, but doesn't start with '?'",
         $text,
       );
