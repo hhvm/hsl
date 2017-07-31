@@ -9,21 +9,29 @@
  *
  */
 
+/**
+ * Handy functions to create iterators.
+ *
+ * Not using generators to be compatible with code that is explicitly setting
+ * Hack.Lang.AutoprimeGenerators to false.
+ */
 abstract final class HackLibTestTraversables {
 
   // For testing functions that accept Traversables
   public static function getIterator<T>(Traversable<T> $ary): Iterator<T> {
+    $dict = dict[];
+    $i = 0;
     foreach ($ary as $v) {
-      yield $v;
+      $dict[$i] = $v;
+      $i++;
     }
+    return new HackLibTestForwardOnlyIterator($dict);;
   }
 
   // For testing functions that accept KeyedTraversables
   public static function getKeyedIterator<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $ary,
   ): KeyedIterator<Tk, Tv> {
-    foreach ($ary as $k => $v) {
-      yield $k => $v;
-    }
+    return new HackLibTestForwardOnlyIterator(dict($ary));
   }
 }
