@@ -1,22 +1,10 @@
 {
-  "repositories": [
-    {
-      "type":"package",
-      "package": {
-        "name": "facebook/fbexpect",
-        "version":"master",
-        "source": {
-          "url": "git@github.com:hhvm/fbexpect.git",
-          "type": "git",
-          "reference":"master"
-        }
-      }
-    }
-  ],
+  "name": "hhvm/hsl",
+  "description": "The Hack Standard Library",
   "require-dev": {
     "91carriage/phpunit-hhi": "^5.7",
     "phpunit/phpunit": "^5.7",
-    "facebook/fbexpect": "dev-master",
+    "facebook/fbexpect": "^0.2",
     "facebook/definition-finder": "^1.6"
   },
   "require": {
