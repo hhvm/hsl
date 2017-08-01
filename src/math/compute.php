@@ -184,8 +184,8 @@ function mean(num $first_number, num ...$numbers): float {
 /**
  * Returns the given number rounded to the specified precision. A positive
  * precision rounds to the nearest decimal place whereas a negative precision
- * rounds to the nearest power of ten. For example, a precision of -1 rounds to
- * the nearest tenth whereas a precision of 1 rounds to the nearest ten.
+ * rounds to the nearest power of ten. For example, a precision of 1 rounds to
+ * the nearest tenth whereas a precision of -1 rounds to the nearest ten.
  */
 function round(
   num $val,
