@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hhvm/hsl.svg?branch=master)](https://travis-ci.org/hhvm/hsl)
+
 # Hack Standard Library
 
 The goal of the Hack Standard Library is to provide a consistent, centralized,
