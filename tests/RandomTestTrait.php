@@ -10,12 +10,48 @@ use HH\Lib\Vec;
 trait RandomTestTrait {
   require extends PHPUnit_Framework_TestCase;
 
+  public abstract function getRandomBool(int $rate): bool;
   public abstract function getRandomFloat(): float;
   public abstract function getRandomInt(int $min, int $max): int;
   public abstract function getRandomString(
     int $length,
     ?string $alphabet = null,
   ): string;
+
+  public static function provideTestBoolRate(): array<mixed> {
+    return array(
+      tuple(0),
+      tuple(1),
+      tuple(2),
+      tuple(3),
+      tuple(10),
+    );
+  }
+
+  /**
+   * Test that `bool` returns true at the correct rate. This test calls `bool`
+   * multiple times and checks that the result is in the expected range.
+   */
+  /** @dataProvider provideTestBoolRate */
+  public function testBoolRate(int $rate): void {
+    $iterations = 10000;
+    $mean = 0.0;
+    for ($i = 0; $i < $iterations; $i++) {
+      if ($this->getRandomBool($rate)) {
+        $mean += 1 / $iterations;
+      }
+    }
+    if ($rate === 0) {
+      expect($mean)->toBeSame(0.0);
+    } else {
+      expect(Math\abs(1 / $rate - $mean))->toBeLessThanOrEqualTo(0.02);
+    }
+  }
+
+  public function testBoolException(): void {
+    expect(() ==> $this->getRandomBool(-5))
+      ->toThrow(InvariantViolationException::class);
+  }
 
   /**
    * Test that `float` returns values in the correct range.  This test calls

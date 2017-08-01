@@ -5,6 +5,17 @@ namespace HH\Lib\_Private;
 use HH\Lib\Math;
 use HH\Lib\Str;
 
+function random_bool(
+  (function (int, int): int) $random_int,
+  int $rate,
+): bool {
+  invariant($rate >= 0, 'Expected non-negative rate');
+  if ($rate === 0) {
+    return false;
+  }
+  return $random_int(1, $rate) === 1;
+}
+
 function random_float(
   (function (int, int): int) $random_int,
 ): float {
