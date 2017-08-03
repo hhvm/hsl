@@ -241,8 +241,7 @@ function take<Tv>(
 function unique<Tv as arraykey>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
-  // TODO(#13270869) Use keyset when they correctly handle Iterators.
-  return vec(new Set($traversable));
+  return vec(keyset($traversable));
 }
 
 /**
