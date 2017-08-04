@@ -176,13 +176,20 @@ function keys_with_truthy_values<Tk, Tv>(
 /**
  * Returns a new vec containing an unbiased random sample of up to
  * `$sample_size` elements (fewer iff `$sample_size` is larger than the size of
- * `$container`).
+ * `$traversable`).
  */
 function sample<Tv>(
-  Container<Tv> $container,
+  Traversable<Tv> $traversable,
   int $sample_size,
 ): vec<Tv> {
-  return namespace\slice(namespace\shuffle($container), 0, $sample_size);
+  invariant(
+    $sample_size >= 0,
+    'Expected non-negative sample size, got %d.',
+    $sample_size,
+  );
+  return $traversable
+    |> namespace\shuffle($$)
+    |> namespace\take($$, $sample_size);
 }
 
 /**

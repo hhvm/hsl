@@ -393,12 +393,17 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
 
   /** @dataProvider provideTestSample */
   public function testSample<Tv>(
-    Container<Tv> $container,
+    Traversable<Tv> $traversable,
     int $sample_size,
   ): void {
-    $expected_size = min(C\count($container), $sample_size);
-    expect(C\count(VecHSL\sample($container, $sample_size)))
+    $expected_size = Math\min(C\count(vec($traversable)), $sample_size);
+    expect(C\count(VecHSL\sample($traversable, $sample_size)))
       ->toBeSame($expected_size);
+  }
+
+  public function testSampleIterator(): void {
+    $iterator = HackLibTestTraversables::getIterator(range(0, 5));
+    expect(C\count(VecHSL\sample($iterator, 3)))->toBeSame(3);
   }
 
   public static function provideTestSlice(): array<mixed> {
