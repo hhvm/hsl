@@ -10,8 +10,7 @@
  */
 
 use HH\Lib\Vec as VecHSL;
-use HH\Lib\Math as MathHSL;
-use HH\Lib\{C, Str};
+use HH\Lib\{C, Math, Str};
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -397,7 +396,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     Traversable<Tv> $traversable,
     int $sample_size,
   ): void {
-    $expected_size = MathHSL\min(C\count(vec($traversable)), $sample_size);
+    $expected_size = Math\min(C\count(vec($traversable)), $sample_size);
     expect(C\count(VecHSL\sample($traversable, $sample_size)))
       ->toBeSame($expected_size);
   }
