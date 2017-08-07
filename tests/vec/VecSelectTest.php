@@ -10,7 +10,7 @@
  */
 
 use HH\Lib\Vec as VecHSL;
-use HH\Lib\{C, Str};
+use HH\Lib\{C, Math, Str};
 use function \Facebook\FBExpect\expect;
 
 /**
