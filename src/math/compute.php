@@ -167,25 +167,6 @@ function log(num $arg, num $base = \M_E): float {
 }
 
 /**
- * Returns the arithmetic mean of the numbers in the given container.
- *
- * To find the sum, see `C\sum`.
- * To find the maximum, see `Math\max`.
- * To find the minimum, see `Math\min`.
- */
-function mean(Container<num> $numbers): ?float {
-  $count = (float)C\count($numbers);
-  if ($count === 0.0) {
-    return null;
-  }
-  $mean = 0.0;
-  foreach ($numbers as $number) {
-    $mean += $number / $count;
-  }
-  return $mean;
-}
-
-/**
  * Returns the given number rounded to the specified precision. A positive
  * precision rounds to the nearest decimal place whereas a negative precision
  * rounds to the nearest power of ten. For example, a precision of 1 rounds to

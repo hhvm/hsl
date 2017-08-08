@@ -361,28 +361,6 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(() ==> Math\log(3, 1))->toThrow(InvariantException::class);
   }
 
-  public static function provideTestMean(): array<mixed> {
-    return array(
-      tuple(vec[1.0, 2.0, 3, 4], 2.5),
-      tuple(vec[1, 1, 2], 4 / 3),
-      tuple(vec[-1, 1], 0.0),
-      tuple(vec[], null),
-    );
-  }
-
-  /** @dataProvider provideTestMean */
-  public function testMean(
-    Container<num> $numbers,
-    ?float $expected
-  ): void {
-    $actual = Math\mean($numbers);
-    if ($expected === null) {
-      expect($actual)->toBeSame(null);
-    } else {
-      expect($actual)->toAlmostEqual($expected);
-    }
-  }
-
   public static function provideTestRound(): array<mixed> {
     return array(
       tuple(3.5, 0, 4.0),

@@ -31,6 +31,25 @@ function max<T as num>(T $first_number, T ...$numbers): T {
 }
 
 /**
+ * Returns the arithmetic mean of the numbers in the given container.
+ *
+ * To find the sum, see `C\sum`.
+ * To find the maximum, see `Math\max`.
+ * To find the minimum, see `Math\min`.
+ */
+function mean(Container<num> $numbers): ?float {
+  $count = (float)C\count($numbers);
+  if ($count === 0.0) {
+    return null;
+  }
+  $mean = 0.0;
+  foreach ($numbers as $number) {
+    $mean += $number / $count;
+  }
+  return $mean;
+}
+
+/**
  * Returns the median of the given numbers.
  *
  * To find the mean, see `Math\mean`.

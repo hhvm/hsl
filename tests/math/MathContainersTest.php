@@ -15,7 +15,7 @@ use function Facebook\FBExpect\expect;
 /**
  * @emails oncall+hack_prod_infra
  */
-final class MathSelectTest extends PHPUnit_Framework_TestCase {
+final class MathContainersTest extends PHPUnit_Framework_TestCase {
   public static function provideTestMax(): array<mixed> {
     return array(
       tuple(1, vec[2], 2),
@@ -38,6 +38,28 @@ final class MathSelectTest extends PHPUnit_Framework_TestCase {
     T $expected,
   ): void {
     expect(Math\max($first_number, ...$numbers))->toBeSame($expected);
+  }
+
+  public static function provideTestMean(): array<mixed> {
+    return array(
+      tuple(vec[1.0, 2.0, 3, 4], 2.5),
+      tuple(vec[1, 1, 2], 4 / 3),
+      tuple(vec[-1, 1], 0.0),
+      tuple(vec[], null),
+    );
+  }
+
+  /** @dataProvider provideTestMean */
+  public function testMean(
+    Container<num> $numbers,
+    ?float $expected
+  ): void {
+    $actual = Math\mean($numbers);
+    if ($expected === null) {
+      expect($actual)->toBeSame(null);
+    } else {
+      expect($actual)->toAlmostEqual($expected);
+    }
   }
 
   public static function provideTestMedian(): array<mixed> {
