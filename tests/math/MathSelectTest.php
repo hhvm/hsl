@@ -42,22 +42,26 @@ final class MathSelectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestMedian(): array<mixed> {
     return array(
-      tuple(1, vec[], 1.0),
-      tuple(1, vec[2], 1.5),
-      tuple(1, vec[2, 3], 2.0),
-      tuple(9, vec[-1], 4.0),
-      tuple(200, vec[-500, 3], 3.0),
-      tuple(0, vec[1, 0, 0], 0.0),
+      tuple(vec[], null),
+      tuple(vec[1], 1.0),
+      tuple(vec[1, 2], 1.5),
+      tuple(vec[1, 2, 3], 2.0),
+      tuple(vec[9, -1], 4.0),
+      tuple(vec[200, -500, 3], 3.0),
+      tuple(vec[0, 1, 0, 0], 0.0),
     );
   }
 
   /** @dataProvider provideTestMedian */
   public function testMedian(
-    num $first_number,
     Container<num> $numbers,
-    float $expected,
+    ?float $expected,
   ): void {
-    expect(Math\median($first_number, ...$numbers))->toBeSame($expected);
+    if ($expected === null) {
+      expect(Math\median($numbers))->toBeSame(null);
+    } else {
+      expect(Math\median($numbers))->toBeSame($expected);
+    }
   }
 
   public static function provideTestMin(): array<mixed> {

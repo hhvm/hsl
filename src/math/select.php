@@ -36,11 +36,13 @@ function max<T as num>(T $first_number, T ...$numbers): T {
  * To find the mean, see `Math\mean`.
  * To find the standard deviation, see `Math\fb\std_dev`.
  */
-function median(num $first_number, num ...$numbers): float {
-  $numbers[] = $first_number;
+function median(Container<num> $numbers): ?float {
   $numbers = Vec\sort($numbers);
 
   $count = C\count($numbers);
+  if ($count === 0) {
+    return null;
+  }
   $middle_index = Math\int_div($count, 2);
   if ($count % 2 === 0) {
     return Math\mean(
