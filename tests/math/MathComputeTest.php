@@ -363,20 +363,24 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestMean(): array<mixed> {
     return array(
-      tuple(1.0, vec[2.0, 3, 4], 2.5),
-      tuple(1, vec[1, 2], 4 / 3),
-      tuple(-1, vec[1], 0.0),
+      tuple(vec[1.0, 2.0, 3, 4], 2.5),
+      tuple(vec[1, 1, 2], 4 / 3),
+      tuple(vec[-1, 1], 0.0),
+      tuple(vec[], null),
     );
   }
 
   /** @dataProvider provideTestMean */
   public function testMean(
-    num $first_number,
     Container<num> $numbers,
-    float $expected
+    ?float $expected
   ): void {
-    $actual = Math\mean($first_number, ...$numbers);
-    expect($actual)->toAlmostEqual($expected);
+    $actual = Math\mean($numbers);
+    if ($expected === null) {
+      expect($actual)->toBeSame(null);
+    } else {
+      expect($actual)->toAlmostEqual($expected);
+    }
   }
 
   public static function provideTestRound(): array<mixed> {

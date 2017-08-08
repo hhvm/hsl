@@ -10,6 +10,7 @@
  */
 
 namespace HH\Lib\Math;
+use HH\Lib\C;
 use HH\Lib\Str;
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
 
@@ -166,15 +167,18 @@ function log(num $arg, num $base = \M_E): float {
 }
 
 /**
- * Returns the arithmetic mean of the given numbers.
+ * Returns the arithmetic mean of the numbers in the given container.
  *
  * To find the sum, see `C\sum`.
  * To find the maximum, see `Math\max`.
  * To find the minimum, see `Math\min`.
  */
-function mean(num $first_number, num ...$numbers): float {
-  $count = (float)\HH\Lib\C\count($numbers) + 1;
-  $mean = $first_number / $count;
+function mean(Container<num> $numbers): ?float {
+  $count = (float)C\count($numbers);
+  if ($count === 0.0) {
+    return null;
+  }
+  $mean = 0.0;
   foreach ($numbers as $number) {
     $mean += $number / $count;
   }

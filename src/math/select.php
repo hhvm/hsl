@@ -44,9 +44,8 @@ function median(num $first_number, num ...$numbers): float {
   $middle_index = Math\int_div($count, 2);
   if ($count % 2 === 0) {
     return Math\mean(
-      $numbers[$middle_index],
-      $numbers[$middle_index - 1],
-    );
+      vec[$numbers[$middle_index], $numbers[$middle_index - 1]]
+    ) ?? 0.0;
   }
   return (float)$numbers[$middle_index];
 }
