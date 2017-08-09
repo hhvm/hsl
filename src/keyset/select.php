@@ -112,6 +112,7 @@ function keys<Tk as arraykey, Tv>(
  * Returns a new keyset containing only the keys of the given KeyedTraversable
  * that map to truthy values.
  */
+<<__Deprecated('use Keyset\\fb\\keys_with_truthy_values internally')>>
 function keys_with_truthy_values<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): keyset<Tk> {

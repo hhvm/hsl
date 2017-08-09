@@ -221,57 +221,6 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     expect(KeysetHSL\keys($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestKeysWithTruthyValues(): array<mixed> {
-    return array(
-      tuple(
-        array(
-          'foo' => null,
-          'bar' => null,
-          'baz' => null,
-        ),
-        keyset[],
-      ),
-      tuple(
-        Map {
-          '' => '',
-          '0' => '0',
-          0 => 0,
-          'false' => false,
-          'array' => array(),
-          'false-string' => 'false',
-        },
-        keyset['false-string'],
-      ),
-      tuple(
-        Vector {
-          'foo',
-          'bar',
-          null,
-          'baz',
-        },
-        keyset[0, 1, 3],
-      ),
-      tuple(
-        HackLibTestTraversables::getKeyedIterator(array(
-          '1' => null,
-          '2' => array(),
-          '3' => '0',
-          '4' => 100,
-        )),
-        keyset[4],
-      ),
-    );
-  }
-
-  /** @dataProvider provideTestKeysWithTruthyValues */
-  public function testKeysWithTruthyValues<Tk as arraykey, Tv>(
-    KeyedTraversable<Tk, Tv> $traversable,
-    keyset<Tk> $expected,
-  ): void {
-    expect(KeysetHSL\keys_with_truthy_values($traversable))
-      ->toBeSame($expected);
-  }
-
   public static function provideTestIntersect(): array<mixed> {
     return array(
       tuple(

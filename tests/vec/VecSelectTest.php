@@ -323,57 +323,6 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     expect(VecHSL\keys($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestKeysWithTruthyValues(): array<mixed> {
-    return array(
-      tuple(
-        array(
-          'foo' => null,
-          'bar' => null,
-          'baz' => null,
-        ),
-        vec[],
-      ),
-      tuple(
-        Map {
-          '' => '',
-          '0' => '0',
-          0 => 0,
-          'false' => false,
-          'array' => array(),
-          'false-string' => 'false',
-        },
-        vec['false-string'],
-      ),
-      tuple(
-        Vector {
-          'foo',
-          'bar',
-          null,
-          'baz',
-        },
-        vec[0, 1, 3],
-      ),
-      tuple(
-        HackLibTestTraversables::getKeyedIterator(array(
-          '1' => null,
-          '2' => array(),
-          '3' => '0',
-          '4' => 100,
-        )),
-        vec[4],
-      ),
-    );
-  }
-
-  /** @dataProvider provideTestKeysWithTruthyValues */
-  public function testKeysWithTruthyValues<Tk, Tv>(
-    KeyedTraversable<Tk, Tv> $traversable,
-    vec<Tk> $expected,
-  ): void {
-    expect(VecHSL\keys_with_truthy_values($traversable))
-      ->toBeSame($expected);
-  }
-
   public static function provideTestSample(): array<mixed> {
     return array(
       tuple(

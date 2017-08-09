@@ -161,6 +161,7 @@ function keys<Tk, Tv>(
  * Returns a new vec containing only the keys of the given KeyedTraversable
  * that map to truthy values.
  */
+<<__Deprecated('use Vec\\fb\\keys_with_truthy_values internally')>>
 function keys_with_truthy_values<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): vec<Tk> {
