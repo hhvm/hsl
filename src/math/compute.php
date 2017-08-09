@@ -159,8 +159,11 @@ function int_div(int $numerator, int $denominator): int {
  *
  * For the exponential function, see `Math\exp`.
  */
-function log(num $arg, num $base = \M_E): float {
+function log(num $arg, ?num $base = null): float {
   invariant($arg > 0, 'Expected positive argument for log, got %f', $arg);
+  if ($base === null) {
+    return \log($arg);
+  }
   invariant($base > 0, 'Expected positive base for log, got %f', $base);
   invariant($base !== 1, 'Logarithm undefined for base 1');
   return \log($arg, $base);

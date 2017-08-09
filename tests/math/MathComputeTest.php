@@ -354,6 +354,21 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     }
   }
 
+  public static function provideTestLogNoBase(): array<mixed> {
+    return array(
+      tuple(0.1),
+      tuple(3.6),
+      tuple(M_E),
+      tuple(100.0),
+    );
+  }
+
+  /** @dataProvider provideTestLogNoBase */
+  public function testLogNoBase(num $base): void {
+    expect(Math\log($base))->toBeSame(log($base));
+    expect(Math\log($base, null))->toBeSame(log($base));
+  }
+
   public function testLogException(): void {
     expect(() ==> Math\log(-1, 2))->toThrow(InvariantException::class);
     expect(() ==> Math\log(3, 0))->toThrow(InvariantException::class);
