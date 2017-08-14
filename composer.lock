@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "68b1ea050e6f7be25ef47e2ad78067a6",
+    "content-hash": "c3055cb73520a4262a0d4336c7a68365",
     "packages": [
         {
             "name": "91carriage/phpunit-hhi",
@@ -57,16 +57,16 @@
         },
         {
             "name": "facebook/definition-finder",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/definition-finder.git",
-                "reference": "2e9e924ad7baa78beaee305103e122bcd5436502"
+                "reference": "6bcf70d3962994679be30968b05183f106c0f2b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/definition-finder/zipball/2e9e924ad7baa78beaee305103e122bcd5436502",
-                "reference": "2e9e924ad7baa78beaee305103e122bcd5436502",
+                "url": "https://api.github.com/repos/hhvm/definition-finder/zipball/6bcf70d3962994679be30968b05183f106c0f2b8",
+                "reference": "6bcf70d3962994679be30968b05183f106c0f2b8",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +95,7 @@
                 "hack",
                 "hhvm"
             ],
-            "time": "2017-06-30T19:35:28+00:00"
+            "time": "2017-08-14T18:51:43+00:00"
         },
         {
             "name": "facebook/hhvm-autoload",
