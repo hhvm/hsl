@@ -10,9 +10,7 @@
  */
 
 namespace HH\Lib\Math;
-use HH\Lib\C;
-use HH\Lib\Math;
-use HH\Lib\Vec;
+use namespace HH\Lib\{C, Math, Vec};
 
 /**
  * Returns the largest of all input numbers.

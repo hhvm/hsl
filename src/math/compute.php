@@ -10,8 +10,7 @@
  */
 
 namespace HH\Lib\Math;
-use HH\Lib\C;
-use HH\Lib\Str;
+use namespace HH\Lib\{C, Str};
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
 
 /**

@@ -11,7 +11,7 @@
 
 namespace HH\Lib\Dict;
 
-use \HH\Lib\C;
+use namespace \HH\Lib\C;
 
 /**
  * Returns a new dict where each element in `$keys` maps to the
