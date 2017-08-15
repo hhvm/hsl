@@ -11,10 +11,7 @@
 
 namespace HH\Lib\Vec;
 
-use \HH\Lib\C;
-use \HH\Lib\Dict;
-use \HH\Lib\Math;
-use \HH\Lib\Str;
+use namespace \HH\Lib\{C, Dict, Math, Str};
 
 /**
  * Returns a new vec containing the range of numbers from `$start` to `$end`
