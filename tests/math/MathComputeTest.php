@@ -9,7 +9,7 @@
  *
  */
 
-use namespace HH\Lib\{Math, Str};
+use HH\Lib\{Math, Str};
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
 use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;

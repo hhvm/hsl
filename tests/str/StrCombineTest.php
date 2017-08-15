@@ -9,7 +9,7 @@
  *
  */
 
-use namespace HH\Lib\Str;
+use HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 
 /**

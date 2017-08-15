@@ -9,7 +9,7 @@
  *
  */
 
-use namespace \HH\Lib\Dict;
+use \HH\Lib\Dict as DictHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -61,7 +61,7 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
     Traversable<Tv> $values,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\associate($keys, $values))->toBeSame($expected);
+    expect(DictHSL\associate($keys, $values))->toBeSame($expected);
   }
 
   public static function provideTestMerge(): array<mixed> {
@@ -124,6 +124,6 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
     Container<KeyedTraversable<Tk, Tv>> $traversables,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\merge(...$traversables))->toBeSame($expected);
+    expect(DictHSL\merge(...$traversables))->toBeSame($expected);
   }
 }

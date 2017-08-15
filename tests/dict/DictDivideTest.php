@@ -9,7 +9,7 @@
  *
  */
 
-use namespace \HH\Lib\Dict;
+use \HH\Lib\Dict as DictHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -113,7 +113,7 @@ final class DictDivideTest extends PHPUnit_Framework_TestCase {
     (function(Tv): bool) $predicate,
     (dict<Tk, Tv>, dict<Tk, Tv>) $expected,
   ): void {
-    expect(Dict\partition($traversable, $predicate))->toBeSame($expected);
+    expect(DictHSL\partition($traversable, $predicate))->toBeSame($expected);
   }
 
   /** @dataProvider providePartitionWithKey */
@@ -122,6 +122,6 @@ final class DictDivideTest extends PHPUnit_Framework_TestCase {
     (function(Tk, Tv): bool) $predicate,
     (dict<Tk, Tv>, dict<Tk, Tv>) $expected,
   ): void {
-    expect(Dict\partition_with_key($traversable, $predicate))->toBeSame($expected);
+    expect(DictHSL\partition_with_key($traversable, $predicate))->toBeSame($expected);
   }
 }

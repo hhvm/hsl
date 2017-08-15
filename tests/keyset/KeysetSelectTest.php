@@ -9,7 +9,7 @@
  *
  */
 
-use namespace \HH\Lib\Keyset;
+use \HH\Lib\Keyset as KeysetHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -50,7 +50,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     Container<Traversable<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\diff($first, $second, ...$rest))
+    expect(KeysetHSL\diff($first, $second, ...$rest))
       ->toBeSame($expected);
   }
 
@@ -90,7 +90,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     int $n,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\drop($traversable, $n))->toBeSame($expected);
+    expect(KeysetHSL\drop($traversable, $n))->toBeSame($expected);
   }
 
   public static function provideTestFilter(): array<mixed> {
@@ -134,13 +134,13 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tv): bool) $predicate,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\filter($traversable, $predicate))
+    expect(KeysetHSL\filter($traversable, $predicate))
       ->toBeSame($expected);
   }
 
   public function testFilterWithoutPredicate(): void {
     expect(
-      Keyset\filter(array(0, 3, 5, 40, '', '0', 'win!'))
+      KeysetHSL\filter(array(0, 3, 5, 40, '', '0', 'win!'))
     )->toBeSame(keyset[3, 5, 40, 'win!']);
   }
 
@@ -183,7 +183,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     Traversable<?Tv> $traversable,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\filter_nulls($traversable))->toBeSame($expected);
+    expect(KeysetHSL\filter_nulls($traversable))->toBeSame($expected);
   }
 
   public static function provideTestKeys(): array<mixed> {
@@ -218,7 +218,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     KeyedTraversable<Tk, Tv> $traversable,
     keyset<Tk> $expected,
   ): void {
-    expect(Keyset\keys($traversable))->toBeSame($expected);
+    expect(KeysetHSL\keys($traversable))->toBeSame($expected);
   }
 
   public static function provideTestIntersect(): array<mixed> {
@@ -277,7 +277,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     Container<Traversable<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\intersect($first, $second, ...$rest))
+    expect(KeysetHSL\intersect($first, $second, ...$rest))
       ->toBeSame($expected);
   }
 
@@ -323,7 +323,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     ?int $length,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\slice($container, $offset, $length))->toBeSame($expected);
+    expect(KeysetHSL\slice($container, $offset, $length))->toBeSame($expected);
   }
 
   public static function provideTake(): array<mixed> {
@@ -362,14 +362,14 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     int $n,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\take($traversable, $n))->toBeSame($expected);
+    expect(KeysetHSL\take($traversable, $n))->toBeSame($expected);
   }
 
   public function testTakeIter(): void {
     $iter = HackLibTestTraversables::getIterator(range(0, 4));
-    expect(Keyset\take($iter, 2))->toBeSame(keyset[0, 1]);
-    expect(Keyset\take($iter, 0))->toBeSame(keyset[]);
-    expect(Keyset\take($iter, 2))->toBeSame(keyset[2, 3]);
-    expect(Keyset\take($iter, 2))->toBeSame(keyset[4]);
+    expect(KeysetHSL\take($iter, 2))->toBeSame(keyset[0, 1]);
+    expect(KeysetHSL\take($iter, 0))->toBeSame(keyset[]);
+    expect(KeysetHSL\take($iter, 2))->toBeSame(keyset[2, 3]);
+    expect(KeysetHSL\take($iter, 2))->toBeSame(keyset[4]);
   }
 }

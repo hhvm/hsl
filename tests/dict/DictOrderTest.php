@@ -9,7 +9,7 @@
  *
  */
 
-use namespace \HH\Lib\Dict;
+use \HH\Lib\Dict as DictHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -55,7 +55,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\reverse($traversable))->toBeSame($expected);
+    expect(DictHSL\reverse($traversable))->toBeSame($expected);
   }
 
   public static function provideTestSort(): array<mixed> {
@@ -129,7 +129,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
     ?(function(Tv, Tv): int) $value_comparator,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\sort($traversable, $value_comparator))->toBeSame($expected);
+    expect(DictHSL\sort($traversable, $value_comparator))->toBeSame($expected);
   }
 
   public static function provideTestSortBy(): array<mixed> {
@@ -174,7 +174,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
     ?(function(Ts, Ts): int) $scalar_comparator,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\sort_by($traversable, $scalar_func, $scalar_comparator))
+    expect(DictHSL\sort_by($traversable, $scalar_func, $scalar_comparator))
       ->toBeSame($expected);
   }
 
@@ -218,7 +218,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
     ?(function(Tk, Tk): int) $key_comparator,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\sort_by_key($traversable, $key_comparator))
+    expect(DictHSL\sort_by_key($traversable, $key_comparator))
       ->toBeSame($expected);
   }
 }

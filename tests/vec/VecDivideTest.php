@@ -9,7 +9,7 @@
  *
  */
 
-use namespace HH\Lib\Vec;
+use HH\Lib\Vec as VecHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -44,6 +44,6 @@ final class VecDivideTest extends PHPUnit_Framework_TestCase {
     (function(Tv): bool) $predicate,
     (vec<Tv>, vec<Tv>) $expected,
   ): void {
-    expect(Vec\partition($traversable, $predicate))->toBeSame($expected);
+    expect(VecHSL\partition($traversable, $predicate))->toBeSame($expected);
   }
 }

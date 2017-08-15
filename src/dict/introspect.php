@@ -11,7 +11,7 @@
 
 namespace HH\Lib\Dict;
 
-use namespace \HH\Lib\C;
+use \HH\Lib\C;
 
 /**
  * Returns whether the two given dicts have the same entries, using strict

@@ -9,7 +9,7 @@
  *
  */
 
-use namespace \HH\Lib\Keyset;
+use \HH\Lib\Keyset as KeysetHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -44,6 +44,6 @@ final class KeysetDivideTest extends PHPUnit_Framework_TestCase {
     (function(Tv): bool) $predicate,
     (keyset<Tv>, keyset<Tv>) $expected,
   ): void {
-    expect(Keyset\partition($traversable, $predicate))->toBeSame($expected);
+    expect(KeysetHSL\partition($traversable, $predicate))->toBeSame($expected);
   }
 }

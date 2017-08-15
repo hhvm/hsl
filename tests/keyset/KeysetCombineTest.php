@@ -9,7 +9,7 @@
  *
  */
 
-use namespace \HH\Lib\Keyset;
+use \HH\Lib\Keyset as KeysetHSL;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -44,6 +44,6 @@ final class KeysetCombineTest extends PHPUnit_Framework_TestCase {
     Container<Traversable<Tv>> $traversables,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\union(...$traversables))->toBeSame($expected);
+    expect(KeysetHSL\union(...$traversables))->toBeSame($expected);
   }
 }

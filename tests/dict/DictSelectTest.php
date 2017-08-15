@@ -9,7 +9,8 @@
  *
  */
 
-use namespace \HH\Lib\{Dict, Str};
+use \HH\Lib\Dict as DictHSL;
+use \HH\Lib\Str;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -56,7 +57,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     Container<KeyedTraversable<Tk2, mixed>> $rest,
     dict<Tk1, Tv> $expected,
   ): void {
-    expect(Dict\diff_by_key($first, $second, ...$rest))->toBeSame($expected);
+    expect(DictHSL\diff_by_key($first, $second, ...$rest))->toBeSame($expected);
   }
 
   public static function provideDrop(): array<mixed> {
@@ -108,7 +109,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     int $n,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\drop($traversable, $n))->toBeSame($expected);
+    expect(DictHSL\drop($traversable, $n))->toBeSame($expected);
   }
 
   public static function provideTestFilter(): array<mixed> {
@@ -157,7 +158,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tv): bool) $value_predicate,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter($traversable, $value_predicate))->toBeSame($expected);
+    expect(DictHSL\filter($traversable, $value_predicate))->toBeSame($expected);
   }
 
   public static function provideTestFilterWithKey(): array<mixed> {
@@ -211,11 +212,11 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tk, Tv): bool) $predicate,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter_with_key($traversable, $predicate))->toBeSame($expected);
+    expect(DictHSL\filter_with_key($traversable, $predicate))->toBeSame($expected);
   }
 
   public function testFilterWithoutPredicate(): void {
-    expect(Dict\filter(array(
+    expect(DictHSL\filter(array(
       0 => 0,
       3 => 3,
       2 => null,
@@ -264,12 +265,12 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tk): bool) $key_predicate,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter_keys($traversable, $key_predicate))
+    expect(DictHSL\filter_keys($traversable, $key_predicate))
       ->toBeSame($expected);
   }
 
   public function testFilterKeysWithoutPredicate(): void {
-    expect(Dict\filter_keys(dict[
+    expect(DictHSL\filter_keys(dict[
       '' => 1,
       '0' => 2,
       0 => 3,
@@ -333,7 +334,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     KeyedTraversable<Tk, ?Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter_nulls($traversable))->toBeSame($expected);
+    expect(DictHSL\filter_nulls($traversable))->toBeSame($expected);
   }
 
   public function testGenFilter(): void {
@@ -376,7 +377,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     Traversable<Tk> $keys,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\select_keys($container, $keys))->toBeSame($expected);
+    expect(DictHSL\select_keys($container, $keys))->toBeSame($expected);
   }
 
   public static function provideTestSlice(): array<mixed> {
@@ -427,7 +428,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     ?int $length,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\slice($traversable, $offset, $length))->toBeSame($expected);
+    expect(DictHSL\slice($traversable, $offset, $length))->toBeSame($expected);
   }
 
   public static function provideTake(): array<mixed> {
@@ -482,15 +483,15 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     int $n,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\take($traversable, $n))->toBeSame($expected);
+    expect(DictHSL\take($traversable, $n))->toBeSame($expected);
   }
 
   public function testTakeIter(): void {
     $iter = HackLibTestTraversables::getKeyedIterator(range(0, 4));
-    expect(Dict\take($iter, 2))->toBeSame(dict[0=>0, 1=>1]);
-    expect(Dict\take($iter, 0))->toBeSame(dict[]);
-    expect(Dict\take($iter, 2))->toBeSame(dict[2=>2, 3=>3]);
-    expect(Dict\take($iter, 2))->toBeSame(dict[4=>4]);
+    expect(DictHSL\take($iter, 2))->toBeSame(dict[0=>0, 1=>1]);
+    expect(DictHSL\take($iter, 0))->toBeSame(dict[]);
+    expect(DictHSL\take($iter, 2))->toBeSame(dict[2=>2, 3=>3]);
+    expect(DictHSL\take($iter, 2))->toBeSame(dict[4=>4]);
   }
 
   public static function provideTestUnique(): array<mixed> {
@@ -517,7 +518,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\unique($traversable))->toBeSame($expected);
+    expect(DictHSL\unique($traversable))->toBeSame($expected);
   }
 
   public static function provideTestUniqueBy(): array<mixed> {
@@ -544,6 +545,6 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tv): Ts) $scalar_func,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\unique_by($container, $scalar_func))->toBeSame($expected);
+    expect(DictHSL\unique_by($container, $scalar_func))->toBeSame($expected);
   }
 }

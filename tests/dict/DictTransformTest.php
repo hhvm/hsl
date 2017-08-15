@@ -9,7 +9,8 @@
  *
  */
 
-use namespace \HH\Lib\{Dict, Str};
+use \HH\Lib\Dict as DictHSL;
+use \HH\Lib\Str;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -60,7 +61,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     int $size,
     vec<dict<Tk, Tv>> $expected,
   ): void {
-    expect(Dict\chunk($traversable, $size))->toBeSame($expected);
+    expect(DictHSL\chunk($traversable, $size))->toBeSame($expected);
   }
 
   public static function provideTestCountValues(): array<mixed> {
@@ -95,7 +96,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     Traversable<Tv> $values,
     dict<Tv, int> $expected,
   ): void {
-    expect(Dict\count_values($values))->toBeSame($expected);
+    expect(DictHSL\count_values($values))->toBeSame($expected);
   }
 
   public static function provideTestFillKeys(): array<mixed> {
@@ -133,7 +134,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     Tv $value,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\fill_keys($keys, $value))->toBeSame($expected);
+    expect(DictHSL\fill_keys($keys, $value))->toBeSame($expected);
   }
 
   public static function provideTestFlip(): array<mixed> {
@@ -173,7 +174,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tv, Tk> $expected,
   ): void {
-    expect(Dict\flip($traversable))->toBeSame($expected);
+    expect(DictHSL\flip($traversable))->toBeSame($expected);
   }
 
   public static function provideTestFromKeys(): array<mixed> {
@@ -215,7 +216,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tk): Tv) $value_func,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\from_keys($keys, $value_func))->toBeSame($expected);
+    expect(DictHSL\from_keys($keys, $value_func))->toBeSame($expected);
   }
 
   public static function provideTestFromEntries(): array<mixed> {
@@ -264,7 +265,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     Traversable<(Tk, Tv)> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\from_entries($traversable))->toBeSame($expected);
+    expect(DictHSL\from_entries($traversable))->toBeSame($expected);
   }
 
   public static function provideTestFromValues(): array<mixed> {
@@ -306,7 +307,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tv): Tk) $key_func,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\from_values($values, $key_func))->toBeSame($expected);
+    expect(DictHSL\from_values($values, $key_func))->toBeSame($expected);
   }
 
   public static function provideTestGroupBy(): array<mixed> {
@@ -341,7 +342,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tv): ?Tk) $key_func,
     dict<Tk, vec<Tv>> $expected,
   ): void {
-    expect(Dict\group_by($values, $key_func))->toBeSame($expected);
+    expect(DictHSL\group_by($values, $key_func))->toBeSame($expected);
   }
 
   public static function provideTestMap(): array<mixed> {
@@ -415,12 +416,12 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function (Tv1): Tv2) $func,
     dict<Tk, Tv2> $expected,
   ): void {
-    expect(Dict\map($traversable, $func))->toBeSame($expected);
+    expect(DictHSL\map($traversable, $func))->toBeSame($expected);
     if ($traversable instanceof KeyedContainer) {
       // Note: this test might fail because of key-coercion,
       // but at the time of writing none of the cases in the
       // data-provider should experience this coercion.
-      expect(Dict\map($traversable, $func))->toBeSame(
+      expect(DictHSL\map($traversable, $func))->toBeSame(
         dict(array_map($func, $traversable)),
       );
     }
@@ -478,7 +479,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tk1): Tk2) $key_func,
     dict<Tk2, Tv> $expected,
   ): void {
-    expect(Dict\map_keys($traversable, $key_func))->toBeSame($expected);
+    expect(DictHSL\map_keys($traversable, $key_func))->toBeSame($expected);
   }
 
   public static function provideTestMapWithKey(): array<mixed> {
@@ -518,7 +519,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tk, Tv1): Tv2) $value_func,
     dict<Tk, Tv2> $expected,
   ): void {
-    expect(Dict\map_with_key($traversable, $value_func))->toBeSame($expected);
+    expect(DictHSL\map_with_key($traversable, $value_func))->toBeSame($expected);
   }
 
   public static function provideTestPull(): array<mixed> {
@@ -556,7 +557,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tv1): Tk) $key_func,
     dict<Tk, Tv2> $expected,
   ): void {
-    expect(Dict\pull($traversable, $value_func, $key_func))
+    expect(DictHSL\pull($traversable, $value_func, $key_func))
       ->toBeSame($expected);
   }
 
@@ -592,7 +593,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tk1, Tv1): Tk2) $key_func,
     dict<Tk2, Tv2> $expected,
   ): void {
-    expect(Dict\pull_with_key($traversable, $value_func, $key_func))
+    expect(DictHSL\pull_with_key($traversable, $value_func, $key_func))
       ->toBeSame($expected);
   }
 }
