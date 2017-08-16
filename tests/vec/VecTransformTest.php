@@ -9,7 +9,7 @@
  *
  */
 
-use HH\Lib\Vec as VecHSL;
+use namespace HH\Lib\Vec;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -52,7 +52,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     int $size,
     vec<vec<Tv>> $expected,
   ): void {
-    expect(VecHSL\chunk($traversable, $size))->toBeSame($expected);
+    expect(Vec\chunk($traversable, $size))->toBeSame($expected);
   }
 
   public static function provideTestFill(): array<mixed> {
@@ -84,7 +84,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     Tv $value,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\fill($size, $value))->toBeSame($expected);
+    expect(Vec\fill($size, $value))->toBeSame($expected);
   }
 
   public static function provideTestFlatten(): array<mixed> {
@@ -116,7 +116,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     Traversable<Traversable<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\flatten($traversables))->toBeSame($expected);
+    expect(Vec\flatten($traversables))->toBeSame($expected);
   }
 
   public static function provideTestMap(): array<mixed> {
@@ -195,7 +195,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tv1): Tv2) $value_func,
     vec<Tv2> $expected,
   ): void {
-    expect(VecHSL\map($traversable, $value_func))->toBeSame($expected);
+    expect(Vec\map($traversable, $value_func))->toBeSame($expected);
   }
 
   public static function provideTestMapWithKey(): array<mixed> {
@@ -224,7 +224,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tk, Tv1): Tv2) $value_func,
     vec<Tv2> $expected,
   ): void {
-    expect(VecHSL\map_with_key($traversable, $value_func))->toBeSame($expected);
+    expect(Vec\map_with_key($traversable, $value_func))->toBeSame($expected);
   }
 
 }

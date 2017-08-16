@@ -9,8 +9,7 @@
  *
  */
 
-use HH\Lib\Vec as VecHSL;
-use HH\Lib\{C, Math, Str};
+use namespace HH\Lib\{C, Math, Str, Vec};
 use function \Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
 
@@ -73,7 +72,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     ?Tv $increment,
     vec<Tv> $expected,
   ): void {
-    $actual = VecHSL\range($start, $end, $increment);
+    $actual = Vec\range($start, $end, $increment);
     expect(C\count($actual))->toBeSame(C\count($expected));
     for ($i = 0; $i < C\count($actual); $i++) {
       expect((float) $actual[$i])->toAlmostEqual((float) $expected[$i]);
@@ -93,7 +92,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     Tv $end,
     Tv $increment,
   ): void {
-    expect(() ==> VecHSL\range($start, $end, $increment))
+    expect(() ==> Vec\range($start, $end, $increment))
       ->toThrow(InvariantException::class);
   }
 
@@ -119,7 +118,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     Traversable<Tv> $traversable,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\reverse($traversable))->toBeSame($expected);
+    expect(Vec\reverse($traversable))->toBeSame($expected);
   }
 
   public static function provideTestShuffle(): array<mixed> {
@@ -155,7 +154,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
           ->mockImplementation(fun('sort'));
       }
 
-      $shuffled = VecHSL\shuffle($traversable);
+      $shuffled = Vec\shuffle($traversable);
       expect($shuffled)->toBeSame($expected);
     } finally {
       // UNSAFE_BLOCK: flib IntegrationTest doesn't exist in open source
@@ -195,7 +194,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     ?(function(Tv, Tv): int) $comparator,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\sort($traversable, $comparator))->toBeSame($expected);
+    expect(Vec\sort($traversable, $comparator))->toBeSame($expected);
   }
 
   public static function provideTestSortBy(): array<mixed> {
@@ -248,7 +247,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     ?(function(Ts, Ts): int) $comparator,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\sort_by($traversable, $scalar_func, $comparator))
+    expect(Vec\sort_by($traversable, $scalar_func, $comparator))
       ->toBeSame($expected);
   }
 }

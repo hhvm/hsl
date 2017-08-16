@@ -9,7 +9,7 @@
  *
  */
 
-use \HH\Lib\Dict as DictHSL;
+use namespace \HH\Lib\Dict;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -58,6 +58,6 @@ final class DictIntrospectTest extends PHPUnit_Framework_TestCase {
     dict<Tk, Tv> $dict2,
     bool $expected,
   ): void {
-    expect(DictHSL\equal($dict1, $dict2))->toBeSame($expected);
+    expect(Dict\equal($dict1, $dict2))->toBeSame($expected);
   }
 }

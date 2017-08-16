@@ -9,7 +9,7 @@
  *
  */
 
-use \HH\Lib\Keyset as KeysetHSL;
+use namespace \HH\Lib\Keyset;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -62,7 +62,7 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
     int $size,
     vec<keyset<Tv>> $expected,
   ): void {
-    expect(KeysetHSL\chunk($traversable, $size))->toBeSame($expected);
+    expect(Keyset\chunk($traversable, $size))->toBeSame($expected);
   }
 
   public static function provideTestMap(): array<mixed> {
@@ -141,7 +141,7 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tv1): Tv2) $value_func,
     keyset<Tv2> $expected,
   ): void {
-    expect(KeysetHSL\map($traversable, $value_func))->toBeSame($expected);
+    expect(Keyset\map($traversable, $value_func))->toBeSame($expected);
   }
 
   public static function provideTestMapWithKey(): array<mixed> {
@@ -175,7 +175,7 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
     (function(Tk, Tv1): Tv2) $value_func,
     keyset<Tv2> $expected,
   ): void {
-    expect(KeysetHSL\map_with_key($traversable, $value_func))
+    expect(Keyset\map_with_key($traversable, $value_func))
       ->toBeSame($expected);
   }
 
@@ -227,6 +227,6 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
     Traversable<Traversable<Tv>> $traversables,
     keyset<Tv> $expected,
   ): void {
-    expect(KeysetHSL\flatten($traversables))->toBeSame($expected);
+    expect(Keyset\flatten($traversables))->toBeSame($expected);
   }
 }
