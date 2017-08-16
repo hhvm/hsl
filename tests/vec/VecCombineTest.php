@@ -9,7 +9,7 @@
  *
  */
 
-use \HH\Lib\Vec as VecHSL;
+use namespace \HH\Lib\Vec;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -46,7 +46,7 @@ final class VecCombineTest extends PHPUnit_Framework_TestCase {
     Container<Traversable<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\concat(...$traversables))->toBeSame($expected);
+    expect(Vec\concat(...$traversables))->toBeSame($expected);
   }
 
 }

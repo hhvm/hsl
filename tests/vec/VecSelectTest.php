@@ -9,8 +9,7 @@
  *
  */
 
-use HH\Lib\Vec as VecHSL;
-use HH\Lib\{C, Math, Str};
+use namespace HH\Lib\{C, Math, Str, Vec};
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -45,7 +44,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     Container<Traversable<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\diff($base, ...$traversables))->toBeSame($expected);
+    expect(Vec\diff($base, ...$traversables))->toBeSame($expected);
   }
 
   public static function provideTestDiffBy(): array<mixed> {
@@ -80,7 +79,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tv): Ts) $scalar_func,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\diff_by($first, $second, $scalar_func))
+    expect(Vec\diff_by($first, $second, $scalar_func))
       ->toBeSame($expected);
   }
 
@@ -120,7 +119,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     int $n,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\drop($traversable, $n))->toBeSame($expected);
+    expect(Vec\drop($traversable, $n))->toBeSame($expected);
   }
 
   public static function provideTestFilter(): array<mixed> {
@@ -164,11 +163,11 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tv): bool) $value_predicate,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\filter($traversable, $value_predicate))->toBeSame($expected);
+    expect(Vec\filter($traversable, $value_predicate))->toBeSame($expected);
   }
 
   public function testFilterWithoutPredicate(): void {
-    expect(VecHSL\filter(array(
+    expect(Vec\filter(array(
       0, 3, null, 5, false, 40, '', '0', 'win!',
     )))->toBeSame(vec[3, 5, 40, 'win!']);
   }
@@ -213,7 +212,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   Traversable<?Tv> $traversable,
   vec<Tv> $expected,
   ): void {
-    expect(VecHSL\filter_nulls($traversable))->toBeSame($expected);
+    expect(Vec\filter_nulls($traversable))->toBeSame($expected);
   }
 
   public static function provideTestIntersect(): array<mixed> {
@@ -272,7 +271,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     Container<Traversable<Tv>> $rest,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\intersect($first, $second, ...$rest))->toBeSame($expected);
+    expect(Vec\intersect($first, $second, ...$rest))->toBeSame($expected);
   }
 
   public static function provideTestKeys(): array<mixed> {
@@ -320,7 +319,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     KeyedTraversable<Tk, Tv> $traversable,
     vec<Tk> $expected,
   ): void {
-    expect(VecHSL\keys($traversable))->toBeSame($expected);
+    expect(Vec\keys($traversable))->toBeSame($expected);
   }
 
   public static function provideTestSample(): array<mixed> {
@@ -346,13 +345,13 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     int $sample_size,
   ): void {
     $expected_size = Math\min(C\count(vec($traversable)), $sample_size);
-    expect(C\count(VecHSL\sample($traversable, $sample_size)))
+    expect(C\count(Vec\sample($traversable, $sample_size)))
       ->toBeSame($expected_size);
   }
 
   public function testSampleIterator(): void {
     $iterator = HackLibTestTraversables::getIterator(range(0, 5));
-    expect(C\count(VecHSL\sample($iterator, 3)))->toBeSame(3);
+    expect(C\count(Vec\sample($iterator, 3)))->toBeSame(3);
   }
 
   public static function provideTestSlice(): array<mixed> {
@@ -391,7 +390,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     ?int $length,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\slice($container, $offset, $length))->toBeSame($expected);
+    expect(Vec\slice($container, $offset, $length))->toBeSame($expected);
   }
 
   public static function provideTake(): array<mixed> {
@@ -430,15 +429,15 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     int $n,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\take($traversable, $n))->toBeSame($expected);
+    expect(Vec\take($traversable, $n))->toBeSame($expected);
   }
 
   public function testTakeIter(): void {
     $iter = HackLibTestTraversables::getIterator(range(0, 4));
-    expect(VecHSL\take($iter, 2))->toBeSame(vec[0, 1]);
-    expect(VecHSL\take($iter, 0))->toBeSame(vec[]);
-    expect(VecHSL\take($iter, 2))->toBeSame(vec[2, 3]);
-    expect(VecHSL\take($iter, 2))->toBeSame(vec[4]);
+    expect(Vec\take($iter, 2))->toBeSame(vec[0, 1]);
+    expect(Vec\take($iter, 0))->toBeSame(vec[]);
+    expect(Vec\take($iter, 2))->toBeSame(vec[2, 3]);
+    expect(Vec\take($iter, 2))->toBeSame(vec[4]);
   }
 
   public static function provideTestUnique(): array<mixed> {
@@ -461,7 +460,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     Traversable<Tv> $traversable,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\unique($traversable))->toBeSame($expected);
+    expect(Vec\unique($traversable))->toBeSame($expected);
   }
 
   public static function provideTestUniqueBy(): array<mixed> {
@@ -505,7 +504,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     (function(Tv): Ts) $scalar_func,
     vec<Tv> $expected,
   ): void {
-    expect(VecHSL\unique_by($traversable, $scalar_func))
+    expect(Vec\unique_by($traversable, $scalar_func))
       ->toBeSame($expected);
   }
 

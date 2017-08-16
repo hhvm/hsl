@@ -18,9 +18,7 @@ use Facebook\DefinitionFinder\{
   ScannedTypehint,
   TreeParser
 };
-use HH\Lib\Dict as DictHSL;
-use HH\Lib\Vec as VecHSL;
-use HH\Lib\{C, Str};
+use namespace HH\Lib\{C, Dict, Str, Vec};
 
 require_once(__DIR__.'/../vendor/autoload.php');
 require_once(__DIR__.'/../vendor/hh_autoload.php');
@@ -36,9 +34,9 @@ final class DocsGen {
 
     $namespaces_funcs = TreeParser::FromPath(__DIR__.'/../src/')
       ->getFunctions()
-      |>DictHSL\group_by($$, $f ==> $f->getNamespaceName())
-      |>DictHSL\sort_by_key($$)
-      |>DictHSL\filter_keys(
+      |>Dict\group_by($$, $f ==> $f->getNamespaceName())
+      |>Dict\sort_by_key($$)
+      |>Dict\filter_keys(
         $$,
         $ns ==> $ns !== '' && $ns !== "HH\\Lib\\_Private",
       );
@@ -53,8 +51,8 @@ final class DocsGen {
     }
 
     $namespaces_funcs
-      |>VecHSL\keys($$)
-      |>VecHSL\map(
+      |>Vec\keys($$)
+      |>Vec\map(
         $$,
         $ns ==> sprintf(
           " - [%s](%s)",
@@ -74,7 +72,7 @@ final class DocsGen {
     string $ns,
     vec<ScannedFunction> $funcs,
   ): string {
-    $funcs = VecHSL\sort_by($funcs, $f ==> $f->getShortName());
+    $funcs = Vec\sort_by($funcs, $f ==> $f->getShortName());
     $short_ns = Str\strip_prefix($ns, "HH\\Lib\\");
     $out = sprintf("# %s\n\n", $ns);
 
@@ -159,7 +157,7 @@ final class DocsGen {
       return null;
     }
 
-    $parts = VecHSL\map($g, $g ==> $this->renderGeneric($g));
+    $parts = Vec\map($g, $g ==> $this->renderGeneric($g));
 
     if ($multiline) {
       return "<\n  ".Str\join(",\n  ", $parts)."\n>";
@@ -195,7 +193,7 @@ final class DocsGen {
     if (C\is_empty($f->getParameters())) {
       return '()';
     }
-    $parts = VecHSL\map($f->getParameters(), $p ==> $this->renderParameter($p));
+    $parts = Vec\map($f->getParameters(), $p ==> $this->renderParameter($p));
     if ($multiline_parameters) {
       $trailing_comma = Str\contains(C\lastx($parts), '...') ? '' : ',';
       return "(\n  ".Str\join(",\n  ", $parts).$trailing_comma."\n)";
@@ -253,7 +251,7 @@ final class DocsGen {
       |>Str\strip_suffix($$, '*/')
       |>Str\trim($$)
       |>Str\split("\n", $$)
-      |>VecHSL\map($$, $s ==> Str\trim(Str\strip_prefix(Str\trim($s), '*')))
+      |>Vec\map($$, $s ==> Str\trim(Str\strip_prefix(Str\trim($s), '*')))
       |>Str\join("\n", $$)
       |>$$."\n";
   }

@@ -11,7 +11,7 @@
 
 namespace HH\Lib\Keyset;
 
-use \HH\Lib\C;
+use namespace \HH\Lib\C;
 
 /**
  * Returns whether the two given keysets have the same elements, using strict
