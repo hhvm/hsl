@@ -5,7 +5,7 @@
     "91carriage/phpunit-hhi": "^5.7",
     "phpunit/phpunit": "^5.7",
     "facebook/fbexpect": "^0.2",
-    "facebook/definition-finder": "^1.6"
+    "facebook/definition-finder": "^1.6.1"
   },
   "require": {
     "facebook/hhvm-autoload": "^1.4"
