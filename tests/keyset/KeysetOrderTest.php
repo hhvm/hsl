@@ -9,7 +9,7 @@
  *
  */
 
-use \HH\Lib\Keyset as KeysetHSL;
+use namespace \HH\Lib\Keyset;
 use function \Facebook\FBExpect\expect;
 
 /**
@@ -48,7 +48,7 @@ final class KeysetOrderTest extends PHPUnit_Framework_TestCase {
     ?(function(Tv, Tv): int) $comparator,
     keyset<Tv> $expected,
   ): void {
-    expect(KeysetHSL\sort($traversable, $comparator))->toBeSame($expected);
+    expect(Keyset\sort($traversable, $comparator))->toBeSame($expected);
   }
 
 }

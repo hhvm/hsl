@@ -9,7 +9,7 @@
  *
  */
 
-use \HH\Lib\C as C;
+use namespace \HH\Lib\C;
 use function \Facebook\FBExpect\expect;
 
 /**

@@ -9,7 +9,7 @@
  *
  */
 
-use HH\Lib\Str;
+use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
 
