@@ -11,6 +11,7 @@
 
 use namespace HH\Lib\Vec;
 use function \Facebook\FBExpect\expect;
+// @oss-disable: use InvariantViolationException as InvariantException;
 
 /**
  * @emails oncall+hack_prod_infra
@@ -85,6 +86,10 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     vec<Tv> $expected,
   ): void {
     expect(Vec\fill($size, $value))->toBeSame($expected);
+  }
+
+  public function testFillExceptions(): void {
+    expect(() ==> Vec\fill(-1, true))->toThrow(InvariantException::class);
   }
 
   public static function provideTestFlatten(): array<mixed> {

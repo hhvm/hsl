@@ -40,6 +40,7 @@ function fill<Tv>(
   int $size,
   Tv $value,
 ): vec<Tv> {
+  invariant($size >= 0, 'Expected non-negative fill size, got %d.', $size);
   return vec(\array_fill(0, $size, $value));
 }
 
