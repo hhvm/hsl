@@ -157,23 +157,6 @@ function keys<Tk, Tv>(
 }
 
 /**
- * Returns a new vec containing only the keys of the given KeyedTraversable
- * that map to truthy values.
- */
-<<__Deprecated('use Vec\\fb\\keys_with_truthy_values internally')>>
-function keys_with_truthy_values<Tk, Tv>(
-  KeyedTraversable<Tk, Tv> $traversable,
-): vec<Tk> {
-  $result = vec[];
-  foreach ($traversable as $key => $value) {
-    if ($value) {
-      $result[] = $key;
-    }
-  }
-  return $result;
-}
-
-/**
  * Returns a new vec containing an unbiased random sample of up to
  * `$sample_size` elements (fewer iff `$sample_size` is larger than the size of
  * `$traversable`).
