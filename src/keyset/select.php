@@ -135,26 +135,6 @@ function intersect<Tv as arraykey>(
 }
 
 /**
- * Returns a new keyset containing the subsequence of the given Traversable
- * determined by the offset and length.
- *
- * If no length is given or it exceeds the upper bound of the Traversable,
- * the keyset will contain every element after the offset.
- *
- * If there are duplicate values in the Traversable, the keyset may be shorter
- * than the specified length.
- */
-function slice<Tv as arraykey>(
-  Container<Tv> $container,
-  int $offset,
-  ?int $length = null,
-): keyset<Tv> {
-  invariant($offset >= 0, 'Expected non-negative offset.');
-  invariant($length === null || $length >= 0, 'Expected non-negative length.');
-  return keyset(\array_slice($container, $offset, $length));
-}
-
-/**
  * Returns a new keyset containing the first `$n` elements of the given
  * Traversable.
  *

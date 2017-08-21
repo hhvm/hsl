@@ -281,51 +281,6 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideTestSlice(): array<mixed> {
-    return array(
-      tuple(
-        range(0, 5),
-        6,
-        1,
-        keyset[],
-      ),
-      tuple(
-        new Vector(range(0, 5)),
-        2,
-        10,
-        keyset(range(2, 5)),
-      ),
-      tuple(
-        new Set(range(0, 5)),
-        2,
-        0,
-        keyset[],
-      ),
-      tuple(
-        new Vector(range(0, 5)),
-        2,
-        null,
-        keyset(range(2, 5)),
-      ),
-      tuple(
-        array(0, 1, 2, 3, 3, 3, 4),
-        1,
-        5,
-        keyset[1, 2, 3],
-      ),
-    );
-  }
-
-  /** @dataProvider provideTestSlice */
-  public function testSlice<Tv as arraykey>(
-    Container<Tv> $container,
-    int $offset,
-    ?int $length,
-    keyset<Tv> $expected,
-  ): void {
-    expect(Keyset\slice($container, $offset, $length))->toBeSame($expected);
-  }
-
   public static function provideTake(): array<mixed> {
     return array(
       tuple(
