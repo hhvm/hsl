@@ -3,10 +3,15 @@ language: generic
 services:
  - docker
 env:
- - HHVM_VERSION=latest
+  matrix:
+   - HHVM_VERSION=3.21-lts-latest
+   - HHVM_VERSION=latest
+  global:
+    secure: T6Tu15IDluus8OskgpPk4aV3Ryr9KBPvilZ4d7B9k6yDmlZ4L6KiS55bF1fKCA45PGIvzGEFXlpf31OtYBEKcb67Jz9OoQCWAV1VfS5eR+qw9Wjm4TMRF0q130ohhXKaZfOZrgFPUlEMFram6Lha9UpUWwF/3BTd3/Mcm+q2scCnik1IaLwa8aGIk5RvAyqGISgfptUp39Uiq21qZx/HXoc+XVqoV6zJ10Utu3Nrm6ecE4qI7eaYQPMfB6If8UQ3SMg24tRzqGd7XWbzpIYUihyeREhWzFMuYBKp+o8KLbehPtLNKXygIGMhMbc8QPKX2xcyuiJ2K71Pe7Rql44XbWFeRq9KgXMqzyqI+jPEn92s/t+2l3A55M5oMu5cxNcC0QQNa+5hhBqPgK8OCTSfoIVgmIX4Rg6s9LCUP/EymwZIqSJW+Wie74IMbi9h+uWSt8yuxSRNd5zYibogbaneaj3mELdHsVE37K2XumlfYB6vy1MxE0yOcUdqj3yPkUYHeVTpR7WLSIq+VF2vOOgD2gNweeY6hti/Dc0Jat3beiWVYNjfE9gwo3DdOmKaDIidVG7+Oyollzq29CcpAzsJnOedOBpiJVz6k9/CHjXnQVJICTRYZZ8cIlyeGUtTJ1xuX8GXlJnfIbEGscboUhB0zSKAx9FcUw8XInyfCX7gDCs=
 install:
  - docker pull hhvm/hhvm:$HHVM_VERSION
 script:
- - docker run -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION /var/source/.travis.sh
+ - env | egrep '^(HHVM_VERSION|GITHUB_API_KEY)=' > ./env-list # Dump to file to avoid leaking the token to TravisCI output
+ - docker run --env-file ./env-list -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION /var/source/.travis.sh
 notifications:
   webhooks: https://code.facebook.com/travis/webhook/
