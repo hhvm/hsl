@@ -257,6 +257,11 @@ final class DocsGen {
   }
 }
 
+// Allow inclusion from UpdateReleaseScript
+if (realpath($argv[0]) !== realpath(__FILE__)) {
+  return;
+}
+
 $path = $argv[1] ?? null;
 if ($path === null) {
   fprintf(STDERR, "Usage: %s OUTPUT_DIRECTORY\n", $argv[0]);
