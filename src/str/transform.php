@@ -32,15 +32,16 @@ function capitalize(
  * Returns the string with all words capitalized.
  *
  * Words are delimited by space, tab, newline, carriage return, form-feed, and
- * vertical tab.
+ * vertical tab by default, but you can specify custom delimiters.
  *
  * To capitalize all characters, see Str\uppercase.
  * To capitalize only the first character, see Str\capitalize.
  */
 function capitalize_words(
   string $string,
+  string $delimiters = " \t\r\n\f\v",
 ): string {
-  return \ucwords($string);
+  return \ucwords($string, $delimiters);
 }
 
 /**

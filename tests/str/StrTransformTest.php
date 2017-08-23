@@ -56,6 +56,35 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\capitalize_words($string))->toBeSame($expected);
   }
 
+  public static function provideCapitalizeWordsCustomDelimiter(): array<mixed> {
+    return array(
+      tuple(
+        'the_quick brown_Fox',
+        '_',
+        'The_Quick brown_Fox',
+      ),
+      tuple(
+        "\tthe_quick|brown fox\vjumped",
+        " _|\t",
+        "\tThe_Quick|Brown Fox\vjumped",
+      ),
+      tuple(
+        'the_quick brown_Fox',
+        '',
+        'The_quick brown_Fox',
+      ),
+    );
+  }
+
+  /** @dataProvider provideCapitalizeWordsCustomDelimiter */
+  public function testCapitalizeWordsCustomDelimiter(
+    string $string,
+    string $delimiter,
+    string $expected,
+  ): void {
+    expect(Str\capitalize_words($string, $delimiter))->toBeSame($expected);
+  }
+
   public static function provideFormatNumber(): array<mixed> {
     return array(
       tuple(
