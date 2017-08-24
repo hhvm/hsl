@@ -55,38 +55,15 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
   public static function provideTestSum(): array<mixed> {
     return array(
       tuple(
-        vec['the', 'quick', 'brown', 'fox'],
-        fun('strlen'),
-        16,
-      ),
-      tuple(
-        HackLibTestTraversables::getIterator(
-          array('the', 'quick', 'brown', 'fox'),
-        ),
-        fun('strlen'),
-        16,
-      ),
-    );
-  }
-
-  /** @dataProvider provideTestSum */
-  public function testSum<T>(
-    Traversable<T> $traversable,
-    (function(T): int) $int_func,
-    int $expected,
-  ): void {
-    expect(C\sum($traversable, $int_func))->toBeSame($expected);
-
-  }
-
-  public static function provideTestSumWithoutIntFunc(): array<mixed> {
-    return array(
-      tuple(
         Vector {},
         0,
       ),
       tuple(
         array(1, 2, 1, 1, 3),
+        8,
+      ),
+      tuple(
+        array(1, 2.5, 1, 1, 3),
         8,
       ),
       tuple(
@@ -96,8 +73,8 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
     );
   }
 
-  /** @dataProvider provideTestSumWithoutIntFunc */
-  public function testSumWithoutIntFunc<T>(
+  /** @dataProvider provideTestSum */
+  public function testSum<T>(
     Traversable<T> $traversable,
     int $expected,
   ): void {
