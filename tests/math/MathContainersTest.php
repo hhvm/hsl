@@ -109,4 +109,54 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   ): void {
     expect(Math\min($first_number, ...$numbers))->toBeSame($expected);
   }
+
+  public static function provideTestSum(): array<mixed> {
+    return array(
+      tuple(
+        Vector {},
+        0,
+      ),
+      tuple(
+        array(1, 2, 1, 1, 3),
+        8,
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(range(1, 4)),
+        10,
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestSum */
+  public function testSum(
+    Traversable<int> $traversable,
+    int $expected,
+  ): void {
+    expect(Math\sum($traversable))->toBeSame($expected);
+  }
+
+  public static function provideTestSumFloat(): array<mixed> {
+    return array(
+      tuple(
+        Vector {},
+        0.0,
+      ),
+      tuple(
+        array(1, 2.5, 1, 1, 3),
+        8.5,
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(range(1, 4)),
+        10.0,
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestSumFloat */
+  public function testSumFloat<T as num>(
+    Traversable<T> $traversable,
+    float $expected,
+  ): void {
+    expect(Math\sum_float($traversable))->toBeSame($expected);
+  }
 }

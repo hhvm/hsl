@@ -15,8 +15,8 @@ use namespace HH\Lib\{C, Math, Vec};
 /**
  * Returns the largest of all input numbers.
  *
- * For finding the smallest number, see Math\min.
- * For Traversables, see C\max.
+ * For finding the smallest number, see `Math\min`.
+ * For Traversables, see `C\max`.
  */
 function max<T as num>(T $first_number, T ...$numbers): T {
   $max = $first_number;
@@ -72,8 +72,8 @@ function median(Container<num> $numbers): ?float {
 /**
  * Returns the smallest of all input numbers.
  *
- * For finding the largest number, see Math\max.
- * For Traversables, see C\min.
+ * For finding the largest number, see `Math\max`.
+ * For Traversables, see `C\min`.
  */
 function min<T as num>(T $first_number, T ...$numbers): T {
   $min = $first_number;
@@ -83,4 +83,34 @@ function min<T as num>(T $first_number, T ...$numbers): T {
     }
   }
   return $min;
+}
+
+/**
+ * Returns the integer sum of the values of the given Traversable.
+ *
+ * For a float sum, see `Math\sum_float`.
+ */
+function sum(
+  Traversable<int> $traversable,
+): int {
+  $result = 0;
+  foreach ($traversable as $value) {
+    $result += $value;
+  }
+  return $result;
+}
+
+/**
+ * Returns the float sum of the values of the given Traversable.
+ *
+ * For an integer sum, see `Math\sum`.
+ */
+function sum_float<T as num>(
+  Traversable<T> $traversable,
+): float {
+  $result = 0.0;
+  foreach ($traversable as $value) {
+    $result += $value;
+  }
+  return $result;
 }
