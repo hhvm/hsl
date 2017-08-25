@@ -43,7 +43,7 @@ final class StubPHPism_FIXME {
 }
 
 final class UniversalChainableStub {
-  public function __call(mixed ...$_): this {
+  public function __call(mixed $_, mixed $_): this {
     return $this;
   }
 }
