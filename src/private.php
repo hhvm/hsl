@@ -31,5 +31,24 @@ function validate_offset(
   return $offset;
 }
 
+// Stub implementations of FB internals used to ease migrations
+
+/* HH_IGNORE_ERROR[5520] FIXME violates FB naming conventions */
+final class StubPHPism_FIXME {
+  public static function isForeachable<T>(Traversable<T> $_): bool {
+    return true;
+  }
+}
+
+final class UniversalChainableStub {
+  public function __call(mixed $_, mixed $_): this {
+    return $this;
+  }
+}
+
+function universal_chainable_stub(mixed ...$_): UniversalChainableStub {
+  return new UniversalChainableStub();
+}
+
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
