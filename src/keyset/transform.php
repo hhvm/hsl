@@ -78,6 +78,12 @@ function flatten<Tv as arraykey>(
 ): keyset<Tv> {
   $result = keyset[];
   foreach ($traversables as $traversable) {
+    if (!\PHPism_FIXME::isForeachable($traversable)) {
+      FBLogger('phpism_fixme.invalid_foreach_arg')
+        ->blameToPreviousFrame()
+        ->mustfix('Attempting to foreach over a non-foreachable type');
+      continue;
+    }
     foreach ($traversable as $value) {
       $result[] = $value;
     }
