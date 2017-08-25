@@ -11,8 +11,8 @@
 
 namespace HH\Lib\Keyset;
 
-// @oss-disable: use type \PHPism_FIXME as PHPism_FIXME;
-use type HH\Lib\_Private\StubPHPism_FIXME as PHPism_FIXME; // @oss-enable
+// @oss-disable: use \PHPism_FIXME as PHPism_FIXME;
+use HH\Lib\_Private\StubPHPism_FIXME as PHPism_FIXME; // @oss-enable
 use function HH\Lib\_Private\universal_chainable_stub as FBLogger; // @oss-enable
 
 /**
