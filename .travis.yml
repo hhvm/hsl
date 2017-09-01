@@ -11,7 +11,7 @@ env:
 install:
  - docker pull hhvm/hhvm:$HHVM_VERSION
 script:
- - env | egrep '^(HHVM_VERSION|GITHUB_API_KEY)=' > ./env-list # Dump to file to avoid leaking the token to TravisCI output
+ - env | egrep '^(HHVM_VERSION|GITHUB_API_KEY|TRAVIS_EVENT_TYPE)=' > ./env-list # Dump to file to avoid leaking the token to TravisCI output
  - docker run --env-file ./env-list -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION /var/source/.travis.sh
 notifications:
   webhooks: https://code.facebook.com/travis/webhook/
