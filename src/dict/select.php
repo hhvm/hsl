@@ -148,6 +148,7 @@ function select_keys<Tk as arraykey, Tv>(
   return $result;
 }
 
+<<__Deprecated('Use Dict\\{chunk, drop, take} or Dict\\fb\\slice.')>>
 function slice<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   int $offset,

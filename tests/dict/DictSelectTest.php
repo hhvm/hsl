@@ -379,57 +379,6 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\select_keys($container, $keys))->toBeSame($expected);
   }
 
-  public static function provideTestSlice(): array<mixed> {
-    return array(
-      tuple(
-        Vector {0, 1, 2, 3, 4},
-        2,
-        0,
-        dict[],
-      ),
-      tuple(
-        HackLibTestTraversables::getKeyedIterator(array(
-          'foo' => 'oof',
-          'bar' => 'rab',
-          'baz' => 'zab',
-          'qux' => 'xuq',
-        )),
-        1,
-        2,
-        dict[
-          'bar' => 'rab',
-          'baz' => 'zab',
-        ],
-      ),
-      tuple(
-        Map {
-          'foo' => 'oof',
-          'bar' => 'rab',
-          'baz' => 'zab',
-          'qux' => 'xuq',
-          'yap' => 'pay',
-        },
-        2,
-        null,
-        dict[
-          'baz' => 'zab',
-          'qux' => 'xuq',
-          'yap' => 'pay',
-        ],
-      ),
-    );
-  }
-
-  /** @dataProvider provideTestSlice */
-  public function testSlice<Tk, Tv>(
-    KeyedTraversable<Tk, Tv> $traversable,
-    int $offset,
-    ?int $length,
-    dict<Tk, Tv> $expected,
-  ): void {
-    expect(Dict\slice($traversable, $offset, $length))->toBeSame($expected);
-  }
-
   public static function provideTake(): array<mixed> {
     return array(
       tuple(
