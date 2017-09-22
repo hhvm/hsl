@@ -9,8 +9,9 @@
  *
  */
 
-use namespace \HH\Lib\Dict;
-use function \Facebook\FBExpect\expect;
+use namespace HH\Lib\Dict;
+use function Facebook\FBExpect\expect;
+use function HH\Lib\_Private\mixed_cmp;
 
 /**
  * @emails oncall+hack_prod_infra
@@ -98,8 +99,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
           '2' => 'brown',
           3 => 'fox',
         ),
-        /* HH_FIXME[1002] Spaceship operator */
-        ($a, $b) ==> $a[1] <=> $b[1],
+        ($a, $b) ==> mixed_cmp($a[1], $b[1]),
         dict[
           0 => 'the',
           3 => 'fox',
@@ -111,7 +111,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
         HackLibTestTraversables::getKeyedIterator(array(
           'the', 'quick', 'brown', 'fox',
         )),
-        ($a, $b) ==> $b[1] <=> $a[1],
+        ($a, $b) ==> mixed_cmp($b[1], $a[1]),
         dict[
           1 => 'quick',
           2 => 'brown',
@@ -155,7 +155,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
           4 => array('daenerys', 'targaryen'),
         },
         fun('array_reverse'),
-        ($a, $b) ==> $b <=> $a,
+        ($a, $b) ==> mixed_cmp($b, $a),
         dict[
           4 => array('daenerys', 'targaryen'),
           0 => array('eddard', 'stark'),
@@ -199,8 +199,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox', 'jumped'},
-        /* HH_FIXME[5542] Spaceship operator */
-        ($a, $b) ==> $b <=> $a,
+        ($a, $b) ==> mixed_cmp($b, $a),
         dict[
           4 => 'jumped',
           3 => 'fox',

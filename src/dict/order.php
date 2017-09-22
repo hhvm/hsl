@@ -60,11 +60,9 @@ function sort_by<Tk, Tv, Ts>(
 ): dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
     ? ($a, $b) ==> $scalar_comparator($a[0], $b[0])
-    /* HH_FIXME[1002] Spaceship operator */
-    : ($a, $b) ==> $a[0] <=> $b[0];
+    : ($a, $b) ==> \HH\Lib\_Private\mixed_cmp($a[0], $b[0]);
   return $traversable
     |> namespace\map($$, $v ==> tuple($scalar_func($v), $v))
-    /* HH_FIXME[4110] Spaceship operator */
     |> namespace\sort($$, $tuple_comparator)
     |> namespace\map($$, $t ==> $t[1]);
 }
