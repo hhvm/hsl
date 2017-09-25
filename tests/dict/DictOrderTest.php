@@ -61,22 +61,21 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestSort(): array<mixed> {
     return array(
-      // TODO(#15164841) dict() does integral key coercion.
-      // tuple(
-      //   Map {
-      //     '0' => 'the',
-      //     '1' => 'quick',
-      //     '2' => 'brown',
-      //     '3' => 'fox',
-      //   },
-      //   null,
-      //   dict[
-      //     '2' => 'brown',
-      //     '3' => 'fox',
-      //     '1' => 'quick',
-      //     '0' => 'the',
-      //   ],
-      // ),
+      tuple(
+        Map {
+          '0' => 'the',
+          '1' => 'quick',
+          '2' => 'brown',
+          '3' => 'fox',
+        },
+        null,
+        dict[
+          '2' => 'brown',
+          '3' => 'fox',
+          '1' => 'quick',
+          '0' => 'the',
+        ],
+      ),
       tuple(
         Map {
           'a' => 'the',
