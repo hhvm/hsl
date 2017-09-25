@@ -60,7 +60,7 @@ function sort_by<Tk, Tv, Ts>(
 ): dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
     ? ($a, $b) ==> $scalar_comparator($a[0], $b[0])
-    : ($a, $b) ==> \HH\Lib\_Private\mixed_cmp($a[0], $b[0]);
+    : ($a, $b) ==> $a[0] <=> $b[0];
   return $traversable
     |> namespace\map($$, $v ==> tuple($scalar_func($v), $v))
     |> namespace\sort($$, $tuple_comparator)

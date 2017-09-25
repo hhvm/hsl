@@ -50,18 +50,5 @@ function universal_chainable_stub(mixed ...$_): UniversalChainableStub {
   return new UniversalChainableStub();
 }
 
-function mixed_cmp(mixed $a, mixed $b): int {
-  if ($a < $b)  {
-    return -1;
-  }
-  if ($a > $b) {
-    return 1;
-  }
-  if ($a != $b) {
-    return 1;
-  }
-  return 0;
-}
-
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

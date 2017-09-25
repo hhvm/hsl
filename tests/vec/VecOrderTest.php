@@ -10,8 +10,7 @@
  */
 
 use namespace HH\Lib\{C, Math, Str, Vec};
-use function Facebook\FBExpect\expect;
-use function HH\Lib\_Private\mixed_cmp;
+use function \Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 /**
@@ -172,7 +171,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
-        ($a, $b) ==> mixed_cmp($a[1], $b[1]),
+        ($a, $b) ==> $a[1] <=> $b[1],
         vec['the', 'fox', 'brown', 'quick'],
       ),
       tuple(
@@ -216,7 +215,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
       tuple(
         Vector {'the', 'quick', 'brown', 'fox', 'jumped'},
         fun('strrev'),
-        ($a, $b) ==> mixed_cmp($b, $a),
+        ($a, $b) ==> $b <=> $a,
         vec['fox', 'brown', 'quick', 'the', 'jumped'],
       ),
       tuple(
