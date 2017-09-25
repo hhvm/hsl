@@ -11,7 +11,7 @@
 
 namespace HH\Lib\Str;
 
-use \HH\Lib\_Private;
+use namespace HH\Lib\_Private;
 
 /**
  * Returns a substring of length `$length` of the given string starting at the

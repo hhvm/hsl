@@ -9,7 +9,7 @@
  *
  */
 
-use function \Facebook\FBExpect\expect;
+use function Facebook\FBExpect\expect;
 
 /**
  * @emails oncall+php_prod_infra

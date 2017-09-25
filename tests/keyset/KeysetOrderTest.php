@@ -9,8 +9,8 @@
  *
  */
 
-use namespace \HH\Lib\Keyset;
-use function \Facebook\FBExpect\expect;
+use namespace HH\Lib\Keyset;
+use function Facebook\FBExpect\expect;
 
 /**
  * @emails oncall+hack_prod_infra

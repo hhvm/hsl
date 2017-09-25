@@ -11,7 +11,7 @@
 
 namespace HH\Lib\Vec;
 
-use namespace \HH\Lib\{Dict, Keyset};
+use namespace HH\Lib\{Dict, Keyset};
 
 /**
  * Returns a new vec containing only the elements of the first Traversable that

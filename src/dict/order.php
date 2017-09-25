@@ -11,7 +11,7 @@
 
 namespace HH\Lib\Dict;
 
-use namespace \HH\Lib\Vec;
+use namespace HH\Lib\Vec;
 
 /**
  * Returns a new dict with the original key/value pairs in reversed iteration

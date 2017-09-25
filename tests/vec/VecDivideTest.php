@@ -10,7 +10,7 @@
  */
 
 use namespace HH\Lib\Vec;
-use function \Facebook\FBExpect\expect;
+use function Facebook\FBExpect\expect;
 
 /**
  * @emails oncall+hack_prod_infra
