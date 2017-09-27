@@ -118,7 +118,8 @@ final class StrDivideTest extends PHPUnit_Framework_TestCase {
     ?int $limit,
     vec<string> $expected,
   ): void {
-    expect(Str\split($delimiter, $string, $limit))->toBeSame($expected);
+    expect(Str\split_args_switched($string, $delimiter, $limit))
+      ->toBeSame($expected);
   }
 
 }

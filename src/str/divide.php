@@ -31,6 +31,7 @@ function chunk(
  *
  * Previously known as `explode` in PHP.
  */
+<<__Deprecated('(TEMPORARY) use Str\\split_args_switched; see docblock')>>
 function split(
   string $delimiter,
   string $string,
