@@ -35,7 +35,8 @@ final class StrCombineTest extends PHPUnit_Framework_TestCase {
   public function testJoin(
     Traversable<string> $traversable,
   ): void {
-    expect(Str\join('-', $traversable))->toBeSame('the-quick-brown-fox-1');
+    expect(Str\join_args_switched($traversable, '-'))
+      ->toBeSame('the-quick-brown-fox-1');
   }
 
 }
