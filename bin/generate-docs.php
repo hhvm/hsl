@@ -60,7 +60,7 @@ final class DocsGen {
           C\lastx(Str\split_args_switched($ns, "\\")).'.md',
         ),
       )
-      |>Str\join("\n", $$)
+      |>Str\join_args_switched($$, "\n")
       |>file_put_contents(
         $path.'/index.md',
         "# Hack Standard Library API Reference\n\n".$$."\n",
@@ -160,9 +160,9 @@ final class DocsGen {
     $parts = Vec\map($g, $g ==> $this->renderGeneric($g));
 
     if ($multiline) {
-      return "<\n  ".Str\join(",\n  ", $parts)."\n>";
+      return "<\n  ".Str\join_args_switched($parts, ",\n  ")."\n>";
     }
-    return '<'.Str\join(', ', $parts).'>';
+    return '<'.Str\join_args_switched($parts, ', ').'>';
   }
 
   private function renderGeneric(ScannedGeneric $g): string {
@@ -196,9 +196,9 @@ final class DocsGen {
     $parts = Vec\map($f->getParameters(), $p ==> $this->renderParameter($p));
     if ($multiline_parameters) {
       $trailing_comma = Str\contains(C\lastx($parts), '...') ? '' : ',';
-      return "(\n  ".Str\join(",\n  ", $parts).$trailing_comma."\n)";
+      return "(\n  ".Str\join_args_switched($parts, ",\n  ").$trailing_comma."\n)";
     }
-    return '('.Str\join(', ', $parts).')';
+    return '('.Str\join_args_switched($parts, ', ').')';
   }
 
   private function renderParameter(ScannedParameter $p): string {
@@ -253,7 +253,7 @@ final class DocsGen {
       |>Str\trim($$)
       |>Str\split_args_switched($$, "\n")
       |>Vec\map($$, $s ==> Str\trim(Str\strip_prefix(Str\trim($s), '*')))
-      |>Str\join("\n", $$)
+      |>Str\join_args_switched($$, "\n")
       |>$$."\n";
   }
 }
