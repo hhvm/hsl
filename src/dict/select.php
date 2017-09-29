@@ -148,28 +148,6 @@ function select_keys<Tk as arraykey, Tv>(
   return $result;
 }
 
-<<__Deprecated('Use Dict\\{chunk, drop, take} or Dict\\fb\\slice.')>>
-function slice<Tk, Tv>(
-  KeyedTraversable<Tk, Tv> $traversable,
-  int $offset,
-  ?int $length = null,
-): dict<Tk, Tv> {
-  invariant($offset >= 0, 'Offset must be non-negative.');
-  invariant($length === null || $length >= 0, 'Length must be non-negative.');
-  $result = dict[];
-  $ii = 0;
-  foreach ($traversable as $key => $value) {
-    if ($length !== null && $ii === $offset + $length) {
-      break;
-    }
-    if ($ii >= $offset) {
-      $result[$key] = $value;
-    }
-    $ii++;
-  }
-  return $result;
-}
-
 /**
  * Returns a new dict containing the first `$n` entries of the given
  * KeyedTraversable.
