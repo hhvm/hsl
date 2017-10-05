@@ -42,7 +42,7 @@ final class DocsGen {
       );
 
     foreach ($namespaces_funcs as $ns => $funcs) {
-      $file = $path.'/'.C\lastx(Str\split_args_switched($ns, "\\")).'.md';
+      $file = $path.'/'.C\lastx(Str\split($ns, "\\")).'.md';
       file_put_contents(
         $file,
         $this->getMarkdownForNamespace($ns, $funcs),
@@ -57,7 +57,7 @@ final class DocsGen {
         $ns ==> sprintf(
           " - [%s](%s)",
           $ns,
-          C\lastx(Str\split_args_switched($ns, "\\")).'.md',
+          C\lastx(Str\split($ns, "\\")).'.md',
         ),
       )
       |>Str\join_args_switched($$, "\n")
@@ -122,7 +122,7 @@ final class DocsGen {
 
       if (
         C\every(
-          Str\split_args_switched($out, "\n"),
+          Str\split($out, "\n"),
           $s ==> Str\length($s) < self::TARGET_LINE_LENGTH,
         )
       ) {
@@ -251,7 +251,7 @@ final class DocsGen {
       |>Str\strip_prefix($$, '/**')
       |>Str\strip_suffix($$, '*/')
       |>Str\trim($$)
-      |>Str\split_args_switched($$, "\n")
+      |>Str\split($$, "\n")
       |>Vec\map($$, $s ==> Str\trim(Str\strip_prefix(Str\trim($s), '*')))
       |>Str\join_args_switched($$, "\n")
       |>$$."\n";
