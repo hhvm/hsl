@@ -2,12 +2,13 @@
   "name": "hhvm/hsl",
   "description": "The Hack Standard Library",
   "require-dev": {
+    "hhvm": "^3.21.3",
     "91carriage/phpunit-hhi": "^5.7",
     "phpunit/phpunit": "^5.7",
     "facebook/fbexpect": "^0.2",
     "facebook/definition-finder": "^1.6.1"
   },
   "require": {
-    "facebook/hhvm-autoload": "^1.4"
+    "hhvm/hhvm-autoload": "^1.4"
   }
 }
