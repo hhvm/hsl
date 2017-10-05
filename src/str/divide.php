@@ -31,10 +31,9 @@ function chunk(
  *
  * Previously known as `explode` in PHP.
  */
-<<__Deprecated('(TEMPORARY) use Str\\split_args_switched; see docblock')>>
 function split(
-  string $delimiter,
   string $string,
+  string $delimiter,
   ?int $limit = null,
 ): vec<string> {
   return namespace\split_args_switched($string, $delimiter, $limit);

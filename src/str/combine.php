@@ -17,10 +17,9 @@ namespace HH\Lib\Str;
  *
  * Previously known as `implode` in PHP.
  */
-<<__Deprecated('(TEMPORARY) use Str\\join_args_switched; see docblock')>>
 function join(
-  string $glue,
   Traversable<arraykey> $pieces,
+  string $glue,
 ): string {
   return namespace\join_args_switched($pieces, $glue);
 }
