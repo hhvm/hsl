@@ -9,13 +9,55 @@
  *
  */
 
-use namespace HH\Lib\Keyset as KeysetHSL;
+use namespace HH\Lib\Keyset;
 use function Facebook\FBExpect\expect;
 
 /**
  * @emails oncall+hack_prod_infra
  */
 final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
+
+  public static function provideTestGen(): array<mixed> {
+    return array(
+      tuple(
+        Vector {
+          async {return 'the';},
+          async {return 'quick';},
+          async {return 'brown';},
+          async {return 'fox';},
+        },
+        keyset['the', 'quick', 'brown', 'fox'],
+      ),
+      tuple(
+        Map {
+          'foo' => async {return 1;},
+          'bar' => async {return 2;},
+        },
+        keyset[1, 2],
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(array(
+          async {return 'the';},
+          async {return 'quick';},
+          async {return 'brown';},
+          async {return 'fox';},
+        )),
+        keyset['the', 'quick', 'brown', 'fox'],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestGen */
+  public function testFromAsync<Tv as arraykey>(
+    Traversable<Awaitable<Tv>> $awaitables,
+    keyset<Tv> $expected,
+  ): void {
+    /* HH_IGNORE_ERROR[5542] open source */
+    \HH\Asio\join(async {
+      $actual = await Keyset\from_async($awaitables);
+      expect($actual)->toBeSame($expected);
+    });
+  }
 
   public static function provideTestGenMap(): array<mixed> {
     return array(
@@ -45,7 +87,7 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await KeysetHSL\map_async($traversable, $async_func);
+      $actual = await Keyset\map_async($traversable, $async_func);
       expect($actual)->toBeSame($expected);
     });
   }
@@ -87,7 +129,7 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await KeysetHSL\filter_async($traversable, $async_predicate);
+      $actual = await Keyset\filter_async($traversable, $async_predicate);
       expect($actual)->toBeSame($expected);
     });
   }
