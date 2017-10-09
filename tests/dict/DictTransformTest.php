@@ -136,6 +136,83 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
     expect(Dict\fill_keys($keys, $value))->toBeSame($expected);
   }
 
+  public static function provideTestFlatten(): array<mixed> {
+    return array(
+      tuple(
+        array(),
+        dict[],
+      ),
+      tuple(
+        array(
+          array(
+            'one' => 'one',
+            'two' => 'two',
+          ),
+          array(
+            'three' => 'three',
+            'one' => 3,
+          ),
+          Map {
+            'four' => null,
+          },
+        ),
+        dict[
+          'one' => 3,
+          'two' => 'two',
+          'three' => 'three',
+          'four' => null,
+        ],
+      ),
+      tuple(
+        array(
+          HackLibTestTraversables::getKeyedIterator(array(
+            'foo' => 'foo',
+            'bar' => 'bar',
+            'baz' => array(1, 2, 3),
+          )),
+          dict[
+            'bar' => 'barbar',
+          ],
+          Vector {'I should feel bad for doing this', 'But yolo'},
+          array(
+            '1' => 'gross array behavior',
+          ),
+          Set {'bloop'},
+        ),
+        dict[
+          'foo' => 'foo',
+          'bar' => 'barbar',
+          'baz' => array(1, 2, 3),
+          0 => 'I should feel bad for doing this',
+          1 => 'gross array behavior',
+          'bloop' => 'bloop',
+        ],
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(array(
+          vec['zero'],
+          array(1 => 'one'),
+          dict[2 => 'two'],
+          Map {3 => 'three'},
+        )),
+        dict[
+          0 => 'zero',
+          1 => 'one',
+          2 => 'two',
+          3 => 'three',
+        ],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestFlatten */
+  public function testFlatten<Tk, Tv>(
+    Traversable<KeyedTraversable<Tk, Tv>> $traversables,
+    dict<Tk, Tv> $expected,
+  ): void {
+    expect(Dict\flatten($traversables))->toBeSame($expected);
+  }
+
   public static function provideTestFlip(): array<mixed> {
     return array(
       tuple(

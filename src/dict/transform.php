@@ -48,6 +48,25 @@ function count_values<Tv as arraykey>(
 }
 
 /**
+ * Returns a new dict formed by merging the KeyedTraversable elements of the
+ * given Traversable. In the case of duplicate keys, later values will overwrite
+ * the previous ones.
+ *
+ * For a fixed number of KeyedTraversables, see `Dict\merge`.
+ */
+function flatten<Tk, Tv>(
+  Traversable<KeyedTraversable<Tk, Tv>> $traversables,
+): dict<Tk, Tv> {
+  $result = dict[];
+  foreach ($traversables as $traversable) {
+    foreach ($traversable as $key => $value) {
+      $result[$key] = $value;
+    }
+  }
+  return $result;
+}
+
+/**
  * Returns a new dict where all the given keys map to the given value.
  */
 function fill_keys<Tk as arraykey, Tv>(
