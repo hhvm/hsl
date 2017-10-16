@@ -21,11 +21,14 @@ final class KeysetCombineTest extends PHPUnit_Framework_TestCase {
     return array(
       tuple(
         array(),
+        array(
+          vec[],
+        ),
         keyset[],
       ),
       tuple(
+        keyset[1, 2, 3],
         array(
-          array(1, 2, 3),
           Vector {'the', 'quick', 'brown'},
           HackLibTestTraversables::getKeyedIterator(array(
             'the' => 'the',
@@ -41,9 +44,10 @@ final class KeysetCombineTest extends PHPUnit_Framework_TestCase {
 
   /** @dataProvider provideTestUnion */
   public function testUnion<Tv as arraykey>(
-    Container<Traversable<Tv>> $traversables,
+    Traversable<Tv> $first,
+    Container<Traversable<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\union(...$traversables))->toBeSame($expected);
+    expect(Keyset\union($first, ...$rest))->toBeSame($expected);
   }
 }

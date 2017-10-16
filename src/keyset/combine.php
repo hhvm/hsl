@@ -18,7 +18,14 @@ namespace HH\Lib\Keyset;
  * For a variable number of Traversables, see Keyset\flatten.
  */
 function union<Tv as arraykey>(
-  Traversable<Tv> ...$traversables
+  Traversable<Tv> $first,
+  Traversable<Tv> ...$rest
 ): keyset<Tv> {
-  return namespace\flatten($traversables);
+  $result = keyset($first);
+  foreach ($rest as $traversable) {
+    foreach ($traversable as $value) {
+      $result[] = $value;
+    }
+  }
+  return $result;
 }
