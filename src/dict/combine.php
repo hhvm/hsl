@@ -39,7 +39,14 @@ function associate<Tk as arraykey, Tv>(
  * keys, later values will overwrite the previous ones.
  */
 function merge<Tk, Tv>(
-  KeyedTraversable<Tk, Tv> ...$traversables
+  KeyedTraversable<Tk, Tv> $first,
+  KeyedTraversable<Tk, Tv> ...$rest
 ): dict<Tk, Tv> {
-  return namespace\flatten($traversables);
+  $result = dict($first);
+  foreach ($rest as $traversable) {
+    foreach ($traversable as $key => $value) {
+      $result[$key] = $value;
+    }
+  }
+  return $result;
 }

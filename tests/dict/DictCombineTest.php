@@ -67,15 +67,16 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
   public static function provideTestMerge(): array<mixed> {
     return array(
       tuple(
+        Map {},
         array(),
         dict[],
       ),
       tuple(
         array(
-          array(
-            'one' => 'one',
-            'two' => 'two',
-          ),
+          'one' => 'one',
+          'two' => 'two',
+        ),
+        array(
           array(
             'three' => 'three',
             'one' => 3,
@@ -92,12 +93,12 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        HackLibTestTraversables::getKeyedIterator(array(
+          'foo' => 'foo',
+          'bar' => 'bar',
+          'baz' => array(1, 2, 3),
+        )),
         array(
-          HackLibTestTraversables::getKeyedIterator(array(
-            'foo' => 'foo',
-            'bar' => 'bar',
-            'baz' => array(1, 2, 3),
-          )),
           dict[
             'bar' => 'barbar',
           ],
@@ -121,9 +122,10 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
 
   /** @dataProvider provideTestMerge */
   public function testMerge<Tk, Tv>(
-    Container<KeyedTraversable<Tk, Tv>> $traversables,
+    KeyedTraversable<Tk, Tv> $first,
+    Container<KeyedTraversable<Tk, Tv>> $rest,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\merge(...$traversables))->toBeSame($expected);
+    expect(Dict\merge($first, ...$rest))->toBeSame($expected);
   }
 }
