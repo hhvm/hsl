@@ -30,33 +30,3 @@ function reduce<Tv, Ta>(
   }
   return $result;
 }
-
-/**
- * Returns the integer sum of the values of the given Traversable cast to int.
- *
- * For a float sum, see C\sum_float.
- */
-function sum<T>(
-  Traversable<T> $traversable,
-): int {
-  $result = 0;
-  foreach ($traversable as $value) {
-    $result += \intval($value);
-  }
-  return $result;
-}
-
-/**
- * Returns the float sum of the values of the given Traversable cast to float.
- *
- * For an integer sum, see C\sum.
- */
-function sum_float<T>(
-  Traversable<T> $traversable,
-): float {
-  $result = 0.0;
-  foreach ($traversable as $value) {
-    $result += \floatval($value);
-  }
-  return $result;
-}
