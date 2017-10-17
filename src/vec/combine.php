@@ -17,7 +17,14 @@ namespace HH\Lib\Vec;
  * For a variable number of Traversables, see Vec\flatten.
  */
 function concat<Tv>(
-  Traversable<Tv> ...$traversables
+  Traversable<Tv> $first,
+  Traversable<Tv> ...$rest
 ): vec<Tv> {
-  return namespace\flatten($traversables);
+  $result = vec($first);
+  foreach ($rest as $traversable) {
+    foreach ($traversable as $value) {
+      $result[] = $value;
+    }
+  }
+  return $result;
 }

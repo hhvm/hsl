@@ -21,17 +21,19 @@ final class VecCombineTest extends PHPUnit_Framework_TestCase {
     return array(
       tuple(
         array(),
+        array(),
         vec[],
       ),
       tuple(
+        vec[],
         array(
           array(), Vector {}, Map {}, Set {},
         ),
         vec[],
       ),
       tuple(
+        array('the', 'quick'),
         array(
-          array('the', 'quick'),
           Vector {'brown', 'fox'},
           Map {'jumped' => 'over'},
           HackLibTestTraversables::getIterator(array('the', 'lazy', 'dog')),
@@ -43,10 +45,11 @@ final class VecCombineTest extends PHPUnit_Framework_TestCase {
 
   /** @dataProvider provideTestConcat */
   public function testConcat<Tv>(
-    Container<Traversable<Tv>> $traversables,
+    Traversable<Tv> $first,
+    Container<Traversable<Tv>> $rest,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\concat(...$traversables))->toBeSame($expected);
+    expect(Vec\concat($first, ...$rest))->toBeSame($expected);
   }
 
 }
