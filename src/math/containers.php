@@ -19,13 +19,7 @@ use namespace HH\Lib\{C, Math, Vec};
  * For Traversables, see `C\max`.
  */
 function max<T as num>(T $first_number, T ...$numbers): T {
-  $max = $first_number;
-  foreach ($numbers as $number) {
-    if ($number > $max) {
-      $max = $number;
-    }
-  }
-  return $max;
+  return namespace\maxv($first_number, ...$numbers);
 }
 
 /**
@@ -55,7 +49,6 @@ function mean(Container<num> $numbers): ?float {
  */
 function median(Container<num> $numbers): ?float {
   $numbers = Vec\sort($numbers);
-
   $count = C\count($numbers);
   if ($count === 0) {
     return null;
@@ -76,13 +69,7 @@ function median(Container<num> $numbers): ?float {
  * For Traversables, see `C\min`.
  */
 function min<T as num>(T $first_number, T ...$numbers): T {
-  $min = $first_number;
-  foreach ($numbers as $number) {
-    if ($number < $min) {
-      $min = $number;
-    }
-  }
-  return $min;
+  return namespace\minv($first_number, ...$numbers);
 }
 
 /**
