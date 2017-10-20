@@ -107,7 +107,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     Container<T> $numbers,
     T $expected,
   ): void {
-    expect(Math\min($first_number, ...$numbers))->toBeSame($expected);
+    expect(Math\minv($first_number, ...$numbers))->toBeSame($expected);
   }
 
   public static function provideTestSum(): array<mixed> {
