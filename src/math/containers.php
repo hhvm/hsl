@@ -18,6 +18,7 @@ use namespace HH\Lib\{C, Math, Vec};
  * For finding the smallest number, see `Math\min`.
  * For Traversables, see `C\max`.
  */
+<<__Deprecated('Renamed to Max\\maxv')>>
 function max<T as num>(T $first_number, T ...$numbers): T {
   return namespace\maxv($first_number, ...$numbers);
 }
