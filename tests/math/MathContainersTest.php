@@ -17,6 +17,37 @@ use function Facebook\FBExpect\expect;
  */
 final class MathContainersTest extends PHPUnit_Framework_TestCase {
 
+  public static function provideTestMaxBy(): array<mixed> {
+    return array(
+      tuple(
+        array(),
+        $x ==> $x,
+        null,
+      ),
+      tuple(
+        vec['the', 'quick', 'brown', 'fox'],
+        fun('strlen'),
+        'brown',
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(
+          array('the', 'quick', 'brown', 'fox'),
+        ),
+        fun('strlen'),
+        'brown',
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestMaxBy */
+  public function testMaxBy<T>(
+    Traversable<T> $traversable,
+    (function(T): num) $num_func,
+    ?T $expected,
+  ): void {
+    expect(Math\max_by($traversable, $num_func))->toBeSame($expected);
+  }
+
   public static function provideTestMean(): array<mixed> {
     return array(
       tuple(vec[1.0, 2.0, 3, 4], 2.5),
@@ -61,6 +92,37 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     } else {
       expect(Math\median($numbers))->toBeSame($expected);
     }
+  }
+
+  public static function provideTestMinBy(): array<mixed> {
+    return array(
+      tuple(
+        array(),
+        $x ==> $x,
+        null,
+      ),
+      tuple(
+        vec['the', 'quick', 'brown', 'fox'],
+        fun('strlen'),
+        'fox',
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(
+          array('the', 'quick', 'brown', 'fox'),
+        ),
+        fun('strlen'),
+        'fox',
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestMinBy */
+  public function testMinBy<T>(
+    Traversable<T> $traversable,
+    (function(T): num) $num_func,
+    ?T $expected,
+  ): void {
+    expect(Math\min_by($traversable, $num_func))->toBeSame($expected);
   }
 
   public static function provideTestSum(): array<mixed> {

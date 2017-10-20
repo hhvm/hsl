@@ -24,6 +24,31 @@ function max<T as num>(T $first_number, T ...$numbers): T {
 }
 
 /**
+ * Returns the largest element of the given Traversable, or null if the
+ * Traversable is empty.
+ *
+ * The value for comparison is determined by the given function. In the case of
+ * duplicate numeric keys, later values overwrite previous ones.
+ *
+ * For numeric elements, see `Math\max`.
+ */
+function max_by<T>(
+  Traversable<T> $traversable,
+  (function(T): num) $num_func,
+): ?T {
+  $max = null;
+  $max_num = null;
+  foreach ($traversable as $value) {
+    $value_num = $num_func($value);
+    if ($max_num === null || $value_num >= $max_num) {
+      $max = $value;
+      $max_num = $value_num;
+    }
+  }
+  return $max;
+}
+
+/**
  * Returns the arithmetic mean of the numbers in the given container.
  *
  * To find the sum, see `C\sum`.
@@ -72,6 +97,31 @@ function median(Container<num> $numbers): ?float {
 <<__Deprecated('renamed to Math\\minv')>>
 function min<T as num>(T $first_number, T ...$numbers): T {
   return namespace\minv($first_number, ...$numbers);
+}
+
+/**
+ * Returns the smallest element of the given Traversable, or null if the
+ * Traversable is empty.
+ *
+ * The value for comparison is determined by the given function. In the case of
+ * duplicate numeric keys, later values overwrite previous ones.
+ *
+ * For numeric elements, see `Math\min`.
+ */
+function min_by<T>(
+  Traversable<T> $traversable,
+  (function(T): num) $num_func,
+): ?T {
+  $min = null;
+  $min_num = null;
+  foreach ($traversable as $value) {
+    $value_num = $num_func($value);
+    if ($min_num === null || $value_num <= $min_num) {
+      $min = $value;
+      $min_num = $value_num;
+    }
+  }
+  return $min;
 }
 
 /**
