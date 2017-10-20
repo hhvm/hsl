@@ -86,30 +86,6 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestMin(): array<mixed> {
-    return array(
-      tuple(1, vec[2], 1),
-      tuple(2, vec[1], 1),
-      tuple(1.0, vec[2.0], 1.0),
-      tuple(2.0, vec[1.0], 1.0),
-      tuple(1, vec[1], 1),
-      tuple(-2, vec[-1], -2),
-      tuple(1.0, vec[2], 1.0),
-      tuple(1, vec[2.0], 1),
-      tuple(1, vec[-1, -2, -3, -4, -5], -5),
-      tuple(1, vec[-5, -4, -3, -2, -1], -5),
-    );
-  }
-
-  /** @dataProvider provideTestMin */
-  public function testMin<T as num>(
-    T $first_number,
-    Container<T> $numbers,
-    T $expected,
-  ): void {
-    expect(Math\minv($first_number, ...$numbers))->toBeSame($expected);
-  }
-
   public static function provideTestSum(): array<mixed> {
     return array(
       tuple(

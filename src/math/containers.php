@@ -68,6 +68,7 @@ function median(Container<num> $numbers): ?float {
  * For finding the largest number, see `Math\max`.
  * For Traversables, see `C\min`.
  */
+<<__Deprecated('renamed to Math\\minv')>>
 function min<T as num>(T $first_number, T ...$numbers): T {
   return namespace\minv($first_number, ...$numbers);
 }
