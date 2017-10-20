@@ -121,6 +121,37 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     }
   }
 
+  public static function provideTestMin(): array<mixed> {
+    return array(
+      tuple(
+        array(),
+        null,
+      ),
+      tuple(
+        Set {8, 6, 7, 5, 3, 0, 9},
+        0,
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(
+          array(8, 6, 7, 5, 3, 0, 9),
+        ),
+        0,
+      ),
+      tuple(
+        Vector {8, 6, 7, -5, -3, 0, 9},
+        -5,
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestMin */
+  public function testMin<T as num>(
+    Traversable<T> $traversable,
+    ?T $expected,
+  ): void {
+    expect(Math\min($traversable))->toBeSame($expected);
+  }
+
   public static function provideTestMinBy(): array<mixed> {
     return array(
       tuple(

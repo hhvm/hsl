@@ -97,14 +97,22 @@ function median(Container<num> $numbers): ?float {
 }
 
 /**
- * Returns the smallest of all input numbers.
+ * Returns the smallest element of the given Traversable, or null if the
+ * Traversable is empty.
  *
- * For finding the largest number, see `Math\max`.
- * For Traversables, see `C\min`.
+ * For a known number of inputs, see `Math\minv`.
+ * To find the largest number, see `Math\max`.
  */
-<<__Deprecated('renamed to Math\\minv')>>
-function min<T as num>(T $first_number, T ...$numbers): T {
-  return namespace\minv($first_number, ...$numbers);
+function min<T as num>(
+  Traversable<T> $numbers,
+): ?T {
+  $min = null;
+  foreach ($numbers as $number) {
+    if ($min === null || $number < $min) {
+      $min = $number;
+    }
+  }
+  return $min;
 }
 
 /**
