@@ -13,14 +13,22 @@ namespace HH\Lib\Math;
 use namespace HH\Lib\{C, Math, Vec};
 
 /**
- * Returns the largest of all input numbers.
+ * Returns the largest element of the given Traversable, or null if the
+ * Traversable is empty.
  *
- * For finding the smallest number, see `Math\min`.
- * For Traversables, see `C\max`.
+ * For a known number of inputs, see `Math\maxv`.
+ * To find the smallest number, see `Math\min`.
  */
-<<__Deprecated('Renamed to Max\\maxv')>>
-function max<T as num>(T $first_number, T ...$numbers): T {
-  return namespace\maxv($first_number, ...$numbers);
+function max<T as num>(
+  Traversable<T> $numbers,
+): ?T {
+  $max = null;
+  foreach ($numbers as $number) {
+    if ($max === null || $number > $max) {
+      $max = $number;
+    }
+  }
+  return $max;
 }
 
 /**

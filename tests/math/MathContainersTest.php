@@ -17,6 +17,33 @@ use function Facebook\FBExpect\expect;
  */
 final class MathContainersTest extends PHPUnit_Framework_TestCase {
 
+  public static function provideTestMax(): array<mixed> {
+    return array(
+      tuple(
+        array(),
+        null,
+      ),
+      tuple(
+        Set {8, 6, 7, 5, 3, 0, 9},
+        9,
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(
+          array(8, 6, 7, 5, 3, 0, 9),
+        ),
+        9,
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestMax */
+  public function testMax<T as num>(
+    Traversable<T> $numbers,
+    ?T $expected,
+  ): void {
+    expect(Math\max($numbers))->toBeSame($expected);
+  }
+
   public static function provideTestMaxBy(): array<mixed> {
     return array(
       tuple(
