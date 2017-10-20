@@ -37,7 +37,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     Container<T> $numbers,
     T $expected,
   ): void {
-    expect(Math\max($first_number, ...$numbers))->toBeSame($expected);
+    expect(Math\maxv($first_number, ...$numbers))->toBeSame($expected);
   }
 
   public static function provideTestMean(): array<mixed> {
