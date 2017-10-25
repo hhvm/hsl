@@ -105,7 +105,7 @@ This is not an exhaustive list.
    (e.g. `C\first()`, `C\firstx()`)
  - Container functions that do an operation based on a user-supplied keying
    function for each element should be suffixed with `_by` (e.g.
-   `Vec\sort_by()`, `Dict\group_by()`, `C\max_by()`)
+   `Vec\sort_by()`, `Dict\group_by()`, `Math\max_by()`)
 
 ## Contributing
 
