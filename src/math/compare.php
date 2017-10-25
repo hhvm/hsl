@@ -18,6 +18,13 @@ namespace HH\Lib\Math;
  * For Traversables, see `C\max`.
  */
 function maxv<T as num>(T $first, T ...$rest): T {
+  return namespace\maxva($first, ...$rest);
+}
+
+function maxva<T as num>(
+  T $first,
+  T ...$rest
+): T {
   $max = $first;
   foreach ($rest as $number) {
     if ($number > $max) {
@@ -34,6 +41,13 @@ function maxv<T as num>(T $first, T ...$rest): T {
  * For Traversables, see `C\min`.
  */
 function minv<T as num>(T $first, T ...$rest): T {
+  return namespace\minva($first, ...$rest);
+}
+
+function minva<T as num>(
+  T $first,
+  T ...$rest
+): T {
   $min = $first;
   foreach ($rest as $number) {
     if ($number < $min) {

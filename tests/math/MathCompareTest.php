@@ -17,7 +17,7 @@ use function Facebook\FBExpect\expect;
  */
 final class MathCompareTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestMaxv(): array<mixed> {
+  public static function provideTestMaxva(): array<mixed> {
     return array(
       tuple(1, vec[2], 2),
       tuple(2, vec[1], 2),
@@ -32,16 +32,16 @@ final class MathCompareTest extends PHPUnit_Framework_TestCase {
     );
   }
 
-  /** @dataProvider provideTestMaxv */
-  public function testMaxv<T as num>(
+  /** @dataProvider provideTestMaxva */
+  public function testMaxva<T as num>(
     T $first,
     Container<T> $rest,
     T $expected,
   ): void {
-    expect(Math\maxv($first, ...$rest))->toBeSame($expected);
+    expect(Math\maxva($first, ...$rest))->toBeSame($expected);
   }
 
-  public static function provideTestMinv(): array<mixed> {
+  public static function provideTestMinva(): array<mixed> {
     return array(
       tuple(1, vec[2], 1),
       tuple(2, vec[1], 1),
@@ -56,12 +56,12 @@ final class MathCompareTest extends PHPUnit_Framework_TestCase {
     );
   }
 
-  /** @dataProvider provideTestMinv */
-  public function testMinv<T as num>(
+  /** @dataProvider provideTestMinva */
+  public function testMinva<T as num>(
     T $first,
     Container<T> $rest,
     T $expected,
   ): void {
-    expect(Math\minv($first, ...$rest))->toBeSame($expected);
+    expect(Math\minva($first, ...$rest))->toBeSame($expected);
   }
 }
