@@ -344,7 +344,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
     Traversable<Tv> $traversable,
     int $sample_size,
   ): void {
-    $expected_size = Math\minv(C\count(vec($traversable)), $sample_size);
+    $expected_size = Math\minva(C\count(vec($traversable)), $sample_size);
     expect(C\count(Vec\sample($traversable, $sample_size)))
       ->toBeSame($expected_size);
   }
