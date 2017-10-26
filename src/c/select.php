@@ -11,6 +11,8 @@
 
 namespace HH\Lib\C;
 
+use namespace HH\Lib\_Private;
+
 /**
  * Returns the first value of the given Traversable for which the predicate
  * returns true, or null if no such value is found.
@@ -121,7 +123,7 @@ function first_keyx<Tk, Tv>(
 function last<Tv>(
   Traversable<Tv> $traversable,
 ): ?Tv {
-  if (\is_any_array($traversable)) {
+  if (_Private\is_any_array($traversable)) {
     return $traversable ? \end($traversable) : null;
   } else if ($traversable instanceof Iterable) {
     return $traversable->lastValue();
@@ -147,7 +149,7 @@ function lastx<Tv>(Traversable<Tv> $traversable): Tv {
   if ($traversable instanceof Iterable) {
     $traversable = $traversable->toArray();
   }
-  if (\is_any_array($traversable)) {
+  if (_Private\is_any_array($traversable)) {
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
     return \end($traversable);
   }
