@@ -173,7 +173,7 @@ function lastx<Tv>(Traversable<Tv> $traversable): Tv {
 function last_key<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if (\is_any_array($traversable)) {
+  if (_Private\is_any_array($traversable)) {
     if (!$traversable) {
       return null;
     }
