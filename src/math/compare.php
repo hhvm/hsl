@@ -14,13 +14,9 @@ namespace HH\Lib\Math;
 /**
  * Returns the largest of all input numbers.
  *
- * To find the smallest number, see `Math\min`.
- * For Traversables, see `C\max`.
+ * To find the smallest number, see `Math\minva`.
+ * For Traversables, see `Math\max`.
  */
-function maxv<T as num>(T $first, T ...$rest): T {
-  return namespace\maxva($first, ...$rest);
-}
-
 function maxva<T as num>(
   T $first,
   T ...$rest
@@ -37,13 +33,9 @@ function maxva<T as num>(
 /**
  * Returns the smallest of all input numbers.
  *
- * To find the largest number, see `Math\max`.
- * For Traversables, see `C\min`.
+ * To find the largest number, see `Math\maxva`.
+ * For Traversables, see `Math\min`.
  */
-function minv<T as num>(T $first, T ...$rest): T {
-  return namespace\minva($first, ...$rest);
-}
-
 function minva<T as num>(
   T $first,
   T ...$rest
