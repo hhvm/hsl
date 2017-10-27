@@ -58,7 +58,7 @@ function shuffle<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
   $vec = vec($traversable);
-  \shuffle($vec);
+  \shuffle(/*ctpbr:&*/$vec);
   return $vec;
 }
 
@@ -75,9 +75,9 @@ function sort<Tv>(
 ): vec<Tv> {
   $vec = vec($traversable);
   if ($comparator) {
-    \usort($vec, $comparator);
+    \usort(/*ctpbr:&*/$vec, $comparator);
   } else {
-    \sort($vec);
+    \sort(/*ctpbr:&*/$vec);
   }
   return $vec;
 }
@@ -96,9 +96,9 @@ function sort_by<Tv, Ts>(
   $vec = vec($traversable);
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {
-    \uasort($order_by, $comparator);
+    \uasort(/*ctpbr:&*/$order_by, $comparator);
   } else {
-    \asort($order_by);
+    \asort(/*ctpbr:&*/$order_by);
   }
   return namespace\map_with_key($order_by, ($k, $v) ==> $vec[$k]);
 }

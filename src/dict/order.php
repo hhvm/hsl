@@ -40,9 +40,9 @@ function sort<Tk, Tv>(
 ): dict<Tk, Tv> {
   $result = dict($traversable);
   if ($value_comparator) {
-    \uasort($result, $value_comparator);
+    \uasort(/*ctpbr:&*/$result, $value_comparator);
   } else {
-    \asort($result);
+    \asort(/*ctpbr:&*/$result);
   }
   return $result;
 }
@@ -78,9 +78,9 @@ function sort_by_key<Tk, Tv>(
 ): dict<Tk, Tv> {
   $result = dict($traversable);
   if ($key_comparator) {
-    \uksort($result, $key_comparator);
+    \uksort(/*ctpbr:&*/$result, $key_comparator);
   } else {
-    \ksort($result);
+    \ksort(/*ctpbr:&*/$result);
   }
   return $result;
 }

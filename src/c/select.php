@@ -124,7 +124,7 @@ function last<Tv>(
   Traversable<Tv> $traversable,
 ): ?Tv {
   if (_Private\is_any_array($traversable)) {
-    return $traversable ? \end($traversable) : null;
+    return $traversable ? \end(/*ctpbr:&*/$traversable) : null;
   } else if ($traversable instanceof Iterable) {
     return $traversable->lastValue();
   }
@@ -151,7 +151,7 @@ function lastx<Tv>(Traversable<Tv> $traversable): Tv {
   }
   if (_Private\is_any_array($traversable)) {
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
-    return \end($traversable);
+    return \end(/*ctpbr:&*/$traversable);
   }
   $value = null;
   $did_iterate = false;
@@ -177,8 +177,8 @@ function last_key<Tk, Tv>(
     if (!$traversable) {
       return null;
     }
-    \end($traversable);
-    return \key($traversable);
+    \end(/*ctpbr:&*/$traversable);
+    return \key(/*ctpbr:&*/$traversable);
   } else if ($traversable instanceof KeyedIterable) {
     return $traversable->lastKey();
   }
