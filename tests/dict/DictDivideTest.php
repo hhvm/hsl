@@ -108,7 +108,7 @@ final class DictDivideTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider providePartition */
-  public function testPartition<Tk, Tv>(
+  public function testPartition<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $predicate,
     (dict<Tk, Tv>, dict<Tk, Tv>) $expected,
@@ -117,7 +117,7 @@ final class DictDivideTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider providePartitionWithKey */
-  public function testPartitionWithKey<Tk, Tv>(
+  public function testPartitionWithKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk, Tv): bool) $predicate,
     (dict<Tk, Tv>, dict<Tk, Tv>) $expected,

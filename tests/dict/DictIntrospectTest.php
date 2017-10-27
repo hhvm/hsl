@@ -53,7 +53,7 @@ final class DictIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestEqual */
-  public function testEqual<Tk, Tv>(
+  public function testEqual<Tk as arraykey, Tv>(
     dict<Tk, Tv> $dict1,
     dict<Tk, Tv> $dict2,
     bool $expected,

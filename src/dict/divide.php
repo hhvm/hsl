@@ -15,7 +15,7 @@ namespace HH\Lib\Dict;
  * Returns a 2-tuple containing dicts for which the given predicate returned
  * `true` and `false`, respectively.
  */
-function partition<Tk, Tv>(
+function partition<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   (function(Tv): bool) $predicate,
 ): (dict<Tk, Tv>, dict<Tk, Tv>) {
@@ -35,7 +35,7 @@ function partition<Tk, Tv>(
  * Returns a 2-tuple containing dicts for which the given keyed predicate
  * returned `true` and `false`, respectively.
  */
-function partition_with_key<Tk, Tv>(
+function partition_with_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   (function(Tk, Tv): bool) $predicate,
 ): (dict<Tk, Tv>, dict<Tk, Tv>) {
