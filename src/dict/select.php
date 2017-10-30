@@ -15,7 +15,7 @@ namespace HH\Lib\Dict;
  * Returns a new dict containing only the entries of the first KeyedTraversable
  * whose keys do not appear in any of the other ones.
  */
-function diff_by_key<Tk1, Tk2, Tv>(
+function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   KeyedTraversable<Tk1, Tv> $first,
   KeyedTraversable<Tk2, mixed> $second,
   KeyedTraversable<Tk2, mixed> ...$rest
@@ -100,7 +100,7 @@ function filter_with_key<Tk, Tv>(
  * Returns a new dict containing only the keys for which the given predicate
  * returns `true`. The default predicate is casting the key to boolean.
  */
-function filter_keys<Tk, Tv>(
+function filter_keys<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tk): bool) $key_predicate = null,
 ): dict<Tk, Tv> {

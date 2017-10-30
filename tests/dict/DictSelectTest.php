@@ -50,7 +50,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestDiffByKey */
-  public function testDiffByKey<Tk1, Tk2, Tv>(
+  public function testDiffByKey<Tk1 as arraykey, Tk2 as arraykey, Tv>(
     KeyedTraversable<Tk1, Tv> $first,
     KeyedTraversable<Tk2, mixed> $second,
     Container<KeyedTraversable<Tk2, mixed>> $rest,
@@ -259,7 +259,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFilterKeys */
-  public function testFilterKeys<Tk, Tv>(
+  public function testFilterKeys<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk): bool) $key_predicate,
     dict<Tk, Tv> $expected,
