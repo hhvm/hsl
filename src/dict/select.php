@@ -83,7 +83,7 @@ function filter<Tk, Tv>(
  *
  * To use an async predicate, see Dict\filter_with_key_async.
  */
-function filter_with_key<Tk, Tv>(
+function filter_with_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   (function(Tk, Tv): bool) $predicate,
 ): dict<Tk, Tv> {
@@ -118,7 +118,7 @@ function filter_keys<Tk as arraykey, Tv>(
  * Given a KeyedTraversable with nullable values, returns a new dict with
  * those mappings removed.
  */
-function filter_nulls<Tk, Tv>(
+function filter_nulls<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, ?Tv> $traversable,
 ): dict<Tk, Tv> {
   $result = dict[];

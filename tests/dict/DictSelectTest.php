@@ -206,7 +206,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFilterWithKey */
-  public function testFilterWithKey<Tk, Tv>(
+  public function testFilterWithKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk, Tv): bool) $predicate,
     dict<Tk, Tv> $expected,
@@ -329,7 +329,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFilterNulls */
-  public function testFilterNulls<Tk, Tv>(
+  public function testFilterNulls<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, ?Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
