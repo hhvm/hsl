@@ -52,7 +52,7 @@ function find_key<Tk, Tv>(
  * For non-empty Traversables, see C\firstx.
  * For possibly null Traversables, see C\nfirst.
  * For single-element Traversables, see C\onlyx.
- * For Awaitables that yield Traversables, see C\gen_first.
+ * For Awaitables that yield Traversables, see C\first_async.
  */
 function first<T>(
   Traversable<T> $traversable,
@@ -70,7 +70,7 @@ function first<T>(
  * For possibly empty Traversables, see C\first.
  * For possibly null Traversables, see C\nfirst.
  * For single-element Traversables, see C\onlyx.
- * For Awaitables that yield Traversables, see C\gen_firstx.
+ * For Awaitables that yield Traversables, see C\firstx_async.
  */
 function firstx<T>(
   Traversable<T> $traversable,

@@ -61,7 +61,7 @@ function drop<Tk as arraykey, Tv>(
  * returns `true`. The default predicate is casting the value to boolean.
  *
  * To remove null values in a typechecker-visible way, see Dict\filter_nulls.
- * To use an async predicate, see Dict\gen_filter.
+ * To use an async predicate, see Dict\filter_async.
  */
 function filter<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,

@@ -92,7 +92,7 @@ function drop<Tv>(
  * returns `true`. The default predicate is casting the value to boolean.
  *
  * To remove null values in a typechecker-visible way, see Vec\filter_nulls.
- * To use an async predicate, see Vec\gen_filter.
+ * To use an async predicate, see Vec\filter_async.
  */
 function filter<Tv>(
   Traversable<Tv> $traversable,

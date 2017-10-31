@@ -66,7 +66,7 @@ function flatten<Tv>(
  * Returns a new vec where each value is the result of calling the given
  * function on the original value.
  *
- * For async functions, see Vec\gen_map.
+ * For async functions, see Vec\map_async.
  */
 function map<Tv1, Tv2>(
   Traversable<Tv1> $traversable,

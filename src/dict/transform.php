@@ -99,7 +99,7 @@ function flip<Tk, Tv as arraykey>(
  * Returns a new dict where each value is the result of calling the given
  * function on the corresponding key.
  *
- * To use an async function, see Dict\gen_from_keys.
+ * To use an async function, see Dict\from_keys_async.
  * To create a dict from values, see Dict\from_values.
  * To create a dict from key/value pairs, see Dict\from_entries.
  */
@@ -179,7 +179,7 @@ function group_by<Tk as arraykey, Tv>(
  * Returns a new dict where each value is the result of calling the given
  * function on the original value.
  *
- * To use an async function, see Dict\gen_map.
+ * To use an async function, see Dict\map_async.
  */
 function map<Tk, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,

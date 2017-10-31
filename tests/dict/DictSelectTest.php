@@ -336,7 +336,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\filter_nulls($traversable))->toBeSame($expected);
   }
 
-  public function testGenFilter(): void {
+  public function testFilterAsync(): void {
   }
 
   public static function provideTestSelectKeys(): array<mixed> {
