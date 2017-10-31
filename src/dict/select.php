@@ -81,7 +81,7 @@ function filter<Tk, Tv>(
  * Just like filter, but your predicate can include the key as well as
  * the value.
  *
- * To use an async predicate, see Dict\gen_filter_with_key.
+ * To use an async predicate, see Dict\filter_with_key_async.
  */
 function filter_with_key<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
