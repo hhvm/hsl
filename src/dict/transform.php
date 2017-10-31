@@ -16,7 +16,7 @@ namespace HH\Lib\Dict;
  * size. If the original dict doesn't divide evenly, the final chunk will be
  * smaller.
  */
-function chunk<Tk, Tv>(
+function chunk<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   int $size,
 ): vec<dict<Tk, Tv>> {
@@ -54,7 +54,7 @@ function count_values<Tv as arraykey>(
  *
  * For a fixed number of KeyedTraversables, see `Dict\merge`.
  */
-function flatten<Tk, Tv>(
+function flatten<Tk as arraykey, Tv>(
   Traversable<KeyedTraversable<Tk, Tv>> $traversables,
 ): dict<Tk, Tv> {
   $result = dict[];

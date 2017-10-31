@@ -121,7 +121,7 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestMerge */
-  public function testMerge<Tk, Tv>(
+  public function testMerge<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $first,
     Container<KeyedTraversable<Tk, Tv>> $rest,
     dict<Tk, Tv> $expected,

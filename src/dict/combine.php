@@ -38,7 +38,7 @@ function associate<Tk as arraykey, Tv>(
  * Merges multiple KeyedTraversables into a new dict. In the case of duplicate
  * keys, later values will overwrite the previous ones.
  */
-function merge<Tk, Tv>(
+function merge<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $first,
   KeyedTraversable<Tk, Tv> ...$rest
 ): dict<Tk, Tv> {

@@ -55,7 +55,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestChunk */
-  public function testChunk<Tk, Tv>(
+  public function testChunk<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     int $size,
     vec<dict<Tk, Tv>> $expected,
@@ -206,7 +206,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFlatten */
-  public function testFlatten<Tk, Tv>(
+  public function testFlatten<Tk as arraykey, Tv>(
     Traversable<KeyedTraversable<Tk, Tv>> $traversables,
     dict<Tk, Tv> $expected,
   ): void {
