@@ -9,7 +9,7 @@
  *
  */
 
-use namespace HH\Lib\Dict as DictHSL;
+use namespace HH\Lib\Dict;
 use function Facebook\FBExpect\expect;
 
 /**
@@ -63,7 +63,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await DictHSL\from_async($awaitables);
+      $actual = await Dict\from_async($awaitables);
       expect($actual)->toBeSame($expected);
     });
   }
@@ -103,7 +103,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await DictHSL\from_keys_async($keys, $async_func);
+      $actual = await Dict\from_keys_async($keys, $async_func);
       expect($actual)->toBeSame($expected);
     });
   }
@@ -113,7 +113,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
     \HH\Asio\join(async {
       // Like Ref<int>, but not a flibism
       $run_cnt = Map { 'value' => 0 };
-      $actual = await DictHSL\from_keys_async(
+      $actual = await Dict\from_keys_async(
         vec[1, 1, 2],
         async ($k) ==> {
           ++$run_cnt['value'];
@@ -167,14 +167,14 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestGenFilter */
-  public function testFilterAsync<Tk, Tv>(
+  public function testFilterAsync<Tk as arraykey, Tv>(
     KeyedContainer<Tk, Tv> $traversable,
     (function(Tv): Awaitable<bool>) $value_predicate,
     dict<Tk, Tv> $expected,
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await DictHSL\filter_async($traversable, $value_predicate);
+      $actual = await Dict\filter_async($traversable, $value_predicate);
       expect($actual)->toBeSame($expected);
     });
   }
@@ -232,7 +232,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await DictHSL\map_async($traversable, $value_func);
+      $actual = await Dict\map_async($traversable, $value_func);
       expect($actual)->toBeSame($expected);
     });
   }

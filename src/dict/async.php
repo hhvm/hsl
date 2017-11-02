@@ -69,7 +69,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
  *
  * For non-async predicates, see Dict\filter.
  */
-async function filter_async<Tk, Tv>(
+async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   (function(Tv): Awaitable<bool>) $value_predicate,
 ): Awaitable<dict<Tk, Tv>> {
@@ -88,7 +88,7 @@ async function filter_async<Tk, Tv>(
  *
  * For non-async filters with key, see Dict\filter_with_key.
  */
-async function filter_with_key_async<Tk, Tv>(
+async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   (function(Tk, Tv): Awaitable<bool>) $predicate,
 ): Awaitable<dict<Tk, Tv>> {
