@@ -166,7 +166,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestSortBy */
-  public function testSortBy<Tk, Tv, Ts>(
+  public function testSortBy<Tk as arraykey, Tv, Ts>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): Ts) $scalar_func,
     ?(function(Ts, Ts): int) $scalar_comparator,

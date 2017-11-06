@@ -487,7 +487,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestMap */
-  public function testMap<Tk, Tv1, Tv2>(
+  public function testMap<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function (Tv1): Tv2) $func,
     dict<Tk, Tv2> $expected,
@@ -590,7 +590,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestMapWithKey */
-  public function testMapWithKey<Tk, Tv1, Tv2>(
+  public function testMapWithKey<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tk, Tv1): Tv2) $value_func,
     dict<Tk, Tv2> $expected,

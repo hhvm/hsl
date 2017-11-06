@@ -53,7 +53,7 @@ function sort<Tk, Tv>(
  * comparator function isn't provided, the values will be sorted in ascending
  * order of scalar key.
  */
-function sort_by<Tk, Tv, Ts>(
+function sort_by<Tk as arraykey, Tv, Ts>(
   KeyedTraversable<Tk, Tv> $traversable,
   (function(Tv): Ts) $scalar_func,
   ?(function(Ts, Ts): int) $scalar_comparator = null,

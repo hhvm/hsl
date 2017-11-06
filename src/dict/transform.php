@@ -181,7 +181,7 @@ function group_by<Tk as arraykey, Tv>(
  *
  * To use an async function, see Dict\map_async.
  */
-function map<Tk, Tv1, Tv2>(
+function map<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tv1): Tv2) $value_func,
 ): dict<Tk, Tv2> {
@@ -212,7 +212,7 @@ function map_keys<Tk1, Tk2 as arraykey, Tv>(
  * Returns a new dict where each value is the result of calling the given
  * function on the original value and key.
  */
-function map_with_key<Tk, Tv1, Tv2>(
+function map_with_key<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tk, Tv1): Tv2) $value_func,
 ): dict<Tk, Tv2> {
