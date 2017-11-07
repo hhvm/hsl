@@ -63,7 +63,7 @@ function drop<Tk as arraykey, Tv>(
  * To remove null values in a typechecker-visible way, see Dict\filter_nulls.
  * To use an async predicate, see Dict\filter_async.
  */
-function filter<Tk, Tv>(
+function filter<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tv): bool) $value_predicate = null,
 ): dict<Tk, Tv> {

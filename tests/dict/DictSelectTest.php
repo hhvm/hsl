@@ -152,7 +152,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFilter */
-  public function testFilter<Tk, Tv>(
+  public function testFilter<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $value_predicate,
     dict<Tk, Tv> $expected,
