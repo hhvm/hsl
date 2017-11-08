@@ -13,7 +13,7 @@ namespace HH\Lib\Dict;
 
 use namespace HH\Lib\C;
 
-async function from_async<Tk, Tv>(
+async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
   $wait_handles = dict[];
@@ -110,7 +110,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see Dict\map.
  */
-async function map_async<Tk, Tv1, Tv2>(
+async function map_async<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {

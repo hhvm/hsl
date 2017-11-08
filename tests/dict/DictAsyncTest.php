@@ -57,7 +57,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestGen */
-  public function testFromAsync<Tk, Tv>(
+  public function testFromAsync<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
     dict<Tk, Tv> $expected,
   ): void {
@@ -225,7 +225,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestGenMap */
-  public function testMapAsync<Tk, Tv1, Tv2>(
+  public function testMapAsync<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tv1): Awaitable<Tv2>) $value_func,
     dict<Tk, Tv2> $expected,
