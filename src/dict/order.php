@@ -34,7 +34,7 @@ function reverse<Tk as arraykey, Tv>(
  *
  * To sort by some computable property of each value, see sort_by().
  */
-function sort<Tk, Tv>(
+function sort<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tv, Tv): int) $value_comparator = null,
 ): dict<Tk, Tv> {
@@ -72,7 +72,7 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  * optional comparator function isn't provided, the keys will be sorted in
  * ascending order.
  */
-function sort_by_key<Tk, Tv>(
+function sort_by_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tk, Tk): int) $key_comparator = null,
 ): dict<Tk, Tv> {

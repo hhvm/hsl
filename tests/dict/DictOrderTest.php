@@ -122,7 +122,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
 
 
   /** @dataProvider provideTestSort */
-  public function testSort<Tk, Tv>(
+  public function testSort<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     ?(function(Tv, Tv): int) $value_comparator,
     dict<Tk, Tv> $expected,
@@ -210,7 +210,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestSortByKey */
-  public function testSortByKey<Tk, Tv>(
+  public function testSortByKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     ?(function(Tk, Tk): int) $key_comparator,
     dict<Tk, Tv> $expected,
