@@ -9,7 +9,7 @@
  *
  */
 
-use HH\Lib\Vec as VecHSL;
+use namespace HH\Lib\Vec;
 use function Facebook\FBExpect\expect;
 
 /**
@@ -54,7 +54,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await VecHSL\from_async($awaitables);
+      $actual = await Vec\from_async($awaitables);
       expect($actual)->toBeSame($expected);
     });
   }
@@ -87,7 +87,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await VecHSL\filter_async($container, $value_predicate);
+      $actual = await Vec\filter_async($container, $value_predicate);
       expect($actual)->toBeSame($expected);
     });
   }
@@ -117,7 +117,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      $actual = await VecHSL\map_async($keys, $async_func);
+      $actual = await Vec\map_async($keys, $async_func);
       expect($actual)->toBeSame($expected);
     });
   }
