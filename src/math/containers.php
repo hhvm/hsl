@@ -16,8 +16,8 @@ use namespace HH\Lib\{C, Math, Vec};
  * Returns the largest element of the given Traversable, or null if the
  * Traversable is empty.
  *
- * For a known number of inputs, see `Math\maxva`.
- * To find the smallest number, see `Math\min`.
+ * For a known number of inputs, see `Math\maxva()`.
+ * To find the smallest number, see `Math\min()`.
  */
 function max<T as num>(
   Traversable<T> $numbers,
@@ -38,7 +38,7 @@ function max<T as num>(
  * The value for comparison is determined by the given function. In the case of
  * duplicate numeric keys, later values overwrite previous ones.
  *
- * For numeric elements, see `Math\max`.
+ * For numeric elements, see `Math\max()`.
  */
 function max_by<T>(
   Traversable<T> $traversable,
@@ -59,9 +59,9 @@ function max_by<T>(
 /**
  * Returns the arithmetic mean of the numbers in the given container.
  *
- * To find the sum, see `Math\sum`.
- * To find the maximum, see `Math\max`.
- * To find the minimum, see `Math\min`.
+ * To find the sum, see `Math\sum()`.
+ * To find the maximum, see `Math\max()`.
+ * To find the minimum, see `Math\min()`.
  */
 function mean(Container<num> $numbers): ?float {
   $count = (float)C\count($numbers);
@@ -78,7 +78,7 @@ function mean(Container<num> $numbers): ?float {
 /**
  * Returns the median of the given numbers.
  *
- * To find the mean, see `Math\mean`.
+ * To find the mean, see `Math\mean()`.
  */
 function median(Container<num> $numbers): ?float {
   $numbers = Vec\sort($numbers);
@@ -99,8 +99,8 @@ function median(Container<num> $numbers): ?float {
  * Returns the smallest element of the given Traversable, or null if the
  * Traversable is empty.
  *
- * For a known number of inputs, see `Math\minva`.
- * To find the largest number, see `Math\max`.
+ * For a known number of inputs, see `Math\minva()`.
+ * To find the largest number, see `Math\max()`.
  */
 function min<T as num>(
   Traversable<T> $numbers,
@@ -121,7 +121,7 @@ function min<T as num>(
  * The value for comparison is determined by the given function. In the case of
  * duplicate numeric keys, later values overwrite previous ones.
  *
- * For numeric elements, see `Math\min`.
+ * For numeric elements, see `Math\min()`.
  */
 function min_by<T>(
   Traversable<T> $traversable,
@@ -142,7 +142,7 @@ function min_by<T>(
 /**
  * Returns the integer sum of the values of the given Traversable.
  *
- * For a float sum, see `Math\sum_float`.
+ * For a float sum, see `Math\sum_float()`.
  */
 function sum(
   Traversable<int> $traversable,
@@ -157,7 +157,7 @@ function sum(
 /**
  * Returns the float sum of the values of the given Traversable.
  *
- * For an integer sum, see `Math\sum`.
+ * For an integer sum, see `Math\sum()`.
  */
 function sum_float<T as num>(
   Traversable<T> $traversable,

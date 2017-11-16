@@ -26,8 +26,8 @@ function abs<T as num>(T $number): T {
  * letters a-z are used for digits for bases greater than 10. The conversion is
  * done to arbitrary precision.
  *
- * To convert a string in some base to an int, see `Math\from_base`.
- * To convert an int to a string in some base, see `Math\to_base`.
+ * To convert a string in some base to an int, see `Math\from_base()`.
+ * To convert an int to a string in some base, see `Math\to_base()`.
  */
 function base_convert(string $value, int $from_base, int $to_base): string {
   invariant(
@@ -86,7 +86,7 @@ function base_convert(string $value, int $from_base, int $to_base): string {
  * Returns the smallest integer value greater than or equal to $value.
  *
  * To find the largest integer value less than or equal to `$value`, see
- * `Math\floor`.
+ * `Math\floor()`.
  */
 function ceil(num $value): float {
   return \ceil($value);
@@ -95,8 +95,8 @@ function ceil(num $value): float {
 /**
  * Returns the cosine of `$arg`.
  *
- * To find the sine, see `Math\sin`.
- * To find the tangent, see `Math\tan`.
+ * To find the sine, see `Math\sin()`.
+ * To find the tangent, see `Math\tan()`.
  */
 function cos(num $arg): float {
   return \cos($arg);
@@ -106,7 +106,7 @@ function cos(num $arg): float {
  * Converts the given string in the given base to an int, assuming letters a-z
  * are used for digits when `$from_base` > 10.
  *
- * To base convert an int into a string, see `Math\to_base`.
+ * To base convert an int into a string, see `Math\to_base()`.
  */
 function from_base(string $number, int $from_base): int {
   $result_string = base_convert($number, $from_base, 10);
@@ -123,7 +123,7 @@ function from_base(string $number, int $from_base): int {
 /**
  * Returns e to the power `$arg`.
  *
- * To find the logarithm, see `Math\log`.
+ * To find the logarithm, see `Math\log()`.
  */
 function exp(num $arg): float {
   return \exp($arg);
@@ -133,9 +133,9 @@ function exp(num $arg): float {
  * Returns the largest integer value less than or equal to `$value`.
  *
  * To find the smallest integer value greater than or equal to `$value`, see
- * `Math\ceil`.
+ * `Math\ceil()`.
  * To find the largest integer value less than or equal to a ratio, see
- * `Math\int_div`.
+ * `Math\int_div()`.
  */
 function floor(num $value): float {
   return \floor($value);
@@ -144,7 +144,7 @@ function floor(num $value): float {
 /**
  * Returns the result of integer division of `$numerator` by `$denominator`.
  *
- * To round a single value, see `Math\floor`.
+ * To round a single value, see `Math\floor()`.
  */
 function int_div(int $numerator, int $denominator): int {
   if ($denominator === 0) {
@@ -156,7 +156,7 @@ function int_div(int $numerator, int $denominator): int {
 /**
  * Returns the logarithm base `$base` of `$arg`.
  *
- * For the exponential function, see `Math\exp`.
+ * For the exponential function, see `Math\exp()`.
  */
 function log(num $arg, ?num $base = null): float {
   invariant($arg > 0, 'Expected positive argument for log, got %f', $arg);
@@ -184,8 +184,8 @@ function round(
 /**
  * Returns the sine of $arg.
  *
- * To find the cosine, see `Math\cos`.
- * To find the tangent, see `Math\tan`.
+ * To find the cosine, see `Math\cos()`.
+ * To find the tangent, see `Math\tan()`.
  */
 function sin(num $arg): float {
   return \sin($arg);
@@ -202,8 +202,8 @@ function sqrt(num $arg): float {
 /**
  * Returns the tangent of `$arg`.
  *
- * To find the cosine, see `Math\cos`.
- * To find the sine, see `Math\sin`.
+ * To find the cosine, see `Math\cos()`.
+ * To find the sine, see `Math\sin()`.
  */
 function tan(num $arg): float {
   return \tan($arg);
@@ -213,7 +213,7 @@ function tan(num $arg): float {
  * Converts the given non-negative number into the given base, using letters a-z
  * for digits when `$to_base` > 10.
  *
- * To base convert a string to an int, see `Math\from_base`.
+ * To base convert a string to an int, see `Math\from_base()`.
  */
 function to_base(int $number, int $to_base): string {
   invariant(
