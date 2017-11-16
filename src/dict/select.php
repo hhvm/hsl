@@ -37,7 +37,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  * Returns a new dict containing all except the first `$n` entries of the
  * given KeyedTraversable.
  *
- * To take only the first `$n` entries, see `Dict\take`.
+ * To take only the first `$n` entries, see `Dict\take()`.
  */
 function drop<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -60,8 +60,8 @@ function drop<Tk as arraykey, Tv>(
  * Returns a new dict containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
- * To remove null values in a typechecker-visible way, see Dict\filter_nulls.
- * To use an async predicate, see Dict\filter_async.
+ * To remove null values in a typechecker-visible way, see `Dict\filter_nulls()`.
+ * To use an async predicate, see `Dict\filter_async()`.
  */
 function filter<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -81,7 +81,7 @@ function filter<Tk as arraykey, Tv>(
  * Just like filter, but your predicate can include the key as well as
  * the value.
  *
- * To use an async predicate, see Dict\filter_with_key_async.
+ * To use an async predicate, see `Dict\filter_with_key_async()`.
  */
 function filter_with_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -152,7 +152,7 @@ function select_keys<Tk as arraykey, Tv>(
  * Returns a new dict containing the first `$n` entries of the given
  * KeyedTraversable.
  *
- * To drop the first `$n` entries, see `Dict\drop`.
+ * To drop the first `$n` entries, see `Dict\drop()`.
  */
 function take<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -178,7 +178,7 @@ function take<Tk as arraykey, Tv>(
  * Returns a new dict in which each value appears exactly once. In case of
  * duplicate values, later keys will overwrite the previous ones.
  *
- * For non-arraykey values, see Dict\unique_by.
+ * For non-arraykey values, see `Dict\unique_by()`.
  */
 function unique<Tk as arraykey, Tv as arraykey>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -192,7 +192,7 @@ function unique<Tk as arraykey, Tv as arraykey>(
  * given function. In case of duplicate scalar values, later keys will overwrite
  * the previous ones.
  *
- * For arraykey values, see Dict\unique.
+ * For arraykey values, see `Dict\unique()`.
  */
 function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   KeyedContainer<Tk, Tv> $container,

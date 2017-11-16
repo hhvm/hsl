@@ -37,7 +37,7 @@ async function from_async<Tk as arraykey, Tv>(
  * Returns a new dict where each value is the result of calling the given
  * async function on the corresponding key.
  *
- * For non-async functions, see Dict\from_keys.
+ * For non-async functions, see `Dict\from_keys()`.
  */
 async function from_keys_async<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
@@ -67,7 +67,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
  * Returns a new dict containing only the values for which the given async
  * predicate returns `true`.
  *
- * For non-async predicates, see Dict\filter.
+ * For non-async predicates, see `Dict\filter()`.
  */
 async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
@@ -86,7 +86,7 @@ async function filter_async<Tk as arraykey, Tv>(
 /**
  * Like filter_async, but lets you utilize the keys of your dict too.
  *
- * For non-async filters with key, see Dict\filter_with_key.
+ * For non-async filters with key, see `Dict\filter_with_key()`.
  */
 async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
@@ -108,7 +108,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  * Returns a new dict where each value is the result of calling the given
  * async function on the original value.
  *
- * For non-async functions, see Dict\map.
+ * For non-async functions, see `Dict\map()`.
  */
 async function map_async<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,

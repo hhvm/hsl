@@ -52,7 +52,7 @@ function count_values<Tv as arraykey>(
  * given Traversable. In the case of duplicate keys, later values will overwrite
  * the previous ones.
  *
- * For a fixed number of KeyedTraversables, see `Dict\merge`.
+ * For a fixed number of KeyedTraversables, see `Dict\merge()`.
  */
 function flatten<Tk as arraykey, Tv>(
   Traversable<KeyedTraversable<Tk, Tv>> $traversables,
@@ -99,9 +99,9 @@ function flip<Tk, Tv as arraykey>(
  * Returns a new dict where each value is the result of calling the given
  * function on the corresponding key.
  *
- * To use an async function, see Dict\from_keys_async.
- * To create a dict from values, see Dict\from_values.
- * To create a dict from key/value pairs, see Dict\from_entries.
+ * To use an async function, see `Dict\from_keys_async()`.
+ * To create a dict from values, see `Dict\from_values()`.
+ * To create a dict from key/value pairs, see `Dict\from_entries()`.
  */
 function from_keys<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
@@ -119,8 +119,8 @@ function from_keys<Tk as arraykey, Tv>(
  * tuples. In the case of duplicate keys, later values will overwrite the
  * previous ones.
  *
- * To create a dict from keys, see Dict\from_keys.
- * To create a dict from values, see Dict\from_values.
+ * To create a dict from keys, see `Dict\from_keys()`.
+ * To create a dict from values, see `Dict\from_values()`.
  */
 function from_entries<Tk as arraykey, Tv>(
   Traversable<(Tk, Tv)> $entries,
@@ -137,8 +137,8 @@ function from_entries<Tk as arraykey, Tv>(
  * corresponding value. In the case of duplicate keys, later values will
  * overwrite the previous ones.
  *
- * To create a dict from keys, see Dict\from_keys.
- * To create a dict from key/value pairs, see Dict\from_entries.
+ * To create a dict from keys, see `Dict\from_keys()`.
+ * To create a dict from key/value pairs, see `Dict\from_entries()`.
  */
 function from_values<Tk as arraykey, Tv>(
   Traversable<Tv> $values,
@@ -179,7 +179,7 @@ function group_by<Tk as arraykey, Tv>(
  * Returns a new dict where each value is the result of calling the given
  * function on the original value.
  *
- * To use an async function, see Dict\map_async.
+ * To use an async function, see `Dict\map_async()`.
  */
 function map<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
