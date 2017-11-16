@@ -17,7 +17,7 @@ use namespace HH\Lib\{Dict, Keyset};
  * Returns a new vec containing only the elements of the first Traversable that
  * do not appear in any of the other ones.
  *
- * For vecs that contain non-arraykey elements, see Vec\diff_by.
+ * For vecs that contain non-arraykey elements, see `Vec\diff_by()`.
  */
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv1> $first,
@@ -44,7 +44,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * that do not appear in the second one, where an element's identity is
  * determined by the scalar function.
  *
- * For vecs that contain arraykey elements, see Vec\diff.
+ * For vecs that contain arraykey elements, see `Vec\diff()`.
  */
 function diff_by<Tv, Ts as arraykey>(
   Traversable<Tv> $first,
@@ -68,7 +68,7 @@ function diff_by<Tv, Ts as arraykey>(
  * Returns a new vec containing all except the first `$n` elements of the
  * given Traversable.
  *
- * To take only the first `$n` elements, see `Vec\take`.
+ * To take only the first `$n` elements, see `Vec\take()`.
  */
 function drop<Tv>(
   Traversable<Tv> $traversable,
@@ -91,8 +91,8 @@ function drop<Tv>(
  * Returns a new vec containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
- * To remove null values in a typechecker-visible way, see Vec\filter_nulls.
- * To use an async predicate, see Vec\filter_async.
+ * To remove null values in a typechecker-visible way, see `Vec\filter_nulls()`.
+ * To use an async predicate, see `Vec\filter_async()`.
  */
 function filter<Tv>(
   Traversable<Tv> $traversable,
@@ -182,8 +182,8 @@ function sample<Tv>(
  * If no length is given or it exceeds the upper bound of the Traversable,
  * the vec will contain every element after the offset.
  *
- * To take only the first `$n` elements, see `Vec\take`.
- * To drop the first `$n` elements, see `Vec\drop`.
+ * To take only the first `$n` elements, see `Vec\take()`.
+ * To drop the first `$n` elements, see `Vec\drop()`.
  */
 function slice<Tv>(
   Container<Tv> $container,
@@ -199,7 +199,7 @@ function slice<Tv>(
  * Returns a new vec containing the first `$n` elements of the given
  * Traversable.
  *
- * To drop the first `$n` elements, see `Vec\drop`.
+ * To drop the first `$n` elements, see `Vec\drop()`.
  */
 function take<Tv>(
   Traversable<Tv> $traversable,
@@ -226,7 +226,7 @@ function take<Tv>(
  * once. The Traversable must contain arraykey values, and strict equality will
  * be used.
  *
- * For non-arraykey elements, see Vec\unique_by.
+ * For non-arraykey elements, see `Vec\unique_by()`.
  */
 function unique<Tv as arraykey>(
   Traversable<Tv> $traversable,
@@ -240,7 +240,7 @@ function unique<Tv as arraykey>(
  * the values. In case of duplicate scalar keys, later values will overwrite
  * previous ones.
  *
- * For arraykey elements, see Vec\unique.
+ * For arraykey elements, see `Vec\unique()`.
  */
 function unique_by<Tv, Ts as arraykey>(
   Traversable<Tv> $traversable,

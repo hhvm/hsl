@@ -35,7 +35,7 @@ async function from_async<Tv>(
  * Returns a new vec containing only the values for which the given async
  * predicate returns `true`.
  *
- * For non-async predicates, see Vec\filter.
+ * For non-async predicates, see `Vec\filter()`.
  */
 async function filter_async<Tv>(
   Container<Tv> $container,
@@ -57,7 +57,7 @@ async function filter_async<Tv>(
  * Returns a new vec where each value is the result of calling the given
  * async function on the original value.
  *
- * For non-async functions, see Vec\map.
+ * For non-async functions, see `Vec\map()`.
  */
 async function map_async<Tv1, Tv2>(
   Traversable<Tv1> $traversable,

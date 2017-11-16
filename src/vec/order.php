@@ -67,7 +67,7 @@ function shuffle<Tv>(
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
  *
- * To sort by some computable property of each value, see Vec\sort_by().
+ * To sort by some computable property of each value, see `Vec\sort_by()`.
  */
 function sort<Tv>(
   Traversable<Tv> $traversable,
@@ -87,6 +87,8 @@ function sort<Tv>(
  * Traversable, which is computed by the given function. If the optional
  * comparator function isn't provided, the values will be sorted in ascending
  * order of scalar key.
+ *
+ * To sort by the values of the Traversable, see `Vec\sort()`.
  */
 function sort_by<Tv, Ts>(
   Traversable<Tv> $traversable,

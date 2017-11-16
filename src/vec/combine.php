@@ -14,7 +14,7 @@ namespace HH\Lib\Vec;
 /**
  * Returns a new vec formed by concatenating the given Traversables together.
  *
- * For a variable number of Traversables, see Vec\flatten.
+ * For a variable number of Traversables, see `Vec\flatten()`.
  */
 function concat<Tv>(
   Traversable<Tv> $first,

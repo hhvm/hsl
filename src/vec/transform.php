@@ -48,7 +48,7 @@ function fill<Tv>(
  * Returns a new vec formed by joining the Traversable elements of the given
  * Traversable.
  *
- * For a fixed number of Traversables, see Vec\concat.
+ * For a fixed number of Traversables, see `Vec\concat()`.
  */
 function flatten<Tv>(
   Traversable<Traversable<Tv>> $traversables,
@@ -66,7 +66,7 @@ function flatten<Tv>(
  * Returns a new vec where each value is the result of calling the given
  * function on the original value.
  *
- * For async functions, see Vec\map_async.
+ * For async functions, see `Vec\map_async()`.
  */
 function map<Tv1, Tv2>(
   Traversable<Tv1> $traversable,
