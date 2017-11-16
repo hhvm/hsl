@@ -75,7 +75,7 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
  * within the given Traversables into
  * a keyset.
  *
- * For a fixed number of Traversables, see Keyset\union.
+ * For a fixed number of Traversables, see `Keyset\union()`.
  */
 function flatten<Tv as arraykey>(
   Traversable<Traversable<Tv>> $traversables,

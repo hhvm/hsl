@@ -15,7 +15,7 @@ namespace HH\Lib\Keyset;
  * Returns a new keyset containing all of the elements of the given
  * Traversables.
  *
- * For a variable number of Traversables, see Keyset\flatten.
+ * For a variable number of Traversables, see `Keyset\flatten()`.
  */
 function union<Tv as arraykey>(
   Traversable<Tv> $first,

@@ -27,7 +27,7 @@ async function from_async<Tv as arraykey>(
  * Returns a new keyset containing only the values for which the given async
  * predicate returns `true`.
  *
- * For non-async predicates, see Keyset\filter.
+ * For non-async predicates, see `Keyset\filter()`.
  */
 async function filter_async<Tv as arraykey>(
   Container<Tv> $traversable,

@@ -39,7 +39,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * Returns a new keyset containing all except the first `$n` elements of
  * the given Traversable.
  *
- * To take only the first `$n` elements, see `Keyset\take`.
+ * To take only the first `$n` elements, see `Keyset\take()`.
  */
 function drop<Tv as arraykey>(
   Traversable<Tv> $traversable,
@@ -62,7 +62,7 @@ function drop<Tv as arraykey>(
  * Returns a new keyset containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
- * To remove null values in a typechecker-visible way, see Keyset\filter_nulls.
+ * To remove null values in a typechecker-visible way, see `Keyset\filter_nulls()`.
  */
 function filter<Tv as arraykey>(
   Traversable<Tv> $traversable,
@@ -141,7 +141,7 @@ function intersect<Tv as arraykey>(
  * If there are duplicate values in the Traversable, the keyset may be shorter
  * than the specified length.
  *
- * To drop the first `$n` elements, see `Keyset\drop`.
+ * To drop the first `$n` elements, see `Keyset\drop()`.
  */
 function take<Tv as arraykey>(
   Traversable<Tv> $traversable,
