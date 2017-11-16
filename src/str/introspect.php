@@ -17,7 +17,7 @@ use namespace HH\Lib\_Private;
  * Returns < 0 if `$string1` is less than `$string2`, > 0 if `$string1` is
  * greater than `$string2`, and 0 if they are equal.
  *
- * For a case-insensitive comparison, see Str\compare_ci.
+ * For a case-insensitive comparison, see `Str\compare_ci()`.
  */
 function compare(
   string $string1,
@@ -30,7 +30,7 @@ function compare(
  * Returns < 0 if `$string1` is less than `$string2`, > 0 if `$string1` is
  * greater than `$string2`, and 0 if they are equal (case-insensitive).
  *
- * For a case-sensitive comparison, see Str\compare.
+ * For a case-sensitive comparison, see `Str\compare()`.
  */
 function compare_ci(
   string $string1,
@@ -47,8 +47,8 @@ function compare_ci(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To get the position of the needle, see Str\search.
- * To search for the needle case-insensitively, see Str\contains_ci.
+ * To get the position of the needle, see `Str\search()`.
+ * To search for the needle case-insensitively, see `Str\contains_ci()`.
  */
 function contains(
   string $haystack,
@@ -71,8 +71,8 @@ function contains(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To search for the needle case-sensitively, see Str\contains.
- * To get the position of the needle case-insensitively, see Str\search_ci.
+ * To search for the needle case-sensitively, see `Str\contains()`.
+ * To get the position of the needle case-insensitively, see `Str\search_ci()`.
  */
 function contains_ci(
   string $haystack,
@@ -89,7 +89,7 @@ function contains_ci(
 /**
  * Returns whether the string ends with the given suffix.
  *
- * For a case-insensitive check, see Str\ends_with_ci.
+ * For a case-insensitive check, see `Str\ends_with_ci()`.
  */
 function ends_with(
   string $string,
@@ -105,7 +105,7 @@ function ends_with(
 /**
  * Returns whether the string ends with the given suffix (case-insensitive).
  *
- * For a case-sensitive check, see Str\ends_with.
+ * For a case-sensitive check, see `Str\ends_with()`.
  */
 function ends_with_ci(
   string $string,
@@ -151,9 +151,9 @@ function length(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To simply check if the haystack contains the needle, see Str\contains.
- * To get the case-insensitive position, see Str\search_ci.
- * To get the last position of the needle, see Str\search_last.
+ * To simply check if the haystack contains the needle, see `Str\contains()`.
+ * To get the case-insensitive position, see `Str\search_ci()`.
+ * To get the last position of the needle, see `Str\search_last()`.
  *
  * Previously known in PHP as `strpos`.
  */
@@ -179,9 +179,9 @@ function search(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To simply check if the haystack contains the needle, see Str\contains.
- * To get the case-sensitive position, see Str\search.
- * To get the last position of the needle, see Str\search_last.
+ * To simply check if the haystack contains the needle, see `Str\contains()`.
+ * To get the case-sensitive position, see `Str\search()`.
+ * To get the last position of the needle, see `Str\search_last()`.
  *
  * Previously known in PHP as `stripos`.
  */
@@ -207,8 +207,8 @@ function search_ci(
  * characters from the end of the string and go backwards. If the offset is
  * out-of-bounds, a ViolationException will be thrown.
  *
- * To simply check if the haystack contains the needle, see Str\contains.
- * To get the first position of the needle, see Str\search.
+ * To simply check if the haystack contains the needle, see `Str\contains()`.
+ * To get the first position of the needle, see `Str\search()`.
  *
  * Previously known in PHP as `strrpos`.
  */
@@ -232,7 +232,7 @@ function search_last(
 /**
  * Returns whether the string starts with the given prefix.
  *
- * For a case-insensitive check, see Str\starts_with_ci.
+ * For a case-insensitive check, see `Str\starts_with_ci()`.
  */
 function starts_with(
   string $string,
@@ -244,7 +244,7 @@ function starts_with(
 /**
  * Returns whether the string starts with the given prefix (case-insensitive).
  *
- * For a case-sensitive check, see Str\starts_with.
+ * For a case-sensitive check, see `Str\starts_with()`.
  */
 function starts_with_ci(
   string $string,

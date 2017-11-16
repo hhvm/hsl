@@ -13,6 +13,8 @@ namespace HH\Lib\Str;
 
 /**
  * Returns a vec containing the string split into chunks of the given size.
+ *
+ * To split the string on a delimiter, see `Str\split()`.
  */
 function chunk(
   string $string,
@@ -28,6 +30,8 @@ function chunk(
  *
  * If the limit is provided, the vec will only contain that many elements, where
  * the last element is the remainder of the string.
+ *
+ * To split the string into equally-sized chunks, see `Str\chunk()`.
  *
  * Previously known as `explode` in PHP.
  */
