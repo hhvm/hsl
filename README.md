@@ -9,17 +9,6 @@ implementing the library according to codified design principles.
 This library is especially useful for working with the Hack arrays (`vec`,
 `keyset`, and `dict`).
 
-## Project Status
-
-This is an experimental preview release. The API should not be considered stable
-until a future 1.0 release, and backwards compatiblity will not be a concern of
-the developers until that time. For planned/likely BC-breaking changes,
-see the
-[issues labelled 'volatile api'](https://github.com/hhvm/hsl/issues?q=is%3Aopen+is%3Aissue+label%3A%22volatile+API%22).
-
-New v0.x releases will be automatically made weekly, if there are changes and
-the tests pass.
-
 ## Examples
 
 ```Hack
@@ -54,13 +43,13 @@ and find `Keyset\keys`.
 
 ### "I want the largest value in a particular container."
 
-Because the function isn't returning any particular container, you'd look in
-the C namespace and find `C\max` and `C\max_by`.
+Because the function is a math operation, you'd look in
+the Math namespace and find `Math\max` and `Math\max_by`.
 
 ## Full Documentation
 
-Automatically-generated documentation is available at
-[https://hhvm.github.io/hsl/api/](https://hhvm.github.io/hsl/api/).
+Automatically-generated documentation is available on
+[https://docs.hhvm.com/hsl/reference/](docs.hhvm.com).
 
 ## Installation
 
