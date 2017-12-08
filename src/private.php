@@ -38,6 +38,10 @@ function is_any_array(mixed $val): bool {
   return \is_dict($val) || \is_vec($val) || \is_keyset($val) || \is_array($val);
 }
 
+function boolval(mixed $val): bool {
+  return (bool)$val;
+}
+
 // Stub implementations of FB internals used to ease migrations
 
 /* HH_IGNORE_ERROR[5520] FIXME violates FB naming conventions */

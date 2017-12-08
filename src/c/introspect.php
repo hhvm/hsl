@@ -26,7 +26,7 @@ function any<T>(
   Traversable<T> $traversable,
   ?(function(T): bool) $predicate = null,
 ): bool {
-  $predicate = $predicate ?? fun('boolval');
+  $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
   foreach ($traversable as $value) {
     if ($predicate($value)) {
       return true;
@@ -82,7 +82,7 @@ function every<T>(
   Traversable<T> $traversable,
   ?(function(T): bool) $predicate = null,
 ): bool {
-  $predicate = $predicate ?? fun('boolval');
+  $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
   foreach ($traversable as $value) {
     if (!$predicate($value)) {
       return false;

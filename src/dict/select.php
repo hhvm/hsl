@@ -67,7 +67,7 @@ function filter<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tv): bool) $value_predicate = null,
 ): dict<Tk, Tv> {
-  $value_predicate = $value_predicate ?? fun('boolval');
+  $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
   $dict = dict[];
   foreach ($traversable as $key => $value) {
     if ($value_predicate($value)) {
@@ -104,7 +104,7 @@ function filter_keys<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tk): bool) $key_predicate = null,
 ): dict<Tk, Tv> {
-  $key_predicate = $key_predicate ?? fun('boolval');
+  $key_predicate = $key_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
   $dict = dict[];
   foreach ($traversable as $key => $value) {
     if ($key_predicate($key)) {

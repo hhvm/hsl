@@ -68,7 +68,7 @@ function filter<Tv as arraykey>(
   Traversable<Tv> $traversable,
   ?(function(Tv): bool) $value_predicate = null,
 ): keyset<Tv> {
-  $value_predicate = $value_predicate ?? fun('boolval');
+  $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
   $result = keyset[];
   foreach ($traversable as $value) {
     if ($value_predicate($value)) {
