@@ -22,9 +22,9 @@ function sort<Tv as arraykey>(
 ): keyset<Tv> {
   $keyset = keyset($traversable);
   if ($comparator) {
-    \uksort(/*ctpbr:&*/$keyset, $comparator);
+    \uksort(&$keyset, $comparator);
   } else {
-    \ksort(/*ctpbr:&*/$keyset);
+    \ksort(&$keyset);
   }
   return $keyset;
 }
