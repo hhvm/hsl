@@ -49,7 +49,7 @@ the Math namespace and find `Math\max` and `Math\max_by`.
 ## Full Documentation
 
 Automatically-generated documentation is available on
-[https://docs.hhvm.com/hsl/reference/](docs.hhvm.com).
+[docs.hhvm.com](https://docs.hhvm.com/hsl/reference/).
 
 ## Installation
 
