@@ -77,8 +77,8 @@ function strip_suffix(
  * If the optional character mask isn't provided, the following characters will
  * be stripped: space, tab, newline, carriage return, NUL byte, vertical tab.
  *
- * To only strip from the left, see `Str\trim_left()`.
- * To only strip from the right, see `Str\trim_right()`.
+ * - To only strip from the left, see `Str\trim_left()`.
+ * - To only strip from the right, see `Str\trim_right()`.
  */
 function trim(
   string $string,
@@ -93,8 +93,8 @@ function trim(
  * Returns the given string with whitespace stripped from the left.
  * See `Str\trim()` for more details.
  *
- * To strip from both ends, see `Str\trim()`.
- * To only strip from the right, see `Str\trim_right()`
+ * - To strip from both ends, see `Str\trim()`.
+ * - To only strip from the right, see `Str\trim_right()`
  */
 function trim_left(
   string $string,
@@ -107,10 +107,10 @@ function trim_left(
 
 /**
  * Returns the given string with whitespace stripped from the right.
- * See Str\trim for more details.
+ * See `Str\trim` for more details.
  *
- * To strip from both ends, see Str\trim.
- * To only strip from the left, see Str\trim_left.
+ * - To strip from both ends, see `Str\trim`.
+ * - To only strip from the left, see `Str\trim_left`.
  */
 function trim_right(
   string $string,

@@ -99,9 +99,9 @@ function flip<Tk, Tv as arraykey>(
  * Returns a new dict where each value is the result of calling the given
  * function on the corresponding key.
  *
- * To use an async function, see `Dict\from_keys_async()`.
- * To create a dict from values, see `Dict\from_values()`.
- * To create a dict from key/value pairs, see `Dict\from_entries()`.
+ * - To use an async function, see `Dict\from_keys_async()`.
+ * - To create a dict from values, see `Dict\from_values()`.
+ * - To create a dict from key/value pairs, see `Dict\from_entries()`.
  */
 function from_keys<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
@@ -116,11 +116,13 @@ function from_keys<Tk as arraykey, Tv>(
 
 /**
  * Returns a new dict where each mapping is defined by the given key/value
- * tuples. In the case of duplicate keys, later values will overwrite the
+ * tuples.
+ *
+ * In the case of duplicate keys, later values will overwrite the
  * previous ones.
  *
- * To create a dict from keys, see `Dict\from_keys()`.
- * To create a dict from values, see `Dict\from_values()`.
+ * - To create a dict from keys, see `Dict\from_keys()`.
+ * - To create a dict from values, see `Dict\from_values()`.
  */
 function from_entries<Tk as arraykey, Tv>(
   Traversable<(Tk, Tv)> $entries,
@@ -134,11 +136,13 @@ function from_entries<Tk as arraykey, Tv>(
 
 /**
  * Returns a new dict keyed by the result of calling the given function on each
- * corresponding value. In the case of duplicate keys, later values will
+ * corresponding value.
+ *
+ * In the case of duplicate keys, later values will
  * overwrite the previous ones.
  *
- * To create a dict from keys, see `Dict\from_keys()`.
- * To create a dict from key/value pairs, see `Dict\from_entries()`.
+ * - To create a dict from keys, see `Dict\from_keys()`.
+ * - To create a dict from key/value pairs, see `Dict\from_entries()`.
  */
 function from_values<Tk as arraykey, Tv>(
   Traversable<Tv> $values,
@@ -155,6 +159,7 @@ function from_values<Tk as arraykey, Tv>(
   * Returns a new dict where
   *  - keys are the results of the given function called on the given values.
   *  - values are vecs of original values that all produced the same key.
+  *
   * If a value produces a null key, it's omitted from the result.
   */
 function group_by<Tk as arraykey, Tv>(

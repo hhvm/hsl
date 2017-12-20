@@ -47,8 +47,8 @@ function compare_ci(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To get the position of the needle, see `Str\search()`.
- * To search for the needle case-insensitively, see `Str\contains_ci()`.
+ * - To get the position of the needle, see `Str\search()`.
+ * - To search for the needle case-insensitively, see `Str\contains_ci()`.
  */
 function contains(
   string $haystack,
@@ -71,8 +71,8 @@ function contains(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To search for the needle case-sensitively, see `Str\contains()`.
- * To get the position of the needle case-insensitively, see `Str\search_ci()`.
+ * - To search for the needle case-sensitively, see `Str\contains()`.
+ * - To get the position of the needle case-insensitively, see `Str\search_ci()`.
  */
 function contains_ci(
   string $haystack,
@@ -151,9 +151,9 @@ function length(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To simply check if the haystack contains the needle, see `Str\contains()`.
- * To get the case-insensitive position, see `Str\search_ci()`.
- * To get the last position of the needle, see `Str\search_last()`.
+ * - To simply check if the haystack contains the needle, see `Str\contains()`.
+ * - To get the case-insensitive position, see `Str\search_ci()`.
+ * - To get the last position of the needle, see `Str\search_last()`.
  *
  * Previously known in PHP as `strpos`.
  */
@@ -179,9 +179,9 @@ function search(
  * of the string. If the offset is out-of-bounds, a ViolationException will be
  * thrown.
  *
- * To simply check if the haystack contains the needle, see `Str\contains()`.
- * To get the case-sensitive position, see `Str\search()`.
- * To get the last position of the needle, see `Str\search_last()`.
+ * - To simply check if the haystack contains the needle, see `Str\contains()`.
+ * - To get the case-sensitive position, see `Str\search()`.
+ * - To get the last position of the needle, see `Str\search_last()`.
  *
  * Previously known in PHP as `stripos`.
  */
@@ -207,8 +207,8 @@ function search_ci(
  * characters from the end of the string and go backwards. If the offset is
  * out-of-bounds, a ViolationException will be thrown.
  *
- * To simply check if the haystack contains the needle, see `Str\contains()`.
- * To get the first position of the needle, see `Str\search()`.
+ * - To simply check if the haystack contains the needle, see `Str\contains()`.
+ * - To get the first position of the needle, see `Str\search()`.
  *
  * Previously known in PHP as `strrpos`.
  */

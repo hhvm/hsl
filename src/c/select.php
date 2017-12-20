@@ -49,10 +49,10 @@ function find_key<Tk, Tv>(
  * Returns the first element of the given Traversable, or null if the
  * Traversable is empty.
  *
- * For non-empty Traversables, see C\firstx.
- * For possibly null Traversables, see C\nfirst.
- * For single-element Traversables, see C\onlyx.
- * For Awaitables that yield Traversables, see C\first_async.
+ * - For non-empty Traversables, see `C\firstx`.
+ * - For possibly null Traversables, see `C\nfirst`.
+ * - For single-element Traversables, see `C\onlyx`.
+ * - For Awaitables that yield Traversables, see `C\first_async`.
  */
 function first<T>(
   Traversable<T> $traversable,
@@ -67,10 +67,10 @@ function first<T>(
  * Returns the first element of the given Traversable, or throws if the
  * Traversable is empty.
  *
- * For possibly empty Traversables, see C\first.
- * For possibly null Traversables, see C\nfirst.
- * For single-element Traversables, see C\onlyx.
- * For Awaitables that yield Traversables, see C\firstx_async.
+ * For possibly empty Traversables, see `C\first`.
+ * For possibly null Traversables, see `C\nfirst`.
+ * For single-element Traversables, see `C\onlyx`.
+ * For Awaitables that yield Traversables, see `C\firstx_async`.
  */
 function firstx<T>(
   Traversable<T> $traversable,
@@ -85,7 +85,7 @@ function firstx<T>(
  * Returns the first key of the given KeyedTraversable, or null if the
  * KeyedTraversable is empty.
  *
- * For non-empty Traversables, see C\first_keyx.
+ * For non-empty Traversables, see `C\first_keyx`.
  */
 function first_key<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -102,7 +102,7 @@ function first_key<Tk, Tv>(
  * Returns the first key of the given KeyedTraversable, or throws if the
  * KeyedTraversable is empty.
  *
- * For possibly empty Traversables, see C\first_key.
+ * For possibly empty Traversables, see `C\first_key`.
  */
 function first_keyx<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -117,8 +117,8 @@ function first_keyx<Tk, Tv>(
  * Returns the last element of the given Traversable, or null if the
  * Traversable is empty.
  *
- * For non-empty Traversables, see C\lastx.
- * For single-element Traversables, see C\onlyx.
+ * - For non-empty Traversables, see `C\lastx`.
+ * - For single-element Traversables, see `C\onlyx`.
  */
 function last<Tv>(
   Traversable<Tv> $traversable,
@@ -138,8 +138,8 @@ function last<Tv>(
  * Returns the last element of the given Traversable, or throws if the
  * Traversable is empty.
  *
- * For possibly empty Traversables, see C\last.
- * For single-element Traversables, see C\onlyx.
+ * - For possibly empty Traversables, see `C\last`.
+ * - For single-element Traversables, see `C\onlyx`.
  */
 function lastx<Tv>(Traversable<Tv> $traversable): Tv {
   // There is no way to directly check whether an Iterable is empty,
@@ -168,7 +168,7 @@ function lastx<Tv>(Traversable<Tv> $traversable): Tv {
  * Returns the last key of the given KeyedTraversable, or null if the
  * KeyedTraversable is empty.
  *
- * For non-empty Traversables, see C\last_keyx.
+ * For non-empty Traversables, see `C\last_keyx`.
  */
 function last_key<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -192,7 +192,7 @@ function last_key<Tk, Tv>(
  * Returns the last key of the given KeyedTraversable, or throws if the
  * KeyedTraversable is empty.
  *
- * For possibly empty Traversables, see C\last_key.
+ * For possibly empty Traversables, see `C\last_key`.
  */
 function last_keyx<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -206,9 +206,9 @@ function last_keyx<Tk, Tv>(
  * Returns the first element of the given Traversable, or null if the
  * Traversable is null or empty.
  *
- * For non-null Traversables, see C\first.
- * For non-empty Traversables, see C\firstx.
- * For single-element Traversables, see C\onlyx.
+ * - For non-null Traversables, see `C\first`.
+ * - For non-empty Traversables, see `C\firstx`.
+ * - For single-element Traversables, see `C\onlyx`.
  */
 function nfirst<T>(
   ?Traversable<T> $traversable,
@@ -225,7 +225,7 @@ function nfirst<T>(
  * Returns the first and only element of the given Traversable, or throws if the
  * Traversable is empty.
  *
- * For Traversables with more than one element, see C\firstx.
+ * For Traversables with more than one element, see `C\firstx`.
  */
 function onlyx<T>(
   Traversable<T> $traversable,
