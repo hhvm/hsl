@@ -20,7 +20,7 @@ namespace HH\Lib\C;
  * given Traversable. If no predicate is provided, it defaults to casting the
  * element to bool.
  *
- * If you're looking for C\none, use !C\any.
+ * If you're looking for `C\none`, use `!C\any`.
  */
 function any<T>(
   Traversable<T> $traversable,

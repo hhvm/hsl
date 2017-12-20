@@ -91,8 +91,9 @@ function drop<Tv>(
  * Returns a new vec containing only the values for which the given predicate
  * returns `true`. The default predicate is casting the value to boolean.
  *
- * To remove null values in a typechecker-visible way, see `Vec\filter_nulls()`.
- * To use an async predicate, see `Vec\filter_async()`.
+ * - To remove null values in a typechecker-visible way, see
+ *   `Vec\filter_nulls()`.
+ * - To use an async predicate, see `Vec\filter_async()`.
  */
 function filter<Tv>(
   Traversable<Tv> $traversable,
@@ -182,8 +183,8 @@ function sample<Tv>(
  * If no length is given or it exceeds the upper bound of the Traversable,
  * the vec will contain every element after the offset.
  *
- * To take only the first `$n` elements, see `Vec\take()`.
- * To drop the first `$n` elements, see `Vec\drop()`.
+ * - To take only the first `$n` elements, see `Vec\take()`.
+ * - To drop the first `$n` elements, see `Vec\drop()`.
  */
 function slice<Tv>(
   Container<Tv> $container,

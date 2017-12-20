@@ -19,7 +19,7 @@ namespace HH\Lib\C;
  * Returns the first element of the result of the given Awaitable, or null if
  * the Traversable is empty.
  *
- * For non-Awaitable Traversables, see C\first.
+ * For non-Awaitable Traversables, see `C\first`.
  */
 async function first_async<T>(
   Awaitable<Traversable<T>> $awaitable,
@@ -32,7 +32,7 @@ async function first_async<T>(
  * Returns the first element of the result of the given Awaitable, or throws if
  * the Traversable is empty.
  *
- * For non-Awaitable Traversables, see C\firstx.
+ * For non-Awaitable Traversables, see `C\firstx`.
  */
 async function firstx_async<T>(
   Awaitable<Traversable<T>> $awaitable,

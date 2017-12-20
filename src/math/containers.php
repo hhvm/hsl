@@ -16,8 +16,8 @@ use namespace HH\Lib\{C, Math, Vec};
  * Returns the largest element of the given Traversable, or null if the
  * Traversable is empty.
  *
- * For a known number of inputs, see `Math\maxva()`.
- * To find the smallest number, see `Math\min()`.
+ * - For a known number of inputs, see `Math\maxva()`.
+ * - To find the smallest number, see `Math\min()`.
  */
 function max<T as num>(
   Traversable<T> $numbers,
@@ -59,9 +59,9 @@ function max_by<T>(
 /**
  * Returns the arithmetic mean of the numbers in the given container.
  *
- * To find the sum, see `Math\sum()`.
- * To find the maximum, see `Math\max()`.
- * To find the minimum, see `Math\min()`.
+ * - To find the sum, see `Math\sum()`.
+ * - To find the maximum, see `Math\max()`.
+ * - To find the minimum, see `Math\min()`.
  */
 function mean(Container<num> $numbers): ?float {
   $count = (float)C\count($numbers);
@@ -99,8 +99,8 @@ function median(Container<num> $numbers): ?float {
  * Returns the smallest element of the given Traversable, or null if the
  * Traversable is empty.
  *
- * For a known number of inputs, see `Math\minva()`.
- * To find the largest number, see `Math\max()`.
+ * - For a known number of inputs, see `Math\minva()`.
+ * - To find the largest number, see `Math\max()`.
  */
 function min<T as num>(
   Traversable<T> $numbers,

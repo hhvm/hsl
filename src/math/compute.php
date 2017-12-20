@@ -26,8 +26,8 @@ function abs<T as num>(T $number): T {
  * letters a-z are used for digits for bases greater than 10. The conversion is
  * done to arbitrary precision.
  *
- * To convert a string in some base to an int, see `Math\from_base()`.
- * To convert an int to a string in some base, see `Math\to_base()`.
+ * - To convert a string in some base to an int, see `Math\from_base()`.
+ * - To convert an int to a string in some base, see `Math\to_base()`.
  */
 function base_convert(string $value, int $from_base, int $to_base): string {
   invariant(
@@ -95,8 +95,8 @@ function ceil(num $value): float {
 /**
  * Returns the cosine of `$arg`.
  *
- * To find the sine, see `Math\sin()`.
- * To find the tangent, see `Math\tan()`.
+ * - To find the sine, see `Math\sin()`.
+ * - To find the tangent, see `Math\tan()`.
  */
 function cos(num $arg): float {
   return \cos($arg);
@@ -132,10 +132,10 @@ function exp(num $arg): float {
 /**
  * Returns the largest integer value less than or equal to `$value`.
  *
- * To find the smallest integer value greater than or equal to `$value`, see
- * `Math\ceil()`.
- * To find the largest integer value less than or equal to a ratio, see
- * `Math\int_div()`.
+ * - To find the smallest integer value greater than or equal to `$value`, see
+ *   `Math\ceil()`.
+ * - To find the largest integer value less than or equal to a ratio, see
+ *   `Math\int_div()`.
  */
 function floor(num $value): float {
   return \floor($value);
@@ -184,8 +184,8 @@ function round(
 /**
  * Returns the sine of $arg.
  *
- * To find the cosine, see `Math\cos()`.
- * To find the tangent, see `Math\tan()`.
+ * - To find the cosine, see `Math\cos()`.
+ * - To find the tangent, see `Math\tan()`.
  */
 function sin(num $arg): float {
   return \sin($arg);
@@ -202,8 +202,8 @@ function sqrt(num $arg): float {
 /**
  * Returns the tangent of `$arg`.
  *
- * To find the cosine, see `Math\cos()`.
- * To find the sine, see `Math\sin()`.
+ * - To find the cosine, see `Math\cos()`.
+ * - To find the sine, see `Math\sin()`.
  */
 function tan(num $arg): float {
   return \tan($arg);
