@@ -19,8 +19,8 @@ use namespace HH\Lib\_Private;
  * If the first character is already capitalized or isn't alphabetic, the string
  * will be unchanged.
  *
- * To capitalize all characters, see `Str\uppercase()`.
- * To capitalize all words, see `Str\capitalize_words()`.
+ * - To capitalize all characters, see `Str\uppercase()`.
+ * - To capitalize all words, see `Str\capitalize_words()`.
  */
 function capitalize(
   string $string,
@@ -34,8 +34,8 @@ function capitalize(
  * Words are delimited by space, tab, newline, carriage return, form-feed, and
  * vertical tab by default, but you can specify custom delimiters.
  *
- * To capitalize all characters, see `Str\uppercase()`.
- * To capitalize only the first character, see `Str\capitalize()`.
+ * - To capitalize all characters, see `Str\uppercase()`.
+ * - To capitalize only the first character, see `Str\capitalize()`.
  */
 function capitalize_words(
   string $string,
@@ -131,8 +131,8 @@ function repeat(
  * Returns the "haystack" string with all occurences of `$needle` replaced by
  * `$replacement`.
  *
- * For a case-insensitive search/replace, see `Str\replace_ci()`.
- * For multiple searches/replacements, see `Str\replace_every()`.
+ * - For a case-insensitive search/replace, see `Str\replace_ci()`.
+ * - For multiple searches/replacements, see `Str\replace_every()`.
  */
 function replace(
   string $haystack,
@@ -146,8 +146,8 @@ function replace(
  * Returns the "haystack" string with all occurences of `$needle` replaced by
  * `$replacement` (case-insensitive).
  *
- * For a case-sensitive search/replace, see `Str\replace()`.
- * For multiple searches/replacements, see `Str\replace_every()`.
+ * - For a case-sensitive search/replace, see `Str\replace()`.
+ * - For multiple searches/replacements, see `Str\replace_every()`.
  */
 function replace_ci(
   string $haystack,

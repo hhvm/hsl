@@ -32,8 +32,8 @@ function reverse<Tk as arraykey, Tv>(
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
  *
- * To sort by some computable property of each value, see `Dict\sort_by()`.
- * To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
+ * - To sort by some computable property of each value, see `Dict\sort_by()`.
+ * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  */
 function sort<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -54,8 +54,8 @@ function sort<Tk as arraykey, Tv>(
  * comparator function isn't provided, the values will be sorted in ascending
  * order of scalar key.
  *
- * To sort by the values of the KeyedTraversable, see `Dict\sort()`.
- * To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
+ * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
+ * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  */
 function sort_by<Tk as arraykey, Tv, Ts>(
   KeyedTraversable<Tk, Tv> $traversable,
@@ -76,8 +76,8 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  * optional comparator function isn't provided, the keys will be sorted in
  * ascending order.
  *
- * To sort by the values of the KeyedTraversable, see `Dict\sort()`.
- * To sort by some computable property of each value, see `Dict\sort_by()`.
+ * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
+ * - To sort by some computable property of each value, see `Dict\sort_by()`.
  */
 function sort_by_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
