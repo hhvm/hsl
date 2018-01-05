@@ -14,7 +14,7 @@ This library is especially useful for working with the Hack arrays (`vec`,
 ```Hack
 <?hh // strict
 
-use namespace HH\Lib\{Vec,Dict,Keyset,Str,Regex,Math};
+use namespace HH\Lib\{Vec,Dict,Keyset,Str,Math};
 
 function main(vec<?int> $foo): vec<string> {
   return $foo
