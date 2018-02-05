@@ -16,21 +16,16 @@ use namespace HH\Lib\C;
 async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
-  $wait_handles = dict[];
+  $awaitables = dict($awaitables);
+
+  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $key => $value) {
-    $wait_handles[$key] = $value instanceof WaitHandle
-      ? $value
-      : $value->getWaitHandle();
-  }
-  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
-  unset($awaitables);
-  await AwaitAllWaitHandle::fromDict($wait_handles);
-  foreach ($wait_handles as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    $wait_handles[$key] = \HH\Asio\result($value);
+    $awaitables[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-  return $wait_handles;
+  return $awaitables;
 }
 
 /**
@@ -43,24 +38,23 @@ async function from_keys_async<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
   (function(Tk): Awaitable<Tv>) $async_func,
 ): Awaitable<dict<Tk, Tv>> {
-  $wait_handles = dict[];
+  $awaitables = dict[];
   foreach ($keys as $key) {
-    if (!C\contains_key($wait_handles, $key)) {
-      $value = $async_func($key);
-      $wait_handles[$key] = $value instanceof WaitHandle
-        ? $value
-        : $value->getWaitHandle();
+    if (!C\contains_key($awaitables, $key)) {
+      $awaitables[$key] = $async_func($key);
     }
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
   unset($keys);
-  await AwaitAllWaitHandle::fromDict($wait_handles);
-  foreach ($wait_handles as $key => $value) {
+
+  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  await AwaitAllWaitHandle::fromDict($awaitables);
+  foreach ($awaitables as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    $wait_handles[$key] = \HH\Asio\result($value);
+    $awaitables[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-  return $wait_handles;
+  return $awaitables;
 }
 
 /**
@@ -114,20 +108,19 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {
-  $wait_handles = dict[];
+  $awaitables = dict[];
   foreach ($traversable as $key => $value) {
-    $value = $value_func($value);
-    $wait_handles[$key] = $value instanceof WaitHandle
-      ? $value
-      : $value->getWaitHandle();
+    $awaitables[$key] = $value_func($value);
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
   unset($traversable);
-  await AwaitAllWaitHandle::fromDict($wait_handles);
-  foreach ($wait_handles as $key => $value) {
+
+  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  await AwaitAllWaitHandle::fromDict($awaitables);
+  foreach ($awaitables as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    $wait_handles[$key] = \HH\Asio\result($value);
+    $awaitables[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-  return $wait_handles;
+  return $awaitables;
 }

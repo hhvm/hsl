@@ -14,21 +14,16 @@ namespace HH\Lib\Vec;
 async function from_async<Tv>(
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
-  $wait_handles = vec[];
-  foreach ($awaitables as $value) {
-    $wait_handles[] = $value instanceof WaitHandle
-      ? $value
-      : $value->getWaitHandle();
-  }
-  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
-  unset($awaitables);
-  await AwaitAllWaitHandle::fromVec($wait_handles);
-  foreach ($wait_handles as $index => $value) {
+  $awaitables = vec($awaitables);
+
+  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  await AwaitAllWaitHandle::fromVec($awaitables);
+  foreach ($awaitables as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-    $wait_handles[$index] = \HH\Asio\result($value);
+    $awaitables[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-  return $wait_handles;
+  return $awaitables;
 }
 
 /**
@@ -63,20 +58,19 @@ async function map_async<Tv1, Tv2>(
   Traversable<Tv1> $traversable,
   (function(Tv1): Awaitable<Tv2>) $async_func,
 ): Awaitable<vec<Tv2>> {
-  $wait_handles = vec[];
+  $awaitables = vec[];
   foreach ($traversable as $value) {
-    $value = $async_func($value);
-    $wait_handles[] = $value instanceof WaitHandle
-      ? $value
-      : $value->getWaitHandle();
+    $awaitables[] = $async_func($value);
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
   unset($traversable);
-  await AwaitAllWaitHandle::fromVec($wait_handles);
-  foreach ($wait_handles as $index => $value) {
+
+  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  await AwaitAllWaitHandle::fromVec($awaitables);
+  foreach ($awaitables as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-    $wait_handles[$index] = \HH\Asio\result($value);
+    $awaitables[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-  return $wait_handles;
+  return $awaitables;
 }
