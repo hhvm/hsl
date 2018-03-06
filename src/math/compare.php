@@ -19,9 +19,10 @@ namespace HH\Lib\Math;
  */
 function maxva<T as num>(
   T $first,
+  T $second,
   T ...$rest
 ): T {
-  $max = $first;
+  $max = $first > $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number > $max) {
       $max = $number;
@@ -38,9 +39,10 @@ function maxva<T as num>(
  */
 function minva<T as num>(
   T $first,
+  T $second,
   T ...$rest
 ): T {
-  $min = $first;
+  $min = $first < $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number < $min) {
       $min = $number;

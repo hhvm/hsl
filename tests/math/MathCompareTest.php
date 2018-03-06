@@ -19,49 +19,51 @@ final class MathCompareTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestMaxva(): array<mixed> {
     return array(
-      tuple(1, vec[2], 2),
-      tuple(2, vec[1], 2),
-      tuple(1.0, vec[2.0], 2.0),
-      tuple(2.0, vec[1.0], 2.0),
-      tuple(1, vec[1], 1),
-      tuple(-2, vec[-1], -1),
-      tuple(1.0, vec[2], 2),
-      tuple(1, vec[2.0], 2.0),
-      tuple(-1, vec[1, 2, 3, 4, 5], 5),
-      tuple(-1, vec[5, 4, 3, 2, 1], 5),
+      tuple(1, 2, vec[], 2),
+      tuple(2, 1, vec[], 2),
+      tuple(1.0, 2.0, vec[], 2.0),
+      tuple(2.0, 1.0, vec[], 2.0),
+      tuple(1, 1, vec[], 1),
+      tuple(-2, -1, vec[], -1),
+      tuple(1.0, 2, vec[], 2),
+      tuple(1, 2.0, vec[], 2.0),
+      tuple(-1, 1, vec[2, 3, 4, 5], 5),
+      tuple(-1, 5, vec[4, 3, 2, 1], 5),
     );
   }
 
   /** @dataProvider provideTestMaxva */
   public function testMaxva<T as num>(
     T $first,
+    T $second,
     Container<T> $rest,
     T $expected,
   ): void {
-    expect(Math\maxva($first, ...$rest))->toBeSame($expected);
+    expect(Math\maxva($first, $second, ...$rest))->toBeSame($expected);
   }
 
   public static function provideTestMinva(): array<mixed> {
     return array(
-      tuple(1, vec[2], 1),
-      tuple(2, vec[1], 1),
-      tuple(1.0, vec[2.0], 1.0),
-      tuple(2.0, vec[1.0], 1.0),
-      tuple(1, vec[1], 1),
-      tuple(-2, vec[-1], -2),
-      tuple(1.0, vec[2], 1.0),
-      tuple(1, vec[2.0], 1),
-      tuple(1, vec[-1, -2, -3, -4, -5], -5),
-      tuple(1, vec[-5, -4, -3, -2, -1], -5),
+      tuple(1, 2, vec[], 1),
+      tuple(2, 1, vec[], 1),
+      tuple(1.0, 2.0, vec[], 1.0),
+      tuple(2.0, 1.0, vec[], 1.0),
+      tuple(1, 1, vec[], 1),
+      tuple(-2, -1, vec[], -2),
+      tuple(1.0, 2, vec[], 1.0),
+      tuple(1, 2.0, vec[], 1),
+      tuple(1, -1, vec[-2, -3, -4, -5], -5),
+      tuple(1, -5, vec[-4, -3, -2, -1], -5),
     );
   }
 
   /** @dataProvider provideTestMinva */
   public function testMinva<T as num>(
     T $first,
+    T $second,
     Container<T> $rest,
     T $expected,
   ): void {
-    expect(Math\minva($first, ...$rest))->toBeSame($expected);
+    expect(Math\minva($first, $second, ...$rest))->toBeSame($expected);
   }
 }
