@@ -12,6 +12,7 @@
 namespace HH\Lib\C;
 
 use namespace HH\Lib\_Private;
+use namespace HH\Lib\Str;
 
 /**
  * Returns the first value of the given Traversable for which the predicate
@@ -225,23 +226,41 @@ function nfirst<T>(
  * Returns the first and only element of the given Traversable, or throws if the
  * Traversable is empty.
  *
+ * An optional format string (and format arguments) may be passed to specify
+ * a custom message for the exception in the error case.
+ *
  * For Traversables with more than one element, see `C\firstx`.
  */
 function onlyx<T>(
   Traversable<T> $traversable,
+  ?Str\SprintfFormatString $format_string = null,
+  mixed ...$format_args
 ): T {
   $first = true;
   $result = null;
   foreach ($traversable as $value) {
     invariant(
       $first,
-      'Expected exactly one element%s.',
-      $traversable instanceof Container ? ' but got '.count($traversable) : '',
+      '%s',
+      $format_string === null
+        ? Str\format(
+          'Expected exactly one element%s.',
+          $traversable instanceof Container
+            ? ' but got '.count($traversable)
+            : '',
+        )
+        : \vsprintf($format_string, $format_args),
     );
     $result = $value;
     $first = false;
   }
-  invariant($first === false, 'Expected non-empty Traversable.');
+  invariant(
+    $first === false,
+    '%s',
+    $format_string === null
+      ? 'Expected non-empty Traversable.'
+      : \vsprintf($format_string, $format_args),
+  );
   /* HH_IGNORE_ERROR[4110] $first is false implies $result is set to T */
   return $result;
 }

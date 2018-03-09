@@ -634,4 +634,28 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
       expect(C\onlyx($traversable))->toBeSame($expected);
     }
   }
+
+  public function testOnlyxWithCustomMessage<T>(): void {
+    $triple = vec[1, 2, 3];
+    expect(
+      () ==> C\onlyx(
+        $triple,
+        'Did not find exactly one thing. Found %d instead.',
+        C\count($triple)
+      ),
+    )
+      ->toThrow(
+        InvariantException::class,
+        'Did not find exactly one thing. Found 3 instead.',
+      );
+    $single = vec[42];
+    expect(
+      C\onlyx(
+        $single,
+        'Did not find exactly one thing. Found %d instead.',
+        C\count($single)
+      ),
+    )
+      ->toBeSame(42);
+  }
 }
