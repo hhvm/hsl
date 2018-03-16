@@ -113,7 +113,7 @@ function filter<Tv>(
  * Returns a new vec containing only non-null values of the given
  * Traversable.
  */
-function filter_nulls<Tv>(
+function filter_nulls<Tv as nonnull>(
   Traversable<?Tv> $traversable,
 ): vec<Tv> {
   $result = vec[];

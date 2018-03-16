@@ -209,7 +209,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFilterNulls */
-  public function testFilterNulls<Tv>(
+  public function testFilterNulls<Tv as nonnull>(
   Traversable<?Tv> $traversable,
   vec<Tv> $expected,
   ): void {
