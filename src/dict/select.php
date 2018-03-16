@@ -117,8 +117,9 @@ function filter_keys<Tk as arraykey, Tv>(
 /**
  * Given a KeyedTraversable with nullable values, returns a new dict with
  * those mappings removed.
+ *
  */
-function filter_nulls<Tk as arraykey, Tv as nonnull>(
+function filter_nulls<Tk as arraykey, /* HH_FIXME[0006] */ Tv as nonnull>(
   KeyedTraversable<Tk, ?Tv> $traversable,
 ): dict<Tk, Tv> {
   $result = dict[];
