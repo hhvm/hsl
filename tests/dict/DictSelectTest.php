@@ -329,7 +329,10 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   /** @dataProvider provideTestFilterNulls */
-  public function testFilterNulls<Tk as arraykey, Tv as nonnull>(
+  public function testFilterNulls<
+    Tk as arraykey,
+    Tv as /* HH_FIXME[0006] */ nonnull
+  >(
     KeyedTraversable<Tk, ?Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
