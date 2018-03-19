@@ -10,7 +10,7 @@
  */
 
 /**
- * @emails oncall+hack_prod_infra
+ * @emails oncall+hack
  */
 final class HackLibTestStringable {
   public function __construct(

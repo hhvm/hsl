@@ -14,7 +14,7 @@ use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 /**
- * @emails oncall+hack_prod_infra
+ * @emails oncall+hack
  */
 final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
 

@@ -13,7 +13,7 @@ use namespace HH\Lib\Keyset;
 use function Facebook\FBExpect\expect;
 
 /**
- * @emails oncall+hack_prod_infra
+ * @emails oncall+hack
  */
 final class KeysetDivideTest extends PHPUnit_Framework_TestCase {
 

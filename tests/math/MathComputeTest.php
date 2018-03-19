@@ -19,7 +19,7 @@ use function Facebook\FBExpect\expect;
 use function md5 as non_crypto_md5;
 
 /**
- * @emails oncall+hack_prod_infra
+ * @emails oncall+hack
  */
 final class MathComputeTest extends PHPUnit_Framework_TestCase {
   public static function provideTestAbs(): array<mixed> {

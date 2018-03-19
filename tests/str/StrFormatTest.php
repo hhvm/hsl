@@ -13,7 +13,7 @@ use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 
 /**
- * @emails oncall+hack_prod_infra
+ * @emails oncall+hack
  */
 final class StrFormatTest extends PHPUnit_Framework_TestCase {
 
