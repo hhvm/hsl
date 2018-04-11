@@ -104,5 +104,4 @@ we will continue to be extremely conservative about new features.
 
 ## License
 
-The Hack Standard Library is BSD-licensed. We also provide an additional patent
-grant.
+The Hack Standard Library is MIT-licensed.
