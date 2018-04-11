@@ -1,6 +1,7 @@
 {
   "name": "hhvm/hsl",
   "description": "The Hack Standard Library",
+  "license": "MIT",
   "require-dev": {
     "91carriage/phpunit-hhi": "^5.7",
     "phpunit/phpunit": "^5.7",
