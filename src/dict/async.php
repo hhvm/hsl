@@ -12,6 +12,7 @@ namespace HH\Lib\Dict;
 
 use namespace HH\Lib\C;
 
+<<__RxLocal>>
 async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
@@ -33,6 +34,7 @@ async function from_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\from_keys()`.
  */
+<<__RxLocal>>
 async function from_keys_async<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
   (function(Tk): Awaitable<Tv>) $async_func,
@@ -62,6 +64,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
  *
  * For non-async predicates, see `Dict\filter()`.
  */
+<<__RxLocal>>
 async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   (function(Tv): Awaitable<bool>) $value_predicate,
@@ -81,6 +84,7 @@ async function filter_async<Tk as arraykey, Tv>(
  *
  * For non-async filters with key, see `Dict\filter_with_key()`.
  */
+<<__RxLocal>>
 async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   (function(Tk, Tv): Awaitable<bool>) $predicate,
@@ -103,6 +107,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\map()`.
  */
+<<__RxLocal>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tv1): Awaitable<Tv2>) $value_func,

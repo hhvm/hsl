@@ -16,6 +16,7 @@ use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
  * Returns the absolute value of `$number` (`$number` if `$number` > 0,
  * `-$number` if `$number` < 0).
  */
+<<__Rx>>
 function abs<T as num>(T $number): T {
   return $number < 0 ? -$number : $number;
 }
@@ -28,6 +29,7 @@ function abs<T as num>(T $number): T {
  * - To convert a string in some base to an int, see `Math\from_base()`.
  * - To convert an int to a string in some base, see `Math\to_base()`.
  */
+<<__RxLocal>>
 function base_convert(string $value, int $from_base, int $to_base): string {
   invariant(
     $value !== '',
@@ -87,6 +89,7 @@ function base_convert(string $value, int $from_base, int $to_base): string {
  * To find the largest integer value less than or equal to `$value`, see
  * `Math\floor()`.
  */
+<<__RxLocal>>
 function ceil(num $value): float {
   return \ceil($value);
 }
@@ -97,6 +100,7 @@ function ceil(num $value): float {
  * - To find the sine, see `Math\sin()`.
  * - To find the tangent, see `Math\tan()`.
  */
+<<__RxLocal>>
 function cos(num $arg): float {
   return \cos($arg);
 }
@@ -107,6 +111,7 @@ function cos(num $arg): float {
  *
  * To base convert an int into a string, see `Math\to_base()`.
  */
+<<__RxLocal>>
 function from_base(string $number, int $from_base): int {
   $result_string = base_convert($number, $from_base, 10);
   $result = Str\to_int($result_string);
@@ -124,6 +129,7 @@ function from_base(string $number, int $from_base): int {
  *
  * To find the logarithm, see `Math\log()`.
  */
+<<__RxLocal>>
 function exp(num $arg): float {
   return \exp($arg);
 }
@@ -136,6 +142,7 @@ function exp(num $arg): float {
  * - To find the largest integer value less than or equal to a ratio, see
  *   `Math\int_div()`.
  */
+<<__RxLocal>>
 function floor(num $value): float {
   return \floor($value);
 }
@@ -145,6 +152,7 @@ function floor(num $value): float {
  *
  * To round a single value, see `Math\floor()`.
  */
+<<__RxLocal>>
 function int_div(int $numerator, int $denominator): int {
   if ($denominator === 0) {
     throw new DivisionByZeroException();
@@ -157,6 +165,7 @@ function int_div(int $numerator, int $denominator): int {
  *
  * For the exponential function, see `Math\exp()`.
  */
+<<__RxLocal>>
 function log(num $arg, ?num $base = null): float {
   invariant($arg > 0, 'Expected positive argument for log, got %f', $arg);
   if ($base === null) {
@@ -173,6 +182,7 @@ function log(num $arg, ?num $base = null): float {
  * rounds to the nearest power of ten. For example, a precision of 1 rounds to
  * the nearest tenth whereas a precision of -1 rounds to the nearest ten.
  */
+<<__RxLocal>>
 function round(
   num $val,
   int $precision = 0,
@@ -186,6 +196,7 @@ function round(
  * - To find the cosine, see `Math\cos()`.
  * - To find the tangent, see `Math\tan()`.
  */
+<<__RxLocal>>
 function sin(num $arg): float {
   return \sin($arg);
 }
@@ -193,6 +204,7 @@ function sin(num $arg): float {
 /**
  * Returns the square root of `$arg`.
  */
+<<__RxLocal>>
 function sqrt(num $arg): float {
   invariant($arg >= 0, 'Expected non-negative argument to sqrt, got %f', $arg);
   return \sqrt($arg);
@@ -204,6 +216,7 @@ function sqrt(num $arg): float {
  * - To find the cosine, see `Math\cos()`.
  * - To find the sine, see `Math\sin()`.
  */
+<<__RxLocal>>
 function tan(num $arg): float {
   return \tan($arg);
 }
@@ -214,6 +227,7 @@ function tan(num $arg): float {
  *
  * To base convert a string to an int, see `Math\from_base()`.
  */
+<<__RxLocal>>
 function to_base(int $number, int $to_base): string {
   invariant(
     $to_base >= 2 && $to_base <= 36,

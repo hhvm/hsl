@@ -18,6 +18,7 @@ namespace HH\Lib\C;
  * Reduces the given Traversable into a single value by applying an accumulator
  * function against an intermediate result and each value.
  */
+<<__RxLocal>>
 function reduce<Tv, Ta>(
   Traversable<Tv> $traversable,
   (function(Ta, Tv): Ta) $accumulator,
