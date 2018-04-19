@@ -22,6 +22,7 @@ use function HH\Lib\_Private\universal_chainable_stub as FBLogger; // @oss-enabl
  * smaller than the specified size. If there are duplicate values in the
  * Traversable, some chunks may be smaller than the specified size.
  */
+<<__Rx>>
 function chunk<Tv as arraykey>(
   Traversable<Tv> $traversable,
   int $size,
@@ -43,6 +44,7 @@ function chunk<Tv as arraykey>(
  * Returns a new keyset where each value is the result of calling the given
  * function on the original value.
  */
+<<__RxLocal>>
 function map<Tv1, Tv2 as arraykey>(
   Traversable<Tv1> $traversable,
   (function(Tv1): Tv2) $value_func,
@@ -58,6 +60,7 @@ function map<Tv1, Tv2 as arraykey>(
  * Returns a new keyset where each value is the result of calling the given
  * function on the original key and value.
  */
+<<__RxLocal>>
 function map_with_key<Tk, Tv1, Tv2 as arraykey>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tk, Tv1): Tv2) $value_func,
@@ -76,6 +79,7 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
  *
  * For a fixed number of Traversables, see `Keyset\union()`.
  */
+<<__Rx>>
 function flatten<Tv as arraykey>(
   Traversable<Traversable<Tv>> $traversables,
 ): keyset<Tv> {

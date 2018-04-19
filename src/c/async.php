@@ -20,6 +20,7 @@ namespace HH\Lib\C;
  *
  * For non-Awaitable Traversables, see `C\first`.
  */
+<<__Rx>>
 async function first_async<T>(
   Awaitable<Traversable<T>> $awaitable,
 ): Awaitable<?T> {
@@ -33,6 +34,7 @@ async function first_async<T>(
  *
  * For non-Awaitable Traversables, see `C\firstx`.
  */
+<<__Rx>>
 async function firstx_async<T>(
   Awaitable<Traversable<T>> $awaitable,
 ): Awaitable<T> {

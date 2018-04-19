@@ -16,6 +16,7 @@ namespace HH\Lib\Math;
  * - To find the smallest number, see `Math\minva()`.
  * - For Traversables, see `Math\max()`.
  */
+<<__Rx>>
 function maxva<T as num>(
   T $first,
   T $second,
@@ -36,6 +37,7 @@ function maxva<T as num>(
  * - To find the largest number, see `Math\maxva()`.
  * - For Traversables, see `Math\min()`.
  */
+<<__Rx>>
 function minva<T as num>(
   T $first,
   T $second,

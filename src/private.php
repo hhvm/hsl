@@ -14,6 +14,7 @@ namespace HH\Lib\_Private;
  * Verifies that the `$offset` is within plus/minus `$length`. Returns the
  * offset as a positive integer.
  */
+<<__Rx>>
 function validate_offset(
   int $offset,
   int $length,
@@ -33,10 +34,12 @@ function validate_offset(
 /**
  * Returns whether the input is either a PHP array or Hack array.
  */
+<<__Rx>>
 function is_any_array(mixed $val): bool {
   return \is_dict($val) || \is_vec($val) || \is_keyset($val) || \is_array($val);
 }
 
+<<__Rx>>
 function boolval(mixed $val): bool {
   return (bool)$val;
 }
@@ -56,10 +59,12 @@ final class UniversalChainableStub {
   }
 }
 
+<<__Rx>>
 function universal_chainable_stub(mixed ...$_): UniversalChainableStub {
   return new UniversalChainableStub();
 }
 
+<<__Rx>>
 function tuple_from_vec(mixed $x): mixed {
   // @oss-disable: invariant_violation("Use varray instead.");
   return is_vec(tuple(1,2)) // @oss-enable

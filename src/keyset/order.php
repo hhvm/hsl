@@ -15,6 +15,7 @@ namespace HH\Lib\Keyset;
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
  */
+<<__RxLocal>>
 function sort<Tv as arraykey>(
   Traversable<Tv> $traversable,
   ?(function(Tv, Tv): int) $comparator = null,

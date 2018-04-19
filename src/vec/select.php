@@ -18,6 +18,7 @@ use namespace HH\Lib\{Dict, Keyset};
  *
  * For vecs that contain non-arraykey elements, see `Vec\diff_by()`.
  */
+<<__RxShallow>>
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv1> $first,
   Traversable<Tv2> $second,
@@ -45,6 +46,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  *
  * For vecs that contain arraykey elements, see `Vec\diff()`.
  */
+<<__RxLocal>>
 function diff_by<Tv, Ts as arraykey>(
   Traversable<Tv> $first,
   Traversable<Tv> $second,
@@ -69,6 +71,7 @@ function diff_by<Tv, Ts as arraykey>(
  *
  * To take only the first `$n` elements, see `Vec\take()`.
  */
+<<__Rx>>
 function drop<Tv>(
   Traversable<Tv> $traversable,
   int $n,
@@ -94,6 +97,7 @@ function drop<Tv>(
  *   `Vec\filter_nulls()`.
  * - To use an async predicate, see `Vec\filter_async()`.
  */
+<<__RxLocal>>
 function filter<Tv>(
   Traversable<Tv> $traversable,
   ?(function(Tv): bool) $value_predicate = null,
@@ -112,6 +116,7 @@ function filter<Tv>(
  * Returns a new vec containing only non-null values of the given
  * Traversable.
  */
+<<__Rx>>
 function filter_nulls<Tv>(
   Traversable<?Tv> $traversable,
 ): vec<Tv> {
@@ -128,6 +133,7 @@ function filter_nulls<Tv>(
  * Returns a new vec containing only the elements of the first Traversable that
  * appear in all the other ones. Duplicate values are preserved.
  */
+<<__RxShallow>>
 function intersect<Tv as arraykey>(
   Traversable<Tv> $first,
   Traversable<Tv> $second,
@@ -146,6 +152,7 @@ function intersect<Tv as arraykey>(
 /**
   * Returns a new vec containing the keys of the given KeyedTraversable.
   */
+<<__Rx>>
 function keys<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): vec<Tk> {
@@ -185,6 +192,7 @@ function sample<Tv>(
  * - To take only the first `$n` elements, see `Vec\take()`.
  * - To drop the first `$n` elements, see `Vec\drop()`.
  */
+<<__Rx>>
 function slice<Tv>(
   Container<Tv> $container,
   int $offset,
@@ -201,6 +209,7 @@ function slice<Tv>(
  *
  * To drop the first `$n` elements, see `Vec\drop()`.
  */
+<<__Rx>>
 function take<Tv>(
   Traversable<Tv> $traversable,
   int $n,
@@ -228,6 +237,7 @@ function take<Tv>(
  *
  * For non-arraykey elements, see `Vec\unique_by()`.
  */
+<<__Rx>>
 function unique<Tv as arraykey>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
@@ -242,6 +252,7 @@ function unique<Tv as arraykey>(
  *
  * For arraykey elements, see `Vec\unique()`.
  */
+<<__RxLocal>>
 function unique_by<Tv, Ts as arraykey>(
   Traversable<Tv> $traversable,
   (function(Tv): Ts) $scalar_func,
