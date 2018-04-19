@@ -21,7 +21,6 @@ use namespace HH\Lib\_Private;
  * - To capitalize all characters, see `Str\uppercase()`.
  * - To capitalize all words, see `Str\capitalize_words()`.
  */
-<<__RxLocal>>
 function capitalize(
   string $string,
 ): string {
@@ -37,7 +36,6 @@ function capitalize(
  * - To capitalize all characters, see `Str\uppercase()`.
  * - To capitalize only the first character, see `Str\capitalize()`.
  */
-<<__RxLocal>>
 function capitalize_words(
   string $string,
   string $delimiters = " \t\r\n\f\v",
@@ -52,7 +50,6 @@ function capitalize_words(
  * The optional `$decimal_point` and `$thousands_separator` arguments define the
  * strings used for decimals and commas, respectively.
  */
-<<__RxLocal>>
 function format_number(
   num $number,
   int $decimals = 0,
@@ -70,7 +67,6 @@ function format_number(
 /**
  * Returns the string with all alphabetic characters converted to lowercase.
  */
-<<__RxLocal>>
 function lowercase(
   string $string,
 ): string {
@@ -87,7 +83,6 @@ function lowercase(
  *
  * To pad the string on the right, see `Str\pad_right()`.
  */
-<<__Rx>>
 function pad_left(
   string $string,
   int $total_length,
@@ -108,7 +103,6 @@ function pad_left(
  *
  * To pad the string on the left, see `Str\pad_left()`.
  */
-<<__Rx>>
 function pad_right(
   string $string,
   int $total_length,
@@ -124,7 +118,6 @@ function pad_right(
  *
  * If the multiplier is 0, the empty string will be returned.
  */
-<<__Rx>>
 function repeat(
   string $string,
   int $multiplier,
@@ -140,7 +133,6 @@ function repeat(
  * - For a case-insensitive search/replace, see `Str\replace_ci()`.
  * - For multiple searches/replacements, see `Str\replace_every()`.
  */
-<<__Rx>>
 function replace(
   string $haystack,
   string $needle,
@@ -156,7 +148,6 @@ function replace(
  * - For a case-sensitive search/replace, see `Str\replace()`.
  * - For multiple searches/replacements, see `Str\replace_every()`.
  */
-<<__Rx>>
 function replace_ci(
   string $haystack,
   string $needle,
@@ -171,7 +162,6 @@ function replace_ci(
  *
  * For a single search/replace, see `Str\replace()`.
  */
-<<__Rx>>
 function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
@@ -193,7 +183,6 @@ function replace_every(
  *
  * Previously known in PHP as `substr_replace`.
  */
-<<__Rx>>
 function splice(
   string $string,
   string $replacement,
@@ -210,7 +199,6 @@ function splice(
 /**
  * Returns the given string as an integer, or null if the string isn't numeric.
  */
-<<__Rx>>
 function to_int(
   string $string,
 ): ?int {
@@ -223,7 +211,6 @@ function to_int(
 /**
  * Returns the string with all alphabetic characters converted to uppercase.
  */
-<<__RxLocal>>
 function uppercase(
   string $string,
 ): string {

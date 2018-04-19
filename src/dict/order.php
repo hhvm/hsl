@@ -16,7 +16,6 @@ use namespace HH\Lib\Vec;
  * Returns a new dict with the original key/value pairs in reversed iteration
  * order.
  */
-<<__RxShallow>>
 function reverse<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
@@ -35,7 +34,6 @@ function reverse<Tk as arraykey, Tv>(
  * - To sort by some computable property of each value, see `Dict\sort_by()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  */
-<<__RxLocal>>
 function sort<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tv, Tv): int) $value_comparator = null,
@@ -58,7 +56,6 @@ function sort<Tk as arraykey, Tv>(
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  */
-<<__RxLocal>>
 function sort_by<Tk as arraykey, Tv, Ts>(
   KeyedTraversable<Tk, Tv> $traversable,
   (function(Tv): Ts) $scalar_func,
@@ -81,7 +78,6 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by some computable property of each value, see `Dict\sort_by()`.
  */
-<<__RxLocal>>
 function sort_by_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tk, Tk): int) $key_comparator = null,

@@ -33,7 +33,6 @@ namespace HH\Lib\Tuple;
  * The function signature here is inaccurate as it can not be correctly
  * expressed in Hack; this function is special-cased in the typechecker.
  */
-<<__RxLocal>>
 async function from_async(?Awaitable<mixed> ...$awaitables): Awaitable<mixed> {
   /* The oss-enable/disable + vec/varray dance is because varray is banned
    * externally, and HH_IGNORE_ERROR/HH_FIXME/UNSAFE_EXPR can't be used to

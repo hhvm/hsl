@@ -16,7 +16,6 @@ namespace HH\Lib\Str;
  *
  * Previously known as `implode` in PHP.
  */
-<<__Rx>>
 function join(
   Traversable<arraykey> $pieces,
   string $glue,

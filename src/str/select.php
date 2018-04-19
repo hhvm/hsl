@@ -22,7 +22,6 @@ use namespace HH\Lib\_Private;
  *
  * Previously known as `substr` in PHP.
  */
-<<__Rx>>
 function slice(
   string $string,
   int $offset,
@@ -43,7 +42,6 @@ function slice(
  * Returns the string with the given prefix removed, or the string itself if
  * it doesn't start with the prefix.
  */
-<<__Rx>>
 function strip_prefix(
   string $string,
   string $prefix,
@@ -58,7 +56,6 @@ function strip_prefix(
  * Returns the string with the given suffix removed, or the string itself if
  * it doesn't end with the suffix.
  */
-<<__Rx>>
 function strip_suffix(
   string $string,
   string $suffix,
@@ -82,7 +79,6 @@ function strip_suffix(
  * - To only strip from the left, see `Str\trim_left()`.
  * - To only strip from the right, see `Str\trim_right()`.
  */
-<<__Rx>>
 function trim(
   string $string,
   ?string $char_mask = null,
@@ -99,7 +95,6 @@ function trim(
  * - To strip from both ends, see `Str\trim()`.
  * - To only strip from the right, see `Str\trim_right()`
  */
-<<__Rx>>
 function trim_left(
   string $string,
   ?string $char_mask = null,
@@ -116,7 +111,6 @@ function trim_left(
  * - To strip from both ends, see `Str\trim`.
  * - To only strip from the left, see `Str\trim_left`.
  */
-<<__Rx>>
 function trim_right(
   string $string,
   ?string $char_mask = null,

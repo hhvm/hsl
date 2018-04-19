@@ -16,7 +16,6 @@ use namespace HH\Lib\C;
  * Returns whether the two given keysets have the same elements, using strict
  * equality. To guarantee equality of order as well as contents, use `===`.
  */
-<<__Rx>>
 function equal<Tv as arraykey>(
   keyset<Tv> $keyset1,
   keyset<Tv> $keyset2,

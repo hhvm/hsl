@@ -16,7 +16,6 @@ namespace HH\Lib\Keyset;
  *
  * For a variable number of Traversables, see `Keyset\flatten()`.
  */
-<<__Rx>>
 function union<Tv as arraykey>(
   Traversable<Tv> $first,
   Traversable<Tv> ...$rest

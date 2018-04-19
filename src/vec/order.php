@@ -18,7 +18,6 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * default. If `$start > $end`, it returns a descending range instead of
  * an empty one.
  */
-<<__Rx>>
 function range<Tv as num>(
   Tv $start,
   Tv $end,
@@ -36,7 +35,6 @@ function range<Tv as num>(
  * Returns a new vec with the values of the given Traversable in reversed
  * order.
  */
-<<__Rx>>
 function reverse<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
@@ -70,7 +68,6 @@ function shuffle<Tv>(
  *
  * To sort by some computable property of each value, see `Vec\sort_by()`.
  */
-<<__RxLocal>>
 function sort<Tv>(
   Traversable<Tv> $traversable,
   ?(function(Tv, Tv): int) $comparator = null,
@@ -92,7 +89,6 @@ function sort<Tv>(
  *
  * To sort by the values of the Traversable, see `Vec\sort()`.
  */
-<<__RxLocal>>
 function sort_by<Tv, Ts>(
   Traversable<Tv> $traversable,
   (function(Tv): Ts) $scalar_func,

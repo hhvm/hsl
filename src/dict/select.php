@@ -14,7 +14,6 @@ namespace HH\Lib\Dict;
  * Returns a new dict containing only the entries of the first KeyedTraversable
  * whose keys do not appear in any of the other ones.
  */
-<<__RxLocal>>
 function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   KeyedTraversable<Tk1, Tv> $first,
   KeyedTraversable<Tk2, mixed> $second,
@@ -39,7 +38,6 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  *
  * To take only the first `$n` entries, see `Dict\take()`.
  */
-<<__Rx>>
 function drop<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
@@ -64,7 +62,6 @@ function drop<Tk as arraykey, Tv>(
  * - To remove null values in a typechecker-visible way, see `Dict\filter_nulls()`.
  * - To use an async predicate, see `Dict\filter_async()`.
  */
-<<__RxLocal>>
 function filter<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tv): bool) $value_predicate = null,
@@ -85,7 +82,6 @@ function filter<Tk as arraykey, Tv>(
  *
  * To use an async predicate, see `Dict\filter_with_key_async()`.
  */
-<<__RxLocal>>
 function filter_with_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   (function(Tk, Tv): bool) $predicate,
@@ -103,7 +99,6 @@ function filter_with_key<Tk as arraykey, Tv>(
  * Returns a new dict containing only the keys for which the given predicate
  * returns `true`. The default predicate is casting the key to boolean.
  */
-<<__RxLocal>>
 function filter_keys<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   ?(function(Tk): bool) $key_predicate = null,
@@ -122,7 +117,6 @@ function filter_keys<Tk as arraykey, Tv>(
  * Given a KeyedTraversable with nullable values, returns a new dict with
  * those mappings removed.
  */
-<<__Rx>>
 function filter_nulls<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, ?Tv> $traversable,
 ): dict<Tk, Tv> {
@@ -140,7 +134,6 @@ function filter_nulls<Tk as arraykey, Tv>(
  * and the given Traversable. The dict will have the same ordering as the
  * `$keys` Traversable.
  */
-<<__Rx>>
 function select_keys<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $container,
   Traversable<Tk> $keys,
@@ -160,7 +153,6 @@ function select_keys<Tk as arraykey, Tv>(
  *
  * To drop the first `$n` entries, see `Dict\drop()`.
  */
-<<__Rx>>
 function take<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
@@ -187,7 +179,6 @@ function take<Tk as arraykey, Tv>(
  *
  * For non-arraykey values, see `Dict\unique_by()`.
  */
-<<__Rx>>
 function unique<Tk as arraykey, Tv as arraykey>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
@@ -202,7 +193,6 @@ function unique<Tk as arraykey, Tv as arraykey>(
  *
  * For arraykey values, see `Dict\unique()`.
  */
-<<__RxLocal>>
 function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   KeyedContainer<Tk, Tv> $container,
   (function(Tv): Ts) $scalar_func,

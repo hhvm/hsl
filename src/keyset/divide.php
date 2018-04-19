@@ -14,7 +14,6 @@ namespace HH\Lib\Keyset;
  * Returns a 2-tuple containing keysets for which the given predicate returned
  * `true` and `false`, respectively.
  */
-<<__RxLocal>>
 function partition<Tv as arraykey>(
   Traversable<Tv> $traversable,
   (function(Tv): bool) $predicate,
