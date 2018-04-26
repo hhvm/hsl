@@ -9,6 +9,9 @@ implementing the library according to codified design principles.
 This library is especially useful for working with the Hack arrays (`vec`,
 `keyset`, and `dict`).
 
+For future APIs, see
+[the experimental repository](https://github.com/hhvm/hsl-experimental).
+
 ## Examples
 
 ```Hack
@@ -98,9 +101,10 @@ This is not an exhaustive list.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md); in particular, we are not currently
-accepting feature requests or pull requests that add new features. Long-term,
-we will continue to be extremely conservative about new features.
+See [CONTRIBUTING.md](CONTRIBUTING.md); in particular, new features should be
+contributed to
+[the experimental repository](https://github.com/hhvm/hsl-experimental/)
+instead.
 
 ## License
 

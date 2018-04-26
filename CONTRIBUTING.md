@@ -2,16 +2,15 @@
 We want to make contributing to this project as easy and transparent as
 possible.
 
-## No Feature Requests
+## Feature Requests
 
-We will not currently accept pull requests or issues to add new features to the
-library; when this library is no longer an experimental preview, we will revisit
-this, but expect to continue to be extremely conservative about new features.
-
-Other issues/pull requests are very welcome, especially issues reporting
-inconsistencies between parts of this library.
+New features should be contributed to
+[the experimental repository](https://github.com/hhvm/hsl-experimental/)
+instead; if you believe an experimental feature is mature, please file an
+issue to request the relevant files be moved to this repository.
 
 ## Our Development Process
+
 The source of truth for this library is an internal repository; we continuously
 sync changes out to GitHub using
 [FBShipIt](https://github.com/facebook/fbshipit), and test/apply pull requests
@@ -50,6 +49,7 @@ outlined on that page and do not file a public issue.
 * 2 spaces for indentation rather than tabs
 * 80 character line length
 * Be consistent with existing code
+* Be consistent with hackfmt
 
 We do not follow the PSR guidelines.
 
