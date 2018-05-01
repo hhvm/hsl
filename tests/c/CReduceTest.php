@@ -50,4 +50,56 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
   ): void {
     expect(C\reduce($traversable, $accumulator, $initial))->toEqual($expected);
   }
+
+  public static function provideTestReduceWithKey(): array<mixed> {
+    return array(
+      tuple(
+        'dict',
+        dict[1 => 2, 2 => 3, 3 => 4, 4 => 5],
+        dict[1 => 0, 4 => 6, 8 => 10],
+        dict[1 => 0],
+      ),
+      tuple(
+        'array',
+        array(1 => 2, 2 => 3, 3 => 4, 4 => 5),
+        dict[1 => 0, 4 => 6, 8 => 10],
+        dict[1 => 0],
+      ),
+      tuple(
+        'map',
+        Map{1 => 2, 2 => 3, 3 => 4, 4 => 5},
+        dict[1 => 0, 4 => 6, 8 => 10],
+        dict[1 => 0],
+      ),
+      tuple(
+        'generator',
+        HackLibTestTraversables::getKeyedIterator(
+          dict[1 => 2, 2 => 3, 3 => 4, 4 => 5],
+        ),
+        dict[1 => 0, 4 => 6, 8 => 10],
+        dict[1 => 0],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestReduceWithKey */
+  public function testReduceWithKey(
+    string $_,
+    KeyedTraversable<int, int> $traversable,
+    dict<int, int> $expected,
+    dict<int, int> $initial,
+  ): void {
+    $result = C\reduce_with_key(
+      $traversable,
+      ($acc, $k, $v) ==> {
+        if ($k %2  === 0) {
+            $acc[$k * 2] = $v * 2;
+        }
+        return $acc;
+      },
+      $initial,
+    );
+
+    expect($result)->toBeSame($expected);
+  }
 }

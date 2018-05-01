@@ -30,3 +30,21 @@ function reduce<Tv, Ta>(
   }
   return $result;
 }
+
+/**
+ * Reduces the given KeyedTraversable into a single value by
+ * applying an accumulator function against an intermediate result
+ * and each key/value.
+ */
+<<__RxLocal>>
+function reduce_with_key<Tk, Tv, Ta>(
+  KeyedTraversable<Tk, Tv> $traversable,
+  (function(Ta, Tk, Tv): Ta) $accumulator,
+  Ta $initial,
+): Ta {
+  $result = $initial;
+  foreach ($traversable as $key => $value) {
+    $result = $accumulator($result, $key, $value);
+  }
+  return $result;
+}
