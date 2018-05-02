@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Keyset;
+use namespace HH\Lib\{Keyset, Str};
 use function Facebook\FBExpect\expect;
 
 /**
