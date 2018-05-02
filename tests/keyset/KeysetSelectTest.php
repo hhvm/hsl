@@ -185,6 +185,48 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     expect(Keyset\filter_nulls($traversable))->toBeSame($expected);
   }
 
+  public static function provideTestFilterWithKey(): array<string, mixed> {
+    return array(
+      'All elements selected' => tuple(
+        vec['the', 'quick', 'brown', 'fox', 'jumped'],
+        ($key, $value) ==> true,
+        keyset['the', 'quick', 'brown', 'fox', 'jumped'],
+      ),
+      'No elements selected' => tuple(
+        vec['the', 'quick', 'brown', 'fox', 'jumped'],
+        ($key, $value) ==> false,
+        keyset[],
+      ),
+      'odd elements selected' => tuple(
+        vec['the', 'quick', 'brown', 'fox', 'jumped'],
+        ($key, $value) ==> $key % 2 === 1,
+        keyset['quick','fox'],
+      ),
+      'elements selected starting with "f"' => tuple(
+        vec['the', 'quick', 'brown', 'fox', 'jumped'],
+        ($key, $value) ==> Str\starts_with($value, 'f'),
+        keyset['fox'],
+      ),
+      'elements selected starting with "f" 2' => tuple(
+        HackLibTestTraversables::getIterator(
+          vec['the', 'quick', 'brown', 'fox', 'jumped']
+        ),
+        ($key, $value) ==> Str\starts_with($value, 'f'),
+        keyset['fox'],
+      ),
+    );
+  }
+
+  /** @dataProvider provideTestFilterWithKey */
+  public function testFilterWithKey<Tk, Tv as arraykey>(
+    KeyedTraversable<Tk, Tv> $traversable,
+    (function(Tk, Tv): bool) $filter_func,
+    keyset<Tv> $expected,
+  ): void {
+    $result = Keyset\filter_with_key($traversable, $filter_func);
+    expect($result)->toBeSame($expected);
+  }
+
   public static function provideTestKeys(): array<mixed> {
     return array(
       tuple(

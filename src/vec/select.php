@@ -130,6 +130,26 @@ function filter_nulls<Tv>(
 }
 
 /**
+ * Returns a new vec containing only the values for which the given predicate
+ * returns `true`.
+ *
+ * If you don't need access to the key, see `Vec\filter()`.
+ */
+<<__RxLocal>>
+function filter_with_key<Tk, Tv>(
+  KeyedTraversable<Tk, Tv> $traversable,
+  (function(Tk, Tv): bool) $predicate,
+): vec<Tv> {
+  $result = vec[];
+  foreach ($traversable as $key => $value) {
+    if ($predicate($key, $value)) {
+      $result[] = $value;
+    }
+  }
+  return $result;
+}
+
+/**
  * Returns a new vec containing only the elements of the first Traversable that
  * appear in all the other ones. Duplicate values are preserved.
  */

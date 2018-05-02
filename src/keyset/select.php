@@ -98,6 +98,26 @@ function filter_nulls<Tv as arraykey>(
 }
 
 /**
+ * Returns a new keyset containing only the values for which the given predicate
+ * returns `true`.
+ *
+ * If you don't need access to the key, see `Keyset\filter()`.
+ */
+<<__RxLocal>>
+function filter_with_key<Tk, Tv as arraykey>(
+  KeyedTraversable<Tk, Tv> $traversable,
+  (function(Tk, Tv): bool) $predicate,
+): keyset<Tv> {
+  $result = keyset[];
+  foreach ($traversable as $key => $value) {
+    if ($predicate($key, $value)) {
+      $result[] = $value;
+    }
+  }
+  return $result;
+}
+
+/**
  * Returns a new keyset containing the keys of the given KeyedTraversable,
  * maintaining the iteration order.
  */
