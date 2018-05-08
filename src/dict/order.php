@@ -69,6 +69,7 @@ function sort_by<Tk as arraykey, Tv, Ts>(
     : ($a, $b) ==> $a[0] <=> $b[0];
   return $traversable
     |> namespace\map($$, $v ==> tuple($scalar_func($v), $v))
+    /* HH_FIXME[4240] Ill-typed comparison (T28898787) */
     |> namespace\sort($$, $tuple_comparator)
     |> namespace\map($$, $t ==> $t[1]);
 }
