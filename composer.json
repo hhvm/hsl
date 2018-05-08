@@ -8,7 +8,7 @@
     "facebook/fbexpect": "^0.4"
   },
   "require": {
-    "hhvm": "^3.23.2",
+    "hhvm": "^3.26.0",
     "hhvm/hhvm-autoload": "^1.4"
   }
 }
