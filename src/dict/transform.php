@@ -128,6 +128,8 @@ function from_keys<Tk as arraykey, Tv>(
  *
  * - To create a dict from keys, see `Dict\from_keys()`.
  * - To create a dict from values, see `Dict\from_values()`.
+ *
+ * Also known as `unzip` or `fromItems` in other implementations.
  */
 <<__Rx>>
 function from_entries<Tk as arraykey, Tv>(
