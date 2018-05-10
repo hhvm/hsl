@@ -105,7 +105,7 @@ function flip<Tk, Tv as arraykey>(
  *
  * - To use an async function, see `Dict\from_keys_async()`.
  * - To create a dict from values, see `Dict\from_values()`.
- * - To create a dict from key/value pairs, see `Dict\from_entries()`.
+ * - To create a dict from key/value tuples, see `Dict\from_entries()`.
  */
 <<__RxLocal>>
 function from_keys<Tk as arraykey, Tv>(
@@ -150,7 +150,7 @@ function from_entries<Tk as arraykey, Tv>(
  * overwrite the previous ones.
  *
  * - To create a dict from keys, see `Dict\from_keys()`.
- * - To create a dict from key/value pairs, see `Dict\from_entries()`.
+ * - To create a dict from key/value tuples, see `Dict\from_entries()`.
  */
 <<__RxLocal>>
 function from_values<Tk as arraykey, Tv>(

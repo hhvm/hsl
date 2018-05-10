@@ -13,7 +13,7 @@ namespace HH\Lib\Dict;
 use namespace HH\Lib\Vec;
 
 /**
- * Returns a new dict with the original key/value pairs in reversed iteration
+ * Returns a new dict with the original entries in reversed iteration
  * order.
  */
 <<__RxShallow>>
