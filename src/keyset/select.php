@@ -28,8 +28,8 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   }
   $union = !$rest
     ? keyset($second)
-    : namespace\union($second, ...$rest);
-  return namespace\filter(
+    : union($second, ...$rest);
+  return filter(
     $first,
     $value ==> !\array_key_exists($value, $union),
   );

@@ -37,7 +37,7 @@ async function filter_async<Tv>(
   Container<Tv> $container,
   (function(Tv): Awaitable<bool>) $value_predicate,
 ): Awaitable<vec<Tv>> {
-  $tests = await namespace\map_async($container, $value_predicate);
+  $tests = await map_async($container, $value_predicate);
   $result = vec[];
   $ii = 0;
   foreach ($container as $value) {

@@ -105,5 +105,5 @@ function sort_by<Tv, Ts>(
   } else {
     \asort(&$order_by);
   }
-  return namespace\map_with_key($order_by, ($k, $v) ==> $vec[$k]);
+  return map_with_key($order_by, ($k, $v) ==> $vec[$k]);
 }

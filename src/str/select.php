@@ -29,7 +29,7 @@ function slice(
   ?int $length = null,
 ): string {
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
-  $offset = _Private\validate_offset($offset, namespace\length($string));
+  $offset = _Private\validate_offset($offset, length($string));
   $result = $length === null
     ? \substr($string, $offset)
     : \substr($string, $offset, $length);
@@ -48,10 +48,10 @@ function strip_prefix(
   string $string,
   string $prefix,
 ): string {
-  if ($prefix === '' || !namespace\starts_with($string, $prefix)) {
+  if ($prefix === '' || !starts_with($string, $prefix)) {
     return $string;
   }
-  return namespace\slice($string, namespace\length($prefix));
+  return slice($string, length($prefix));
 }
 
 /**
@@ -63,13 +63,13 @@ function strip_suffix(
   string $string,
   string $suffix,
 ): string {
-  if ($suffix === '' || !namespace\ends_with($string, $suffix)) {
+  if ($suffix === '' || !ends_with($string, $suffix)) {
     return $string;
   }
-  return namespace\slice(
+  return slice(
     $string,
     0,
-    namespace\length($string) - namespace\length($suffix),
+    length($string) - length($suffix),
   );
 }
 

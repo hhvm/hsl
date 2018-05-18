@@ -33,7 +33,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   $union = !$rest
     ? keyset($second)
     : Keyset\union($second, ...$rest);
-  return namespace\filter(
+  return filter(
     $first,
     ($value) ==> !\array_key_exists($value, $union),
   );
@@ -59,7 +59,7 @@ function diff_by<Tv, Ts as arraykey>(
     return vec($first);
   }
   $set = Keyset\map($second, $scalar_func);
-  return namespace\filter(
+  return filter(
     $first,
     ($value) ==> !\array_key_exists($scalar_func($value), $set),
   );
@@ -163,7 +163,7 @@ function intersect<Tv as arraykey>(
   if (!$intersection) {
     return vec[];
   }
-  return namespace\filter(
+  return filter(
     $first,
     ($value) ==> \array_key_exists($value, $intersection),
   );
@@ -198,8 +198,8 @@ function sample<Tv>(
     $sample_size,
   );
   return $traversable
-    |> namespace\shuffle($$)
-    |> namespace\take($$, $sample_size);
+    |> shuffle($$)
+    |> take($$, $sample_size);
 }
 
 /**

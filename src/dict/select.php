@@ -26,8 +26,8 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   if (!$second && !$rest) {
     return dict($first);
   }
-  $union = namespace\merge($second, ...$rest);
-  return namespace\filter_keys(
+  $union = merge($second, ...$rest);
+  return filter_keys(
     $first,
     $key ==> !\array_key_exists($key, $union),
   );
@@ -191,7 +191,7 @@ function take<Tk as arraykey, Tv>(
 function unique<Tk as arraykey, Tv as arraykey>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
-  return namespace\flip(namespace\flip($traversable));
+  return flip(flip($traversable));
 }
 
 /**
@@ -210,6 +210,6 @@ function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   // We first convert the container to dict[scalar_key => original_key] to
   // remove duplicates, then back to dict[original_key => original_value].
   return $container
-    |> namespace\pull_with_key($$, ($k, $_) ==> $k, ($_, $v) ==> $scalar_func($v))
-    |> namespace\pull($$, $orig_key ==> $container[$orig_key], $x ==> $x);
+    |> pull_with_key($$, ($k, $_) ==> $k, ($_, $v) ==> $scalar_func($v))
+    |> pull($$, $orig_key ==> $container[$orig_key], $x ==> $x);
 }

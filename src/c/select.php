@@ -207,7 +207,7 @@ function last_key<Tk, Tv>(
 function last_keyx<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
-  $last_key = namespace\last_key($traversable);
+  $last_key = last_key($traversable);
   invariant($last_key !== null, '%s: Expected non-empty input', __FUNCTION__);
   return $last_key;
 }

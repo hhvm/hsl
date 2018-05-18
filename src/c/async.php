@@ -25,7 +25,7 @@ async function first_async<T>(
   Awaitable<Traversable<T>> $awaitable,
 ): Awaitable<?T> {
   $traversable = await $awaitable;
-  return namespace\first($traversable);
+  return first($traversable);
 }
 
 /**
@@ -39,5 +39,5 @@ async function firstx_async<T>(
   Awaitable<Traversable<T>> $awaitable,
 ): Awaitable<T> {
   $traversable = await $awaitable;
-  return namespace\firstx($traversable);
+  return firstx($traversable);
 }

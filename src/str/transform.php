@@ -201,7 +201,7 @@ function splice(
   ?int $length = null,
 ): string {
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
-  $offset = _Private\validate_offset($offset, namespace\length($string));
+  $offset = _Private\validate_offset($offset, length($string));
   return $length === null
     ? \substr_replace($string, $replacement, $offset)
     : \substr_replace($string, $replacement, $offset, $length);

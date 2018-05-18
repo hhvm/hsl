@@ -69,7 +69,7 @@ async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   (function(Tv): Awaitable<bool>) $value_predicate,
 ): Awaitable<dict<Tk, Tv>> {
-  $tests = await namespace\map_async($traversable, $value_predicate);
+  $tests = await map_async($traversable, $value_predicate);
   $result = dict[];
   foreach ($traversable as $key => $value) {
     if ($tests[$key]) {

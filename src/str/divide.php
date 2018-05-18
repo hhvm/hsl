@@ -43,12 +43,12 @@ function split(
 ): vec<string> {
   if ($delimiter === '') {
     if ($limit === null || $limit >= \strlen($string)) {
-      return namespace\chunk($string);
+      return chunk($string);
     } else if ($limit === 1) {
       return vec[$string];
     } else {
       invariant($limit > 1, 'Expected positive limit.');
-      $result = namespace\chunk(\substr($string, 0, $limit - 1));
+      $result = chunk(\substr($string, 0, $limit - 1));
       $result[] = \substr($string, $limit - 1);
       return $result;
     }

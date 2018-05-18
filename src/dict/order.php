@@ -24,7 +24,7 @@ function reverse<Tk as arraykey, Tv>(
   return $dict
     |> Vec\keys($$)
     |> Vec\reverse($$)
-    |> namespace\from_keys($$, ($k) ==> $dict[$k]);
+    |> from_keys($$, ($k) ==> $dict[$k]);
 }
 
 /**
@@ -68,10 +68,10 @@ function sort_by<Tk as arraykey, Tv, Ts>(
     ? ($a, $b) ==> $scalar_comparator($a[0], $b[0])
     : ($a, $b) ==> $a[0] <=> $b[0];
   return $traversable
-    |> namespace\map($$, $v ==> tuple($scalar_func($v), $v))
+    |> map($$, $v ==> tuple($scalar_func($v), $v))
     /* HH_FIXME[4240] Ill-typed comparison (T28898787) */
-    |> namespace\sort($$, $tuple_comparator)
-    |> namespace\map($$, $t ==> $t[1]);
+    |> sort($$, $tuple_comparator)
+    |> map($$, $t ==> $t[1]);
 }
 
 /**

@@ -45,7 +45,7 @@ function contains<T>(
   T $value,
 ): bool {
   if (is_keyset($traversable)) {
-    return namespace\contains_key($traversable, $value);
+    return contains_key($traversable, $value);
   }
   foreach ($traversable as $v) {
     if ($value === $v) {
