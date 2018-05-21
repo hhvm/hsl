@@ -48,8 +48,8 @@ async function from_async(?Awaitable<mixed> ...$awaitables): Awaitable<mixed> {
     }
   }
 
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
-  // @oss-disable: await AwaitAllWaitHandle::fromArray($awaitables);
+  /* HH_IGNORE_ERROR[4110] Hack can't infer that $awaitables has no nulls */
+  // @oss-disable: await AwaitAllWaitHandle::fromVArray($awaitables);
   await AwaitAllWaitHandle::fromVec($awaitables); // @oss-enable
   foreach ($awaitables as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing array to reduce peak memory. */
