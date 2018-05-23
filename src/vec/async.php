@@ -62,6 +62,7 @@ async function map_async<Tv1, Tv2>(
 ): Awaitable<vec<Tv2>> {
   $awaitables = vec[];
   foreach ($traversable as $value) {
+    /* HH_FIXME[4248] AwaitAllWaitHandle::fromVec is like await */
     $awaitables[] = $async_func($value);
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */

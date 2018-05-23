@@ -42,6 +42,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
   $awaitables = dict[];
   foreach ($keys as $key) {
     if (!C\contains_key($awaitables, $key)) {
+      /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
       $awaitables[$key] = $async_func($key);
     }
   }
@@ -114,6 +115,7 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
 ): Awaitable<dict<Tk, Tv2>> {
   $awaitables = dict[];
   foreach ($traversable as $key => $value) {
+    /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
     $awaitables[$key] = $value_func($value);
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
