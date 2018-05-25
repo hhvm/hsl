@@ -55,9 +55,10 @@ async function filter_async<Tv>(
  *
  * For non-async functions, see `Vec\map()`.
  */
-<<__RxLocal>>
+<<__RxLocal, __OnlyRxIfArgs>>
 async function map_async<Tv1, Tv2>(
   Traversable<Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv1): Awaitable<Tv2>) $async_func,
 ): Awaitable<vec<Tv2>> {
   $awaitables = vec[];
