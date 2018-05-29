@@ -20,6 +20,7 @@ async function from_async<Tv>(
   await AwaitAllWaitHandle::fromVec($awaitables);
   foreach ($awaitables as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
+    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     $awaitables[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
@@ -73,6 +74,7 @@ async function map_async<Tv1, Tv2>(
   await AwaitAllWaitHandle::fromVec($awaitables);
   foreach ($awaitables as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
+    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     $awaitables[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
