@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class DictCombineTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestAssociate(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         vec[3, 2, 1],
@@ -64,18 +65,23 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMerge(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Map {},
+        /* HH_FIXME[2083]  */
         array(),
         dict[],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           'one' => 'one',
           'two' => 'two',
         ),
+        /* HH_FIXME[2083]  */
         array(
+          /* HH_FIXME[2083]  */
           array(
             'three' => 'three',
             'one' => 3,
@@ -92,16 +98,20 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           'foo' => 'foo',
           'bar' => 'bar',
+          /* HH_FIXME[2083]  */
           'baz' => array(1, 2, 3),
         )),
+        /* HH_FIXME[2083]  */
         array(
           dict[
             'bar' => 'barbar',
           ],
           Vector {'I should feel bad for doing this', 'But yolo'},
+          /* HH_FIXME[2083]  */
           array(
             '1' => 'gross array behavior',
           ),
@@ -110,6 +120,7 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
         dict[
           'foo' => 'foo',
           'bar' => 'barbar',
+          /* HH_FIXME[2083]  */
           'baz' => array(1, 2, 3),
           0 => 'I should feel bad for doing this',
           1 => 'gross array behavior',

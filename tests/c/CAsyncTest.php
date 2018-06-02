@@ -18,9 +18,11 @@ use function Facebook\FBExpect\expect;
 final class CAsyncTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestGenFirst(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         async {
+          /* HH_FIXME[2083]  */
           return array();
         },
         null,
@@ -56,9 +58,11 @@ final class CAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestGenFirstx(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         async {
+          /* HH_FIXME[2083]  */
           return array();
         },
         InvariantException::class,

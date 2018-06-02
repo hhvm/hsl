@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestGen(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {
@@ -35,6 +36,7 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
         keyset[1, 2],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(
           async {return 'the';},
           async {return 'quick';},
@@ -59,6 +61,7 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestGenMap(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         keyset[1,2,3],
@@ -71,6 +74,7 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
         keyset[2,4,6],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array('dan', 'danny', 'daniel'),
         async ($word) ==> strrev($word),
         keyset['nad', 'ynnad', 'leinad'],
@@ -96,8 +100,10 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
     (function(arraykey): Awaitable<bool>),
     keyset<arraykey>,
   )> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           '2' => 'two',
           '4' => 'four',

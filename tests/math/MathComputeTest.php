@@ -22,6 +22,7 @@ use function md5 as non_crypto_md5;
  */
 final class MathComputeTest extends PHPUnit_Framework_TestCase {
   public static function provideTestAbs(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(-1, 1),
       tuple(1, 1),
@@ -38,6 +39,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestBaseConvertBijection(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('a', 16, 10, '10'),
       tuple('a', 16, 2, '1010'),
@@ -113,6 +115,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestBaseConvertOneWay(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('00000a', 16, 10, '10'),
       tuple('00000a', 16, 2, '1010'),
@@ -171,6 +174,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestBaseConvertException(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       // empty string
       tuple('', 2, 16),
@@ -194,6 +198,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestCeil(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(3.5, 4.0),
       tuple(4, 4.0),
@@ -209,6 +214,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestCos(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(0.0, 1.0),
       tuple(M_PI_2, -3.4914813388431e-15),
@@ -229,6 +235,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestExp(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(-1.0, 1.0 / M_E),
       tuple(0.0, 1.0),
@@ -244,6 +251,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFloor(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(3.5, 3.0),
       tuple(4, 4.0),
@@ -259,6 +267,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFromBase(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('4d2', 16, 1234),
       tuple('2322', 8, 1234),
@@ -279,6 +288,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFromBaseException(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       // invalid base
       tuple('1234', 0),
@@ -304,6 +314,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestIntDiv(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(1, 2, 0),
       tuple(2, 1, 2),
@@ -324,6 +335,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestIntDivException(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(-1, 0),
       tuple(0, 0),
@@ -338,6 +350,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestLog(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(M_E),
       tuple(10),
@@ -354,6 +367,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestLogNoBase(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(0.1),
       tuple(3.6),
@@ -376,6 +390,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestRound(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(3.5, 0, 4.0),
       tuple(4, 0, 4.0),
@@ -407,6 +422,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSin(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(0.0, 0.0),
       tuple(M_PI_2, 1.0),
@@ -427,6 +443,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSqrt(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(16.0, 4.0),
       tuple(2, M_SQRT2),
@@ -447,6 +464,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestToBase(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(1234, 16, '4d2'),
       tuple(1234, 8, '2322'),
@@ -464,6 +482,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestToBaseException(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(1234, 0),
       tuple(1234, -1),

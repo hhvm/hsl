@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class VecAsyncTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestGen(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {
@@ -35,6 +36,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
         vec[1, 2],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(
           async {return 'the';},
           async {return 'quick';},
@@ -59,8 +61,10 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestGenFilter(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           '2' => 'two',
           '4' => 'four',
@@ -92,6 +96,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestGenMap(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
@@ -100,6 +105,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array('the', 'quick', 'brown', 'fox'),
         ),
         async ($word) ==> strrev($word),

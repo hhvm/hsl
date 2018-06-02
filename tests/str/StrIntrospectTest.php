@@ -18,6 +18,7 @@ use function Facebook\FBExpect\expect;
 final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideCompare(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foo', 'foo', 0),
       tuple('foo', 'Foo', 1),
@@ -42,6 +43,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideCompareCI(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foo', 'foo', 0),
       tuple('foo', 'Foo', 0),
@@ -66,6 +68,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideContains(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', '', 0, true),
       tuple('foo', '', 0, true),
@@ -92,6 +95,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideContainsCI(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', '', 0, true),
       tuple('foo', '', 0, true),
@@ -136,6 +140,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideEndsWith(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',
@@ -180,6 +185,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideEndsWithCI(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',
@@ -224,6 +230,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideIsEmpty(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(null, true),
       tuple('', true),
@@ -242,6 +249,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideLength(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', 0),
       tuple('0', 1),
@@ -258,6 +266,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideSearch(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', 'foo', 0, null),
       tuple('fooBar', 'oB', 0, 2),
@@ -281,6 +290,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideSearchCI(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', 'foo', 0, null),
       tuple('fooBar', 'oB', 0, 2),
@@ -304,6 +314,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideSearchLast(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foofoofoo', 'foo', 0, 6),
       tuple('foofoofoo', 'bar', 0, null),
@@ -346,6 +357,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideStartsWith(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',
@@ -390,6 +402,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideStartsWithCI(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',

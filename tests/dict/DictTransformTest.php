@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class DictTransformTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestChunk(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Map {},
@@ -24,6 +25,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         vec[],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(0, 1, 2, 3, 4),
         2,
         vec[
@@ -42,6 +44,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(
+          /* HH_FIXME[2083]  */
           array('foo' => 'bar', 'baz' => 'qux'),
         ),
         1,
@@ -63,8 +66,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestCountValues(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(0, '0', 1, 3, 4, 1, 1, 3, '1'),
         dict[
           0 => 1,
@@ -98,8 +103,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFillKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         'foo',
         dict[],
@@ -136,17 +143,22 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFlatten(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         dict[],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(
+          /* HH_FIXME[2083]  */
           array(
             'one' => 'one',
             'two' => 'two',
           ),
+          /* HH_FIXME[2083]  */
           array(
             'three' => 'three',
             'one' => 3,
@@ -163,16 +175,20 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(
+          /* HH_FIXME[2083]  */
           HackLibTestTraversables::getKeyedIterator(array(
             'foo' => 'foo',
             'bar' => 'bar',
+            /* HH_FIXME[2083]  */
             'baz' => array(1, 2, 3),
           )),
           dict[
             'bar' => 'barbar',
           ],
           Vector {'I should feel bad for doing this', 'But yolo'},
+          /* HH_FIXME[2083]  */
           array(
             '1' => 'gross array behavior',
           ),
@@ -181,6 +197,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         dict[
           'foo' => 'foo',
           'bar' => 'barbar',
+          /* HH_FIXME[2083]  */
           'baz' => array(1, 2, 3),
           0 => 'I should feel bad for doing this',
           1 => 'gross array behavior',
@@ -188,8 +205,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(
           vec['zero'],
+          /* HH_FIXME[2083]  */
           array(1 => 'one'),
           dict[2 => 'two'],
           Map {3 => 'three'},
@@ -213,8 +232,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFlip(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         dict[],
       ),
@@ -253,6 +274,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFromKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Set {},
@@ -273,6 +295,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array('the', 'quick', 'brown', 'fox'),
         fun('strlen'),
         dict[
@@ -295,8 +318,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFromEntries(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           tuple('foo', 1),
           tuple('bar', null),
@@ -321,6 +346,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(
           tuple('foo', 1),
           tuple('bar', null),
@@ -344,8 +370,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFromValues(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         $x ==> $x,
         dict[],
@@ -386,8 +414,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestGroupBy(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array('the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'),
         fun('strlen'),
         dict[
@@ -399,6 +429,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array('the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'),
         ),
         $x ==> strlen($x) % 2 === 1 ? strlen($x) : null,
@@ -423,22 +454,29 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   public static function provideTestMap(): array<mixed> {
 
     $doubler = $x ==> $x * 2;
+    /* HH_FIXME[2083]  */
     return array(
       // integer vecs
+      /* HH_FIXME[2083]  */
       tuple(array(), $doubler, dict[]),
+      /* HH_FIXME[2083]  */
       tuple(array(1), $doubler, dict[0 => 2]),
       tuple(range(10, 1000), $doubler, dict(array_map($x ==> $x * 2, range(10, 1000)))),
 
       // string vecs
+      /* HH_FIXME[2083]  */
       tuple(array('a'), $x ==> $x. ' buzz', dict[0 => 'a buzz']),
       tuple(
+        /* HH_FIXME[2083]  */
         array('a', 'bee', 'a bee'),
         $x ==> $x. ' buzz',
+        /* HH_FIXME[2083]  */
         dict(array('a buzz', 'bee buzz', 'a bee buzz'))
       ),
 
       // non-vec: Hack Collections and Hack Arrays
       tuple(
+        /* HH_FIXME[2083]  */
         dict(array(
           'donald' => 'duck',
           'daffy' => 'duck',
@@ -457,6 +495,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
       tuple(
         Vector {10, 20},
         $x ==> $x * 2,
+        /* HH_FIXME[2083]  */
         dict(array(20, 40)),
       ),
 
@@ -473,11 +512,14 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
       ),
 
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(1, 2, 3)),
         $x ==> $x * 2,
+        /* HH_FIXME[2083]  */
         dict(array(2, 4, 6)),
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(10 => 1, 20 => 2, 30 => 3)),
         $x ==> $x * 2,
         dict[10 => 2, 20 => 4, 30 => 6],
@@ -503,6 +545,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMapKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[
@@ -533,6 +576,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           'foo' => 'foo',
           'bar' => 'bar',
@@ -558,8 +602,10 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMapWithKey(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         ($a, $b) ==> null,
         dict[],
@@ -598,6 +644,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestPull(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
@@ -610,6 +657,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array(1, 3, 5, 7, 9),
         ),
         ($v) ==> $v * $v,
@@ -637,6 +685,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestPullWithKey(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
@@ -650,6 +699,7 @@ final class DictTransformTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(10 => 'foo', 20 => 'food', 30 => 'fool', 40 => 'rude'),
         ($k, $v) ==> $v.(string)$k,
         ($k, $v) ==> Str\slice($v, 0, 3),

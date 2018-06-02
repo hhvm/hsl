@@ -17,28 +17,36 @@ use function Facebook\FBExpect\expect;
 final class DictSelectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestDiffByKey(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         range(0, 100),
+        /* HH_FIXME[2083]  */
         array(),
         dict[],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(1 => 1, 2 => 2, 3 => 3),
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
         dict[1 => 1, 2 => 2, 3 => 3],
       ),
       tuple(
         dict['foo' => 'bar', 'baz' => 'qux'],
         Map {'foo' => 4},
+        /* HH_FIXME[2083]  */
         array(),
         dict['baz' => 'qux'],
       ),
       tuple(
         range(0, 9),
         dict[2 => 4, 4 => 8, 8 => 16],
+        /* HH_FIXME[2083]  */
         array(
           Map {1 => 1, 2 => 2},
           HackLibTestTraversables::getKeyedIterator(range(0, 3)),
@@ -59,6 +67,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideDrop(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[],
@@ -76,6 +85,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           'foo' => 'oof',
           'bar' => 'rab',
@@ -111,6 +121,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilter(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[],
@@ -160,6 +171,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilterWithKey(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[],
@@ -214,6 +226,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testFilterWithoutPredicate(): void {
+    /* HH_FIXME[2083]  */
     expect(Dict\filter(array(
       0 => 0,
       3 => 3,
@@ -228,6 +241,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilterKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[],
@@ -278,8 +292,10 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilterNulls(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           'foo' => null,
           'bar' => null,
@@ -314,12 +330,15 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           '1' => null,
+          /* HH_FIXME[2083]  */
           '2' => array(),
           '3' => '0',
         )),
         dict[
+          /* HH_FIXME[2083]  */
           2 => array(),
           3 => '0',
         ],
@@ -339,9 +358,12 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSelectKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
         dict[],
       ),
@@ -351,6 +373,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
           'bar' => 'bar',
           'baz' => 'baz',
         },
+        /* HH_FIXME[2083]  */
         array('bar'),
         dict[
           'bar' => 'bar',
@@ -379,6 +402,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTake(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[],
@@ -391,6 +415,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         dict[],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           'foo' => 'oof',
           'bar' => 'rab',
@@ -442,6 +467,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestUnique(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Map {
@@ -473,6 +499,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     $s2 = Set {'bar'};
     $s3 = Set {'foo'};
     $s4 = Set {'baz'};
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {$s1, $s2, $s3, $s4},

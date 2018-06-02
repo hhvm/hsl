@@ -17,22 +17,28 @@ use function Facebook\FBExpect\expect;
 final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestDiff(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
         keyset[],
       ),
       tuple(
         vec[1, 3, 5, 7],
         dict[],
+        /* HH_FIXME[2083]  */
         array(),
         keyset[1, 3, 5, 7],
       ),
       tuple(
         new Vector(range(0, 20)),
         Set {1, 3, 5},
+        /* HH_FIXME[2083]  */
         array(
           Map {'foo' => 7, 'bar' => 9},
           HackLibTestTraversables::getIterator(range(11, 30)),
@@ -54,6 +60,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideDrop(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         vec[],
@@ -76,6 +83,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset[2, 3, 4, 5],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(0, 1, 2, 3, 4, 5, 5, 5)),
         5,
         keyset[5],
@@ -93,8 +101,10 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilter(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         $x ==> true,
         keyset[],
@@ -139,13 +149,16 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
 
   public function testFilterWithoutPredicate(): void {
     expect(
+      /* HH_FIXME[2083]  */
       Keyset\filter(array(0, 3, 5, 40, '', '0', 'win!'))
     )->toBeSame(keyset[3, 5, 40, 'win!']);
   }
 
   public static function provideTestFilterNulls(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(null, null, null),
         keyset[],
       ),
@@ -167,6 +180,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset['foo', 'bar', 'baz'],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           '1' => null,
           '2' => 1,
@@ -186,6 +200,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilterWithKey(): array<string, mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       'All elements selected' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
@@ -228,6 +243,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Map {},
@@ -243,6 +259,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset[2, 4, 6, 8],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           2 => 4,
           4 => 8,
@@ -263,16 +280,20 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestIntersect(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         range(0, 1000),
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
         keyset[],
       ),
       tuple(
         range(1, 10),
         range(1, 5),
+        /* HH_FIXME[2083]  */
         array(
           range(2, 6),
           range(3, 7),
@@ -282,12 +303,14 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
       tuple(
         Set {},
         range(1, 100),
+        /* HH_FIXME[2083]  */
         array(),
         keyset[],
       ),
       tuple(
         range(1, 1000),
         Map {},
+        /* HH_FIXME[2083]  */
         array(
           Set {},
           Vector {},
@@ -297,14 +320,18 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
       tuple(
         new Vector(range(1, 100)),
         Map {1 => 2, 39 => 40},
+        /* HH_FIXME[2083]  */
         array(
           HackLibTestTraversables::getIterator(range(0, 40)),
         ),
         keyset[2, 40],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(3, 4, 4, 5),
+        /* HH_FIXME[2083]  */
         array(3, 4),
+        /* HH_FIXME[2083]  */
         array(),
         keyset[3, 4],
       ),
@@ -323,6 +350,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTake(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         keyset[],
@@ -345,6 +373,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset[0, 1],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(0, 0, 1, 1, 2, 2, 3, 3)),
         5,
         keyset[0, 1, 2],

@@ -17,16 +17,21 @@ use function Facebook\FBExpect\expect;
 final class VecSelectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestDiff(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(
+          /* HH_FIXME[2083]  */
           array(),
         ),
         vec[],
       ),
       tuple(
         new Vector(range(0, 20)),
+        /* HH_FIXME[2083]  */
         array(
           Set {1, 3, 5},
           Map {'foo' => 7, 'bar' => 9},
@@ -48,14 +53,18 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestDiffBy(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array('the', 'quick', 'brown', 'fox'),
+        /* HH_FIXME[2083]  */
         array(),
         $x ==> $x,
         vec['the', 'quick', 'brown', 'fox'],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         Vector {'the', 'quick', 'brown', 'fox'},
         $x ==> $x,
@@ -64,6 +73,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
       tuple(
         Set {'plum', 'port', 'paste', 'pun', 'promise'},
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array('power', 'push', 'pin', 'pygmy'),
         ),
         ($str) ==> Str\slice($str, 0, 2),
@@ -84,6 +94,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideDrop(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         vec[],
@@ -123,6 +134,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilter(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         dict[],
@@ -167,14 +179,17 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testFilterWithoutPredicate(): void {
+    /* HH_FIXME[2083]  */
     expect(Vec\filter(array(
       0, 3, null, 5, false, 40, '', '0', 'win!',
     )))->toBeSame(vec[3, 5, 40, 'win!']);
   }
 
   public static function provideTestFilterNulls(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(null, null, null),
         vec[],
       ),
@@ -197,11 +212,14 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
         vec['foo', 'bar', 'baz'],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           '1' => null,
+          /* HH_FIXME[2083]  */
           '2' => array(),
           '3' => '0',
         )),
+        /* HH_FIXME[2083]  */
         vec[array(), '0'],
       ),
     );
@@ -216,6 +234,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFilterWithKey(): array<string, mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       'All elements selected' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
@@ -258,16 +277,20 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestIntersect(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         range(0, 1000),
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
         vec[],
       ),
       tuple(
         range(1, 10),
         range(1, 5),
+        /* HH_FIXME[2083]  */
         array(
           range(2, 6),
           range(3, 7),
@@ -277,12 +300,14 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
       tuple(
         Set {},
         range(1, 100),
+        /* HH_FIXME[2083]  */
         array(),
         vec[],
       ),
       tuple(
         range(1, 1000),
         Map {},
+        /* HH_FIXME[2083]  */
         array(
           Set {},
           Vector {},
@@ -292,14 +317,18 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
       tuple(
         new Vector(range(1, 100)),
         Map {1 => 2, 39 => 40},
+        /* HH_FIXME[2083]  */
         array(
           HackLibTestTraversables::getIterator(range(0, 40)),
         ),
         vec[2, 40],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(3, 4, 4, 5),
+        /* HH_FIXME[2083]  */
         array(3, 4),
+        /* HH_FIXME[2083]  */
         array(),
         vec[3, 4, 4],
       ),
@@ -317,8 +346,10 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestKeys(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           'foo' => null,
           'bar' => null,
@@ -346,8 +377,10 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
         vec[0, 1, 2, 3],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getKeyedIterator(array(
           '1' => null,
+          /* HH_FIXME[2083]  */
           '2' => array(),
           '3' => '0',
         )),
@@ -365,6 +398,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSample(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         range(0, 5),
@@ -397,6 +431,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSlice(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         range(0, 5),
@@ -436,6 +471,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTake(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         vec[],
@@ -483,13 +519,16 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestUnique(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array('the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'),
         vec['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'dog'],
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array(1, 2, 3, 2, 3, 4, 5, 6),
         ),
         vec[1, 2, 3, 4, 5, 6],
@@ -506,8 +545,10 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestUniqueBy(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(
           'plum',
           'port',
@@ -523,6 +564,7 @@ final class VecSelectTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array(
             'plum',
             'port',

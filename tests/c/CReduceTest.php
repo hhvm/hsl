@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class CReduceTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestReduce(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Set {'the', ' quick', ' brown', ' fox'},
@@ -26,6 +27,7 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array('the', ' quick', ' brown', ' fox'),
         ),
         ($a, $s) ==> $a.$s,
@@ -33,6 +35,7 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
         'the quick brown fox',
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array('the', 'quick', 'brown', 'fox'),
         ($a, $s) ==> $a->add($s),
         Vector {},
@@ -52,6 +55,7 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestReduceWithKey(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'dict',
@@ -61,6 +65,7 @@ final class CReduceTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         'array',
+        /* HH_FIXME[2083]  */
         array(1 => 2, 2 => 3, 3 => 4, 4 => 5),
         dict[1 => 0, 4 => 6, 8 => 10],
         dict[1 => 0],

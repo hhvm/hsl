@@ -17,8 +17,10 @@ use function Facebook\FBExpect\expect;
 final class MathContainersTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestMax(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         null,
       ),
@@ -28,6 +30,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array(8, 6, 7, 5, 3, 0, 9),
         ),
         9,
@@ -44,8 +47,10 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMaxBy(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         $x ==> $x,
         null,
@@ -57,6 +62,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array('the', 'quick', 'brown', 'fox'),
         ),
         fun('strlen'),
@@ -75,6 +81,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMean(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(vec[1.0, 2.0, 3, 4], 2.5),
       tuple(vec[1, 1, 2], 4 / 3),
@@ -97,6 +104,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMedian(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(vec[], null),
       tuple(vec[1], 1.0),
@@ -121,8 +129,10 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMin(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         null,
       ),
@@ -132,6 +142,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array(8, 6, 7, 5, 3, 0, 9),
         ),
         0,
@@ -152,8 +163,10 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMinBy(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         $x ==> $x,
         null,
@@ -165,6 +178,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array('the', 'quick', 'brown', 'fox'),
         ),
         fun('strlen'),
@@ -183,12 +197,14 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSum(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {},
         0,
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(1, 2, 1, 1, 3),
         8,
       ),
@@ -208,12 +224,14 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestSumFloat(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {},
         0.0,
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(1, 2.5, 1, 1, 3),
         8.5,
       ),

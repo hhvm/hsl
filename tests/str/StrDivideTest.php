@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class StrDivideTest extends PHPUnit_Framework_TestCase {
 
   public static function provideChunk(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'hello',
@@ -46,6 +47,7 @@ final class StrDivideTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideSplit(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',

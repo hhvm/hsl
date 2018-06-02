@@ -18,6 +18,7 @@ use function Facebook\FBExpect\expect;
 final class StrTransformTest extends PHPUnit_Framework_TestCase {
 
   public static function provideCapitalize(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foo', 'Foo'),
       tuple('Foo', 'Foo'),
@@ -35,6 +36,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideCapitalizeWords(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'the quick brown Fox',
@@ -56,6 +58,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideCapitalizeWordsCustomDelimiter(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'the_quick brown_Fox',
@@ -85,6 +88,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideFormatNumber(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         0,
@@ -141,6 +145,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideLowercase(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', ''),
       tuple('hello world', 'hello world'),
@@ -158,6 +163,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function providePadLeft(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foo', 5, ' ', '  foo'),
       tuple('foo', 5, 'blerg', 'blfoo'),
@@ -179,6 +185,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function providePadRight(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foo', 5, ' ', 'foo  '),
       tuple('foo', 5, 'blerg', 'foobl'),
@@ -200,6 +207,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideRepeat(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('foo', 3, 'foofoofoo'),
       tuple('foo', 0, ''),
@@ -217,6 +225,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideReplace(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'goodbye world',
@@ -262,6 +271,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideReplaceCI(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'goodbye world',
@@ -308,6 +318,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideReplaceEvery(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'hello world',
@@ -336,6 +347,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         'hello world',
+        /* HH_FIXME[2083]  */
         array(),
         'hello world',
       ),
@@ -352,6 +364,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideSplice(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',
@@ -425,6 +438,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideToInt(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', null),
       tuple('0', 0),
@@ -444,6 +458,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideUppercase(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple('', ''),
       tuple('hello world', 'HELLO WORLD'),

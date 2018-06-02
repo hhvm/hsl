@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class KeysetDivideTest extends PHPUnit_Framework_TestCase {
 
   public static function providePartition(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         range(1, 10),

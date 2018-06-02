@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class MathCompareTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestMaxva(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(1, 2, vec[], 2),
       tuple(2, 1, vec[], 2),
@@ -42,6 +43,7 @@ final class MathCompareTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestMinva(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(1, 2, vec[], 1),
       tuple(2, 1, vec[], 1),

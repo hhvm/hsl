@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class CIntrospectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestAny(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {2, 4, 6, 8, 9, 10, 12},
@@ -41,17 +42,21 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestAnyWithoutPredicate(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         false,
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(null, 0, '0', ''),
         false,
       ),
       tuple(
         HackLibTestTraversables::getIterator(
+          /* HH_FIXME[2083]  */
           array(null, 0, '0', '', 1),
         ),
         true,
@@ -68,6 +73,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestContains(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         vec[1, 2, 3, 4, 5],
@@ -95,12 +101,15 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
         true,
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(dict[1 => 2, 3 => 4]),
         dict[1 => 2, 3 => 4],
         true,
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(array(3)),
+        /* HH_FIXME[2083]  */
         array(4),
         false,
       ),
@@ -117,8 +126,10 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestContainsKey(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array('3' => 3),
         3,
         true,
@@ -161,7 +172,9 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestCount(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
+      /* HH_FIXME[2083]  */
       tuple(array(), 0),
       tuple(range(1, 10), 10),
       tuple(Set {1, 2}, 2),
@@ -182,6 +195,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestEvery(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         Vector {2, 4, 6, 8, 9, 10, 12},
@@ -206,8 +220,10 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestEveryWithoutPredicate(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
         true,
       ),
@@ -227,9 +243,13 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestIsEmpty(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
+      /* HH_FIXME[2083]  */
       tuple(array(), true),
+      /* HH_FIXME[2083]  */
       tuple(array(1), false),
+      /* HH_FIXME[2083]  */
       tuple(array('foo' => 'bar'), false),
       tuple(dict[], true),
       tuple(dict['foo' => 'bar'], false),

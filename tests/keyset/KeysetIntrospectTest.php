@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class KeysetIntrospectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestEqual(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         keyset[1, 2, 3],

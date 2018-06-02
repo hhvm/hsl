@@ -18,6 +18,7 @@ use function Facebook\FBExpect\expect;
 final class StrSelectTest extends PHPUnit_Framework_TestCase {
 
   public static function provideSlice(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         'hello world',
@@ -90,6 +91,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideStripPrefix(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',
@@ -124,6 +126,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideStripSuffix(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         '',
@@ -158,6 +161,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTrim(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         " \t\n\r\0\x0Bhello \t\n\r\0\x0B world \t\n\r\0\x0B",
@@ -187,6 +191,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTrimLeft(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         " \t\n\r\0\x0Bhello \t\n\r\0\x0B world \t\n\r\0\x0B",
@@ -216,6 +221,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTrimRight(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         " \t\n\r\0\x0Bhello \t\n\r\0\x0B world \t\n\r\0\x0B",

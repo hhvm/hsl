@@ -17,6 +17,7 @@ use function Facebook\FBExpect\expect;
 final class KeysetOrderTest extends PHPUnit_Framework_TestCase {
 
   public static function provideSort(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
@@ -29,11 +30,13 @@ final class KeysetOrderTest extends PHPUnit_Framework_TestCase {
         keyset['the', 'fox', 'brown', 'quick'],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array(8, 6, 7, 5, 3, 0, 9),
         null,
         keyset[0, 3, 5, 6, 7, 8, 9],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         HackLibTestTraversables::getIterator(array(8, 6, 7, 5, 3, 0, 9)),
         null,
         keyset[0, 3, 5, 6, 7, 8, 9],

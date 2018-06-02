@@ -17,7 +17,9 @@ use function Facebook\FBExpect\expect;
 final class StrCombineTest extends PHPUnit_Framework_TestCase {
 
   public static function provideJoin(): array<mixed> {
+    /* HH_FIXME[2083]  */
     $elements = array('the', 'quick', 'brown', 'fox', 1);
+    /* HH_FIXME[2083]  */
     return array(
       tuple($elements),
       tuple(new Vector($elements)),

@@ -17,24 +17,32 @@ use function Facebook\FBExpect\expect;
 final class VecCombineTest extends PHPUnit_Framework_TestCase {
 
   public static function provideTestConcat(): array<mixed> {
+    /* HH_FIXME[2083]  */
     return array(
       tuple(
+        /* HH_FIXME[2083]  */
         array(),
+        /* HH_FIXME[2083]  */
         array(),
         vec[],
       ),
       tuple(
         vec[],
+        /* HH_FIXME[2083]  */
         array(
+          /* HH_FIXME[2083]  */
           array(), Vector {}, Map {}, Set {},
         ),
         vec[],
       ),
       tuple(
+        /* HH_FIXME[2083]  */
         array('the', 'quick'),
+        /* HH_FIXME[2083]  */
         array(
           Vector {'brown', 'fox'},
           Map {'jumped' => 'over'},
+          /* HH_FIXME[2083]  */
           HackLibTestTraversables::getIterator(array('the', 'lazy', 'dog')),
         ),
         vec['the', 'quick', 'brown', 'fox', 'over', 'the', 'lazy', 'dog'],
