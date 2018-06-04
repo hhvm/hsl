@@ -17,14 +17,13 @@ use function Facebook\FBExpect\expect;
  */
 final class StrTransformTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideCapitalize(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideCapitalize(): varray<mixed> {
+    return varray[
       tuple('foo', 'Foo'),
       tuple('Foo', 'Foo'),
       tuple('123', '123'),
       tuple('-foo', '-foo'),
-    );
+    ];
   }
 
   /** @dataProvider provideCapitalize */
@@ -35,9 +34,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\capitalize($string))->toBeSame($expected);
   }
 
-  public static function provideCapitalizeWords(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideCapitalizeWords(): varray<mixed> {
+    return varray[
       tuple(
         'the quick brown Fox',
         'The Quick Brown Fox',
@@ -46,7 +44,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
         "\tthe\rquick\nbrown\ffox\vjumped",
         "\tThe\rQuick\nBrown\fFox\vJumped",
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideCapitalizeWords */
@@ -57,9 +55,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\capitalize_words($string))->toBeSame($expected);
   }
 
-  public static function provideCapitalizeWordsCustomDelimiter(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideCapitalizeWordsCustomDelimiter(): varray<mixed> {
+    return varray[
       tuple(
         'the_quick brown_Fox',
         '_',
@@ -75,7 +72,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
         '',
         'The_quick brown_Fox',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideCapitalizeWordsCustomDelimiter */
@@ -87,9 +84,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\capitalize_words($string, $delimiter))->toBeSame($expected);
   }
 
-  public static function provideFormatNumber(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideFormatNumber(): varray<mixed> {
+    return varray[
       tuple(
         0,
         0,
@@ -125,7 +121,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
         ',',
         '8,675.31',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideFormatNumber */
@@ -144,14 +140,13 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     ))->toBeSame($expected);
   }
 
-  public static function provideLowercase(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideLowercase(): varray<mixed> {
+    return varray[
       tuple('', ''),
       tuple('hello world', 'hello world'),
       tuple('Hello World', 'hello world'),
       tuple('Jenny: (???)-867-5309', 'jenny: (???)-867-5309'),
-    );
+    ];
   }
 
   /** @dataProvider provideLowercase */
@@ -162,15 +157,14 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\lowercase($string))->toBeSame($expected);
   }
 
-  public static function providePadLeft(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function providePadLeft(): varray<mixed> {
+    return varray[
       tuple('foo', 5, ' ', '  foo'),
       tuple('foo', 5, 'blerg', 'blfoo'),
       tuple('foobar', 1, '0', 'foobar'),
       tuple('foo', 6, '0', '000foo'),
       tuple('foo', 8, '01', '01010foo'),
-    );
+    ];
   }
 
   /** @dataProvider providePadLeft */
@@ -184,15 +178,14 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function providePadRight(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function providePadRight(): varray<mixed> {
+    return varray[
       tuple('foo', 5, ' ', 'foo  '),
       tuple('foo', 5, 'blerg', 'foobl'),
       tuple('foobar', 1, '0', 'foobar'),
       tuple('foo', 6, '0', 'foo000'),
       tuple('foo', 8, '01', 'foo01010'),
-    );
+    ];
   }
 
   /** @dataProvider providePadRight */
@@ -206,13 +199,12 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideRepeat(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideRepeat(): varray<mixed> {
+    return varray[
       tuple('foo', 3, 'foofoofoo'),
       tuple('foo', 0, ''),
       tuple('', 1000000, ''),
-    );
+    ];
   }
 
   /** @dataProvider provideRepeat */
@@ -224,9 +216,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\repeat($string, $multiplier))->toBeSame($expected);
   }
 
-  public static function provideReplace(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideReplace(): varray<mixed> {
+    return varray[
       tuple(
         'goodbye world',
         ' ',
@@ -257,7 +248,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
         'cruel',
         'goodbye cold world',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideReplace */
@@ -270,9 +261,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\replace($haystack, $needle, $replacement))->toBeSame($expected);
   }
 
-  public static function provideReplaceCI(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideReplaceCI(): varray<mixed> {
+    return varray[
       tuple(
         'goodbye world',
         ' ',
@@ -303,7 +293,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
         'cruel',
         'goodbye cruel world',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideReplaceCI */
@@ -317,9 +307,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideReplaceEvery(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideReplaceEvery(): varray<mixed> {
+    return varray[
       tuple(
         'hello world',
         dict[
@@ -347,11 +336,10 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         'hello world',
-        /* HH_FIXME[2083]  */
-        array(),
+        darray[],
         'hello world',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideReplaceEvery */
@@ -363,9 +351,8 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\replace_every($haystack, $replacements))->toBeSame($expected);
   }
 
-  public static function provideSplice(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideSplice(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -415,7 +402,7 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
         100,
         'hello darkness',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideSplice */
@@ -437,16 +424,15 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideToInt(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideToInt(): varray<mixed> {
+    return varray[
       tuple('', null),
       tuple('0', 0),
       tuple('8675309', 8675309),
       tuple('8675.309', null),
       tuple('hello world', null),
       tuple('123foo', null),
-    );
+    ];
   }
 
   /** @dataProvider provideToInt */
@@ -457,14 +443,13 @@ final class StrTransformTest extends PHPUnit_Framework_TestCase {
     expect(Str\to_int($string))->toBeSame($expected);
   }
 
-  public static function provideUppercase(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideUppercase(): varray<mixed> {
+    return varray[
       tuple('', ''),
       tuple('hello world', 'HELLO WORLD'),
       tuple('Hello World', 'HELLO WORLD'),
       tuple('Jenny: (???)-867-5309', 'JENNY: (???)-867-5309'),
-    );
+    ];
   }
 
   /** @dataProvider provideUppercase */

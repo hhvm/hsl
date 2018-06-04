@@ -17,9 +17,8 @@ use function Facebook\FBExpect\expect;
  */
 final class StrSelectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideSlice(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideSlice(): varray<mixed> {
+    return varray[
       tuple(
         'hello world',
         3,
@@ -68,7 +67,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
         3,
         'wor',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideSlice */
@@ -90,9 +89,8 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideStripPrefix(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideStripPrefix(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -113,7 +111,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
         'hello world',
         'world',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideStripPrefix */
@@ -125,9 +123,8 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
     expect(Str\strip_prefix($string, $prefix))->toBeSame($expected);
   }
 
-  public static function provideStripSuffix(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideStripSuffix(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -148,7 +145,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
         'hello world',
         'hello',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideStripSuffix */
@@ -160,9 +157,8 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
     expect(Str\strip_suffix($string, $suffix))->toBeSame($expected);
   }
 
-  public static function provideTrim(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTrim(): varray<mixed> {
+    return varray[
       tuple(
         " \t\n\r\0\x0Bhello \t\n\r\0\x0B world \t\n\r\0\x0B",
         null,
@@ -178,7 +174,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
         'held',
         'o wor',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTrim */
@@ -190,9 +186,8 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
     expect(Str\trim($string, $char_mask))->toBeSame($expected);
   }
 
-  public static function provideTrimLeft(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTrimLeft(): varray<mixed> {
+    return varray[
       tuple(
         " \t\n\r\0\x0Bhello \t\n\r\0\x0B world \t\n\r\0\x0B",
         null,
@@ -208,7 +203,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
         'held',
         'o world',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTrimLeft */
@@ -220,9 +215,8 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
     expect(Str\trim_left($string, $char_mask))->toBeSame($expected);
   }
 
-  public static function provideTrimRight(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTrimRight(): varray<mixed> {
+    return varray[
       tuple(
         " \t\n\r\0\x0Bhello \t\n\r\0\x0B world \t\n\r\0\x0B",
         null,
@@ -238,7 +232,7 @@ final class StrSelectTest extends PHPUnit_Framework_TestCase {
         'held',
         'hello wor',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTrimRight */

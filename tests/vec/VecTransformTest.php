@@ -17,17 +17,15 @@ use function Facebook\FBExpect\expect;
  */
 final class VecTransformTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestChunk(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestChunk(): varray<mixed> {
+    return varray[
       tuple(
         Map {},
         10,
         vec[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(0, 1, 2, 3, 4),
+        varray[0, 1, 2, 3, 4],
         2,
         vec[
           vec[0, 1],
@@ -37,8 +35,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(
-          /* HH_FIXME[2083]  */
-          array('foo' => 'bar', 'baz' => 'qux'),
+          darray['foo' => 'bar', 'baz' => 'qux'],
         ),
         1,
         vec[
@@ -46,7 +43,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
           vec['qux'],
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestChunk */
@@ -58,9 +55,8 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     expect(Vec\chunk($traversable, $size))->toBeSame($expected);
   }
 
-  public static function provideTestFill(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFill(): varray<mixed> {
+    return varray[
       tuple(
         0,
         42,
@@ -73,16 +69,13 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         2,
-        /* HH_FIXME[2083]  */
-        array('foo' => 'bar'),
+        darray['foo' => 'bar'],
         vec[
-          /* HH_FIXME[2083]  */
-          array('foo' => 'bar'),
-          /* HH_FIXME[2083]  */
-          array('foo' => 'bar'),
+          darray['foo' => 'bar'],
+          darray['foo' => 'bar'],
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFill */
@@ -98,35 +91,28 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     expect(() ==> Vec\fill(-1, true))->toThrow(InvariantException::class);
   }
 
-  public static function provideTestFlatten(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFlatten(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         vec[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
-          /* HH_FIXME[2083]  */
-          array(), Vector {}, Map {}, Set {},
-        ),
+        varray[
+          varray[], Vector {}, Map {}, Set {},
+        ],
         vec[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick'),
+        varray[
+          varray['the', 'quick'],
           Vector {'brown', 'fox'},
           Map {'jumped' => 'over'},
-          /* HH_FIXME[2083]  */
-          HackLibTestTraversables::getIterator(array('the', 'lazy', 'dog')),
-        ),
+          HackLibTestTraversables::getIterator(varray['the', 'lazy', 'dog']),
+        ],
         vec['the', 'quick', 'brown', 'fox', 'over', 'the', 'lazy', 'dog'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFlatten */
@@ -137,19 +123,16 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     expect(Vec\flatten($traversables))->toBeSame($expected);
   }
 
-  public static function provideTestMap(): array<mixed> {
+  public static function provideTestMap(): varray<mixed> {
     $doubler = $x ==> $x * 2;
-    /* HH_FIXME[2083]  */
-    return array(
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $doubler,
         vec[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1),
+        varray[1],
         $doubler,
         vec[2],
       ),
@@ -159,14 +142,12 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
         vec[20, 22, 24, 26, 28, 30],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('a'),
+        varray['a'],
         $x ==> $x. ' buzz',
         vec['a buzz'],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('a', 'bee', 'a bee'),
+        varray['a', 'bee', 'a bee'],
         $x ==> $x. ' buzz',
         vec['a buzz', 'bee buzz', 'a bee buzz'],
       ),
@@ -200,18 +181,16 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
         vec[20, 40],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(1, 2, 3)),
+        HackLibTestTraversables::getIterator(varray[1, 2, 3]),
         $doubler,
         vec[2, 4, 6],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(10 => 1, 20 => 2, 30 => 3)),
+        HackLibTestTraversables::getKeyedIterator(darray[10 => 1, 20 => 2, 30 => 3]),
         $doubler,
         vec[2, 4, 6],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMap */
@@ -223,12 +202,10 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
     expect(Vec\map($traversable, $value_func))->toBeSame($expected);
   }
 
-  public static function provideTestMapWithKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMapWithKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         ($a, $b) ==> null,
         vec[],
       ),
@@ -242,7 +219,7 @@ final class VecTransformTest extends PHPUnit_Framework_TestCase {
         ($k, $v) ==> $v * $k,
         vec[0, 2, 6, 12, 20],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMapWithKey */

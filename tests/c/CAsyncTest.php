@@ -17,13 +17,11 @@ use function Facebook\FBExpect\expect;
  */
 final class CAsyncTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestGenFirst(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenFirst(): varray<mixed> {
+    return varray[
       tuple(
         async {
-          /* HH_FIXME[2083]  */
-          return array();
+          return varray[];
         },
         null,
       ),
@@ -42,7 +40,7 @@ final class CAsyncTest extends PHPUnit_Framework_TestCase {
         },
         '10',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenFirst */
@@ -57,13 +55,11 @@ final class CAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenFirstx(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenFirstx(): varray<mixed> {
+    return varray[
       tuple(
         async {
-          /* HH_FIXME[2083]  */
-          return array();
+          return varray[];
         },
         InvariantException::class,
       ),
@@ -82,7 +78,7 @@ final class CAsyncTest extends PHPUnit_Framework_TestCase {
         },
         '10',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenFirstx */

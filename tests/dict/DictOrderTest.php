@@ -16,21 +16,19 @@ use function Facebook\FBExpect\expect;
  */
 final class DictOrderTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestReverse(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestReverse(): varray<mixed> {
+    return varray[
       tuple(
         Map {},
         dict[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           'the' => 'quick',
           'brown' => 'fox',
           'jumped' => 'over',
           'a' => 'dog',
-        ),
+        ],
         dict[
           'a' => 'dog',
           'jumped' => 'over',
@@ -48,7 +46,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
           0 => 1,
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestReverse */
@@ -59,9 +57,8 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
     expect(Dict\reverse($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestSort(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSort(): varray<mixed> {
+    return varray[
       tuple(
         Map {
           '0' => 'the',
@@ -93,13 +90,12 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           '0' => 'the',
           1 => 'quick',
           '2' => 'brown',
           3 => 'fox',
-        ),
+        ],
         ($a, $b) ==> $a[1] <=> $b[1],
         dict[
           0 => 'the',
@@ -109,10 +105,9 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(varray[
           'the', 'quick', 'brown', 'fox',
-        )),
+        ]),
         ($a, $b) ==> $b[1] <=> $a[1],
         dict[
           1 => 'quick',
@@ -121,7 +116,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
           0 => 'the',
         ],
       ),
-    );
+    ];
   }
 
 
@@ -134,12 +129,10 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
     expect(Dict\sort($traversable, $value_comparator))->toBeSame($expected);
   }
 
-  public static function provideTestSortBy(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSortBy(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array('the', 'quick', 'brown', 'fox', 'jumped'),
+        varray['the', 'quick', 'brown', 'fox', 'jumped'],
         fun('strrev'),
         null,
         dict[
@@ -152,33 +145,23 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         Map {
-          /* HH_FIXME[2083]  */
-          0 => array('eddard', 'stark'),
-          /* HH_FIXME[2083]  */
-          1 => array('arya', 'stark'),
-          /* HH_FIXME[2083]  */
-          2 => array('tyrion', 'lannister'),
-          /* HH_FIXME[2083]  */
-          3 => array('joffrey', 'boratheon'),
-          /* HH_FIXME[2083]  */
-          4 => array('daenerys', 'targaryen'),
+          0 => varray['eddard', 'stark'],
+          1 => varray['arya', 'stark'],
+          2 => varray['tyrion', 'lannister'],
+          3 => varray['joffrey', 'boratheon'],
+          4 => varray['daenerys', 'targaryen'],
         },
         fun('array_reverse'),
         ($a, $b) ==> $b <=> $a,
         dict[
-          /* HH_FIXME[2083]  */
-          4 => array('daenerys', 'targaryen'),
-          /* HH_FIXME[2083]  */
-          0 => array('eddard', 'stark'),
-          /* HH_FIXME[2083]  */
-          1 => array('arya', 'stark'),
-          /* HH_FIXME[2083]  */
-          2 => array('tyrion', 'lannister'),
-          /* HH_FIXME[2083]  */
-          3 => array('joffrey', 'boratheon'),
+          4 => varray['daenerys', 'targaryen'],
+          0 => varray['eddard', 'stark'],
+          1 => varray['arya', 'stark'],
+          2 => varray['tyrion', 'lannister'],
+          3 => varray['joffrey', 'boratheon'],
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSortBy */
@@ -192,9 +175,8 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideTestSortByKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSortByKey(): varray<mixed> {
+    return varray[
       tuple(
         Map {
           'the' => 'the',
@@ -223,7 +205,7 @@ final class DictOrderTest extends PHPUnit_Framework_TestCase {
           0 => 'the',
         ],
       )
-    );
+    ];
   }
 
   /** @dataProvider provideTestSortByKey */

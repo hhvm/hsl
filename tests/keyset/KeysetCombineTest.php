@@ -16,34 +16,29 @@ use function Facebook\FBExpect\expect;
  */
 final class KeysetCombineTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestUnion(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestUnion(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
-        /* HH_FIXME[2083]  */
-        array(
+        varray[],
+        varray[
           vec[],
-        ),
+        ],
         keyset[],
       ),
       tuple(
         keyset[1, 2, 3],
-        /* HH_FIXME[2083]  */
-        array(
+        varray[
           Vector {'the', 'quick', 'brown'},
-          /* HH_FIXME[2083]  */
-          HackLibTestTraversables::getKeyedIterator(array(
+          HackLibTestTraversables::getKeyedIterator(darray[
             'the' => 'the',
             'quick' => 'quick',
             'brown' => 'brown',
             'fox' => 'jumped',
-          )),
-        ),
+          ]),
+        ],
         keyset[1, 2, 3, 'the', 'quick', 'brown', 'jumped'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestUnion */

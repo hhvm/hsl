@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestGen(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGen(): varray<mixed> {
+    return varray[
       tuple(
         Vector {
           async {return 'the';},
@@ -36,16 +35,15 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
         keyset[1, 2],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(
+        HackLibTestTraversables::getIterator(varray[
           async {return 'the';},
           async {return 'quick';},
           async {return 'brown';},
           async {return 'fox';},
-        )),
+        ]),
         keyset['the', 'quick', 'brown', 'fox'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGen */
@@ -60,9 +58,8 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenMap(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenMap(): varray<mixed> {
+    return varray[
       tuple(
         keyset[1,2,3],
         async ($num) ==> $num * 2,
@@ -74,12 +71,11 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
         keyset[2,4,6],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('dan', 'danny', 'daniel'),
+        varray['dan', 'danny', 'daniel'],
         async ($word) ==> strrev($word),
         keyset['nad', 'ynnad', 'leinad'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenMap */
@@ -95,21 +91,19 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenFilter(): array<(
+  public static function provideTestGenFilter(): varray<(
     Container<arraykey>,
     (function(arraykey): Awaitable<bool>),
     keyset<arraykey>,
   )> {
-    /* HH_FIXME[2083]  */
-    return array(
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           '2' => 'two',
           '4' => 'four',
           6 => 'six',
           '8' => 'eight',
-        ),
+        ],
         async ($word) ==> strlen($word) % 2 === 1,
         keyset['two', 'six', 'eight'],
       ),
@@ -123,7 +117,7 @@ final class KeysetAsyncTest extends PHPUnit_Framework_TestCase {
         async ($word) ==> strlen($word) % 2 === 0,
         keyset['jumped', 'over'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenFilter */

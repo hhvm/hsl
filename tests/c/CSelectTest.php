@@ -17,12 +17,10 @@ use function Facebook\FBExpect\expect;
  */
 final class CSelectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestFind(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFind(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $x ==> $x,
         null,
       ),
@@ -36,7 +34,7 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         ($w) ==> strlen($w) > 6,
         null,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFind */
@@ -48,12 +46,10 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\find($traversable, $value_predicate))->toBeSame($expected);
   }
 
-  public static function provideTestFindKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFindKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $x ==> $x,
         null,
       ),
@@ -71,7 +67,7 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         ($n) ==> $n === 2,
         'two',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFindKey */
@@ -83,12 +79,10 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\find_key($traversable, $value_predicate))->toBeSame($expected);
   }
 
-  public static function provideTestFirst(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFirst(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null,
       ),
       tuple(
@@ -102,7 +96,7 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         ],
         '10',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFirst */
@@ -113,12 +107,10 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\first($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestFirstx(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFirstx(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         InvariantException::class,
       ),
       tuple(
@@ -132,7 +124,7 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         ],
         '10',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFirstx */
@@ -148,22 +140,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestFirstKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFirstKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1 => null),
+        darray[1 => null],
         1,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1),
+        varray[1],
         0,
       ),
       tuple(
@@ -191,19 +179,17 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         3,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           'foo' => 'bar',
           'baz' => 'qux',
-        )),
+        ]),
         'foo',
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array()),
+        HackLibTestTraversables::getKeyedIterator(varray[]),
         null,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFirstKey */
@@ -214,22 +200,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\first_key($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestFirstKeyx(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFirstKeyx(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         InvariantException::class,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1 => null),
+        darray[1 => null],
         1,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1),
+        varray[1],
         0,
       ),
       tuple(
@@ -257,19 +239,17 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         3,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           'foo' => 'bar',
           'baz' => 'qux',
-        )),
+        ]),
         'foo',
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array()),
+        HackLibTestTraversables::getKeyedIterator(varray[]),
         InvariantException::class,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFirstKeyx */
@@ -285,17 +265,14 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestLast(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestLast(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(null),
+        varray[null],
         null,
       ),
       tuple(
@@ -339,20 +316,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         5,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array()),
+        HackLibTestTraversables::getIterator(varray[]),
         null,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(null)),
+        HackLibTestTraversables::getIterator(varray[null]),
         null,
       ),
       tuple(
         HackLibTestTraversables::getIterator(range(13, 14)),
         14,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestLast */
@@ -363,17 +338,14 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\last($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestLastx(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestLastx(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         InvariantException::class,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(null),
+        varray[null],
         null,
       ),
       tuple(
@@ -417,20 +389,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         5,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array()),
+        HackLibTestTraversables::getIterator(varray[]),
         InvariantException::class,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(null)),
+        HackLibTestTraversables::getIterator(varray[null]),
         null,
       ),
       tuple(
         HackLibTestTraversables::getIterator(range(13, 14)),
         14,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestLastx */
@@ -446,22 +416,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestLastKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestLastKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('' => null),
+        darray['' => null],
         '',
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1 => null),
+        darray[1 => null],
         1,
       ),
       tuple(
@@ -497,21 +463,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         4,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(3 => 13, 4 => 14)),
+        HackLibTestTraversables::getKeyedIterator(darray[3 => 13, 4 => 14]),
         4,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array()),
+        HackLibTestTraversables::getKeyedIterator(varray[]),
         null,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array('' => null)),
+        HackLibTestTraversables::getKeyedIterator(darray['' => null]),
         '',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestLastKey */
@@ -522,22 +485,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\last_key($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestLastKeyx(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestLastKeyx(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         InvariantException::class,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('' => null),
+        darray['' => null],
         '',
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1 => null),
+        darray[1 => null],
         1,
       ),
       tuple(
@@ -573,21 +532,18 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         4,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(3 => 13, 4 => 14)),
+        HackLibTestTraversables::getKeyedIterator(darray[3 => 13, 4 => 14]),
         4,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array()),
+        HackLibTestTraversables::getKeyedIterator(varray[]),
         InvariantException::class,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array('' => null)),
+        HackLibTestTraversables::getKeyedIterator(darray['' => null]),
         '',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestLastKeyx */
@@ -603,16 +559,14 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestNfirst(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestNfirst(): varray<mixed> {
+    return varray[
       tuple(
         null,
         null,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null,
       ),
       tuple(
@@ -626,7 +580,7 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         ],
         '10',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestNfirst */
@@ -637,12 +591,10 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
     expect(C\nfirst($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestOnlyx(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestOnlyx(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         InvariantException::class,
       ),
       tuple(
@@ -666,7 +618,7 @@ final class CSelectTest extends PHPUnit_Framework_TestCase {
         ],
         '10',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestOnlyx */

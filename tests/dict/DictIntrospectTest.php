@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class DictIntrospectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestEqual(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestEqual(): varray<mixed> {
+    return varray[
       tuple(
         dict[1 => 1, 2 => 2, 3 => 3],
         dict[1 => 1, 2 => 2, 3 => 3],
@@ -49,7 +48,7 @@ final class DictIntrospectTest extends PHPUnit_Framework_TestCase {
         dict[1 => 1, 3 => 3, 2 => 2],
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestEqual */

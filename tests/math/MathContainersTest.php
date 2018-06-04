@@ -16,12 +16,10 @@ use function Facebook\FBExpect\expect;
  */
 final class MathContainersTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestMax(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMax(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null,
       ),
       tuple(
@@ -30,12 +28,11 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array(8, 6, 7, 5, 3, 0, 9),
+          varray[8, 6, 7, 5, 3, 0, 9],
         ),
         9,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMax */
@@ -46,12 +43,10 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     expect(Math\max($numbers))->toBeSame($expected);
   }
 
-  public static function provideTestMaxBy(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMaxBy(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $x ==> $x,
         null,
       ),
@@ -62,13 +57,12 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick', 'brown', 'fox'),
+          varray['the', 'quick', 'brown', 'fox'],
         ),
         fun('strlen'),
         'brown',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMaxBy */
@@ -80,14 +74,13 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     expect(Math\max_by($traversable, $num_func))->toBeSame($expected);
   }
 
-  public static function provideTestMean(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMean(): varray<mixed> {
+    return varray[
       tuple(vec[1.0, 2.0, 3, 4], 2.5),
       tuple(vec[1, 1, 2], 4 / 3),
       tuple(vec[-1, 1], 0.0),
       tuple(vec[], null),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMean */
@@ -103,9 +96,8 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestMedian(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMedian(): varray<mixed> {
+    return varray[
       tuple(vec[], null),
       tuple(vec[1], 1.0),
       tuple(vec[1, 2], 1.5),
@@ -113,7 +105,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       tuple(vec[9, -1], 4.0),
       tuple(vec[200, -500, 3], 3.0),
       tuple(vec[0, 1, 0, 0], 0.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMedian */
@@ -128,12 +120,10 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestMin(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMin(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         null,
       ),
       tuple(
@@ -142,8 +132,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array(8, 6, 7, 5, 3, 0, 9),
+          varray[8, 6, 7, 5, 3, 0, 9],
         ),
         0,
       ),
@@ -151,7 +140,7 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
         Vector {8, 6, 7, -5, -3, 0, 9},
         -5,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMin */
@@ -162,12 +151,10 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     expect(Math\min($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestMinBy(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMinBy(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $x ==> $x,
         null,
       ),
@@ -178,13 +165,12 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick', 'brown', 'fox'),
+          varray['the', 'quick', 'brown', 'fox'],
         ),
         fun('strlen'),
         'fox',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMinBy */
@@ -196,23 +182,21 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     expect(Math\min_by($traversable, $num_func))->toBeSame($expected);
   }
 
-  public static function provideTestSum(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSum(): varray<mixed> {
+    return varray[
       tuple(
         Vector {},
         0,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1, 2, 1, 1, 3),
+        varray[1, 2, 1, 1, 3],
         8,
       ),
       tuple(
         HackLibTestTraversables::getIterator(range(1, 4)),
         10,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSum */
@@ -223,23 +207,21 @@ final class MathContainersTest extends PHPUnit_Framework_TestCase {
     expect(Math\sum($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestSumFloat(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSumFloat(): varray<mixed> {
+    return varray[
       tuple(
         Vector {},
         0.0,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1, 2.5, 1, 1, 3),
+        varray[1, 2.5, 1, 1, 3],
         8.5,
       ),
       tuple(
         HackLibTestTraversables::getIterator(range(1, 4)),
         10.0,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSumFloat */

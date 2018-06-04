@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class DictCombineTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestAssociate(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestAssociate(): varray<mixed> {
+    return varray[
       tuple(
         vec[3, 2, 1],
         Vector {'a', 'b', 'c'},
@@ -52,7 +51,7 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
           4 => 8,
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestAssociate */
@@ -64,32 +63,27 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
     expect(Dict\associate($keys, $values))->toBeSame($expected);
   }
 
-  public static function provideTestMerge(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMerge(): varray<mixed> {
+    return varray[
       tuple(
         Map {},
-        /* HH_FIXME[2083]  */
-        array(),
+        darray[],
         dict[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           'one' => 'one',
           'two' => 'two',
-        ),
-        /* HH_FIXME[2083]  */
-        array(
-          /* HH_FIXME[2083]  */
-          array(
+        ],
+        varray[
+          darray[
             'three' => 'three',
             'one' => 3,
-          ),
+          ],
           Map {
             'four' => null,
           },
-        ),
+        ],
         dict[
           'one' => 3,
           'two' => 'two',
@@ -98,36 +92,31 @@ final class DictCombineTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           'foo' => 'foo',
           'bar' => 'bar',
-          /* HH_FIXME[2083]  */
-          'baz' => array(1, 2, 3),
-        )),
-        /* HH_FIXME[2083]  */
-        array(
+          'baz' => varray[1, 2, 3],
+        ]),
+        varray[
           dict[
             'bar' => 'barbar',
           ],
           Vector {'I should feel bad for doing this', 'But yolo'},
-          /* HH_FIXME[2083]  */
-          array(
+          darray[
             '1' => 'gross array behavior',
-          ),
+          ],
           Set {'bloop'},
-        ),
+        ],
         dict[
           'foo' => 'foo',
           'bar' => 'barbar',
-          /* HH_FIXME[2083]  */
-          'baz' => array(1, 2, 3),
+          'baz' => varray[1, 2, 3],
           0 => 'I should feel bad for doing this',
           1 => 'gross array behavior',
           'bloop' => 'bloop',
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMerge */

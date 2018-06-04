@@ -16,11 +16,9 @@ use function Facebook\FBExpect\expect;
  */
 final class StrCombineTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideJoin(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    $elements = array('the', 'quick', 'brown', 'fox', 1);
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideJoin(): varray<mixed> {
+    $elements = varray['the', 'quick', 'brown', 'fox', 1];
+    return varray[
       tuple($elements),
       tuple(new Vector($elements)),
       tuple(new Set($elements)),
@@ -29,7 +27,7 @@ final class StrCombineTest extends PHPUnit_Framework_TestCase {
       tuple(keyset($elements)),
       tuple(dict($elements)),
       tuple(HackLibTestTraversables::getIterator($elements)),
-    );
+    ];
   }
 
   /** @dataProvider provideJoin */

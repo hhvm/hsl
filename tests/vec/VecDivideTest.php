@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class VecDivideTest extends PHPUnit_Framework_TestCase {
 
-  public static function providePartition(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function providePartition(): varray<mixed> {
+    return varray[
       tuple(
         range(1, 10),
         $n ==> $n % 2 === 0,
@@ -35,7 +34,7 @@ final class VecDivideTest extends PHPUnit_Framework_TestCase {
           vec[1, 3, 5, 7, 9],
         ),
       ),
-    );
+    ];
   }
 
   /** @dataProvider providePartition */

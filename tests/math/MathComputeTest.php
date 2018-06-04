@@ -21,16 +21,15 @@ use function md5 as non_crypto_md5;
  * @emails oncall+hack
  */
 final class MathComputeTest extends PHPUnit_Framework_TestCase {
-  public static function provideTestAbs(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestAbs(): varray<mixed> {
+    return varray[
       tuple(-1, 1),
       tuple(1, 1),
       tuple(-7.3, 7.3),
       tuple(7.3, 7.3),
       tuple(0, 0),
       tuple(0.0, 0.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestAbs */
@@ -38,9 +37,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\abs($number))->toBeSame($expected);
   }
 
-  public static function provideTestBaseConvertBijection(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestBaseConvertBijection(): varray<mixed> {
+    return varray[
       tuple('a', 16, 10, '10'),
       tuple('a', 16, 2, '1010'),
       tuple('50f', 16, 36, 'zz'),
@@ -83,7 +81,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
         '101011011010000001101010000000000100110101001001011010101111011001101'.
           '0010101000100000101111110000010000100110110111101000001010',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestBaseConvertBijection */
@@ -114,9 +112,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestBaseConvertOneWay(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestBaseConvertOneWay(): varray<mixed> {
+    return varray[
       tuple('00000a', 16, 10, '10'),
       tuple('00000a', 16, 2, '1010'),
       tuple('50F', 16, 36, 'zz'),
@@ -159,7 +156,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
         '101011011010000001101010000000000100110101001001011010101111011001101'.
           '0010101000100000101111110000010000100110110111101000001010',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestBaseConvertOneWay */
@@ -173,9 +170,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideTestBaseConvertException(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestBaseConvertException(): varray<mixed> {
+    return varray[
       // empty string
       tuple('', 2, 16),
       // invalid base
@@ -184,7 +180,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       // invalid digits
       tuple('a', 10, 2),
       tuple('119z', 10, 36),
-    );
+    ];
   }
 
   /** @dataProvider provideTestBaseConvertException */
@@ -197,15 +193,14 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideTestCeil(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestCeil(): varray<mixed> {
+    return varray[
       tuple(3.5, 4.0),
       tuple(4, 4.0),
       tuple(-3.5, -3.0),
       tuple(-3.0, -3.0),
       tuple(0.0, 0.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestCeil */
@@ -213,9 +208,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\ceil($value))->toBeSame($expected);
   }
 
-  public static function provideTestCos(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestCos(): varray<mixed> {
+    return varray[
       tuple(0.0, 1.0),
       tuple(M_PI_2, -3.4914813388431e-15),
       tuple(-M_PI_2, -3.4914813388431e-15),
@@ -225,7 +219,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       tuple(M_PI / 6.0, M_SQRT3 / 2.0),
       tuple(M_PI / 3.0, 0.5),
       tuple(M_PI_4, M_SQRT2 / 2.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestCos */
@@ -234,14 +228,13 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect($actual)->toAlmostEqual($expected);
   }
 
-  public static function provideTestExp(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestExp(): varray<mixed> {
+    return varray[
       tuple(-1.0, 1.0 / M_E),
       tuple(0.0, 1.0),
       tuple(1.0, M_E),
       tuple(2.0, M_E ** 2),
-    );
+    ];
   }
 
   /** @dataProvider provideTestExp */
@@ -250,15 +243,14 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect($actual)->toAlmostEqual($expected);
   }
 
-  public static function provideTestFloor(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFloor(): varray<mixed> {
+    return varray[
       tuple(3.5, 3.0),
       tuple(4, 4.0),
       tuple(-3.5, -4.0),
       tuple(-3.0, -3.0),
       tuple(0.0, 0.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFloor */
@@ -266,16 +258,15 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\floor($value))->toBeSame($expected);
   }
 
-  public static function provideTestFromBase(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFromBase(): varray<mixed> {
+    return varray[
       tuple('4d2', 16, 1234),
       tuple('2322', 8, 1234),
       tuple('10011010010', 2, 1234),
       tuple('AZikM', 36, 18453190),
       tuple('33CCFF', 16, 3394815),
       tuple((string)PHP_INT_MAX, 10, PHP_INT_MAX),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFromBase */
@@ -287,9 +278,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\from_base($number, $from_base))->toBeSame($expected);
   }
 
-  public static function provideTestFromBaseException(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFromBaseException(): varray<mixed> {
+    return varray[
       // invalid base
       tuple('1234', 0),
       tuple('1234', -1),
@@ -304,7 +294,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       tuple('-2322', 8, -1234),
       // integer overflow
       tuple('9223372036854775808', 10),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFromBaseException */
@@ -313,16 +303,15 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideTestIntDiv(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestIntDiv(): varray<mixed> {
+    return varray[
       tuple(1, 2, 0),
       tuple(2, 1, 2),
       tuple(-1, 2, 0),
       tuple(-2, 1, -2),
       tuple(-5, 2, -2),
       tuple(-5, -2, 2),
-    );
+    ];
   }
 
   /** @dataProvider provideTestIntDiv */
@@ -334,13 +323,12 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\int_div($numerator, $denominator))->toBeSame($expected);
   }
 
-  public static function provideTestIntDivException(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestIntDivException(): varray<mixed> {
+    return varray[
       tuple(-1, 0),
       tuple(0, 0),
       tuple(1, 0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestIntDivException */
@@ -349,13 +337,12 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       ->toThrow(Math\DivisionByZeroException::class);
   }
 
-  public static function provideTestLog(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestLog(): varray<mixed> {
+    return varray[
       tuple(M_E),
       tuple(10),
       tuple(2),
-    );
+    ];
   }
 
   /** @dataProvider provideTestLog */
@@ -366,14 +353,13 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestLogNoBase(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestLogNoBase(): varray<mixed> {
+    return varray[
       tuple(0.1),
       tuple(3.6),
       tuple(M_E),
       tuple(100.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestLogNoBase */
@@ -389,9 +375,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(() ==> Math\log(3, 1))->toThrow(InvariantException::class);
   }
 
-  public static function provideTestRound(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestRound(): varray<mixed> {
+    return varray[
       tuple(3.5, 0, 4.0),
       tuple(4, 0, 4.0),
       tuple(-3.5, 0, -4.0),
@@ -409,7 +394,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       tuple(549.375, -2, 500.0),
       tuple(549.375, -3, 1000.0),
       tuple(549.375, -4, 0.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestRound */
@@ -421,9 +406,8 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\round($value, $precision))->toBeSame($expected);
   }
 
-  public static function provideTestSin(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSin(): varray<mixed> {
+    return varray[
       tuple(0.0, 0.0),
       tuple(M_PI_2, 1.0),
       tuple(-M_PI_2, -1.0),
@@ -433,7 +417,7 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
       tuple(M_PI / 6.0, 0.5),
       tuple(M_PI / 3.0, M_SQRT3 / 2.0),
       tuple(M_PI_4, M_SQRT2 / 2.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSin */
@@ -442,15 +426,14 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect($actual)->toAlmostEqual($expected);
   }
 
-  public static function provideTestSqrt(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSqrt(): varray<mixed> {
+    return varray[
       tuple(16.0, 4.0),
       tuple(2, M_SQRT2),
       tuple(3, M_SQRT3),
       tuple(0, 0.0),
       tuple(1, 1.0),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSqrt */
@@ -463,13 +446,12 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(() ==> Math\sqrt(-1))->toThrow(InvariantException::class);
   }
 
-  public static function provideTestToBase(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestToBase(): varray<mixed> {
+    return varray[
       tuple(1234, 16, '4d2'),
       tuple(1234, 8, '2322'),
       tuple(1234, 2, '10011010010'),
-    );
+    ];
   }
 
   /** @dataProvider provideTestToBase */
@@ -481,15 +463,14 @@ final class MathComputeTest extends PHPUnit_Framework_TestCase {
     expect(Math\to_base($number, $to_base))->toBeSame($expected);
   }
 
-  public static function provideTestToBaseException(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestToBaseException(): varray<mixed> {
+    return varray[
       tuple(1234, 0),
       tuple(1234, -1),
       tuple(1234, 37),
       tuple(1234, 100),
       tuple(-1234, 8),
-    );
+    ];
   }
 
   /** @dataProvider provideTestToBaseException */

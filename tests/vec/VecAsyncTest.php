@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class VecAsyncTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestGen(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGen(): varray<mixed> {
+    return varray[
       tuple(
         Vector {
           async {return 'the';},
@@ -36,16 +35,15 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
         vec[1, 2],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(
+        HackLibTestTraversables::getIterator(varray[
           async {return 'the';},
           async {return 'quick';},
           async {return 'brown';},
           async {return 'fox';},
-        )),
+        ]),
         vec['the', 'quick', 'brown', 'fox'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGen */
@@ -60,17 +58,15 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenFilter(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenFilter(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           '2' => 'two',
           '4' => 'four',
           6 => 'six',
           '8' => 'eight',
-        ),
+        ],
         async ($word) ==> strlen($word) % 2 === 1,
         vec['two', 'six', 'eight'],
       ),
@@ -79,7 +75,7 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
         async ($word) ==> strlen($word) % 2 === 0,
         vec['jumped', 'over'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenFilter */
@@ -95,9 +91,8 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenMap(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenMap(): varray<mixed> {
+    return varray[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
         async ($word) ==> strrev($word),
@@ -105,13 +100,12 @@ final class VecAsyncTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick', 'brown', 'fox'),
+          varray['the', 'quick', 'brown', 'fox'],
         ),
         async ($word) ==> strrev($word),
         vec['eht', 'kciuq', 'nworb', 'xof'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenMap */

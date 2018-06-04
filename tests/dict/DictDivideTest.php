@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class DictDivideTest extends PHPUnit_Framework_TestCase {
 
-  public static function providePartition(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function providePartition(): varray<mixed> {
+    return varray[
       tuple(
         array_combine(range(1, 10), range(11, 20)),
         $val ==> $val % 2 === 0,
@@ -59,12 +58,11 @@ final class DictDivideTest extends PHPUnit_Framework_TestCase {
           ],
         ),
       ),
-    );
+    ];
   }
 
-  public static function providePartitionWithKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function providePartitionWithKey(): varray<mixed> {
+    return varray[
       tuple(
         array_combine(range(1, 10), range(11, 20)),
         ($key, $val) ==> $val >= 19 || $key <= 3,
@@ -105,7 +103,7 @@ final class DictDivideTest extends PHPUnit_Framework_TestCase {
           ],
         ),
       ),
-    );
+    ];
   }
 
   /** @dataProvider providePartition */

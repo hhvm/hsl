@@ -16,44 +16,36 @@ use function Facebook\FBExpect\expect;
  */
 final class DictSelectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestDiffByKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestDiffByKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        darray[],
         range(0, 100),
-        /* HH_FIXME[2083]  */
-        array(),
+        darray[],
         dict[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1 => 1, 2 => 2, 3 => 3),
-        /* HH_FIXME[2083]  */
-        array(),
-        /* HH_FIXME[2083]  */
-        array(),
+        darray[1 => 1, 2 => 2, 3 => 3],
+        darray[],
+        darray[],
         dict[1 => 1, 2 => 2, 3 => 3],
       ),
       tuple(
         dict['foo' => 'bar', 'baz' => 'qux'],
         Map {'foo' => 4},
-        /* HH_FIXME[2083]  */
-        array(),
+        darray[],
         dict['baz' => 'qux'],
       ),
       tuple(
         range(0, 9),
         dict[2 => 4, 4 => 8, 8 => 16],
-        /* HH_FIXME[2083]  */
-        array(
+        varray[
           Map {1 => 1, 2 => 2},
           HackLibTestTraversables::getKeyedIterator(range(0, 3)),
-        ),
+        ],
         dict[5 => 5, 6 => 6, 7 => 7, 9 => 9],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestDiffByKey */
@@ -66,9 +58,8 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\diff_by_key($first, $second, ...$rest))->toBeSame($expected);
   }
 
-  public static function provideDrop(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideDrop(): varray<mixed> {
+    return varray[
       tuple(
         dict[],
         5,
@@ -85,13 +76,12 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           'foo' => 'oof',
           'bar' => 'rab',
           'baz' => 'zab',
           'qux' => 'xuq',
-        )),
+        ]),
         3,
         dict[
           'qux' => 'xuq',
@@ -108,7 +98,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         10,
         dict[],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideDrop */
@@ -120,9 +110,8 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\drop($traversable, $n))->toBeSame($expected);
   }
 
-  public static function provideTestFilter(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilter(): varray<mixed> {
+    return varray[
       tuple(
         dict[],
         $x ==> true,
@@ -158,7 +147,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         $x ==> $x % 2 === 0,
         dict[1 => 2, 3 => 4],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilter */
@@ -170,9 +159,8 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\filter($traversable, $value_predicate))->toBeSame($expected);
   }
 
-  public static function provideTestFilterWithKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilterWithKey(): varray<mixed> {
+    return varray[
       tuple(
         dict[],
         ($k, $v) ==> true,
@@ -213,7 +201,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         ($k, $v) ==> $v % 2 === 0,
         dict[1 => 2, 3 => 4],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilterWithKey */
@@ -226,8 +214,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testFilterWithoutPredicate(): void {
-    /* HH_FIXME[2083]  */
-    expect(Dict\filter(array(
+    expect(Dict\filter(darray[
       0 => 0,
       3 => 3,
       2 => null,
@@ -237,12 +224,11 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
       50 => '',
       60 => '0',
       70 => 'win!',
-    )))->toBeSame(dict[3 => 3, 4 => 5, 40 => 40, 70 => 'win!']);
+    ]))->toBeSame(dict[3 => 3, 4 => 5, 40 => 40, 70 => 'win!']);
   }
 
-  public static function provideTestFilterKeys(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilterKeys(): varray<mixed> {
+    return varray[
       tuple(
         dict[],
         $x ==> true,
@@ -268,7 +254,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         $x ==> $x % 2 === 0,
         dict[0 => 1, 2 => 3, 4 => 5],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilterKeys */
@@ -291,16 +277,14 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     ]))->toBeSame(dict[1 => 4, 'hi' => 5]);
   }
 
-  public static function provideTestFilterNulls(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilterNulls(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           'foo' => null,
           'bar' => null,
           'baz' => null,
-        ),
+        ],
         dict[],
       ),
       tuple(
@@ -330,20 +314,17 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           '1' => null,
-          /* HH_FIXME[2083]  */
-          '2' => array(),
+          '2' => varray[],
           '3' => '0',
-        )),
+        ]),
         dict[
-          /* HH_FIXME[2083]  */
-          2 => array(),
+          2 => varray[],
           3 => '0',
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilterNulls */
@@ -357,14 +338,11 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
   public function testFilterAsync(): void {
   }
 
-  public static function provideTestSelectKeys(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSelectKeys(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
+        varray[],
         dict[],
       ),
       tuple(
@@ -373,8 +351,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
           'bar' => 'bar',
           'baz' => 'baz',
         },
-        /* HH_FIXME[2083]  */
-        array('bar'),
+        varray['bar'],
         dict[
           'bar' => 'bar',
         ],
@@ -389,7 +366,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
           4 => 'jumped',
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSelectKeys */
@@ -401,9 +378,8 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\select_keys($container, $keys))->toBeSame($expected);
   }
 
-  public static function provideTake(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTake(): varray<mixed> {
+    return varray[
       tuple(
         dict[],
         5,
@@ -415,13 +391,12 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
         dict[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           'foo' => 'oof',
           'bar' => 'rab',
           'baz' => 'zab',
           'qux' => 'xuq',
-        )),
+        ]),
         3,
         dict[
           'foo' => 'oof',
@@ -446,7 +421,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
           'yap' => 'pay',
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTake */
@@ -466,9 +441,8 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\take($iter, 2))->toBeSame(dict[4=>4]);
   }
 
-  public static function provideTestUnique(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestUnique(): varray<mixed> {
+    return varray[
       tuple(
         Map {
           'a' => 1,
@@ -483,7 +457,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
           'e' => 3,
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestUnique */
@@ -494,13 +468,12 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
     expect(Dict\unique($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestUniqueBy(): array<mixed> {
+  public static function provideTestUniqueBy(): varray<mixed> {
     $s1 = Set {'foo'};
     $s2 = Set {'bar'};
     $s3 = Set {'foo'};
     $s4 = Set {'baz'};
-    /* HH_FIXME[2083]  */
-    return array(
+    return varray[
       tuple(
         Vector {$s1, $s2, $s3, $s4},
         ($s) ==> $s->firstKey(),
@@ -510,7 +483,7 @@ final class DictSelectTest extends PHPUnit_Framework_TestCase {
           3 => $s4,
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestUniqueBy */

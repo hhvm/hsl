@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class CIntrospectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestAny(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestAny(): varray<mixed> {
+    return varray[
       tuple(
         Vector {2, 4, 6, 8, 9, 10, 12},
         $v ==> $v % 2 === 1,
@@ -29,7 +28,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
         $v ==> $v % 2 === 1,
         false,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestAny */
@@ -41,27 +40,23 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\any($traversable, $predicate))->toBeSame($expected);
   }
 
-  public static function provideTestAnyWithoutPredicate(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestAnyWithoutPredicate(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         false,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(null, 0, '0', ''),
+        varray[null, 0, '0', ''],
         false,
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array(null, 0, '0', '', 1),
+          varray[null, 0, '0', '', 1],
         ),
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestAnyWithoutPredicate */
@@ -72,9 +67,8 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\any($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestContains(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestContains(): varray<mixed> {
+    return varray[
       tuple(
         vec[1, 2, 3, 4, 5],
         3,
@@ -101,19 +95,16 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
         true,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(dict[1 => 2, 3 => 4]),
+        varray[dict[1 => 2, 3 => 4]],
         dict[1 => 2, 3 => 4],
         true,
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(array(3)),
-        /* HH_FIXME[2083]  */
-        array(4),
+        varray[varray[3]],
+        varray[4],
         false,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestContains */
@@ -125,12 +116,10 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\contains($traversable, $value))->toBeSame($expected);
   }
 
-  public static function provideTestContainsKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestContainsKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array('3' => 3),
+        darray['3' => 3],
         3,
         true,
       ),
@@ -159,7 +148,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
         0,
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestContainsKey */
@@ -171,11 +160,9 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\contains_key($container, $key))->toBeSame($expected);
   }
 
-  public static function provideTestCount(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
-      /* HH_FIXME[2083]  */
-      tuple(array(), 0),
+  public static function provideTestCount(): varray<mixed> {
+    return varray[
+      tuple(varray[], 0),
       tuple(range(1, 10), 10),
       tuple(Set {1, 2}, 2),
       tuple(Vector {1, 2}, 2),
@@ -183,7 +170,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple(keyset[1, 2, 3], 3),
       tuple(vec[1, 2, 3], 3),
       tuple(dict['foo' => 'bar', 'baz' => 'bar2'], 2),
-    );
+    ];
   }
 
   /** @dataProvider provideTestCount */
@@ -194,9 +181,8 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\count($container))->toBeSame($expected);
   }
 
-  public static function provideTestEvery(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestEvery(): varray<mixed> {
+    return varray[
       tuple(
         Vector {2, 4, 6, 8, 9, 10, 12},
         $v ==> $v % 2 === 0,
@@ -207,7 +193,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
         $v ==> $v % 2 === 0,
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestEvery */
@@ -219,19 +205,17 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\every($traversable, $predicate))->toBeSame($expected);
   }
 
-  public static function provideTestEveryWithoutPredicate(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestEveryWithoutPredicate(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         true,
       ),
       tuple(
         HackLibTestTraversables::getIterator(range(1, 5)),
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestEveryWithoutPredicate */
@@ -242,15 +226,11 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(C\every($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestIsEmpty(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
-      /* HH_FIXME[2083]  */
-      tuple(array(), true),
-      /* HH_FIXME[2083]  */
-      tuple(array(1), false),
-      /* HH_FIXME[2083]  */
-      tuple(array('foo' => 'bar'), false),
+  public static function provideTestIsEmpty(): varray<mixed> {
+    return varray[
+      tuple(varray[], true),
+      tuple(varray[1], false),
+      tuple(darray['foo' => 'bar'], false),
       tuple(dict[], true),
       tuple(dict['foo' => 'bar'], false),
       tuple(vec[], true),
@@ -263,7 +243,7 @@ final class CIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple(Vector {1}, false),
       tuple(Set {}, true),
       tuple(Set {1}, false),
-    );
+    ];
   }
 
   /** @dataProvider provideTestIsEmpty */

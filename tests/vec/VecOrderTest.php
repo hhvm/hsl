@@ -17,9 +17,8 @@ use function \Facebook\FBExpect\expect;
  */
 final class VecOrderTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestRange(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestRange(): varray<mixed> {
+    return varray[
       tuple(1, 10, null, vec[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
       tuple(1, 10, 1, vec[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
       tuple(1, 10, 2, vec[1, 3, 5, 7, 9]),
@@ -62,7 +61,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
       tuple(-2, 2, 5, vec[-2]),
       tuple(4, -4, 3, vec[4, 1, -2]),
       tuple(2, -2, 5, vec[2]),
-    );
+    ];
   }
 
   /** @dataProvider provideTestRange */
@@ -79,12 +78,11 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestRangeException(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestRangeException(): varray<mixed> {
+    return varray[
       tuple(0, 1, 0),
       tuple(-10, 10, -30),
-    );
+    ];
   }
 
   /** @dataProvider provideTestRangeException */
@@ -97,9 +95,8 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideTestReverse(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestReverse(): varray<mixed> {
+    return varray[
       tuple(
         vec[1, 2, 3, 4, 5],
         vec[5, 4, 3, 2, 1],
@@ -112,7 +109,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
         HackLibTestTraversables::getIterator(range(1, 5)),
         vec[5, 4, 3, 2, 1],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestReverse */
@@ -123,19 +120,17 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     expect(Vec\reverse($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestShuffle(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestShuffle(): varray<mixed> {
+    return varray[
       tuple(
         vec[8, 6, 7, 5, 3, 0, 9],
         vec[0, 3, 5, 6, 7, 8, 9],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(8, 6, 7, 5, 3, 0, 9)),
+        HackLibTestTraversables::getIterator(varray[8, 6, 7, 5, 3, 0, 9]),
         vec[0, 3, 5, 6, 7, 8, 9],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestShuffle */
@@ -166,9 +161,8 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideTestSort(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSort(): varray<mixed> {
+    return varray[
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
         null,
@@ -185,12 +179,11 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
         vec[-5.8, -5.7, 1, 1.2],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(8, 6, 7, 5, 3, 0, 9)),
+        HackLibTestTraversables::getIterator(varray[8, 6, 7, 5, 3, 0, 9]),
         null,
         vec[0, 3, 5, 6, 7, 8, 9],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSort */
@@ -202,20 +195,17 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
     expect(Vec\sort($traversable, $comparator))->toBeSame($expected);
   }
 
-  public static function provideTestSortBy(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestSortBy(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array('the', 'quick', 'brown', 'fox', 'jumped'),
+        varray['the', 'quick', 'brown', 'fox', 'jumped'],
         fun('strrev'),
         null,
         vec['jumped', 'the', 'quick', 'brown', 'fox'],
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick', 'brown', 'fox', 'jumped'),
+          varray['the', 'quick', 'brown', 'fox', 'jumped'],
         ),
         fun('strrev'),
         null,
@@ -245,7 +235,7 @@ final class VecOrderTest extends PHPUnit_Framework_TestCase {
         null,
         vec['the', 'fox', 'over', 'quick', 'jumped'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestSortBy */

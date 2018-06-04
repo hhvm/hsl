@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class StrDivideTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideChunk(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideChunk(): varray<mixed> {
+    return varray[
       tuple(
         'hello',
         1,
@@ -34,7 +33,7 @@ final class StrDivideTest extends PHPUnit_Framework_TestCase {
         2,
         vec['he', 'll', 'o'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideChunk */
@@ -46,9 +45,8 @@ final class StrDivideTest extends PHPUnit_Framework_TestCase {
     expect(Str\chunk($string, $chunk_size))->toBeSame($expected);
   }
 
-  public static function provideSplit(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideSplit(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -109,7 +107,7 @@ final class StrDivideTest extends PHPUnit_Framework_TestCase {
         3,
         vec['the', 'quick', 'brown fox jumped'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideSplit */

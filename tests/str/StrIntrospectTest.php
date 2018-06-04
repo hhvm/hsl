@@ -17,15 +17,14 @@ use function Facebook\FBExpect\expect;
  */
 final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideCompare(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideCompare(): varray<mixed> {
+    return varray[
       tuple('foo', 'foo', 0),
       tuple('foo', 'Foo', 1),
       tuple('Foo', 'foo', -1),
       tuple('a', 'b', -1),
       tuple('z', 'a', 1),
-    );
+    ];
   }
 
   /** @dataProvider provideCompare */
@@ -42,15 +41,14 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideCompareCI(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideCompareCI(): varray<mixed> {
+    return varray[
       tuple('foo', 'foo', 0),
       tuple('foo', 'Foo', 0),
       tuple('Foo', 'foo', 0),
       tuple('a', 'b', -1),
       tuple('z', 'a', 1),
-    );
+    ];
   }
 
   /** @dataProvider provideCompareCI */
@@ -67,9 +65,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public static function provideContains(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideContains(): varray<mixed> {
+    return varray[
       tuple('', '', 0, true),
       tuple('foo', '', 0, true),
       tuple('foo', '', 3, true),
@@ -81,7 +78,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple('hello world', 'ow', 0, false),
       tuple('hello world', 'world', -3, false),
       tuple('hello world', 'world', -5, true),
-    );
+    ];
   }
 
   /** @dataProvider provideContains */
@@ -94,9 +91,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\contains($haystack, $needle, $offset))->toBeSame($expected);
   }
 
-  public static function provideContainsCI(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideContainsCI(): varray<mixed> {
+    return varray[
       tuple('', '', 0, true),
       tuple('foo', '', 0, true),
       tuple('foo', '', 3, true),
@@ -108,7 +104,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple('hello world', 'ow', 0, false),
       tuple('hello world', 'World', -3, false),
       tuple('hello world', 'World', -5, true),
-    );
+    ];
   }
 
   /** @dataProvider provideContainsCI */
@@ -139,9 +135,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideEndsWith(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideEndsWith(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -172,7 +167,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
         'WORLD',
         false,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideEndsWith */
@@ -184,9 +179,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\ends_with($string, $suffix))->toBeSame($expected);
   }
 
-  public static function provideEndsWithCI(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideEndsWithCI(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -217,7 +211,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
         'WORLD',
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideEndsWithCI */
@@ -229,15 +223,14 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\ends_with_ci($string, $suffix))->toBeSame($expected);
   }
 
-  public static function provideIsEmpty(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideIsEmpty(): varray<mixed> {
+    return varray[
       tuple(null, true),
       tuple('', true),
       tuple('0', false),
       tuple("\0", false),
       tuple('anything else', false),
-    );
+    ];
   }
 
   /** @dataProvider provideIsEmpty */
@@ -248,13 +241,12 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\is_empty($string))->toBeSame($expected);
   }
 
-  public static function provideLength(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideLength(): varray<mixed> {
+    return varray[
       tuple('', 0),
       tuple('0', 1),
       tuple('hello', 5),
-    );
+    ];
   }
 
   /** @dataProvider provideLength */
@@ -265,9 +257,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\length($string))->toBeSame($expected);
   }
 
-  public static function provideSearch(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideSearch(): varray<mixed> {
+    return varray[
       tuple('', 'foo', 0, null),
       tuple('fooBar', 'oB', 0, 2),
       tuple('fooBar', 'oB', 3, null),
@@ -276,7 +267,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple('hello world', 'ow', 0, null),
       tuple('hello world', 'world', -3, null),
       tuple('hello world', 'world', -5, 6),
-    );
+    ];
   }
 
   /** @dataProvider provideSearch */
@@ -289,9 +280,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\search($haystack, $needle, $offset))->toBeSame($expected);
   }
 
-  public static function provideSearchCI(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideSearchCI(): varray<mixed> {
+    return varray[
       tuple('', 'foo', 0, null),
       tuple('fooBar', 'oB', 0, 2),
       tuple('fooBar', 'oB', 3, null),
@@ -300,7 +290,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple('hello world', 'ow', 0, null),
       tuple('hello world', 'World', -3, null),
       tuple('hello world', 'World', -5, 6),
-    );
+    ];
   }
 
   /** @dataProvider provideSearchCI */
@@ -313,9 +303,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\search_ci($haystack, $needle, $offset))->toBeSame($expected);
   }
 
-  public static function provideSearchLast(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideSearchLast(): varray<mixed> {
+    return varray[
       tuple('foofoofoo', 'foo', 0, 6),
       tuple('foofoofoo', 'bar', 0, null),
       tuple('foobarbar', 'foo', 3, null),
@@ -326,7 +315,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       tuple('hello world', 'world', -3, 6),
       tuple('hello world', 'world', -5, 6),
       tuple('hello world', 'world', -6, null),
-    );
+    ];
   }
 
   /** @dataProvider provideSearchLast */
@@ -356,9 +345,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideStartsWith(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideStartsWith(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -389,7 +377,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
         'HELLO',
         false,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideStartsWith */
@@ -401,9 +389,8 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
     expect(Str\starts_with($string, $prefix))->toBeSame($expected);
   }
 
-  public static function provideStartsWithCI(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideStartsWithCI(): varray<mixed> {
+    return varray[
       tuple(
         '',
         '',
@@ -434,7 +421,7 @@ final class StrIntrospectTest extends PHPUnit_Framework_TestCase {
         'HELLO',
         true,
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideStartsWithCI */

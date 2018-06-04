@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class StrFormatTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideFormat(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideFormat(): varray<mixed> {
+    return varray[
       tuple(
         Str\format('No format specifiers'),
         'No format specifiers',
@@ -49,7 +48,7 @@ final class StrFormatTest extends PHPUnit_Framework_TestCase {
         Str\format('Percent specifier: %%'),
         'Percent specifier: %',
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideFormat */

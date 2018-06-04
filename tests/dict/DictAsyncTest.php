@@ -16,9 +16,8 @@ use function Facebook\FBExpect\expect;
  */
 final class DictAsyncTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestGen(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGen(): varray<mixed> {
+    return varray[
       tuple(
         Vector {
           async {return 'the';},
@@ -44,17 +43,16 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
         ],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           'foo' => async {return 1;},
           'bar' => async {return 2;},
-        )),
+        ]),
         dict[
           'foo' => 1,
           'bar' => 2,
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGen */
@@ -69,9 +67,8 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenFromKeys(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenFromKeys(): varray<mixed> {
+    return varray[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
         async ($word) ==> strlen($word),
@@ -84,8 +81,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick', 'brown', 'fox'),
+          varray['the', 'quick', 'brown', 'fox'],
         ),
         async ($word) ==> strlen($word),
         dict[
@@ -95,7 +91,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
           'fox' => 3,
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenFromKeys */
@@ -128,17 +124,15 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenFilter(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenFilter(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
+        darray[
           '2' => 'two',
           '4' => 'four',
           6 => 'six',
           '8' => 'eight',
-        ),
+        ],
         async ($word) ==> strlen($word) % 2 === 1,
         dict[
           2 => 'two',
@@ -168,7 +162,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
           5 => 'over',
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenFilter */
@@ -184,12 +178,10 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
     });
   }
 
-  public static function provideTestGenMap(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestGenMap(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $x ==> $x,
         dict[],
       ),
@@ -218,8 +210,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getIterator(
-          /* HH_FIXME[2083]  */
-          array('the', 'quick', 'brown', 'fox'),
+          varray['the', 'quick', 'brown', 'fox'],
         ),
         async ($word) ==> strrev($word),
         dict[
@@ -229,7 +220,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
           3 => 'xof',
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestGenMap */

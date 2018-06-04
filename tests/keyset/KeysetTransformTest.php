@@ -16,17 +16,15 @@ use function Facebook\FBExpect\expect;
  */
 final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestChunk(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestChunk(): varray<mixed> {
+    return varray[
       tuple(
         Map {},
         10,
         vec[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(0, 1, 2, 3, 4),
+        varray[0, 1, 2, 3, 4],
         2,
         vec[
           keyset[0, 1],
@@ -36,8 +34,7 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(
-          /* HH_FIXME[2083]  */
-          array('foo' => 'bar', 'baz' => 'qux'),
+          darray['foo' => 'bar', 'baz' => 'qux'],
         ),
         1,
         vec[
@@ -55,7 +52,7 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
           keyset[6],
         ],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestChunk */
@@ -67,19 +64,16 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
     expect(Keyset\chunk($traversable, $size))->toBeSame($expected);
   }
 
-  public static function provideTestMap(): array<mixed> {
+  public static function provideTestMap(): varray<mixed> {
     $doubler = $x ==> $x * 2;
-    /* HH_FIXME[2083]  */
-    return array(
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $doubler,
         keyset[],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(1),
+        varray[1],
         $doubler,
         keyset[2],
       ),
@@ -89,14 +83,12 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
         keyset[20, 22, 24, 26, 28, 30],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('a'),
+        varray['a'],
         $x ==> $x. ' buzz',
         keyset['a buzz'],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array('a', 'bee', 'a bee'),
+        varray['a', 'bee', 'a bee'],
         $x ==> $x. ' buzz',
         keyset['a buzz', 'bee buzz', 'a bee buzz'],
       ),
@@ -130,18 +122,16 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
         keyset[20, 40],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(1, 2, 3)),
+        HackLibTestTraversables::getIterator(varray[1, 2, 3]),
         $doubler,
         keyset[2, 4, 6],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(10 => 1, 20 => 2, 30 => 3)),
+        HackLibTestTraversables::getKeyedIterator(darray[10 => 1, 20 => 2, 30 => 3]),
         $doubler,
         keyset[2, 4, 6],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMap */
@@ -153,12 +143,10 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
     expect(Keyset\map($traversable, $value_func))->toBeSame($expected);
   }
 
-  public static function provideTestMapWithKey(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestMapWithKey(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         ($a, $b) ==> null,
         keyset[],
       ),
@@ -177,7 +165,7 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
         ($k, $v) ==> ($k + $v) % 5,
         keyset[1, 3, 0, 2, 4],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestMapWithKey */
@@ -191,9 +179,8 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
   }
 
   public static function provideTestFlatten(
-  ): array<(Traversable<Traversable<arraykey>>, keyset<arraykey>)> {
-    /* HH_FIXME[2083]  */
-    return array(
+  ): varray<(Traversable<Traversable<arraykey>>, keyset<arraykey>)> {
+    return varray[
       tuple(
         vec[keyset[1,2], keyset[2,3,4]],
         keyset[1,2,3,4],
@@ -219,22 +206,19 @@ final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
         keyset['apple', 'banana', 'grape'],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(
-          /* HH_FIXME[2083]  */
-          array(1, 2, 3),
+        varray[
+          varray[1, 2, 3],
           Vector {'the', 'quick', 'brown'},
-          /* HH_FIXME[2083]  */
-          HackLibTestTraversables::getKeyedIterator(array(
+          HackLibTestTraversables::getKeyedIterator(darray[
             'the' => 'the',
             'quick' => 'quick',
             'brown' => 'brown',
             'fox' => 'jumped',
-          )),
-        ),
+          ]),
+        ],
         keyset[1, 2, 3, 'the', 'quick', 'brown', 'jumped'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFlatten */

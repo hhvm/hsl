@@ -16,36 +16,30 @@ use function Facebook\FBExpect\expect;
  */
 final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
 
-  public static function provideTestDiff(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestDiff(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
-        /* HH_FIXME[2083]  */
-        array(),
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
+        varray[],
+        varray[],
         keyset[],
       ),
       tuple(
         vec[1, 3, 5, 7],
         dict[],
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         keyset[1, 3, 5, 7],
       ),
       tuple(
         new Vector(range(0, 20)),
         Set {1, 3, 5},
-        /* HH_FIXME[2083]  */
-        array(
+        varray[
           Map {'foo' => 7, 'bar' => 9},
           HackLibTestTraversables::getIterator(range(11, 30)),
-        ),
+        ],
         keyset[0, 2, 4, 6, 8, 10],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestDiff */
@@ -59,9 +53,8 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideDrop(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideDrop(): varray<mixed> {
+    return varray[
       tuple(
         vec[],
         5,
@@ -83,12 +76,11 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset[2, 3, 4, 5],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(0, 1, 2, 3, 4, 5, 5, 5)),
+        HackLibTestTraversables::getIterator(varray[0, 1, 2, 3, 4, 5, 5, 5]),
         5,
         keyset[5],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideDrop */
@@ -100,12 +92,10 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     expect(Keyset\drop($traversable, $n))->toBeSame($expected);
   }
 
-  public static function provideTestFilter(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilter(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         $x ==> true,
         keyset[],
       ),
@@ -134,7 +124,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         $x ==> $x % 2 === 0,
         keyset[0, 2, 4],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilter */
@@ -149,17 +139,14 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
 
   public function testFilterWithoutPredicate(): void {
     expect(
-      /* HH_FIXME[2083]  */
-      Keyset\filter(array(0, 3, 5, 40, '', '0', 'win!'))
+      Keyset\filter(varray[0, 3, 5, 40, '', '0', 'win!'])
     )->toBeSame(keyset[3, 5, 40, 'win!']);
   }
 
-  public static function provideTestFilterNulls(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilterNulls(): varray<mixed> {
+    return varray[
       tuple(
-        /* HH_FIXME[2083]  */
-        array(null, null, null),
+        varray[null, null, null],
         keyset[],
       ),
       tuple(
@@ -180,15 +167,14 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset['foo', 'bar', 'baz'],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           '1' => null,
           '2' => 1,
           '3' => '0',
-        )),
+        ]),
         keyset[1, '0'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilterNulls */
@@ -199,9 +185,8 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     expect(Keyset\filter_nulls($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestFilterWithKey(): array<string, mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestFilterWithKey(): darray<string, mixed> {
+    return darray[
       'All elements selected' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
         ($key, $value) ==> true,
@@ -229,7 +214,7 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         ($key, $value) ==> Str\starts_with($value, 'f'),
         keyset['fox'],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestFilterWithKey */
@@ -242,9 +227,8 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     expect($result)->toBeSame($expected);
   }
 
-  public static function provideTestKeys(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestKeys(): varray<mixed> {
+    return varray[
       tuple(
         Map {},
         keyset[],
@@ -259,16 +243,15 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset[2, 4, 6, 8],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getKeyedIterator(array(
+        HackLibTestTraversables::getKeyedIterator(darray[
           2 => 4,
           4 => 8,
           6 => 12,
           8 => 16,
-        )),
+        ]),
         keyset[2, 4, 6, 8],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestKeys */
@@ -279,63 +262,53 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
     expect(Keyset\keys($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestIntersect(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTestIntersect(): varray<mixed> {
+    return varray[
       tuple(
         range(0, 1000),
-        /* HH_FIXME[2083]  */
-        array(),
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
+        varray[],
         keyset[],
       ),
       tuple(
         range(1, 10),
         range(1, 5),
-        /* HH_FIXME[2083]  */
-        array(
+        varray[
           range(2, 6),
           range(3, 7),
-        ),
+        ],
         keyset[3, 4, 5],
       ),
       tuple(
         Set {},
         range(1, 100),
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[],
         keyset[],
       ),
       tuple(
         range(1, 1000),
         Map {},
-        /* HH_FIXME[2083]  */
-        array(
+        varray[
           Set {},
           Vector {},
-        ),
+        ],
         keyset[],
       ),
       tuple(
         new Vector(range(1, 100)),
         Map {1 => 2, 39 => 40},
-        /* HH_FIXME[2083]  */
-        array(
+        varray[
           HackLibTestTraversables::getIterator(range(0, 40)),
-        ),
+        ],
         keyset[2, 40],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        array(3, 4, 4, 5),
-        /* HH_FIXME[2083]  */
-        array(3, 4),
-        /* HH_FIXME[2083]  */
-        array(),
+        varray[3, 4, 4, 5],
+        varray[3, 4],
+        varray[],
         keyset[3, 4],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTestIntersect */
@@ -349,9 +322,8 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
       ->toBeSame($expected);
   }
 
-  public static function provideTake(): array<mixed> {
-    /* HH_FIXME[2083]  */
-    return array(
+  public static function provideTake(): varray<mixed> {
+    return varray[
       tuple(
         keyset[],
         5,
@@ -373,12 +345,11 @@ final class KeysetSelectTest extends PHPUnit_Framework_TestCase {
         keyset[0, 1],
       ),
       tuple(
-        /* HH_FIXME[2083]  */
-        HackLibTestTraversables::getIterator(array(0, 0, 1, 1, 2, 2, 3, 3)),
+        HackLibTestTraversables::getIterator(varray[0, 0, 1, 1, 2, 2, 3, 3]),
         5,
         keyset[0, 1, 2],
       ),
-    );
+    ];
   }
 
   /** @dataProvider provideTake */
