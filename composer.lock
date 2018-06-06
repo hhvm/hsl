@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "963486df23d43d2e610b3fdd1d5f04d9",
+    "content-hash": "1f22630e345b71ef16c8c0937948ae8f",
     "packages": [
         {
             "name": "fredemmott/hack-error-suppressor",
@@ -45,16 +45,16 @@
         },
         {
             "name": "hhvm/hhvm-autoload",
-            "version": "v1.6.2",
+            "version": "v1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hhvm-autoload.git",
-                "reference": "2beebbb5982e77237ec853ee1231860c3c295bf3"
+                "reference": "2e3944571aa61b16336bea9254856f5ae4aea48c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/2beebbb5982e77237ec853ee1231860c3c295bf3",
-                "reference": "2beebbb5982e77237ec853ee1231860c3c295bf3",
+                "url": "https://api.github.com/repos/hhvm/hhvm-autoload/zipball/2e3944571aa61b16336bea9254856f5ae4aea48c",
+                "reference": "2e3944571aa61b16336bea9254856f5ae4aea48c",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-02-27T18:31:14+00:00"
+            "time": "2018-05-08T17:26:24+00:00"
         }
     ],
     "packages-dev": [
@@ -199,16 +199,16 @@
         },
         {
             "name": "facebook/fbexpect",
-            "version": "v0.4.1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/fbexpect.git",
-                "reference": "5af28d762b2bf8c6e7c242ce94eacf5136f61459"
+                "reference": "1b86ba9bcab71242cf8d1a69aaca5ca3774c5ecf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/fbexpect/zipball/5af28d762b2bf8c6e7c242ce94eacf5136f61459",
-                "reference": "5af28d762b2bf8c6e7c242ce94eacf5136f61459",
+                "url": "https://api.github.com/repos/hhvm/fbexpect/zipball/1b86ba9bcab71242cf8d1a69aaca5ca3774c5ecf",
+                "reference": "1b86ba9bcab71242cf8d1a69aaca5ca3774c5ecf",
                 "shasum": ""
             },
             "require": {
@@ -227,8 +227,11 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "description": "Unit test helpers for Facebook projects",
-            "time": "2018-02-09T00:09:55+00:00"
+            "time": "2018-05-09T17:30:06+00:00"
         },
         {
             "name": "myclabs/deep-copy",
