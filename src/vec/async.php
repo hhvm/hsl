@@ -62,21 +62,20 @@ async function map_async<Tv1, Tv2>(
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Awaitable<Tv2>) $async_func,
 ): Awaitable<vec<Tv2>> {
-  $awaitables = vec[];
-  foreach ($traversable as $value) {
+  $traversable = vec($traversable);
+  foreach ($traversable as $i => $value) {
+    /* HH_FIXME[4110] Reuse traversable for AwaitAllWaitHandle */
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromVec is like await */
-    $awaitables[] = $async_func($value);
+    $traversable[$i] = $async_func($value);
   }
-  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
-  unset($traversable);
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
-  await AwaitAllWaitHandle::fromVec($awaitables);
-  foreach ($awaitables as $index => $value) {
+  await AwaitAllWaitHandle::fromVec($traversable);
+  foreach ($traversable as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
-    $awaitables[$index] = \HH\Asio\result($value);
+    $traversable[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-  return $awaitables;
+  return $traversable;
 }

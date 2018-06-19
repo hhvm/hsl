@@ -115,21 +115,20 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   KeyedTraversable<Tk, Tv1> $traversable,
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {
-  $awaitables = dict[];
+  $traversable = dict($traversable);
   foreach ($traversable as $key => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
-    $awaitables[$key] = $value_func($value);
+    /* HH_FIXME[4110] Reusing traversable for AwaitAllWaitHandle */
+    $traversable[$key] = $value_func($value);
   }
-  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
-  unset($traversable);
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
-  await AwaitAllWaitHandle::fromDict($awaitables);
-  foreach ($awaitables as $key => $value) {
+  await AwaitAllWaitHandle::fromDict($traversable);
+  foreach ($traversable as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
-    $awaitables[$key] = \HH\Asio\result($value);
+    $traversable[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-  return $awaitables;
+  return $traversable;
 }
