@@ -52,7 +52,7 @@ function capitalize_words(
  * The optional `$decimal_point` and `$thousands_separator` arguments define the
  * strings used for decimals and commas, respectively.
  */
-<<__RxLocal>>
+<<__Rx>>
 function format_number(
   num $number,
   int $decimals = 0,
@@ -87,7 +87,7 @@ function lowercase(
  *
  * To pad the string on the right, see `Str\pad_right()`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function pad_left(
   string $string,
   int $total_length,
@@ -108,7 +108,7 @@ function pad_left(
  *
  * To pad the string on the left, see `Str\pad_left()`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function pad_right(
   string $string,
   int $total_length,
@@ -124,7 +124,7 @@ function pad_right(
  *
  * If the multiplier is 0, the empty string will be returned.
  */
-<<__RxLocal>>
+<<__Rx>>
 function repeat(
   string $string,
   int $multiplier,
@@ -140,7 +140,7 @@ function repeat(
  * - For a case-insensitive search/replace, see `Str\replace_ci()`.
  * - For multiple searches/replacements, see `Str\replace_every()`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function replace(
   string $haystack,
   string $needle,
@@ -156,7 +156,7 @@ function replace(
  * - For a case-sensitive search/replace, see `Str\replace()`.
  * - For multiple searches/replacements, see `Str\replace_every()`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function replace_ci(
   string $haystack,
   string $needle,
@@ -171,7 +171,7 @@ function replace_ci(
  *
  * For a single search/replace, see `Str\replace()`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
@@ -193,7 +193,7 @@ function replace_every(
  *
  * Previously known in PHP as `substr_replace`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function splice(
   string $string,
   string $replacement,

@@ -63,7 +63,7 @@ type SprintfFormatString = \HH\FormatString<SprintfFormat>;
  * Given a valid format string (defined by `SprintfFormatString`), return a
  * formatted string using `$format_args`
  */
-<<__RxLocal>>
+<<__Rx>>
 function format(
   SprintfFormatString $format_string,
   mixed ...$format_args
