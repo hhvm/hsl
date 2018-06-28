@@ -36,13 +36,17 @@ function chunk<Tv>(
 /**
  * Returns a new vec of size `$size` where all the values are `$value`.
  */
-<<__RxLocal>>
+<<__Rx>>
 function fill<Tv>(
   int $size,
   Tv $value,
 ): vec<Tv> {
   invariant($size >= 0, 'Expected non-negative fill size, got %d.', $size);
-  return vec(\array_fill(0, $size, $value));
+  $result = vec[];
+  for ($i = 0; $i < $size; $i++) {
+    $result[] = $value;
+  }
+  return $result;
 }
 
 /**
