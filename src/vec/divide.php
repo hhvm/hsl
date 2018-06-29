@@ -14,9 +14,11 @@ namespace HH\Lib\Vec;
  * Returns a 2-tuple containing vecs for which the given predicate returned
  * `true` and `false`, respectively.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function partition<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): bool) $predicate,
 ): (vec<Tv>, vec<Tv>) {
   $success = vec[];

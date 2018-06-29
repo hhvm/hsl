@@ -17,9 +17,11 @@ use namespace HH\Lib\Str;
  * Returns the first value of the given Traversable for which the predicate
  * returns true, or null if no such value is found.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function find<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(T): bool) $value_predicate,
 ): ?T {
   foreach ($traversable as $value) {
@@ -34,9 +36,11 @@ function find<T>(
  * Returns the key of the first value of the given KeyedTraversable for which
  * the predicate returns true, or null if no such value is found.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function find_key<Tk, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): bool) $value_predicate,
 ): ?Tk {
   foreach ($traversable as $key => $value) {
@@ -56,8 +60,9 @@ function find_key<Tk, Tv>(
  * - For single-element Traversables, see `C\onlyx`.
  * - For Awaitables that yield Traversables, see `C\first_async`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function first<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): ?T {
   foreach ($traversable as $value) {
@@ -75,8 +80,9 @@ function first<T>(
  * - For single-element Traversables, see `C\onlyx`.
  * - For Awaitables that yield Traversables, see `C\firstx_async`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function firstx<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): T {
   foreach ($traversable as $value) {
@@ -91,8 +97,9 @@ function firstx<T>(
  *
  * For non-empty Traversables, see `C\first_keyx`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function first_key<Tk, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
   if ($traversable !== null) {
@@ -109,8 +116,9 @@ function first_key<Tk, Tv>(
  *
  * For possibly empty Traversables, see `C\first_key`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function first_keyx<Tk, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
   foreach ($traversable as $key => $_) {
@@ -126,13 +134,16 @@ function first_keyx<Tk, Tv>(
  * - For non-empty Traversables, see `C\lastx`.
  * - For single-element Traversables, see `C\onlyx`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function last<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): ?Tv {
   if (_Private\is_any_array($traversable)) {
+    /* HH_FIXME[4200] is reactive */
     return $traversable ? \end(&$traversable) : null;
   } else if ($traversable instanceof Iterable) {
+    /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     return $traversable->lastValue();
   }
   $value = null;
@@ -148,17 +159,20 @@ function last<Tv>(
  * - For possibly empty Traversables, see `C\last`.
  * - For single-element Traversables, see `C\onlyx`.
  */
-<<__RxLocal>>
-function lastx<Tv>(Traversable<Tv> $traversable): Tv {
+<<__Rx, __OnlyRxIfArgs>>
+function lastx<Tv>(<<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+Traversable<Tv> $traversable): Tv {
   // There is no way to directly check whether an Iterable is empty,
   // so convert to Array. For Hack Collections, this should
   // be an O(1) operation. For other Iterables, it will be
   // O(n).
   if ($traversable instanceof Iterable) {
+    /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     $traversable = $traversable->toArray();
   }
   if (_Private\is_any_array($traversable)) {
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
+    /* HH_FIXME[4200] is reactive */
     return \end(&$traversable);
   }
   $value = null;
@@ -178,17 +192,21 @@ function lastx<Tv>(Traversable<Tv> $traversable): Tv {
  *
  * For non-empty Traversables, see `C\last_keyx`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function last_key<Tk, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
   if (_Private\is_any_array($traversable)) {
     if (!$traversable) {
       return null;
     }
+    /* HH_FIXME[4200] is reactive */
     \end(&$traversable);
+    /* HH_FIXME[4200] is reactive */
     return \key(&$traversable);
   } else if ($traversable instanceof KeyedIterable) {
+    /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     return $traversable->lastKey();
   }
   $key = null;
@@ -203,8 +221,9 @@ function last_key<Tk, Tv>(
  *
  * For possibly empty Traversables, see `C\last_key`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function last_keyx<Tk, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
   $last_key = last_key($traversable);
@@ -241,8 +260,9 @@ function nfirst<T>(
  *
  * For Traversables with more than one element, see `C\firstx`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function onlyx<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   ?Str\SprintfFormatString $format_string = null,
   mixed ...$format_args

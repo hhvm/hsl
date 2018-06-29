@@ -16,9 +16,11 @@ use namespace HH\Lib\C;
  * Returns a new dict where each element in `$keys` maps to the
  * corresponding element in `$values`.
  */
-<<__RxShallow>>
+<<__Rx, __OnlyRxIfArgs>>
 function associate<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 ): dict<Tk, Tv> {
   $keys = vec($keys);
@@ -38,7 +40,6 @@ function associate<Tk as arraykey, Tv>(
  * Merges multiple KeyedTraversables into a new dict. In the case of duplicate
  * keys, later values will overwrite the previous ones.
  */
-<<__Rx>>
 function merge<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $first,
   KeyedTraversable<Tk, Tv> ...$rest

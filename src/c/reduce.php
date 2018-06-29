@@ -18,9 +18,11 @@ namespace HH\Lib\C;
  * Reduces the given Traversable into a single value by applying an accumulator
  * function against an intermediate result and each value.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function reduce<Tv, Ta>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Ta, Tv): Ta) $accumulator,
   Ta $initial,
 ): Ta {
@@ -36,9 +38,11 @@ function reduce<Tv, Ta>(
  * applying an accumulator function against an intermediate result
  * and each key/value.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function reduce_with_key<Tk, Tv, Ta>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Ta, Tk, Tv): Ta) $accumulator,
   Ta $initial,
 ): Ta {

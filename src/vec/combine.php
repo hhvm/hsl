@@ -15,7 +15,6 @@ namespace HH\Lib\Vec;
  *
  * For a variable number of Traversables, see `Vec\flatten()`.
  */
-<<__Rx>>
 function concat<Tv>(
   Traversable<Tv> $first,
   Traversable<Tv> ...$rest

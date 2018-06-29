@@ -15,15 +15,19 @@ namespace HH\Lib\Keyset;
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function sort<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(Tv, Tv): int) $comparator = null,
 ): keyset<Tv> {
   $keyset = keyset($traversable);
   if ($comparator) {
+    /* HH_FIXME[4200] is reactive */
     \uksort(&$keyset, $comparator);
   } else {
+    /* HH_FIXME[4200] is reactive */
     \ksort(&$keyset);
   }
   return $keyset;

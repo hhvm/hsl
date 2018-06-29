@@ -15,8 +15,9 @@ namespace HH\Lib\Vec;
  * size. If the original vec doesn't divide evenly, the final chunk will be
  * smaller.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function chunk<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $size,
 ): vec<vec<Tv>> {
@@ -55,7 +56,6 @@ function fill<Tv>(
  *
  * For a fixed number of Traversables, see `Vec\concat()`.
  */
-<<__Rx>>
 function flatten<Tv>(
   Traversable<Traversable<Tv>> $traversables,
 ): vec<Tv> {
@@ -74,9 +74,11 @@ function flatten<Tv>(
  *
  * For async functions, see `Vec\map_async()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function map<Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
 ): vec<Tv2> {
   $result = vec[];
@@ -90,9 +92,11 @@ function map<Tv1, Tv2>(
  * Returns a new vec where each value is the result of calling the given
  * function on the original key and value.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function map_with_key<Tk, Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv1): Tv2) $value_func,
 ): vec<Tv2> {
   $result = vec[];

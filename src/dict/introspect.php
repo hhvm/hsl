@@ -16,7 +16,7 @@ use namespace HH\Lib\C;
  * Returns whether the two given dicts have the same entries, using strict
  * equality. To guarantee equality of order as well as contents, use `===`.
  */
-<<__RxShallow>>
+<<__Rx>>
 function equal<Tk as arraykey, Tv>(
   dict<Tk, Tv> $dict1,
   dict<Tk, Tv> $dict2,

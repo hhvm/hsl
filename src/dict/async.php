@@ -12,17 +12,20 @@ namespace HH\Lib\Dict;
 
 use namespace HH\Lib\C;
 
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function from_async<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables = dict($awaitables);
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
+    /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
@@ -35,9 +38,11 @@ async function from_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\from_keys()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function from_keys_async<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk): Awaitable<Tv>) $async_func,
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables = dict[];
@@ -51,10 +56,12 @@ async function from_keys_async<Tk as arraykey, Tv>(
   unset($keys);
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+    /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
+    /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
@@ -67,9 +74,10 @@ async function from_keys_async<Tk as arraykey, Tv>(
  *
  * For non-async predicates, see `Dict\filter()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): Awaitable<bool>) $value_predicate,
 ): Awaitable<dict<Tk, Tv>> {
   $tests = await map_async($traversable, $value_predicate);
@@ -87,13 +95,15 @@ async function filter_async<Tk as arraykey, Tv>(
  *
  * For non-async filters with key, see `Dict\filter_with_key()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): Awaitable<bool>) $predicate,
 ): Awaitable<dict<Tk, Tv>> {
   $tests = await $traversable
-    |> map_with_key($$, ($k, $v) ==> $predicate($k, $v))
+    /* HH_FIXME[4237] no conditionally reactive lambas */
+    |> map_with_key($$, async ($k, $v) ==> await $predicate($k, $v))
     |> from_async($$);
   $result = dict[];
   foreach ($tests as $k => $v) {
@@ -110,9 +120,11 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\map()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {
   $traversable = dict($traversable);
@@ -123,10 +135,12 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   }
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($traversable);
   foreach ($traversable as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
+    /* HH_FIXME[4200] Hide the magic from reactivity */
     $traversable[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */

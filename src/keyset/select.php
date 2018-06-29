@@ -14,7 +14,6 @@ namespace HH\Lib\Keyset;
  * Returns a new keyset containing only the elements of the first Traversable
  * that do not appear in any of the other ones.
  */
-<<__RxShallow>>
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv1> $first,
   Traversable<Tv2> $second,
@@ -31,18 +30,18 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
     : union($second, ...$rest);
   return filter(
     $first,
-    $value ==> !\array_key_exists($value, $union),
+    <<__Rx>> $value ==> !\array_key_exists($value, $union),
   );
 }
-
 /**
  * Returns a new keyset containing all except the first `$n` elements of
  * the given Traversable.
  *
  * To take only the first `$n` elements, see `Keyset\take()`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function drop<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 ): keyset<Tv> {
@@ -65,9 +64,11 @@ function drop<Tv as arraykey>(
  *
  * To remove null values in a typechecker-visible way, see `Keyset\filter_nulls()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): keyset<Tv> {
   $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -84,8 +85,9 @@ function filter<Tv as arraykey>(
  * Returns a new keyset containing only non-null values of the given
  * Traversable.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter_nulls<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
 ): keyset<Tv> {
   $result = keyset[];
@@ -103,9 +105,11 @@ function filter_nulls<Tv as arraykey>(
  *
  * If you don't need access to the key, see `Keyset\filter()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter_with_key<Tk, Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,
 ): keyset<Tv> {
   $result = keyset[];
@@ -121,8 +125,9 @@ function filter_with_key<Tk, Tv as arraykey>(
  * Returns a new keyset containing the keys of the given KeyedTraversable,
  * maintaining the iteration order.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function keys<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): keyset<Tk> {
   $result = keyset[];
@@ -136,7 +141,6 @@ function keys<Tk as arraykey, Tv>(
  * Returns a new keyset containing only the elements of the first Traversable
  * that appear in all the other ones.
  */
-<<__RxLocal>>
 function intersect<Tv as arraykey>(
   Traversable<Tv> $first,
   Traversable<Tv> $second,
@@ -168,8 +172,9 @@ function intersect<Tv as arraykey>(
  *
  * To drop the first `$n` elements, see `Keyset\drop()`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function take<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 ): keyset<Tv> {

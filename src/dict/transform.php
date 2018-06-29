@@ -15,8 +15,9 @@ namespace HH\Lib\Dict;
  * size. If the original dict doesn't divide evenly, the final chunk will be
  * smaller.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function chunk<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $size,
 ): vec<dict<Tk, Tv>> {
@@ -37,8 +38,9 @@ function chunk<Tk as arraykey, Tv>(
  * Returns a new dict mapping each value to the number of times it appears
  * in the given Traversable.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function count_values<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 ): dict<Tv, int> {
   $result = dict[];
@@ -55,7 +57,6 @@ function count_values<Tv as arraykey>(
  *
  * For a fixed number of KeyedTraversables, see `Dict\merge()`.
  */
-<<__Rx>>
 function flatten<Tk as arraykey, Tv>(
   Traversable<KeyedTraversable<Tk, Tv>> $traversables,
 ): dict<Tk, Tv> {
@@ -71,8 +72,9 @@ function flatten<Tk as arraykey, Tv>(
 /**
  * Returns a new dict where all the given keys map to the given value.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function fill_keys<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   Tv $value,
 ): dict<Tk, Tv> {
@@ -88,8 +90,9 @@ function fill_keys<Tk as arraykey, Tv>(
  * and vice-versa. In case of duplicate values, later keys overwrite the
  * previous ones.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function flip<Tk, Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tv, Tk> {
   $result = dict[];
@@ -107,9 +110,11 @@ function flip<Tk, Tv as arraykey>(
  * - To create a dict from values, see `Dict\from_values()`.
  * - To create a dict from key/value tuples, see `Dict\from_entries()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function from_keys<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk): Tv) $value_func,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -131,8 +136,9 @@ function from_keys<Tk as arraykey, Tv>(
  *
  * Also known as `unzip` or `fromItems` in other implementations.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function from_entries<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<(Tk, Tv)> $entries,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -152,9 +158,11 @@ function from_entries<Tk as arraykey, Tv>(
  * - To create a dict from keys, see `Dict\from_keys()`.
  * - To create a dict from key/value tuples, see `Dict\from_entries()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function from_values<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): Tk) $key_func,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -171,9 +179,11 @@ function from_values<Tk as arraykey, Tv>(
   *
   * If a value produces a null key, it's omitted from the result.
   */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function group_by<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): ?Tk) $key_func,
 ): dict<Tk, vec<Tv>> {
   $result = dict[];
@@ -196,9 +206,11 @@ function group_by<Tk as arraykey, Tv>(
  *
  * To use an async function, see `Dict\map_async()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function map<Tk as arraykey, Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
 ): dict<Tk, Tv2> {
   $result = dict[];
@@ -213,9 +225,11 @@ function map<Tk as arraykey, Tv1, Tv2>(
  * function on the original key. In the case of duplicate keys, later values
  * will overwrite the previous ones.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function map_keys<Tk1, Tk2 as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk1): Tk2) $key_func,
 ): dict<Tk2, Tv> {
   $result = dict[];
@@ -229,9 +243,11 @@ function map_keys<Tk1, Tk2 as arraykey, Tv>(
  * Returns a new dict where each value is the result of calling the given
  * function on the original value and key.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function map_with_key<Tk as arraykey, Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv1): Tv2) $value_func,
 ): dict<Tk, Tv2> {
   $result = dict[];
@@ -247,10 +263,13 @@ function map_with_key<Tk as arraykey, Tv1, Tv2>(
  *  - keys are the result of calling `$key_func` on the original value.
  * In the case of duplicate keys, later values will overwrite the previous ones.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function pull<Tk as arraykey, Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tk) $key_func,
 ): dict<Tk, Tv2> {
   $result = dict[];
@@ -266,10 +285,13 @@ function pull<Tk as arraykey, Tv1, Tv2>(
  *  - keys are the result of calling `$key_func` on the original value/key.
  * In the case of duplicate keys, later values will overwrite the previous ones.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function pull_with_key<Tk1, Tk2 as arraykey, Tv1, Tv2>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv1> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk1, Tv1): Tv2) $value_func,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk1, Tv1): Tk2) $key_func,
 ): dict<Tk2, Tv2> {
   $result = dict[];

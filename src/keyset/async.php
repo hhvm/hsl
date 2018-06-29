@@ -15,8 +15,9 @@ use namespace HH\Lib\Vec;
 /**
  * Returns a new keyset containing the awaited result of the given Awaitables.
  */
-<<__RxShallow>>
+<<__Rx, __OnlyRxIfArgs>>
 async function from_async<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<keyset<Tv>> {
   $vec = await Vec\from_async($awaitables);
@@ -29,9 +30,10 @@ async function from_async<Tv as arraykey>(
  *
  * For non-async predicates, see `Keyset\filter()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function filter_async<Tv as arraykey>(
   Container<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): Awaitable<bool>) $value_predicate,
 ): Awaitable<keyset<Tv>> {
   $tests = await Vec\map_async($traversable, $value_predicate);
@@ -50,9 +52,11 @@ async function filter_async<Tv as arraykey>(
  * Returns a new keyset where the value is the result of calling the
  * given async function on the original values in the given traversable.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 async function map_async<Tv, Tk as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): Awaitable<Tk>) $async_func,
 ): Awaitable<keyset<Tk>> {
   $vec = await Vec\map_async($traversable, $async_func);

@@ -18,7 +18,7 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * default. If `$start > $end`, it returns a descending range instead of
  * an empty one.
  */
-<<__RxLocal>>
+<<__Rx>>
 function range<Tv as num>(
   Tv $start,
   Tv $end,
@@ -36,8 +36,9 @@ function range<Tv as num>(
  * Returns a new vec with the values of the given Traversable in reversed
  * order.
  */
-<<__RxShallow>>
+<<__Rx, __OnlyRxIfArgs>>
 function reverse<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): vec<Tv> {
   $vec = vec($traversable);
@@ -70,15 +71,19 @@ function shuffle<Tv>(
  *
  * To sort by some computable property of each value, see `Vec\sort_by()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function sort<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(Tv, Tv): int) $comparator = null,
 ): vec<Tv> {
   $vec = vec($traversable);
   if ($comparator) {
+    /* HH_FIXME[4200] is reactive */
     \usort(&$vec, $comparator);
   } else {
+    /* HH_FIXME[4200] is reactive */
     \sort(&$vec);
   }
   return $vec;
@@ -92,18 +97,23 @@ function sort<Tv>(
  *
  * To sort by the values of the Traversable, see `Vec\sort()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function sort_by<Tv, Ts>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): Ts) $scalar_func,
+  <<__OnlyRxIfRxFunc>>
   ?(function(Ts, Ts): int) $comparator = null,
 ): vec<Tv> {
   $vec = vec($traversable);
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {
+    /* HH_FIXME[4200] is reactive */
     \uasort(&$order_by, $comparator);
   } else {
+    /* HH_FIXME[4200] is reactive */
     \asort(&$order_by);
   }
-  return map_with_key($order_by, ($k, $v) ==> $vec[$k]);
+  return map_with_key($order_by, <<__Rx>> ($k, $v) ==> $vec[$k]);
 }

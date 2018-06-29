@@ -21,9 +21,11 @@ namespace HH\Lib\C;
  *
  * If you're looking for `C\none`, use `!C\any`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function any<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(T): bool) $predicate = null,
 ): bool {
   $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -39,8 +41,9 @@ function any<T>(
  * Returns true if the given Traversable contains the value. Strict equality is
  * used.
  */
-<<__RxShallow>>
+<<__Rx, __OnlyRxIfArgs>>
 function contains<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   T $value,
 ): bool {
@@ -58,7 +61,7 @@ function contains<T>(
 /**
  * Returns true if the given KeyedContainer contains the key.
  */
-<<__RxLocal>>
+<<__Rx>>
 function contains_key<Tk, Tv>(
   KeyedContainer<Tk, Tv> $container,
   Tk $key,
@@ -69,7 +72,7 @@ function contains_key<Tk, Tv>(
 /**
  * Returns the number of elements in the given Container.
  */
-<<__RxLocal>>
+<<__Rx>>
 function count<T>(
   Container<T> $container,
 ): int {
@@ -81,9 +84,11 @@ function count<T>(
  * given Traversable. If no predicate is provided, it defaults to casting the
  * element to bool.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function every<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(T): bool) $predicate = null,
 ): bool {
   $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');

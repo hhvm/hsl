@@ -14,9 +14,11 @@ namespace HH\Lib\Dict;
  * Returns a 2-tuple containing dicts for which the given predicate returned
  * `true` and `false`, respectively.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function partition<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): bool) $predicate,
 ): (dict<Tk, Tv>, dict<Tk, Tv>) {
   $success = dict[];
@@ -35,9 +37,11 @@ function partition<Tk as arraykey, Tv>(
  * Returns a 2-tuple containing dicts for which the given keyed predicate
  * returned `true` and `false`, respectively.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function partition_with_key<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,
 ): (dict<Tk, Tv>, dict<Tk, Tv>) {
   $success = dict[];

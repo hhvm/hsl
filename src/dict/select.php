@@ -14,7 +14,6 @@ namespace HH\Lib\Dict;
  * Returns a new dict containing only the entries of the first KeyedTraversable
  * whose keys do not appear in any of the other ones.
  */
-<<__RxLocal>>
 function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   KeyedTraversable<Tk1, Tv> $first,
   KeyedTraversable<Tk2, mixed> $second,
@@ -29,7 +28,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   $union = merge($second, ...$rest);
   return filter_keys(
     $first,
-    $key ==> !\array_key_exists($key, $union),
+    <<__Rx>> $key ==> !\array_key_exists($key, $union),
   );
 }
 
@@ -39,8 +38,9 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  *
  * To take only the first `$n` entries, see `Dict\take()`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function drop<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 ): dict<Tk, Tv> {
@@ -64,9 +64,11 @@ function drop<Tk as arraykey, Tv>(
  * - To remove null values in a typechecker-visible way, see `Dict\filter_nulls()`.
  * - To use an async predicate, see `Dict\filter_async()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): dict<Tk, Tv> {
   $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -85,9 +87,11 @@ function filter<Tk as arraykey, Tv>(
  *
  * To use an async predicate, see `Dict\filter_with_key_async()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter_with_key<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,
 ): dict<Tk, Tv> {
   $dict = dict[];
@@ -103,9 +107,11 @@ function filter_with_key<Tk as arraykey, Tv>(
  * Returns a new dict containing only the keys for which the given predicate
  * returns `true`. The default predicate is casting the key to boolean.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter_keys<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
+  <<__OnlyRxIfRxFunc>>
   ?(function(Tk): bool) $key_predicate = null,
 ): dict<Tk, Tv> {
   $key_predicate = $key_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -122,8 +128,9 @@ function filter_keys<Tk as arraykey, Tv>(
  * Given a KeyedTraversable with nullable values, returns a new dict with
  * those entries removed.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function filter_nulls<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, ?Tv> $traversable,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -140,9 +147,10 @@ function filter_nulls<Tk as arraykey, Tv>(
  * and the given Traversable. The dict will have the same ordering as the
  * `$keys` Traversable.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function select_keys<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $container,
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -160,8 +168,9 @@ function select_keys<Tk as arraykey, Tv>(
  *
  * To drop the first `$n` entries, see `Dict\drop()`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function take<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 ): dict<Tk, Tv> {
@@ -187,8 +196,9 @@ function take<Tk as arraykey, Tv>(
  *
  * For non-arraykey values, see `Dict\unique_by()`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function unique<Tk as arraykey, Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
   return flip(flip($traversable));
@@ -202,14 +212,16 @@ function unique<Tk as arraykey, Tv as arraykey>(
  *
  * For arraykey values, see `Dict\unique()`.
  */
-<<__RxLocal>>
+<<__Rx, __OnlyRxIfArgs>>
 function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   KeyedContainer<Tk, Tv> $container,
+  <<__OnlyRxIfRxFunc>>
   (function(Tv): Ts) $scalar_func,
 ): dict<Tk, Tv> {
   // We first convert the container to dict[scalar_key => original_key] to
   // remove duplicates, then back to dict[original_key => original_value].
   return $container
-    |> pull_with_key($$, ($k, $_) ==> $k, ($_, $v) ==> $scalar_func($v))
-    |> pull($$, $orig_key ==> $container[$orig_key], $x ==> $x);
+    /* HH_FIXME[4237] no conditionally reactive lambas */
+    |> pull_with_key($$, <<__Rx>> ($k, $_) ==> $k, ($_, $v) ==> $scalar_func($v))
+    |> pull($$, <<__Rx>> $orig_key ==> $container[$orig_key], <<__Rx>> $x ==> $x);
 }
