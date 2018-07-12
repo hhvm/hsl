@@ -160,8 +160,9 @@ function last<Tv>(
  * - For single-element Traversables, see `C\onlyx`.
  */
 <<__Rx, __OnlyRxIfArgs>>
-function lastx<Tv>(<<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-Traversable<Tv> $traversable): Tv {
+function lastx<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>Traversable<Tv> $traversable,
+): Tv {
   // There is no way to directly check whether an Iterable is empty,
   // so convert to Array. For Hack Collections, this should
   // be an O(1) operation. For other Iterables, it will be
@@ -239,8 +240,9 @@ function last_keyx<Tk, Tv>(
  * - For non-empty Traversables, see `C\firstx`.
  * - For single-element Traversables, see `C\onlyx`.
  */
-<<__Rx>>
+<<__Rx, __OnlyRxIfArgs>>
 function nfirst<T>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   ?Traversable<T> $traversable,
 ): ?T {
   if ($traversable !== null) {
