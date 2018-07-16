@@ -46,9 +46,11 @@ function sort<Tk as arraykey, Tv>(
   $result = dict($traversable);
   if ($value_comparator) {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \uasort(&$result, $value_comparator);
   } else {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \asort(&$result);
   }
   return $result;
@@ -101,9 +103,11 @@ function sort_by_key<Tk as arraykey, Tv>(
   $result = dict($traversable);
   if ($key_comparator) {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \uksort(&$result, $key_comparator);
   } else {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \ksort(&$result);
   }
   return $result;

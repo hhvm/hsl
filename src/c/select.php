@@ -141,6 +141,7 @@ function last<Tv>(
 ): ?Tv {
   if (_Private\is_any_array($traversable)) {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     return $traversable ? \end(&$traversable) : null;
   } else if ($traversable instanceof Iterable) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
@@ -174,6 +175,7 @@ function lastx<Tv>(
   if (_Private\is_any_array($traversable)) {
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     return \end(&$traversable);
   }
   $value = null;
@@ -203,8 +205,10 @@ function last_key<Tk, Tv>(
       return null;
     }
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \end(&$traversable);
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     return \key(&$traversable);
   } else if ($traversable instanceof KeyedIterable) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */

@@ -81,8 +81,10 @@ function sort<Tv>(
   $vec = vec($traversable);
   if ($comparator) {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \usort(&$vec, $comparator);
   } else {
+    /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[4200] is reactive */
     \sort(&$vec);
   }
@@ -110,9 +112,11 @@ function sort_by<Tv, Ts>(
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \uasort(&$order_by, $comparator);
   } else {
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2088] No refs in reactive code. */
     \asort(&$order_by);
   }
   return map_with_key($order_by, <<__Rx>> ($k, $v) ==> $vec[$k]);
