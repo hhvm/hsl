@@ -139,7 +139,10 @@ function last<Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): ?Tv {
-  if (_Private\is_any_array($traversable)) {
+  if (\is_vec($traversable)) {
+    return count($traversable)
+      |> $$ === 0 ? null : $traversable[$$ - 1];
+  } else if (_Private\is_any_array($traversable)) {
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     return $traversable ? \end(&$traversable) : null;
@@ -164,6 +167,11 @@ function last<Tv>(
 function lastx<Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>Traversable<Tv> $traversable,
 ): Tv {
+  if (\is_vec($traversable)) {
+    $count = count($traversable);
+    invariant($count > 0, '%s: Expected non-empty input', __FUNCTION__);
+    return $traversable[$count - 1];
+  }
   // There is no way to directly check whether an Iterable is empty,
   // so convert to Array. For Hack Collections, this should
   // be an O(1) operation. For other Iterables, it will be
@@ -200,7 +208,9 @@ function last_key<Tk, Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if (_Private\is_any_array($traversable)) {
+  if (\is_vec($traversable)) {
+    return count($traversable) |> $$ === 0 ? null : $$ - 1;
+  } else if (_Private\is_any_array($traversable)) {
     if (!$traversable) {
       return null;
     }
