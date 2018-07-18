@@ -18,6 +18,7 @@ implements Iterator<Tv>, KeyedIterator<Tk, Tv> {
   private int $keyIdx = 0;
   private varray<Tk> $keys;
 
+  /* HH_FIXME[4110] Exposed by constraining dict keys to arraykey */
   public function __construct(private dict<Tk, Tv> $data) {
     $this->keys = array_keys($data);
   }

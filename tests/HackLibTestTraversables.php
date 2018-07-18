@@ -31,6 +31,7 @@ abstract final class HackLibTestTraversables {
   public static function getKeyedIterator<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $ary,
   ): KeyedIterator<Tk, Tv> {
+    /* HH_FIXME[4110] Exposed by constraining dict keys to arraykey */
     return new HackLibTestForwardOnlyIterator(dict($ary));
   }
 }
