@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Dict;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class DictAsyncTest extends PHPUnit_Framework_TestCase {
+final class DictAsyncTest extends HackTestCase {
 
   public static function provideTestGen(): varray<mixed> {
     return varray[
@@ -120,7 +121,7 @@ final class DictAsyncTest extends PHPUnit_Framework_TestCase {
         },
       );
       expect($actual)->toBeSame(dict[1 => 1, 2 => 2]);
-      expect($run_cnt['value'])->toEqual(2);
+      expect($run_cnt['value'])->toBeSame(2);
     });
   }
 

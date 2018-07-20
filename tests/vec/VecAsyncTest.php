@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Vec;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class VecAsyncTest extends PHPUnit_Framework_TestCase {
+final class VecAsyncTest extends HackTestCase {
 
   public static function provideTestGen(): varray<mixed> {
     return varray[

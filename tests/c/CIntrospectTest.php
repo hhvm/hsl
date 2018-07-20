@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\C;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class CIntrospectTest extends PHPUnit_Framework_TestCase {
+final class CIntrospectTest extends HackTestCase {
 
   public static function provideTestAny(): varray<mixed> {
     return varray[

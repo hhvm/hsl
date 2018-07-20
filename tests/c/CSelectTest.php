@@ -10,12 +10,13 @@
 
 use namespace HH\Lib\C;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 /**
  * @emails oncall+hack
  */
-final class CSelectTest extends PHPUnit_Framework_TestCase {
+final class CSelectTest extends HackTestCase {
 
   public static function provideTestFind(): varray<mixed> {
     return varray[

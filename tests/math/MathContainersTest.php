@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Math;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class MathContainersTest extends PHPUnit_Framework_TestCase {
+final class MathContainersTest extends HackTestCase {
 
   public static function provideTestMax(): varray<mixed> {
     return varray[
