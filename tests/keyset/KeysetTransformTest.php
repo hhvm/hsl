@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Keyset;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class KeysetTransformTest extends PHPUnit_Framework_TestCase {
+final class KeysetTransformTest extends HackTestCase {
 
   public static function provideTestChunk(): varray<mixed> {
     return varray[

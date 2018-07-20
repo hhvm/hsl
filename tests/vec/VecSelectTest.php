@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\{C, Math, Str, Vec};
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class VecSelectTest extends PHPUnit_Framework_TestCase {
+final class VecSelectTest extends HackTestCase {
 
   public static function provideTestDiff(): varray<mixed> {
     return varray[

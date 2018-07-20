@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class StrDivideTest extends PHPUnit_Framework_TestCase {
+final class StrDivideTest extends HackTestCase {
 
   public static function provideChunk(): varray<mixed> {
     return varray[

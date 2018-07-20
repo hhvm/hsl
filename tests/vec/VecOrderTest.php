@@ -10,12 +10,13 @@
 
 use namespace HH\Lib\{C, Math, Str, Vec};
 use function \Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 /**
  * @emails oncall+hack
  */
-final class VecOrderTest extends PHPUnit_Framework_TestCase {
+final class VecOrderTest extends HackTestCase {
 
   public static function provideTestRange(): varray<mixed> {
     return varray[

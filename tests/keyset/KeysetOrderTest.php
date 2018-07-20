@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Keyset;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class KeysetOrderTest extends PHPUnit_Framework_TestCase {
+final class KeysetOrderTest extends HackTestCase {
 
   public static function provideSort(): varray<mixed> {
     return varray[

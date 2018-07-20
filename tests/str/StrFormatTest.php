@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class StrFormatTest extends PHPUnit_Framework_TestCase {
+final class StrFormatTest extends HackTestCase {
 
   public static function provideFormat(): varray<mixed> {
     return varray[
