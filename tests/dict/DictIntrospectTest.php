@@ -10,11 +10,12 @@
 
 use namespace HH\Lib\Dict;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\HackTestCase; // @oss-enable
 
 /**
  * @emails oncall+hack
  */
-final class DictIntrospectTest extends PHPUnit_Framework_TestCase {
+final class DictIntrospectTest extends HackTestCase {
 
   public static function provideTestEqual(): varray<mixed> {
     return varray[

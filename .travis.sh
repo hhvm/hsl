@@ -6,7 +6,7 @@ composer install
 
 hh_client
 
-hhvm vendor/bin/phpunit tests/
+vendor/bin/hacktest tests/
 
 echo > .hhconfig
 hh_server --check $(pwd)
