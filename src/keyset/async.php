@@ -17,7 +17,7 @@ use namespace HH\Lib\Vec;
  */
 <<__Rx, __OnlyRxIfArgs>>
 async function from_async<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<keyset<Tv>> {
   $vec = await Vec\from_async($awaitables);
@@ -54,7 +54,7 @@ async function filter_async<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 async function map_async<Tv, Tk as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): Awaitable<Tk>) $async_func,

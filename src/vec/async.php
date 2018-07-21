@@ -12,7 +12,7 @@ namespace HH\Lib\Vec;
 
 <<__Rx, __OnlyRxIfArgs>>
 async function from_async<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
   $awaitables = vec($awaitables);
@@ -62,7 +62,7 @@ async function filter_async<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 async function map_async<Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Awaitable<Tv2>) $async_func,

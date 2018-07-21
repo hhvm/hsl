@@ -40,7 +40,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function drop<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 ): dict<Tk, Tv> {
@@ -66,7 +66,7 @@ function drop<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(Tv): bool) $value_predicate = null,
@@ -89,7 +89,7 @@ function filter<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_with_key<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,
@@ -109,7 +109,7 @@ function filter_with_key<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_keys<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(Tk): bool) $key_predicate = null,
@@ -130,7 +130,7 @@ function filter_keys<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_nulls<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, ?Tv> $traversable,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -150,7 +150,7 @@ function filter_nulls<Tk as arraykey, Tv>(
 <<__Rx, __OnlyRxIfArgs>>
 function select_keys<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $container,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -170,7 +170,7 @@ function select_keys<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function take<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 ): dict<Tk, Tv> {
@@ -198,7 +198,7 @@ function take<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function unique<Tk as arraykey, Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
   return flip(flip($traversable));

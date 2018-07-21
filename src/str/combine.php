@@ -18,12 +18,12 @@ namespace HH\Lib\Str;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function join(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<arraykey> $pieces,
   string $glue,
 ): string {
-  if (!($pieces instanceof Container)) {
-    $pieces = vec($pieces);
+  if ($pieces is Container<_>) {
+    return \implode($glue, $pieces);
   }
-  return \implode($glue, $pieces);
+  return \implode($glue, vec($pieces));
 }

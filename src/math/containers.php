@@ -20,7 +20,7 @@ use namespace HH\Lib\{C, Math, Vec};
  */
 <<__Rx, __OnlyRxIfArgs>>
 function max<T as num>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $numbers,
 ): ?T {
   $max = null;
@@ -43,7 +43,7 @@ function max<T as num>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function max_by<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(T): num) $num_func,
@@ -110,7 +110,7 @@ function median(Container<num> $numbers): ?float {
  */
 <<__Rx, __OnlyRxIfArgs>>
 function min<T as num>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $numbers,
 ): ?T {
   $min = null;
@@ -133,7 +133,7 @@ function min<T as num>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function min_by<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(T): num) $num_func,
@@ -157,7 +157,7 @@ function min_by<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function sum(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<int> $traversable,
 ): int {
   $result = 0;
@@ -174,7 +174,7 @@ function sum(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function sum_float<T as num>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): float {
   $result = 0.0;

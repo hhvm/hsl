@@ -23,7 +23,7 @@ namespace HH\Lib\C;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function any<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(T): bool) $predicate = null,
@@ -43,7 +43,7 @@ function any<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function contains<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   T $value,
 ): bool {
@@ -63,7 +63,7 @@ function contains<T>(
  */
 <<__Rx>>
 function contains_key<Tk, Tv>(
-  KeyedContainer<Tk, Tv> $container,
+  <<__MaybeMutable>> KeyedContainer<Tk, Tv> $container,
   Tk $key,
 ): bool {
   return \array_key_exists($key, $container);
@@ -74,7 +74,7 @@ function contains_key<Tk, Tv>(
  */
 <<__Rx>>
 function count<T>(
-  Container<T> $container,
+  <<__MaybeMutable>> Container<T> $container,
 ): int {
   return \count($container);
 }
@@ -86,7 +86,7 @@ function count<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function every<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(T): bool) $predicate = null,

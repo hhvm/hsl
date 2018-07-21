@@ -16,7 +16,7 @@ namespace HH\Lib\Dict;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function partition<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): bool) $predicate,
@@ -39,7 +39,7 @@ function partition<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function partition_with_key<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,

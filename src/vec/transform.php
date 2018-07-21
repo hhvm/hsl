@@ -17,7 +17,7 @@ namespace HH\Lib\Vec;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function chunk<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $size,
 ): vec<vec<Tv>> {
@@ -76,7 +76,7 @@ function flatten<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map<Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
@@ -94,7 +94,7 @@ function map<Tv1, Tv2>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map_with_key<Tk, Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv1): Tv2) $value_func,

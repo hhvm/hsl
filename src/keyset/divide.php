@@ -16,7 +16,7 @@ namespace HH\Lib\Keyset;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function partition<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): bool) $predicate,

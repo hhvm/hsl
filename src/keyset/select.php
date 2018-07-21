@@ -41,7 +41,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function drop<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 ): keyset<Tv> {
@@ -66,7 +66,7 @@ function drop<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(Tv): bool) $value_predicate = null,
@@ -87,7 +87,7 @@ function filter<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_nulls<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
 ): keyset<Tv> {
   $result = keyset[];
@@ -107,7 +107,7 @@ function filter_nulls<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_with_key<Tk, Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,
@@ -127,7 +127,7 @@ function filter_with_key<Tk, Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function keys<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): keyset<Tk> {
   $result = keyset[];
@@ -174,7 +174,7 @@ function intersect<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function take<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 ): keyset<Tv> {

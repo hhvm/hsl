@@ -14,7 +14,7 @@ use namespace HH\Lib\C;
 
 <<__Rx, __OnlyRxIfArgs>>
 async function from_async<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables = dict($awaitables);
@@ -40,7 +40,7 @@ async function from_async<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 async function from_keys_async<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   <<__OnlyRxIfRxFunc>>
   (function(Tk): Awaitable<Tv>) $async_func,
@@ -122,7 +122,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Awaitable<Tv2>) $value_func,

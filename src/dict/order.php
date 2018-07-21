@@ -18,7 +18,7 @@ use namespace HH\Lib\Vec;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function reverse<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
   $dict = dict($traversable);
@@ -38,7 +38,7 @@ function reverse<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function sort<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(Tv, Tv): int) $value_comparator = null,
@@ -67,7 +67,7 @@ function sort<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function sort_by<Tk as arraykey, Tv, Ts>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): Ts) $scalar_func,
@@ -95,7 +95,7 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function sort_by_key<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(Tk, Tk): int) $key_comparator = null,

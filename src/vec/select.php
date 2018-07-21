@@ -47,9 +47,9 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function diff_by<Tv, Ts as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): Ts) $scalar_func,
@@ -76,7 +76,7 @@ function diff_by<Tv, Ts as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function drop<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 ): vec<Tv> {
@@ -103,7 +103,7 @@ function drop<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   ?(function(Tv): bool) $value_predicate = null,
@@ -124,7 +124,7 @@ function filter<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_nulls<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
 ): vec<Tv> {
   $result = vec[];
@@ -144,7 +144,7 @@ function filter_nulls<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function filter_with_key<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv): bool) $predicate,
@@ -182,7 +182,7 @@ function intersect<Tv as arraykey>(
   */
 <<__Rx, __OnlyRxIfArgs>>
 function keys<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): vec<Tk> {
   $result = vec[];
@@ -240,7 +240,7 @@ function slice<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function take<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 ): vec<Tv> {
@@ -269,7 +269,7 @@ function take<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function unique<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): vec<Tv> {
   return vec(keyset($traversable));
@@ -285,7 +285,7 @@ function unique<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function unique_by<Tv, Ts as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): Ts) $scalar_func,

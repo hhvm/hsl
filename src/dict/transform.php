@@ -17,7 +17,7 @@ namespace HH\Lib\Dict;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function chunk<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $size,
 ): vec<dict<Tk, Tv>> {
@@ -40,7 +40,7 @@ function chunk<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function count_values<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 ): dict<Tv, int> {
   $result = dict[];
@@ -74,7 +74,7 @@ function flatten<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function fill_keys<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   Tv $value,
 ): dict<Tk, Tv> {
@@ -92,7 +92,7 @@ function fill_keys<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function flip<Tk, Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tv, Tk> {
   $result = dict[];
@@ -112,7 +112,7 @@ function flip<Tk, Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function from_keys<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   <<__OnlyRxIfRxFunc>>
   (function(Tk): Tv) $value_func,
@@ -138,7 +138,7 @@ function from_keys<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function from_entries<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<(Tk, Tv)> $entries,
 ): dict<Tk, Tv> {
   $result = dict[];
@@ -160,7 +160,7 @@ function from_entries<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function from_values<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): Tk) $key_func,
@@ -181,7 +181,7 @@ function from_values<Tk as arraykey, Tv>(
   */
 <<__Rx, __OnlyRxIfArgs>>
 function group_by<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): ?Tk) $key_func,
@@ -208,7 +208,7 @@ function group_by<Tk as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map<Tk as arraykey, Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
@@ -227,7 +227,7 @@ function map<Tk as arraykey, Tv1, Tv2>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map_keys<Tk1, Tk2 as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk1): Tk2) $key_func,
@@ -245,7 +245,7 @@ function map_keys<Tk1, Tk2 as arraykey, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map_with_key<Tk as arraykey, Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv1): Tv2) $value_func,
@@ -265,7 +265,7 @@ function map_with_key<Tk as arraykey, Tv1, Tv2>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function pull<Tk as arraykey, Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
@@ -287,7 +287,7 @@ function pull<Tk as arraykey, Tv1, Tv2>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function pull_with_key<Tk1, Tk2 as arraykey, Tv1, Tv2>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk1, Tv1): Tv2) $value_func,

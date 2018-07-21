@@ -20,7 +20,7 @@ namespace HH\Lib\C;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function reduce<Tv, Ta>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Ta, Tv): Ta) $accumulator,
@@ -40,7 +40,7 @@ function reduce<Tv, Ta>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function reduce_with_key<Tk, Tv, Ta>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Ta, Tk, Tv): Ta) $accumulator,

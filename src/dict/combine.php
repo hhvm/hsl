@@ -18,9 +18,9 @@ use namespace HH\Lib\C;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function associate<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 ): dict<Tk, Tv> {
   $keys = vec($keys);

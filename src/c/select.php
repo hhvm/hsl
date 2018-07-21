@@ -19,7 +19,7 @@ use namespace HH\Lib\Str;
  */
 <<__Rx, __OnlyRxIfArgs>>
 function find<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(T): bool) $value_predicate,
@@ -38,7 +38,7 @@ function find<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function find_key<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv): bool) $value_predicate,
@@ -62,7 +62,7 @@ function find_key<Tk, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function first<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): ?T {
   foreach ($traversable as $value) {
@@ -82,7 +82,7 @@ function first<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function firstx<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): T {
   foreach ($traversable as $value) {
@@ -99,7 +99,7 @@ function firstx<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function first_key<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
   if ($traversable !== null) {
@@ -118,7 +118,7 @@ function first_key<Tk, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function first_keyx<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
   foreach ($traversable as $key => $_) {
@@ -136,7 +136,7 @@ function first_keyx<Tk, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function last<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): ?Tv {
   if (\is_vec($traversable)) {
@@ -205,7 +205,7 @@ function lastx<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function last_key<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
   if (\is_vec($traversable)) {
@@ -238,7 +238,7 @@ function last_key<Tk, Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function last_keyx<Tk, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
   $last_key = last_key($traversable);
@@ -278,7 +278,7 @@ function nfirst<T>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function onlyx<T>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   ?Str\SprintfFormatString $format_string = null,
   mixed ...$format_args

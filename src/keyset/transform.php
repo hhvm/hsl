@@ -24,7 +24,7 @@ use function HH\Lib\_Private\universal_chainable_stub as FBLogger; // @oss-enabl
  */
 <<__Rx, __OnlyRxIfArgs>>
 function chunk<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $size,
 ): vec<keyset<Tv>> {
@@ -47,7 +47,7 @@ function chunk<Tv as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map<Tv1, Tv2 as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tv1): Tv2) $value_func,
@@ -65,7 +65,7 @@ function map<Tv1, Tv2 as arraykey>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function map_with_key<Tk, Tv1, Tv2 as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__OnlyRxIfRxFunc>>
   (function(Tk, Tv1): Tv2) $value_func,
