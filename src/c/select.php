@@ -165,26 +165,26 @@ function last<Tv>(
  */
 <<__Rx, __OnlyRxIfArgs>>
 function lastx<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>Traversable<Tv> $traversable,
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  Traversable<Tv> $traversable
 ): Tv {
   if (\is_vec($traversable)) {
     $count = count($traversable);
     invariant($count > 0, '%s: Expected non-empty input', __FUNCTION__);
     return $traversable[$count - 1];
   }
-  // There is no way to directly check whether an Iterable is empty,
-  // so convert to Array. For Hack Collections, this should
-  // be an O(1) operation. For other Iterables, it will be
-  // O(n).
-  if ($traversable instanceof Iterable) {
-    /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
-    $traversable = $traversable->toArray();
-  }
   if (_Private\is_any_array($traversable)) {
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     return \end(&$traversable);
+  }
+  // There is no way to directly check whether an Iterable is empty,
+  // so check if it is a builtin and, if so, do the check intelligently
+  if ($traversable is \ConstCollection<_>) {
+    invariant(!$traversable->isEmpty(), '%s: Expected non-empty input', __FUNCTION__);
+    /* HH_IGNORE_ERROR[4053] All ConstCollections are Iterable due to seal */
+    return $traversable->lastValue();
   }
   $value = null;
   $did_iterate = false;
