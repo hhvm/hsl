@@ -146,6 +146,7 @@ function replace(
   string $needle,
   string $replacement,
 ): string {
+  /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
   return \str_replace($needle, $replacement, $haystack);
 }
 
@@ -162,6 +163,7 @@ function replace_ci(
   string $needle,
   string $replacement,
 ): string {
+  /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
   return \str_ireplace($needle, $replacement, $haystack);
 }
 
@@ -176,6 +178,7 @@ function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
 ): string {
+  /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
   return \str_replace(
     \array_keys($replacements),
     \array_values($replacements),
