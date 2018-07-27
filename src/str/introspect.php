@@ -200,6 +200,8 @@ function search_ci(
   int $offset = 0,
 ): ?int {
   $offset = _Private\validate_offset($offset, length($haystack));
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   $position = \stripos($haystack, $needle, $offset);
   if ($position === false) {
     return null;

@@ -25,6 +25,8 @@ use namespace HH\Lib\_Private;
 function capitalize(
   string $string,
 ): string {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \ucfirst($string);
 }
 
@@ -42,6 +44,8 @@ function capitalize_words(
   string $string,
   string $delimiters = " \t\r\n\f\v",
 ): string {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \ucwords($string, $delimiters);
 }
 
@@ -59,6 +63,8 @@ function format_number(
   string $decimal_point = '.',
   string $thousands_separator = ',',
 ): string {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \number_format(
     $number,
     $decimals,
@@ -74,6 +80,8 @@ function format_number(
 function lowercase(
   string $string,
 ): string {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \strtolower($string);
 }
 
@@ -95,6 +103,8 @@ function pad_left(
 ): string {
   invariant($pad_string !== '', 'Expected non-empty pad string.');
   invariant($total_length >= 0, 'Expected non-negative total length.');
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \str_pad($string, $total_length, $pad_string, \STR_PAD_LEFT);
 }
 
@@ -116,6 +126,8 @@ function pad_right(
 ): string {
   invariant($pad_string !== '', 'Expected non-empty pad string.');
   invariant($total_length >= 0, 'Expected non-negative total length.');
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \str_pad($string, $total_length, $pad_string, \STR_PAD_RIGHT);
 }
 
@@ -130,6 +142,8 @@ function repeat(
   int $multiplier,
 ): string {
   invariant($multiplier >= 0, 'Expected non-negative multiplier');
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \str_repeat($string, $multiplier);
 }
 
@@ -147,6 +161,8 @@ function replace(
   string $replacement,
 ): string {
   /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace($needle, $replacement, $haystack);
 }
 
@@ -164,6 +180,8 @@ function replace_ci(
   string $replacement,
 ): string {
   /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \str_ireplace($needle, $replacement, $haystack);
 }
 
@@ -179,8 +197,14 @@ function replace_every(
   KeyedContainer<string, string> $replacements,
 ): string {
   /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace(
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     \array_keys($replacements),
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     \array_values($replacements),
     $haystack,
   );
@@ -206,7 +230,11 @@ function splice(
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   $offset = _Private\validate_offset($offset, length($string));
   return $length === null
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     ? \substr_replace($string, $replacement, $offset)
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     : \substr_replace($string, $replacement, $offset, $length);
 }
 
@@ -230,5 +258,7 @@ function to_int(
 function uppercase(
   string $string,
 ): string {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \strtoupper($string);
 }

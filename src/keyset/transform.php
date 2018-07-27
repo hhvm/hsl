@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Keyset;
 
+use namespace HH\Lib\Math;
+
 // @oss-disable: use \PHPism_FIXME as PHPism_FIXME;
 use HH\Lib\_Private\StubPHPism_FIXME as PHPism_FIXME; // @oss-enable
 use function HH\Lib\_Private\universal_chainable_stub as FBLogger; // @oss-enable
@@ -35,7 +37,7 @@ function chunk<Tv as arraykey>(
     if ($ii % $size === 0) {
       $result[] = keyset[];
     }
-    $result[\intdiv($ii, $size)][] = $value;
+    $result[Math\int_div($ii, $size)][] = $value;
     $ii++;
   }
   return $result;

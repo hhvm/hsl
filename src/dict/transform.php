@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Dict;
 
+use namespace HH\Lib\Math;
+
 /**
  * Returns a vec containing the original dict split into chunks of the given
  * size. If the original dict doesn't divide evenly, the final chunk will be
@@ -28,7 +30,7 @@ function chunk<Tk as arraykey, Tv>(
     if ($ii % $size === 0) {
       $result[] = dict[];
     }
-    $result[\intdiv($ii, $size)][$key] = $value;
+    $result[Math\int_div($ii, $size)][$key] = $value;
     $ii++;
   }
   return $result;

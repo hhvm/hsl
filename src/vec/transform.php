@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Vec;
 
+use namespace HH\Lib\Math;
+
 /**
  * Returns a vec containing the original vec split into chunks of the given
  * size. If the original vec doesn't divide evenly, the final chunk will be
@@ -28,7 +30,8 @@ function chunk<Tv>(
     if ($ii % $size === 0) {
       $result[] = vec[];
     }
-    $result[\intdiv($ii, $size)][] = $value;
+
+    $result[Math\int_div($ii, $size)][] = $value;
     $ii++;
   }
   return $result;
