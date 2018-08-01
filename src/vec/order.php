@@ -82,10 +82,14 @@ function sort<Tv>(
   if ($comparator) {
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     \usort(&$vec, $comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[4200] is reactive */
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     \sort(&$vec);
   }
   return $vec;
@@ -113,10 +117,14 @@ function sort_by<Tv, Ts>(
   if ($comparator) {
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     \uasort(&$order_by, $comparator);
   } else {
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
     \asort(&$order_by);
   }
   return map_with_key($order_by, <<__Rx>> ($k, $v) ==> $vec[$k]);
