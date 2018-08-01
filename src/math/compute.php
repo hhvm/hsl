@@ -18,6 +18,7 @@ use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
  */
 <<__Rx>>
 function abs<T as num>(T $number): T {
+  /* HH_FIXME[4110]: This returns a num, which may be a *supertype* of T */
   return $number < 0 ? -$number : $number;
 }
 
