@@ -60,6 +60,8 @@ function shuffle<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
   $vec = vec($traversable);
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   \shuffle(&$vec);
   return $vec;
 }

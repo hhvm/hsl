@@ -20,7 +20,7 @@ final class DictDivideTest extends HackTestCase {
   public static function providePartition(): varray<mixed> {
     return varray[
       tuple(
-        array_combine(range(1, 10), range(11, 20)),
+        Dict\associate(Vec\range(1, 10), Vec\range(11, 20)),
         $val ==> $val % 2 === 0,
         tuple(
           dict[
@@ -40,7 +40,7 @@ final class DictDivideTest extends HackTestCase {
         ),
       ),
       tuple(
-        HackLibTestTraversables::getKeyedIterator(array_combine(range(1, 10), range(11, 20))),
+        HackLibTestTraversables::getKeyedIterator(Dict\associate(Vec\range(1, 10), Vec\range(11, 20))),
         $val ==> $val % 2 === 0,
         tuple(
           dict[
@@ -65,7 +65,7 @@ final class DictDivideTest extends HackTestCase {
   public static function providePartitionWithKey(): varray<mixed> {
     return varray[
       tuple(
-        array_combine(range(1, 10), range(11, 20)),
+        Dict\associate(Vec\range(1, 10), Vec\range(11, 20)),
         ($key, $val) ==> $val >= 19 || $key <= 3,
         tuple(
           dict[
@@ -85,7 +85,7 @@ final class DictDivideTest extends HackTestCase {
         ),
       ),
       tuple(
-        HackLibTestTraversables::getKeyedIterator(array_combine(range(1, 10), range(11, 20))),
+        HackLibTestTraversables::getKeyedIterator(Dict\associate(Vec\range(1, 10), Vec\range(11, 20))),
         ($key, $val) ==> $val >= 19 || $key <= 3,
         tuple(
           dict[
