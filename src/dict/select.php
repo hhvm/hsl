@@ -221,7 +221,14 @@ function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   // We first convert the container to dict[scalar_key => original_key] to
   // remove duplicates, then back to dict[original_key => original_value].
   return $container
-    /* HH_FIXME[4237] no conditionally reactive lambas */
-    |> pull_with_key($$, <<__Rx>> ($k, $_) ==> $k, ($_, $v) ==> $scalar_func($v))
-    |> pull($$, <<__Rx>> $orig_key ==> $container[$orig_key], <<__Rx>> $x ==> $x);
+    |> pull_with_key(
+      $$,
+      <<__Rx>> ($k, $_) ==> $k,
+      <<__RxOfScope>> ($_, $v) ==> $scalar_func($v),
+    )
+    |> pull(
+      $$,
+      <<__Rx>> $orig_key ==> $container[$orig_key],
+      <<__Rx>> $x ==> $x,
+    );
 }

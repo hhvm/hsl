@@ -78,8 +78,7 @@ function sort_by<Tk as arraykey, Tv, Ts>(
     ? ($a, $b) ==> $scalar_comparator($a[0], $b[0])
     : ($a, $b) ==> $a[0] <=> $b[0];
   return $traversable
-    /* HH_FIXME[4237] no conditionally reactive lambas */
-    |> map($$, $v ==> tuple($scalar_func($v), $v))
+    |> map($$, <<__RxOfScope>> $v ==> tuple($scalar_func($v), $v))
     /* HH_FIXME[4240] Ill-typed comparison (T28898787) */
     |> sort($$, $tuple_comparator)
     |> map($$, <<__Rx>> $t ==> $t[1]);

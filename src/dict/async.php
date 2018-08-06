@@ -102,8 +102,10 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
   (function(Tk, Tv): Awaitable<bool>) $predicate,
 ): Awaitable<dict<Tk, Tv>> {
   $tests = await $traversable
-    /* HH_FIXME[4237] no conditionally reactive lambas */
-    |> map_with_key($$, async ($k, $v) ==> await $predicate($k, $v))
+    |> map_with_key(
+      $$,
+      <<__RxOfScope>> async ($k, $v) ==> await $predicate($k, $v),
+    )
     |> from_async($$);
   $result = dict[];
   foreach ($tests as $k => $v) {

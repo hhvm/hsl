@@ -61,10 +61,9 @@ function diff_by<Tv, Ts as arraykey>(
     return vec($first);
   }
   $set = Keyset\map($second, $scalar_func);
-  /* HH_FIXME[4237] no conditionally reactive lambas */
   return filter(
     $first,
-    ($value) ==> !\array_key_exists($scalar_func($value), $set),
+    <<__RxOfScope>> ($value) ==> !\array_key_exists($scalar_func($value), $set),
   );
 }
 
