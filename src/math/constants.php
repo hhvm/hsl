@@ -11,7 +11,11 @@
 namespace HH\Lib\Math;
 
 const int INT64_MAX = 9223372036854775807;
-const int INT64_MIN = INT64_MAX + 1; // -9223372036854775808
+// - can't directly represent this as -x is a unary op on x, not a negative
+//   literal
+// - can't use (INT64_MAX + 1) as ints currently overly to float in external
+//   builds for PHP compatibility
+const int INT64_MIN = -1 << 63;
 const int INT53_MAX = 9007199254740992;
 const int INT53_MIN = -9007199254740993;
 const int INT32_MAX = 2147483647;
