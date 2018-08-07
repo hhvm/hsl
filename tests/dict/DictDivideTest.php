@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Dict;
+use namespace HH\Lib\{Dict, Vec};
 use function Facebook\FBExpect\expect;
 
 /**
