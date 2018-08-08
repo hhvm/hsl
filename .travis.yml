@@ -1,10 +1,6 @@
 language: php
 php:
- - hhvm
- - hhvm-nightly
-matrix:
-  allow_failures:
-  - php: hhvm
+ - hhvm-3.27
 script:
  - ./.travis.sh
 notifications:
