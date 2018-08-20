@@ -38,7 +38,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFind */
+  <<DataProvider('provideTestFind')>>
   public function testFind<T>(
     Traversable<T> $traversable,
     (function(T): bool) $value_predicate,
@@ -71,7 +71,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFindKey */
+  <<DataProvider('provideTestFindKey')>>
   public function testFindKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $value_predicate,
@@ -100,7 +100,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFirst */
+  <<DataProvider('provideTestFirst')>>
   public function testFirst<T>(
     Traversable<T> $traversable,
     ?T $expected,
@@ -128,7 +128,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFirstx */
+  <<DataProvider('provideTestFirstx')>>
   public function testFirstx<T>(
     Traversable<T> $traversable,
     mixed $expected,
@@ -193,7 +193,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFirstKey */
+  <<DataProvider('provideTestFirstKey')>>
   public function testFirstKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     ?Tk $expected,
@@ -253,7 +253,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFirstKeyx */
+  <<DataProvider('provideTestFirstKeyx')>>
   public function testFirstKeyx<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     mixed $expected,
@@ -331,7 +331,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestLast */
+  <<DataProvider('provideTestLast')>>
   public function testLast<Tv>(
     Traversable<Tv> $traversable,
     ?Tv $expected,
@@ -404,7 +404,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestLastx */
+  <<DataProvider('provideTestLastx')>>
   public function testLastx<Tv>(
     Traversable<Tv> $traversable,
     mixed $expected,
@@ -478,7 +478,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestLastKey */
+  <<DataProvider('provideTestLastKey')>>
   public function testLastKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     ?Tk $expected,
@@ -547,7 +547,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestLastKeyx */
+  <<DataProvider('provideTestLastKeyx')>>
   public function testLastKeyx<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     mixed $expected,
@@ -584,7 +584,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestNfirst */
+  <<DataProvider('provideTestNfirst')>>
   public function testNfirst<T>(
     ?Traversable<T> $traversable,
     ?T $expected,
@@ -622,7 +622,7 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestOnlyx */
+  <<DataProvider('provideTestOnlyx')>>
   public function testOnlyx<T>(
     Traversable<T> $traversable,
     mixed $expected,
