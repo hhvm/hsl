@@ -26,7 +26,7 @@ final class KeysetOrderTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        ($a, $b) ==> strcmp($a[1],$b[1]),
+        ($a, $b) ==> Str\compare($a[1],$b[1]),
         keyset['the', 'fox', 'brown', 'quick'],
       ),
       tuple(

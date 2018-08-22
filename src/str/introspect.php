@@ -23,6 +23,8 @@ function compare(
   string $string1,
   string $string2,
 ): int {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
   return \strcmp($string1, $string2);
 }
 
