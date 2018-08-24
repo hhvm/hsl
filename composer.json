@@ -9,10 +9,10 @@
   "license": "MIT",
   "require-dev": {
     "facebook/fbexpect": "^1.0.0",
-    "hhvm/hacktest": "^0.1"
+    "hhvm/hacktest": "^0.2"
   },
   "require": {
-    "hhvm": "^3.27.0",
+    "hhvm": "^3.28.0",
     "hhvm/hhvm-autoload": "^1.4"
   }
 }
