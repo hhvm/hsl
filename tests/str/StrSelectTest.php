@@ -71,7 +71,7 @@ final class StrSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSlice */
+  <<DataProvider('provideSlice')>>
   public function testSlice(
     string $string,
     int $offset,
@@ -115,7 +115,7 @@ final class StrSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideStripPrefix */
+  <<DataProvider('provideStripPrefix')>>
   public function testStripPrefix(
     string $string,
     string $prefix,
@@ -149,7 +149,7 @@ final class StrSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideStripSuffix */
+  <<DataProvider('provideStripSuffix')>>
   public function testStripSuffix(
     string $string,
     string $suffix,
@@ -178,7 +178,7 @@ final class StrSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTrim */
+  <<DataProvider('provideTrim')>>
   public function testTrim(
     string $string,
     ?string $char_mask,
@@ -207,7 +207,7 @@ final class StrSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTrimLeft */
+  <<DataProvider('provideTrimLeft')>>
   public function testTrimLeft(
     string $string,
     ?string $char_mask,
@@ -236,7 +236,7 @@ final class StrSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTrimRight */
+  <<DataProvider('provideTrimRight')>>
   public function testTrimRight(
     string $string,
     ?string $char_mask,

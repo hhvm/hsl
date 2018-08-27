@@ -42,7 +42,7 @@ final class KeysetOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSort */
+  <<DataProvider('provideSort')>>
   public function testSort<Tv as arraykey>(
     Traversable<Tv> $traversable,
     ?(function(Tv, Tv): int) $comparator,

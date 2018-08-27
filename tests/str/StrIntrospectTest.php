@@ -28,7 +28,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideCompare */
+  <<DataProvider('provideCompare')>>
   public function testCompare(
     string $string1,
     string $string2,
@@ -52,7 +52,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideCompareCI */
+  <<DataProvider('provideCompareCI')>>
   public function testCompareCI(
     string $string1,
     string $string2,
@@ -82,7 +82,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideContains */
+  <<DataProvider('provideContains')>>
   public function testContains(
     string $haystack,
     string $needle,
@@ -108,7 +108,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideContainsCI */
+  <<DataProvider('provideContainsCI')>>
   public function testContainsCI(
     string $haystack,
     string $needle,
@@ -171,7 +171,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideEndsWith */
+  <<DataProvider('provideEndsWith')>>
   public function testEndsWith(
     string $string,
     string $suffix,
@@ -215,7 +215,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideEndsWithCI */
+  <<DataProvider('provideEndsWithCI')>>
   public function testEndsWithCI(
     string $string,
     string $suffix,
@@ -234,7 +234,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideIsEmpty */
+  <<DataProvider('provideIsEmpty')>>
   public function testIsEmpty(
     ?string $string,
     bool $expected,
@@ -250,7 +250,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideLength */
+  <<DataProvider('provideLength')>>
   public function testLength(
     string $string,
     int $expected,
@@ -271,7 +271,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSearch */
+  <<DataProvider('provideSearch')>>
   public function testSearch(
     string $haystack,
     string $needle,
@@ -294,7 +294,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSearchCI */
+  <<DataProvider('provideSearchCI')>>
   public function testSearchCI(
     string $haystack,
     string $needle,
@@ -319,7 +319,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSearchLast */
+  <<DataProvider('provideSearchLast')>>
   public function testSearchLast(
     string $haystack,
     string $needle,
@@ -381,7 +381,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideStartsWith */
+  <<DataProvider('provideStartsWith')>>
   public function testStartsWith(
     string $string,
     string $prefix,
@@ -425,7 +425,7 @@ final class StrIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideStartsWithCI */
+  <<DataProvider('provideStartsWithCI')>>
   public function testStartsWithCI(
     string $string,
     string $prefix,

@@ -32,7 +32,7 @@ final class MathCompareTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMaxva */
+  <<DataProvider('provideTestMaxva')>>
   public function testMaxva<T as num>(
     T $first,
     T $second,
@@ -57,7 +57,7 @@ final class MathCompareTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMinva */
+  <<DataProvider('provideTestMinva')>>
   public function testMinva<T as num>(
     T $first,
     T $second,

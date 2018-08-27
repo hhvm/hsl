@@ -56,7 +56,7 @@ final class KeysetTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestChunk */
+  <<DataProvider('provideTestChunk')>>
   public function testChunk<Tv as arraykey>(
     Traversable<Tv> $traversable,
     int $size,
@@ -135,7 +135,7 @@ final class KeysetTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMap */
+  <<DataProvider('provideTestMap')>>
   public function testMap<Tv1, Tv2 as arraykey>(
     Traversable<Tv1> $traversable,
     (function(Tv1): Tv2) $value_func,
@@ -169,7 +169,7 @@ final class KeysetTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMapWithKey */
+  <<DataProvider('provideTestMapWithKey')>>
   public function testMapWithKey<Tk, Tv1, Tv2 as arraykey>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tk, Tv1): Tv2) $value_func,
@@ -222,7 +222,7 @@ final class KeysetTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFlatten */
+  <<DataProvider('provideTestFlatten')>>
   public function testFlatten<Tv as arraykey>(
     Traversable<Traversable<Tv>> $traversables,
     keyset<Tv> $expected,

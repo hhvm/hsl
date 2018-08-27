@@ -50,7 +50,7 @@ final class DictOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestReverse */
+  <<DataProvider('provideTestReverse')>>
   public function testReverse<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tk, Tv> $expected,
@@ -121,7 +121,7 @@ final class DictOrderTest extends HackTestCase {
   }
 
 
-  /** @dataProvider provideTestSort */
+  <<DataProvider('provideTestSort')>>
   public function testSort<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     ?(function(Tv, Tv): int) $value_comparator,
@@ -165,7 +165,7 @@ final class DictOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSortBy */
+  <<DataProvider('provideTestSortBy')>>
   public function testSortBy<Tk as arraykey, Tv, Ts>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): Ts) $scalar_func,
@@ -209,7 +209,7 @@ final class DictOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSortByKey */
+  <<DataProvider('provideTestSortByKey')>>
   public function testSortByKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     ?(function(Tk, Tk): int) $key_comparator,

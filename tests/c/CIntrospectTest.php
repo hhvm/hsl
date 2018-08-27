@@ -32,7 +32,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestAny */
+  <<DataProvider('provideTestAny')>>
   public function testAny<T>(
     Traversable<T> $traversable,
     (function(T): bool) $predicate,
@@ -60,7 +60,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestAnyWithoutPredicate */
+  <<DataProvider('provideTestAnyWithoutPredicate')>>
   public function testAnyWithoutPredicate<T>(
     Traversable<T> $traversable,
     bool $expected,
@@ -108,7 +108,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestContains */
+  <<DataProvider('provideTestContains')>>
   public function testContains<T>(
     Traversable<T> $traversable,
     T $value,
@@ -152,7 +152,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestContainsKey */
+  <<DataProvider('provideTestContainsKey')>>
   public function testContainsKey<Tk, Tv>(
     KeyedContainer<Tk, Tv> $container,
     Tk $key,
@@ -174,7 +174,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestCount */
+  <<DataProvider('provideTestCount')>>
   public function testCount<T>(
     Container<T> $container,
     int $expected,
@@ -197,7 +197,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestEvery */
+  <<DataProvider('provideTestEvery')>>
   public function testEvery<T>(
     Traversable<T> $traversable,
     (function(T): bool) $predicate,
@@ -219,7 +219,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestEveryWithoutPredicate */
+  <<DataProvider('provideTestEveryWithoutPredicate')>>
   public function testEveryWithoutPredicate<T>(
     Traversable<T> $traversable,
     bool $expected,
@@ -247,7 +247,7 @@ final class CIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestIsEmpty */
+  <<DataProvider('provideTestIsEmpty')>>
   public function testIsEmpty<T>(
     Container<T> $container,
     bool $expected,

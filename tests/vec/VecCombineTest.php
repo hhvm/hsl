@@ -43,7 +43,7 @@ final class VecCombineTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestConcat */
+  <<DataProvider('provideTestConcat')>>
   public function testConcat<Tv>(
     Traversable<Tv> $first,
     Container<Traversable<Tv>> $rest,

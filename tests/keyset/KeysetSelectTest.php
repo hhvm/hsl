@@ -43,7 +43,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestDiff */
+  <<DataProvider('provideTestDiff')>>
   public function testDiff<Tv as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
@@ -84,7 +84,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideDrop */
+  <<DataProvider('provideDrop')>>
   public function testDrop<Tv as arraykey>(
     Traversable<Tv> $traversable,
     int $n,
@@ -128,7 +128,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilter */
+  <<DataProvider('provideTestFilter')>>
   public function testFilter<Tv as arraykey>(
     Traversable<Tv> $traversable,
     (function(Tv): bool) $predicate,
@@ -178,7 +178,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterNulls */
+  <<DataProvider('provideTestFilterNulls')>>
   public function testFilterNulls<Tv as arraykey>(
     Traversable<?Tv> $traversable,
     keyset<Tv> $expected,
@@ -218,7 +218,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterWithKey */
+  <<DataProvider('provideTestFilterWithKey')>>
   public function testFilterWithKey<Tk, Tv as arraykey>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk, Tv): bool) $filter_func,
@@ -255,7 +255,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestKeys */
+  <<DataProvider('provideTestKeys')>>
   public function testKeys<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     keyset<Tk> $expected,
@@ -312,7 +312,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestIntersect */
+  <<DataProvider('provideTestIntersect')>>
   public function testIntersect<Tv as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
@@ -353,7 +353,7 @@ final class KeysetSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTake */
+  <<DataProvider('provideTake')>>
   public function testTake<Tv as arraykey>(
     Traversable<Tv> $traversable,
     int $n,

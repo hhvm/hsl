@@ -47,7 +47,7 @@ final class VecTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestChunk */
+  <<DataProvider('provideTestChunk')>>
   public function testChunk<Tv>(
     Traversable<Tv> $traversable,
     int $size,
@@ -79,7 +79,7 @@ final class VecTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFill */
+  <<DataProvider('provideTestFill')>>
   public function testFill<Tv>(
     int $size,
     Tv $value,
@@ -116,7 +116,7 @@ final class VecTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFlatten */
+  <<DataProvider('provideTestFlatten')>>
   public function testFlatten<Tv>(
     Traversable<Traversable<Tv>> $traversables,
     vec<Tv> $expected,
@@ -194,7 +194,7 @@ final class VecTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMap */
+  <<DataProvider('provideTestMap')>>
   public function testMap<Tv1, Tv2>(
     Traversable<Tv1> $traversable,
     (function(Tv1): Tv2) $value_func,
@@ -223,7 +223,7 @@ final class VecTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMapWithKey */
+  <<DataProvider('provideTestMapWithKey')>>
   public function testMapWithKey<Tk, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tk, Tv1): Tv2) $value_func,

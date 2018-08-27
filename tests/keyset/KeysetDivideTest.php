@@ -38,7 +38,7 @@ final class KeysetDivideTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider providePartition */
+  <<DataProvider('providePartition')>>
   public function testPartition<Tv as arraykey>(
     Traversable<Tv> $traversable,
     (function(Tv): bool) $predicate,

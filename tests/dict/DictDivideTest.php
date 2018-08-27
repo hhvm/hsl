@@ -107,7 +107,7 @@ final class DictDivideTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider providePartition */
+  <<DataProvider('providePartition')>>
   public function testPartition<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $predicate,
@@ -116,7 +116,7 @@ final class DictDivideTest extends HackTestCase {
     expect(Dict\partition($traversable, $predicate))->toBeSame($expected);
   }
 
-  /** @dataProvider providePartitionWithKey */
+  <<DataProvider('providePartitionWithKey')>>
   public function testPartitionWithKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk, Tv): bool) $predicate,

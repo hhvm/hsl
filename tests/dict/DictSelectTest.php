@@ -49,7 +49,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestDiffByKey */
+  <<DataProvider('provideTestDiffByKey')>>
   public function testDiffByKey<Tk1 as arraykey, Tk2 as arraykey, Tv>(
     KeyedTraversable<Tk1, Tv> $first,
     KeyedTraversable<Tk2, mixed> $second,
@@ -102,7 +102,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideDrop */
+  <<DataProvider('provideDrop')>>
   public function testDrop<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     int $n,
@@ -151,7 +151,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilter */
+  <<DataProvider('provideTestFilter')>>
   public function testFilter<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $value_predicate,
@@ -205,7 +205,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterWithKey */
+  <<DataProvider('provideTestFilterWithKey')>>
   public function testFilterWithKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk, Tv): bool) $predicate,
@@ -258,7 +258,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterKeys */
+  <<DataProvider('provideTestFilterKeys')>>
   public function testFilterKeys<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk): bool) $key_predicate,
@@ -328,7 +328,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterNulls */
+  <<DataProvider('provideTestFilterNulls')>>
   public function testFilterNulls<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, ?Tv> $traversable,
     dict<Tk, Tv> $expected,
@@ -370,7 +370,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSelectKeys */
+  <<DataProvider('provideTestSelectKeys')>>
   public function testSelectKeys<Tk as arraykey, Tv>(
     KeyedContainer<Tk, Tv> $container,
     Traversable<Tk> $keys,
@@ -425,7 +425,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTake */
+  <<DataProvider('provideTake')>>
   public function testTake<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     int $n,
@@ -461,7 +461,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestUnique */
+  <<DataProvider('provideTestUnique')>>
   public function testUnique<Tk as arraykey, Tv as arraykey>(
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tk, Tv> $expected,
@@ -487,7 +487,7 @@ final class DictSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestUniqueBy */
+  <<DataProvider('provideTestUniqueBy')>>
   public function testUniqueBy<Tk as arraykey, Tv, Ts as arraykey>(
     KeyedContainer<Tk, Tv> $container,
     (function(Tv): Ts) $scalar_func,

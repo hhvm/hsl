@@ -52,7 +52,7 @@ final class KeysetIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestEqual */
+  <<DataProvider('provideTestEqual')>>
   public function testEqual<Tv as arraykey>(
     keyset<Tv> $keyset1,
     keyset<Tv> $keyset2,

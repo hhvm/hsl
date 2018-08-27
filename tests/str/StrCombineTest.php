@@ -31,7 +31,7 @@ final class StrCombineTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideJoin */
+  <<DataProvider('provideJoin')>>
   public function testJoin(
     Traversable<string> $traversable,
   ): void {

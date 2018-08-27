@@ -55,7 +55,7 @@ final class DictCombineTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestAssociate */
+  <<DataProvider('provideTestAssociate')>>
   public function testAssociate<Tk as arraykey, Tv>(
     Traversable<Tk> $keys,
     Traversable<Tv> $values,
@@ -120,7 +120,7 @@ final class DictCombineTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMerge */
+  <<DataProvider('provideTestMerge')>>
   public function testMerge<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $first,
     Container<KeyedTraversable<Tk, Tv>> $rest,

@@ -47,7 +47,7 @@ final class KeysetAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGen */
+  <<DataProvider('provideTestGen')>>
   public function testFromAsync<Tv as arraykey>(
     Traversable<Awaitable<Tv>> $awaitables,
     keyset<Tv> $expected,
@@ -79,7 +79,7 @@ final class KeysetAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenMap */
+  <<DataProvider('provideTestGenMap')>>
   public function testMapAsync<Tv>(
     Traversable<Tv> $traversable,
     (function(Tv): Awaitable<arraykey>) $async_func,
@@ -121,7 +121,7 @@ final class KeysetAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenFilter */
+  <<DataProvider('provideTestGenFilter')>>
   public function testFilterAsync<Tv as arraykey>(
     Container<Tv> $traversable,
     (function(Tv): Awaitable<bool>) $async_predicate,

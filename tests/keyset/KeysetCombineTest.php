@@ -42,7 +42,7 @@ final class KeysetCombineTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestUnion */
+  <<DataProvider('provideTestUnion')>>
   public function testUnion<Tv as arraykey>(
     Traversable<Tv> $first,
     Container<Traversable<Tv>> $rest,

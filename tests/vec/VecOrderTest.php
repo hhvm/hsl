@@ -65,7 +65,7 @@ final class VecOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestRange */
+  <<DataProvider('provideTestRange')>>
   public function testRange<Tv as num>(
     Tv $start,
     Tv $end,
@@ -86,7 +86,7 @@ final class VecOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestRangeException */
+  <<DataProvider('provideTestRangeException')>>
   public function testRangeException<Tv as num>(
     Tv $start,
     Tv $end,
@@ -113,7 +113,7 @@ final class VecOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestReverse */
+  <<DataProvider('provideTestReverse')>>
   public function testReverse<Tv>(
     Traversable<Tv> $traversable,
     vec<Tv> $expected,
@@ -134,7 +134,7 @@ final class VecOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestShuffle */
+  <<DataProvider('provideTestShuffle')>>
   public function testShuffle<Tv>(
     Traversable<Tv> $traversable,
     vec<Tv> $expected,
@@ -187,7 +187,7 @@ final class VecOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSort */
+  <<DataProvider('provideTestSort')>>
   public function testSort<Tv>(
     Traversable<Tv> $traversable,
     ?(function(Tv, Tv): int) $comparator,
@@ -239,7 +239,7 @@ final class VecOrderTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSortBy */
+  <<DataProvider('provideTestSortBy')>>
   public function testSortBy<Tv, Ts>(
     Traversable<Tv> $traversable,
     (function(Tv): Ts) $scalar_func,

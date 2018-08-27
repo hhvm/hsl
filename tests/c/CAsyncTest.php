@@ -44,7 +44,7 @@ final class CAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenFirst */
+  <<DataProvider('provideTestGenFirst')>>
   public function testFirstAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
     ?T $expected,
@@ -82,7 +82,7 @@ final class CAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenFirstx */
+  <<DataProvider('provideTestGenFirstx')>>
   public function testFirstxAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
     mixed $expected,

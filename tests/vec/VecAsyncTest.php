@@ -47,7 +47,7 @@ final class VecAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGen */
+  <<DataProvider('provideTestGen')>>
   public function testFromAsync<Tv>(
     Traversable<Awaitable<Tv>> $awaitables,
     vec<Tv> $expected,
@@ -79,7 +79,7 @@ final class VecAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenFilter */
+  <<DataProvider('provideTestGenFilter')>>
   public function testFilterAsync<Tv>(
     Container<Tv> $container,
     (function(Tv): Awaitable<bool>) $value_predicate,
@@ -109,7 +109,7 @@ final class VecAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenMap */
+  <<DataProvider('provideTestGenMap')>>
   public function testMapAsync<Tk, Tv>(
     Traversable<Tk> $keys,
     (function(Tk): Awaitable<Tv>) $async_func,

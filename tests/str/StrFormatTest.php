@@ -52,7 +52,7 @@ final class StrFormatTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideFormat */
+  <<DataProvider('provideFormat')>>
   public function testFormat(
     string $actual,
     string $expected,

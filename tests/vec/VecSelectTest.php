@@ -38,7 +38,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestDiff */
+  <<DataProvider('provideTestDiff')>>
   public function testDiff<Tv as arraykey>(
     Traversable<Tv> $base,
     Container<Traversable<Tv>> $traversables,
@@ -73,7 +73,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestDiffBy */
+  <<DataProvider('provideTestDiffBy')>>
   public function testDiffBy<Tv, Ts as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
@@ -114,7 +114,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideDrop */
+  <<DataProvider('provideDrop')>>
   public function testDrop<Tv>(
     Traversable<Tv> $traversable,
     int $n,
@@ -158,7 +158,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilter */
+  <<DataProvider('provideTestFilter')>>
   public function testFilter<Tv>(
     Traversable<Tv> $traversable,
     (function(Tv): bool) $value_predicate,
@@ -208,7 +208,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterNulls */
+  <<DataProvider('provideTestFilterNulls')>>
   public function testFilterNulls<Tv>(
   Traversable<?Tv> $traversable,
   vec<Tv> $expected,
@@ -248,7 +248,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFilterWithKey */
+  <<DataProvider('provideTestFilterWithKey')>>
   public function testFilterWithKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tk, Tv): bool) $filter_func,
@@ -307,7 +307,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestIntersect */
+  <<DataProvider('provideTestIntersect')>>
   public function testIntersect<Tv as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
@@ -357,7 +357,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestKeys */
+  <<DataProvider('provideTestKeys')>>
   public function testKeys<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     vec<Tk> $expected,
@@ -382,7 +382,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSample */
+  <<DataProvider('provideTestSample')>>
   public function testSample<Tv>(
     Traversable<Tv> $traversable,
     int $sample_size,
@@ -426,7 +426,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSlice */
+  <<DataProvider('provideTestSlice')>>
   public function testSlice<Tv>(
     Container<Tv> $container,
     int $offset,
@@ -466,7 +466,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTake */
+  <<DataProvider('provideTake')>>
   public function testTake<Tv>(
     Traversable<Tv> $traversable,
     int $n,
@@ -498,7 +498,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestUnique */
+  <<DataProvider('provideTestUnique')>>
   public function testUnique<Tv as arraykey>(
     Traversable<Tv> $traversable,
     vec<Tv> $expected,
@@ -541,7 +541,7 @@ final class VecSelectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestUniqueBy */
+  <<DataProvider('provideTestUniqueBy')>>
   public function testUniqueBy<Tv, Ts as arraykey>(
     Traversable<Tv> $traversable,
     (function(Tv): Ts) $scalar_func,

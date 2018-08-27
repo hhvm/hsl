@@ -37,7 +37,7 @@ final class StrDivideTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideChunk */
+  <<DataProvider('provideChunk')>>
   public function testChunk(
     string $string,
     int $chunk_size,
@@ -111,7 +111,7 @@ final class StrDivideTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSplit */
+  <<DataProvider('provideSplit')>>
   public function testSplit(
     string $delimiter,
     string $string,

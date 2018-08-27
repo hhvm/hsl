@@ -38,7 +38,7 @@ final class VecDivideTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider providePartition */
+  <<DataProvider('providePartition')>>
   public function testPartition<Tv>(
     Traversable<Tv> $traversable,
     (function(Tv): bool) $predicate,

@@ -33,7 +33,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestAbs */
+  <<DataProvider('provideTestAbs')>>
   public function testAbs(num $number, num $expected): void {
     expect(Math\abs($number))->toBeSame($expected);
   }
@@ -85,7 +85,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestBaseConvertBijection */
+  <<DataProvider('provideTestBaseConvertBijection')>>
   public function testBaseConvertBijection(
     string $from_value,
     int $from_base,
@@ -160,7 +160,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestBaseConvertOneWay */
+  <<DataProvider('provideTestBaseConvertOneWay')>>
   public function testBaseConvertOneWay(
     string $value,
     int $from_base,
@@ -184,7 +184,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestBaseConvertException */
+  <<DataProvider('provideTestBaseConvertException')>>
   public function testBaseConvertException(
     string $value,
     int $from_base,
@@ -204,7 +204,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestCeil */
+  <<DataProvider('provideTestCeil')>>
   public function testCeil(num $value, float $expected): void {
     expect(Math\ceil($value))->toBeSame($expected);
   }
@@ -223,7 +223,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestCos */
+  <<DataProvider('provideTestCos')>>
   public function testCos(num $arg, float $expected): void {
     $actual = Math\cos($arg);
     expect($actual)->toAlmostEqual($expected);
@@ -238,7 +238,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestExp */
+  <<DataProvider('provideTestExp')>>
   public function testExp(num $arg, float $expected): void {
     $actual = Math\exp($arg);
     expect($actual)->toAlmostEqual($expected);
@@ -254,7 +254,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFloor */
+  <<DataProvider('provideTestFloor')>>
   public function testFloor(num $value, float $expected): void {
     expect(Math\floor($value))->toBeSame($expected);
   }
@@ -270,7 +270,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFromBase */
+  <<DataProvider('provideTestFromBase')>>
   public function testFromBase(
     string $number,
     int $from_base,
@@ -298,7 +298,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFromBaseException */
+  <<DataProvider('provideTestFromBaseException')>>
   public function testFromBaseException(string $number, int $from_base): void {
     expect(() ==> Math\from_base($number, $from_base))
       ->toThrow(InvariantException::class);
@@ -315,7 +315,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestIntDiv */
+  <<DataProvider('provideTestIntDiv')>>
   public function testIntDiv(
     int $numerator,
     int $denominator,
@@ -332,7 +332,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestIntDivException */
+  <<DataProvider('provideTestIntDivException')>>
   public function testIntDivException(int $numerator, int $denominator): void {
     expect(() ==> Math\int_div($numerator, $denominator))
       ->toThrow(Math\DivisionByZeroException::class);
@@ -346,7 +346,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestLog */
+  <<DataProvider('provideTestLog')>>
   public function testLog(num $base): void {
     for ($exp = 0.5; $exp <= 10.0; $exp += 0.5) {
       $actual = Math\log($base ** $exp, $base);
@@ -363,7 +363,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestLogNoBase */
+  <<DataProvider('provideTestLogNoBase')>>
   public function testLogNoBase(num $base): void {
     expect(Math\log($base))->toBeSame(log($base));
     expect(Math\log($base, null))->toBeSame(log($base));
@@ -398,7 +398,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestRound */
+  <<DataProvider('provideTestRound')>>
   public function testRound(
     num $value,
     int $precision,
@@ -421,7 +421,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSin */
+  <<DataProvider('provideTestSin')>>
   public function testSin(num $arg, float $expected): void {
     $actual = Math\sin($arg);
     expect($actual)->toAlmostEqual($expected);
@@ -437,7 +437,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSqrt */
+  <<DataProvider('provideTestSqrt')>>
   public function testSqrt(num $arg, float $expected): void {
     $actual = Math\sqrt($arg);
     expect($actual)->toAlmostEqual($expected);
@@ -455,7 +455,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestToBase */
+  <<DataProvider('provideTestToBase')>>
   public function testToBase(
     int $number,
     int $to_base,
@@ -474,7 +474,7 @@ final class MathComputeTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestToBaseException */
+  <<DataProvider('provideTestToBaseException')>>
   public function testToBaseException(int $number, int $to_base): void {
     expect(() ==> Math\to_base($number, $to_base))
       ->toThrow(InvariantException::class);

@@ -27,7 +27,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideCapitalize */
+  <<DataProvider('provideCapitalize')>>
   public function testCapitalize(
     string $string,
     string $expected,
@@ -48,7 +48,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideCapitalizeWords */
+  <<DataProvider('provideCapitalizeWords')>>
   public function testCapitalizeWords(
     string $string,
     string $expected,
@@ -76,7 +76,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideCapitalizeWordsCustomDelimiter */
+  <<DataProvider('provideCapitalizeWordsCustomDelimiter')>>
   public function testCapitalizeWordsCustomDelimiter(
     string $string,
     string $delimiter,
@@ -125,7 +125,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideFormatNumber */
+  <<DataProvider('provideFormatNumber')>>
   public function testFormatNumber(
     num $number,
     int $decimals,
@@ -150,7 +150,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideLowercase */
+  <<DataProvider('provideLowercase')>>
   public function testLowercase(
     string $string,
     string $expected,
@@ -168,7 +168,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider providePadLeft */
+  <<DataProvider('providePadLeft')>>
   public function testPadLeft(
     string $string,
     int $total_length,
@@ -189,7 +189,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider providePadRight */
+  <<DataProvider('providePadRight')>>
   public function testPadRight(
     string $string,
     int $total_length,
@@ -208,7 +208,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideRepeat */
+  <<DataProvider('provideRepeat')>>
   public function testRepeat(
     string $string,
     int $multiplier,
@@ -252,7 +252,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideReplace */
+  <<DataProvider('provideReplace')>>
   public function testReplace(
     string $haystack,
     string $needle,
@@ -297,7 +297,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideReplaceCI */
+  <<DataProvider('provideReplaceCI')>>
   public function testReplaceCI(
     string $haystack,
     string $needle,
@@ -343,7 +343,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideReplaceEvery */
+  <<DataProvider('provideReplaceEvery')>>
   public function testReplaceEvery(
     string $haystack,
     KeyedContainer<string, string> $replacements,
@@ -406,7 +406,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideSplice */
+  <<DataProvider('provideSplice')>>
   public function testSplice(
     string $string,
     string $replacement,
@@ -436,7 +436,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideToInt */
+  <<DataProvider('provideToInt')>>
   public function testToInt(
     string $string,
     ?int $expected,
@@ -453,7 +453,7 @@ final class StrTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideUppercase */
+  <<DataProvider('provideUppercase')>>
   public function testUppercase(
     string $string,
     string $expected,

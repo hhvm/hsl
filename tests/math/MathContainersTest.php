@@ -36,7 +36,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMax */
+  <<DataProvider('provideTestMax')>>
   public function testMax<T as num>(
     Traversable<T> $numbers,
     ?T $expected,
@@ -66,7 +66,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMaxBy */
+  <<DataProvider('provideTestMaxBy')>>
   public function testMaxBy<T>(
     Traversable<T> $traversable,
     (function(T): num) $num_func,
@@ -84,7 +84,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMean */
+  <<DataProvider('provideTestMean')>>
   public function testMean(
     Container<num> $numbers,
     ?float $expected
@@ -109,7 +109,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMedian */
+  <<DataProvider('provideTestMedian')>>
   public function testMedian(
     Container<num> $numbers,
     ?float $expected,
@@ -144,7 +144,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMin */
+  <<DataProvider('provideTestMin')>>
   public function testMin<T as num>(
     Traversable<T> $traversable,
     ?T $expected,
@@ -174,7 +174,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMinBy */
+  <<DataProvider('provideTestMinBy')>>
   public function testMinBy<T>(
     Traversable<T> $traversable,
     (function(T): num) $num_func,
@@ -200,7 +200,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSum */
+  <<DataProvider('provideTestSum')>>
   public function testSum(
     Traversable<int> $traversable,
     int $expected,
@@ -225,7 +225,7 @@ final class MathContainersTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestSumFloat */
+  <<DataProvider('provideTestSumFloat')>>
   public function testSumFloat<T as num>(
     Traversable<T> $traversable,
     float $expected,

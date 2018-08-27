@@ -54,7 +54,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestChunk */
+  <<DataProvider('provideTestChunk')>>
   public function testChunk<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     int $size,
@@ -90,7 +90,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestCountValues */
+  <<DataProvider('provideTestCountValues')>>
   public function testCountValues<Tv as arraykey>(
     Traversable<Tv> $values,
     dict<Tv, int> $expected,
@@ -127,7 +127,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFillKeys */
+  <<DataProvider('provideTestFillKeys')>>
   public function testFillKeys<Tk as arraykey, Tv>(
     Traversable<Tk> $keys,
     Tv $value,
@@ -205,7 +205,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFlatten */
+  <<DataProvider('provideTestFlatten')>>
   public function testFlatten<Tk as arraykey, Tv>(
     Traversable<KeyedTraversable<Tk, Tv>> $traversables,
     dict<Tk, Tv> $expected,
@@ -245,7 +245,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFlip */
+  <<DataProvider('provideTestFlip')>>
   public function testFlip<Tk, Tv as arraykey>(
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tv, Tk> $expected,
@@ -286,7 +286,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFromKeys */
+  <<DataProvider('provideTestFromKeys')>>
   public function testFromKeys<Tk as arraykey, Tv>(
     Traversable<Tk> $keys,
     (function(Tk): Tv) $value_func,
@@ -336,7 +336,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFromEntries */
+  <<DataProvider('provideTestFromEntries')>>
   public function testFromEntries<Tk as arraykey, Tv>(
     Traversable<(Tk, Tv)> $traversable,
     dict<Tk, Tv> $expected,
@@ -377,7 +377,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestFromValues */
+  <<DataProvider('provideTestFromValues')>>
   public function testFromValues<Tk as arraykey, Tv>(
     Traversable<Tv> $values,
     (function(Tv): Tk) $key_func,
@@ -412,7 +412,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGroupBy */
+  <<DataProvider('provideTestGroupBy')>>
   public function testGroupBy<Tk as arraykey, Tv>(
     Traversable<Tv> $values,
     (function(Tv): ?Tk) $key_func,
@@ -486,7 +486,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMap */
+  <<DataProvider('provideTestMap')>>
   public function testMap<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function (Tv1): Tv2) $func,
@@ -549,7 +549,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMapKeys */
+  <<DataProvider('provideTestMapKeys')>>
   public function testMapKeys<Tk1, Tk2 as arraykey, Tv>(
     KeyedTraversable<Tk1, Tv> $traversable,
     (function(Tk1): Tk2) $key_func,
@@ -589,7 +589,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestMapWithKey */
+  <<DataProvider('provideTestMapWithKey')>>
   public function testMapWithKey<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tk, Tv1): Tv2) $value_func,
@@ -626,7 +626,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestPull */
+  <<DataProvider('provideTestPull')>>
   public function testPull<Tk as arraykey, Tv1, Tv2>(
     Traversable<Tv1> $traversable,
     (function(Tv1): Tv2) $value_func,
@@ -662,7 +662,7 @@ final class DictTransformTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestPullWithKey */
+  <<DataProvider('provideTestPullWithKey')>>
   public function testPullWithKey<Tk1, Tk2 as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk1, Tv1> $traversable,
     (function(Tk1, Tv1): Tv2) $value_func,

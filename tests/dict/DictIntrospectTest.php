@@ -52,7 +52,7 @@ final class DictIntrospectTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestEqual */
+  <<DataProvider('provideTestEqual')>>
   public function testEqual<Tk as arraykey, Tv>(
     dict<Tk, Tv> $dict1,
     dict<Tk, Tv> $dict2,

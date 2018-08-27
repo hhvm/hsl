@@ -56,7 +56,7 @@ final class DictAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGen */
+  <<DataProvider('provideTestGen')>>
   public function testFromAsync<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
     dict<Tk, Tv> $expected,
@@ -95,7 +95,7 @@ final class DictAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenFromKeys */
+  <<DataProvider('provideTestGenFromKeys')>>
   public function testFromKeysAsync<Tk as arraykey, Tv>(
     Traversable<Tk> $keys,
     (function(Tk): Awaitable<Tv>) $async_func,
@@ -166,7 +166,7 @@ final class DictAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenFilter */
+  <<DataProvider('provideTestGenFilter')>>
   public function testFilterAsync<Tk as arraykey, Tv>(
     KeyedContainer<Tk, Tv> $traversable,
     (function(Tv): Awaitable<bool>) $value_predicate,
@@ -224,7 +224,7 @@ final class DictAsyncTest extends HackTestCase {
     ];
   }
 
-  /** @dataProvider provideTestGenMap */
+  <<DataProvider('provideTestGenMap')>>
   public function testMapAsync<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tv1): Awaitable<Tv2>) $value_func,
