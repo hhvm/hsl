@@ -16,7 +16,7 @@ use namespace HH\Lib\Vec;
  * Returns a new dict with the original entries in reversed iteration
  * order.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function reverse<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -36,11 +36,11 @@ function reverse<Tk as arraykey, Tv>(
  * - To sort by some computable property of each value, see `Dict\sort_by()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tv, Tv): int) $value_comparator = null,
 ): dict<Tk, Tv> {
   $result = dict($traversable);
@@ -65,13 +65,13 @@ function sort<Tk as arraykey, Tv>(
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort_by<Tk as arraykey, Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Ts, Ts): int) $scalar_comparator = null,
 ): dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
@@ -92,11 +92,11 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by some computable property of each value, see `Dict\sort_by()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort_by_key<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tk, Tk): int) $key_comparator = null,
 ): dict<Tk, Tv> {
   $result = dict($traversable);

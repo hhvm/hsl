@@ -38,7 +38,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  *
  * To take only the first `$n` entries, see `Dict\take()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function drop<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -64,11 +64,11 @@ function drop<Tk as arraykey, Tv>(
  * - To remove null values in a typechecker-visible way, see `Dict\filter_nulls()`.
  * - To use an async predicate, see `Dict\filter_async()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): dict<Tk, Tv> {
   $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -87,11 +87,11 @@ function filter<Tk as arraykey, Tv>(
  *
  * To use an async predicate, see `Dict\filter_with_key_async()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_with_key<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tk, Tv): bool) $predicate,
 ): dict<Tk, Tv> {
   $dict = dict[];
@@ -107,11 +107,11 @@ function filter_with_key<Tk as arraykey, Tv>(
  * Returns a new dict containing only the keys for which the given predicate
  * returns `true`. The default predicate is casting the key to boolean.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_keys<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tk): bool) $key_predicate = null,
 ): dict<Tk, Tv> {
   $key_predicate = $key_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -128,7 +128,7 @@ function filter_keys<Tk as arraykey, Tv>(
  * Given a KeyedTraversable with nullable values, returns a new dict with
  * those entries removed.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_nulls<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, ?Tv> $traversable,
@@ -147,7 +147,7 @@ function filter_nulls<Tk as arraykey, Tv>(
  * and the given Traversable. The dict will have the same ordering as the
  * `$keys` Traversable.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function select_keys<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $container,
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
@@ -168,7 +168,7 @@ function select_keys<Tk as arraykey, Tv>(
  *
  * To drop the first `$n` entries, see `Dict\drop()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function take<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -196,7 +196,7 @@ function take<Tk as arraykey, Tv>(
  *
  * For non-arraykey values, see `Dict\unique_by()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function unique<Tk as arraykey, Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -212,10 +212,10 @@ function unique<Tk as arraykey, Tv as arraykey>(
  *
  * For arraykey values, see `Dict\unique()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   KeyedContainer<Tk, Tv> $container,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
 ): dict<Tk, Tv> {
   // We first convert the container to dict[scalar_key => original_key] to

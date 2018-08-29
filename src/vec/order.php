@@ -36,7 +36,7 @@ function range<Tv as num>(
  * Returns a new vec with the values of the given Traversable in reversed
  * order.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function reverse<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -73,11 +73,11 @@ function shuffle<Tv>(
  *
  * To sort by some computable property of each value, see `Vec\sort_by()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tv, Tv): int) $comparator = null,
 ): vec<Tv> {
   $vec = vec($traversable);
@@ -105,13 +105,13 @@ function sort<Tv>(
  *
  * To sort by the values of the Traversable, see `Vec\sort()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort_by<Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Ts, Ts): int) $comparator = null,
 ): vec<Tv> {
   $vec = vec($traversable);

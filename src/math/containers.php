@@ -18,7 +18,7 @@ use namespace HH\Lib\{C, Math, Vec};
  * - For a known number of inputs, see `Math\maxva()`.
  * - To find the smallest number, see `Math\min()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function max<T as num>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $numbers,
@@ -41,11 +41,11 @@ function max<T as num>(
  *
  * For numeric elements, see `Math\max()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function max_by<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(T): num) $num_func,
 ): ?T {
   $max = null;
@@ -108,7 +108,7 @@ function median(Container<num> $numbers): ?float {
  * - For a known number of inputs, see `Math\minva()`.
  * - To find the largest number, see `Math\max()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function min<T as num>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $numbers,
@@ -131,11 +131,11 @@ function min<T as num>(
  *
  * For numeric elements, see `Math\min()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function min_by<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(T): num) $num_func,
 ): ?T {
   $min = null;
@@ -155,7 +155,7 @@ function min_by<T>(
  *
  * For a float sum, see `Math\sum_float()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sum(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<int> $traversable,
@@ -172,7 +172,7 @@ function sum(
  *
  * For an integer sum, see `Math\sum()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sum_float<T as num>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,

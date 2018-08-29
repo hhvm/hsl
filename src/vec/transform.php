@@ -17,7 +17,7 @@ use namespace HH\Lib\Math;
  * size. If the original vec doesn't divide evenly, the final chunk will be
  * smaller.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function chunk<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -77,11 +77,11 @@ function flatten<Tv>(
  *
  * For async functions, see `Vec\map_async()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function map<Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv1): Tv2) $value_func,
 ): vec<Tv2> {
   $result = vec[];
@@ -95,11 +95,11 @@ function map<Tv1, Tv2>(
  * Returns a new vec where each value is the result of calling the given
  * function on the original key and value.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function map_with_key<Tk, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tk, Tv1): Tv2) $value_func,
 ): vec<Tv2> {
   $result = vec[];

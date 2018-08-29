@@ -21,11 +21,11 @@ namespace HH\Lib\C;
  *
  * If you're looking for `C\none`, use `!C\any`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function any<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(T): bool) $predicate = null,
 ): bool {
   $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -41,7 +41,7 @@ function any<T>(
  * Returns true if the given Traversable contains the value. Strict equality is
  * used.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function contains<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -84,11 +84,11 @@ function count<T>(
  * given Traversable. If no predicate is provided, it defaults to casting the
  * element to bool.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function every<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(T): bool) $predicate = null,
 ): bool {
   $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');

@@ -16,7 +16,7 @@ use namespace HH\Lib\C;
  * Returns a new dict where each element in `$keys` maps to the
  * corresponding element in `$values`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function associate<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,

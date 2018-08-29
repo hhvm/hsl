@@ -16,7 +16,7 @@ namespace HH\Lib\Str;
  *
  * Previously known as `implode` in PHP.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function join(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<arraykey> $pieces,

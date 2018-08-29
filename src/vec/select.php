@@ -45,13 +45,13 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  *
  * For vecs that contain arraykey elements, see `Vec\diff()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function diff_by<Tv, Ts as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
 ): vec<Tv> {
   if (!$first) {
@@ -73,7 +73,7 @@ function diff_by<Tv, Ts as arraykey>(
  *
  * To take only the first `$n` elements, see `Vec\take()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function drop<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -100,11 +100,11 @@ function drop<Tv>(
  *   `Vec\filter_nulls()`.
  * - To use an async predicate, see `Vec\filter_async()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): vec<Tv> {
   $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
@@ -121,7 +121,7 @@ function filter<Tv>(
  * Returns a new vec containing only non-null values of the given
  * Traversable.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_nulls<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
@@ -141,11 +141,11 @@ function filter_nulls<Tv>(
  *
  * If you don't need access to the key, see `Vec\filter()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_with_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tk, Tv): bool) $predicate,
 ): vec<Tv> {
   $result = vec[];
@@ -179,7 +179,7 @@ function intersect<Tv as arraykey>(
 /**
   * Returns a new vec containing the keys of the given KeyedTraversable.
   */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function keys<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -237,7 +237,7 @@ function slice<Tv>(
  *
  * To drop the first `$n` elements, see `Vec\drop()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function take<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -266,7 +266,7 @@ function take<Tv>(
  *
  * For non-arraykey elements, see `Vec\unique_by()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function unique<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -282,11 +282,11 @@ function unique<Tv as arraykey>(
  *
  * For arraykey elements, see `Vec\unique()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function unique_by<Tv, Ts as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
 ): vec<Tv> {
   return vec(Dict\from_values($traversable, $scalar_func));

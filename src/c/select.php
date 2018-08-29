@@ -17,11 +17,11 @@ use namespace HH\Lib\Str;
  * Returns the first value of the given Traversable for which the predicate
  * returns true, or null if no such value is found.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function find<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(T): bool) $value_predicate,
 ): ?T {
   foreach ($traversable as $value) {
@@ -36,11 +36,11 @@ function find<T>(
  * Returns the key of the first value of the given KeyedTraversable for which
  * the predicate returns true, or null if no such value is found.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function find_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): bool) $value_predicate,
 ): ?Tk {
   foreach ($traversable as $key => $value) {
@@ -60,7 +60,7 @@ function find_key<Tk, Tv>(
  * - For single-element Traversables, see `C\onlyx`.
  * - For Awaitables that yield Traversables, see `C\first_async`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function first<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -80,7 +80,7 @@ function first<T>(
  * - For single-element Traversables, see `C\onlyx`.
  * - For Awaitables that yield Traversables, see `C\firstx_async`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function firstx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -97,7 +97,7 @@ function firstx<T>(
  *
  * For non-empty Traversables, see `C\first_keyx`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function first_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -116,7 +116,7 @@ function first_key<Tk, Tv>(
  *
  * For possibly empty Traversables, see `C\first_key`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function first_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -134,7 +134,7 @@ function first_keyx<Tk, Tv>(
  * - For non-empty Traversables, see `C\lastx`.
  * - For single-element Traversables, see `C\onlyx`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function last<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -163,7 +163,7 @@ function last<Tv>(
  * - For possibly empty Traversables, see `C\last`.
  * - For single-element Traversables, see `C\onlyx`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function lastx<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable
@@ -203,7 +203,7 @@ function lastx<Tv>(
  *
  * For non-empty Traversables, see `C\last_keyx`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function last_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -236,7 +236,7 @@ function last_key<Tk, Tv>(
  *
  * For possibly empty Traversables, see `C\last_key`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function last_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -254,7 +254,7 @@ function last_keyx<Tk, Tv>(
  * - For non-empty Traversables, see `C\firstx`.
  * - For single-element Traversables, see `C\onlyx`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function nfirst<T>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   ?Traversable<T> $traversable,
@@ -276,7 +276,7 @@ function nfirst<T>(
  *
  * For Traversables with more than one element, see `C\firstx`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function onlyx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,

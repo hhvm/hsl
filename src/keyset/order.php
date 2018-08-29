@@ -15,11 +15,11 @@ namespace HH\Lib\Keyset;
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   ?(function(Tv, Tv): int) $comparator = null,
 ): keyset<Tv> {
   $keyset = keyset($traversable);

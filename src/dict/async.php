@@ -12,7 +12,7 @@ namespace HH\Lib\Dict;
 
 use namespace HH\Lib\C;
 
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 async function from_async<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
@@ -38,11 +38,11 @@ async function from_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\from_keys()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 async function from_keys_async<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tk): Awaitable<Tv>) $async_func,
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables = dict[];
@@ -74,10 +74,10 @@ async function from_keys_async<Tk as arraykey, Tv>(
  *
  * For non-async predicates, see `Dict\filter()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv): Awaitable<bool>) $value_predicate,
 ): Awaitable<dict<Tk, Tv>> {
   $tests = await map_async($traversable, $value_predicate);
@@ -95,10 +95,10 @@ async function filter_async<Tk as arraykey, Tv>(
  *
  * For non-async filters with key, see `Dict\filter_with_key()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tk, Tv): Awaitable<bool>) $predicate,
 ): Awaitable<dict<Tk, Tv>> {
   $tests = await $traversable
@@ -122,11 +122,11 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\map()`.
  */
-<<__Rx, __OnlyRxIfArgs>>
+<<__Rx, __AtMostRxAsArgs>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
-  <<__OnlyRxIfRxFunc>>
+  <<__AtMostRxAsFunc>>
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {
   $traversable = dict($traversable);
