@@ -47,7 +47,7 @@ function contains<T>(
   Traversable<T> $traversable,
   T $value,
 ): bool {
-  if (is_keyset($traversable)) {
+  if ($traversable is keyset<_>) {
     return contains_key($traversable, $value);
   }
   foreach ($traversable as $v) {

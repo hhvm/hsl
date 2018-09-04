@@ -139,7 +139,7 @@ function last<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): ?Tv {
-  if (\is_vec($traversable)) {
+  if ($traversable is vec<_>) {
     return count($traversable)
       |> $$ === 0 ? null : $traversable[$$ - 1];
   } else if (_Private\is_any_array($traversable)) {
@@ -168,7 +168,7 @@ function lastx<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable
 ): Tv {
-  if (\is_vec($traversable)) {
+  if ($traversable is vec<_>) {
     $count = count($traversable);
     invariant($count > 0, '%s: Expected non-empty input', __FUNCTION__);
     return $traversable[$count - 1];
@@ -208,7 +208,7 @@ function last_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if (\is_vec($traversable)) {
+  if ($traversable is vec<_>) {
     return count($traversable) |> $$ === 0 ? null : $$ - 1;
   } else if (_Private\is_any_array($traversable)) {
     if (!$traversable) {

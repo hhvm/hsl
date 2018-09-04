@@ -36,7 +36,7 @@ function validate_offset(
  */
 <<__Rx>>
 function is_any_array(<<__MaybeMutable>> mixed $val): bool {
-  return \is_dict($val) || \is_vec($val) || \is_keyset($val) || \is_array($val);
+  return $val is dict<_, _> || $val is vec<_> || $val is keyset<_> || \is_array($val);
 }
 
 <<__Rx>>
