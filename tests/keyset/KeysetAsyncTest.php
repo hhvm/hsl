@@ -100,10 +100,10 @@ final class KeysetAsyncTest extends HackTestCase {
     return varray[
       tuple(
         darray[
-          '2' => 'two',
-          '4' => 'four',
+          2 => 'two',
+          4 => 'four',
           6 => 'six',
-          '8' => 'eight',
+          8 => 'eight',
         ],
         async ($word) ==> strlen($word) % 2 === 1,
         keyset['two', 'six', 'eight'],
