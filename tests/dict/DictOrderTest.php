@@ -92,9 +92,9 @@ final class DictOrderTest extends HackTestCase {
       ),
       tuple(
         darray[
-          '0' => 'the',
+          0 => 'the',
           1 => 'quick',
-          '2' => 'brown',
+          2 => 'brown',
           3 => 'fox',
         ],
         ($a, $b) ==> $a[1] <=> $b[1],
