@@ -316,9 +316,9 @@ final class DictSelectTest extends HackTestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(darray[
-          '1' => null,
-          '2' => varray[],
-          '3' => '0',
+          1 => null,
+          2 => varray[],
+          3 => '0',
         ]),
         dict[
           2 => varray[],
