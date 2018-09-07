@@ -120,7 +120,7 @@ final class CIntrospectTest extends HackTestCase {
   public static function provideTestContainsKey(): varray<mixed> {
     return varray[
       tuple(
-        darray['3' => 3],
+        darray[3 => 3],
         3,
         true,
       ),

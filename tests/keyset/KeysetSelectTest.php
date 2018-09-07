@@ -169,9 +169,9 @@ final class KeysetSelectTest extends HackTestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(darray[
-          '1' => null,
-          '2' => 1,
-          '3' => '0',
+          1 => null,
+          2 => 1,
+          3 => '0',
         ]),
         keyset[1, '0'],
       ),

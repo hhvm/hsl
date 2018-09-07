@@ -199,9 +199,9 @@ final class VecSelectTest extends HackTestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(darray[
-          '1' => null,
-          '2' => varray[],
-          '3' => '0',
+          1 => null,
+          2 => varray[],
+          3 => '0',
         ]),
         vec[varray[], '0'],
       ),
@@ -348,9 +348,9 @@ final class VecSelectTest extends HackTestCase {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(darray[
-          '1' => null,
-          '2' => varray[],
-          '3' => '0',
+          1 => null,
+          2 => varray[],
+          3 => '0',
         ]),
         vec[1, 2, 3],
       ),

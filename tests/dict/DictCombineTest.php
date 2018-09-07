@@ -104,7 +104,7 @@ final class DictCombineTest extends HackTestCase {
           ],
           Vector {'I should feel bad for doing this', 'But yolo'},
           darray[
-            '1' => 'gross array behavior',
+            1 => 'gross array behavior',
           ],
           Set {'bloop'},
         ],
