@@ -8,14 +8,12 @@
  *
  */
 
-/**
- * @emails oncall+hack
- */
 
 use namespace HH\Lib\PseudoRandom;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
+<<Oncalls('hack')>>
 final class PseudoRandomTest extends HackTestCase {
   use RandomTestTrait;
 

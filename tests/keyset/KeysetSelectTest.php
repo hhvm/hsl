@@ -12,9 +12,7 @@ use namespace HH\Lib\{Keyset, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
-/**
- * @emails oncall+hack
- */
+<<Oncalls('hack')>>
 final class KeysetSelectTest extends HackTestCase {
 
   public static function provideTestDiff(): varray<mixed> {

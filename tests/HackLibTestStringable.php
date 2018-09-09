@@ -8,9 +8,7 @@
  *
  */
 
-/**
- * @emails oncall+hack
- */
+<<Oncalls('hack')>>
 final class HackLibTestStringable {
   public function __construct(
     private string $data,

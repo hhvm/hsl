@@ -12,9 +12,7 @@ use namespace HH\Lib\Vec;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
-/**
- * @emails oncall+hack
- */
+<<Oncalls('hack')>>
 final class VecDivideTest extends HackTestCase {
 
   public static function providePartition(): varray<mixed> {

@@ -12,9 +12,7 @@ use namespace HH\Lib\Dict;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
-/**
- * @emails oncall+hack
- */
+<<Oncalls('hack')>>
 final class DictCombineTest extends HackTestCase {
 
   public static function provideTestAssociate(): varray<mixed> {

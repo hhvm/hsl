@@ -12,9 +12,7 @@ use namespace HH\Lib\Math;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
-/**
- * @emails oncall+hack
- */
+<<Oncalls('hack')>>
 final class MathCompareTest extends HackTestCase {
 
   public static function provideTestMaxva(): varray<mixed> {

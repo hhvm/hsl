@@ -13,9 +13,7 @@ use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
-/**
- * @emails oncall+hack
- */
+<<Oncalls('hack')>>
 final class CSelectTest extends HackTestCase {
 
   public static function provideTestFind(): varray<mixed> {

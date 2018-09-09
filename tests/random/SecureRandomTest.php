@@ -8,13 +8,11 @@
  *
  */
 
-/**
- * @emails oncall+hack
- */
 
 use namespace HH\Lib\SecureRandom;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
+<<Oncalls('hack')>>
 final class SecureRandomTest extends HackTestCase {
   use RandomTestTrait;
 
