@@ -59,8 +59,10 @@ function count_values<Tv as arraykey>(
  *
  * For a fixed number of KeyedTraversables, see `Dict\merge()`.
  */
+<<__Rx, __AtMostRxAsArgs>>
 function flatten<Tk as arraykey, Tv>(
-  Traversable<KeyedTraversable<Tk, Tv>> $traversables,
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  Traversable<\HH\Rx\KeyedTraversable<Tk, Tv>> $traversables,
 ): dict<Tk, Tv> {
   $result = dict[];
   foreach ($traversables as $traversable) {
