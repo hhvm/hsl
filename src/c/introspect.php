@@ -83,6 +83,8 @@ function count<T>(
  * Returns true if the given predicate returns true for every element of the
  * given Traversable. If no predicate is provided, it defaults to casting the
  * element to bool.
+ *
+ * If you're looking for `C\all`, this is it.
  */
 <<__Rx, __AtMostRxAsArgs>>
 function every<T>(
