@@ -101,12 +101,12 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
   <<__AtMostRxAsFunc>>
   (function(Tk, Tv): Awaitable<bool>) $predicate,
 ): Awaitable<dict<Tk, Tv>> {
-  $tests = await $traversable
+  $tests = await ($traversable
     |> map_with_key(
       $$,
       <<__RxOfScope>> async ($k, $v) ==> await $predicate($k, $v),
     )
-    |> from_async($$);
+    |> from_async($$));
   $result = dict[];
   foreach ($tests as $k => $v) {
     if ($v) {
