@@ -89,7 +89,7 @@ final class MathContainersTest extends HackTestCase {
   ): void {
     $actual = Math\mean($numbers);
     if ($expected === null) {
-      expect($actual)->toBeSame(null);
+      expect($actual)->toBeNull();
     } else {
       expect($actual)->toAlmostEqual($expected);
     }
@@ -113,7 +113,7 @@ final class MathContainersTest extends HackTestCase {
     ?float $expected,
   ): void {
     if ($expected === null) {
-      expect(Math\median($numbers))->toBeSame(null);
+      expect(Math\median($numbers))->toBeNull();
     } else {
       expect(Math\median($numbers))->toBeSame($expected);
     }
