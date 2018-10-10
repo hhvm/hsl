@@ -210,6 +210,19 @@ function replace_every(
   );
 }
 
+function reverse(
+  string $string,
+): string {
+  $lo = 0;
+  $hi = Str\length($string) - 1;
+  while ($lo < $hi) {
+    $temp = $string[$lo];
+    $string[$lo++] = $string[$hi];
+    $string[$hi--] = $temp;
+  }
+  return $string;
+}
+
 /**
  * Return the string with a slice specified by the offset/length replaced by the
  * given replacement string.

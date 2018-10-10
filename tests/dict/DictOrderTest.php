@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Dict;
+use namespace HH\Lib\{Dict, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
@@ -132,7 +132,7 @@ final class DictOrderTest extends HackTestCase {
     return varray[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped'],
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         null,
         dict[
           4 => 'jumped',

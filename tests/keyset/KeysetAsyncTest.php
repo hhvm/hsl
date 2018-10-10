@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Keyset;
+use namespace HH\Lib\{Keyset, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
@@ -71,7 +71,7 @@ final class KeysetAsyncTest extends HackTestCase {
       ),
       tuple(
         varray['dan', 'danny', 'daniel'],
-        async ($word) ==> strrev($word),
+        async ($word) ==> Str\reverse($word),
         keyset['nad', 'ynnad', 'leinad'],
       ),
     ];

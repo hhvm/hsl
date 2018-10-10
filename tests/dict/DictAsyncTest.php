@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Dict;
+use namespace HH\Lib\{Dict, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
@@ -199,7 +199,7 @@ final class DictAsyncTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        async ($word) ==> strrev($word),
+        async ($word) ==> Str\reverse($word),
         dict[
           0 => 'eht',
           1 => 'kciuq',
@@ -211,7 +211,7 @@ final class DictAsyncTest extends HackTestCase {
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox'],
         ),
-        async ($word) ==> strrev($word),
+        async ($word) ==> Str\reverse($word),
         dict[
           0 => 'eht',
           1 => 'kciuq',

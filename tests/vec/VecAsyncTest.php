@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Vec;
+use namespace HH\Lib\{Str, Vec};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
@@ -94,14 +94,14 @@ final class VecAsyncTest extends HackTestCase {
     return varray[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        async ($word) ==> strrev($word),
+        async ($word) ==> Str\reverse($word),
         vec['eht', 'kciuq', 'nworb', 'xof'],
       ),
       tuple(
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox'],
         ),
-        async ($word) ==> strrev($word),
+        async ($word) ==> Str\reverse($word),
         vec['eht', 'kciuq', 'nworb', 'xof'],
       ),
     ];

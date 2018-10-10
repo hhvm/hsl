@@ -350,6 +350,20 @@ final class StrTransformTest extends HackTestCase {
     expect(Str\replace_every($haystack, $replacements))->toBeSame($expected);
   }
 
+  public static function providerReverse(): varray<(string, string)> {
+    return varray[
+      tuple('abc', 'cba'),
+      tuple('', ''),
+      tuple('abba', 'abba'),
+      tuple('qwertyuiopasdfghjklzxcvbnm', 'mnbvcxzlkjhgfdsapoiuytrewq'),
+    ];
+  }
+
+  <<DataProvider('providerReverse')>>
+  public function testReverse(string $input, string $expected): void {
+    expect(Str\reverse($input))->toBeSame($expected);
+  }
+
   public static function provideSplice(): varray<mixed> {
     return varray[
       tuple(

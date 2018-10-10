@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Vec;
+use namespace HH\Lib\{Str, Vec};
 use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
@@ -156,12 +156,12 @@ final class VecTransformTest extends HackTestCase {
           'daffy' => 'duck',
           'mickey' => 'mouse',
         ],
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         vec['kcud', 'kcud', 'esuom'],
       ),
       tuple(
         Map {'donald' => 'duck', 'daffy' => 'duck', 'mickey' => 'mouse'},
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         vec['kcud', 'kcud', 'esuom'],
       ),
       tuple(

@@ -537,7 +537,7 @@ final class DictTransformTest extends HackTestCase {
           'bar' => 'bar',
           'baz' => 'baz',
         ]),
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         dict[
           'oof' => 'foo',
           'rab' => 'bar',

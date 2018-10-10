@@ -198,7 +198,7 @@ final class VecOrderTest extends HackTestCase {
     return varray[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped'],
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         null,
         vec['jumped', 'the', 'quick', 'brown', 'fox'],
       ),
@@ -206,13 +206,13 @@ final class VecOrderTest extends HackTestCase {
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox', 'jumped'],
         ),
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         null,
         vec['jumped', 'the', 'quick', 'brown', 'fox'],
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox', 'jumped'},
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         ($a, $b) ==> $b <=> $a,
         vec['fox', 'brown', 'quick', 'the', 'jumped'],
       ),

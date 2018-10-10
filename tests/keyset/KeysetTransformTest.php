@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Keyset;
+use namespace HH\Lib\{Keyset, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
@@ -97,12 +97,12 @@ final class KeysetTransformTest extends HackTestCase {
           'daffy' => 'duck',
           'mickey' => 'mouse',
         ],
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         keyset['kcud', 'kcud', 'esuom'],
       ),
       tuple(
         Map {'donald' => 'duck', 'daffy' => 'duck', 'mickey' => 'mouse'},
-        fun('strrev'),
+        $s ==> Str\reverse($s),
         keyset['kcud', 'kcud', 'esuom'],
       ),
       tuple(
