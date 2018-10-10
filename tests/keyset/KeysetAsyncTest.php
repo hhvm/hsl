@@ -103,17 +103,17 @@ final class KeysetAsyncTest extends HackTestCase {
           6 => 'six',
           8 => 'eight',
         ],
-        async ($word) ==> strlen($word) % 2 === 1,
+        async ($word) ==> Str\length((string)$word) % 2 === 1,
         keyset['two', 'six', 'eight'],
       ),
       tuple(
         Vector {'jumped', 'over', 'jumped'},
-        async ($word) ==> strlen($word) % 2 === 0,
+        async ($word) ==> Str\length((string)$word) % 2 === 0,
         keyset['jumped', 'over'],
       ),
       tuple(
         Set {'the', 'quick', 'brown', 'fox', 'jumped', 'over'},
-        async ($word) ==> strlen($word) % 2 === 0,
+        async ($word) ==> Str\length((string)$word) % 2 === 0,
         keyset['jumped', 'over'],
       ),
     ];

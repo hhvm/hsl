@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
@@ -25,12 +25,12 @@ final class CSelectTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        ($w) ==> strlen($w) === 5,
+        ($w) ==> Str\length($w) === 5,
         'quick',
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        ($w) ==> strlen($w) > 6,
+        ($w) ==> Str\length($w) > 6,
         null,
       ),
     ];
@@ -54,7 +54,7 @@ final class CSelectTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        ($w) ==> strlen($w) === 5,
+        ($w) ==> Str\length($w) === 5,
         1,
       ),
       tuple(

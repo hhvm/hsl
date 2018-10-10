@@ -273,7 +273,7 @@ final class DictTransformTest extends HackTestCase {
       ),
       tuple(
         varray['the', 'quick', 'brown', 'fox'],
-        fun('strlen'),
+        $s ==> Str\length($s),
         dict[
           'the' => 3,
           'quick' => 5,
@@ -351,7 +351,7 @@ final class DictTransformTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'},
-        fun('strlen'),
+        $s ==> Str\length($s),
         dict[
           3 => 'dog',
           5 => 'brown',
@@ -388,7 +388,7 @@ final class DictTransformTest extends HackTestCase {
     return varray[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'],
-        fun('strlen'),
+        $s ==> Str\length($s),
         dict[
           3 => vec['the', 'fox', 'the', 'dog'],
           5 => vec['quick', 'brown'],
@@ -400,7 +400,7 @@ final class DictTransformTest extends HackTestCase {
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'],
         ),
-        $x ==> strlen($x) % 2 === 1 ? strlen($x) : null,
+        $x ==> Str\length($x) % 2 === 1 ? Str\length($x) : null,
         dict[
           3 => vec['the', 'fox', 'the', 'dog'],
           5 => vec['quick', 'brown'],
@@ -514,7 +514,7 @@ final class DictTransformTest extends HackTestCase {
           'lazy' => 'lazy',
           'dog' => 'dog',
         ],
-        fun('strlen'),
+        $s ==> Str\length($s),
         dict[
           3 => 'dog',
           5 => 'jumps',
@@ -601,7 +601,7 @@ final class DictTransformTest extends HackTestCase {
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
         $x ==> $x,
-        fun('strlen'),
+        $s ==> Str\length($s),
         dict[
           3 => 'fox',
           5 => 'brown',

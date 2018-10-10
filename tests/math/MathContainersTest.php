@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\Math;
+use namespace HH\Lib\{Math, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTestCase; // @oss-enable
 
@@ -51,14 +51,14 @@ final class MathContainersTest extends HackTestCase {
       ),
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
-        fun('strlen'),
+        $s ==> Str\length($s),
         'brown',
       ),
       tuple(
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox'],
         ),
-        fun('strlen'),
+        $s ==> Str\length($s),
         'brown',
       ),
     ];
@@ -159,14 +159,14 @@ final class MathContainersTest extends HackTestCase {
       ),
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
-        fun('strlen'),
+        $s ==> Str\length($s),
         'fox',
       ),
       tuple(
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox'],
         ),
-        fun('strlen'),
+        $s ==> Str\length($s),
         'fox',
       ),
     ];

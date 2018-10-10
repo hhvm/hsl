@@ -70,7 +70,7 @@ final class DictAsyncTest extends HackTestCase {
     return varray[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        async ($word) ==> strlen($word),
+        async ($word) ==> Str\length($word),
         dict[
           'the' => 3,
           'quick' => 5,
@@ -82,7 +82,7 @@ final class DictAsyncTest extends HackTestCase {
         HackLibTestTraversables::getIterator(
           varray['the', 'quick', 'brown', 'fox'],
         ),
-        async ($word) ==> strlen($word),
+        async ($word) ==> Str\length($word),
         dict[
           'the' => 3,
           'quick' => 5,
@@ -132,7 +132,7 @@ final class DictAsyncTest extends HackTestCase {
           6 => 'six',
           8 => 'eight',
         ],
-        async ($word) ==> strlen($word) % 2 === 1,
+        async ($word) ==> Str\length($word) % 2 === 1,
         dict[
           2 => 'two',
           6 => 'six',
@@ -146,7 +146,7 @@ final class DictAsyncTest extends HackTestCase {
           6 => 'six',
           '8' => 'eight',
         ],
-        async ($word) ==> strlen($word) % 2 === 1,
+        async ($word) ==> Str\length($word) % 2 === 1,
         dict[
           '2' => 'two',
           6 => 'six',
@@ -155,7 +155,7 @@ final class DictAsyncTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox', 'jumped', 'over'},
-        async ($word) ==> strlen($word) % 2 === 0,
+        async ($word) ==> Str\length($word) % 2 === 0,
         dict[
           4 => 'jumped',
           5 => 'over',

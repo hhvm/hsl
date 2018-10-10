@@ -66,12 +66,12 @@ final class VecAsyncTest extends HackTestCase {
           6 => 'six',
           8 => 'eight',
         ],
-        async ($word) ==> strlen($word) % 2 === 1,
+        async ($word) ==> Str\length($word) % 2 === 1,
         vec['two', 'six', 'eight'],
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox', 'jumped', 'over'},
-        async ($word) ==> strlen($word) % 2 === 0,
+        async ($word) ==> Str\length($word) % 2 === 0,
         vec['jumped', 'over'],
       ),
     ];
