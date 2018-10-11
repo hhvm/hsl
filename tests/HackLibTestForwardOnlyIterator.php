@@ -39,7 +39,7 @@ implements Iterator<Tv>, KeyedIterator<Tk, Tv> {
   }
 
   public function valid(): bool {
-    return array_key_exists($this->keyIdx, $this->keys);
+    return C\contains_key($this->keys, $this->keyIdx);
   }
 
   public function next(): void {

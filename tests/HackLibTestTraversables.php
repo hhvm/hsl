@@ -24,7 +24,7 @@ abstract final class HackLibTestTraversables {
       $dict[$i] = $v;
       $i++;
     }
-    return new HackLibTestForwardOnlyIterator($dict);;
+    return new HackLibTestForwardOnlyIterator($dict);
   }
 
   // For testing functions that accept KeyedTraversables

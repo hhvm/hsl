@@ -119,45 +119,44 @@ final class VecOrderTest extends HackTestCase {
     expect(Vec\reverse($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestShuffle(): varray<mixed> {
+  public static function provideTestShuffle(): varray<varray<(function(): Traversable<int>)>> {
     return varray[
-      tuple(
-        vec[8, 6, 7, 5, 3, 0, 9],
-        vec[0, 3, 5, 6, 7, 8, 9],
-      ),
-      tuple(
-        HackLibTestTraversables::getIterator(varray[8, 6, 7, 5, 3, 0, 9]),
-        vec[0, 3, 5, 6, 7, 8, 9],
-      ),
+      varray[
+        () ==> vec[8, 6, 7, 5, 3, 0, 9],
+      ],
+      varray[
+        () ==> vec[0, 1, 2, 4, 5, 6, 7],
+      ],
+      varray[
+        () ==> HackLibTestTraversables::getIterator(varray[8, 6, 7, 5, 3, 0, 9]),
+      ],
     ];
   }
 
   <<DataProvider('provideTestShuffle')>>
-  public function testShuffle<Tv>(
-    Traversable<Tv> $traversable,
-    vec<Tv> $expected,
+  public function testShuffle(
+    (function(): Traversable<int>) $input,
   ): void {
-    if (!class_exists('FlibAutoloadMap')) {
-      // UNSAFE_BLOCK (internal PHPUnit uses static::, OSS uses $this->)
-      $this->markTestSkipped(
-        "Mocking is not supported externally",
-      );
-      return;
-    }
+    for ($i = 0; $i < 1000; $i++) {
+      $shuffled1 = Vec\shuffle($input());
+      $shuffled2 = Vec\shuffle($input());
+      $vec_input = vec($input());
 
-    try {
-      {
-        // UNSAFE_BLOCK: flib IntegrationTest doesn't exist in open source
-        \IntegrationTest::mockFunctionStatic(fun('shuffle'))
-          ->mockImplementation(fun('sort'));
+      expect(Vec\sort($shuffled1))->toBeSame(Vec\sort($vec_input));
+      expect(Vec\sort($shuffled2))->toBeSame(Vec\sort($vec_input));
+
+      // There is a chance that even if we shuffle we get the same thing twice.
+      // That is ok but if we try 1000 times we should get different things.
+      if (
+        $shuffled1 !== $shuffled2 &&
+        $shuffled1 !== $vec_input &&
+        $shuffled2 !== $vec_input
+      ) {
+        return;
       }
-
-      $shuffled = Vec\shuffle($traversable);
-      expect($shuffled)->toBeSame($expected);
-    } finally {
-      // UNSAFE_BLOCK: flib IntegrationTest doesn't exist in open source
-      \IntegrationTest::unmockFunctionStatic(fun('shuffle'));
     }
+
+    self::fail('We shuffled 1000 times and the value never changed');
   }
 
   public static function provideTestSort(): varray<mixed> {

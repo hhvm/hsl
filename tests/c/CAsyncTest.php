@@ -16,7 +16,8 @@ use type Facebook\HackTest\HackTestCase; // @oss-enable
 <<Oncalls('hack')>>
 final class CAsyncTest extends HackTestCase {
 
-  public static function provideTestGenFirst(): varray<mixed> {
+  public static function provideTestGenFirst(
+  ): varray<(Awaitable<Traversable<mixed>>, mixed)> {
     return varray[
       tuple(
         async {
@@ -54,17 +55,12 @@ final class CAsyncTest extends HackTestCase {
     });
   }
 
-  public static function provideTestGenFirstx(): varray<mixed> {
+  public static function provideTestGenFirstx(
+  ): varray<(Awaitable<Traversable<mixed>>, mixed)> {
     return varray[
       tuple(
         async {
-          return varray[];
-        },
-        InvariantException::class,
-      ),
-      tuple(
-        async {
-          return HackLibTestTraversables::getIterator(range(1, 5));
+          return HackLibTestTraversables::getIterator(Vec\range(1, 5));
         },
         1,
       ),
@@ -83,18 +79,37 @@ final class CAsyncTest extends HackTestCase {
   <<DataProvider('provideTestGenFirstx')>>
   public function testFirstxAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
-    mixed $expected,
+    T $expected,
   ): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
-      if (is_subclass_of($expected, Exception::class)) {
-        expect(
-          async () ==> await C\firstx_async($awaitable),
-        )->toThrow(/* UNSAFE_EXPR */ $expected);
-      } else {
-        $actual = await C\firstx_async($awaitable);
-        expect($actual)->toBeSame($expected);
-      }
+      $actual = await C\firstx_async($awaitable);
+      expect($actual)->toBeSame($expected);
+    });
+  }
+
+  public static function provideTestGenFirstxException<T>(
+  ): varray<(Awaitable<Traversable<T>>, classname<Exception>)> {
+    return varray[
+      tuple(
+        async {
+          return varray[];
+        },
+        InvariantException::class,
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestGenFirstxException')>>
+  public function testFirstxExceptionAsync<T>(
+    Awaitable<Traversable<T>> $awaitable,
+    classname<Exception> $expected,
+  ): void {
+    /* HH_IGNORE_ERROR[5542] open source */
+    \HH\Asio\join(async {
+      expect(
+        async () ==> await C\firstx_async($awaitable),
+      )->toThrow($expected);
     });
   }
 }

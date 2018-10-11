@@ -109,10 +109,6 @@ final class CSelectTest extends HackTestCase {
   public static function provideTestFirstx(): varray<mixed> {
     return varray[
       tuple(
-        varray[],
-        InvariantException::class,
-      ),
-      tuple(
         HackLibTestTraversables::getIterator(range(1, 5)),
         1,
       ),
@@ -131,15 +127,30 @@ final class CSelectTest extends HackTestCase {
     Traversable<T> $traversable,
     mixed $expected,
   ): void {
-    if (is_subclass_of($expected, Exception::class)) {
-      expect(() ==> C\firstx($traversable))
-        ->toThrow(/* UNSAFE_EXPR */ $expected);
-    } else {
-      expect(C\firstx($traversable))->toBeSame($expected);
-    }
+    expect(C\firstx($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestFirstKey(): varray<mixed> {
+  public static function provideTestFirstxException<T>(
+  ): varray<(Traversable<T>, classname<Exception>)> {
+    return varray[
+      tuple(
+        varray[],
+        InvariantException::class,
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestFirstxException')>>
+  public function testFirstxException<T>(
+    Traversable<T> $traversable,
+    classname<Exception> $expected,
+  ): void {
+    expect(() ==> C\firstx($traversable))
+      ->toThrow($expected);
+  }
+
+  public static function provideTestFirstKey(
+  ): varray<(KeyedTraversable<arraykey, mixed>, ?arraykey)> {
     return varray[
       tuple(
         varray[],
@@ -199,12 +210,9 @@ final class CSelectTest extends HackTestCase {
     expect(C\first_key($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestFirstKeyx(): varray<mixed> {
+  public static function provideTestFirstKeyx(
+  ): varray<(KeyedTraversable<arraykey, mixed>, arraykey)> {
     return varray[
-      tuple(
-        varray[],
-        InvariantException::class,
-      ),
       tuple(
         darray[1 => null],
         1,
@@ -216,10 +224,6 @@ final class CSelectTest extends HackTestCase {
       tuple(
         range(3, 10),
         0,
-      ),
-      tuple(
-        Map {},
-        InvariantException::class,
       ),
       tuple(
         Map {1 => null},
@@ -244,6 +248,28 @@ final class CSelectTest extends HackTestCase {
         ]),
         'foo',
       ),
+    ];
+  }
+
+  <<DataProvider('provideTestFirstKeyx')>>
+  public function testFirstKeyx<Tk, Tv>(
+    KeyedTraversable<Tk, Tv> $traversable,
+    Tk $expected,
+  ): void {
+    expect(C\first_keyx($traversable))->toBeSame($expected);
+  }
+
+  public static function provideTestFirstKeyxException(
+  ): varray<(KeyedTraversable<arraykey, mixed>, classname<Exception>)> {
+    return varray[
+      tuple(
+        varray[],
+        InvariantException::class,
+      ),
+      tuple(
+        Map {},
+        InvariantException::class,
+      ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(varray[]),
         InvariantException::class,
@@ -251,20 +277,17 @@ final class CSelectTest extends HackTestCase {
     ];
   }
 
-  <<DataProvider('provideTestFirstKeyx')>>
-  public function testFirstKeyx<Tk, Tv>(
+  <<DataProvider('provideTestFirstKeyxException')>>
+  public function testFirstKeyxException<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    mixed $expected,
+    classname<Exception> $expected,
   ): void {
-    if (is_subclass_of($expected, Exception::class)) {
-      expect(() ==> C\first_keyx($traversable))
-        ->toThrow(/* UNSAFE_EXPR */ $expected);
-    } else {
-      expect(C\first_keyx($traversable))->toBeSame($expected);
-    }
+    expect(() ==> C\first_keyx($traversable))
+      ->toThrow($expected);
   }
 
-  public static function provideTestLast(): varray<mixed> {
+  public static function provideTestLast(
+  ): varray<(Traversable<mixed>, mixed)> {
     return varray[
       tuple(
         varray[],
@@ -337,12 +360,9 @@ final class CSelectTest extends HackTestCase {
     expect(C\last($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestLastx(): varray<mixed> {
+  public static function provideTestLastx(
+  ): varray<(Traversable<mixed>, mixed)> {
     return varray[
-      tuple(
-        varray[],
-        InvariantException::class,
-      ),
       tuple(
         varray[null],
         null,
@@ -350,10 +370,6 @@ final class CSelectTest extends HackTestCase {
       tuple(
         range(1, 11),
         11,
-      ),
-      tuple(
-        Map {},
-        InvariantException::class,
       ),
       tuple(
         Map {0 => null},
@@ -388,10 +404,6 @@ final class CSelectTest extends HackTestCase {
         5,
       ),
       tuple(
-        HackLibTestTraversables::getIterator(varray[]),
-        InvariantException::class,
-      ),
-      tuple(
         HackLibTestTraversables::getIterator(varray[null]),
         null,
       ),
@@ -405,17 +417,40 @@ final class CSelectTest extends HackTestCase {
   <<DataProvider('provideTestLastx')>>
   public function testLastx<Tv>(
     Traversable<Tv> $traversable,
-    mixed $expected,
+    Tv $expected,
   ): void {
-    if (is_subclass_of($expected, Exception::class)) {
-      expect(() ==> C\lastx($traversable))
-        ->toThrow(/* UNSAFE_EXPR */ $expected);
-    } else {
-      expect(C\lastx($traversable))->toBeSame($expected);
-    }
+    expect(C\lastx($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestLastKey(): varray<mixed> {
+  public static function provideTestLastxException(
+  ): varray<(Traversable<mixed>, classname<Exception>)> {
+    return varray[
+      tuple(
+        varray[],
+        InvariantException::class,
+      ),
+      tuple(
+        Map {},
+        InvariantException::class,
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(varray[]),
+        InvariantException::class,
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestLastxException')>>
+  public function testLastxException<Tv>(
+    Traversable<Tv> $traversable,
+    classname<Exception> $expected,
+  ): void {
+    expect(() ==> C\lastx($traversable))
+      ->toThrow($expected);
+  }
+
+  public static function provideTestLastKey(
+  ): varray<(KeyedTraversable<arraykey, mixed>, ?arraykey)> {
     return varray[
       tuple(
         varray[],
@@ -484,12 +519,9 @@ final class CSelectTest extends HackTestCase {
     expect(C\last_key($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestLastKeyx(): varray<mixed> {
+  public static function provideTestLastKeyx(
+  ): varray<(KeyedTraversable<arraykey, mixed>, arraykey)> {
     return varray[
-      tuple(
-        varray[],
-        InvariantException::class,
-      ),
       tuple(
         darray['' => null],
         '',
@@ -501,10 +533,6 @@ final class CSelectTest extends HackTestCase {
       tuple(
         range(1, 5),
         4,
-      ),
-      tuple(
-        Map {},
-        InvariantException::class,
       ),
       tuple(
         Vector {1, 2},
@@ -535,10 +563,6 @@ final class CSelectTest extends HackTestCase {
         4,
       ),
       tuple(
-        HackLibTestTraversables::getKeyedIterator(varray[]),
-        InvariantException::class,
-      ),
-      tuple(
         HackLibTestTraversables::getKeyedIterator(darray['' => null]),
         '',
       ),
@@ -550,15 +574,38 @@ final class CSelectTest extends HackTestCase {
     KeyedTraversable<Tk, Tv> $traversable,
     mixed $expected,
   ): void {
-    if (is_subclass_of($expected, Exception::class)) {
-      expect(() ==> C\last_keyx($traversable))
-        ->toThrow(/* UNSAFE_EXPR */ $expected);
-    } else {
-      expect(C\last_keyx($traversable))->toBeSame($expected);
-    }
+    expect(C\last_keyx($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestNfirst(): varray<mixed> {
+  public static function provideTestLastKeyxException(
+  ): varray<(KeyedTraversable<arraykey, mixed>, classname<Exception>)> {
+    return varray[
+      tuple(
+        varray[],
+        InvariantException::class,
+      ),
+      tuple(
+        Map {},
+        InvariantException::class,
+      ),
+      tuple(
+        HackLibTestTraversables::getKeyedIterator(varray[]),
+        InvariantException::class,
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestLastKeyxException')>>
+  public function testLastKeyxException<Tk, Tv>(
+    KeyedTraversable<Tk, Tv> $traversable,
+    classname<Exception> $expected,
+  ): void {
+    expect(() ==> C\last_keyx($traversable))
+      ->toThrow($expected);
+  }
+
+  public static function provideTestNfirst(
+  ): varray<(?Traversable<mixed>, mixed)> {
     return varray[
       tuple(
         null,
@@ -590,26 +637,12 @@ final class CSelectTest extends HackTestCase {
     expect(C\nfirst($traversable))->toBeSame($expected);
   }
 
-  public static function provideTestOnlyx(): varray<mixed> {
+  public static function provideTestOnlyx(
+  ): varray<(Traversable<mixed>, mixed)> {
     return varray[
-      tuple(
-        varray[],
-        InvariantException::class,
-      ),
       tuple(
         vec[1],
         1,
-      ),
-      tuple(
-        HackLibTestTraversables::getIterator(range(1, 5)),
-        InvariantException::class,
-      ),
-      tuple(
-        dict[
-          '5' => '10',
-          '10' => '20',
-        ],
-        InvariantException::class,
       ),
       tuple(
         dict[
@@ -625,12 +658,37 @@ final class CSelectTest extends HackTestCase {
     Traversable<T> $traversable,
     mixed $expected,
   ): void {
-    if (is_subclass_of($expected, Exception::class)) {
-      expect(() ==> C\onlyx($traversable))
-        ->toThrow(/* UNSAFE_EXPR */ $expected);
-    } else {
-      expect(C\onlyx($traversable))->toBeSame($expected);
-    }
+    expect(C\onlyx($traversable))->toBeSame($expected);
+  }
+
+  public static function provideTestOnlyxException(
+  ): varray<(Traversable<mixed>, classname<Exception>)> {
+    return varray[
+      tuple(
+        varray[],
+        InvariantException::class,
+      ),
+      tuple(
+        HackLibTestTraversables::getIterator(range(1, 5)),
+        InvariantException::class,
+      ),
+      tuple(
+        dict[
+          '5' => '10',
+          '10' => '20',
+        ],
+        InvariantException::class,
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestOnlyxException')>>
+  public function testOnlyxException<T>(
+    Traversable<T> $traversable,
+    classname<Exception> $expected,
+  ): void {
+    expect(() ==> C\onlyx($traversable))
+      ->toThrow($expected);
   }
 
   public function testOnlyxWithCustomMessage<T>(): void {
