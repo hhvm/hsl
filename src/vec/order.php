@@ -24,7 +24,7 @@ function range<Tv as num>(
   Tv $end,
   ?Tv $step = null,
 ): vec<Tv> {
-  $step = $step ?? 1;
+  $step ??= 1;
   invariant($step > 0, 'Expected positive step.');
   if ($step > Math\abs($end - $start)) {
     return vec[$start];
