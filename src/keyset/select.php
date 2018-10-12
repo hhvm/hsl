@@ -71,7 +71,7 @@ function filter<Tv as arraykey>(
   <<__AtMostRxAsFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): keyset<Tv> {
-  $value_predicate = $value_predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
+  $value_predicate ??= fun('\\HH\\Lib\\_Private\\boolval');
   $result = keyset[];
   foreach ($traversable as $value) {
     if ($value_predicate($value)) {
