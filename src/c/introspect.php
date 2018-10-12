@@ -28,7 +28,7 @@ function any<T>(
   <<__AtMostRxAsFunc>>
   ?(function(T): bool) $predicate = null,
 ): bool {
-  $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
+  $predicate ??= fun('\\HH\\Lib\\_Private\\boolval');
   foreach ($traversable as $value) {
     if ($predicate($value)) {
       return true;
@@ -93,7 +93,7 @@ function every<T>(
   <<__AtMostRxAsFunc>>
   ?(function(T): bool) $predicate = null,
 ): bool {
-  $predicate = $predicate ?? fun('\\HH\\Lib\\_Private\\boolval');
+  $predicate ??= fun('\\HH\\Lib\\_Private\\boolval');
   foreach ($traversable as $value) {
     if (!$predicate($value)) {
       return false;
