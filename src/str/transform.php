@@ -148,7 +148,7 @@ function repeat(
 }
 
 /**
- * Returns the "haystack" string with all occurences of `$needle` replaced by
+ * Returns the "haystack" string with all occurrences of `$needle` replaced by
  * `$replacement`.
  *
  * - For a case-insensitive search/replace, see `Str\replace_ci()`.
@@ -167,7 +167,7 @@ function replace(
 }
 
 /**
- * Returns the "haystack" string with all occurences of `$needle` replaced by
+ * Returns the "haystack" string with all occurrences of `$needle` replaced by
  * `$replacement` (case-insensitive).
  *
  * - For a case-sensitive search/replace, see `Str\replace()`.
@@ -186,7 +186,7 @@ function replace_ci(
 }
 
 /**
- * Returns the "haystack" string with all occurences of the keys of
+ * Returns the "haystack" string with all occurrences of the keys of
  * `$replacements` replaced by the corresponding values.
  *
  * For a single search/replace, see `Str\replace()`.
