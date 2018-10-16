@@ -8,6 +8,8 @@
  *
  */
 
+use namespace HH\Lib\C;
+
 /**
  * Iterator that implements the same behavior as generators when
  * Hack.Lang.AutoprimeGenerators is false

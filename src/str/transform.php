@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Str;
 
-use namespace HH\Lib\_Private;
+use namespace HH\Lib\{_Private, Str};
 
 /**
  * Returns the string with the first character capitalized.
