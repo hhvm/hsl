@@ -12,7 +12,7 @@
     "hhvm/hacktest": "^0.2"
   },
   "require": {
-    "hhvm": "^3.28.0",
+    "hhvm": "^3.29.0",
     "hhvm/hhvm-autoload": "^1.4"
   }
 }
