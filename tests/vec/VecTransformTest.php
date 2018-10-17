@@ -11,7 +11,7 @@
 use namespace HH\Lib\{Str, Vec};
 use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
-use type Facebook\HackTest\HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 
 <<Oncalls('hack')>>
 final class VecTransformTest extends HackTestCase {
