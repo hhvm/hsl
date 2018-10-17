@@ -10,7 +10,7 @@
 
 use namespace HH\Lib\{C, Vec};
 use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 <<Oncalls('hack')>>

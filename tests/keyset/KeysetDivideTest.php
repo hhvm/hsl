@@ -10,7 +10,7 @@
 
 use namespace HH\Lib\Keyset;
 use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 
 <<Oncalls('hack')>>
 final class KeysetDivideTest extends HackTestCase {
