@@ -214,7 +214,7 @@ function reverse(
   string $string,
 ): string {
   $lo = 0;
-  $hi = Str\length($string) - 1;
+  $hi = namespace\length($string) - 1;
   while ($lo < $hi) {
     $temp = $string[$lo];
     $string[$lo++] = $string[$hi];
