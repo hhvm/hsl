@@ -159,16 +159,16 @@
         },
         {
             "name": "hhvm/hacktest",
-            "version": "v1.1",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hhvm/hacktest.git",
-                "reference": "9e851bfe5abc569cdef595664499bfa2f7982d35"
+                "reference": "d83f09283dd60a8001807654afd2de67d8a26cc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hhvm/hacktest/zipball/9e851bfe5abc569cdef595664499bfa2f7982d35",
-                "reference": "9e851bfe5abc569cdef595664499bfa2f7982d35",
+                "url": "https://api.github.com/repos/hhvm/hacktest/zipball/d83f09283dd60a8001807654afd2de67d8a26cc3",
+                "reference": "d83f09283dd60a8001807654afd2de67d8a26cc3",
                 "shasum": ""
             },
             "require": {
@@ -179,10 +179,8 @@
                 "hhvm/type-assert": "^3.2"
             },
             "require-dev": {
-                "91carriage/phpunit-hhi": "^5.7",
-                "facebook/fbexpect": "^1.0.0",
-                "hhvm/hhast": "^3.27",
-                "phpunit/phpunit": "^5.7"
+                "facebook/fbexpect": "^2.0.0",
+                "hhvm/hhast": "^3.27"
             },
             "bin": [
                 "bin/hacktest"
@@ -193,7 +191,7 @@
                 "MIT"
             ],
             "description": "The Hack Test Library",
-            "time": "2018-09-25T23:16:10+00:00"
+            "time": "2018-10-17T22:18:04+00:00"
         },
         {
             "name": "hhvm/type-assert",

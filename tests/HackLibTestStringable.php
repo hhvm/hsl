@@ -8,7 +8,7 @@
  *
  */
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class HackLibTestStringable {
   public function __construct(
     private string $data,
