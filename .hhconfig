@@ -4,3 +4,4 @@ safe_array = true
 safe_vector_array = true
 unsafe_rx = false
 ignored_paths = [ "vendor/.+/tests/.+" ]
+user_attributes=

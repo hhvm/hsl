@@ -10,9 +10,10 @@
 
 use namespace HH\Lib\{Dict, Str};
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\DataProvider; // @oss-enable
 use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class DictOrderTest extends HackTestCase {
 
   public static function provideTestReverse(): varray<mixed> {

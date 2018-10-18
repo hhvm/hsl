@@ -11,6 +11,7 @@
 use namespace HH\Lib\{Math, Str};
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
 use function Facebook\FBExpect\expect;
+use type Facebook\HackTest\DataProvider; // @oss-enable
 use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
@@ -18,7 +19,7 @@ use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 // our usual trivial wrapper isn't available in open source.
 use function md5 as non_crypto_md5;
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class MathComputeTest extends HackTestCase {
   public static function provideTestAbs(): varray<mixed> {
     return varray[

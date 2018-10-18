@@ -13,7 +13,7 @@ use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class MathConstantsTest extends HackTestCase {
   public function testInt64Min(): void {
     expect(Math\INT64_MIN)->toBeLessThan(0);
