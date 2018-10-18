@@ -4,3 +4,6 @@ safe_array = true
 safe_vector_array = true
 unsafe_rx = false
 ignored_paths = [ "vendor/.+/tests/.+" ]
+user_attributes=
+disable_primitive_refinement=true
+disallow_stringish_magic=true

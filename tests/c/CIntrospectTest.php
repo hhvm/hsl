@@ -10,9 +10,10 @@
 
 use namespace HH\Lib\C;
 use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTestCase; // @oss-enable
+use type Facebook\HackTest\DataProvider; // @oss-enable
+use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class CIntrospectTest extends HackTestCase {
 
   public static function provideTestAny(): varray<mixed> {

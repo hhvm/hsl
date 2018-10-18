@@ -10,9 +10,10 @@
 
 use namespace HH\Lib\Math;
 use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTestCase; // @oss-enable
+use type Facebook\HackTest\DataProvider; // @oss-enable
+use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class MathCompareTest extends HackTestCase {
 
   public static function provideTestMaxva(): varray<mixed> {

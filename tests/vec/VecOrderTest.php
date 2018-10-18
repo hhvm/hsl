@@ -10,10 +10,11 @@
 
 use namespace HH\Lib\{C, Math, Str, Vec};
 use function \Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTestCase; // @oss-enable
+use type Facebook\HackTest\DataProvider; // @oss-enable
+use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
-<<Oncalls('hack')>>
+// @oss-disable: <<Oncalls('hack')>>
 final class VecOrderTest extends HackTestCase {
 
   public static function provideTestRange(): varray<mixed> {
