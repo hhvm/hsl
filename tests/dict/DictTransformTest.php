@@ -524,7 +524,7 @@ final class DictTransformTest extends HackTestCase {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
-        fun('strval'),
+        $k ==> (string)$k,
         dict[
           '0' => 'the',
           '1' => 'quick',
@@ -613,7 +613,7 @@ final class DictTransformTest extends HackTestCase {
           varray[1, 3, 5, 7, 9],
         ),
         ($v) ==> $v * $v,
-        fun('strval'),
+        $k ==> (string)$k,
         dict[
           '1' => 1,
           '3' => 9,
