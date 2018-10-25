@@ -40,7 +40,7 @@ function chunk<Tk as arraykey, Tv>(
  * Returns a new dict mapping each value to the number of times it appears
  * in the given Traversable.
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__RxShallow, __AtMostRxAsArgs>>
 function count_values<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
