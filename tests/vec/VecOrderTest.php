@@ -11,11 +11,11 @@
 use namespace HH\Lib\{C, Math, Str, Vec};
 use function \Facebook\FBExpect\expect;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 // @oss-disable: <<Oncalls('hack')>>
-final class VecOrderTest extends HackTestCase {
+final class VecOrderTest extends HackTest {
 
   public static function provideTestRange(): varray<mixed> {
     return varray[

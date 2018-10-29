@@ -11,10 +11,10 @@
 use namespace HH\Lib\{Keyset, Str};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class KeysetOrderTest extends HackTestCase {
+final class KeysetOrderTest extends HackTest {
 
   public static function provideSort(): varray<mixed> {
     return varray[

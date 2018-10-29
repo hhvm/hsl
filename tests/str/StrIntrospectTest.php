@@ -12,10 +12,10 @@ use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class StrIntrospectTest extends HackTestCase {
+final class StrIntrospectTest extends HackTest {
 
   public static function provideCompare(): varray<mixed> {
     return varray[

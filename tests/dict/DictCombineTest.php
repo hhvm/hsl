@@ -11,10 +11,10 @@
 use namespace HH\Lib\Dict;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class DictCombineTest extends HackTestCase {
+final class DictCombineTest extends HackTest {
 
   public static function provideTestAssociate(): varray<mixed> {
     return varray[

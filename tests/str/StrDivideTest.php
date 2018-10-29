@@ -11,10 +11,10 @@
 use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class StrDivideTest extends HackTestCase {
+final class StrDivideTest extends HackTest {
 
   public static function provideChunk(): varray<mixed> {
     return varray[
