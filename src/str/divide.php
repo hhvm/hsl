@@ -21,6 +21,8 @@ function chunk(
   int $chunk_size = 1,
 ): vec<string> {
   invariant($chunk_size >= 1, 'Expected positive chunk size.');
+  /* HH_FIXME[2049] We are allowed to use PHP Stardard library functions */
+  /* HH_FIXME[4107] We are allowed to use PHP Stardard library functions */
   return vec(\str_split($string, $chunk_size));
 }
 

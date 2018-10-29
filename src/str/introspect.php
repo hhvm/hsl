@@ -236,6 +236,8 @@ function search_last(
     $offset >= -$haystack_length && $offset <= $haystack_length,
     'Offset is out-of-bounds.',
   );
+  /* HH_FIXME[2049] We are allowed to use PHP Stardard library functions */
+  /* HH_FIXME[4107] We are allowed to use PHP Stardard library functions */
   $position = \strrpos($haystack, $needle, $offset);
   if ($position === false) {
     return null;
