@@ -11,10 +11,10 @@
 use namespace HH\Lib\{C, Math, Str, Vec};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class VecSelectTest extends HackTestCase {
+final class VecSelectTest extends HackTest {
 
   public static function provideTestDiff(): varray<mixed> {
     return varray[

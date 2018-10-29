@@ -10,10 +10,10 @@
 
 use namespace HH\Lib\Tuple as Tuple;
 use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class TupleAsyncTest extends HackTestCase {
+final class TupleAsyncTest extends HackTest {
   public function testWithNonNullableTypes(): void {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {

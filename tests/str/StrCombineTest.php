@@ -11,10 +11,10 @@
 use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest as HackTestCase; // @oss-enable
+use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
-final class StrCombineTest extends HackTestCase {
+final class StrCombineTest extends HackTest {
 
   public static function provideJoin(): varray<mixed> {
     $elements = varray['the', 'quick', 'brown', 'fox', 1];
