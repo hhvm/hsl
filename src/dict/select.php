@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Dict;
 
+use namespace HH\Lib\C;
+
 /**
  * Returns a new dict containing only the entries of the first KeyedTraversable
  * whose keys do not appear in any of the other ones.
@@ -28,7 +30,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   $union = merge($second, ...$rest);
   return filter_keys(
     $first,
-    <<__Rx>> $key ==> !\array_key_exists($key, $union),
+    <<__Rx>> $key ==> !C\contains_key($union, $key),
   );
 }
 
@@ -155,7 +157,7 @@ function select_keys<Tk as arraykey, Tv>(
 ): dict<Tk, Tv> {
   $result = dict[];
   foreach ($keys as $key) {
-    if (\array_key_exists($key, $container)) {
+    if (C\contains_key($container, $key)) {
       $result[$key] = $container[$key];
     }
   }

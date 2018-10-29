@@ -196,9 +196,7 @@ function group_by<Tk as arraykey, Tv>(
     if ($key === null) {
       continue;
     }
-    if (!\array_key_exists($key, $result)) {
-      $result[$key] = vec[];
-    }
+    $result[$key] ??= vec[];
     $result[$key][] = $value;
   }
   return $result;

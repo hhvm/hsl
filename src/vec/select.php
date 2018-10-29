@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Vec;
 
-use namespace HH\Lib\{Dict, Keyset};
+use namespace HH\Lib\{C, Dict, Keyset};
 
 /**
  * Returns a new vec containing only the elements of the first Traversable that
@@ -34,7 +34,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
     : Keyset\union($second, ...$rest);
   return filter(
     $first,
-    <<__Rx>> ($value) ==> !\array_key_exists($value, $union),
+    <<__Rx>> ($value) ==> !C\contains_key($union, $value),
   );
 }
 
@@ -63,7 +63,7 @@ function diff_by<Tv, Ts as arraykey>(
   $set = Keyset\map($second, $scalar_func);
   return filter(
     $first,
-    <<__RxOfScope>> ($value) ==> !\array_key_exists($scalar_func($value), $set),
+    <<__RxOfScope>> ($value) ==> !C\contains_key($set, $scalar_func($value)),
   );
 }
 
@@ -172,7 +172,7 @@ function intersect<Tv as arraykey>(
   }
   return filter(
     $first,
-    <<__Rx>> ($value) ==> \array_key_exists($value, $intersection),
+    <<__Rx>> ($value) ==> C\contains_key($intersection, $value),
   );
 }
 

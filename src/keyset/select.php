@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Keyset;
 
+use namespace HH\Lib\C;
+
 /**
  * Returns a new keyset containing only the elements of the first Traversable
  * that do not appear in any of the other ones.
@@ -30,7 +32,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
     : union($second, ...$rest);
   return filter(
     $first,
-    <<__Rx>> $value ==> !\array_key_exists($value, $union),
+    <<__Rx>> $value ==> !C\contains_key($union, $value),
   );
 }
 /**
@@ -154,7 +156,7 @@ function intersect<Tv as arraykey>(
   foreach ($rest as $traversable) {
     $next_intersection = keyset[];
     foreach ($traversable as $value) {
-      if (\array_key_exists($value, $intersection)) {
+      if (C\contains_key($intersection, $value)) {
         $next_intersection[] = $value;
       }
     }
