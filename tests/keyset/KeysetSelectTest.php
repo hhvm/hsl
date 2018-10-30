@@ -308,6 +308,15 @@ final class KeysetSelectTest extends HackTest {
         varray[],
         keyset[3, 4],
       ),
+      tuple(
+        vec[1, 2, 3, 4],
+        vec[1, 2, 3, 4],
+        vec[
+          vec[],
+          vec[1, 2, 3, 4],
+        ],
+        keyset[],
+      ),
     ];
   }
 

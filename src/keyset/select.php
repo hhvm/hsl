@@ -148,7 +148,7 @@ function intersect<Tv as arraykey>(
   Traversable<Tv> $second,
   Traversable<Tv> ...$rest
 ): keyset<Tv> {
-  if (!$second && !$rest) {
+  if (!$first || !$second) {
     return keyset[];
   }
   $intersection = keyset($first);
@@ -159,6 +159,9 @@ function intersect<Tv as arraykey>(
       if (C\contains_key($intersection, $value)) {
         $next_intersection[] = $value;
       }
+    }
+    if (!$next_intersection) {
+      return keyset[];
     }
     $intersection = $next_intersection;
   }
