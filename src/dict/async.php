@@ -47,8 +47,10 @@ async function from_keys_async<Tk as arraykey, Tv>(
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables = dict[];
   foreach ($keys as $key) {
-    /* HH_FIXME[4015] one of the few places it's OK to accumulate Awaitables */
-    $awaitables[$key] ??= $async_func($key);
+    if (!C\contains_key($awaitables, $key)) {
+      /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
+      $awaitables[$key] = $async_func($key);
+    }
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
   unset($keys);
