@@ -11,8 +11,7 @@
 use namespace HH\Lib\Str;
 use function Facebook\FBExpect\expect;
 // @oss-disable: use InvariantViolationException as InvariantException;
-use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest; // @oss-enable
+use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
 final class StrIntrospectTest extends HackTest {

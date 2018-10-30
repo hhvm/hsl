@@ -11,8 +11,7 @@
 use namespace HH\Lib\{Math, Str};
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
 use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\DataProvider; // @oss-enable
-use type Facebook\HackTest\HackTest; // @oss-enable
+use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 // FB likes to be explicit about md5() being unsuitable for crypto, and
