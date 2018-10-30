@@ -23,15 +23,15 @@ function associate<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 ): dict<Tk, Tv> {
-  $keys = vec($keys);
-  $values = vec($values);
+  $key_vec = vec($keys);
+  $value_vec = vec($values);
   invariant(
-    C\count($keys) === C\count($values),
+    C\count($key_vec) === C\count($value_vec),
     'Expected length of keys and values to be the same',
   );
   $result = dict[];
-  foreach ($keys as $idx => $key) {
-    $result[$key] = $values[$idx];
+  foreach ($key_vec as $idx => $key) {
+    $result[$key] = $value_vec[$idx];
   }
   return $result;
 }

@@ -15,19 +15,19 @@ async function from_async<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
-  $awaitables = vec($awaitables);
+  $vec = vec($awaitables);
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
-  await AwaitAllWaitHandle::fromVec($awaitables);
-  foreach ($awaitables as $index => $value) {
+  await AwaitAllWaitHandle::fromVec($vec);
+  foreach ($vec as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
-    $awaitables[$index] = \HH\Asio\result($value);
+    $vec[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-  return $awaitables;
+  return $vec;
 }
 
 /**
@@ -67,22 +67,22 @@ async function map_async<Tv1, Tv2>(
   <<__AtMostRxAsFunc>>
   (function(Tv1): Awaitable<Tv2>) $async_func,
 ): Awaitable<vec<Tv2>> {
-  $traversable = vec($traversable);
-  foreach ($traversable as $i => $value) {
+  $vec = vec($traversable);
+  foreach ($vec as $i => $value) {
     /* HH_FIXME[4110] Reuse traversable for AwaitAllWaitHandle */
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromVec is like await */
-    $traversable[$i] = $async_func($value);
+    $vec[$i] = $async_func($value);
   }
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
-  await AwaitAllWaitHandle::fromVec($traversable);
-  foreach ($traversable as $index => $value) {
+  await AwaitAllWaitHandle::fromVec($vec);
+  foreach ($vec as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
-    $traversable[$index] = \HH\Asio\result($value);
+    $vec[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-  return $traversable;
+  return $vec;
 }

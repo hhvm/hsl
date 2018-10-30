@@ -17,19 +17,19 @@ async function from_async<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
-  $awaitables = dict($awaitables);
+  $awaitables_ = dict($awaitables);
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
-  await AwaitAllWaitHandle::fromDict($awaitables);
-  foreach ($awaitables as $key => $value) {
+  await AwaitAllWaitHandle::fromDict($awaitables_);
+  foreach ($awaitables_ as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
-    $awaitables[$key] = \HH\Asio\result($value);
+    $awaitables_[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-  return $awaitables;
+  return $awaitables_;
 }
 
 /**
@@ -127,22 +127,22 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   <<__AtMostRxAsFunc>>
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {
-  $traversable = dict($traversable);
-  foreach ($traversable as $key => $value) {
+  $dict = dict($traversable);
+  foreach ($dict as $key => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
     /* HH_FIXME[4110] Reusing traversable for AwaitAllWaitHandle */
-    $traversable[$key] = $value_func($value);
+    $dict[$key] = $value_func($value);
   }
 
   /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
-  await AwaitAllWaitHandle::fromDict($traversable);
-  foreach ($traversable as $key => $value) {
+  await AwaitAllWaitHandle::fromDict($dict);
+  foreach ($dict as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
-    $traversable[$key] = \HH\Asio\result($value);
+    $dict[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-  return $traversable;
+  return $dict;
 }
