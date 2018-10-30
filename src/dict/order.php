@@ -75,11 +75,12 @@ function sort_by<Tk as arraykey, Tv, Ts>(
   ?(function(Ts, Ts): int) $scalar_comparator = null,
 ): dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
-    ? ($a, $b) ==> $scalar_comparator($a[0], $b[0])
-    : ($a, $b) ==> $a[0] <=> $b[0];
+    ? <<__RxOfScope>> ((Ts, Tv) $a, (Ts, Tv) $b) ==>
+      $scalar_comparator($a[0], $b[0])
+    /* HH_FIXME[4240] need Scalar type */
+    : (<<__Rx>>(Ts, Tv) $a, (Ts, Tv) $b) ==> $a[0] <=> $b[0];
   return $traversable
     |> map($$, <<__RxOfScope>> $v ==> tuple($scalar_func($v), $v))
-    /* HH_FIXME[4240] Ill-typed comparison (T28898787) */
     |> sort($$, $tuple_comparator)
     |> map($$, <<__Rx>> $t ==> $t[1]);
 }
