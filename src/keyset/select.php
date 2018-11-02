@@ -21,9 +21,11 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv2> $second,
   Traversable<Tv2> ...$rest
 ): keyset<Tv1> {
+  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return keyset[];
   }
+  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second && !$rest) {
     return keyset($first);
   }
@@ -148,6 +150,7 @@ function intersect<Tv as arraykey>(
   Traversable<Tv> $second,
   Traversable<Tv> ...$rest
 ): keyset<Tv> {
+  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first || !$second) {
     return keyset[];
   }
