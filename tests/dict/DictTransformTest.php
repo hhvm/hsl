@@ -491,9 +491,7 @@ final class DictTransformTest extends HackTest {
     dict<Tk, Tv2> $expected,
   ): void {
     expect(Dict\map($traversable, $func))->toBeSame($expected);
-    if (
-      ($traversable instanceof KeyedContainer && !maybe_is_set($traversable))
-    ) {
+    if ($traversable instanceof KeyedContainer) {
       // Note: this test might fail because of key-coercion,
       // but at the time of writing none of the cases in the
       // data-provider should experience this coercion.
