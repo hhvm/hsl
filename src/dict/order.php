@@ -47,6 +47,8 @@ function sort<Tk as arraykey, Tv>(
   if ($value_comparator) {
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \uasort(&$result, $value_comparator);
   } else {
     /* HH_FIXME[4200] is reactive */

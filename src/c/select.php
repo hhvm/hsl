@@ -146,6 +146,8 @@ function last<Tv>(
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[4276] this is an array */
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return $traversable ? \end(&$traversable) : null;
   } else if ($traversable instanceof Iterable) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
@@ -179,6 +181,8 @@ function lastx<Tv>(
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return \end(&$traversable);
   }
   // There is no way to directly check whether an Iterable is empty,
@@ -219,6 +223,8 @@ function last_key<Tk, Tv>(
     }
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \end(&$traversable);
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
