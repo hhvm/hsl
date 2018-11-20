@@ -46,24 +46,6 @@ function boolval(mixed $val): bool {
 
 // Stub implementations of FB internals used to ease migrations
 
-/* HH_IGNORE_ERROR[5520] FIXME violates FB naming conventions */
-final class StubPHPism_FIXME {
-  public static function isForeachable<T>(Traversable<T> $_): bool {
-    return true;
-  }
-}
-
-final class UniversalChainableStub {
-  public function __call(mixed $_, mixed $_): this {
-    return $this;
-  }
-}
-
-<<__Rx>>
-function universal_chainable_stub(mixed ...$_): UniversalChainableStub {
-  return new UniversalChainableStub();
-}
-
 <<__Rx>>
 function tuple_from_vec(mixed $x): mixed {
   // @oss-disable: invariant_violation("Use varray instead.");

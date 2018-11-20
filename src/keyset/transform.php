@@ -12,10 +12,6 @@ namespace HH\Lib\Keyset;
 
 use namespace HH\Lib\Math;
 
-// @oss-disable: use \PHPism_FIXME as PHPism_FIXME;
-use HH\Lib\_Private\StubPHPism_FIXME as PHPism_FIXME; // @oss-enable
-use function HH\Lib\_Private\universal_chainable_stub as FBLogger; // @oss-enable
-
 /**
  * Returns a vec containing the given Traversable split into chunks of the
  * given size.
