@@ -48,6 +48,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
   $awaitables = dict[];
   foreach ($keys as $key) {
     /* HH_FIXME[4015] one of the few places it's OK to accumulate Awaitables */
+    /* HH_FIXME[4248] non-awaited awaitable in rx context */
     $awaitables[$key] ??= $async_func($key);
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
