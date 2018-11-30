@@ -26,8 +26,6 @@ function main(vec<?int> $foo): vec<string> {
 }
 ```
 
-For a real-world example, see [bin/generate-docs.php](bin/generate-docs.php).
-
 ## Finding Functions
 
 Functions in the HSL are organized into namespaces according to the following
