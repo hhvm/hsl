@@ -52,3 +52,20 @@ function merge<Tk as arraykey, Tv>(
   }
   return $result;
 }
+
+/**
+ * Merges multiple KeyedTraversables into a new dict. In the case of duplicate
+ * keys, an exception will be thrown.
+ */
+function mergeDisjoint<Tk as arraykey, Tv>(
+  KeyedTraversable<Tk, Tv> $first,
+  KeyedTraversable<Tk, Tv> $second,
+): dict<Tk, Tv> {
+  $result = merge($first, $second);
+  invariant(
+    C\count(Keyset\keys($result)) ===
+      C\count(Keyset\keys($first)) + C\count(Keyset\keys($second)),
+    'duplicate key(s) during merge_disjoint',
+  );
+  return $result;
+}
