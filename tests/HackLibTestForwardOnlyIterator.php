@@ -18,10 +18,10 @@ final class HackLibTestForwardOnlyIterator<Tk as arraykey, Tv>
 implements Iterator<Tv>, KeyedIterator<Tk, Tv> {
   private bool $used = false;
   private int $keyIdx = 0;
-  private varray<Tk> $keys;
+  private vec<Tk> $keys;
 
   public function __construct(private dict<Tk, Tv> $data) {
-    $this->keys = array_keys($data);
+    $this->keys = Vec\keys($data);
   }
 
   public function current(): Tv  {
