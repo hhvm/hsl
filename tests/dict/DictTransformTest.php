@@ -426,7 +426,11 @@ final class DictTransformTest extends HackTest {
       // integer vecs
       tuple(darray[], $doubler, dict[]),
       tuple(varray[1], $doubler, dict[0 => 2]),
-      tuple(range(10, 1000), $doubler, dict(array_map($x ==> $x * 2, range(10, 1000)))),
+      tuple(
+        Vec\range(10, 20),
+        $doubler,
+        dict(Vec\range(20, 40, 2)),
+      ),
 
       // string vecs
       tuple(varray['a'], $x ==> $x. ' buzz', dict[0 => 'a buzz']),
@@ -491,14 +495,6 @@ final class DictTransformTest extends HackTest {
     dict<Tk, Tv2> $expected,
   ): void {
     expect(Dict\map($traversable, $func))->toBeSame($expected);
-    if ($traversable instanceof KeyedContainer) {
-      // Note: this test might fail because of key-coercion,
-      // but at the time of writing none of the cases in the
-      // data-provider should experience this coercion.
-      expect(Dict\map($traversable, $func))->toBeSame(
-        dict(array_map($func, $traversable)),
-      );
-    }
   }
 
   public static function provideTestMapKeys(): varray<mixed> {
