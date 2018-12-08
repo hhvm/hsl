@@ -32,7 +32,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   $union = merge($second, ...$rest);
   return filter_keys(
     $first,
-    <<__Rx>> $key ==> !C\contains_key($union, $key),
+    $key ==> !C\contains_key($union, $key),
   );
 }
 
@@ -227,12 +227,12 @@ function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   return $container
     |> pull_with_key(
       $$,
-      <<__Rx>> ($k, $_) ==> $k,
-      <<__RxOfScope>> ($_, $v) ==> $scalar_func($v),
+      ($k, $_) ==> $k,
+      ($_, $v) ==> $scalar_func($v),
     )
     |> pull(
       $$,
-      <<__Rx>> $orig_key ==> $container[$orig_key],
-      <<__Rx>> $x ==> $x,
+      $orig_key ==> $container[$orig_key],
+      $x ==> $x,
     );
 }

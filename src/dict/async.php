@@ -103,7 +103,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
   $tests = await ($traversable
     |> map_with_key(
       $$,
-      <<__RxOfScope>> async ($k, $v) ==> await $predicate($k, $v),
+      async ($k, $v) ==> await $predicate($k, $v),
     )
     |> from_async($$));
   $result = dict[];

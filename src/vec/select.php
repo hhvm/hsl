@@ -36,7 +36,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
     : Keyset\union($second, ...$rest);
   return filter(
     $first,
-    <<__Rx>> ($value) ==> !C\contains_key($union, $value),
+    ($value) ==> !C\contains_key($union, $value),
   );
 }
 
@@ -67,7 +67,7 @@ function diff_by<Tv, Ts as arraykey>(
   $set = Keyset\map($second, $scalar_func);
   return filter(
     $first,
-    <<__RxOfScope>> ($value) ==> !C\contains_key($set, $scalar_func($value)),
+    ($value) ==> !C\contains_key($set, $scalar_func($value)),
   );
 }
 
@@ -176,7 +176,7 @@ function intersect<Tv as arraykey>(
   }
   return filter(
     $first,
-    <<__Rx>> ($value) ==> C\contains_key($intersection, $value),
+    ($value) ==> C\contains_key($intersection, $value),
   );
 }
 

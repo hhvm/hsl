@@ -34,7 +34,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
     : union($second, ...$rest);
   return filter(
     $first,
-    <<__Rx>> $value ==> !C\contains_key($union, $value),
+    $value ==> !C\contains_key($union, $value),
   );
 }
 /**

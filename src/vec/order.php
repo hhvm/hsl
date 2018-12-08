@@ -129,5 +129,5 @@ function sort_by<Tv, Ts>(
     /* HH_FIXME[4107] calling stdlib directly */
     \asort(&$order_by);
   }
-  return map_with_key($order_by, <<__Rx>> ($k, $v) ==> $vec[$k]);
+  return map_with_key($order_by, ($k, $v) ==> $vec[$k]);
 }

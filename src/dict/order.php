@@ -25,7 +25,7 @@ function reverse<Tk as arraykey, Tv>(
   return $dict
     |> Vec\keys($$)
     |> Vec\reverse($$)
-    |> from_keys($$, <<__Rx>> ($k) ==> $dict[$k]);
+    |> from_keys($$, ($k) ==> $dict[$k]);
 }
 
 /**
@@ -79,14 +79,14 @@ function sort_by<Tk as arraykey, Tv, Ts>(
   ?(function(Ts, Ts): int) $scalar_comparator = null,
 ): dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
-    ? <<__RxOfScope>> ((Ts, Tv) $a, (Ts, Tv) $b) ==>
+    ? ((Ts, Tv) $a, (Ts, Tv) $b) ==>
       $scalar_comparator($a[0], $b[0])
     /* HH_FIXME[4240] need Scalar type */
-    : (<<__Rx>>(Ts, Tv) $a, (Ts, Tv) $b) ==> $a[0] <=> $b[0];
+    : ((Ts, Tv) $a, (Ts, Tv) $b) ==> $a[0] <=> $b[0];
   return $traversable
-    |> map($$, <<__RxOfScope>> $v ==> tuple($scalar_func($v), $v))
+    |> map($$, $v ==> tuple($scalar_func($v), $v))
     |> sort($$, $tuple_comparator)
-    |> map($$, <<__Rx>> $t ==> $t[1]);
+    |> map($$, $t ==> $t[1]);
 }
 
 /**
