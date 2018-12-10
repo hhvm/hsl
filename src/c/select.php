@@ -307,6 +307,8 @@ function onlyx<T>(
             ? ' but got '.count($traversable)
             : '',
         )
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         : \vsprintf($format_string, $format_args),
     );
     $result = $value;
@@ -317,6 +319,8 @@ function onlyx<T>(
     '%s',
     $format_string === null
       ? 'Expected non-empty Traversable.'
+      /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+      /* HH_IGNORE_ERROR[4107] __PHPStdLib */
       : \vsprintf($format_string, $format_args),
   );
   /* HH_IGNORE_ERROR[4110] $first is false implies $result is set to T */

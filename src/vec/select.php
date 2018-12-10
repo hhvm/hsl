@@ -232,6 +232,8 @@ function slice<Tv>(
 ): vec<Tv> {
   invariant($offset >= 0, 'Expected non-negative offset.');
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   return vec(\array_slice($container, $offset, $length));
 }
 

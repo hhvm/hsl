@@ -136,6 +136,8 @@ final class VecTransformTest extends HackTest {
         vec[2],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(10, 15),
         $doubler,
         vec[20, 22, 24, 26, 28, 30],
@@ -214,6 +216,8 @@ final class VecTransformTest extends HackTest {
         vec['0the', '1quick', '2brown', '3fox'],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getKeyedIterator(range(1, 5)),
         ($k, $v) ==> $v * $k,
         vec[0, 2, 6, 12, 20],

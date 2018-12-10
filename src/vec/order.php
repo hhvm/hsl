@@ -29,6 +29,8 @@ function range<Tv as num>(
   if ($step > Math\abs($end - $start)) {
     return vec[$start];
   }
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   return vec(\range($start, $end, $step));
 }
 

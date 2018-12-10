@@ -18,6 +18,8 @@ final class KeysetDivideTest extends HackTest {
   public static function providePartition(): varray<mixed> {
     return varray[
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 10),
         $n ==> $n % 2 === 0,
         tuple(
@@ -26,6 +28,8 @@ final class KeysetDivideTest extends HackTest {
         ),
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(1, 10)),
         $n ==> $n % 2 === 0,
         tuple(

@@ -30,10 +30,14 @@ final class KeysetSelectTest extends HackTest {
         keyset[1, 3, 5, 7],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 20)),
         Set {1, 3, 5},
         varray[
           Map {'foo' => 7, 'bar' => 9},
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           HackLibTestTraversables::getIterator(range(11, 30)),
         ],
         keyset[0, 2, 4, 6, 8, 10],
@@ -60,16 +64,22 @@ final class KeysetSelectTest extends HackTest {
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         0,
         keyset[0, 1, 2, 3, 4, 5],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 5)),
         10,
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Set(range(0, 5)),
         2,
         keyset[2, 3, 4, 5],
@@ -109,6 +119,8 @@ final class KeysetSelectTest extends HackTest {
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 10),
         $x ==> $x % 2 === 0,
         keyset[2, 4, 6, 8, 10],
@@ -119,6 +131,8 @@ final class KeysetSelectTest extends HackTest {
         keyset['duck'],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(0, 5)),
         $x ==> $x % 2 === 0,
         keyset[0, 2, 4],
@@ -264,27 +278,41 @@ final class KeysetSelectTest extends HackTest {
   public static function provideTestIntersect(): varray<mixed> {
     return varray[
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 1000),
         varray[],
         varray[],
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 10),
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 5),
         varray[
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           range(2, 6),
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           range(3, 7),
         ],
         keyset[3, 4, 5],
       ),
       tuple(
         Set {},
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 100),
         varray[],
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 1000),
         Map {},
         varray[
@@ -294,9 +322,13 @@ final class KeysetSelectTest extends HackTest {
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(1, 100)),
         Map {1 => 2, 39 => 40},
         varray[
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           HackLibTestTraversables::getIterator(range(0, 40)),
         ],
         keyset[2, 40],
@@ -338,16 +370,22 @@ final class KeysetSelectTest extends HackTest {
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         0,
         keyset[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 5)),
         10,
         keyset[0, 1, 2, 3, 4, 5],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Set(range(0, 5)),
         2,
         keyset[0, 1],
@@ -370,6 +408,8 @@ final class KeysetSelectTest extends HackTest {
   }
 
   public function testTakeIter(): void {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     $iter = HackLibTestTraversables::getIterator(range(0, 4));
     expect(Keyset\take($iter, 2))->toBeSame(keyset[0, 1]);
     expect(Keyset\take($iter, 0))->toBeSame(keyset[]);

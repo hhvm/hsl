@@ -44,6 +44,8 @@ function split(
   ?int $limit = null,
 ): vec<string> {
   if ($delimiter === '') {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     if ($limit === null || $limit >= \strlen($string)) {
       return chunk($string);
     } else if ($limit === 1) {
@@ -55,8 +57,12 @@ function split(
       return $result;
     }
   } else if ($limit === null) {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return vec(\explode($delimiter, $string));
   } else {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return vec(\explode($delimiter, $string, $limit));
   }
 }

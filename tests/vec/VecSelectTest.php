@@ -25,10 +25,14 @@ final class VecSelectTest extends HackTest {
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 20)),
         varray[
           Set {1, 3, 5},
           Map {'foo' => 7, 'bar' => 9},
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           HackLibTestTraversables::getIterator(range(11, 30)),
         ],
         vec[0, 2, 4, 6, 8, 10],
@@ -90,21 +94,29 @@ final class VecSelectTest extends HackTest {
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         0,
         vec[0, 1, 2, 3, 4, 5],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 5)),
         10,
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Set(range(0, 5)),
         2,
         vec[2, 3, 4, 5],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(0, 5)),
         5,
         vec[5],
@@ -139,6 +151,8 @@ final class VecSelectTest extends HackTest {
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 10),
         $x ==> $x % 2 === 0,
         vec[2, 4, 6, 8, 10],
@@ -149,6 +163,8 @@ final class VecSelectTest extends HackTest {
         vec['duck', 'duck'],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(0, 5)),
         $x ==> $x % 2 === 0,
         vec[0, 2, 4],
@@ -259,27 +275,41 @@ final class VecSelectTest extends HackTest {
   public static function provideTestIntersect(): varray<mixed> {
     return varray[
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 1000),
         varray[],
         varray[],
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 10),
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 5),
         varray[
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           range(2, 6),
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           range(3, 7),
         ],
         vec[3, 4, 5],
       ),
       tuple(
         Set {},
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 100),
         varray[],
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 1000),
         Map {},
         varray[
@@ -289,9 +319,13 @@ final class VecSelectTest extends HackTest {
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(1, 100)),
         Map {1 => 2, 39 => 40},
         varray[
+          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
           HackLibTestTraversables::getIterator(range(0, 40)),
         ],
         vec[2, 40],
@@ -366,14 +400,20 @@ final class VecSelectTest extends HackTest {
   public static function provideTestSample(): varray<mixed> {
     return varray[
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         6,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         1,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         10,
       ),
@@ -391,6 +431,8 @@ final class VecSelectTest extends HackTest {
   }
 
   public function testSampleIterator(): void {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     $iterator = HackLibTestTraversables::getIterator(range(0, 5));
     expect(C\count(Vec\sample($iterator, 3)))->toBeSame(3);
   }
@@ -398,27 +440,39 @@ final class VecSelectTest extends HackTest {
   public static function provideTestSlice(): varray<mixed> {
     return varray[
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         6,
         1,
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 5)),
         2,
         10,
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         vec(range(2, 5)),
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Set(range(0, 5)),
         2,
         0,
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 5)),
         2,
         null,
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         vec(range(2, 5)),
       ),
     ];
@@ -442,21 +496,29 @@ final class VecSelectTest extends HackTest {
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(0, 5),
         0,
         vec[],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Vector(range(0, 5)),
         10,
         vec[0, 1, 2, 3, 4, 5],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         new Set(range(0, 5)),
         2,
         vec[0, 1],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(0, 5)),
         5,
         vec[0, 1, 2, 3, 4],
@@ -474,6 +536,8 @@ final class VecSelectTest extends HackTest {
   }
 
   public function testTakeIter(): void {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     $iter = HackLibTestTraversables::getIterator(range(0, 4));
     expect(Vec\take($iter, 2))->toBeSame(vec[0, 1]);
     expect(Vec\take($iter, 0))->toBeSame(vec[]);

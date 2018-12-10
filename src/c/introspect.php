@@ -66,6 +66,8 @@ function contains_key<Tk, Tv>(
   <<__MaybeMutable>> KeyedContainer<Tk, Tv> $container,
   Tk $key,
 ): bool {
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   return \array_key_exists($key, $container);
 }
 
@@ -76,6 +78,8 @@ function contains_key<Tk, Tv>(
 function count<T>(
   <<__MaybeMutable>> Container<T> $container,
 ): int {
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   return \count($container);
 }
 

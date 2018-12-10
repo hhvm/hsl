@@ -85,6 +85,8 @@ final class CSelectTest extends HackTest {
         null,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(1, 5)),
         1,
       ),
@@ -109,6 +111,8 @@ final class CSelectTest extends HackTest {
   public static function provideTestFirstx(): varray<mixed> {
     return varray[
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(1, 5)),
         1,
       ),
@@ -165,6 +169,8 @@ final class CSelectTest extends HackTest {
         0,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(3, 10),
         0,
       ),
@@ -222,6 +228,8 @@ final class CSelectTest extends HackTest {
         0,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(3, 10),
         0,
       ),
@@ -298,6 +306,8 @@ final class CSelectTest extends HackTest {
         null,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 11),
         11,
       ),
@@ -346,6 +356,8 @@ final class CSelectTest extends HackTest {
         null,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(13, 14)),
         14,
       ),
@@ -368,6 +380,8 @@ final class CSelectTest extends HackTest {
         null,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 11),
         11,
       ),
@@ -408,6 +422,8 @@ final class CSelectTest extends HackTest {
         null,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(13, 14)),
         14,
       ),
@@ -465,6 +481,8 @@ final class CSelectTest extends HackTest {
         1,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 5),
         4,
       ),
@@ -531,6 +549,8 @@ final class CSelectTest extends HackTest {
         1,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         range(1, 5),
         4,
       ),
@@ -616,6 +636,8 @@ final class CSelectTest extends HackTest {
         null,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(1, 5)),
         1,
       ),
@@ -669,6 +691,8 @@ final class CSelectTest extends HackTest {
         InvariantException::class,
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(1, 5)),
         InvariantException::class,
       ),

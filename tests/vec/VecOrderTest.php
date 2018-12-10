@@ -105,6 +105,8 @@ final class VecOrderTest extends HackTest {
         vec['jumped', 'fox', 'brown', 'quick', 'the'],
       ),
       tuple(
+        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
         HackLibTestTraversables::getIterator(range(1, 5)),
         vec[5, 4, 3, 2, 1],
       ),

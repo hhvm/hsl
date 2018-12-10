@@ -68,5 +68,7 @@ function format(
   SprintfFormatString $format_string,
   mixed ...$format_args
 ): string {
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   return \vsprintf($format_string, $format_args);
 }
