@@ -114,6 +114,8 @@ function sort_by_key<Tk as arraykey, Tv>(
   } else {
     /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \ksort(&$result);
   }
   return $result;

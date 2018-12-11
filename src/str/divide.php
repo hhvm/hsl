@@ -44,9 +44,7 @@ function split(
   ?int $limit = null,
 ): vec<string> {
   if ($delimiter === '') {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    if ($limit === null || $limit >= \strlen($string)) {
+    if ($limit === null || $limit >= Str\length($string)) {
       return chunk($string);
     } else if ($limit === 1) {
       return vec[$string];

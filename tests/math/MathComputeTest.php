@@ -42,7 +42,7 @@ final class MathComputeTest extends HackTest {
       tuple('a', 16, 2, '1010'),
       tuple('50f', 16, 36, 'zz'),
       tuple('1295', 10, 36, 'zz'),
-      tuple(non_crypto_md5('hello'), 16, 36, '5ir3t0ozoelrnauhrwyu1xfgy'),
+      tuple('5d41402abc4b2a76b9719d911017c592', 16, 36, '5ir3t0ozoelrnauhrwyu1xfgy'),
       tuple('a37334', 16, 2, '101000110111001100110100'),
       tuple('120321300231', 4, 8, '30716055'),
       tuple('10100101000100010', 2, 36, '1t7m'),
@@ -55,26 +55,26 @@ final class MathComputeTest extends HackTest {
       tuple('100010100010101', 2, 36, 'dn9'),
       tuple('101011010101', 2, 36, '251'),
       tuple(
-        non_crypto_md5('move fast'),
+        '56d0350026a4b57b34a882fc109b7a0a',
         16,
         20,
         '22jf2iicg82eh3ihigcc42ej103fai',
       ),
       tuple(
-        non_crypto_md5('move fast'),
+        '56d0350026a4b57b34a882fc109b7a0a',
         16,
         8,
         '1266403240011522265366322504057602046675012',
       ),
       tuple(
-        non_crypto_md5('move fast'),
+        '56d0350026a4b57b34a882fc109b7a0a',
         16,
         3,
         '210002010120011110111011221010111202002201210222222010110200222001121'.
           '21120102220',
       ),
       tuple(
-        non_crypto_md5('move fast'),
+        '56d0350026a4b57b34a882fc109b7a0a',
         16,
         2,
         '101011011010000001101010000000000100110101001001011010101111011001101'.
@@ -123,7 +123,7 @@ final class MathComputeTest extends HackTest {
       tuple('00000a', 16, 2, '1010'),
       tuple('50F', 16, 36, 'zz'),
       tuple('01295', 10, 36, 'zz'),
-      tuple('0'.non_crypto_md5('hello'), 16, 36, '5ir3t0ozoelrnauhrwyu1xfgy'),
+      tuple('05d41402abc4b2a76b9719d911017c592', 16, 36, '5ir3t0ozoelrnauhrwyu1xfgy'),
       tuple('A37334', 16, 2, '101000110111001100110100'),
       tuple('0120321300231', 4, 8, '30716055'),
       tuple('010100101000100010', 2, 36, '1t7m'),
@@ -136,26 +136,26 @@ final class MathComputeTest extends HackTest {
       tuple('0100010100010101', 2, 36, 'dn9'),
       tuple('0101011010101', 2, 36, '251'),
       tuple(
-        '0'.Str\uppercase(non_crypto_md5('move fast')),
+        '0'.Str\uppercase('56d0350026a4b57b34a882fc109b7a0a'),
         16,
         20,
         '22jf2iicg82eh3ihigcc42ej103fai',
       ),
       tuple(
-        '0'.Str\uppercase(non_crypto_md5('move fast')),
+        '0'.Str\uppercase('56d0350026a4b57b34a882fc109b7a0a'),
         16,
         8,
         '1266403240011522265366322504057602046675012',
       ),
       tuple(
-        '0'.Str\uppercase(non_crypto_md5('move fast')),
+        '0'.Str\uppercase('56d0350026a4b57b34a882fc109b7a0a'),
         16,
         3,
         '210002010120011110111011221010111202002201210222222010110200222001121'.
           '21120102220',
       ),
       tuple(
-        '0'.Str\uppercase(non_crypto_md5('move fast')),
+        '0'.Str\uppercase('56d0350026a4b57b34a882fc109b7a0a'),
         16,
         2,
         '101011011010000001101010000000000100110101001001011010101111011001101'.

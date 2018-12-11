@@ -181,6 +181,8 @@ function search(
   int $offset = 0,
 ): ?int {
   $offset = _Private\validate_offset($offset, length($haystack));
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   $position = \strpos($haystack, $needle, $offset);
   if ($position === false) {
     return null;
