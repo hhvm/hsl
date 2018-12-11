@@ -36,9 +36,7 @@ final class DictOrderTest extends HackTest {
         ],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 5)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         dict[
           4 => 5,
           3 => 4,

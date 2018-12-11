@@ -114,9 +114,7 @@ final class DictTransformTest extends HackTest {
         ],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 3)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 3)),
         'hi',
         dict[
           1 => 'hi',
@@ -429,9 +427,9 @@ final class DictTransformTest extends HackTest {
       tuple(darray[], $doubler, dict[]),
       tuple(varray[1], $doubler, dict[0 => 2]),
       tuple(
-        Vec\range(10, 20),
+        Vec\range(10, 1000),
         $doubler,
-        dict(Vec\range(20, 40, 2)),
+        dict(Vec\range(20, 2000, 2)),
       ),
 
       // string vecs
@@ -572,9 +570,7 @@ final class DictTransformTest extends HackTest {
         ],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getKeyedIterator(range(1, 5)),
+        HackLibTestTraversables::getKeyedIterator(Vec\range(1, 5)),
         ($k, $v) ==> $k * $v,
         dict[
           0 => 0,

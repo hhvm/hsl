@@ -27,12 +27,8 @@ final class DictCombineTest extends HackTest {
         ],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        range(0, 3),
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(0, 3)),
+        Vec\range(0, 3),
+        HackLibTestTraversables::getIterator(Vec\range(0, 3)),
         dict[
           0 => 0,
           1 => 1,

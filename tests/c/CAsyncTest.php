@@ -27,9 +27,7 @@ final class CAsyncTest extends HackTest {
       ),
       tuple(
         async {
-          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-          return HackLibTestTraversables::getIterator(range(1, 5));
+          return HackLibTestTraversables::getIterator(Vec\range(1, 5));
         },
         1,
       ),

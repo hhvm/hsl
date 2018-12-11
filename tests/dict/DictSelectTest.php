@@ -19,9 +19,7 @@ final class DictSelectTest extends HackTest {
     return varray[
       tuple(
         darray[],
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        range(0, 100),
+        Vec\range(0, 100),
         darray[],
         dict[],
       ),
@@ -38,15 +36,11 @@ final class DictSelectTest extends HackTest {
         dict['baz' => 'qux'],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        range(0, 9),
+        Vec\range(0, 9),
         dict[2 => 4, 4 => 8, 8 => 16],
         varray[
           Map {1 => 1, 2 => 2},
-          /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-          /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-          HackLibTestTraversables::getKeyedIterator(range(0, 3)),
+          HackLibTestTraversables::getKeyedIterator(Vec\range(0, 3)),
         ],
         dict[5 => 5, 6 => 6, 7 => 7, 9 => 9],
       ),
@@ -138,9 +132,7 @@ final class DictSelectTest extends HackTest {
         dict[],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        dict(range(1, 10)),
+        dict(Vec\range(1, 10)),
         $x ==> $x % 2 === 0,
         dict[1 => 2, 3 => 4, 5 => 6, 7 => 8, 9 => 10],
       ),
@@ -150,9 +142,7 @@ final class DictSelectTest extends HackTest {
         dict['donald' => 'duck', 'daffy' => 'duck'],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 5)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         $x ==> $x % 2 === 0,
         dict[1 => 2, 3 => 4],
       ),
@@ -191,20 +181,14 @@ final class DictSelectTest extends HackTest {
         dict[],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        dict(range(1, 10)),
+        dict(Vec\range(1, 10)),
         ($k, $v) ==> $k % 2 === 0 && $v % 2 === 0,
         dict[],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        dict(range(1, 10)),
+        dict(Vec\range(1, 10)),
         ($k, $v) ==> $k === $v - 1,
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        dict(range(1, 10)),
+        dict(Vec\range(1, 10)),
       ),
       tuple(
         Map {'donald' => 'duck', 'daffy' => 'duck', 'mickey' => 'mouse'},
@@ -212,9 +196,7 @@ final class DictSelectTest extends HackTest {
         dict['donald' => 'duck'],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 5)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         ($k, $v) ==> $v % 2 === 0,
         dict[1 => 2, 3 => 4],
       ),
@@ -262,16 +244,12 @@ final class DictSelectTest extends HackTest {
         dict['donald' => 'duck', 'daffy' => 'duck'],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        dict(range(1, 10)),
+        dict(Vec\range(1, 10)),
         $x ==> $x % 2 === 0,
         dict[0 => 1, 2 => 3, 4 => 5, 6 => 7, 8 => 9],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 5)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         $x ==> $x % 2 === 0,
         dict[0 => 1, 2 => 3, 4 => 5],
       ),
@@ -455,9 +433,7 @@ final class DictSelectTest extends HackTest {
   }
 
   public function testTakeIter(): void {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    $iter = HackLibTestTraversables::getKeyedIterator(range(0, 4));
+    $iter = HackLibTestTraversables::getKeyedIterator(Vec\range(0, 4));
     expect(Dict\take($iter, 2))->toBeSame(dict[0=>0, 1=>1]);
     expect(Dict\take($iter, 0))->toBeSame(dict[]);
     expect(Dict\take($iter, 2))->toBeSame(dict[2=>2, 3=>3]);

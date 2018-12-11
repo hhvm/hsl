@@ -89,9 +89,7 @@ final class CIntrospectTest extends HackTest {
         false,
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 5)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         3,
         true,
       ),
@@ -164,9 +162,7 @@ final class CIntrospectTest extends HackTest {
   public static function provideTestCount(): varray<mixed> {
     return varray[
       tuple(varray[], 0),
-      /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-      /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-      tuple(range(1, 10), 10),
+      tuple(Vec\range(1, 10), 10),
       tuple(Set {1, 2}, 2),
       tuple(Vector {1, 2}, 2),
       tuple(Map {'foo' => 'bar', 'baz' => 'bar2'}, 2),
@@ -215,9 +211,7 @@ final class CIntrospectTest extends HackTest {
         true,
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 5)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         true,
       ),
     ];
