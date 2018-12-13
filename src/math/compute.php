@@ -198,13 +198,13 @@ function log(num $arg, ?num $base = null): float {
   if ($base === null) {
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
-    return \log($arg);
+    return \log((float)$arg);
   }
   invariant($base > 0, 'Expected positive base for log, got %f', $base);
   invariant($base !== 1, 'Logarithm undefined for base 1');
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  return \log($arg, $base);
+  return \log((float)$arg, (float)$base);
 }
 
 /**
