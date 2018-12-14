@@ -126,4 +126,41 @@ final class DictCombineTest extends HackTest {
   ): void {
     expect(Dict\merge($first, ...$rest))->toBeSame($expected);
   }
+  
+  public static function provideTestUnion(): varray<mixed> {
+    return varray[
+      tuple(
+        vec[
+          Map {'a' => 'apple', 'b' => 'banana'},
+          dict['a' => 'pear', 'b' => 'strawberry', 'c' => 'cherry'],
+          darray['c' => 'chocolat']
+        ],
+        dict[ 'a' => 'apple', 'b' => 'banana', 'c' => 'cherry']
+      ),
+      tuple(
+        vec[
+          dict['a' => 'pear', 'b' => 'strawberry', 'c' => 'cherry'],
+          Map {'a' => 'apple', 'b' => 'banana'},
+          darray['c' => 'chocolat']
+        ],
+        dict[ 'a' => 'pear', 'b' => 'strawberry', 'c' => 'cherry']
+      ),
+      tuple(
+        vec[
+          darray['c' => 'chocolat']
+          dict['a' => 'pear', 'b' => 'strawberry', 'c' => 'cherry'],
+          Map {'a' => 'apple', 'b' => 'banana'},
+        ],
+        dict[ 'a' => 'pear', 'b' => 'strawberry', 'c' => 'chocolat']
+      ),
+    ];
+  }
+  
+  <<DataProvider('provideTestUnion')>>
+  public function testUnion<Tk as arraykey, Tv>(
+    Container<KeyedTraversable<Tk, Tv>> $traversables,
+    dict<Tk, Tv> $exprected
+  ): void {
+    expect(Dict\union(...$traversables))->toBeSame($expected); 
+  }
 }
