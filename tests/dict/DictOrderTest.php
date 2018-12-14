@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\{Dict, Str};
+use namespace HH\Lib\{Dict, Str, Vec};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 

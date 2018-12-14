@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Str;
 
+use namespace HH\Lib\Str;
+
 /**
  * Returns a vec containing the string split into chunks of the given size.
  *
