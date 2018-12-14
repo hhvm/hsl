@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Vec};
 
 /**
  * Iterator that implements the same behavior as generators when
