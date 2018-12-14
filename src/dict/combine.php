@@ -52,3 +52,21 @@ function merge<Tk as arraykey, Tv>(
   }
   return $result;
 }
+
+/*
+ * Merge multiple KeyedTraversables into a new dict. In the case of duplicate
+ * keys, the value will be ignored.
+ */
+function union<Tk as arraykey, Tv>(
+  KeyedTraversable<Tk, Tv> ...$traversables
+): dict<Tk, Tv> {
+  $result = dict[];
+  foreach ($traversables as $traversable) {
+    foreach ($traversable as $key => $value) {
+        if (!C\contains_key($result, $key)) {
+            $result[$key] = $value;
+        }
+    }
+  }
+  return $result;
+}
