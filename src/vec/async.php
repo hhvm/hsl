@@ -10,9 +10,7 @@
 
 namespace HH\Lib\Vec;
 
-<<__Rx, __AtMostRxAsArgs>>
 async function from_async<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
   $vec = vec($awaitables);

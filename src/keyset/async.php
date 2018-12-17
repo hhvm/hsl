@@ -15,9 +15,7 @@ use namespace HH\Lib\Vec;
 /**
  * Returns a new keyset containing the awaited result of the given Awaitables.
  */
-<<__Rx, __AtMostRxAsArgs>>
 async function from_async<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<keyset<Tv>> {
   $vec = await Vec\from_async($awaitables);

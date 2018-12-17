@@ -12,9 +12,7 @@ namespace HH\Lib\Dict;
 
 use namespace HH\Lib\C;
 
-<<__Rx, __AtMostRxAsArgs>>
 async function from_async<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables_ = dict($awaitables);
@@ -100,12 +98,10 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
   <<__AtMostRxAsFunc>>
   (function(Tk, Tv): Awaitable<bool>) $predicate,
 ): Awaitable<dict<Tk, Tv>> {
-  $tests = await ($traversable
-    |> map_with_key(
-      $$,
-      async ($k, $v) ==> await $predicate($k, $v),
-    )
-    |> from_async($$));
+  $tests = await map_with_key_async(
+    $traversable,
+    async ($k, $v) ==> await $predicate($k, $v),
+  );
   $result = dict[];
   foreach ($tests as $k => $v) {
     if ($v) {
@@ -146,4 +142,30 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
   return $dict;
+}
+
+<<__Rx, __AtMostRxAsArgs>>
+async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
+  KeyedTraversable<Tk, Tv1> $container,
+  <<__AtMostRxAsFunc>>
+  (function(Tk, Tv1): Awaitable<Tv2>) $async_func
+): Awaitable<dict<Tk, Tv2>> {
+  $awaitables = Dict\map_with_key(
+    $container,
+    $async_func,
+  );
+  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
+  unset($container);
+  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  /* HH_FIXME[4200] Hide the magic from reactivity */
+  await AwaitAllWaitHandle::fromDict($awaitables);
+  foreach ($awaitables as $index => $value) {
+    /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
+    /* HH_FIXME[4200] Hide the magic from reactivity */
+    $awaitables[$index] = \HH\Asio\result($value);
+  }
+  /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+  return $awaitables;
 }
