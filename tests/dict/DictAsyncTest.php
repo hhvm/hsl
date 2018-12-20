@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\{Dict, Str};
+use namespace HH\Lib\{Dict, Str, Vec};
 use function Facebook\FBExpect\expect;
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 
@@ -232,6 +232,55 @@ final class DictAsyncTest extends HackTest {
     \HH\Asio\join(async {
       $actual = await Dict\map_async($traversable, $value_func);
       expect($actual)->toBeSame($expected);
+    });
+  }
+
+  public static function provideTestGenMapWithKey(): varray<mixed> {
+    return varray[
+      tuple(
+        varray[],
+        async ($a, $b) ==> null,
+        dict[],
+      ),
+      tuple(
+        vec[1, 2, 3],
+        async ($k, $v) ==> (string)$k.$v,
+        dict[0 => '01', 1 => '12', 2 => '23'],
+      ),
+      tuple(
+        Vector {'the', 'quick', 'brown', 'fox'},
+        async ($k, $v) ==> (string)$k.$v,
+        dict[
+          0 => '0the',
+          1 => '1quick',
+          2 => '2brown',
+          3 => '3fox',
+        ],
+      ),
+      tuple(
+        HackLibTestTraversables::getKeyedIterator(Vec\range(1, 5)),
+        async ($k, $v) ==> $k * $v,
+        dict[
+          0 => 0,
+          1 => 2,
+          2 => 6,
+          3 => 12,
+          4 => 20,
+        ],
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestGenMapWithKey')>>
+  public function testMapWithKeyAsync<Tk as arraykey, Tv1, Tv2>(
+    KeyedTraversable<Tk, Tv1> $traversable,
+    (function(Tk, Tv1): Awaitable<Tv2>) $value_func,
+    dict<Tk, Tv2> $expected,
+  ): void {
+    /* HH_IGNORE_ERROR[5542] open source */
+    \HH\Asio\join(async {
+      $result = await Dict\map_with_key_async($traversable, $value_func);
+      expect($result)->toBeSame($expected);
     });
   }
 }
