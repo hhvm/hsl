@@ -84,14 +84,12 @@ function sort<Tv>(
 ): vec<Tv> {
   $vec = vec($traversable);
   if ($comparator) {
-    /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     \usort(&$vec, $comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     \sort(&$vec);
@@ -119,13 +117,11 @@ function sort_by<Tv, Ts>(
   $vec = vec($traversable);
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {
-    /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     \uasort(&$order_by, $comparator);
   } else {
-    /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */

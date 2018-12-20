@@ -43,7 +43,6 @@ async function from_async(?Awaitable<mixed> ...$awaitables): Awaitable<mixed> {
 
   foreach ($awaitables as $index => $value) {
     if ($value === null) {
-      /* HH_FIXME[4248] AwaitAllWaitHandle::fromVArray is like await */
       $awaitables[$index] = async { return null; };
     }
   }

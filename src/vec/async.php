@@ -15,13 +15,8 @@ async function from_async<Tv>(
 ): Awaitable<vec<Tv>> {
   $vec = vec($awaitables);
 
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
-  /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromVec($vec);
   foreach ($vec as $index => $value) {
-    /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
-    /* HH_FIXME[4200] Hide the magic from reactivity */
     $vec[$index] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
@@ -67,7 +62,6 @@ async function map_async<Tv1, Tv2>(
 ): Awaitable<vec<Tv2>> {
   $vec = vec($traversable);
   foreach ($vec as $i => $value) {
-    /* HH_FIXME[4110] Reuse traversable for AwaitAllWaitHandle */
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromVec is like await */
     $vec[$i] = $async_func($value);
   }
@@ -77,7 +71,6 @@ async function map_async<Tv1, Tv2>(
   await AwaitAllWaitHandle::fromVec($vec);
   foreach ($vec as $index => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
-    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $vec[$index] = \HH\Asio\result($value);
   }

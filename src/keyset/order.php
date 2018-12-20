@@ -24,13 +24,11 @@ function sort<Tv as arraykey>(
 ): keyset<Tv> {
   $keyset = keyset($traversable);
   if ($comparator) {
-    /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] We are allowed to use PHP Stardard library functions */
     /* HH_FIXME[4107] We are allowed to use PHP Stardard library functions */
     \uksort(&$keyset, $comparator);
   } else {
-    /* HH_FIXME[4200] is reactive */
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */

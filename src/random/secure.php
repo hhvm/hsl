@@ -52,7 +52,6 @@ function string(
   ?string $alphabet = null,
 ): string {
   return _Private\random_string(
-    /* HH_FIXME[4128] */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     ($length) ==> \random_bytes($length),

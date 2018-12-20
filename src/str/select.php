@@ -31,11 +31,7 @@ function slice(
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   $offset = _Private\validate_offset($offset, length($string));
   $result = $length === null
-    /* HH_FIXME[2049] calling stdlib directly */
-    /* HH_FIXME[4107] calling stdlib directly */
     ? \substr($string, $offset)
-    /* HH_FIXME[2049] calling stdlib directly */
-    /* HH_FIXME[4107] calling stdlib directly */
     : \substr($string, $offset, $length);
   if ($result === false) {
     return '';

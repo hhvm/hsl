@@ -160,7 +160,6 @@ function replace(
   string $needle,
   string $replacement,
 ): string {
-  /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace($needle, $replacement, $haystack);
@@ -179,7 +178,6 @@ function replace_ci(
   string $needle,
   string $replacement,
 ): string {
-  /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_ireplace($needle, $replacement, $haystack);
@@ -196,7 +194,6 @@ function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
 ): string {
-  /* HH_IGNORE_ERROR[4200] Non-reactive: unused optional byref argument */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace(

@@ -17,13 +17,8 @@ async function from_async<Tk as arraykey, Tv>(
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables_ = dict($awaitables);
 
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
-  /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($awaitables_);
   foreach ($awaitables_ as $key => $value) {
-    /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
-    /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables_[$key] = \HH\Asio\result($value);
   }
   /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
@@ -45,19 +40,15 @@ async function from_keys_async<Tk as arraykey, Tv>(
 ): Awaitable<dict<Tk, Tv>> {
   $awaitables = dict[];
   foreach ($keys as $key) {
-    /* HH_FIXME[4015] one of the few places it's OK to accumulate Awaitables */
     /* HH_FIXME[4248] non-awaited awaitable in rx context */
     $awaitables[$key] ??= $async_func($key);
   }
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
   unset($keys);
 
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
-    /* HH_FIXME[4200] Hide the magic from reactivity */
+  /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $key => $value) {
-    /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables[$key] = \HH\Asio\result($value);
   }
@@ -127,7 +118,6 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   $dict = dict($traversable);
   foreach ($dict as $key => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
-    /* HH_FIXME[4110] Reusing traversable for AwaitAllWaitHandle */
     $dict[$key] = $value_func($value);
   }
 
@@ -136,7 +126,6 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   await AwaitAllWaitHandle::fromDict($dict);
   foreach ($dict as $key => $value) {
     /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $dict[$key] = \HH\Asio\result($value);
   }
@@ -157,12 +146,9 @@ async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
   );
   /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
   unset($container);
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $index => $value) {
-    /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
-    /* HH_FIXME[4248] unawaited Awaitable type value in reactive code */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables[$index] = \HH\Asio\result($value);
   }
