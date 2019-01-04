@@ -10,8 +10,7 @@
 
 namespace HH\Lib\C;
 
-use namespace HH\Lib\_Private;
-use namespace HH\Lib\Str;
+use namespace HH\Lib\{_Private, Str};
 
 /**
  * Returns the first value of the given Traversable for which the predicate
@@ -65,6 +64,11 @@ function first<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): ?T {
+  if ($traversable is Container<_>) {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    return _Private\Native\first($traversable);
+  }
   foreach ($traversable as $value) {
     return $value;
   }
@@ -102,10 +106,13 @@ function first_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if ($traversable !== null) {
-    foreach ($traversable as $key => $_) {
-      return $key;
-    }
+  if ($traversable is Container<_>) {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    return _Private\Native\first_key($traversable);
+  }
+  foreach ($traversable as $key => $_) {
+    return $key;
   }
   return null;
 }
@@ -121,10 +128,9 @@ function first_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
-  foreach ($traversable as $key => $_) {
-    return $key;
-  }
-  invariant_violation('%s: Expected at least one element.', __FUNCTION__);
+  $first_key = first_key($traversable);
+  invariant($first_key !== null, '%s: Expected non-empty input', __FUNCTION__);
+  return $first_key;
 }
 
 /**
@@ -139,16 +145,12 @@ function last<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): ?Tv {
-  if ($traversable is vec<_>) {
-    return count($traversable)
-      |> $$ === 0 ? null : $traversable[$$ - 1];
-  } else if (_Private\is_any_array($traversable)) {
-    /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4276] this is an array */
+  if ($traversable is Container<_>) {
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    return $traversable ? \end(&$traversable) : null;
-  } else if ($traversable instanceof Iterable) {
+    return _Private\Native\last($traversable);
+  }
+  if ($traversable instanceof Iterable) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     return $traversable->lastValue();
   }
@@ -212,22 +214,12 @@ function last_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if ($traversable is vec<_>) {
-    return count($traversable) |> $$ === 0 ? null : $$ - 1;
-  } else if (_Private\is_any_array($traversable)) {
-    /* HH_FIXME[4276] this is an array */
-    if (!$traversable) {
-      return null;
-    }
-    /* HH_FIXME[2088] No refs in reactive code. */
+  if ($traversable is Container<_>) {
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    \end(&$traversable);
-    /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    return \key(&$traversable);
-  } else if ($traversable instanceof KeyedIterable) {
+    return _Private\Native\last_key($traversable);
+  }
+  if ($traversable instanceof KeyedIterable) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     return $traversable->lastKey();
   }
@@ -266,6 +258,11 @@ function nfirst<T>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   ?Traversable<T> $traversable,
 ): ?T {
+  if ($traversable is Container<_>) {
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    return _Private\Native\first($traversable);
+  }
   if ($traversable !== null) {
     foreach ($traversable as $value) {
       return $value;
