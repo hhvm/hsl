@@ -9,7 +9,7 @@
  */
 
 use namespace HH\Lib\{Str, Vec};
-use function Facebook\FBExpect\expect;
+use function Facebook\FBExpect\expect; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 
