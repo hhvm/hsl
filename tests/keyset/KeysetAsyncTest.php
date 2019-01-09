@@ -9,7 +9,7 @@
  */
 
 use namespace HH\Lib\{Keyset, Str};
-use function Facebook\FBExpect\expect;
+use function Facebook\FBExpect\expect; // @oss-enable
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
