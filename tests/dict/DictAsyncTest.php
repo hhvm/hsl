@@ -177,6 +177,58 @@ final class DictAsyncTest extends HackTest {
     });
   }
 
+  public static function provideTestGenFilterWithKey(): varray<mixed> {
+    return varray[
+      tuple(
+        darray[
+          2 => 'two',
+          4 => 'four',
+          6 => 'six',
+          8 => 'eight',
+        ],
+        async ($_key, $word) ==> Str\length($word) % 2 === 1,
+        dict[
+          2 => 'two',
+          6 => 'six',
+          8 => 'eight',
+        ],
+      ),
+      tuple(
+        dict[
+          '2' => 'two',
+          '4' => 'four',
+          6 => 'six',
+          '8' => 'eight',
+        ],
+        async ($key, $word) ==> Str\length($word) % 2 === 1 && $key === '2',
+        dict[
+          '2' => 'two',
+        ],
+      ),
+      tuple(
+        Vector {'the', 'quick', 'brown', 'fox', 'jumped', 'over'},
+        async ($_key, $word) ==> Str\length($word) % 2 === 0,
+        dict[
+          4 => 'jumped',
+          5 => 'over',
+        ],
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestGenFilterWithKey')>>
+  public async function testFilterWithKeyAsync<Tk as arraykey, Tv>(
+    KeyedContainer<Tk, Tv> $container,
+    (function(Tk, Tv): Awaitable<bool>) $predicate,
+    dict<Tk, Tv> $expected,
+  ): Awaitable<void> {
+    $actual = await Dict\filter_with_key_async(
+      $container,
+      $predicate,
+    );
+    expect($actual)->toBeSame($expected);
+  }
+
   public static function provideTestGenMap(): varray<mixed> {
     return varray[
       tuple(
