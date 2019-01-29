@@ -56,3 +56,45 @@ function tuple_from_vec(mixed $x): mixed {
 
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+final class Ref<T> {
+  <<__RxShallow>>
+  public function __construct(public T $value) {}
+}
+
+async function wAsync<T>(
+  Awaitable<T> $gen,
+): Awaitable<ResultOrExceptionWrapper<T>> {
+  try {
+    $result = await $gen;
+    return new WrappedResult($result);
+  } catch (\Exception $e) {
+    return new WrappedException($e);
+  }
+}
+
+abstract class ResultOrExceptionWrapper<+T> {
+  abstract public function get(): T;
+}
+
+final class WrappedResult<T>
+  extends ResultOrExceptionWrapper<T> {
+  <<__Rx>>
+  public function __construct(private T $value) {}
+  <<__Override, __Rx>>
+  public function get(): T {
+    return $this->value;
+  }
+}
+
+final class WrappedException<Te as \Exception, Tr>
+  extends ResultOrExceptionWrapper<Tr> {
+
+  <<__Rx>>
+  public function __construct(private Te $exception) {}
+
+  <<__Override, __Rx>>
+  public function get(): Tr {
+    throw $this->exception;
+  }
+}
