@@ -150,7 +150,7 @@ function last<Tv>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return _Private\Native\last($traversable);
   }
-  if ($traversable instanceof Iterable) {
+  if ($traversable is Iterable<_>) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     return $traversable->lastValue();
   }
@@ -219,7 +219,7 @@ function last_key<Tk, Tv>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return _Private\Native\last_key($traversable);
   }
-  if ($traversable instanceof KeyedIterable) {
+  if ($traversable is KeyedIterable<_, _>) {
     /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
     return $traversable->lastKey();
   }
@@ -296,7 +296,7 @@ function onlyx<T>(
       $format_string === null
         ? Str\format(
           'Expected exactly one element%s.',
-          $traversable instanceof Container
+          $traversable is Container<_>
             ? ' but got '.count($traversable)
             : '',
         )
