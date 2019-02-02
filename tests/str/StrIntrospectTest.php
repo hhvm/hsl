@@ -432,4 +432,23 @@ final class StrIntrospectTest extends HackTest {
     expect(Str\starts_with_ci($string, $prefix))->toBeSame($expected);
   }
 
+
+  public static function provideTimesafeEquals(): varray<mixed> {
+    return varray[
+      tuple('foo', 'foo', true),
+      tuple('foo', 'Foo', false),
+      tuple('Foo', 'foo', false),
+      tuple('fo', 'foo', false),
+      tuple('foo', 'fo', false),
+    ];
+  }
+
+  <<DataProvider('provideTimesafeEquals')>>
+  public function testTimesafeEquals(
+    string $known,
+    string $user,
+    bool $expected,
+  ): void {
+    expect(Str\timesafe_equals($known, $user))->toBeSame($expected);
+  }
 }

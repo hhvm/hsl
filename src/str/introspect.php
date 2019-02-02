@@ -284,3 +284,19 @@ function starts_with_ci(
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   return \strncasecmp($string, $prefix, length($prefix)) === 0;
 }
+
+/**
+ * Returns whether the two strings are equal in a time-safe manner.
+ *
+ * The run time of this function is dependent only on the length of the
+ * second argument.
+ */
+<<__Rx>>
+function timesafe_equals(
+  string $known,
+  string $user,
+): bool {
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  return \hash_equals($known, $user);
+}
