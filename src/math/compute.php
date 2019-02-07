@@ -154,7 +154,7 @@ function from_base(string $number, int $from_base): int {
 function exp(num $arg): float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  return \exp($arg);
+  return \exp((float)$arg);
 }
 
 /**
@@ -244,7 +244,7 @@ function sqrt(num $arg): float {
   invariant($arg >= 0, 'Expected non-negative argument to sqrt, got %f', $arg);
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  return \sqrt($arg);
+  return \sqrt((float)$arg);
 }
 
 /**
