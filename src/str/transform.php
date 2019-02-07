@@ -152,7 +152,8 @@ function repeat(
  * `$replacement`.
  *
  * - For a case-insensitive search/replace, see `Str\replace_ci()`.
- * - For multiple searches/replacements, see `Str\replace_every()`.
+ * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
+ * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
 <<__Rx>>
 function replace(
@@ -170,7 +171,8 @@ function replace(
  * `$replacement` (case-insensitive).
  *
  * - For a case-sensitive search/replace, see `Str\replace()`.
- * - For multiple searches/replacements, see `Str\replace_every()`.
+ * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
+ * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
 <<__Rx>>
 function replace_ci(
@@ -187,7 +189,9 @@ function replace_ci(
  * Returns the "haystack" string with all occurrences of the keys of
  * `$replacements` replaced by the corresponding values.
  *
- * For a single search/replace, see `Str\replace()`.
+ * - For a single case-sensitive search/replace, see `Str\replace()`.
+ * - For a single case-insensitive search/replace, see `Str\replace_ci()`.
+ * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
 <<__Rx>>
 function replace_every(
@@ -197,6 +201,32 @@ function replace_every(
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace(
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
+    \array_keys($replacements),
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
+    \array_values($replacements),
+    $haystack,
+  );
+}
+
+/**
+ * Returns the "haystack" string with all occurrences of the keys of
+ * `$replacements` replaced by the corresponding values (case-insensitive).
+ *
+ * - For a single case-sensitive search/replace, see `Str\replace()`.
+ * - For a single case-insensitive search/replace, see `Str\replace_ci()`.
+ * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
+ */
+<<__Rx>>
+function replace_every_ci(
+  string $haystack,
+  KeyedContainer<string, string> $replacements,
+): string {
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
+  return \str_ireplace(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     \array_keys($replacements),

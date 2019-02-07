@@ -350,6 +350,42 @@ final class StrTransformTest extends HackTest {
     expect(Str\replace_every($haystack, $replacements))->toBeSame($expected);
   }
 
+  public static function provideReplaceEveryCI(): varray<mixed> {
+    return varray[
+      tuple(
+        'Hello world',
+        dict[
+          'hello' => 'goodbye',
+          'wOrld' => 'cruel world',
+        ],
+        'goodbye cruel world',
+      ),
+      tuple(
+        'HELLO world',
+        Map {
+          'hello' => '',
+          'WORLD' => 'cruel world',
+          'blerg' => 'nonexistent',
+        },
+        ' cruel world',
+      ),
+      tuple(
+        'hello world',
+        darray[],
+        'hello world',
+      ),
+    ];
+  }
+
+  <<DataProvider('provideReplaceEveryCI')>>
+  public function testReplaceEveryCI(
+    string $haystack,
+    KeyedContainer<string, string> $replacements,
+    string $expected,
+  ): void {
+    expect(Str\replace_every_ci($haystack, $replacements))->toBeSame($expected);
+  }
+
   public static function providerReverse(): varray<(string, string)> {
     return varray[
       tuple('abc', 'cba'),
