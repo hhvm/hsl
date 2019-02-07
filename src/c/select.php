@@ -65,8 +65,9 @@ function first<T>(
   Traversable<T> $traversable,
 ): ?T {
   if ($traversable is Container<_>) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
+    /* HH_FIXME[4110] T is not nonnull */
     return _Private\Native\first($traversable);
   }
   foreach ($traversable as $value) {
@@ -107,8 +108,9 @@ function first_key<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
   if ($traversable is Container<_>) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib? */
+    /* HH_FIXME[4107] __PHPStdLib? */
+    /* HH_FIXME[4110] generic incompatible with nonnull */
     return _Private\Native\first_key($traversable);
   }
   foreach ($traversable as $key => $_) {
@@ -146,8 +148,9 @@ function last<Tv>(
   Traversable<Tv> $traversable,
 ): ?Tv {
   if ($traversable is Container<_>) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib? */
+    /* HH_FIXME[4107] __PHPStdLib? */
+    /* HH_FIXME[4110] generic incompatible with nonnull */
     return _Private\Native\last($traversable);
   }
   if ($traversable is Iterable<_>) {
@@ -181,6 +184,7 @@ function lastx<Tv>(
     /* HH_FIXME[4276] this is an array */
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_FIXME[4200] Non-reactive call in reactive code. */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return \end(&$traversable);
@@ -215,8 +219,9 @@ function last_key<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
   if ($traversable is Container<_>) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib? */
+    /* HH_FIXME[4107] __PHPStdLib? */
+    /* HH_FIXME[4110] generic incompatible with nonnull */
     return _Private\Native\last_key($traversable);
   }
   if ($traversable is KeyedIterable<_, _>) {
@@ -259,8 +264,9 @@ function nfirst<T>(
   ?Traversable<T> $traversable,
 ): ?T {
   if ($traversable is Container<_>) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib? */
+    /* HH_FIXME[4107] __PHPStdLib? */
+    /* HH_FIXME[4110] generic incompatible with nonnull */
     return _Private\Native\first($traversable);
   }
   if ($traversable !== null) {

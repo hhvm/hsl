@@ -89,7 +89,7 @@ function base_convert(string $value, int $from_base, int $to_base): string {
   do {
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
-    $result = $to_alphabet[\bcmod($result_decimal, (string)$to_base)] . $result;
+    $result = $to_alphabet[\bcmod($result_decimal, (string)$to_base)].$result;
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     $result_decimal = \bcdiv((string)$result_decimal, (string)$to_base);
@@ -123,7 +123,7 @@ function ceil(num $value): float {
 function cos(num $arg): float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  return \cos($arg);
+  return \cos((float)$arg);
 }
 
 /**
@@ -214,10 +214,7 @@ function log(num $arg, ?num $base = null): float {
  * the nearest tenth whereas a precision of -1 rounds to the nearest ten.
  */
 <<__Rx>>
-function round(
-  num $val,
-  int $precision = 0,
-): float {
+function round(num $val, int $precision = 0): float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \round($val, $precision);
@@ -233,7 +230,7 @@ function round(
 function sin(num $arg): float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  return \sin($arg);
+  return \sin((float)$arg);
 }
 
 /**
@@ -257,7 +254,7 @@ function sqrt(num $arg): float {
 function tan(num $arg): float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  return \tan($arg);
+  return \tan((float)$arg);
 }
 
 /**
