@@ -3,16 +3,16 @@
   "description": "The Hack Standard Library",
   "extra": {
     "branch-alias": {
-      "dev-master": "3.x-dev"
+      "dev-master": "4.x-dev"
     }
   },
   "license": "MIT",
   "require-dev": {
     "facebook/fbexpect": "^2.0.0",
-    "hhvm/hacktest": "^1.0"
+    "hhvm/hacktest": "^1.0",
+    "hhvm/hhvm-autoload": "^2.0"
   },
   "require": {
-    "hhvm": "^3.28.0",
-    "hhvm/hhvm-autoload": "^1.4"
+    "hhvm": "^4.0"
   }
 }
