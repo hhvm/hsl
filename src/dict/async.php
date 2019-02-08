@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Dict;
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Dict};
 
 async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,

@@ -66,7 +66,7 @@ function format_number(
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \number_format(
-    $number,
+    (float) $number,
     $decimals,
     $decimal_point,
     $thousands_separator,
@@ -161,6 +161,7 @@ function replace(
   string $needle,
   string $replacement,
 ): string {
+  /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace($needle, $replacement, $haystack);
@@ -180,6 +181,7 @@ function replace_ci(
   string $needle,
   string $replacement,
 ): string {
+  /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_ireplace($needle, $replacement, $haystack);
@@ -198,6 +200,7 @@ function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
 ): string {
+  /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace(
@@ -226,6 +229,7 @@ function replace_every_ci(
 ): string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   return \str_ireplace(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */

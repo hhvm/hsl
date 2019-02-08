@@ -405,6 +405,6 @@ final class RegexTest extends HackTest {
     Regex\Pattern<Regex\Match> $pattern,
     string $expected,
   ): void {
-    expect(Regex\to_string($pattern))->toEqual($expected);
+    expect(Regex\to_string($pattern))->toBePHPEqual($expected);
   }
 }
