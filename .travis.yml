@@ -1,11 +1,9 @@
-language: php
-php:
- - hhvm
- - hhvm-nightly
-matrix:
-  allow_failures:
-  - php: hhvm
+sudo: required
+language: generic
+services: docker
+env:
+ - HHVM_VERSION=latest
+install:
+ - docker pull hhvm/hhvm:$HHVM_VERSION
 script:
- - ./.travis.sh
-notifications:
-  webhooks: https://code.facebook.com/travis/webhook/
+ - docker run --rm -w /var/source -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION ./.travis.sh
