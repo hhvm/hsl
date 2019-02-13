@@ -4,7 +4,7 @@
   "extra": {
     "branch-alias": {
       "dev-master": "4.x-dev",
-      "v4.0.x": "4.0.x-dev"
+      "dev-v4.0.x": "4.0.x-dev"
     }
   },
   "license": "MIT",
