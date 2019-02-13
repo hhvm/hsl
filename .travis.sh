@@ -4,8 +4,13 @@ apt update -y
 DEBIAN_FRONTEND=noninteractive apt install -y php-cli zip unzip
 hhvm --version
 php --version
-git branch -l
-git log -1 --oneline
+if [ ! -e .git/refs/heads/master ]; then
+  # - Travis clones with `--branch`, then moves to a detached HEAD state
+  # - if we're on a detached HEAD, Composer uses master to resolve branch
+  #   aliases.
+  # So, create the master branch :p
+  git branch master HEAD
+fi
 
 (
   cd $(mktemp -d)
