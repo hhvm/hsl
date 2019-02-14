@@ -85,7 +85,7 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
 <<__Rx, __AtMostRxAsArgs>>
 function flatten<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-  Traversable<Rx\Traversable<Tv>> $traversables,
+  Traversable<\HH\Rx\Traversable<Tv>> $traversables,
 ): keyset<Tv> {
   $result = keyset[];
   foreach ($traversables as $traversable) {
