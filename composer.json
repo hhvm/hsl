@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "require-dev": {
-    "facebook/fbexpect": "^2.0.0",
+    "facebook/fbexpect": "^2.5.1",
     "hhvm/hacktest": "^1.0",
     "hhvm/hhvm-autoload": "^2.0"
   },
