@@ -233,6 +233,14 @@ final class VecOrderTest extends HackTest {
         null,
         vec['the', 'fox', 'over', 'quick', 'jumped'],
       ),
+      // If `scalar_func` returns a tuple, it should sort item-by-item in the tuple
+      // Sort by string length, and sort by the string itself as a tie breaker
+      tuple(
+        vec['hello', 'world', 'an', 'awesome', 'test', 'zeuss', 'hacks'],
+        (string $x) ==> tuple(Str\length($x), $x),
+        null,
+        vec['an', 'test', 'hacks', 'hello', 'world', 'zeuss', 'awesome'],
+      )
     ];
   }
 
