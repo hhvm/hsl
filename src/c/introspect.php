@@ -63,6 +63,7 @@ function contains<T>(
  */
 <<__Rx>>
 function contains_key<Tk, Tv>(
+  /* HH_FIXME[4110] Tk needs to be constrained to arraykey */
   <<__MaybeMutable>> KeyedContainer<Tk, Tv> $container,
   Tk $key,
 ): bool {

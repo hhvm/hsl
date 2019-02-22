@@ -151,7 +151,7 @@ final class CIntrospectTest extends HackTest {
   }
 
   <<DataProvider('provideTestContainsKey')>>
-  public function testContainsKey<Tk, Tv>(
+  public function testContainsKey<Tk as arraykey, Tv>(
     KeyedContainer<Tk, Tv> $container,
     Tk $key,
     bool $expected,
