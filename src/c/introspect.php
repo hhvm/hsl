@@ -68,6 +68,7 @@ function contains_key<Tk, Tv>(
 ): bool {
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4110] array_key_exists expects arraykey */
   return \array_key_exists($key, $container);
 }
 
