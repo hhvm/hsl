@@ -115,5 +115,8 @@ function every<T>(
 function is_empty<T>(
   Container<T> $container,
 ): bool {
+  if ($container is \ConstCollection<_>) {
+    return $container->isEmpty();
+  }
   return !$container;
 }
