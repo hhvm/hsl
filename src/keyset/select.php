@@ -15,6 +15,12 @@ use namespace HH\Lib\C;
 /**
  * Returns a new keyset containing only the elements of the first Traversable
  * that do not appear in any of the other ones.
+ *
+ * Time complexity: O(n + m), where n is size of `$first` and m is the combined
+ * size of `$second` plus all the `...$rest`
+ * Space complexity: O(n + m), where n is size of `$first` and m is the combined
+ * size of `$second` plus all the `...$rest` -- note that this is bigger than
+ * O(n)
  */
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv1> $first,
@@ -42,6 +48,9 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * the given Traversable.
  *
  * To take only the first `$n` elements, see `Keyset\take()`.
+ *
+ * Time complexity: O(n), where n is the size of `$traversable`
+ * Space complexity: O(n), where n is the size of `$traversable`
  */
 <<__Rx, __AtMostRxAsArgs>>
 function drop<Tv as arraykey>(
@@ -67,6 +76,9 @@ function drop<Tv as arraykey>(
  * returns `true`. The default predicate is casting the value to boolean.
  *
  * To remove null values in a typechecker-visible way, see `Keyset\filter_nulls()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function filter<Tv as arraykey>(
@@ -88,6 +100,9 @@ function filter<Tv as arraykey>(
 /**
  * Returns a new keyset containing only non-null values of the given
  * Traversable.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function filter_nulls<Tv as arraykey>(
@@ -108,6 +123,9 @@ function filter_nulls<Tv as arraykey>(
  * returns `true`.
  *
  * If you don't need access to the key, see `Keyset\filter()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function filter_with_key<Tk, Tv as arraykey>(
@@ -144,6 +162,10 @@ function keys<Tk as arraykey, Tv>(
 /**
  * Returns a new keyset containing only the elements of the first Traversable
  * that appear in all the other ones.
+ *
+ * Time complexity: O(n + m), where n is size of `$first` and m is the combined
+ * size of `$second` plus all the `...$rest`
+ * Space complexity: O(n), where n is size of `$first`
  */
 function intersect<Tv as arraykey>(
   Traversable<Tv> $first,
@@ -179,6 +201,9 @@ function intersect<Tv as arraykey>(
  * than the specified length.
  *
  * To drop the first `$n` elements, see `Keyset\drop()`.
+ *
+ * Time complexity: O(n), where n is `$n`
+ * Space complexity: O(n), where n is `$n`
  */
 <<__Rx, __AtMostRxAsArgs>>
 function take<Tv as arraykey>(

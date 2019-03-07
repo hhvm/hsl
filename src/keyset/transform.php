@@ -19,6 +19,9 @@ use namespace HH\Lib\Math;
  * If the given Traversable doesn't divide evenly, the final chunk will be
  * smaller than the specified size. If there are duplicate values in the
  * Traversable, some chunks may be smaller than the specified size.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function chunk<Tv as arraykey>(
@@ -42,6 +45,9 @@ function chunk<Tv as arraykey>(
 /**
  * Returns a new keyset where each value is the result of calling the given
  * function on the original value.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$value_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map<Tv1, Tv2 as arraykey>(
@@ -60,6 +66,9 @@ function map<Tv1, Tv2 as arraykey>(
 /**
  * Returns a new keyset where each value is the result of calling the given
  * function on the original key and value.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$value_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map_with_key<Tk, Tv1, Tv2 as arraykey>(
@@ -81,6 +90,11 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
  * a keyset.
  *
  * For a fixed number of Traversables, see `Keyset\union()`.
+ *
+ * Time complexity: O(n), where n is the combined size of all the
+ * `$traversables`
+ * Space complexity: O(n), where n is the combined size of all the
+ * `$traversables`
  */
 <<__Rx, __AtMostRxAsArgs>>
 function flatten<Tv as arraykey>(

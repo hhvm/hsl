@@ -15,6 +15,9 @@ use namespace HH\Lib\C;
 /**
  * Returns whether the two given keysets have the same elements, using strict
  * equality. To guarantee equality of order as well as contents, use `===`.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx>>
 function equal<Tv as arraykey>(

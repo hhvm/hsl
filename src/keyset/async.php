@@ -14,6 +14,9 @@ use namespace HH\Lib\Vec;
 
 /**
  * Returns a new keyset containing the awaited result of the given Awaitables.
+ *
+ * Time complexity: O(n * a), where a is the complexity of each Awaitable
+ * Space complexity: O(n)
  */
 async function from_async<Tv as arraykey>(
   Traversable<Awaitable<Tv>> $awaitables,
@@ -27,6 +30,9 @@ async function from_async<Tv as arraykey>(
  * predicate returns `true`.
  *
  * For non-async predicates, see `Keyset\filter()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function filter_async<Tv as arraykey>(
@@ -49,6 +55,9 @@ async function filter_async<Tv as arraykey>(
 /**
  * Returns a new keyset where the value is the result of calling the
  * given async function on the original values in the given traversable.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$async_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function map_async<Tv, Tk as arraykey>(

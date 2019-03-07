@@ -13,6 +13,9 @@ namespace HH\Lib\Keyset;
 /**
  * Returns a 2-tuple containing keysets for which the given predicate returned
  * `true` and `false`, respectively.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function partition<Tv as arraykey>(

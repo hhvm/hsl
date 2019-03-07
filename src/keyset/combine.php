@@ -15,6 +15,11 @@ namespace HH\Lib\Keyset;
  * Traversables.
  *
  * For a variable number of Traversables, see `Keyset\flatten()`.
+ *
+ * Time complexity: O(n + m), where n is the size of `$first` and m is the
+ * combined size of all the `...$rest`
+ * Space complexity: O(n + m), where n is the size of `$first` and m is the
+ * combined size of all the `...$rest`
  */
 function union<Tv as arraykey>(
   Traversable<Tv> $first,

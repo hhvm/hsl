@@ -14,6 +14,10 @@ namespace HH\Lib\Keyset;
  * Returns a new keyset sorted by the values of the given Traversable. If the
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.
+ *
+ * Time complexity: O((n log n) * c), where c is the complexity of the
+ * comparator function (which is O(1) if not explicitly provided)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function sort<Tv as arraykey>(
