@@ -14,6 +14,11 @@ namespace HH\Lib\Vec;
  * Returns a new vec formed by concatenating the given Traversables together.
  *
  * For a variable number of Traversables, see `Vec\flatten()`.
+ *
+ * Time complexity: O(n + m), where n is the size of `$first` and m is the
+ * combined size of all the `...$rest`
+ * Space complexity: O(n + m), where n is the size of `$first` and m is the
+ * combined size of all the `...$rest`
  */
 function concat<Tv>(
   Traversable<Tv> $first,

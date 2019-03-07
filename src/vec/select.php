@@ -17,6 +17,12 @@ use namespace HH\Lib\{C, Dict, Keyset};
  * do not appear in any of the other ones.
  *
  * For vecs that contain non-arraykey elements, see `Vec\diff_by()`.
+ *
+ * Time complexity: O(n + m), where n is size of `$first` and m is the combined
+ * size of `$second` plus all the `...$rest`
+ * Space complexity: O(n + m), where n is size of `$first` and m is the combined
+ * size of `$second` plus all the `...$rest` -- note that this is bigger than
+ * O(n)
  */
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv1> $first,
@@ -46,6 +52,11 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * determined by the scalar function.
  *
  * For vecs that contain arraykey elements, see `Vec\diff()`.
+ *
+ * Time complexity: O((n + m) * s), where n is the size of `$first`, m is the
+ * size of `$second`, and s is the complexity of `$scalar_func`
+ * Space complexity: O(n + m), where n is the size of `$first` and m is the size
+ * of `$second` -- note that this is bigger than O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function diff_by<Tv, Ts as arraykey>(
@@ -76,6 +87,9 @@ function diff_by<Tv, Ts as arraykey>(
  * given Traversable.
  *
  * To take only the first `$n` elements, see `Vec\take()`.
+ *
+ * Time complexity: O(n), where n is the size of `$traversable`
+ * Space complexity: O(n), where n is the size of `$traversable`
  */
 <<__Rx, __AtMostRxAsArgs>>
 function drop<Tv>(
@@ -103,6 +117,9 @@ function drop<Tv>(
  * - To remove null values in a typechecker-visible way, see
  *   `Vec\filter_nulls()`.
  * - To use an async predicate, see `Vec\filter_async()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function filter<Tv>(
@@ -124,6 +141,9 @@ function filter<Tv>(
 /**
  * Returns a new vec containing only non-null values of the given
  * Traversable.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function filter_nulls<Tv>(
@@ -144,6 +164,9 @@ function filter_nulls<Tv>(
  * returns `true`.
  *
  * If you don't need access to the key, see `Vec\filter()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function filter_with_key<Tk, Tv>(
@@ -164,6 +187,10 @@ function filter_with_key<Tk, Tv>(
 /**
  * Returns a new vec containing only the elements of the first Traversable that
  * appear in all the other ones. Duplicate values are preserved.
+ *
+ * Time complexity: O(n + m), where n is size of `$first` and m is the combined
+ * size of `$second` plus all the `...$rest`
+ * Space complexity: O(n), where n is size of `$first`
  */
 function intersect<Tv as arraykey>(
   Traversable<Tv> $first,
@@ -181,8 +208,11 @@ function intersect<Tv as arraykey>(
 }
 
 /**
-  * Returns a new vec containing the keys of the given KeyedTraversable.
-  */
+ * Returns a new vec containing the keys of the given KeyedTraversable.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
+ */
 <<__Rx, __AtMostRxAsArgs>>
 function keys<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
@@ -199,6 +229,10 @@ function keys<Tk, Tv>(
  * Returns a new vec containing an unbiased random sample of up to
  * `$sample_size` elements (fewer iff `$sample_size` is larger than the size of
  * `$traversable`).
+ *
+ * Time complexity: O(n), where n is the size of `$traversable`
+ * Space complexity: O(n), where n is the size of `$traversable` -- note that n
+ * may be bigger than `$sample_size`
  */
 function sample<Tv>(
   Traversable<Tv> $traversable,
@@ -223,6 +257,9 @@ function sample<Tv>(
  *
  * - To take only the first `$n` elements, see `Vec\take()`.
  * - To drop the first `$n` elements, see `Vec\drop()`.
+ *
+ * Time complexity: O(n), where n is the size of the slice
+ * Space complexity: O(n), where n is the size of the slice
  */
 <<__Rx>>
 function slice<Tv>(
@@ -242,6 +279,9 @@ function slice<Tv>(
  * Traversable.
  *
  * To drop the first `$n` elements, see `Vec\drop()`.
+ *
+ * Time complexity: O(n), where n is `$n`
+ * Space complexity: O(n), where n is `$n`
  */
 <<__Rx, __AtMostRxAsArgs>>
 function take<Tv>(
@@ -271,6 +311,9 @@ function take<Tv>(
  * be used.
  *
  * For non-arraykey elements, see `Vec\unique_by()`.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function unique<Tv as arraykey>(
@@ -287,6 +330,9 @@ function unique<Tv as arraykey>(
  * previous ones.
  *
  * For arraykey elements, see `Vec\unique()`.
+ *
+ * Time complexity: O(n * s), where s is the complexity of `$scalar_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function unique_by<Tv, Ts as arraykey>(

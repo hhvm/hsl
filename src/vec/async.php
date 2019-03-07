@@ -10,6 +10,12 @@
 
 namespace HH\Lib\Vec;
 
+/**
+ * Returns a new vec with each value `await`ed in parallel.
+ *
+ * Time complexity: O(n * a), where a is the complexity of each Awaitable
+ * Space complexity: O(n)
+ */
 async function from_async<Tv>(
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
@@ -28,6 +34,9 @@ async function from_async<Tv>(
  * predicate returns `true`.
  *
  * For non-async predicates, see `Vec\filter()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function filter_async<Tv>(
@@ -52,6 +61,9 @@ async function filter_async<Tv>(
  * async function on the original value.
  *
  * For non-async functions, see `Vec\map()`.
+ *
+ * Time complexity: O(n * f), where `f` is the complexity of `$async_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function map_async<Tv1, Tv2>(

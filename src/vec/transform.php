@@ -16,6 +16,9 @@ use namespace HH\Lib\Math;
  * Returns a vec containing the original vec split into chunks of the given
  * size. If the original vec doesn't divide evenly, the final chunk will be
  * smaller.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function chunk<Tv>(
@@ -39,6 +42,9 @@ function chunk<Tv>(
 
 /**
  * Returns a new vec of size `$size` where all the values are `$value`.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx>>
 function fill<Tv>(
@@ -58,6 +64,11 @@ function fill<Tv>(
  * Traversable.
  *
  * For a fixed number of Traversables, see `Vec\concat()`.
+ *
+ * Time complexity: O(n), where n is the combined size of all the
+ * `$traversables`
+ * Space complexity: O(n), where n is the combined size of all the
+ * `$traversables`
  */
 function flatten<Tv>(
   Traversable<Traversable<Tv>> $traversables,
@@ -76,6 +87,9 @@ function flatten<Tv>(
  * function on the original value.
  *
  * For async functions, see `Vec\map_async()`.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map<Tv1, Tv2>(
@@ -94,6 +108,9 @@ function map<Tv1, Tv2>(
 /**
  * Returns a new vec where each value is the result of calling the given
  * function on the original key and value.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map_with_key<Tk, Tv1, Tv2>(

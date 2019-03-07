@@ -13,6 +13,9 @@ namespace HH\Lib\Vec;
 /**
  * Returns a 2-tuple containing vecs for which the given predicate returned
  * `true` and `false`, respectively.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function partition<Tv>(

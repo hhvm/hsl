@@ -17,6 +17,9 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * inclusive, with the step between elements being `$step` if provided, or 1 by
  * default. If `$start > $end`, it returns a descending range instead of
  * an empty one.
+ *
+ * Time complexity: O(n), where `n` is the size of the resulting vec
+ * Space complexity: O(n), where `n` is the size of the resulting vec
  */
 <<__Rx>>
 function range<Tv as num>(
@@ -37,6 +40,9 @@ function range<Tv as num>(
 /**
  * Returns a new vec with the values of the given Traversable in reversed
  * order.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function reverse<Tv>(
@@ -57,6 +63,9 @@ function reverse<Tv>(
 /**
  * Returns a new vec with the values of the given Traversable in a random
  * order.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 function shuffle<Tv>(
   Traversable<Tv> $traversable,
@@ -74,6 +83,10 @@ function shuffle<Tv>(
  * ascending order.
  *
  * To sort by some computable property of each value, see `Vec\sort_by()`.
+ *
+ * Time complexity: O((n log n) * c), where c is the complexity of the
+ * comparator function (which is O(1) if not provided explicitly)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function sort<Tv>(
@@ -106,6 +119,11 @@ function sort<Tv>(
  * order of scalar key.
  *
  * To sort by the values of the Traversable, see `Vec\sort()`.
+ *
+ * Time complexity: O((n log n) * c + n * s), where c is the complexity of the
+ * comparator function (which is O(1) if not provided explicitly) and s is the
+ * complexity of the scalar function
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function sort_by<Tv, Ts>(
