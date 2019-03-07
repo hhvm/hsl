@@ -16,6 +16,9 @@ use namespace HH\Lib\Math;
  * Returns a vec containing the original dict split into chunks of the given
  * size. If the original dict doesn't divide evenly, the final chunk will be
  * smaller.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function chunk<Tk as arraykey, Tv>(
@@ -39,6 +42,9 @@ function chunk<Tk as arraykey, Tv>(
 /**
  * Returns a new dict mapping each value to the number of times it appears
  * in the given Traversable.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__RxShallow, __AtMostRxAsArgs>>
 function count_values<Tv as arraykey>(
@@ -58,6 +64,11 @@ function count_values<Tv as arraykey>(
  * the previous ones.
  *
  * For a fixed number of KeyedTraversables, see `Dict\merge()`.
+ *
+ * Time complexity: O(n), where n is the combined size of all the
+ * `$traversables`
+ * Space complexity: O(n), where n is the combined size of all the
+ * `$traversables`
  */
 <<__Rx, __AtMostRxAsArgs>>
 function flatten<Tk as arraykey, Tv>(
@@ -75,6 +86,9 @@ function flatten<Tk as arraykey, Tv>(
 
 /**
  * Returns a new dict where all the given keys map to the given value.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function fill_keys<Tk as arraykey, Tv>(
@@ -93,6 +107,9 @@ function fill_keys<Tk as arraykey, Tv>(
  * Returns a new dict keyed by the values of the given KeyedTraversable
  * and vice-versa. In case of duplicate values, later keys overwrite the
  * previous ones.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function flip<Tk, Tv as arraykey>(
@@ -113,6 +130,9 @@ function flip<Tk, Tv as arraykey>(
  * - To use an async function, see `Dict\from_keys_async()`.
  * - To create a dict from values, see `Dict\from_values()`.
  * - To create a dict from key/value tuples, see `Dict\from_entries()`.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$value_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function from_keys<Tk as arraykey, Tv>(
@@ -139,6 +159,9 @@ function from_keys<Tk as arraykey, Tv>(
  * - To create a dict from values, see `Dict\from_values()`.
  *
  * Also known as `unzip` or `fromItems` in other implementations.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function from_entries<Tk as arraykey, Tv>(
@@ -161,6 +184,9 @@ function from_entries<Tk as arraykey, Tv>(
  *
  * - To create a dict from keys, see `Dict\from_keys()`.
  * - To create a dict from key/value tuples, see `Dict\from_entries()`.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function from_values<Tk as arraykey, Tv>(
@@ -182,6 +208,9 @@ function from_values<Tk as arraykey, Tv>(
   *  - values are vecs of original values that all produced the same key.
   *
   * If a value produces a null key, it's omitted from the result.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$key_func`
+ * Space complexity: O(n)
   */
 <<__Rx, __AtMostRxAsArgs>>
 function group_by<Tk as arraykey, Tv>(
@@ -207,6 +236,9 @@ function group_by<Tk as arraykey, Tv>(
  * function on the original value.
  *
  * To use an async function, see `Dict\map_async()`.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$value_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map<Tk as arraykey, Tv1, Tv2>(
@@ -226,6 +258,9 @@ function map<Tk as arraykey, Tv1, Tv2>(
  * Returns a new dict where each key is the result of calling the given
  * function on the original key. In the case of duplicate keys, later values
  * will overwrite the previous ones.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$key_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map_keys<Tk1, Tk2 as arraykey, Tv>(
@@ -244,6 +279,9 @@ function map_keys<Tk1, Tk2 as arraykey, Tv>(
 /**
  * Returns a new dict where each value is the result of calling the given
  * function on the original value and key.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$value_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function map_with_key<Tk as arraykey, Tv1, Tv2>(
@@ -264,6 +302,10 @@ function map_with_key<Tk as arraykey, Tv1, Tv2>(
  *  - values are the result of calling `$value_func` on the original value
  *  - keys are the result of calling `$key_func` on the original value.
  * In the case of duplicate keys, later values will overwrite the previous ones.
+ *
+ * Time complexity: O(n * (f1 + f2), where f1 is the complexity of `$value_func`
+ * and f2 is the complexity of `$key_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function pull<Tk as arraykey, Tv1, Tv2>(
@@ -286,6 +328,10 @@ function pull<Tk as arraykey, Tv1, Tv2>(
  *  - values are the result of calling `$value_func` on the original value/key
  *  - keys are the result of calling `$key_func` on the original value/key.
  * In the case of duplicate keys, later values will overwrite the previous ones.
+ *
+ * Time complexity: O(n * (f1 + f2), where f1 is the complexity of `$value_func`
+ * and f2 is the complexity of `$key_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function pull_with_key<Tk1, Tk2 as arraykey, Tv1, Tv2>(

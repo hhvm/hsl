@@ -13,6 +13,9 @@ namespace HH\Lib\Dict;
 /**
  * Returns a 2-tuple containing dicts for which the given predicate returned
  * `true` and `false`, respectively.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$predicate`.
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function partition<Tk as arraykey, Tv>(
@@ -36,6 +39,9 @@ function partition<Tk as arraykey, Tv>(
 /**
  * Returns a 2-tuple containing dicts for which the given keyed predicate
  * returned `true` and `false`, respectively.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$predicate`.
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function partition_with_key<Tk as arraykey, Tv>(

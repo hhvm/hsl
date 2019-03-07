@@ -15,6 +15,9 @@ use namespace HH\Lib\Vec;
 /**
  * Returns a new dict with the original entries in reversed iteration
  * order.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function reverse<Tk as arraykey, Tv>(
@@ -35,6 +38,10 @@ function reverse<Tk as arraykey, Tv>(
  *
  * - To sort by some computable property of each value, see `Dict\sort_by()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
+ *
+ * Time complexity: O((n log n) * c), where c is the complexity of the
+ * comparator function (which is O(1) if not provided explicitly)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function sort<Tk as arraykey, Tv>(
@@ -68,6 +75,11 @@ function sort<Tk as arraykey, Tv>(
  *
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
+ *
+ * Time complexity: O((n log n) * c + s), where c is the complexity of the
+ * comparator function (which is O(1) if not provided explicitly) and s is the
+ * complexity of the scalar function
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function sort_by<Tk as arraykey, Tv, Ts>(
@@ -96,6 +108,10 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  *
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by some computable property of each value, see `Dict\sort_by()`.
+ *
+ * Time complexity: O((n log n) * c), where c is the complexity of the
+ * comparator function (which is O(1) if not provided explicitly)
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function sort_by_key<Tk as arraykey, Tv>(

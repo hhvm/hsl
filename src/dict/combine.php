@@ -15,6 +15,11 @@ use namespace HH\Lib\C;
 /**
  * Returns a new dict where each element in `$keys` maps to the
  * corresponding element in `$values`.
+ *
+ * Time complexity: O(n) where n is the size of `$keys` (which must be the same
+ * as the size of `$values`)
+ * Space complexity: O(n) where n is the size of `$keys` (which must be the same
+ * as the size of `$values`)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function associate<Tk as arraykey, Tv>(
@@ -39,6 +44,11 @@ function associate<Tk as arraykey, Tv>(
 /**
  * Merges multiple KeyedTraversables into a new dict. In the case of duplicate
  * keys, later values will overwrite the previous ones.
+ *
+ * Time complexity: O(n + m), where n is the size of `$first` and m is the
+ * combined size of all the `...$rest`
+ * Space complexity: O(n + m), where n is the size of `$first` and m is the
+ * combined size of all the `...$rest`
  */
 function merge<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $first,

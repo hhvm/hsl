@@ -12,6 +12,12 @@ namespace HH\Lib\Dict;
 
 use namespace HH\Lib\{C, Dict};
 
+/**
+ * Returns a new dict with each value `await`ed in parallel.
+ *
+ * Time complexity: O(n * a), where a is the complexity of each Awaitable
+ * Space complexity: O(n)
+ */
 async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
@@ -30,6 +36,9 @@ async function from_async<Tk as arraykey, Tv>(
  * async function on the corresponding key.
  *
  * For non-async functions, see `Dict\from_keys()`.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$async_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function from_keys_async<Tk as arraykey, Tv>(
@@ -61,6 +70,9 @@ async function from_keys_async<Tk as arraykey, Tv>(
  * predicate returns `true`.
  *
  * For non-async predicates, see `Dict\filter()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function filter_async<Tk as arraykey, Tv>(
@@ -82,6 +94,9 @@ async function filter_async<Tk as arraykey, Tv>(
  * Like filter_async, but lets you utilize the keys of your dict too.
  *
  * For non-async filters with key, see `Dict\filter_with_key()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function filter_with_key_async<Tk as arraykey, Tv>(
@@ -107,6 +122,9 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  * async function on the original value.
  *
  * For non-async functions, see `Dict\map()`.
+ *
+ * Time complexity: O(n * f), where f is the complexity of `$async_func`
+ * Space complexity: O(n)
  */
 <<__Rx, __AtMostRxAsArgs>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
@@ -133,6 +151,15 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   return $dict;
 }
 
+/**
+ * Returns a new dict where each value is the result of calling the given
+ * async function on the original key and value.
+ *
+ * For non-async functions, see `Dict\map()`.
+ *
+ * Time complexity: O(n * a), where a is the complexity of each Awaitable
+ * Space complexity: O(n)
+ */
 <<__Rx, __AtMostRxAsArgs>>
 async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
