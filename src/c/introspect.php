@@ -54,6 +54,22 @@ function contains<T>(
   T $value,
 ): bool {
   if ($traversable is keyset<_>) {
+    /* HH_IGNORE_ERROR[4110] It's nonsensical for `$value` to not be an arraykey
+     * in this case because a `keyset<_>` can never contain anything other than
+     * `arraykey`s. However, Hack allows you to write something like:
+     *
+     *   C\contains(keyset[], new Foobar())
+     *
+     * HHVM will throw if you try to call `array_key_exists` (`C\contains_key`
+     * calls this) on any Hack array and an invalid array key _except_ null.
+     * Because `C\contains` on a keyset calls `C\contains_key`:
+     *
+     *   C\contains(keyset[], new Foobar()); // Throws
+     *   C\contains(keyset[], 4.2);          // Throws
+     *   C\contains(keyset[], null);         // Does not throw: is always false
+     *
+     * This is subtle behavior that we'd rather just let HHVM handle for now.
+     */
     return contains_key($traversable, $value);
   }
   foreach ($traversable as $v) {
@@ -71,14 +87,12 @@ function contains<T>(
  * Space complexity: O(1)
  */
 <<__Rx>>
-function contains_key<Tk, Tv>(
-  /* HH_FIXME[4110] Tk needs to be constrained to arraykey */
+function contains_key<Tk as arraykey, Tv>(
   <<__MaybeMutable>> KeyedContainer<Tk, Tv> $container,
   Tk $key,
 ): bool {
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4110] array_key_exists expects arraykey */
   return \array_key_exists($key, $container);
 }
 
