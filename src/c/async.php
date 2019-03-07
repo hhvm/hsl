@@ -19,6 +19,9 @@ namespace HH\Lib\C;
  * the Traversable is empty.
  *
  * For non-Awaitable Traversables, see `C\first`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 async function first_async<T>(
   Awaitable<Traversable<T>> $awaitable,
@@ -32,6 +35,9 @@ async function first_async<T>(
  * the Traversable is empty.
  *
  * For non-Awaitable Traversables, see `C\firstx`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 async function firstx_async<T>(
   Awaitable<Traversable<T>> $awaitable,

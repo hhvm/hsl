@@ -15,6 +15,9 @@ use namespace HH\Lib\{_Private, Str};
 /**
  * Returns the first value of the given Traversable for which the predicate
  * returns true, or null if no such value is found.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function find<T>(
@@ -34,6 +37,9 @@ function find<T>(
 /**
  * Returns the key of the first value of the given KeyedTraversable for which
  * the predicate returns true, or null if no such value is found.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function find_key<Tk, Tv>(
@@ -58,6 +64,9 @@ function find_key<Tk, Tv>(
  * - For possibly null Traversables, see `C\nfirst`.
  * - For single-element Traversables, see `C\onlyx`.
  * - For Awaitables that yield Traversables, see `C\first_async`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function first<T>(
@@ -84,6 +93,9 @@ function first<T>(
  * - For possibly null Traversables, see `C\nfirst`.
  * - For single-element Traversables, see `C\onlyx`.
  * - For Awaitables that yield Traversables, see `C\firstx_async`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function firstx<T>(
@@ -101,6 +113,9 @@ function firstx<T>(
  * KeyedTraversable is empty.
  *
  * For non-empty Traversables, see `C\first_keyx`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function first_key<Tk, Tv>(
@@ -124,6 +139,9 @@ function first_key<Tk, Tv>(
  * KeyedTraversable is empty.
  *
  * For possibly empty Traversables, see `C\first_key`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function first_keyx<Tk, Tv>(
@@ -141,6 +159,9 @@ function first_keyx<Tk, Tv>(
  *
  * - For non-empty Traversables, see `C\lastx`.
  * - For single-element Traversables, see `C\onlyx`.
+ *
+ * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function last<Tv>(
@@ -169,6 +190,9 @@ function last<Tv>(
  *
  * - For possibly empty Traversables, see `C\last`.
  * - For single-element Traversables, see `C\onlyx`.
+ *
+ * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function lastx<Tv>(
@@ -212,6 +236,9 @@ function lastx<Tv>(
  * KeyedTraversable is empty.
  *
  * For non-empty Traversables, see `C\last_keyx`.
+ *
+ * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function last_key<Tk, Tv>(
@@ -239,6 +266,9 @@ function last_key<Tk, Tv>(
  * KeyedTraversable is empty.
  *
  * For possibly empty Traversables, see `C\last_key`.
+ *
+ * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function last_keyx<Tk, Tv>(
@@ -257,6 +287,9 @@ function last_keyx<Tk, Tv>(
  * - For non-null Traversables, see `C\first`.
  * - For non-empty Traversables, see `C\firstx`.
  * - For single-element Traversables, see `C\onlyx`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function nfirst<T>(
@@ -285,6 +318,9 @@ function nfirst<T>(
  * a custom message for the exception in the error case.
  *
  * For Traversables with more than one element, see `C\firstx`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function onlyx<T>(

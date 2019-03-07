@@ -20,6 +20,9 @@ namespace HH\Lib\C;
  * element to bool.
  *
  * If you're looking for `C\none`, use `!C\any`.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function any<T>(
@@ -40,6 +43,9 @@ function any<T>(
 /**
  * Returns true if the given Traversable contains the value. Strict equality is
  * used.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function contains<T>(
@@ -60,6 +66,9 @@ function contains<T>(
 
 /**
  * Returns true if the given KeyedContainer contains the key.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx>>
 function contains_key<Tk, Tv>(
@@ -75,6 +84,9 @@ function contains_key<Tk, Tv>(
 
 /**
  * Returns the number of elements in the given Container.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx>>
 function count<T>(
@@ -91,6 +103,9 @@ function count<T>(
  * element to bool.
  *
  * If you're looking for `C\all`, this is it.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function every<T>(
@@ -110,6 +125,9 @@ function every<T>(
 
 /**
  * Returns whether the given Container is empty.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
  */
 <<__Rx>>
 function is_empty<T>(

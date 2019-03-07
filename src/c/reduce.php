@@ -17,6 +17,9 @@ namespace HH\Lib\C;
 /**
  * Reduces the given Traversable into a single value by applying an accumulator
  * function against an intermediate result and each value.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function reduce<Tv, Ta>(
@@ -37,6 +40,9 @@ function reduce<Tv, Ta>(
  * Reduces the given KeyedTraversable into a single value by
  * applying an accumulator function against an intermediate result
  * and each key/value.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
 function reduce_with_key<Tk, Tv, Ta>(
