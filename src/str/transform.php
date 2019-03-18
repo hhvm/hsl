@@ -76,7 +76,7 @@ function format_number(
 /**
  * Returns the string with all alphabetic characters converted to lowercase.
  */
-<<__RxLocal>>
+<<__Rx>>
 function lowercase(
   string $string,
 ): string {
