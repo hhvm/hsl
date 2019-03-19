@@ -157,7 +157,9 @@ function from_base(string $number, int $from_base): int {
      * so is likely to be slightly faster out in the wild.
      * See D14491063 for details of benchmarks that were run.
      */
-    $oval = PHP\ord($digit);
+    /* HH_FIXME[2049] calling stdlib directly */
+    /* HH_FIXME[4107] calling stdlib directly */
+    $oval = \ord($digit);
     // Branches sorted by guesstimated frequency of use. */
     if      (/* '0' - '9' */ $oval <= 57 && $oval >=  48) { $dval = $oval - 48; }
     else if (/* 'a' - 'z' */ $oval >= 97 && $oval <= 122) { $dval = $oval - 87; }
@@ -311,5 +313,12 @@ function to_base(int $number, int $to_base): string {
     'Expected non-negative base conversion input, got %d',
     $number,
   );
-  return base_convert((string)$number, 10, $to_base);
+  $result = '';
+  do {
+    // This is ~20% faster than using '%' and 'int_div' when jit-compiled.
+    $quotient = int_div($number, $to_base);
+    $result = ALPHABET_ALPHANUMERIC[$number - $quotient*$to_base].$result;
+    $number = $quotient;
+  } while($number !== 0);
+  return $result;
 }
