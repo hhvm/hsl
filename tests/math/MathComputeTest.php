@@ -474,11 +474,24 @@ final class MathComputeTest extends HackTest {
   }
 
   public static function provideTestToBase(): varray<mixed> {
-    return varray[
+    $tuples = varray[
       tuple(1234, 16, '4d2'),
       tuple(1234, 8, '2322'),
       tuple(1234, 2, '10011010010'),
+      tuple(0xdeadbeef, 16, 'deadbeef'),
+      tuple(0xdeadbeef, 3, '100122100210211112102'),
+      tuple(0xdeadbeef, 34, '2e7m43p'),
+      tuple(PHP_INT_MAX, 10, '9223372036854775807'),
+      tuple(PHP_INT_MAX, 2, PHP\str_repeat('1', 63)),
+      tuple(PHP_INT_MAX, 16, '7fffffffffffffff'),
+      tuple(PHP_INT_MAX, 17, '33d3d8307b214008'),
+      tuple(PHP_INT_MAX, 36, '1y2p0ij32e8e7'),
     ];
+    for ($i = 2; $i <= 36; ++$i) {
+      $tuples[] = tuple(0, $i, '0');
+      $tuples[] = tuple(1, $i, '1');
+    }
+    return $tuples;
   }
 
   <<DataProvider('provideTestToBase')>>
@@ -497,6 +510,8 @@ final class MathComputeTest extends HackTest {
       tuple(1234, 37),
       tuple(1234, 100),
       tuple(-1234, 8),
+      tuple(-1, -123),
+      tuple(1234, 1),
     ];
   }
 

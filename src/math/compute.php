@@ -311,5 +311,12 @@ function to_base(int $number, int $to_base): string {
     'Expected non-negative base conversion input, got %d',
     $number,
   );
-  return base_convert((string)$number, 10, $to_base);
+  $result = '';
+  do {
+    // This is ~20% faster than using '%' and 'int_div' when jit-compiled.
+    $quotient = int_div($number, $to_base);
+    $result = ALPHABET_ALPHANUMERIC[$number - $quotient*$to_base].$result;
+    $number = $quotient;
+  } while($number !== 0);
+  return $result;
 }
