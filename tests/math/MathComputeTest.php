@@ -264,14 +264,21 @@ final class MathComputeTest extends HackTest {
   }
 
   public static function provideTestFromBase(): varray<mixed> {
-    return varray[
+    $tuples = varray[
       tuple('4d2', 16, 1234),
       tuple('2322', 8, 1234),
       tuple('10011010010', 2, 1234),
       tuple('AZikM', 36, 18453190),
       tuple('33CCFF', 16, 3394815),
-      tuple((string)PHP_INT_MAX, 10, PHP_INT_MAX),
     ];
+    for ($n = 2; $n < 36; $n++) {
+      $tuples[] = tuple(
+        Math\base_convert((string)PHP_INT_MAX, 10, $n),
+        $n,
+        PHP_INT_MAX,
+      );
+    }
+    return $tuples;
   }
 
   <<DataProvider('provideTestFromBase')>>
@@ -284,7 +291,7 @@ final class MathComputeTest extends HackTest {
   }
 
   public static function provideTestFromBaseException(): varray<mixed> {
-    return varray[
+    $tuples = varray[
       // invalid base
       tuple('1234', 0),
       tuple('1234', -1),
@@ -298,8 +305,17 @@ final class MathComputeTest extends HackTest {
       tuple('-9223372036854775809', 10),
       tuple('-2322', 8, -1234),
       // integer overflow
-      tuple('9223372036854775808', 10),
+      tuple('8f00000000000000', 16),
+      tuple('17f00000000000000', 16),
     ];
+    // overflow (PHP_INT_MAX + 1) in all bases
+    for ($n = 2; $n < 36; $n++) {
+      $tuples[] = tuple(
+        Math\base_convert("9223372036854775808", 10, $n),
+        $n,
+      );
+    }
+    return $tuples;
   }
 
   <<DataProvider('provideTestFromBaseException')>>

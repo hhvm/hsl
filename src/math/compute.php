@@ -11,6 +11,8 @@
 namespace HH\Lib\Math;
 use namespace HH\Lib\{C, Str};
 use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
+use const HH\Lib\_Private\INVERT_ALPHABET_ALPHANUMERIC_CI;
+use const HH\Lib\_Private\INVERT_ALPHABET_ALPHANUMERIC_CI_VEC;
 
 /**
  * Returns the absolute value of `$number` (`$number` if `$number` > 0,
@@ -133,7 +135,7 @@ function cos(num $arg): float {
  * To base convert an int into a string, see `Math\to_base()`.
  */
 <<__RxShallow>>
-function from_base(string $number, int $from_base): int {
+function from_base_old(string $number, int $from_base): int {
   $result_string = base_convert($number, $from_base, 10);
   $result = Str\to_int($result_string);
   invariant(
@@ -144,6 +146,218 @@ function from_base(string $number, int $from_base): int {
   );
   return $result;
 }
+
+<<__Rx>>
+function from_base_dict(string $number, int $from_base): int {
+  invariant(
+    $number !== '',
+    'Unexpected empty string, expected number in base %d',
+    $from_base,
+  );
+
+  invariant(
+    $from_base >= 2 && $from_base <= 36,
+    'Expected $from_base to be between 2 and 36, got %d',
+    $from_base,
+  );
+
+  /* Compute largest number that can be multiplied by $from_base without overflow */
+  $limit = int_div(\PHP_INT_MAX, $from_base);
+  $result = 0;
+  foreach (Str\chunk($number) as $digit) {
+    /* For cases where the exception isn't triggered
+     * (which should be the vast majority of the usage of this function),
+     * try/catch is actually faster than idx().
+     * Also, using a dict is faster than using PHP\ord,
+     * either as preface to accessing a vec instead of a dict,
+     * or as part of an if/else tree and ord math.
+     * See D14491063 for details of benchmarks that were run.
+     */
+    try {
+      $dval = INVERT_ALPHABET_ALPHANUMERIC_CI[$digit];
+    } catch (\OutOfBoundsException $_e) {
+      $dval = 99;
+    }
+    invariant(
+      $dval < $from_base,
+      'Invalid digit %s in base %d',
+      $digit,
+      $from_base,
+    );
+    $oldval = $result;
+    $result = $from_base * $result + $dval;
+    invariant(
+      $oldval <= $limit && $result >= $oldval,
+      'Unexpected integer overflow parsing %s from base %d',
+      $number,
+      $from_base,
+    );
+  }
+  return $result;
+}
+<<__Rx>>
+function from_base_idx(string $number, int $from_base): int {
+  invariant(
+    $number !== '',
+    'Unexpected empty string, expected number in base %d',
+    $from_base,
+  );
+
+  invariant(
+    $from_base >= 2 && $from_base <= 36,
+    'Expected $from_base to be between 2 and 36, got %d',
+    $from_base,
+  );
+
+  $limit = int_div(\PHP_INT_MAX, $from_base);
+  $result = 0;
+  foreach (Str\chunk($number) as $digit) {
+    $dval = idx(INVERT_ALPHABET_ALPHANUMERIC_CI, $digit, 99);
+    invariant(
+      $dval < $from_base,
+      'Invalid digit %s in base %d',
+      $digit,
+      $from_base,
+    );
+    $oldval = $result;
+    $result = $from_base * $result + $dval;
+    invariant(
+      $oldval <= $limit && $result >= $oldval,
+      'Unexpected integer overflow parsing %s from base %d',
+      $number,
+      $from_base,
+    );
+  }
+  return $result;
+}
+
+<<__Rx>>
+function from_base_vec(string $number, int $from_base): int {
+  invariant(
+    $number !== '',
+    'Unexpected empty string, expected number in base %d',
+    $from_base,
+  );
+
+  invariant(
+    $from_base >= 2 && $from_base <= 36,
+    'Expected $from_base to be between 2 and 36, got %d',
+    $from_base,
+  );
+
+  $limit = int_div(\PHP_INT_MAX, $from_base);
+  $result = 0;
+  foreach (Str\chunk($number) as $digit) {
+    $dval = INVERT_ALPHABET_ALPHANUMERIC_CI_VEC[PHP\ord($digit)];
+    invariant(
+      $dval < $from_base,
+      'Invalid digit %s in base %d',
+      $digit,
+      $from_base,
+    );
+    $oldval = $result;
+    $result = $from_base * $result + $dval;
+    invariant(
+      $oldval <= $limit && $result >= $oldval,
+      'Unexpected integer overflow parsing %s from base %d',
+      $number,
+      $from_base,
+    );
+  }
+  return $result;
+}
+
+<<__Rx>>
+function from_base(string $number, int $from_base): int {
+  invariant(
+    $number !== '',
+    'Unexpected empty string, expected number in base %d',
+    $from_base,
+  );
+
+  invariant(
+    $from_base >= 2 && $from_base <= 36,
+    'Expected $from_base to be between 2 and 36, got %d',
+    $from_base,
+  );
+
+  $limit = int_div(\PHP_INT_MAX, $from_base);
+  $result = 0;
+  foreach (Str\chunk($number) as $digit) {
+    /* This was benchmarked against value lookups using both dict and vec,
+     * as well as nasty math magic to do it without branching.
+     * In interpreted form, the dict lookup beats this by about 30%,
+     * and in compiled form, the vec lookup beats this by about 1%.
+     * However, this form does not rely on processor cache for the lookup table,
+     * so is likely to be slightly faster out in the wild.
+     * See D14491063 for details of benchmarks that were run.
+     */
+    $oval = PHP\ord($digit);
+    // Branches sorted by guesstimated frequency of use. */
+    if      (/* '0' - '9' */ $oval <= 57 && $oval >=  48) { $dval = $oval - 48; }
+    else if (/* 'a' - 'z' */ $oval >= 97 && $oval <= 122) { $dval = $oval - 87; }
+    else if (/* 'A' - 'Z' */ $oval >= 65 && $oval <=  90) { $dval = $oval - 55; }
+    else                                                  { $dval = 99; }
+    invariant(
+      $dval < $from_base,
+      'Invalid digit %s in base %d',
+      $digit,
+      $from_base,
+    );
+    $oldval = $result;
+    $result = $from_base * $result + $dval;
+    invariant(
+      $oldval <= $limit && $result >= $oldval,
+      'Unexpected integer overflow parsing %s from base %d',
+      $number,
+      $from_base,
+    );
+  }
+  return $result;
+}
+
+<<__Rx>>
+function from_base_ord_magic(string $number, int $from_base): int {
+  invariant(
+    $number !== '',
+    'Unexpected empty string, expected number in base %d',
+    $from_base,
+  );
+
+  invariant(
+    $from_base >= 2 && $from_base <= 36,
+    'Expected $from_base to be between 2 and 36, got %d',
+    $from_base,
+  );
+
+  $limit = int_div(\PHP_INT_MAX, $from_base);
+  $result = 0;
+  foreach (Str\chunk($number) as $digit) {
+    $v = PHP\ord($digit);
+    $v -= ((($v & 64) >> 1) & ($v & 32)) + 65;
+    $v = (($v & ~63) + ((($v & 63) + (7 & ($v >> 63))) & 63) + 10) & 255;
+    // Now $v should be < $from_base if valid or >= $from_base if invalid.
+    invariant(
+      $v < $from_base,
+      'Invalid digit %s in base %d',
+      $digit,
+      $from_base,
+    );
+    $oldval = $result;
+    $result = $from_base * $result + $v;
+    invariant(
+      $oldval <= $limit && $result >= $oldval,
+      'Unexpected integer overflow parsing %s from base %d',
+      $number,
+      $from_base,
+    );
+  }
+  return $result;
+}
+
+
+
+
 
 /**
  * Returns e to the power `$arg`.
