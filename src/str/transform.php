@@ -80,6 +80,7 @@ function format_number(
 function lowercase(
   string $string,
 ): string {
+  /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \strtolower($string);
