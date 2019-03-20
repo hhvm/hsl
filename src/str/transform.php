@@ -83,6 +83,7 @@ function lowercase(
   /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   return \strtolower($string);
 }
 
