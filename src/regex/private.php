@@ -49,8 +49,7 @@ function regex_match<T as Regex\Match>(
   if ($status === 1) {
     $match_out = darray[];
     foreach ($match as $key => $value) {
-      // TODO(T35726135) remove when HHVM fix is released.
-      $match_out[$key] = $value is string ? $value : $value[0];
+      $match_out[$key] = $value[0];
     }
     $offset_out = $match[0][1];
     /* HH_FIXME[4110] Native function won't have this problem */
