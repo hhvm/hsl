@@ -226,8 +226,9 @@ function lastx<Tv>(
     $did_iterate = true;
   }
   invariant($did_iterate, '%s: Expected non-empty input', __FUNCTION__);
-  // UNSAFE_EXPR Hack thinks $value must be typed as ?Tv because
+  // Hack thinks $value must be typed as ?Tv because
   // the foreach may not run. But the invariant above ensures it does.
+  /* HH_FIXME[4110] Previously hidden by unsafe */
   return $value;
 }
 
