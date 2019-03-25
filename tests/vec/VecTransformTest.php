@@ -116,7 +116,7 @@ final class VecTransformTest extends HackTest {
 
   <<DataProvider('provideTestFlatten')>>
   public function testFlatten<Tv>(
-    Traversable<Traversable<Tv>> $traversables,
+    Traversable<Container<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
     expect(Vec\flatten($traversables))->toBeSame($expected);

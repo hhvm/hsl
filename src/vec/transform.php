@@ -70,8 +70,10 @@ function fill<Tv>(
  * Space complexity: O(n), where n is the combined size of all the
  * `$traversables`
  */
+<<__Rx, __AtMostRxAsArgs>>
 function flatten<Tv>(
-  Traversable<Traversable<Tv>> $traversables,
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  Traversable<Container<Tv>> $traversables,
 ): vec<Tv> {
   $result = vec[];
   foreach ($traversables as $traversable) {

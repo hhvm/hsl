@@ -15,24 +15,27 @@ use namespace HH\Lib\{C, Vec};
  * Hack.Lang.AutoprimeGenerators is false
  */
 final class HackLibTestForwardOnlyIterator<Tk as arraykey, Tv>
-implements Iterator<Tv>, KeyedIterator<Tk, Tv> {
+implements \HH\Rx\Iterator<Tv>, \HH\Rx\KeyedIterator<Tk, Tv> {
   private bool $used = false;
   private int $keyIdx = 0;
   private vec<Tk> $keys;
 
+  <<__Rx>>
   public function __construct(private dict<Tk, Tv> $data) {
     $this->keys = Vec\keys($data);
   }
 
+  <<__Rx, __MaybeMutable>>
   public function current(): Tv  {
-    $this->used = true;
     return $this->data[$this->keys[$this->keyIdx]];
   }
 
+  <<__Rx, __MaybeMutable>>
   public function key(): Tk {
     return $this->keys[$this->keyIdx];
   }
 
+  <<__Rx, __Mutable>>
   public function rewind(): void {
     if ($this->used) {
       $this->next();
@@ -40,11 +43,14 @@ implements Iterator<Tv>, KeyedIterator<Tk, Tv> {
     }
   }
 
+  <<__Rx, __MaybeMutable>>
   public function valid(): bool {
     return C\contains_key($this->keys, $this->keyIdx);
   }
 
+  <<__Rx, __Mutable>>
   public function next(): void {
+    $this->used = true;
     $this->keyIdx++;
   }
 }
