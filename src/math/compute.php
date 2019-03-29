@@ -15,6 +15,12 @@ use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
 /**
  * Returns the absolute value of `$number` (`$number` if `$number` > 0,
  * `-$number` if `$number` < 0).
+ *
+ * NB: for the smallest representable int, PHP_INT_MIN, the result is
+ * "implementation-defined" because the corresponding positive number overflows
+ * int. You will probably find that `Math\abs(PHP_INT_MIN) === PHP_INT_MIN`,
+ * meaning the function can return a negative result in that case. To ensure
+ * an int is non-negative for hashing use `$v & PHP_INT_MAX` instead.
  */
 <<__Rx>>
 function abs<T as num>(T $number): T {
