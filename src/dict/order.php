@@ -53,13 +53,11 @@ function sort<Tk as arraykey, Tv>(
   $result = dict($traversable);
   if ($value_comparator) {
     /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \uasort(&$result, $value_comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \asort(&$result);
@@ -123,13 +121,11 @@ function sort_by_key<Tk as arraykey, Tv>(
   $result = dict($traversable);
   if ($key_comparator) {
     /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
     /* HH_FIXME[2049] We are allowed to use PHP Stardard library functions */
     /* HH_FIXME[4107] We are allowed to use PHP Stardard library functions */
     \uksort(&$result, $key_comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \ksort(&$result);

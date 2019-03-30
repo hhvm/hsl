@@ -387,11 +387,9 @@ final class MathComputeTest extends HackTest {
   public function testLogNoBase(num $base): void {
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
     expect(Math\log($base))->toBeSame(log((float) $base));
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
     expect(Math\log($base, null))->toBeSame(log((float) $base));
   }
 
