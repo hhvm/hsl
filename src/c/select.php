@@ -200,6 +200,7 @@ function lastx<Tv>(
     /* HH_FIXME[4276] this is an array */
     invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
     /* HH_FIXME[2088] No refs in reactive code. */
+    /* HH_FIXME[4200] \end is non-rx because it's byref */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     return \end(&$traversable);

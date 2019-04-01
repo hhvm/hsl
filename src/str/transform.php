@@ -162,6 +162,7 @@ function replace(
   string $needle,
   string $replacement,
 ): string {
+  /* HH_FIXME[4200] Rx calling non-Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_replace($needle, $replacement, $haystack);
@@ -181,6 +182,7 @@ function replace_ci(
   string $needle,
   string $replacement,
 ): string {
+  /* HH_FIXME[4200] Rx calling non-rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_ireplace($needle, $replacement, $haystack);
@@ -201,6 +203,7 @@ function replace_every(
 ): string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] Rx calling non-rx */
   return \str_replace(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
@@ -227,6 +230,7 @@ function replace_every_ci(
 ): string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] Rx calling non-rx */
   return \str_ireplace(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
