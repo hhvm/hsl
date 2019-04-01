@@ -74,7 +74,7 @@ function sort<Tk as arraykey, Tv>(
  * - To sort by the values of the KeyedTraversable, see `Dict\sort()`.
  * - To sort by the keys of the KeyedTraversable, see `Dict\sort_by_key()`.
  *
- * Time complexity: O((n log n) * c + s), where c is the complexity of the
+ * Time complexity: O((n log n) * c + n * s), where c is the complexity of the
  * comparator function (which is O(1) if not provided explicitly) and s is the
  * complexity of the scalar function
  * Space complexity: O(n)
