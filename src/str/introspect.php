@@ -138,7 +138,8 @@ function ends_with_ci(
 }
 
 /**
- * Returns whether the input is null or the empty string.
+ * Returns `true` if `$string` is null or the empty string.
+ * Returns `false` otherwise.
  */
 <<__Rx>>
 function is_empty(
