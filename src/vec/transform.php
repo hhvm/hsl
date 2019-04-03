@@ -29,12 +29,14 @@ function chunk<Tv>(
   invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
   $result = vec[];
   $ii = 0;
+  $chunk_number = -1;
   foreach ($traversable as $value) {
     if ($ii % $size === 0) {
       $result[] = vec[];
+      $chunk_number++;
     }
 
-    $result[Math\int_div($ii, $size)][] = $value;
+    $result[$chunk_number][] = $value;
     $ii++;
   }
   return $result;
