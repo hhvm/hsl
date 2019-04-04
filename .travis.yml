@@ -5,7 +5,7 @@ env:
 - HHVM_VERSION=latest
 - HHVM_VERSION=nightly
 matrix:
-  allow-failures:
+  allow_failures:
     - env: HHVM_VERSION=latest
 install:
 - docker pull hhvm/hhvm:$HHVM_VERSION
