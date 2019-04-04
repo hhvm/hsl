@@ -29,11 +29,13 @@ function chunk<Tk as arraykey, Tv>(
   invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
   $result = vec[];
   $ii = 0;
+  $chunk_number = -1;
   foreach ($traversable as $key => $value) {
     if ($ii % $size === 0) {
       $result[] = dict[];
+      $chunk_number++;
     }
-    $result[Math\int_div($ii, $size)][$key] = $value;
+    $result[$chunk_number][$key] = $value;
     $ii++;
   }
   return $result;
