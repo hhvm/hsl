@@ -78,6 +78,7 @@ final class MathContainersTest extends HackTest {
       tuple(vec[1.0, 2.0, 3, 4], 2.5),
       tuple(vec[1, 1, 2], 4 / 3),
       tuple(vec[-1, 1], 0.0),
+      tuple(vec[Math\INT64_MAX,Math\INT64_MAX], (float)Math\INT64_MAX),
       tuple(vec[], null),
     ];
   }
