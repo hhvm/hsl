@@ -224,7 +224,7 @@ function floor(num $value): float {
 <<__Rx>>
 function int_div(int $numerator, int $denominator): int {
   if ($denominator === 0) {
-    throw new DivisionByZeroException();
+    throw new \DivisionByZeroException();
   }
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */

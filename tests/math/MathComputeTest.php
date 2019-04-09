@@ -355,7 +355,7 @@ final class MathComputeTest extends HackTest {
   <<DataProvider('provideTestIntDivException')>>
   public function testIntDivException(int $numerator, int $denominator): void {
     expect(() ==> Math\int_div($numerator, $denominator))
-      ->toThrow(Math\DivisionByZeroException::class);
+      ->toThrow(DivisionByZeroException::class);
   }
 
   public static function provideTestLog(): varray<mixed> {
