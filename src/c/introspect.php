@@ -145,7 +145,7 @@ function every<T>(
  */
 <<__Rx>>
 function is_empty<T>(
-  Container<T> $container,
+  <<__MaybeMutable>> Container<T> $container,
 ): bool {
   if ($container is \ConstCollection<_>) {
     return $container->isEmpty();

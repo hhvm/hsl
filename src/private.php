@@ -31,14 +31,6 @@ function validate_offset(
   return $offset;
 }
 
-/**
- * Returns whether the input is either a PHP array or Hack array.
- */
-<<__Rx>>
-function is_any_array(<<__MaybeMutable>> mixed $val): bool {
-  return $val is dict<_, _> || $val is vec<_> || $val is keyset<_> || \is_array($val);
-}
-
 <<__Rx>>
 function boolval(mixed $val): bool {
   return (bool)$val;

@@ -99,6 +99,19 @@ function firstx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
 ): T {
+  if ($traversable is Container<_>) {
+    $first_value = _Private\Native\first($traversable);
+    if ($first_value is nonnull) {
+      return $first_value;
+    }
+    invariant(
+      !is_empty($traversable),
+      '%s: Expected at least one element.',
+      __FUNCTION__,
+    );
+    /* HH_IGNORE_ERROR[4110] invariant above implies this is T */
+    return $first_value;
+  }
   foreach ($traversable as $value) {
     return $value;
   }
@@ -119,8 +132,7 @@ function first_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if ($traversable is Container<_>) {
-    /* HH_FIXME[4110] generic incompatible with nonnull */
+  if ($traversable is KeyedContainer<_, _>) {
     return _Private\Native\first_key($traversable);
   }
   foreach ($traversable as $key => $_) {
@@ -144,7 +156,11 @@ function first_keyx<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
   $first_key = first_key($traversable);
-  invariant($first_key !== null, '%s: Expected non-empty input', __FUNCTION__);
+  invariant(
+    $first_key is nonnull,
+    '%s: Expected at least one element.',
+    __FUNCTION__,
+  );
   return $first_key;
 }
 
@@ -159,15 +175,15 @@ function first_keyx<Tk, Tv>(
  * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
-function last<Tv>(
+function last<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-  Traversable<Tv> $traversable,
-): ?Tv {
+  Traversable<T> $traversable,
+): ?T {
   if ($traversable is Container<_>) {
     return _Private\Native\last($traversable);
   }
   if ($traversable is Iterable<_>) {
-    /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
+    /* HH_FIXME[4200] intersection of Iterable and Rx\Traversable is reactive */
     return $traversable->lastValue();
   }
   $value = null;
@@ -187,40 +203,30 @@ function last<Tv>(
  * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
-function lastx<Tv>(
+function lastx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-  Traversable<Tv> $traversable
-): Tv {
-  if ($traversable is vec<_>) {
-    $count = count($traversable);
-    invariant($count > 0, '%s: Expected non-empty input', __FUNCTION__);
-    return $traversable[$count - 1];
-  }
-  if (_Private\is_any_array($traversable)) {
-    /* HH_FIXME[4276] this is an array */
-    invariant($traversable, '%s: Expected non-empty input', __FUNCTION__);
-    /* HH_FIXME[2088] No refs in reactive code. */
-    /* HH_FIXME[4200] \end is non-rx because it's byref */
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    return \end(&$traversable);
-  }
-  // There is no way to directly check whether an Iterable is empty,
-  // so check if it is a builtin and, if so, do the check intelligently
-  if ($traversable is \ConstCollection<_>) {
-    invariant(!$traversable->isEmpty(), '%s: Expected non-empty input', __FUNCTION__);
-    /* HH_IGNORE_ERROR[4053] All ConstCollections are Iterable due to seal */
-    return $traversable->lastValue();
+  Traversable<T> $traversable,
+): T {
+  if ($traversable is Container<_>) {
+    $last_value = _Private\Native\last($traversable);
+    if ($last_value is nonnull) {
+      return $last_value;
+    }
+    invariant(
+      !is_empty($traversable),
+      '%s: Expected at least one element.',
+      __FUNCTION__,
+    );
+    /* HH_IGNORE_ERROR[4110] invariant above implies this is T */
+    return $last_value;
   }
   $value = null;
   $did_iterate = false;
   foreach ($traversable as $value) {
     $did_iterate = true;
   }
-  invariant($did_iterate, '%s: Expected non-empty input', __FUNCTION__);
-  // Hack thinks $value must be typed as ?Tv because
-  // the foreach may not run. But the invariant above ensures it does.
-  /* HH_FIXME[4110] Previously hidden by unsafe */
+  invariant($did_iterate, '%s: Expected at least one element.', __FUNCTION__);
+  /* HH_IGNORE_ERROR[4110] invariant above implies $value is T */
   return $value;
 }
 
@@ -238,12 +244,11 @@ function last_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): ?Tk {
-  if ($traversable is Container<_>) {
-    /* HH_FIXME[4110] generic incompatible with nonnull */
+  if ($traversable is KeyedContainer<_, _>) {
     return _Private\Native\last_key($traversable);
   }
   if ($traversable is KeyedIterable<_, _>) {
-    /* HH_FIXME[4200] intersection of Iterable and \HH\Rx\Traversable is reactive */
+    /* HH_FIXME[4200] intersection of Iterable and Rx\Traversable is reactive */
     return $traversable->lastKey();
   }
   $key = null;
@@ -267,7 +272,11 @@ function last_keyx<Tk, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
   $last_key = last_key($traversable);
-  invariant($last_key !== null, '%s: Expected non-empty input', __FUNCTION__);
+  invariant(
+    $last_key is nonnull,
+    '%s: Expected at least one element.',
+    __FUNCTION__,
+  );
   return $last_key;
 }
 
@@ -287,15 +296,7 @@ function nfirst<T>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   ?Traversable<T> $traversable,
 ): ?T {
-  if ($traversable is Container<_>) {
-    return _Private\Native\first($traversable);
-  }
-  if ($traversable !== null) {
-    foreach ($traversable as $value) {
-      return $value;
-    }
-  }
-  return null;
+  return $traversable is nonnull ? first($traversable) : null;
 }
 
 /**
