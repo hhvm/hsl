@@ -155,13 +155,19 @@ function first_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
-  $first_key = first_key($traversable);
-  invariant(
-    $first_key is nonnull,
-    '%s: Expected at least one element.',
-    __FUNCTION__,
-  );
-  return $first_key;
+  if ($traversable is KeyedContainer<_, _>) {
+    $first_key = _Private\Native\first_key($traversable);
+    invariant(
+      $first_key is nonnull,
+      '%s: Expected at least one element.',
+      __FUNCTION__,
+    );
+    return $first_key;
+  }
+  foreach ($traversable as $key => $_) {
+    return $key;
+  }
+  invariant_violation('%s: Expected at least one element.', __FUNCTION__);
 }
 
 /**
@@ -226,7 +232,7 @@ function lastx<T>(
     $did_iterate = true;
   }
   invariant($did_iterate, '%s: Expected at least one element.', __FUNCTION__);
-  /* HH_IGNORE_ERROR[4110] invariant above implies $value is T */
+  /* HH_IGNORE_ERROR[4110] invariant above implies this is T */
   return $value;
 }
 
@@ -271,13 +277,23 @@ function last_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): Tk {
-  $last_key = last_key($traversable);
-  invariant(
-    $last_key is nonnull,
-    '%s: Expected at least one element.',
-    __FUNCTION__,
-  );
-  return $last_key;
+  if ($traversable is KeyedContainer<_, _>) {
+    $last_key = _Private\Native\last_key($traversable);
+    invariant(
+      $last_key is nonnull,
+      '%s: Expected at least one element.',
+      __FUNCTION__,
+    );
+    return $last_key;
+  }
+  $key = null;
+  $did_iterate = false;
+  foreach ($traversable as $key => $_) {
+    $did_iterate = true;
+  }
+  invariant($did_iterate, '%s: Expected at least one element.', __FUNCTION__);
+  /* HH_IGNORE_ERROR[4110] invariant above implies this is Tk */
+  return $key;
 }
 
 /**

@@ -150,7 +150,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstKey(
-  ): varray<(KeyedTraversable<arraykey, mixed>, ?arraykey)> {
+  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
     return varray[
       tuple(
         varray[],
@@ -198,6 +198,13 @@ final class CSelectTest extends HackTest {
       tuple(
         HackLibTestTraversables::getKeyedIterator(varray[]),
         null,
+      ),
+      tuple(
+        () ==> {
+          yield 42 => 'spam';
+          yield null => 'quux';
+        }(),
+        42,
       ),
     ];
   }
@@ -211,7 +218,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstKeyx(
-  ): varray<(KeyedTraversable<arraykey, mixed>, arraykey)> {
+  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
     return varray[
       tuple(
         darray[1 => null],
@@ -248,6 +255,13 @@ final class CSelectTest extends HackTest {
         ]),
         'foo',
       ),
+      tuple(
+        () ==> {
+          yield null => 'quux';
+          yield 42 => 'spam';
+        }(),
+        null,
+      ),
     ];
   }
 
@@ -260,7 +274,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstKeyxException(
-  ): varray<(KeyedTraversable<arraykey, mixed>, classname<Exception>)> {
+  ): varray<(KeyedTraversable<mixed, mixed>, classname<Exception>)> {
     return varray[
       tuple(
         varray[],
@@ -272,6 +286,12 @@ final class CSelectTest extends HackTest {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(varray[]),
+        InvariantException::class,
+      ),
+      tuple(
+        () ==> {
+          yield break;
+        }(),
         InvariantException::class,
       ),
     ];
@@ -450,7 +470,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastKey(
-  ): varray<(KeyedTraversable<arraykey, mixed>, ?arraykey)> {
+  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
     return varray[
       tuple(
         varray[],
@@ -508,6 +528,13 @@ final class CSelectTest extends HackTest {
         HackLibTestTraversables::getKeyedIterator(darray['' => null]),
         '',
       ),
+      tuple(
+        () ==> {
+          yield null => 'quux';
+          yield 42 => 'spam';
+        }(),
+        42,
+      ),
     ];
   }
 
@@ -520,7 +547,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastKeyx(
-  ): varray<(KeyedTraversable<arraykey, mixed>, arraykey)> {
+  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
     return varray[
       tuple(
         darray['' => null],
@@ -566,6 +593,13 @@ final class CSelectTest extends HackTest {
         HackLibTestTraversables::getKeyedIterator(darray['' => null]),
         '',
       ),
+      tuple(
+        () ==> {
+          yield 42 => 'spam';
+          yield null => 'quux';
+        }(),
+        null,
+      ),
     ];
   }
 
@@ -578,7 +612,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastKeyxException(
-  ): varray<(KeyedTraversable<arraykey, mixed>, classname<Exception>)> {
+  ): varray<(KeyedTraversable<mixed, mixed>, classname<Exception>)> {
     return varray[
       tuple(
         varray[],
@@ -590,6 +624,12 @@ final class CSelectTest extends HackTest {
       ),
       tuple(
         HackLibTestTraversables::getKeyedIterator(varray[]),
+        InvariantException::class,
+      ),
+      tuple(
+        () ==> {
+          yield break;
+        }(),
         InvariantException::class,
       ),
     ];
