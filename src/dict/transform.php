@@ -75,7 +75,7 @@ function count_values<Tv as arraykey>(
 <<__Rx, __AtMostRxAsArgs>>
 function flatten<Tk as arraykey, Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-  Traversable<\HH\Rx\KeyedTraversable<Tk, Tv>> $traversables,
+  Traversable<KeyedContainer<Tk, Tv>> $traversables,
 ): dict<Tk, Tv> {
   $result = dict[];
   foreach ($traversables as $traversable) {

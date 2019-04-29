@@ -228,7 +228,7 @@ final class KeysetTransformTest extends HackTest {
 
   <<DataProvider('provideTestFlatten')>>
   public function testFlatten<Tv as arraykey>(
-    Traversable<\HH\Rx\Traversable<Tv>> $traversables,
+    Traversable<Container<Tv>> $traversables,
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\flatten($traversables))->toBeSame($expected);
