@@ -39,7 +39,7 @@ final class VecSelectTest extends HackTest {
   <<DataProvider('provideTestDiff')>>
   public function testDiff<Tv as arraykey>(
     Traversable<Tv> $base,
-    Container<Traversable<Tv>> $traversables,
+    Container<Container<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
     /* HH_FIXME[4104] Stricter enforcement of argument unpacking arity (T25385321) */
@@ -309,7 +309,7 @@ final class VecSelectTest extends HackTest {
   public function testIntersect<Tv as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
-    Container<Traversable<Tv>> $rest,
+    Container<Container<Tv>> $rest,
     vec<Tv> $expected,
   ): void {
     expect(Vec\intersect($first, $second, ...$rest))->toBeSame($expected);

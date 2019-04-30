@@ -51,7 +51,7 @@ final class DictSelectTest extends HackTest {
   public function testDiffByKey<Tk1 as arraykey, Tk2 as arraykey, Tv>(
     KeyedTraversable<Tk1, Tv> $first,
     KeyedTraversable<Tk2, mixed> $second,
-    Container<KeyedTraversable<Tk2, mixed>> $rest,
+    Container<KeyedContainer<Tk2, mixed>> $rest,
     dict<Tk1, Tv> $expected,
   ): void {
     expect(Dict\diff_by_key($first, $second, ...$rest))->toBeSame($expected);

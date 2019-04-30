@@ -21,9 +21,11 @@ namespace HH\Lib\Keyset;
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
+<<__Rx, __AtMostRxAsArgs>>
 function union<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  Traversable<Tv> ...$rest
+  Container<Tv> ...$rest
 ): keyset<Tv> {
   $result = keyset($first);
   foreach ($rest as $traversable) {

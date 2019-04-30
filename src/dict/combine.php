@@ -50,9 +50,11 @@ function associate<Tk as arraykey, Tv>(
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
+<<__Rx, __AtMostRxAsArgs>>
 function merge<Tk as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $first,
-  KeyedTraversable<Tk, Tv> ...$rest
+  KeyedContainer<Tk, Tv> ...$rest
 ): dict<Tk, Tv> {
   $result = dict($first);
   foreach ($rest as $traversable) {

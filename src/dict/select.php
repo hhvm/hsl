@@ -22,10 +22,13 @@ use namespace HH\Lib\C;
  * size of `$second` plus all the `...$rest` -- note that this is bigger than
  * O(n)
  */
+<<__Rx, __AtMostRxAsArgs>>
 function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv> $first,
+  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk2, mixed> $second,
-  KeyedTraversable<Tk2, mixed> ...$rest
+  KeyedContainer<Tk2, mixed> ...$rest
 ): dict<Tk1, Tv> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {

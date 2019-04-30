@@ -45,7 +45,7 @@ final class KeysetSelectTest extends HackTest {
   public function testDiff<Tv as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
-    Container<Traversable<Tv>> $rest,
+    Container<Container<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\diff($first, $second, ...$rest))
@@ -323,7 +323,7 @@ final class KeysetSelectTest extends HackTest {
   public function testIntersect<Tv as arraykey>(
     Traversable<Tv> $first,
     Traversable<Tv> $second,
-    Container<Traversable<Tv>> $rest,
+    Container<Container<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\intersect($first, $second, ...$rest))

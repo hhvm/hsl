@@ -22,10 +22,13 @@ use namespace HH\Lib\C;
  * size of `$second` plus all the `...$rest` -- note that this is bigger than
  * O(n)
  */
+<<__Rx, __AtMostRxAsArgs>>
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $first,
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv2> $second,
-  Traversable<Tv2> ...$rest
+  Container<Tv2> ...$rest
 ): keyset<Tv1> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
@@ -167,10 +170,13 @@ function keys<Tk as arraykey, Tv>(
  * size of `$second` plus all the `...$rest`
  * Space complexity: O(n), where n is size of `$first`
  */
+<<__Rx, __AtMostRxAsArgs>>
 function intersect<Tv as arraykey>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
-  Traversable<Tv> ...$rest
+  Container<Tv> ...$rest
 ): keyset<Tv> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first || !$second) {

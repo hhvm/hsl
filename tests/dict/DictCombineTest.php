@@ -121,7 +121,7 @@ final class DictCombineTest extends HackTest {
   <<DataProvider('provideTestMerge')>>
   public function testMerge<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $first,
-    Container<KeyedTraversable<Tk, Tv>> $rest,
+    Container<KeyedContainer<Tk, Tv>> $rest,
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\merge($first, ...$rest))->toBeSame($expected);

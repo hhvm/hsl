@@ -44,7 +44,7 @@ final class VecCombineTest extends HackTest {
   <<DataProvider('provideTestConcat')>>
   public function testConcat<Tv>(
     Traversable<Tv> $first,
-    Container<Traversable<Tv>> $rest,
+    Container<Container<Tv>> $rest,
     vec<Tv> $expected,
   ): void {
     expect(Vec\concat($first, ...$rest))->toBeSame($expected);

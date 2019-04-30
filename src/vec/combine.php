@@ -20,9 +20,11 @@ namespace HH\Lib\Vec;
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
+<<__Rx, __AtMostRxAsArgs>>
 function concat<Tv>(
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  Traversable<Tv> ...$rest
+  Container<Tv> ...$rest
 ): vec<Tv> {
   $result = vec($first);
   foreach ($rest as $traversable) {
