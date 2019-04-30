@@ -50,12 +50,10 @@ function reverse<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
   $vec = vec($traversable);
-  $lo = 0;
-  $hi = C\count($vec) - 1;
-  while ($lo < $hi) {
+  for ($lo = 0, $hi = C\count($vec) - 1; $lo < $hi; $lo++, $hi--) {
     $temp = $vec[$lo];
-    $vec[$lo++] = $vec[$hi];
-    $vec[$hi--] = $temp;
+    $vec[$lo] = $vec[$hi];
+    $vec[$hi] = $temp;
   }
   return $vec;
 }

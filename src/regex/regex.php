@@ -44,7 +44,11 @@ function every_match<T as Match>(
 ): vec<T> {
   $haystack_length = Str\length($haystack);
   $result = vec[];
-  while ($match = _Private\regex_match($haystack, $pattern, $offset)) {
+  while (true) {
+    $match = _Private\regex_match($haystack, $pattern, $offset);
+    if ($match === null) {
+      break;
+    }
     $captures = $match[0];
     $result[] = $captures;
     $match_begin = $match[1];
@@ -123,7 +127,11 @@ function replace_with<T as Match>(
   $haystack_length = Str\length($haystack);
   $result = Str\slice($haystack, 0, 0);
   $match_end = 0;
-  while ($match = _Private\regex_match($haystack, $pattern, $offset)) {
+  while (true) {
+    $match = _Private\regex_match($haystack, $pattern, $offset);
+    if ($match === null) {
+      break;
+    }
     $captures = $match[0];
     $match_begin = $match[1];
     // Copy anything between the previous match and this one

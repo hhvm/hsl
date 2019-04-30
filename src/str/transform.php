@@ -245,12 +245,10 @@ function replace_every_ci(
 function reverse(
   string $string,
 ): string {
-  $lo = 0;
-  $hi = namespace\length($string) - 1;
-  while ($lo < $hi) {
+  for ($lo = 0, $hi = namespace\length($string) - 1; $lo < $hi; $lo++, $hi--) {
     $temp = $string[$lo];
-    $string[$lo++] = $string[$hi];
-    $string[$hi--] = $temp;
+    $string[$lo] = $string[$hi];
+    $string[$hi] = $temp;
   }
   return $string;
 }
