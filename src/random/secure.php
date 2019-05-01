@@ -18,6 +18,7 @@ use namespace HH\Lib\{_Private, Math, Str};
  *
  * For pseudorandom floats, see `PseudoRandom\float`.
  */
+<<__NonRx('Randomness')>>
 function float(): float {
   return (float)(namespace\int(0, Math\INT53_MAX) / Math\INT53_MAX);
 }
@@ -28,6 +29,7 @@ function float(): float {
  *
  * For pseudorandom integers, see `PseudoRandom\int`.
  */
+<<__NonRx('Randomness')>>
 function int(
   int $min = \PHP_INT_MIN,
   int $max = \PHP_INT_MAX,
@@ -47,6 +49,7 @@ function int(
  *
  * For pseudorandom strings, see `PseudoRandom\string`.
  */
+<<__NonRx('Randomness')>>
 function string(
   int $length,
   ?string $alphabet = null,

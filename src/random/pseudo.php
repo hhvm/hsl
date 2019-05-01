@@ -18,6 +18,7 @@ use namespace HH\Lib\{_Private, Math, SecureRandom};
  *
  * For secure random floats, see `SecureRandom\float`.
  */
+<<__NonRx('Randomness')>>
 function float(): float {
   return (float)(namespace\int(0, Math\INT53_MAX) / Math\INT53_MAX);
 }
@@ -28,6 +29,7 @@ function float(): float {
  *
  * For secure random integers, see `SecureRandom\int`.
  */
+<<__NonRx('Randomness')>>
 function int(
   int $min = \PHP_INT_MIN,
   int $max = \PHP_INT_MAX,
@@ -48,6 +50,7 @@ function int(
  *
  * For secure random strings, see `SecureRandom\string`.
  */
+<<__NonRx('Randomness')>>
 function string(
   int $length,
   ?string $alphabet = null,
