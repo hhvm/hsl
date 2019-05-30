@@ -49,11 +49,6 @@ function tuple_from_vec(mixed $x): mixed {
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-final class Ref<T> {
-  <<__RxShallow>>
-  public function __construct(public T $value) {}
-}
-
 async function wAsync<T>(
   Awaitable<T> $gen,
 ): Awaitable<ResultOrExceptionWrapper<T>> {
