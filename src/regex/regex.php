@@ -77,7 +77,24 @@ function matches<T as Match>(
   Pattern<T> $pattern,
   int $offset = 0,
 ): bool {
-  return _Private\regex_match($haystack, $pattern, $offset) !== null;
+  _Private\validate_offset($offset, Str\length($haystack));
+  $match = darray[];
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  $status = @\preg_match(
+    /* HH_IGNORE_ERROR[4110] */ $pattern,
+    $haystack,
+    &$match,
+    /* HH_IGNORE_ERROR[2049] Private constant */
+    /* HH_IGNORE_ERROR[4106] Private constant */
+    \PREG_FB__PRIVATE__HSL_IMPL |
+      \PREG_OFFSET_CAPTURE,
+    $offset,
+  );
+  if ($status is int) {
+    return (bool)$status;
+  }
+  throw new Exception($pattern);
 }
 
 /**
