@@ -173,11 +173,7 @@ function split<T as Match>(
   if ($limit === null) {
     $limit = \INF;
   }
-  invariant(
-    $limit > 1,
-    'Expected limit greater than 1, got %d.',
-    $limit,
-  );
+  invariant($limit > 1, 'Expected limit greater than 1, got %d.', $limit);
   $haystack_length = Str\length($haystack);
   $result = vec[];
   $offset = 0;
@@ -213,8 +209,6 @@ function split<T as Match>(
 /**
  * Renders a Regex Pattern to a string.
  */
-function to_string<T as Match>(
-  Pattern<T> $pattern,
-): string {
+function to_string<T as Match>(Pattern<T> $pattern): string {
   return $pattern as string;
 }
