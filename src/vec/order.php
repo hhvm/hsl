@@ -105,7 +105,7 @@ function sort<Tv>(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
-    \sort(&$vec);
+    \sort(inout $vec);
   }
   return $vec;
 }
