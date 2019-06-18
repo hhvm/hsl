@@ -15,9 +15,16 @@ use type Facebook\HackTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
 final class MathConstantsTest extends HackTest {
+  const DELTA = .000001;
   public function testInt64Min(): void {
     expect(Math\INT64_MIN)->toBeLessThan(0);
     $less = Math\INT64_MIN- 1;
     expect($less === Math\INT64_MAX || $less is float)->toBeTrue();
+  }
+  public function testPi(): void {
+    expect(Math\PI)->toEqualWithDelta(M_PI, self::DELTA);
+  }
+  public function testE(): void {
+    expect(Math\E)->toEqualWithDelta(M_E, self::DELTA);
   }
 }

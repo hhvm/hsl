@@ -25,3 +25,6 @@ const int INT16_MIN = -32768;
 
 const int UINT32_MAX = 4294967295;
 const int UINT16_MAX = 65535;
+
+const float PI = 3.14159265358979323846;
+const float E = 2.7182818284590452354;
