@@ -16,6 +16,7 @@ namespace HH\Lib\Vec;
  * Time complexity: O(n * a), where a is the complexity of each Awaitable
  * Space complexity: O(n)
  */
+<<__ProvenanceSkipFrame>>
 async function from_async<Tv>(
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
@@ -38,7 +39,7 @@ async function from_async<Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 async function filter_async<Tv>(
   Container<Tv> $container,
   <<__AtMostRxAsFunc>>
@@ -65,7 +66,7 @@ async function filter_async<Tv>(
  * Time complexity: O(n * f), where `f` is the complexity of `$async_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 async function map_async<Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,

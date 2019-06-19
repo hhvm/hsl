@@ -19,7 +19,7 @@ use namespace HH\Lib\C;
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Rx>>
+<<__Rx, __ProvenanceSkipFrame>>
 function equal<Tk as arraykey, Tv>(
   dict<Tk, Tv> $dict1,
   dict<Tk, Tv> $dict2,

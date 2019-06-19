@@ -20,7 +20,7 @@ namespace HH\Lib\Vec;
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 function concat<Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
