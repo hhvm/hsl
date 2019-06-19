@@ -51,3 +51,16 @@ function minva<T as num>(
   }
   return $min;
 }
+
+/**
+ * Returns whether a number has the value NaN.
+ *
+ * When comparing $x === NaN false will be returned
+ * even if $x is NaN.
+ */
+ <<__Rx>>
+ function is_nan(num $num): bool{
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  return \is_nan((float)$num);
+ }
