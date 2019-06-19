@@ -38,7 +38,7 @@ async function from_async(?Awaitable<mixed> ...$awaitables): Awaitable<mixed> {
    * externally, and HH_IGNORE_ERROR/HH_FIXME/UNSAFE_EXPR can't be used to
    * bypass the ban. */
 
-  // @oss-disable: $awaitables = \varray($awaitables);
+  // @oss-disable: $awaitables = varray($awaitables);
   $awaitables = vec($awaitables); // @oss-enable
 
   foreach ($awaitables as $index => $value) {
