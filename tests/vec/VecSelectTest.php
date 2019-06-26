@@ -421,6 +421,36 @@ final class VecSelectTest extends HackTest {
         null,
         Vec\range(2, 5),
       ),
+      tuple(
+        Vec\range(0, 5),
+        -6,
+        0,
+        vec[],
+      ),
+      tuple(
+        new Vector(Vec\range(0, 5)),
+        -2,
+        null,
+        Vec\range(4, 5),
+      ),
+      tuple(
+        new Set(Vec\range(0, 5)),
+        -4,
+        3,
+        Vec\range(2, 4),
+      ),
+      tuple(
+        dict['foo' => 1, 'bar' => 2, 'foobar' => 3],
+        -2,
+        null,
+        Vec\range(2, 3),
+      ),
+      tuple(
+        new Set(Vec\range(0, 5)),
+        8,
+        null,
+        vec[],
+      ),
     ];
   }
 
@@ -432,6 +462,13 @@ final class VecSelectTest extends HackTest {
     vec<Tv> $expected,
   ): void {
     expect(Vec\slice($container, $offset, $length))->toBeSame($expected);
+  }
+
+  public function testSliceThrow<Tv>(): void {
+    expect(() ==> Vec\slice(Vec\range(0, 5), -7, 1))->toThrow(
+      InvariantViolationException::class,
+    );
+    expect(() ==> Vec\slice(Vec\range(0, 5), 10, null))->notToThrow();
   }
 
   public static function provideTake(): varray<mixed> {
