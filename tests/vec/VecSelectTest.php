@@ -11,6 +11,7 @@
 use namespace HH\Lib\{C, Math, Str, Vec};
 use function Facebook\FBExpect\expect; // @oss-enable
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
+// @oss-disable: use InvariantViolationException as InvariantException;
 
 // @oss-disable: <<Oncalls('hack')>>
 final class VecSelectTest extends HackTest {
@@ -466,7 +467,7 @@ final class VecSelectTest extends HackTest {
 
   public function testSliceThrow<Tv>(): void {
     expect(() ==> Vec\slice(Vec\range(0, 5), -7, 1))->toThrow(
-      InvariantViolationException::class,
+      InvariantException::class,
     );
     expect(() ==> Vec\slice(Vec\range(0, 5), 10, null))->notToThrow();
   }
