@@ -53,7 +53,7 @@ final class DictOrderTest extends HackTest {
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\reverse($traversable))->toBeSame($expected);
+    expect(Dict\reverse($traversable))->toEqual($expected);
   }
 
   public static function provideTestSort(): varray<mixed> {
@@ -125,7 +125,7 @@ final class DictOrderTest extends HackTest {
     ?(function(Tv, Tv): int) $value_comparator,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\sort($traversable, $value_comparator))->toBeSame($expected);
+    expect(Dict\sort($traversable, $value_comparator))->toEqual($expected);
   }
 
   public static function provideTestSortBy(): varray<mixed> {
@@ -171,7 +171,7 @@ final class DictOrderTest extends HackTest {
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\sort_by($traversable, $scalar_func, $scalar_comparator))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideTestSortByKey(): varray<mixed> {
@@ -214,6 +214,6 @@ final class DictOrderTest extends HackTest {
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\sort_by_key($traversable, $key_comparator))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 }

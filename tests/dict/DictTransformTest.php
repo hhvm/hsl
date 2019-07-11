@@ -58,7 +58,7 @@ final class DictTransformTest extends HackTest {
     int $size,
     vec<dict<Tk, Tv>> $expected,
   ): void {
-    expect(Dict\chunk($traversable, $size))->toBeSame($expected);
+    expect(Dict\chunk($traversable, $size))->toEqual($expected);
   }
 
   public static function provideTestCountValues(): varray<mixed> {
@@ -93,7 +93,7 @@ final class DictTransformTest extends HackTest {
     Traversable<Tv> $values,
     dict<Tv, int> $expected,
   ): void {
-    expect(Dict\count_values($values))->toBeSame($expected);
+    expect(Dict\count_values($values))->toEqual($expected);
   }
 
   public static function provideTestFillKeys(): varray<mixed> {
@@ -131,7 +131,7 @@ final class DictTransformTest extends HackTest {
     Tv $value,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\fill_keys($keys, $value))->toBeSame($expected);
+    expect(Dict\fill_keys($keys, $value))->toEqual($expected);
   }
 
   public static function provideTestFlatten(): varray<mixed> {
@@ -208,7 +208,7 @@ final class DictTransformTest extends HackTest {
     Traversable<KeyedContainer<Tk, Tv>> $traversables,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\flatten($traversables))->toBeSame($expected);
+    expect(Dict\flatten($traversables))->toEqual($expected);
   }
 
   public static function provideTestFlip(): varray<mixed> {
@@ -248,7 +248,7 @@ final class DictTransformTest extends HackTest {
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tv, Tk> $expected,
   ): void {
-    expect(Dict\flip($traversable))->toBeSame($expected);
+    expect(Dict\flip($traversable))->toEqual($expected);
   }
 
   public static function provideTestFromKeys(): varray<mixed> {
@@ -290,7 +290,7 @@ final class DictTransformTest extends HackTest {
     (function(Tk): Tv) $value_func,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\from_keys($keys, $value_func))->toBeSame($expected);
+    expect(Dict\from_keys($keys, $value_func))->toEqual($expected);
   }
 
   public static function provideTestFromEntries(): varray<mixed> {
@@ -339,7 +339,7 @@ final class DictTransformTest extends HackTest {
     Traversable<(Tk, Tv)> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\from_entries($traversable))->toBeSame($expected);
+    expect(Dict\from_entries($traversable))->toEqual($expected);
   }
 
   public static function provideTestFromValues(): varray<mixed> {
@@ -381,7 +381,7 @@ final class DictTransformTest extends HackTest {
     (function(Tv): Tk) $key_func,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\from_values($values, $key_func))->toBeSame($expected);
+    expect(Dict\from_values($values, $key_func))->toEqual($expected);
   }
 
   public static function provideTestGroupBy(): varray<mixed> {
@@ -416,7 +416,7 @@ final class DictTransformTest extends HackTest {
     (function(Tv): ?Tk) $key_func,
     dict<Tk, vec<Tv>> $expected,
   ): void {
-    expect(Dict\group_by($values, $key_func))->toBeSame($expected);
+    expect(Dict\group_by($values, $key_func))->toEqual($expected);
   }
 
   public static function provideTestMap(): varray<mixed> {
@@ -494,7 +494,7 @@ final class DictTransformTest extends HackTest {
     (function (Tv1): Tv2) $func,
     dict<Tk, Tv2> $expected,
   ): void {
-    expect(Dict\map($traversable, $func))->toBeSame($expected);
+    expect(Dict\map($traversable, $func))->toEqual($expected);
   }
 
   public static function provideTestMapKeys(): varray<mixed> {
@@ -549,7 +549,7 @@ final class DictTransformTest extends HackTest {
     (function(Tk1): Tk2) $key_func,
     dict<Tk2, Tv> $expected,
   ): void {
-    expect(Dict\map_keys($traversable, $key_func))->toBeSame($expected);
+    expect(Dict\map_keys($traversable, $key_func))->toEqual($expected);
   }
 
   public static function provideTestMapWithKey(): varray<mixed> {
@@ -589,7 +589,7 @@ final class DictTransformTest extends HackTest {
     (function(Tk, Tv1): Tv2) $value_func,
     dict<Tk, Tv2> $expected,
   ): void {
-    expect(Dict\map_with_key($traversable, $value_func))->toBeSame($expected);
+    expect(Dict\map_with_key($traversable, $value_func))->toEqual($expected);
   }
 
   public static function provideTestPull(): varray<mixed> {
@@ -628,7 +628,7 @@ final class DictTransformTest extends HackTest {
     dict<Tk, Tv2> $expected,
   ): void {
     expect(Dict\pull($traversable, $value_func, $key_func))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideTestPullWithKey(): varray<mixed> {
@@ -664,6 +664,6 @@ final class DictTransformTest extends HackTest {
     dict<Tk2, Tv2> $expected,
   ): void {
     expect(Dict\pull_with_key($traversable, $value_func, $key_func))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 }

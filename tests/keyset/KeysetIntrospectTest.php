@@ -56,6 +56,6 @@ final class KeysetIntrospectTest extends HackTest {
     keyset<Tv> $keyset2,
     bool $expected,
   ): void {
-    expect(Keyset\equal($keyset1, $keyset2))->toBeSame($expected);
+    expect(Keyset\equal($keyset1, $keyset2))->toEqual($expected);
   }
 }

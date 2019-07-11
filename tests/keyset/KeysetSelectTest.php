@@ -49,7 +49,7 @@ final class KeysetSelectTest extends HackTest {
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\diff($first, $second, ...$rest))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideDrop(): varray<mixed> {
@@ -88,7 +88,7 @@ final class KeysetSelectTest extends HackTest {
     int $n,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\drop($traversable, $n))->toBeSame($expected);
+    expect(Keyset\drop($traversable, $n))->toEqual($expected);
   }
 
   public static function provideTestFilter(): varray<mixed> {
@@ -133,13 +133,13 @@ final class KeysetSelectTest extends HackTest {
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\filter($traversable, $predicate))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public function testFilterWithoutPredicate(): void {
     expect(
       Keyset\filter(varray[0, 3, 5, 40, '', '0', 'win!'])
-    )->toBeSame(keyset[3, 5, 40, 'win!']);
+    )->toEqual(keyset[3, 5, 40, 'win!']);
   }
 
   public static function provideTestFilterNulls(): varray<mixed> {
@@ -181,7 +181,7 @@ final class KeysetSelectTest extends HackTest {
     Traversable<?Tv> $traversable,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\filter_nulls($traversable))->toBeSame($expected);
+    expect(Keyset\filter_nulls($traversable))->toEqual($expected);
   }
 
   public static function provideTestFilterWithKey(): darray<string, mixed> {
@@ -223,7 +223,7 @@ final class KeysetSelectTest extends HackTest {
     keyset<Tv> $expected,
   ): void {
     $result = Keyset\filter_with_key($traversable, $filter_func);
-    expect($result)->toBeSame($expected);
+    expect($result)->toEqual($expected);
   }
 
   public static function provideTestKeys(): varray<mixed> {
@@ -258,7 +258,7 @@ final class KeysetSelectTest extends HackTest {
     KeyedTraversable<Tk, Tv> $traversable,
     keyset<Tk> $expected,
   ): void {
-    expect(Keyset\keys($traversable))->toBeSame($expected);
+    expect(Keyset\keys($traversable))->toEqual($expected);
   }
 
   public static function provideTestIntersect(): varray<mixed> {
@@ -327,7 +327,7 @@ final class KeysetSelectTest extends HackTest {
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\intersect($first, $second, ...$rest))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideTake(): varray<mixed> {
@@ -366,14 +366,14 @@ final class KeysetSelectTest extends HackTest {
     int $n,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\take($traversable, $n))->toBeSame($expected);
+    expect(Keyset\take($traversable, $n))->toEqual($expected);
   }
 
   public function testTakeIter(): void {
     $iter = HackLibTestTraversables::getIterator(Vec\range(0, 4));
-    expect(Keyset\take($iter, 2))->toBeSame(keyset[0, 1]);
-    expect(Keyset\take($iter, 0))->toBeSame(keyset[]);
-    expect(Keyset\take($iter, 2))->toBeSame(keyset[2, 3]);
-    expect(Keyset\take($iter, 2))->toBeSame(keyset[4]);
+    expect(Keyset\take($iter, 2))->toEqual(keyset[0, 1]);
+    expect(Keyset\take($iter, 0))->toEqual(keyset[]);
+    expect(Keyset\take($iter, 2))->toEqual(keyset[2, 3]);
+    expect(Keyset\take($iter, 2))->toEqual(keyset[4]);
   }
 }

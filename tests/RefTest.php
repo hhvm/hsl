@@ -22,13 +22,13 @@ final class RefTest extends HackTest {
         $ref->value++;
       }
     )($myref);
-    expect($myref->value)->toBeSame(1);
+    expect($myref->value)->toEqual(1);
     // implicit capture, which is always byval
     (
       () ==> {
         $myref->value++;
       }
     )();
-    expect($myref->value)->toBeSame(2);
+    expect($myref->value)->toEqual(2);
   }
 }

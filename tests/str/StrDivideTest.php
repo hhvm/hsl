@@ -41,7 +41,7 @@ final class StrDivideTest extends HackTest {
     int $chunk_size,
     vec<string> $expected,
   ): void {
-    expect(Str\chunk($string, $chunk_size))->toBeSame($expected);
+    expect(Str\chunk($string, $chunk_size))->toEqual($expected);
   }
 
   public static function provideSplit(): varray<mixed> {
@@ -117,7 +117,7 @@ final class StrDivideTest extends HackTest {
     vec<string> $expected,
   ): void {
     expect(Str\split($string, $delimiter, $limit))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
 }

@@ -116,7 +116,7 @@ final class RegexTest extends HackTest {
   ): void {
     $captures = Regex\first_match($haystack, $pattern);
     $captures = expect($captures)->toNotBeNull();
-    expect($captures)->toBeSame($expected);
+    expect($captures)->toEqual($expected);
   }
 
   public static function provideFirstMatchNull(): varray<(string, Regex\Pattern<shape(...)>, int)> {
@@ -168,7 +168,7 @@ final class RegexTest extends HackTest {
     bool $expected,
   ): void {
     expect(Regex\matches($haystack, $pattern, $offset))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideEveryMatch(
@@ -259,7 +259,7 @@ final class RegexTest extends HackTest {
     vec<dict<arraykey, string>> $expected,
   ): void {
     expect(Regex\every_match($haystack, $pattern, $offset))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideReplace(): varray<(string, Regex\Pattern<shape(...)>, string, int, string)> {
@@ -316,7 +316,7 @@ final class RegexTest extends HackTest {
     string $expected,
   ): void {
     expect(Regex\replace($haystack, $pattern, $replacement, $offset))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideReplaceWith(): varray<mixed> {
@@ -353,7 +353,7 @@ final class RegexTest extends HackTest {
     string $expected,
   ): void {
     expect(Regex\replace_with($haystack, $pattern, $replace_func, $offset))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideSplit(): varray<(string, Regex\Pattern<shape(...)>, ?int, vec<string>)> {
@@ -382,7 +382,7 @@ final class RegexTest extends HackTest {
     vec<string> $expected,
   ): void {
     expect(Regex\split($haystack, $pattern, $limit))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public function testSplitInvalidLimit(): void {

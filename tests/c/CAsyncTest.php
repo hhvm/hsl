@@ -51,7 +51,7 @@ final class CAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await C\first_async($awaitable);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 
@@ -84,7 +84,7 @@ final class CAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await C\firstx_async($awaitable);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 

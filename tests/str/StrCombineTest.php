@@ -34,7 +34,7 @@ final class StrCombineTest extends HackTest {
     Traversable<string> $traversable,
   ): void {
     expect(Str\join($traversable, '-'))
-      ->toBeSame('the-quick-brown-fox-1');
+      ->toEqual('the-quick-brown-fox-1');
   }
 
 }

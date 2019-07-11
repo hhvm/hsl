@@ -39,7 +39,7 @@ final class MathContainersTest extends HackTest {
     Traversable<T> $numbers,
     ?T $expected,
   ): void {
-    expect(Math\max($numbers))->toBeSame($expected);
+    expect(Math\max($numbers))->toEqual($expected);
   }
 
   public static function provideTestMaxBy(): varray<mixed> {
@@ -70,7 +70,7 @@ final class MathContainersTest extends HackTest {
     (function(T): num) $num_func,
     ?T $expected,
   ): void {
-    expect(Math\max_by($traversable, $num_func))->toBeSame($expected);
+    expect(Math\max_by($traversable, $num_func))->toEqual($expected);
   }
 
   public static function provideTestMean(): varray<mixed> {
@@ -116,7 +116,7 @@ final class MathContainersTest extends HackTest {
     if ($expected === null) {
       expect(Math\median($numbers))->toBeNull();
     } else {
-      expect(Math\median($numbers))->toBeSame($expected);
+      expect(Math\median($numbers))->toEqual($expected);
     }
   }
 
@@ -148,7 +148,7 @@ final class MathContainersTest extends HackTest {
     Traversable<T> $traversable,
     ?T $expected,
   ): void {
-    expect(Math\min($traversable))->toBeSame($expected);
+    expect(Math\min($traversable))->toEqual($expected);
   }
 
   public static function provideTestMinBy(): varray<mixed> {
@@ -179,7 +179,7 @@ final class MathContainersTest extends HackTest {
     (function(T): num) $num_func,
     ?T $expected,
   ): void {
-    expect(Math\min_by($traversable, $num_func))->toBeSame($expected);
+    expect(Math\min_by($traversable, $num_func))->toEqual($expected);
   }
 
   public static function provideTestSum(): varray<mixed> {
@@ -206,7 +206,7 @@ final class MathContainersTest extends HackTest {
     Traversable<int> $traversable,
     int $expected,
   ): void {
-    expect(Math\sum($traversable))->toBeSame($expected);
+    expect(Math\sum($traversable))->toEqual($expected);
   }
 
   public static function provideTestSumFloat(): varray<mixed> {
@@ -233,6 +233,6 @@ final class MathContainersTest extends HackTest {
     Traversable<T> $traversable,
     float $expected,
   ): void {
-    expect(Math\sum_float($traversable))->toBeSame($expected);
+    expect(Math\sum_float($traversable))->toEqual($expected);
   }
 }

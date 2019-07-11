@@ -71,7 +71,7 @@ final class VecOrderTest extends HackTest {
     vec<Tv> $expected,
   ): void {
     $actual = Vec\range($start, $end, $increment);
-    expect(C\count($actual))->toBeSame(C\count($expected));
+    expect(C\count($actual))->toEqual(C\count($expected));
     for ($i = 0; $i < C\count($actual); $i++) {
       expect((float) $actual[$i])->toAlmostEqual((float) $expected[$i]);
     }
@@ -116,7 +116,7 @@ final class VecOrderTest extends HackTest {
     Traversable<Tv> $traversable,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\reverse($traversable))->toBeSame($expected);
+    expect(Vec\reverse($traversable))->toEqual($expected);
   }
 
   public static function provideTestShuffle(): varray<varray<(function(): Traversable<int>)>> {
@@ -142,8 +142,8 @@ final class VecOrderTest extends HackTest {
       $shuffled2 = Vec\shuffle($input());
       $vec_input = vec($input());
 
-      expect(Vec\sort($shuffled1))->toBeSame(Vec\sort($vec_input));
-      expect(Vec\sort($shuffled2))->toBeSame(Vec\sort($vec_input));
+      expect(Vec\sort($shuffled1))->toEqual(Vec\sort($vec_input));
+      expect(Vec\sort($shuffled2))->toEqual(Vec\sort($vec_input));
 
       // There is a chance that even if we shuffle we get the same thing twice.
       // That is ok but if we try 1000 times we should get different things.
@@ -190,7 +190,7 @@ final class VecOrderTest extends HackTest {
     ?(function(Tv, Tv): int) $comparator,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\sort($traversable, $comparator))->toBeSame($expected);
+    expect(Vec\sort($traversable, $comparator))->toEqual($expected);
   }
 
   public static function provideTestSortBy(): varray<mixed> {
@@ -252,6 +252,6 @@ final class VecOrderTest extends HackTest {
     vec<Tv> $expected,
   ): void {
     expect(Vec\sort_by($traversable, $scalar_func, $comparator))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 }

@@ -42,6 +42,6 @@ final class VecDivideTest extends HackTest {
     (function(Tv): bool) $predicate,
     (vec<Tv>, vec<Tv>) $expected,
   ): void {
-    expect(Vec\partition($traversable, $predicate))->toBeSame($expected);
+    expect(Vec\partition($traversable, $predicate))->toEqual($expected);
   }
 }

@@ -51,7 +51,7 @@ final class VecTransformTest extends HackTest {
     int $size,
     vec<vec<Tv>> $expected,
   ): void {
-    expect(Vec\chunk($traversable, $size))->toBeSame($expected);
+    expect(Vec\chunk($traversable, $size))->toEqual($expected);
   }
 
   public static function provideTestFill(): varray<mixed> {
@@ -83,7 +83,7 @@ final class VecTransformTest extends HackTest {
     Tv $value,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\fill($size, $value))->toBeSame($expected);
+    expect(Vec\fill($size, $value))->toEqual($expected);
   }
 
   public function testFillExceptions(): void {
@@ -119,7 +119,7 @@ final class VecTransformTest extends HackTest {
     Traversable<Container<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\flatten($traversables))->toBeSame($expected);
+    expect(Vec\flatten($traversables))->toEqual($expected);
   }
 
   public static function provideTestMap(): varray<mixed> {
@@ -198,7 +198,7 @@ final class VecTransformTest extends HackTest {
     (function(Tv1): Tv2) $value_func,
     vec<Tv2> $expected,
   ): void {
-    expect(Vec\map($traversable, $value_func))->toBeSame($expected);
+    expect(Vec\map($traversable, $value_func))->toEqual($expected);
   }
 
   public static function provideTestMapWithKey(): varray<mixed> {
@@ -227,7 +227,7 @@ final class VecTransformTest extends HackTest {
     (function(Tk, Tv1): Tv2) $value_func,
     vec<Tv2> $expected,
   ): void {
-    expect(Vec\map_with_key($traversable, $value_func))->toBeSame($expected);
+    expect(Vec\map_with_key($traversable, $value_func))->toEqual($expected);
   }
 
 }

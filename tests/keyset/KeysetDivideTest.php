@@ -42,6 +42,6 @@ final class KeysetDivideTest extends HackTest {
     (function(Tv): bool) $predicate,
     (keyset<Tv>, keyset<Tv>) $expected,
   ): void {
-    expect(Keyset\partition($traversable, $predicate))->toBeSame($expected);
+    expect(Keyset\partition($traversable, $predicate))->toEqual($expected);
   }
 }

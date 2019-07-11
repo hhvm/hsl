@@ -60,7 +60,7 @@ final class KeysetTransformTest extends HackTest {
     int $size,
     vec<keyset<Tv>> $expected,
   ): void {
-    expect(Keyset\chunk($traversable, $size))->toBeSame($expected);
+    expect(Keyset\chunk($traversable, $size))->toEqual($expected);
   }
 
   public static function provideTestMap(): varray<mixed> {
@@ -141,7 +141,7 @@ final class KeysetTransformTest extends HackTest {
     (function(Tv1): Tv2) $value_func,
     keyset<Tv2> $expected,
   ): void {
-    expect(Keyset\map($traversable, $value_func))->toBeSame($expected);
+    expect(Keyset\map($traversable, $value_func))->toEqual($expected);
   }
 
   public static function provideTestMapWithKey(): varray<mixed> {
@@ -180,7 +180,7 @@ final class KeysetTransformTest extends HackTest {
     keyset<Tv2> $expected,
   ): void {
     expect(Keyset\map_with_key($traversable, $value_func))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideTestFlatten(
@@ -231,6 +231,6 @@ final class KeysetTransformTest extends HackTest {
     Traversable<Container<Tv>> $traversables,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\flatten($traversables))->toBeSame($expected);
+    expect(Keyset\flatten($traversables))->toEqual($expected);
   }
 }

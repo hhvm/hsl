@@ -47,7 +47,7 @@ final class VecCombineTest extends HackTest {
     Container<Container<Tv>> $rest,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\concat($first, ...$rest))->toBeSame($expected);
+    expect(Vec\concat($first, ...$rest))->toEqual($expected);
   }
 
 }

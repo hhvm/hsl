@@ -53,7 +53,7 @@ final class VecAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await Vec\from_async($awaitables);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 
@@ -86,7 +86,7 @@ final class VecAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await Vec\filter_async($container, $value_predicate);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 
@@ -116,7 +116,7 @@ final class VecAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await Vec\map_async($keys, $async_func);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 }

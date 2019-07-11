@@ -46,7 +46,7 @@ final class KeysetOrderTest extends HackTest {
     ?(function(Tv, Tv): int) $comparator,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\sort($traversable, $comparator))->toBeSame($expected);
+    expect(Keyset\sort($traversable, $comparator))->toEqual($expected);
   }
 
 }

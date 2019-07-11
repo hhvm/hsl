@@ -46,6 +46,6 @@ final class KeysetCombineTest extends HackTest {
     Container<Container<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
-    expect(Keyset\union($first, ...$rest))->toBeSame($expected);
+    expect(Keyset\union($first, ...$rest))->toEqual($expected);
   }
 }

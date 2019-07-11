@@ -30,7 +30,7 @@ final class StrTransformTest extends HackTest {
     string $string,
     string $expected,
   ): void {
-    expect(Str\capitalize($string))->toBeSame($expected);
+    expect(Str\capitalize($string))->toEqual($expected);
   }
 
   public static function provideCapitalizeWords(): varray<mixed> {
@@ -51,7 +51,7 @@ final class StrTransformTest extends HackTest {
     string $string,
     string $expected,
   ): void {
-    expect(Str\capitalize_words($string))->toBeSame($expected);
+    expect(Str\capitalize_words($string))->toEqual($expected);
   }
 
   public static function provideCapitalizeWordsCustomDelimiter(): varray<mixed> {
@@ -80,7 +80,7 @@ final class StrTransformTest extends HackTest {
     string $delimiter,
     string $expected,
   ): void {
-    expect(Str\capitalize_words($string, $delimiter))->toBeSame($expected);
+    expect(Str\capitalize_words($string, $delimiter))->toEqual($expected);
   }
 
   public static function provideFormatNumber(): varray<mixed> {
@@ -136,7 +136,7 @@ final class StrTransformTest extends HackTest {
       $decimals,
       $decimal_point,
       $thousands_separator,
-    ))->toBeSame($expected);
+    ))->toEqual($expected);
   }
 
   public static function provideLowercase(): varray<mixed> {
@@ -153,7 +153,7 @@ final class StrTransformTest extends HackTest {
     string $string,
     string $expected,
   ): void {
-    expect(Str\lowercase($string))->toBeSame($expected);
+    expect(Str\lowercase($string))->toEqual($expected);
   }
 
   public static function providePadLeft(): varray<mixed> {
@@ -174,7 +174,7 @@ final class StrTransformTest extends HackTest {
     string $expected,
   ): void {
     expect(Str\pad_left($string, $total_length, $pad_string))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function providePadRight(): varray<mixed> {
@@ -195,7 +195,7 @@ final class StrTransformTest extends HackTest {
     string $expected,
   ): void {
     expect(Str\pad_right($string, $total_length, $pad_string))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideRepeat(): varray<mixed> {
@@ -212,7 +212,7 @@ final class StrTransformTest extends HackTest {
     int $multiplier,
     string $expected,
   ): void {
-    expect(Str\repeat($string, $multiplier))->toBeSame($expected);
+    expect(Str\repeat($string, $multiplier))->toEqual($expected);
   }
 
   public static function provideReplace(): varray<mixed> {
@@ -257,7 +257,7 @@ final class StrTransformTest extends HackTest {
     string $replacement,
     string $expected,
   ): void {
-    expect(Str\replace($haystack, $needle, $replacement))->toBeSame($expected);
+    expect(Str\replace($haystack, $needle, $replacement))->toEqual($expected);
   }
 
   public static function provideReplaceCI(): varray<mixed> {
@@ -303,7 +303,7 @@ final class StrTransformTest extends HackTest {
     string $expected,
   ): void {
     expect(Str\replace_ci($haystack, $needle, $replacement))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public static function provideReplaceEvery(): varray<mixed> {
@@ -347,7 +347,7 @@ final class StrTransformTest extends HackTest {
     KeyedContainer<string, string> $replacements,
     string $expected,
   ): void {
-    expect(Str\replace_every($haystack, $replacements))->toBeSame($expected);
+    expect(Str\replace_every($haystack, $replacements))->toEqual($expected);
   }
 
   public static function provideReplaceEveryCI(): varray<mixed> {
@@ -383,7 +383,7 @@ final class StrTransformTest extends HackTest {
     KeyedContainer<string, string> $replacements,
     string $expected,
   ): void {
-    expect(Str\replace_every_ci($haystack, $replacements))->toBeSame($expected);
+    expect(Str\replace_every_ci($haystack, $replacements))->toEqual($expected);
   }
 
   public static function providerReverse(): varray<(string, string)> {
@@ -397,7 +397,7 @@ final class StrTransformTest extends HackTest {
 
   <<DataProvider('providerReverse')>>
   public function testReverse(string $input, string $expected): void {
-    expect(Str\reverse($input))->toBeSame($expected);
+    expect(Str\reverse($input))->toEqual($expected);
   }
 
   public static function provideSplice(): varray<mixed> {
@@ -463,7 +463,7 @@ final class StrTransformTest extends HackTest {
     string $expected,
   ): void {
     expect(Str\splice($string, $replacement, $offset, $length))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public function testSpliceExceptions(): void {
@@ -489,7 +489,7 @@ final class StrTransformTest extends HackTest {
     string $string,
     ?int $expected,
   ): void {
-    expect(Str\to_int($string))->toBeSame($expected);
+    expect(Str\to_int($string))->toEqual($expected);
   }
 
   public static function provideUppercase(): varray<mixed> {
@@ -506,7 +506,7 @@ final class StrTransformTest extends HackTest {
     string $string,
     string $expected,
   ): void {
-    expect(Str\uppercase($string))->toBeSame($expected);
+    expect(Str\uppercase($string))->toEqual($expected);
   }
 
 }

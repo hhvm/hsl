@@ -56,6 +56,6 @@ final class DictIntrospectTest extends HackTest {
     dict<Tk, Tv> $dict2,
     bool $expected,
   ): void {
-    expect(Dict\equal($dict1, $dict2))->toBeSame($expected);
+    expect(Dict\equal($dict1, $dict2))->toEqual($expected);
   }
 }

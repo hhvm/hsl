@@ -55,6 +55,6 @@ final class StrFormatTest extends HackTest {
     string $actual,
     string $expected,
   ): void {
-    expect($actual)->toBeSame($expected);
+    expect($actual)->toEqual($expected);
   }
 }

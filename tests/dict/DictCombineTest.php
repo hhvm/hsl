@@ -59,7 +59,7 @@ final class DictCombineTest extends HackTest {
     Traversable<Tv> $values,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\associate($keys, $values))->toBeSame($expected);
+    expect(Dict\associate($keys, $values))->toEqual($expected);
   }
 
   public static function provideTestMerge(): varray<mixed> {
@@ -124,6 +124,6 @@ final class DictCombineTest extends HackTest {
     Container<KeyedContainer<Tk, Tv>> $rest,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\merge($first, ...$rest))->toBeSame($expected);
+    expect(Dict\merge($first, ...$rest))->toEqual($expected);
   }
 }

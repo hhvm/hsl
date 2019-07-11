@@ -126,9 +126,9 @@ trait RandomTestTrait {
   public function testStringLength(string $alphabet): void {
     $reps = 15;
     for ($length = 1; $length <= $reps; $length++) {
-      expect(Str\length($this->getRandomString($length)))->toBeSame($length);
+      expect(Str\length($this->getRandomString($length)))->toEqual($length);
       expect(Str\length($this->getRandomString($length, $alphabet)))
-        ->toBeSame($length);
+        ->toEqual($length);
     }
   }
 

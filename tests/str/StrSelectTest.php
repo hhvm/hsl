@@ -76,7 +76,7 @@ final class StrSelectTest extends HackTest {
     ?int $length,
     string $expected,
   ): void {
-    expect(Str\slice($string, $offset, $length))->toBeSame($expected);
+    expect(Str\slice($string, $offset, $length))->toEqual($expected);
   }
 
   public function testSliceExceptions(): void {
@@ -119,7 +119,7 @@ final class StrSelectTest extends HackTest {
     string $prefix,
     string $expected,
   ): void {
-    expect(Str\strip_prefix($string, $prefix))->toBeSame($expected);
+    expect(Str\strip_prefix($string, $prefix))->toEqual($expected);
   }
 
   public static function provideStripSuffix(): varray<mixed> {
@@ -153,7 +153,7 @@ final class StrSelectTest extends HackTest {
     string $suffix,
     string $expected,
   ): void {
-    expect(Str\strip_suffix($string, $suffix))->toBeSame($expected);
+    expect(Str\strip_suffix($string, $suffix))->toEqual($expected);
   }
 
   public static function provideTrim(): varray<mixed> {
@@ -182,7 +182,7 @@ final class StrSelectTest extends HackTest {
     ?string $char_mask,
     string $expected,
   ): void {
-    expect(Str\trim($string, $char_mask))->toBeSame($expected);
+    expect(Str\trim($string, $char_mask))->toEqual($expected);
   }
 
   public static function provideTrimLeft(): varray<mixed> {
@@ -211,7 +211,7 @@ final class StrSelectTest extends HackTest {
     ?string $char_mask,
     string $expected,
   ): void {
-    expect(Str\trim_left($string, $char_mask))->toBeSame($expected);
+    expect(Str\trim_left($string, $char_mask))->toEqual($expected);
   }
 
   public static function provideTrimRight(): varray<mixed> {
@@ -240,7 +240,7 @@ final class StrSelectTest extends HackTest {
     ?string $char_mask,
     string $expected,
   ): void {
-    expect(Str\trim_right($string, $char_mask))->toBeSame($expected);
+    expect(Str\trim_right($string, $char_mask))->toEqual($expected);
   }
 
 }

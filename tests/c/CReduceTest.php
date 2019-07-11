@@ -99,6 +99,6 @@ final class CReduceTest extends HackTest {
       $initial,
     );
 
-    expect($result)->toBeSame($expected);
+    expect($result)->toEqual($expected);
   }
 }

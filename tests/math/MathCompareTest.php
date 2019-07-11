@@ -37,7 +37,7 @@ final class MathCompareTest extends HackTest {
     Container<T> $rest,
     T $expected,
   ): void {
-    expect(Math\maxva($first, $second, ...$rest))->toBeSame($expected);
+    expect(Math\maxva($first, $second, ...$rest))->toEqual($expected);
   }
 
   public static function provideTestMinva(): varray<mixed> {
@@ -62,6 +62,6 @@ final class MathCompareTest extends HackTest {
     Container<T> $rest,
     T $expected,
   ): void {
-    expect(Math\minva($first, $second, ...$rest))->toBeSame($expected);
+    expect(Math\minva($first, $second, ...$rest))->toEqual($expected);
   }
 }

@@ -111,7 +111,7 @@ final class DictDivideTest extends HackTest {
     (function(Tv): bool) $predicate,
     (dict<Tk, Tv>, dict<Tk, Tv>) $expected,
   ): void {
-    expect(Dict\partition($traversable, $predicate))->toBeSame($expected);
+    expect(Dict\partition($traversable, $predicate))->toEqual($expected);
   }
 
   <<DataProvider('providePartitionWithKey')>>
@@ -120,6 +120,6 @@ final class DictDivideTest extends HackTest {
     (function(Tk, Tv): bool) $predicate,
     (dict<Tk, Tv>, dict<Tk, Tv>) $expected,
   ): void {
-    expect(Dict\partition_with_key($traversable, $predicate))->toBeSame($expected);
+    expect(Dict\partition_with_key($traversable, $predicate))->toEqual($expected);
   }
 }

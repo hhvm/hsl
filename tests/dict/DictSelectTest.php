@@ -54,7 +54,7 @@ final class DictSelectTest extends HackTest {
     Container<KeyedContainer<Tk2, mixed>> $rest,
     dict<Tk1, Tv> $expected,
   ): void {
-    expect(Dict\diff_by_key($first, $second, ...$rest))->toBeSame($expected);
+    expect(Dict\diff_by_key($first, $second, ...$rest))->toEqual($expected);
   }
 
   public static function provideDrop(): varray<mixed> {
@@ -106,7 +106,7 @@ final class DictSelectTest extends HackTest {
     int $n,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\drop($traversable, $n))->toBeSame($expected);
+    expect(Dict\drop($traversable, $n))->toEqual($expected);
   }
 
   public static function provideTestFilter(): varray<mixed> {
@@ -155,7 +155,7 @@ final class DictSelectTest extends HackTest {
     (function(Tv): bool) $value_predicate,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter($traversable, $value_predicate))->toBeSame($expected);
+    expect(Dict\filter($traversable, $value_predicate))->toEqual($expected);
   }
 
   public static function provideTestFilterWithKey(): varray<mixed> {
@@ -209,7 +209,7 @@ final class DictSelectTest extends HackTest {
     (function(Tk, Tv): bool) $predicate,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter_with_key($traversable, $predicate))->toBeSame($expected);
+    expect(Dict\filter_with_key($traversable, $predicate))->toEqual($expected);
   }
 
   public function testFilterWithoutPredicate(): void {
@@ -223,7 +223,7 @@ final class DictSelectTest extends HackTest {
       50 => '',
       60 => '0',
       70 => 'win!',
-    ]))->toBeSame(dict[3 => 3, 4 => 5, 40 => 40, 70 => 'win!']);
+    ]))->toEqual(dict[3 => 3, 4 => 5, 40 => 40, 70 => 'win!']);
   }
 
   public static function provideTestFilterKeys(): varray<mixed> {
@@ -263,7 +263,7 @@ final class DictSelectTest extends HackTest {
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\filter_keys($traversable, $key_predicate))
-      ->toBeSame($expected);
+      ->toEqual($expected);
   }
 
   public function testFilterKeysWithoutPredicate(): void {
@@ -273,7 +273,7 @@ final class DictSelectTest extends HackTest {
       0 => 3,
       1 => 4,
       'hi' => 5,
-    ]))->toBeSame(dict[1 => 4, 'hi' => 5]);
+    ]))->toEqual(dict[1 => 4, 'hi' => 5]);
   }
 
   public static function provideTestFilterNulls(): varray<mixed> {
@@ -331,7 +331,7 @@ final class DictSelectTest extends HackTest {
     KeyedTraversable<Tk, ?Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\filter_nulls($traversable))->toBeSame($expected);
+    expect(Dict\filter_nulls($traversable))->toEqual($expected);
   }
 
   public function testFilterAsync(): void {
@@ -374,7 +374,7 @@ final class DictSelectTest extends HackTest {
     Traversable<Tk> $keys,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\select_keys($container, $keys))->toBeSame($expected);
+    expect(Dict\select_keys($container, $keys))->toEqual($expected);
   }
 
   public static function provideTake(): varray<mixed> {
@@ -429,15 +429,15 @@ final class DictSelectTest extends HackTest {
     int $n,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\take($traversable, $n))->toBeSame($expected);
+    expect(Dict\take($traversable, $n))->toEqual($expected);
   }
 
   public function testTakeIter(): void {
     $iter = HackLibTestTraversables::getKeyedIterator(Vec\range(0, 4));
-    expect(Dict\take($iter, 2))->toBeSame(dict[0=>0, 1=>1]);
-    expect(Dict\take($iter, 0))->toBeSame(dict[]);
-    expect(Dict\take($iter, 2))->toBeSame(dict[2=>2, 3=>3]);
-    expect(Dict\take($iter, 2))->toBeSame(dict[4=>4]);
+    expect(Dict\take($iter, 2))->toEqual(dict[0=>0, 1=>1]);
+    expect(Dict\take($iter, 0))->toEqual(dict[]);
+    expect(Dict\take($iter, 2))->toEqual(dict[2=>2, 3=>3]);
+    expect(Dict\take($iter, 2))->toEqual(dict[4=>4]);
   }
 
   public static function provideTestUnique(): varray<mixed> {
@@ -464,7 +464,7 @@ final class DictSelectTest extends HackTest {
     KeyedTraversable<Tk, Tv> $traversable,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\unique($traversable))->toBeSame($expected);
+    expect(Dict\unique($traversable))->toEqual($expected);
   }
 
   public static function provideTestUniqueBy(): varray<mixed> {
@@ -491,6 +491,6 @@ final class DictSelectTest extends HackTest {
     (function(Tv): Ts) $scalar_func,
     dict<Tk, Tv> $expected,
   ): void {
-    expect(Dict\unique_by($container, $scalar_func))->toBeSame($expected);
+    expect(Dict\unique_by($container, $scalar_func))->toEqual($expected);
   }
 }

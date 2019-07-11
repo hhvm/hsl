@@ -36,7 +36,7 @@ final class CIntrospectTest extends HackTest {
     (function(T): bool) $predicate,
     bool $expected,
   ): void {
-    expect(C\any($traversable, $predicate))->toBeSame($expected);
+    expect(C\any($traversable, $predicate))->toEqual($expected);
   }
 
   public static function provideTestAnyWithoutPredicate(): varray<mixed> {
@@ -63,7 +63,7 @@ final class CIntrospectTest extends HackTest {
     Traversable<T> $traversable,
     bool $expected,
   ): void {
-    expect(C\any($traversable))->toBeSame($expected);
+    expect(C\any($traversable))->toEqual($expected);
   }
 
   public static function provideTestContains(): varray<mixed> {
@@ -112,7 +112,7 @@ final class CIntrospectTest extends HackTest {
     T $value,
     bool $expected,
   ): void {
-    expect(C\contains($traversable, $value))->toBeSame($expected);
+    expect(C\contains($traversable, $value))->toEqual($expected);
   }
 
   public static function provideTestContainsKey(): varray<mixed> {
@@ -156,7 +156,7 @@ final class CIntrospectTest extends HackTest {
     Tk $key,
     bool $expected,
   ): void {
-    expect(C\contains_key($container, $key))->toBeSame($expected);
+    expect(C\contains_key($container, $key))->toEqual($expected);
   }
 
   public static function provideTestCount(): varray<mixed> {
@@ -177,7 +177,7 @@ final class CIntrospectTest extends HackTest {
     Container<T> $container,
     int $expected,
   ): void {
-    expect(C\count($container))->toBeSame($expected);
+    expect(C\count($container))->toEqual($expected);
   }
 
   public static function provideTestEvery(): varray<mixed> {
@@ -201,7 +201,7 @@ final class CIntrospectTest extends HackTest {
     (function(T): bool) $predicate,
     bool $expected,
   ): void {
-    expect(C\every($traversable, $predicate))->toBeSame($expected);
+    expect(C\every($traversable, $predicate))->toEqual($expected);
   }
 
   public static function provideTestEveryWithoutPredicate(): varray<mixed> {
@@ -222,7 +222,7 @@ final class CIntrospectTest extends HackTest {
     Traversable<T> $traversable,
     bool $expected,
   ): void {
-    expect(C\every($traversable))->toBeSame($expected);
+    expect(C\every($traversable))->toEqual($expected);
   }
 
   public static function provideTestIsEmpty(): varray<mixed> {
@@ -250,6 +250,6 @@ final class CIntrospectTest extends HackTest {
     Container<T> $container,
     bool $expected,
   ): void {
-    expect(C\is_empty($container))->toBeSame($expected);
+    expect(C\is_empty($container))->toEqual($expected);
   }
 }

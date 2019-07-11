@@ -53,7 +53,7 @@ final class KeysetAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await Keyset\from_async($awaitables);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 
@@ -86,7 +86,7 @@ final class KeysetAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await Keyset\map_async($traversable, $async_func);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 
@@ -128,7 +128,7 @@ final class KeysetAsyncTest extends HackTest {
     /* HH_IGNORE_ERROR[5542] open source */
     \HH\Asio\join(async {
       $actual = await Keyset\filter_async($traversable, $async_predicate);
-      expect($actual)->toBeSame($expected);
+      expect($actual)->toEqual($expected);
     });
   }
 }

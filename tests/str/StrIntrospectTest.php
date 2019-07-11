@@ -34,7 +34,7 @@ final class StrIntrospectTest extends HackTest {
   ): void {
     $actual = Str\compare($string1, $string2);
     if ($expected === 0) {
-      expect($actual)->toBeSame(0);
+      expect($actual)->toEqual(0);
     } else {
       expect($actual * $expected)->toBeGreaterThan(0);
     }
@@ -58,7 +58,7 @@ final class StrIntrospectTest extends HackTest {
   ): void {
     $actual = Str\compare_ci($string1, $string2);
     if ($expected === 0) {
-      expect($actual)->toBeSame(0);
+      expect($actual)->toEqual(0);
     } else {
       expect($actual * $expected)->toBeGreaterThan(0);
     }
@@ -87,7 +87,7 @@ final class StrIntrospectTest extends HackTest {
     int $offset,
     bool $expected,
   ): void {
-    expect(Str\contains($haystack, $needle, $offset))->toBeSame($expected);
+    expect(Str\contains($haystack, $needle, $offset))->toEqual($expected);
   }
 
   public static function provideContainsCI(): varray<mixed> {
@@ -113,7 +113,7 @@ final class StrIntrospectTest extends HackTest {
     int $offset,
     bool $expected,
   ): void {
-    expect(Str\contains_ci($haystack, $needle, $offset))->toBeSame($expected);
+    expect(Str\contains_ci($haystack, $needle, $offset))->toEqual($expected);
   }
 
   public function testContainsExceptions(): void {
@@ -175,7 +175,7 @@ final class StrIntrospectTest extends HackTest {
     string $suffix,
     bool $expected,
   ): void {
-    expect(Str\ends_with($string, $suffix))->toBeSame($expected);
+    expect(Str\ends_with($string, $suffix))->toEqual($expected);
   }
 
   public static function provideEndsWithCI(): varray<mixed> {
@@ -219,7 +219,7 @@ final class StrIntrospectTest extends HackTest {
     string $suffix,
     bool $expected,
   ): void {
-    expect(Str\ends_with_ci($string, $suffix))->toBeSame($expected);
+    expect(Str\ends_with_ci($string, $suffix))->toEqual($expected);
   }
 
   public static function provideIsEmpty(): varray<mixed> {
@@ -237,7 +237,7 @@ final class StrIntrospectTest extends HackTest {
     ?string $string,
     bool $expected,
   ): void {
-    expect(Str\is_empty($string))->toBeSame($expected);
+    expect(Str\is_empty($string))->toEqual($expected);
   }
 
   public static function provideLength(): varray<mixed> {
@@ -253,7 +253,7 @@ final class StrIntrospectTest extends HackTest {
     string $string,
     int $expected,
   ): void {
-    expect(Str\length($string))->toBeSame($expected);
+    expect(Str\length($string))->toEqual($expected);
   }
 
   public static function provideSearch(): varray<mixed> {
@@ -276,7 +276,7 @@ final class StrIntrospectTest extends HackTest {
     int $offset,
     ?int $expected,
   ): void {
-    expect(Str\search($haystack, $needle, $offset))->toBeSame($expected);
+    expect(Str\search($haystack, $needle, $offset))->toEqual($expected);
   }
 
   public static function provideSearchCI(): varray<mixed> {
@@ -299,7 +299,7 @@ final class StrIntrospectTest extends HackTest {
     int $offset,
     ?int $expected,
   ): void {
-    expect(Str\search_ci($haystack, $needle, $offset))->toBeSame($expected);
+    expect(Str\search_ci($haystack, $needle, $offset))->toEqual($expected);
   }
 
   public static function provideSearchLast(): varray<mixed> {
@@ -324,7 +324,7 @@ final class StrIntrospectTest extends HackTest {
     int $offset,
     ?int $expected,
   ): void {
-    expect(Str\search_last($haystack, $needle, $offset))->toBeSame($expected);
+    expect(Str\search_last($haystack, $needle, $offset))->toEqual($expected);
   }
 
   public function testPositionExceptions(): void {
@@ -385,7 +385,7 @@ final class StrIntrospectTest extends HackTest {
     string $prefix,
     bool $expected,
   ): void {
-    expect(Str\starts_with($string, $prefix))->toBeSame($expected);
+    expect(Str\starts_with($string, $prefix))->toEqual($expected);
   }
 
   public static function provideStartsWithCI(): varray<mixed> {
@@ -429,7 +429,7 @@ final class StrIntrospectTest extends HackTest {
     string $prefix,
     bool $expected,
   ): void {
-    expect(Str\starts_with_ci($string, $prefix))->toBeSame($expected);
+    expect(Str\starts_with_ci($string, $prefix))->toEqual($expected);
   }
 
 }
