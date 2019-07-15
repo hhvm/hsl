@@ -55,7 +55,7 @@ function minva<T as num>(
 /**
  * Returns wheter a num is NAN.
  *
- * Comparing using `===` and `==` is always false when either argument is NAN.
+ * Comparing using an operator is always false when either argument is NAN.
  * You must use is_nan to check for NAN.
  */
 function is_nan(num $num): bool {
