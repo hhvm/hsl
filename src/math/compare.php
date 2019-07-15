@@ -17,7 +17,11 @@ namespace HH\Lib\Math;
  * - For Traversables, see `Math\max()`.
  */
 <<__Rx>>
-function maxva<T as num>(T $first, T $second, T ...$rest): T {
+function maxva<T as num>(
+  T $first,
+  T $second,
+  T ...$rest
+): T {
   $max = $first > $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number > $max) {
@@ -34,7 +38,11 @@ function maxva<T as num>(T $first, T $second, T ...$rest): T {
  * - For Traversables, see `Math\min()`.
  */
 <<__Rx>>
-function minva<T as num>(T $first, T $second, T ...$rest): T {
+function minva<T as num>(
+  T $first,
+  T $second,
+  T ...$rest
+): T {
   $min = $first < $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number < $min) {
