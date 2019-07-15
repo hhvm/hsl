@@ -17,11 +17,7 @@ namespace HH\Lib\Math;
  * - For Traversables, see `Math\max()`.
  */
 <<__Rx>>
-function maxva<T as num>(
-  T $first,
-  T $second,
-  T ...$rest
-): T {
+function maxva<T as num>(T $first, T $second, T ...$rest): T {
   $max = $first > $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number > $max) {
@@ -38,11 +34,7 @@ function maxva<T as num>(
  * - For Traversables, see `Math\min()`.
  */
 <<__Rx>>
-function minva<T as num>(
-  T $first,
-  T $second,
-  T ...$rest
-): T {
+function minva<T as num>(T $first, T $second, T ...$rest): T {
   $min = $first < $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number < $min) {
@@ -50,4 +42,16 @@ function minva<T as num>(
     }
   }
   return $min;
+}
+
+/**
+ * Returns wheter a num is NAN.
+ *
+ * Comparing using `===` and `==` is always false when either argument is NAN.
+ * You must use is_nan to check for NAN.
+ */
+function is_nan(num $num): bool {
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  return \is_nan((float)$num);
 }
