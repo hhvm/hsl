@@ -15,7 +15,7 @@ use type Facebook\HackTest\HackTest; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class TupleAsyncTest extends HackTest {
   public function testWithNonNullableTypes(): void {
-    /* HH_IGNORE_ERROR[5542] open source */
+    /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {
       $t = await Tuple\from_async(async { return 1; }, async { return 'foo'; });
       expect($t)->toEqual(tuple(1, 'foo'));
@@ -27,7 +27,7 @@ final class TupleAsyncTest extends HackTest {
   }
 
   public function testWithNullLiterals(): void {
-    /* HH_IGNORE_ERROR[5542] open source */
+    /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {
       $t = await Tuple\from_async(async { return 1; }, null, async { return null; });
       expect($t)->toEqual(tuple(1, null, null));
@@ -39,7 +39,7 @@ final class TupleAsyncTest extends HackTest {
   }
 
   public function testWithNullableTypes(): void {
-    /* HH_IGNORE_ERROR[5542] open source */
+    /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {
       $t = await Tuple\from_async(async { return 1; }, async { return 'foo'; });
       expect($t)->toEqual(tuple(1, 'foo'));

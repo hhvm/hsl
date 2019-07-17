@@ -48,7 +48,7 @@ final class CAsyncTest extends HackTest {
     Awaitable<Traversable<T>> $awaitable,
     ?T $expected,
   ): void {
-    /* HH_IGNORE_ERROR[5542] open source */
+    /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {
       $actual = await C\first_async($awaitable);
       expect($actual)->toEqual($expected);
@@ -81,7 +81,7 @@ final class CAsyncTest extends HackTest {
     Awaitable<Traversable<T>> $awaitable,
     T $expected,
   ): void {
-    /* HH_IGNORE_ERROR[5542] open source */
+    /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {
       $actual = await C\firstx_async($awaitable);
       expect($actual)->toEqual($expected);
@@ -105,7 +105,7 @@ final class CAsyncTest extends HackTest {
     Awaitable<Traversable<T>> $awaitable,
     classname<Exception> $expected,
   ): void {
-    /* HH_IGNORE_ERROR[5542] open source */
+    /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {
       expect(
         async () ==> await C\firstx_async($awaitable),
