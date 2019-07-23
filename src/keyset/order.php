@@ -32,12 +32,14 @@ function sort<Tv as arraykey>(
     /* HH_FIXME[4200] Rx calling non-Rx */
     /* HH_FIXME[2049] We are allowed to use PHP Stardard library functions */
     /* HH_FIXME[4107] We are allowed to use PHP Stardard library functions */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \uksort(&$keyset, $comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[4200] Rx calling non-Rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \ksort(&$keyset);
   }
   return $keyset;

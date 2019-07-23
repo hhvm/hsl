@@ -72,6 +72,7 @@ function shuffle<Tv>(
   $vec = vec($traversable);
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[3080] References are being removed from Hack */
   \shuffle(&$vec);
   return $vec;
 }
@@ -100,12 +101,14 @@ function sort<Tv>(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \usort(&$vec, $comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \sort(&$vec);
   }
   return $vec;
@@ -140,12 +143,14 @@ function sort_by<Tv, Ts>(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \uasort(&$order_by, $comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \asort(&$order_by);
   }
   return map_with_key($order_by, ($k, $v) ==> $vec[$k]);

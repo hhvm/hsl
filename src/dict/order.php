@@ -56,12 +56,14 @@ function sort<Tk as arraykey, Tv>(
     /* HH_FIXME[4200] Rx calling non-rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \uasort(&$result, $value_comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[4200] Rx calling non-rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \asort(&$result);
   }
   return $result;
@@ -126,12 +128,14 @@ function sort_by_key<Tk as arraykey, Tv>(
     /* HH_FIXME[4200] Rx calling non-rx */
     /* HH_FIXME[2049] We are allowed to use PHP Stardard library functions */
     /* HH_FIXME[4107] We are allowed to use PHP Stardard library functions */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \uksort(&$result, $key_comparator);
   } else {
     /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[4200] Calling non-rx */
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[3080] References are being removed from Hack */
     \ksort(&$result);
   }
   return $result;
