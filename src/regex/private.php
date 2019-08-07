@@ -33,11 +33,12 @@ function regex_match<T as Regex\Match>(
   Regex\Pattern<T> $pattern,
   int $offset = 0,
 ): ?(T, int) {
+  using new PHPWarningSuppressor();
   $offset = validate_offset($offset, Str\length($haystack));
   $match = darray[];
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-  $status = @\preg_match(
+  $status = \preg_match(
     /* HH_IGNORE_ERROR[4110] */ $pattern,
     $haystack,
     /* HH_FIXME[3080] References are being removed from Hack */
