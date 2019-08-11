@@ -131,8 +131,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstxException<T>(
-  ): varray<(Traversable<T>, classname<Exception>)> {
-    return varray[
+  ): vec<(Traversable<T>, classname<Exception>)> {
+    return vec[
       tuple(
         varray[],
         InvariantException::class,
@@ -150,8 +150,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstKey(
-  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
-    return varray[
+  ): vec<(KeyedTraversable<mixed, mixed>, mixed)> {
+    return vec[
       tuple(
         varray[],
         null,
@@ -218,8 +218,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstKeyx(
-  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
-    return varray[
+  ): vec<(KeyedTraversable<mixed, mixed>, mixed)> {
+    return vec[
       tuple(
         darray[1 => null],
         1,
@@ -274,8 +274,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstKeyxException(
-  ): varray<(KeyedTraversable<mixed, mixed>, classname<Exception>)> {
-    return varray[
+  ): vec<(KeyedTraversable<mixed, mixed>, classname<Exception>)> {
+    return vec[
       tuple(
         varray[],
         InvariantException::class,
@@ -306,9 +306,8 @@ final class CSelectTest extends HackTest {
       ->toThrow($expected);
   }
 
-  public static function provideTestLast(
-  ): varray<(Traversable<mixed>, mixed)> {
-    return varray[
+  public static function provideTestLast(): vec<(Traversable<mixed>, mixed)> {
+    return vec[
       tuple(
         varray[],
         null,
@@ -380,9 +379,8 @@ final class CSelectTest extends HackTest {
     expect(C\last($traversable))->toEqual($expected);
   }
 
-  public static function provideTestLastx(
-  ): varray<(Traversable<mixed>, mixed)> {
-    return varray[
+  public static function provideTestLastx(): vec<(Traversable<mixed>, mixed)> {
+    return vec[
       tuple(
         varray[null],
         null,
@@ -443,8 +441,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastxException(
-  ): varray<(Traversable<mixed>, classname<Exception>)> {
-    return varray[
+  ): vec<(Traversable<mixed>, classname<Exception>)> {
+    return vec[
       tuple(
         varray[],
         InvariantException::class,
@@ -470,8 +468,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastKey(
-  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
-    return varray[
+  ): vec<(KeyedTraversable<mixed, mixed>, mixed)> {
+    return vec[
       tuple(
         varray[],
         null
@@ -547,8 +545,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastKeyx(
-  ): varray<(KeyedTraversable<mixed, mixed>, mixed)> {
-    return varray[
+  ): vec<(KeyedTraversable<mixed, mixed>, mixed)> {
+    return vec[
       tuple(
         darray['' => null],
         '',
@@ -612,8 +610,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestLastKeyxException(
-  ): varray<(KeyedTraversable<mixed, mixed>, classname<Exception>)> {
-    return varray[
+  ): vec<(KeyedTraversable<mixed, mixed>, classname<Exception>)> {
+    return vec[
       tuple(
         varray[],
         InvariantException::class,
@@ -645,8 +643,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestNfirst(
-  ): varray<(?Traversable<mixed>, mixed)> {
-    return varray[
+  ): vec<(?Traversable<mixed>, mixed)> {
+    return vec[
       tuple(
         null,
         null,
@@ -677,9 +675,8 @@ final class CSelectTest extends HackTest {
     expect(C\nfirst($traversable))->toEqual($expected);
   }
 
-  public static function provideTestOnlyx(
-  ): varray<(Traversable<mixed>, mixed)> {
-    return varray[
+  public static function provideTestOnlyx(): vec<(Traversable<mixed>, mixed)> {
+    return vec[
       tuple(
         vec[1],
         1,
@@ -702,8 +699,8 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestOnlyxException(
-  ): varray<(Traversable<mixed>, classname<Exception>)> {
-    return varray[
+  ): vec<(Traversable<mixed>, classname<Exception>)> {
+    return vec[
       tuple(
         varray[],
         InvariantException::class,

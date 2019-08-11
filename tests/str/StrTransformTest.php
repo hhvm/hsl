@@ -386,8 +386,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\replace_every_ci($haystack, $replacements))->toEqual($expected);
   }
 
-  public static function providerReverse(): varray<(string, string)> {
-    return varray[
+  public static function providerReverse(): vec<(string, string)> {
+    return vec[
       tuple('abc', 'cba'),
       tuple('', ''),
       tuple('abba', 'abba'),

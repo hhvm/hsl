@@ -171,11 +171,7 @@ final class VecOrderTest extends HackTest {
         ($a, $b) ==> $a[1] <=> $b[1],
         vec['the', 'fox', 'brown', 'quick'],
       ),
-      tuple(
-        Vector {1, 1.2, -5.7, -5.8},
-        null,
-        vec[-5.8, -5.7, 1, 1.2],
-      ),
+      tuple(Vector {1, 1.2, -5.7, -5.8}, null, vec[-5.8, -5.7, 1, 1.2]),
       tuple(
         HackLibTestTraversables::getIterator(varray[8, 6, 7, 5, 3, 0, 9]),
         null,

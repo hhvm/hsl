@@ -66,8 +66,9 @@ final class RegexTest extends HackTest {
     self::checkThrowsOnInvalidOffset(($a, $b, $i) ==> Regex\replace($a, $b, $a, $i));
   }
 
-  public static function provideFirstMatch(): varray<(string, Regex\Pattern<shape(...)>, int, darray<arraykey, string>)> {
-    return varray[
+  public static function provideFirstMatch(
+  ): vec<(string, Regex\Pattern<shape(...)>, int, darray<arraykey, string>)> {
+    return vec[
       tuple('abce', re"/abc(.?)e(.*)/", 0, darray[
         0 => 'abce',
         1 => '',
@@ -119,8 +120,9 @@ final class RegexTest extends HackTest {
     expect($captures)->toEqual($expected);
   }
 
-  public static function provideFirstMatchNull(): varray<(string, Regex\Pattern<shape(...)>, int)> {
-    return varray[
+  public static function provideFirstMatchNull(
+  ): vec<(string, Regex\Pattern<shape(...)>, int)> {
+    return vec[
       tuple('a', re"/abc(.?)e(.*)/", 0),
       tuple('abcdef', re"/abc/", 1),
       tuple('', re"/abc(.?)e(.*)/", 0),
@@ -146,8 +148,9 @@ final class RegexTest extends HackTest {
       );
   }
 
-  public static function provideMatches(): varray<(string, Regex\Pattern<shape(...)>, int, bool)> {
-    return varray[
+  public static function provideMatches(
+  ): vec<(string, Regex\Pattern<shape(...)>, int, bool)> {
+    return vec[
       tuple('a', re"/abc(.?)e(.*)/", 0, false),
       tuple('', re"/abc(.?)e(.*)/", 0, false),
       tuple('abce', re"/abc(.?)e(.*)/", 0, true),
@@ -172,8 +175,13 @@ final class RegexTest extends HackTest {
   }
 
   public static function provideEveryMatch(
-  ): varray<(string, Regex\Pattern<shape(...)>, int, vec<darray<arraykey, string>>)> {
-    return varray[
+  ): vec<(
+    string,
+    Regex\Pattern<shape(...)>,
+    int,
+    vec<darray<arraykey, string>>,
+  )> {
+    return vec[
       tuple('t1e2s3t', re"/[a-z]/", 0, vec[
         darray[0 => 't'],
         darray[0 => 'e'],
@@ -262,8 +270,9 @@ final class RegexTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideReplace(): varray<(string, Regex\Pattern<shape(...)>, string, int, string)> {
-    return varray[
+  public static function provideReplace(
+  ): vec<(string, Regex\Pattern<shape(...)>, string, int, string)> {
+    return vec[
       tuple('abc', re"#d#", '', 0, 'abc'),
       tuple('abcd', re"#d#", 'e', 0, 'abce'),
       tuple('abcdcbabcdcbabcdcba', re"#d#", 'D', 4, 'abcdcbabcDcbabcDcba'),
@@ -356,8 +365,9 @@ final class RegexTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideSplit(): varray<(string, Regex\Pattern<shape(...)>, ?int, vec<string>)> {
-    return varray[
+  public static function provideSplit(
+  ): vec<(string, Regex\Pattern<shape(...)>, ?int, vec<string>)> {
+    return vec[
       tuple('', re"/x/", null, vec['']),
       tuple('hello world', re"/x/", null, vec['hello world']),
       tuple('hello world', re"/x/", 2, vec['hello world']),

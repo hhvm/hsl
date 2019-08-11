@@ -17,8 +17,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 final class CAsyncTest extends HackTest {
 
   public static function provideTestGenFirst(
-  ): varray<(Awaitable<Traversable<mixed>>, mixed)> {
-    return varray[
+  ): vec<(Awaitable<Traversable<mixed>>, mixed)> {
+    return vec[
       tuple(
         async {
           return varray[];
@@ -56,8 +56,8 @@ final class CAsyncTest extends HackTest {
   }
 
   public static function provideTestGenFirstx(
-  ): varray<(Awaitable<Traversable<mixed>>, mixed)> {
-    return varray[
+  ): vec<(Awaitable<Traversable<mixed>>, mixed)> {
+    return vec[
       tuple(
         async {
           return HackLibTestTraversables::getIterator(Vec\range(1, 5));
@@ -89,8 +89,8 @@ final class CAsyncTest extends HackTest {
   }
 
   public static function provideTestGenFirstxException<T>(
-  ): varray<(Awaitable<Traversable<T>>, classname<Exception>)> {
-    return varray[
+  ): vec<(Awaitable<Traversable<T>>, classname<Exception>)> {
+    return vec[
       tuple(
         async {
           return varray[];

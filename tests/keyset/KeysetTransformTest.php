@@ -184,8 +184,8 @@ final class KeysetTransformTest extends HackTest {
   }
 
   public static function provideTestFlatten(
-  ): varray<(Traversable<Traversable<arraykey>>, keyset<arraykey>)> {
-    return varray[
+  ): vec<(Traversable<Traversable<arraykey>>, keyset<arraykey>)> {
+    return vec[
       tuple(
         vec[keyset[1,2], keyset[2,3,4]],
         keyset[1,2,3,4],

@@ -90,12 +90,13 @@ final class KeysetAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenFilter(): varray<(
+  public static function provideTestGenFilter(
+  ): vec<(
     Container<arraykey>,
     (function(arraykey): Awaitable<bool>),
     keyset<arraykey>,
   )> {
-    return varray[
+    return vec[
       tuple(
         darray[
           2 => 'two',

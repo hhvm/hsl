@@ -54,9 +54,8 @@ trait RandomTestTrait {
     expect($max_rand)->toBeGreaterThanOrEqualTo(0.9);
   }
 
-  public static function provideTestIntRange(
-  ): varray<(int, int)> {
-    return varray[
+  public static function provideTestIntRange(): vec<(int, int)> {
+    return vec[
       tuple(0, 0),
       tuple(0, Math\INT32_MAX),
       tuple(0, PHP_INT_MAX),
@@ -96,8 +95,8 @@ trait RandomTestTrait {
     expect($max_rand)->toBeGreaterThanOrEqualTo($expected_max);
   }
 
-  public static function provideTestIntException(): varray<(int, int)> {
-    return varray[
+  public static function provideTestIntException(): vec<(int, int)> {
+    return vec[
       tuple(0, -1),
       tuple(-1, -5),
       tuple(Math\INT32_MAX, 0),
