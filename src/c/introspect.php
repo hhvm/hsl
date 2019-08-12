@@ -70,6 +70,22 @@ function contains<T>(
      *
      * This is subtle behavior that we'd rather just let HHVM handle for now.
      */
+     /* HH_FIXME[4323] It's nonsensical for `$value` to not be an arraykey
+      * in this case because a `keyset<_>` can never contain anything other than
+      * `arraykey`s. However, Hack allows you to write something like:
+      *
+      *   C\contains(keyset[], new Foobar())
+      *
+      * HHVM will throw if you try to call `array_key_exists` (`C\contains_key`
+      * calls this) on any Hack array and an invalid array key _except_ null.
+      * Because `C\contains` on a keyset calls `C\contains_key`:
+      *
+      *   C\contains(keyset[], new Foobar()); // Throws
+      *   C\contains(keyset[], 4.2);          // Throws
+      *   C\contains(keyset[], null);         // Does not throw: is always false
+      *
+      * This is subtle behavior that we'd rather just let HHVM handle for now.
+      */
     return contains_key($traversable, $value);
   }
   foreach ($traversable as $v) {
