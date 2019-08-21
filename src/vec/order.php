@@ -72,8 +72,7 @@ function shuffle<Tv>(
   $vec = vec($traversable);
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  /* HH_FIXME[3080] References are being removed from Hack */
-  \shuffle(&$vec);
+  \shuffle(inout $vec);
   return $vec;
 }
 
@@ -97,19 +96,15 @@ function sort<Tv>(
 ): vec<Tv> {
   $vec = vec($traversable);
   if ($comparator) {
-    /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
-    /* HH_FIXME[3080] References are being removed from Hack */
-    \usort(&$vec, $comparator);
+    \usort(inout $vec, $comparator);
   } else {
-    /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
-    /* HH_FIXME[3080] References are being removed from Hack */
-    \sort(&$vec);
+    \sort(inout $vec);
   }
   return $vec;
 }
@@ -139,19 +134,15 @@ function sort_by<Tv, Ts>(
   $vec = vec($traversable);
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {
-    /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
-    /* HH_FIXME[3080] References are being removed from Hack */
-    \uasort(&$order_by, $comparator);
+    \uasort(inout $order_by, $comparator);
   } else {
-    /* HH_FIXME[2088] No refs in reactive code. */
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
     /* HH_FIXME[4200] Rx calling non-rx */
-    /* HH_FIXME[3080] References are being removed from Hack */
-    \asort(&$order_by);
+    \asort(inout $order_by);
   }
   return map_with_key($order_by, ($k, $v) ==> $vec[$k]);
 }

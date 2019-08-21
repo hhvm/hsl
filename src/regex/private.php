@@ -41,8 +41,7 @@ function regex_match<T as Regex\Match>(
   $status = \preg_match(
     /* HH_IGNORE_ERROR[4110] */ $pattern,
     $haystack,
-    /* HH_FIXME[3080] References are being removed from Hack */
-    &$match,
+    inout $match,
     /* HH_IGNORE_ERROR[2049] Private constant */
     /* HH_IGNORE_ERROR[4106] Private constant */
     \PREG_FB__PRIVATE__HSL_IMPL | \PREG_OFFSET_CAPTURE,
