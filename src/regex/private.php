@@ -38,7 +38,7 @@ function regex_match<T as Regex\Match>(
   $match = darray[];
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-  $status = \preg_match(
+  $status = \preg_match_with_matches(
     /* HH_IGNORE_ERROR[4110] */ $pattern,
     $haystack,
     inout $match,
