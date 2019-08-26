@@ -13,6 +13,6 @@
     "hhvm/hhvm-autoload": "^2.0"
   },
   "require": {
-    "hhvm": "^4.15"
+    "hhvm": "^4.18"
   }
 }
