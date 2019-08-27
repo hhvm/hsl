@@ -12,3 +12,10 @@ namespace HH {
   class InvariantException extends \InvariantException {}
   type KeyedContainer<Tk, Tv> = \KeyedContainer<Tk, Tv>;
 }
+
+namespace {
+  const POSIX_S_IFMT = 0;
+  const POSIX_S_IFREG = 0;
+  const POSIX_S_IFDIR = 0;
+  const POSIX_S_IFLNK = 0;
+}
