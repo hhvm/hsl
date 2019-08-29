@@ -32,6 +32,23 @@ function reverse<Tk as arraykey, Tv>(
 }
 
 /**
+ * Returns a new dict with the key value pairs of the given input container in a random
+ * order.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
+ */
+<<__ProvenanceSkipFrame>>
+function shuffle<Tk as arraykey, Tv>(
+  KeyedTraversable<Tk, Tv> $container,
+): dict<Tk, Tv> {
+  $dict = dict($container);
+  return Vec\keys($container)
+    |> Vec\shuffle($$)
+    |> from_keys($$, ($k) ==> $dict[$k]);
+}
+
+/**
  * Returns a new dict sorted by the values of the given KeyedTraversable. If the
  * optional comparator function isn't provided, the values will be sorted in
  * ascending order.

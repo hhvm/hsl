@@ -56,6 +56,53 @@ final class DictOrderTest extends HackTest {
     expect(Dict\reverse($traversable))->toEqual($expected);
   }
 
+  public static function provideTestShuffle(): varray<mixed> {
+    return varray[
+      tuple(darray['0' => '0', '1' => '1', '2' => '2', '3' => '3']),
+      tuple(dict['3' => 3, '2' => 2, '1' => 1, '0' => 0]),
+      tuple(darray[
+        'brown' => 'brown',
+        'fox' => 'fox',
+        'jumped' => 'jumped',
+        'quick' => 'quick',
+        'the' => 'the',
+      ]),
+      tuple(Map {
+        'foo' => 'oof',
+        'bar' => 'rab',
+        'baz' => 'zab',
+        'qux' => 'xuq',
+        'yap' => 'pay',
+      }),
+    ];
+  }
+
+  <<DataProvider('provideTestShuffle')>>
+  public function testShuffle<Tk as arraykey, Tv>(
+    KeyedTraversable<Tk, Tv> $input,
+  ): void {
+    for ($i = 0; $i < 1000; $i++) {
+      $shuffled1 = Dict\shuffle($input);
+      $shuffled2 = Dict\shuffle($input);
+      $dict_input = dict($input);
+
+      expect(Dict\sort($shuffled1))->toEqual(Dict\sort($dict_input));
+      expect(Dict\sort($shuffled2))->toEqual(Dict\sort($dict_input));
+
+      // There is a chance that even if we shuffle we get the same thing twice.
+      // That is ok but if we try 1000 times we should get different things.
+      if (
+        $shuffled1 !== $shuffled2 &&
+        $shuffled1 !== $dict_input &&
+        $shuffled2 !== $dict_input
+      ) {
+        return;
+      }
+    }
+
+    self::fail('We shuffled 1000 times and the value never changed');
+  }
+
   public static function provideTestSort(): varray<mixed> {
     return varray[
       tuple(
