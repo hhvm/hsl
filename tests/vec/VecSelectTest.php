@@ -43,11 +43,8 @@ final class VecSelectTest extends HackTest {
     Container<Container<Tv>> $traversables,
     vec<Tv> $expected,
   ): void {
-    expect(Vec\diff(
-      $base,
-      PHPism_FIXME::accessNthArrayElement($traversables, 0),
-      ...Vec\slice($traversables, 1)
-    ))->toEqual($expected);
+    /* HH_FIXME[4104] Stricter enforcement of argument unpacking arity (T25385321) */
+    expect(Vec\diff($base, ...$traversables))->toEqual($expected);
   }
 
   public static function provideTestDiffBy(): varray<mixed> {
