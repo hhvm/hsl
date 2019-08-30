@@ -18,27 +18,6 @@ use type HH\InvariantException as InvariantViolationException; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class RegexTest extends HackTest {
 
-  public static function checkThrowsOnInvalidRegex<T>(
-    (function (string, Regex\Pattern<shape(...)>): T) $fn,
-  ): void {
-    /* HH_FIXME[4275] Hack release */
-    expect(() ==> $fn('foo', re"I am not a regular expression"))
-      ->toThrow(
-        Regex\Exception::class,
-        null,
-        'Invalid regex should throw an exception',
-      );
-  }
-
-  public function testThrowsOnInvalidRegex(): void {
-    self::checkThrowsOnInvalidRegex(($a, $b) ==> Regex\first_match($a, $b));
-    self::checkThrowsOnInvalidRegex(($a, $b) ==> Regex\matches($a, $b));
-    self::checkThrowsOnInvalidRegex(
-      ($a, $b) ==> Regex\every_match($a, $b));
-    self::checkThrowsOnInvalidRegex(($a, $b) ==> Regex\replace($a, $b, $a));
-    self::checkThrowsOnInvalidRegex(($a, $b) ==> Regex\split($a, $b));
-  }
-
   public static function checkThrowsOnInvalidOffset<T>(
     (function (string, Regex\Pattern<shape(...)>, int): T) $fn,
   ): void {
