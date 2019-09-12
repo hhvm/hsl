@@ -72,9 +72,9 @@ function every_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-function matches<T as Match>(
+function matches(
   string $haystack,
-  Pattern<T> $pattern,
+  Pattern<Match> $pattern,
   int $offset = 0,
 ): bool {
   return _Private\regex_match($haystack, $pattern, $offset) !== null;
@@ -87,9 +87,9 @@ function matches<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-function replace<T as Match>(
+function replace(
   string $haystack,
-  Pattern<T> $pattern,
+  Pattern<Match> $pattern,
   string $replacement,
   int $offset = 0,
 ): string {
@@ -166,9 +166,9 @@ function replace_with<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$limit` < 2.
  */
-function split<T as Match>(
+function split(
   string $haystack,
-  Pattern<T> $delimiter,
+  Pattern<Match> $delimiter,
   ?int $limit = null,
 ): vec<string> {
   if ($limit === null) {
@@ -214,8 +214,6 @@ function split<T as Match>(
 /**
  * Renders a Regex Pattern to a string.
  */
-function to_string<T as Match>(
-  Pattern<T> $pattern,
-): string {
+function to_string(Pattern<Match> $pattern): string {
   return $pattern as string;
 }
