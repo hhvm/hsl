@@ -51,3 +51,18 @@ function minva<T as num>(
   }
   return $min;
 }
+
+/**
+ * Returns whether a num is NAN.
+ * NAN is "the not-a-number special float value"
+ *
+ * When comparing NAN to any value (including NAN) using operators
+ * false will be returned. `NAN === NAN` is false.
+ *
+ * One must always check for NAN using `is_nan` and not `$x === NAN`.
+ */
+function is_nan(num $num): bool {
+  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  return \is_nan((float)$num);
+}

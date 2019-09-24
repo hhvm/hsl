@@ -64,4 +64,21 @@ final class MathCompareTest extends HackTest {
   ): void {
     expect(Math\minva($first, $second, ...$rest))->toEqual($expected);
   }
+
+  public static function provideTestIsNan(): vec<(num, bool)> {
+    return vec[
+      tuple(0, false),
+      tuple(1, false),
+      tuple(-1, false),
+      tuple(0.0, false),
+      tuple(0.1, false),
+      tuple(-0.1, false),
+      tuple(Math\NAN, true),
+    ];
+  }
+
+  <<DataProvider('provideTestIsNan')>>
+  public function testIsNan(num $number, bool $is_nan): void {
+    expect(Math\is_nan($number))->toEqual($is_nan);
+  }
 }

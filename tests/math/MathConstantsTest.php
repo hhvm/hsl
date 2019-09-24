@@ -18,7 +18,7 @@ final class MathConstantsTest extends HackTest {
   const DELTA = .000001;
   public function testInt64Min(): void {
     expect(Math\INT64_MIN)->toBeLessThan(0);
-    $less = Math\INT64_MIN- 1;
+    $less = Math\INT64_MIN - 1;
     expect($less === Math\INT64_MAX || $less is float)->toBeTrue();
   }
   public function testPi(): void {
@@ -26,5 +26,11 @@ final class MathConstantsTest extends HackTest {
   }
   public function testE(): void {
     expect(Math\E)->toEqualWithDelta(M_E, self::DELTA);
+  }
+
+  public function testNAN(): void {
+    expect(Math\NAN is float)->toBeTrue('NAN should be a float');
+    expect(Math\NAN)->toNotEqual(Math\NAN); // IEEE behavior
+    expect(Math\is_nan(Math\NAN))->toBeTrue('is_nan(NAN) should be true');
   }
 }
