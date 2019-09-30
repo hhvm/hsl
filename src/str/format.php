@@ -19,11 +19,11 @@ interface SprintfFormat {
   public function format_u(int $s): string;
   public function format_b(int $s): string; // bit strings
   // Technically %f is locale-dependent (and thus wrong)
-  public function format_f(float $s): string;
-  public function format_g(float $s): string;
-  public function format_upcase_f(float $s): string;
-  public function format_e(float $s): string;
-  public function format_upcase_e(float $s): string;
+  public function format_f(num $s): string;
+  public function format_g(num $s): string;
+  public function format_upcase_f(num $s): string;
+  public function format_e(num $s): string;
+  public function format_upcase_e(num $s): string;
   public function format_x(int $s): string;
   public function format_o(int $s): string;
   public function format_c(int $s): string;
