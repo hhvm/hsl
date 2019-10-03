@@ -44,7 +44,7 @@ function any<T>(
  * Returns true if the given Traversable contains the value. Strict equality is
  * used.
  *
- * Time complexity: O(n)
+ * Time complexity: O(n) (O(1) for keysets)
  * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
