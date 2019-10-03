@@ -14,7 +14,7 @@ namespace HH\Lib;
  *
  * This is especially useful for mutating values outside of a lambda's scope.
  *
- * In eralAsync, it's preferable to refactor to use return values or `inout`
+ * In general, it's preferable to refactor to use return values or `inout`
  * parameters instead of using this class - however, a `Ref` of a Hack array
  * is generally preferable to a Hack collection - e.g. prefer `Ref<vec<T>>`
  * over `Vector<T>`.

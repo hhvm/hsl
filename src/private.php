@@ -66,7 +66,7 @@ function tuple_from_vec(mixed $x): mixed {
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-async function wAsync<T>(
+async function genw<T>(
   Awaitable<T> $gen,
 ): Awaitable<ResultOrExceptionWrapper<T>> {
   try {
