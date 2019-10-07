@@ -175,9 +175,9 @@ function split(
     $limit = \INF;
   }
   invariant(
-    $limit > 1, 
-    'Expected limit greater than 1, got %d.', 
-    $limit
+    $limit > 1,
+    'Expected limit greater than 1, got %d.',
+    $limit,
   );
   $haystack_length = Str\length($haystack);
   $result = vec[];
