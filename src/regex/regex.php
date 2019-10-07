@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Regex;
 
-use namespace HH\Lib\{_Private, Str};
+use namespace HH\Lib\{_Private, PHP, Str};
 
 /**
  * Returns the first match found in `$haystack` given the regex pattern `$pattern`
@@ -102,7 +102,7 @@ function replace(
   $haystack1 = Str\slice($haystack, 0, $offset);
   $haystack2 = Str\slice($haystack, $offset);
 
-  using new _Private\PHPWarningSuppressor();
+  using new PHP\WarningSuppressor();
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   $haystack3 = \preg_replace($pattern, $replacement, $haystack2);
@@ -174,11 +174,7 @@ function split(
   if ($limit === null) {
     $limit = \INF;
   }
-  invariant(
-    $limit > 1,
-    'Expected limit greater than 1, got %d.',
-    $limit,
-  );
+  invariant($limit > 1, 'Expected limit greater than 1, got %d.', $limit);
   $haystack_length = Str\length($haystack);
   $result = vec[];
   $offset = 0;

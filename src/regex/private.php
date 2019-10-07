@@ -10,7 +10,7 @@
 
 namespace HH\Lib\_Private;
 
-use namespace HH\Lib\{Regex, Str};
+use namespace HH\Lib\{PHP, Regex, Str};
 
 /**
  * Temporary stand-in for native match function to be implemented in T30991246.
@@ -33,7 +33,7 @@ function regex_match<T as Regex\Match>(
   Regex\Pattern<T> $pattern,
   int $offset = 0,
 ): ?(T, int) {
-  using new PHPWarningSuppressor();
+  using new PHP\WarningSuppressor();
   $offset = validate_offset($offset, Str\length($haystack));
   $match = darray[];
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
@@ -44,7 +44,8 @@ function regex_match<T as Regex\Match>(
     inout $match,
     /* HH_IGNORE_ERROR[2049] Private constant */
     /* HH_IGNORE_ERROR[4106] Private constant */
-    \PREG_FB__PRIVATE__HSL_IMPL | \PREG_OFFSET_CAPTURE,
+    \PREG_FB__PRIVATE__HSL_IMPL |
+      \PREG_OFFSET_CAPTURE,
     $offset,
   );
   if ($status === 1) {
