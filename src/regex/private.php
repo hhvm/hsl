@@ -44,8 +44,7 @@ function regex_match<T as Regex\Match>(
     inout $match,
     /* HH_IGNORE_ERROR[2049] Private constant */
     /* HH_IGNORE_ERROR[4106] Private constant */
-    \PREG_FB__PRIVATE__HSL_IMPL |
-      \PREG_OFFSET_CAPTURE,
+    \PREG_FB__PRIVATE__HSL_IMPL | \PREG_OFFSET_CAPTURE,
     $offset,
   );
   if ($status === 1) {
