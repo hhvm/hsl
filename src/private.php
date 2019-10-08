@@ -65,25 +65,3 @@ function tuple_from_vec(mixed $x): mixed {
 
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-/**
- * Many PHP builtins emit warnings to stderr when they fail. This
- * class allows us to squash warnings for a time without using PHP's
- * `@` annotation.
- */
-final class PHPWarningSuppressor implements \IDisposable {
-
-  private int $warningLevel;
-
-  public function __construct() {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    $this->warningLevel = \error_reporting(0);
-  }
-
-  public function __dispose(): void {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    \error_reporting($this->warningLevel);
-  }
-}
