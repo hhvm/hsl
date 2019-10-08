@@ -65,3 +65,12 @@ function tuple_from_vec(mixed $x): mixed {
 
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+/**
+ * Stop eager execution of an async function.
+ *
+ * ==== ONLY USE THIS IN HSL IMPLEMENTATION AND TESTS ===
+ */
+function stop_eager_execution(): RescheduleWaitHandle {
+  return RescheduleWaitHandle::create(RescheduleWaitHandle::QUEUE_DEFAULT, 0);
+}
