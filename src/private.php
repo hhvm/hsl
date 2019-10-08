@@ -87,3 +87,12 @@ final class PHPWarningSuppressor implements \IDisposable {
     \error_reporting($this->warningLevel);
   }
 }
+
+/**
+ * Stop eager execution of an async function.
+ *
+ * ==== ONLY USE THIS IN HSL IMPLEMENTATION AND TESTS ===
+ */
+function stop_eager_execution(): RescheduleWaitHandle {
+  return RescheduleWaitHandle::create(RescheduleWaitHandle::QUEUE_DEFAULT, 0);
+}
