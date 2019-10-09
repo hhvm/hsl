@@ -48,10 +48,10 @@ function any<T>(
  * Space complexity: O(1)
  */
 <<__Rx, __AtMostRxAsArgs>>
-function contains<T>(
+function contains<T1, T2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-  Traversable<T> $traversable,
-  T $value,
+  Traversable<T1> $traversable,
+  T2 $value,
 ): bool {
   if ($traversable is keyset<_>) {
     /* HH_IGNORE_ERROR[4110] It's nonsensical for `$value` to not be an arraykey
@@ -103,9 +103,9 @@ function contains<T>(
  * Space complexity: O(1)
  */
 <<__Rx>>
-function contains_key<Tk as arraykey, Tv>(
-  <<__MaybeMutable>> KeyedContainer<Tk, Tv> $container,
-  Tk $key,
+function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
+  <<__MaybeMutable>> KeyedContainer<Tk1, Tv> $container,
+  Tk2 $key,
 ): bool {
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
