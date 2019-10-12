@@ -10,7 +10,16 @@
 
 namespace HH\Lib\Async;
 
-/**
+/** A keyed variant of `Poll`.
+ *
+ * See `Poll` if you do not need to preserve keys.
+ *
+ * Keys are retrieved with:
+ *
+ * ```
+ * foreach (await $keyed_poll as $k => $v) {
+ * ```
+ *
  * ===== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING =====
  *
  * See detailed warning for `BasePoll`
@@ -21,16 +30,25 @@ final class KeyedPoll<Tk, Tv>
   extends BasePoll<Tk, Tv>
   implements AsyncKeyedIterator<Tk, Tv> {
 
+  /** Create a `KeyedPoll` from the specified list of awaitables.
+   *
+   * See `Poll` if keys are unimportant.
+   */
   public static function from(
     KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
   ): this {
     return self::fromImpl($awaitables);
   }
 
+  /** Add a single awaitable to the poll.
+   *
+   * The key is retrieved with `foreach (await $poll as $k => $v) {}`
+   */
   public function add(Tk $key, Awaitable<Tv> $awaitable): void {
     $this->addImpl($key, $awaitable);
   }
 
+  /** Add multiple keys and awaitables to the poll */
   public function addMulti(
     KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
   ): void {

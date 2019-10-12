@@ -12,6 +12,15 @@ namespace HH\Lib\Async;
 
 use namespace HH\Lib\C;
 
+/** Run an operation with a limit on number of ongoing asynchronous jobs.
+ *
+ * All operations must have the same input type (`Tin`) and output type (`Tout`),
+ * and be processed by the same function; `Tin` may be a callable invoked by the
+ * funtion for maximum flexibility, however this pattern is best avoided in favor
+ * of creating semaphores with a more narrow process.
+ *
+ * Use `genWaitFor()` to retrieve a `Tout` from a `Tin`.
+ */
 final class Semaphore<Tin, Tout> {
 
   private static int $uniqueIDCounter = 0;
@@ -20,6 +29,12 @@ final class Semaphore<Tin, Tout> {
   private int $runningCount = 0;
   private int $recentOpenCount = 0;
 
+  /** Create a semaphore.
+   *
+   * The concurrent limit is per instance; for example, if there are two ongoing requests
+   * executing the same code, there will be up to concurrentLimit in each request, meaning
+   * up to 2 * concurrentLimit in total.
+   */
   public function __construct(
     private int $concurrentLimit,
     private (function(Tin): Awaitable<Tout>) $f,
@@ -27,6 +42,7 @@ final class Semaphore<Tin, Tout> {
     invariant($concurrentLimit > 0, "Concurrent limit must be greater than 0.");
   }
 
+  /** Produce a `Tout` from a `Tin`, respecting the concurrency limit. */
   public async function waitForAsync(Tin $value): Awaitable<Tout> {
     $gen = async {
       if (

@@ -13,6 +13,9 @@ namespace HH\Lib\Async;
 /**
  * Asynchronous equivalent of mechanisms such as epoll(), poll() and select().
  *
+ * Read the warnings here first, then see the `Poll` and `KeyedPoll`
+ * instantiable subclasses.
+ *
  * Transforms a set of Awaitables to an asynchronous iterator that produces
  * results of these Awaitables as soon as they are ready. The order of results
  * is not guaranteed in any way. New Awaitables can be added to the Poll
