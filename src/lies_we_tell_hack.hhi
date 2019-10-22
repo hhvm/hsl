@@ -9,7 +9,7 @@
  */
 
 namespace HH {
-  class InvariantException extends \InvariantException {}
+  class InvariantException extends \InvariantException {} // @oss-enable
   type KeyedContainer<Tk, Tv> = \KeyedContainer<Tk, Tv>;
 }
 
