@@ -13,7 +13,6 @@ use namespace HH\Lib\{C, Regex, Str, Vec};
 
 use function Facebook\FBExpect\expect; // @oss-enable
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
-use type HH\InvariantException as InvariantViolationException; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
 final class RegexTest extends HackTest {
@@ -25,13 +24,15 @@ final class RegexTest extends HackTest {
     expect(() ==> $fn('Hello', re"/Hello/", -5))->notToThrow();
     expect(() ==> $fn('Hello', re"/Hello/", 6))->
       toThrow(
-        InvariantViolationException::class,
+        InvariantException::class, // @oss-enable
+        // @oss-disable: InvariantViolationException::class,
         null,
         'Invalid offset should throw an exception',
       );
     expect(() ==> $fn('Hello', re"/Hello/", -6))->
       toThrow(
-        InvariantViolationException::class,
+        InvariantException::class, // @oss-enable
+        // @oss-disable: InvariantViolationException::class,
         null,
         'Invalid offset should throw an exception',
       );
@@ -375,8 +376,10 @@ final class RegexTest extends HackTest {
   }
 
   public function testSplitInvalidLimit(): void {
-    expect(() ==> Regex\split('hello world', re"/x/", 1))
-      ->toThrow(InvariantViolationException::class);
+    expect(() ==> Regex\split('hello world', re"/x/", 1))->toThrow(
+      InvariantException::class, // @oss-enable
+      // @oss-disable: InvariantViolationException::class,
+    );
   }
 
   public static function provideToString(
