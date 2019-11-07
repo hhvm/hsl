@@ -9,7 +9,7 @@
   "license": "MIT",
   "require-dev": {
     "facebook/fbexpect": "^2.5.1",
-    "hhvm/hacktest": "^1.0",
+    "hhvm/hacktest": "^1.0|^2.0",
     "hhvm/hhvm-autoload": "^2.0",
     "hhvm/hsl-experimental": "dev-master"
   },
