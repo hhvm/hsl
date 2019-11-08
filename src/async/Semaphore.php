@@ -25,7 +25,7 @@ final class Semaphore<Tin, Tout> {
 
   private static int $uniqueIDCounter = 0;
   private dict<int, Condition<null>> $blocking = dict[];
-  private ?Awaitable<void> $activeGen;
+  private Awaitable<void> $activeGen;
   private int $runningCount = 0;
   private int $recentOpenCount = 0;
 
@@ -40,6 +40,7 @@ final class Semaphore<Tin, Tout> {
     private (function(Tin): Awaitable<Tout>) $f,
   ) {
     invariant($concurrentLimit > 0, "Concurrent limit must be greater than 0.");
+    $this->activeGen = async {};
   }
 
   /** Produce a `Tout` from a `Tin`, respecting the concurrency limit. */
@@ -80,12 +81,12 @@ final class Semaphore<Tin, Tout> {
         }
       }
     };
-    /* HH_FIXME[4110]: the types of $this->activeGen and $gen are both ruined
-                       by being unified when passing them to fromVec */
-    $this->activeGen ??= async {};
-    $this->activeGen = AwaitAllWaitHandle::fromVec(vec[$this->activeGen, $gen]);
-    /* HH_FIXME[4110]: the types of $this->activeGen and $gen are both ruined
-                       by being unified when passing them to fromVec */
+    $this->activeGen = async {
+      concurrent {
+        await $this->activeGen;
+        await $gen;
+      }
+    };
     return await $gen;
   }
 }
