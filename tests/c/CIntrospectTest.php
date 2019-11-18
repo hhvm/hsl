@@ -66,7 +66,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\any($traversable))->toEqual($expected);
   }
 
-  public static function provideTestContains(): varray<mixed> {
+  public static function provideTestContains(
+  ): varray<(Traversable<mixed>, mixed, bool)> {
     return varray[
       tuple(
         vec[1, 2, 3, 4, 5],
@@ -86,6 +87,11 @@ final class CIntrospectTest extends HackTest {
       tuple(
         keyset[1, 2, '3', 4, 5],
         3,
+        false,
+      ),
+      tuple(
+        keyset[0, ''],
+        null,
         false,
       ),
       tuple(
