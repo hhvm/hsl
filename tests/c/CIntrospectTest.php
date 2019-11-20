@@ -95,6 +95,16 @@ final class CIntrospectTest extends HackTest {
         false,
       ),
       tuple(
+        keyset[1, 2, 3],
+        new stdClass(),
+        false,
+      ),
+      tuple(
+        keyset[1, 2, 3],
+        1.23,
+        false,
+      ),
+      tuple(
         HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         3,
         true,
