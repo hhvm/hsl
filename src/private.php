@@ -53,16 +53,6 @@ function boolval(mixed $val): bool {
   return (bool)$val;
 }
 
-// Stub implementations of FB internals used to ease migrations
-
-<<__Rx>>
-function tuple_from_vec(mixed $x): mixed {
-  // @oss-disable: invariant_violation("Use varray instead.");
-  return is_vec(tuple(1,2)) // @oss-enable
-    ? $x // @oss-enable
-    : /* HH_IGNORE_ERROR[4007] */ (array) $x; // @oss-enable
-}
-
 const string ALPHABET_ALPHANUMERIC =
   '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
