@@ -62,7 +62,9 @@ function contains(
   int $offset = 0,
 ): bool {
   if ($needle === '') {
-    _Private\validate_offset($offset, length($haystack));
+    if ($offset !== 0) {
+      _Private\validate_offset($offset, length($haystack));
+    }
     return true;
   }
   return search($haystack, $needle, $offset) !== null;
@@ -87,7 +89,9 @@ function contains_ci(
   int $offset = 0,
 ): bool {
   if ($needle === '') {
-    _Private\validate_offset($offset, length($haystack));
+    if ($offset !== 0) {
+      _Private\validate_offset($offset, length($haystack));
+    }
     return true;
   }
   return search_ci($haystack, $needle, $offset) !== null;
@@ -181,7 +185,9 @@ function search(
   string $needle,
   int $offset = 0,
 ): ?int {
-  $offset = _Private\validate_offset($offset, length($haystack));
+  if ($offset !== 0) {
+    $offset = _Private\validate_offset($offset, length($haystack));
+  }
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   $position = \strpos($haystack, $needle, $offset);
@@ -212,7 +218,9 @@ function search_ci(
   string $needle,
   int $offset = 0,
 ): ?int {
-  $offset = _Private\validate_offset($offset, length($haystack));
+  if ($offset !== 0) {
+    $offset = _Private\validate_offset($offset, length($haystack));
+  }
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   $position = \stripos($haystack, $needle, $offset);
