@@ -213,7 +213,7 @@ final class VecOrderTest extends HackTest {
       ),
       tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
-        () ==> 0,
+        (mixed $_) ==> 0,
         null,
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
       ),
