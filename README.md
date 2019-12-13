@@ -17,7 +17,7 @@ For future APIs, see
 ```Hack
 <?hh // strict
 
-use namespace HH\Lib\{Dict,Keyset,Math,Str,Vec};
+use namespace HH\Lib\{Dict, Keyset, Math, Str, Vec};
 
 function main(vec<?int> $foo): vec<string> {
   return $foo
