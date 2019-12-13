@@ -79,6 +79,7 @@ function sort<Tk as arraykey, Tv>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \asort(inout $result);
   }
+  /* HH_FIXME[4110] (u)asort can transform array types, but dicts are safe. */
   return $result;
 }
 
@@ -147,5 +148,6 @@ function sort_by_key<Tk as arraykey, Tv>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \ksort(inout $result);
   }
+  /* HH_FIXME[4110] (u)ksort can transform array types, but dicts are safe. */
   return $result;
 }

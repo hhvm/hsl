@@ -38,5 +38,6 @@ function sort<Tv as arraykey>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \ksort(inout $keyset);
   }
+  /* HH_FIXME[4110] (u)ksort can transform array types, but keyset is safe. */
   return $keyset;
 }
