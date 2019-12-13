@@ -23,8 +23,7 @@ namespace HH\Lib\Keyset;
 function sort<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
-  ?(function(Tv, Tv): int) $comparator = null,
+  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): int) $comparator = null,
 ): keyset<Tv> {
   $keyset = keyset($traversable);
   if ($comparator) {
@@ -38,5 +37,5 @@ function sort<Tv as arraykey>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \ksort(inout $keyset);
   }
-  return $keyset;
+  return keyset($keyset);
 }

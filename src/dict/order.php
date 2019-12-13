@@ -64,8 +64,7 @@ function shuffle<Tk as arraykey, Tv>(
 function sort<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
-  ?(function(Tv, Tv): int) $value_comparator = null,
+  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): int) $value_comparator = null,
 ): dict<Tk, Tv> {
   $result = dict($traversable);
   if ($value_comparator) {
@@ -79,7 +78,7 @@ function sort<Tk as arraykey, Tv>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \asort(inout $result);
   }
-  return $result;
+  return dict($result);
 }
 
 /**
@@ -100,14 +99,11 @@ function sort<Tk as arraykey, Tv>(
 function sort_by<Tk as arraykey, Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
-  (function(Tv): Ts) $scalar_func,
-  <<__AtMostRxAsFunc>>
-  ?(function(Ts, Ts): int) $scalar_comparator = null,
+  <<__AtMostRxAsFunc>> (function(Tv): Ts) $scalar_func,
+  <<__AtMostRxAsFunc>> ?(function(Ts, Ts): int) $scalar_comparator = null,
 ): dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
-    ? ((Ts, Tv) $a, (Ts, Tv) $b) ==>
-      $scalar_comparator($a[0], $b[0])
+    ? ((Ts, Tv) $a, (Ts, Tv) $b) ==> $scalar_comparator($a[0], $b[0])
     /* HH_FIXME[4240] need Scalar type */
     : ((Ts, Tv) $a, (Ts, Tv) $b) ==> $a[0] <=> $b[0];
   return $traversable
@@ -132,8 +128,7 @@ function sort_by<Tk as arraykey, Tv, Ts>(
 function sort_by_key<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
-  ?(function(Tk, Tk): int) $key_comparator = null,
+  <<__AtMostRxAsFunc>> ?(function(Tk, Tk): int) $key_comparator = null,
 ): dict<Tk, Tv> {
   $result = dict($traversable);
   if ($key_comparator) {
@@ -147,5 +142,5 @@ function sort_by_key<Tk as arraykey, Tv>(
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
     \ksort(inout $result);
   }
-  return $result;
+  return dict($result);
 }
