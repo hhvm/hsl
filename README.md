@@ -69,7 +69,6 @@ $ composer require hhvm/hsl
 
  - All functions should be typed as strictly as possible in Hack
  - The library should be internally consistent
- - References may not be used
  - Arguments should be as general as possible. For example, for Hack array
    functions, prefer `Traversable`/`KeyedTraversable` inputs where practical,
    falling back to `Container`/`KeyedContainer` when needed
