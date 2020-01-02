@@ -87,8 +87,8 @@ function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  * Space complexity: O(1)
  */
 <<__Rx>>
-function count<T>(
-  <<__MaybeMutable>> Container<T> $container,
+function count(
+  <<__MaybeMutable>> Container<mixed> $container,
 ): int {
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
