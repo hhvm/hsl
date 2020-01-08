@@ -53,9 +53,7 @@ final class Semaphore<Tin, Tout> {
         self::$uniqueIDCounter++;
         $condition = new Condition();
         $this->blocking[$unique_id] = $condition;
-        await $condition->waitForNotificationAsync(async {
-          await $this->activeGen;
-        });
+        await $condition->waitForNotificationAsync($this->activeGen);
         invariant(
           $this->recentOpenCount > 0,
           'Expecting at least one recentOpenCount.',
@@ -81,12 +79,9 @@ final class Semaphore<Tin, Tout> {
         }
       }
     };
-    $this->activeGen = async {
-      concurrent {
-        await $this->activeGen;
-        await $gen;
-      }
-    };
+    $this->activeGen = AwaitAllWaitHandle::fromVec(
+      vec[$gen, $this->activeGen],
+    );
     return await $gen;
   }
 }
