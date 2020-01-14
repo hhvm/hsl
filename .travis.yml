@@ -1,6 +1,6 @@
 language: php
 php:
- - hhvm
+ - hhvm-3.30
 matrix:
   allow_failures:
   - php: hhvm
