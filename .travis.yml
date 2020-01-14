@@ -2,7 +2,16 @@ sudo: required
 language: generic
 services: docker
 env:
- - HHVM_VERSION=latest
+ - HHVM_VERSION=4.0-latest
+ - HHVM_VERSION=4.1-latest
+ - HHVM_VERSION=4.2-latest
+ - HHVM_VERSION=4.3-latest
+ - HHVM_VERSION=4.4-latest
+ - HHVM_VERSION=4.5-latest
+ - HHVM_VERSION=4.6-latest
+ - HHVM_VERSION=4.7-latest
+ - HHVM_VERSION=4.8-latest
+ 
 install:
  - docker pull hhvm/hhvm:$HHVM_VERSION
 script:
