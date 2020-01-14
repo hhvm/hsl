@@ -3,7 +3,7 @@ php:
  - hhvm
 matrix:
   allow_failures:
-  - php: hhvm
+  - php: hhvm-3.29
 script:
  - ./.travis.sh
 notifications:
