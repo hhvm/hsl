@@ -338,6 +338,30 @@ final class StrTransformTest extends HackTest {
         darray[],
         'hello world',
       ),
+      tuple(
+        'hello world',
+        dict[
+          'o' => '0',
+          '0' => 'o',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'hello world',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'hi hello world hello hello',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello hello world hello hello',
+      ),
     ];
   }
 
@@ -374,6 +398,30 @@ final class StrTransformTest extends HackTest {
         darray[],
         'hello world',
       ),
+      tuple(
+        'hello wOrld',
+        dict[
+          'o' => '0',
+          '0' => 'o',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'Hello world',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'HI hello world Hello HELLO',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello hello world hello hello',
+      ),
     ];
   }
 
@@ -384,6 +432,112 @@ final class StrTransformTest extends HackTest {
     string $expected,
   ): void {
     expect(Str\replace_every_ci($haystack, $replacements))->toEqual($expected);
+  }
+
+  public static function provideReplaceEveryNonrecursive(): varray<mixed> {
+    return varray[
+      tuple(
+        'hello world',
+        dict[
+          'h' => 'H',
+          'w' => 'W',
+        ],
+        'Hello World',
+      ),
+      tuple(
+        'Hello world',
+        dict[
+          'h' => 'H',
+          'H' => 'h',
+          'w' => 'W',
+          'W' => 'w',
+        ],
+        'hello World',
+      ),
+      tuple(
+        'hello world',
+        dict[
+          'hello' => 'hi',
+          'world' => 'universe',
+        ],
+        'hi universe',
+      ),
+      tuple(
+        'Hi hello world hello hi',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'Hello',
+        ],
+        'Hi hi world hi Hello',
+      ),
+    ];
+  }
+
+  <<DataProvider('provideReplaceEveryNonrecursive')>>
+  public function testReplaceEveryNonrecursive(
+    string $haystack,
+    KeyedContainer<string, string> $replacements,
+    string $expected,
+  ): void {
+    expect(Str\replace_every_nonrecursive($haystack, $replacements))->toBeSame($expected);
+  }
+
+  public function testReplaceEveryNonrecursiveExceptions(): void {
+    expect(() ==> Str\replace_every_nonrecursive('hello world', dict['h' => 'H', '' => 'W']))
+      ->toThrow(InvariantException::class);
+  }
+
+  public static function provideReplaceEveryNonrecursiveCI(): varray<mixed> {
+    return varray[
+      tuple(
+        'Hello World',
+        dict[
+          'h' => 'H',
+          'w' => 'W',
+        ],
+        'Hello World',
+      ),
+      tuple(
+        'Hello world',
+        dict[
+          'h' => 'H',
+          'H' => 'h',
+          'w' => 'W',
+          'W' => 'w',
+        ],
+        'Hello World',
+      ),
+      tuple(
+        'Hello world',
+        dict[
+          'Hello' => 'hi',
+          'World' => 'universe',
+        ],
+        'hi universe',
+      ),
+      tuple(
+        'Hi hello world HELLO HI',
+        dict[
+          'HELLO' => 'hi',
+          'HI' => 'Hello',
+        ],
+        'Hello hi world hi Hello',
+      ),
+    ];
+  }
+
+  <<DataProvider('provideReplaceEveryNonrecursiveCI')>>
+  public function testReplaceEveryNonrecursiveCI(
+    string $haystack,
+    KeyedContainer<string, string> $replacements,
+    string $expected,
+  ): void {
+    expect(Str\replace_every_nonrecursive_ci($haystack, $replacements))->toBeSame($expected);
+  }
+
+  public function testReplaceEveryNonrecursiveCIExceptions(): void {
+    expect(() ==> Str\replace_every_nonrecursive_ci('hello world', dict['h' => 'H', '' => 'W']))
+      ->toThrow(InvariantException::class);
   }
 
   public static function providerReverse(): vec<(string, string)> {
