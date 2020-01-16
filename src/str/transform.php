@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Str;
 
-use namespace HH\Lib\_Private;
+use namespace HH\Lib\{_Private, C, Keyset};
 
 /**
  * Returns the string with the first character capitalized.
@@ -242,9 +242,89 @@ function replace_every_ci(
   );
 }
 
-function reverse(
-  string $string,
+/**
+ * Returns the "haystack" string with all occurrences of the keys of
+ * `$replacements` replaced by the corresponding values.
+ *
+ * Once a substring has been replaced, its new value will not be searched
+ * again.
+ *
+ * - For having new values searched again, see `Str\replace_every()`.
+ */
+<<__Rx>>
+function replace_every_nonrecursive(
+  string $haystack,
+  KeyedContainer<string, string> $replacements,
 ): string {
+  invariant(
+    !C\contains_key($replacements, ''),
+    'Expected non-empty keys only.',
+  );
+
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] Rx calling non-rx */
+  return \strtr($haystack, $replacements);
+}
+
+/**
+ * Returns the "haystack" string with all occurrences of the keys of
+ * `$replacements` replaced by the corresponding values (case-insensitive).
+ *
+ * Once a substring has been replaced, its new value will not be searched
+ * again.
+ *
+ * - For having new values searched again, see `Str\replace_every_ci()`.
+ */
+<<__Rx>>
+function replace_every_nonrecursive_ci(
+  string $haystack,
+  KeyedContainer<string, string> $replacements,
+): string {
+  invariant(
+    !C\contains_key($replacements, ''),
+    'Expected non-empty keys only.',
+  );
+
+  $haystack_lc = lowercase($haystack);
+
+  $keys_lc = keyset[];
+  $replacements_lc = dict[];
+  foreach ($replacements as $key => $value) {
+    $key_lc = lowercase($key);
+    if (!C\contains($keys_lc, $key_lc)) {
+      $keys_lc[] = $key_lc;
+      $replacements_lc[$key_lc] = $value;
+    }
+  }
+
+  $key_lengths = Keyset\map($keys_lc, ($key) ==> length($key))
+    |> Keyset\sort($$, ($key1, $key2) ==> -($key1 <=> $key2));
+
+  $output = '';
+  for ($pos = 0; $pos < length($haystack); ) {
+    $found_match_at_pos = false;
+    foreach ($key_lengths as $key_length) {
+      $possible_match = slice($haystack_lc, $pos, $key_length);
+      $replacement = $replacements_lc[$possible_match] ?? null;
+      if ($replacement is nonnull) {
+        $found_match_at_pos = true;
+        $output .= $replacement;
+        $pos += $key_length;
+        break;
+      }
+    }
+
+    if (!$found_match_at_pos) {
+      $output .= $haystack[$pos];
+      $pos++;
+    }
+  }
+
+  return $output;
+}
+
+function reverse(string $string): string {
   for ($lo = 0, $hi = namespace\length($string) - 1; $lo < $hi; $lo++, $hi--) {
     $temp = $string[$lo];
     $string[$lo] = $string[$hi];
