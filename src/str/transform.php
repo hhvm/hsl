@@ -297,11 +297,12 @@ function to_int(
 /**
  * Returns the string with all alphabetic characters converted to uppercase.
  */
-<<__RxLocal>>
+<<__Rx>>
 function uppercase(
   string $string,
 ): string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] Rx calling non-rx */
   return \strtoupper($string);
 }
