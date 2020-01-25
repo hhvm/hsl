@@ -1,7 +1,7 @@
 #!/bin/sh
 set -ex
 apt update -y
-DEBIAN_FRONTEND=noninteractive apt install -y php-cli zip unzip
+DEBIAN_FRONTEND=noninteractive apt install -y php7.1-cli zip unzip
 hhvm --version
 php --version
 if [ ! -e .git/refs/heads/master ]; then
@@ -21,7 +21,7 @@ if (hhvm --version | grep -q -- -dev); then
   # branches on nightlies too
   rm -f composer.lock
 fi
-composer install
+hhvm composer install
 
 hh_client
 vendor/bin/hacktest tests/
