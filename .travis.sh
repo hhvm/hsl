@@ -24,4 +24,4 @@ fi
 hhvm /usr/local/bin/composer install
 
 hh_client
-vendor/bin/hacktest tests/
+hhvm vendor/bin/phpunit tests/
