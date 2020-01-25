@@ -1,17 +1,5 @@
 #!/bin/sh
 set -ex
-hhvm --version
-
-composer install
-
-hh_client
-
-vendor/bin/hacktest tests/
-
-echo > .hhconfig
-hh_server --check $(pwd)
-#!/bin/sh
-set -ex
 apt update -y
 DEBIAN_FRONTEND=noninteractive apt install -y php-cli zip unzip
 hhvm --version
