@@ -1,11 +1,11 @@
 sudo: required
+dist: bionic
 language: generic
 services: docker
 env:
 - HHVM_VERSION=3.26.3
 install:
 - docker pull hhvm/hhvm:$HHVM_VERSION
-- apt get install php7.2-cli -y
 script:
 - docker run --rm -w /var/source -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION ./.travis.sh
 notifications:
