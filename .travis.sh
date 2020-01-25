@@ -1,7 +1,7 @@
 #!/bin/sh
 set -ex
 apt update -y
-DEBIAN_FRONTEND=noninteractive apt install -y php7.1-cli zip unzip
+DEBIAN_FRONTEND=noninteractive apt install -y php-cli zip unzip
 hhvm --version
 php --version
 if [ ! -e .git/refs/heads/master ]; then
