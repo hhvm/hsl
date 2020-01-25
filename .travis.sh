@@ -21,7 +21,7 @@ if (hhvm --version | grep -q -- -dev); then
   # branches on nightlies too
   rm -f composer.lock
 fi
-hhvm composer install
+hhvm /usr/local/bin/composer install
 
 hh_client
 vendor/bin/hacktest tests/
