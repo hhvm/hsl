@@ -1,10 +1,13 @@
-language: php
-php:
- - hhvm-3.26
-matrix:
-  allow_failures:
-  - php: hhvm
+sudo: required
+language: generic
+services: docker
+env:
+- HHVM_VERSION=3.26-latest
+install:
+- docker pull hhvm/hhvm:$HHVM_VERSION
 script:
- - ./.travis.sh
+- docker run --rm -w /var/source -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION ./.travis.sh
 notifications:
   webhooks: https://code.facebook.com/travis/webhook/
+  slack:
+    secure: LH2n9tQoW3/OUO/ppXLnGIVAbYtl07avQne/gkcal/csGc18BSly15/bNZvGTlC65aac+yjbGHlcWuBm8Qyl5l2oWZADqoRN7+HeOYw1qSx2eRA5BzVcdKd9eHjl5xobxLC2NXZL/NSiN+Ku/YDuzzkwpGqIcC4EiwvFsab6B2rigdazFaNRceAxnyYwNs3VdzFj9vBDqbfUDFV7lgjZJxbKos26O/Z4F58a2tsV2hbT+tF8W3hfPrMaYuxWVv2+Irc0uGoNc5EG+2eRT5AzMtp6YKzQ5LzEkC/lNwojUg/dr9xV+3vZu+IARy7HsBuX5KZo3IBGHL18q8srgEM4NBQy8IUmVAlGGw7vw1cInIoqUTOvHBqVvDAs2RNr5f7u+2Li0Sw9vuGhoeNtLVvTjZ9r5XmEzdEx9pUFrsO16YdJLnpiYiyWlWAeAkDljXD/d5L/i0sZgaeY/eubYADJr/ZA+M78aiLuw5eEWqu5s9a4xhrGEBkUHyPRpXU1AxVAPr1L6/PK47QKYu1h45QfMQL8TmrNw9VPLUIm5P4k3RFz9CC5C35u5HfFTubErcDl1CZUSoGUuW4foTbkWSJGlgvQquS824mL2VIO5Ut6J6+/2iqsK/HfKOiToDpiiwpe2KoQsyy5QHVWMVNTuKPou1yYH+6Z3DIx8/wEAkvCA+U=
