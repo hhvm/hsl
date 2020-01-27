@@ -1,9 +1,0 @@
-language: php
-php:
- - hhvm
- - hhvm-3.24
- - hhvm-nightly
-script:
- - ./.travis.sh
-notifications:
-  webhooks: https://code.facebook.com/travis/webhook/
