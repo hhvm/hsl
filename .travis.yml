@@ -8,6 +8,7 @@ env:
 
 install:
 - docker pull hhvm/hhvm:$HHVM_VERSION
+
 script:
 - docker run --rm -w /var/source -v $(pwd):/var/source hhvm/hhvm:$HHVM_VERSION ./.travis.sh
 notifications:
