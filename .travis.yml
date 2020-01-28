@@ -1,9 +1,7 @@
 language: php
 php:
  - hhvm-3.30
-matrix:
-  allow_failures:
-  - php: hhvm
+ 
 script:
  - ./.travis.sh
 notifications:
