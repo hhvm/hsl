@@ -92,7 +92,7 @@ async function filter_async<Tk as arraykey, Tv>(
 }
 
 /**
- * Like filter_async, but lets you utilize the keys of your dict too.
+ * Like `gen_filter`, but lets you utilize the keys of your dict too.
  *
  * For non-async filters with key, see `Dict\filter_with_key()`.
  *

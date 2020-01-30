@@ -14,7 +14,9 @@ use namespace HH\Lib\Math;
 
 /**
  * Returns a vec containing the original dict split into chunks of the given
- * size. If the original dict doesn't divide evenly, the final chunk will be
+ * size.
+ *
+ * If the original dict doesn't divide evenly, the final chunk will be
  * smaller.
  *
  * Time complexity: O(n)
@@ -61,8 +63,10 @@ function count_values<Tv as arraykey>(
 }
 
 /**
- * Returns a new dict formed by merging the KeyedTraversable elements of the
- * given Traversable. In the case of duplicate keys, later values will overwrite
+ * Returns a new dict formed by merging the KeyedContainer elements of the
+ * given Traversable.
+ *
+ * In the case of duplicate keys, later values will overwrite
  * the previous ones.
  *
  * For a fixed number of KeyedTraversables, see `Dict\merge()`.
@@ -107,7 +111,9 @@ function fill_keys<Tk as arraykey, Tv>(
 
 /**
  * Returns a new dict keyed by the values of the given KeyedTraversable
- * and vice-versa. In case of duplicate values, later keys overwrite the
+ * and vice-versa.
+ *
+ * In case of duplicate values, later keys overwrite the
  * previous ones.
  *
  * Time complexity: O(n)
@@ -186,6 +192,7 @@ function from_entries<Tk as arraykey, Tv>(
  *
  * - To create a dict from keys, see `Dict\from_keys()`.
  * - To create a dict from key/value tuples, see `Dict\from_entries()`.
+ * - To create a dict containing all values with the same keys, see `Dict\group_by()`.
  *
  * Time complexity: O(n)
  * Space complexity: O(n)
@@ -205,14 +212,16 @@ function from_values<Tk as arraykey, Tv>(
 }
 
  /**
-  * Returns a new dict where
+  * Return a dict keyed by the result of calling the giving function, preserving
+  * duplicate values.
+  *
   *  - keys are the results of the given function called on the given values.
   *  - values are vecs of original values that all produced the same key.
   *
   * If a value produces a null key, it's omitted from the result.
- *
- * Time complexity: O(n * f), where f is the complexity of `$key_func`
- * Space complexity: O(n)
+  *
+  * Time complexity: O(n * f), where f is the complexity of `$key_func`
+  * Space complexity: O(n)
   */
 <<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 function group_by<Tk as arraykey, Tv>(
@@ -300,7 +309,8 @@ function map_with_key<Tk as arraykey, Tv1, Tv2>(
 }
 
 /**
- * Returns a new dict where:
+ * Returns a new dict with mapped keys and values.
+ *
  *  - values are the result of calling `$value_func` on the original value
  *  - keys are the result of calling `$key_func` on the original value.
  * In the case of duplicate keys, later values will overwrite the previous ones.
@@ -326,7 +336,8 @@ function pull<Tk as arraykey, Tv1, Tv2>(
 }
 
 /**
- * Returns a new dict where:
+ * Returns a new dict with mapped keys and values.
+ *
  *  - values are the result of calling `$value_func` on the original value/key
  *  - keys are the result of calling `$key_func` on the original value/key.
  * In the case of duplicate keys, later values will overwrite the previous ones.
