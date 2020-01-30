@@ -54,6 +54,7 @@ function split(
       invariant($limit > 1, 'Expected positive limit.');
       $result = chunk(\substr($string, 0, $limit - 1));
       $result[] = \substr($string, $limit - 1);
+      /* HH_FIXME[4110] Exposed because PHP\substr could return false; consider using Str::substr */
       return $result;
     }
   } else if ($limit === null) {
