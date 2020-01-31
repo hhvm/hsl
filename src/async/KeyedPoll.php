@@ -17,7 +17,7 @@ namespace HH\Lib\Async;
  * Keys are retrieved with:
  *
  * ```
- * foreach (await $keyed_poll as $k => $v) {
+ * foreach ($keyed_poll await as $k => $v) {
  * ```
  *
  * ===== WARNING ===== WARNING ===== WARNING ===== WARNING ===== WARNING =====
@@ -42,7 +42,7 @@ final class KeyedPoll<Tk, Tv>
 
   /** Add a single awaitable to the poll.
    *
-   * The key is retrieved with `foreach (await $poll as $k => $v) {}`
+   * The key is retrieved with `foreach ($poll await as $k => $v) {}`
    */
   public function add(Tk $key, Awaitable<Tv> $awaitable): void {
     $this->addImpl($key, $awaitable);
