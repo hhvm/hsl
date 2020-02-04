@@ -310,23 +310,32 @@ final class RegexTest extends HackTest {
 
   public static function provideReplaceWith(): varray<mixed> {
     return varray[
+      /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('abc', re"#d#", $x ==> $x[0], 0, 'abc'),
       tuple('abcd', re"#d#", $x ==> 'xyz', 0, 'abcxyz'),
       tuple('abcdcbabcdcbabcdcba', re"#d#", $x ==> 'D', 0, 'abcDcbabcDcbabcDcba'),
       tuple('hellodev42.prn3.facebook.com',
         re"/dev(\d+)\.prn3(?<domain>\.facebook\.com)?/",
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         $x ==> $x[1] . $x['domain'], 4,
         'hello42.facebook.com'),
       tuple('hellodev42.prn3.facebook.com',
         re"/dev(\d+)\.prn3(?<domain>\.facebook\.com)?/",
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         $x ==> $x[1] . $x['domain'], 6,
         'hellodev42.prn3.facebook.com'),
+      /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('<table ><table >', re"@<table(\s+.*?)?>@s", $x ==> $x[1], 8, '<table > '),
+      /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('', re"/(.?)/", $x ==> $x[1].'A', 0, 'A'),
+      /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('', re"//", $x ==> $x[0].'A', 0, 'A'),
+      /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('hello', re"/(.?)/", $x ==> $x[1].'A', 0, 'hAeAlAlAoAA'), // unintuitive, but consistent with preg_replace_callback
+      /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('hello', re"//", $x ==> $x[0].'A', 0, 'AhAeAlAlAoA'),
       tuple('@[12345:67890:janedoe]', re"/@\[(\d*?):(\d*?):([^]]*?)\]/",
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($x ==> Str\repeat(' ', 4 + Str\length($x[1]) + Str\length($x[2])) . $x[3] . ' '),
         0, '              janedoe '),
       tuple('ooooo', re"/.*/", $x ==> 'a', 0, 'aa'),

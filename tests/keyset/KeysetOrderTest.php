@@ -24,6 +24,7 @@ final class KeysetOrderTest extends HackTest {
       ),
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($a, $b) ==> Str\compare($a[1],$b[1]),
         keyset['the', 'fox', 'brown', 'quick'],
       ),

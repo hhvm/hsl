@@ -142,6 +142,7 @@ final class DictOrderTest extends HackTest {
           2 => 'brown',
           3 => 'fox',
         ],
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($a, $b) ==> $a[1] <=> $b[1],
         dict[
           0 => 'the',
@@ -154,6 +155,7 @@ final class DictOrderTest extends HackTest {
         HackLibTestTraversables::getKeyedIterator(varray[
           'the', 'quick', 'brown', 'fox',
         ]),
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($a, $b) ==> $b[1] <=> $a[1],
         dict[
           1 => 'quick',

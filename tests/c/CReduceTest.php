@@ -33,6 +33,7 @@ final class CReduceTest extends HackTest {
       ),
       tuple(
         varray['the', 'quick', 'brown', 'fox'],
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($a, $s) ==> $a->add($s),
         Vector {},
         Vector {'the', 'quick', 'brown', 'fox'},

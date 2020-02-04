@@ -168,6 +168,7 @@ final class VecOrderTest extends HackTest {
       ),
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($a, $b) ==> $a[1] <=> $b[1],
         vec['the', 'fox', 'brown', 'quick'],
       ),

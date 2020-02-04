@@ -475,6 +475,7 @@ final class DictSelectTest extends HackTest {
     return varray[
       tuple(
         Vector {$s1, $s2, $s3, $s4},
+        /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
         ($s) ==> $s->firstKey(),
         dict[
           2 => $s3,
