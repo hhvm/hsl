@@ -24,6 +24,5 @@ namespace HH\Lib;
  * to avoid this class.
  */
 final class Ref<T> {
-  <<__RxShallow>>
   public function __construct(public T $value) {}
 }
