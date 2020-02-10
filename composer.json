@@ -3,7 +3,8 @@
   "description": "The Hack Standard Library",
   "extra": {
     "branch-alias": {
-      "dev-master": "3.x-dev"
+      "dev-master": "3.30.x-dev",
+      "dev-v3.30.x": "3.30.x-dev"
     }
   },
   "license": "MIT",
