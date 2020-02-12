@@ -2,7 +2,7 @@
 set -ex
 hhvm --version
 
-composer install
+hhvm composer install
 
 hh_client
 
