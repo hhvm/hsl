@@ -21,7 +21,7 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * Time complexity: O(n), where `n` is the size of the resulting vec
  * Space complexity: O(n), where `n` is the size of the resulting vec
  */
-<<__Rx, __ProvenanceSkipFrame>>
+<<__Rx>>
 function range<Tv as num>(
   Tv $start,
   Tv $end,
@@ -44,7 +44,7 @@ function range<Tv as num>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function reverse<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -65,7 +65,6 @@ function reverse<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__ProvenanceSkipFrame>>
 function shuffle<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
@@ -87,7 +86,7 @@ function shuffle<Tv>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -122,7 +121,7 @@ function sort<Tv>(
  * complexity of the scalar function
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort_by<Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,

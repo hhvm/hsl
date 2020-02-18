@@ -21,7 +21,7 @@ use namespace HH\Lib\C;
  * Space complexity: O(n) where n is the size of `$keys` (which must be the same
  * as the size of `$values`)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function associate<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
@@ -50,7 +50,7 @@ function associate<Tk as arraykey, Tv>(
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function merge<Tk as arraykey, Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $first,

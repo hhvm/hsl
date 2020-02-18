@@ -17,7 +17,7 @@ namespace HH\Lib\Vec;
  * Time complexity: O(n * p), where p is the complexity of `$predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function partition<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,

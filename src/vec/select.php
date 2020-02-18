@@ -24,7 +24,7 @@ use namespace HH\Lib\{C, Dict, Keyset, _Private};
  * size of `$second` plus all the `...$rest` -- note that this is bigger than
  * O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $first,
@@ -61,7 +61,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * Space complexity: O(n + m), where n is the size of `$first` and m is the size
  * of `$second` -- note that this is bigger than O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function diff_by<Tv, Ts as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
@@ -94,7 +94,7 @@ function diff_by<Tv, Ts as arraykey>(
  * Time complexity: O(n), where n is the size of `$traversable`
  * Space complexity: O(n), where n is the size of `$traversable`
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function drop<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -124,7 +124,7 @@ function drop<Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -148,7 +148,7 @@ function filter<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_nulls<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
@@ -171,7 +171,7 @@ function filter_nulls<Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function filter_with_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -195,7 +195,7 @@ function filter_with_key<Tk, Tv>(
  * size of `$second` plus all the `...$rest`
  * Space complexity: O(n), where n is size of `$first`
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function intersect<Tv as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
@@ -219,7 +219,7 @@ function intersect<Tv as arraykey>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function keys<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -240,7 +240,6 @@ function keys<Tk, Tv>(
  * Space complexity: O(n), where n is the size of `$traversable` -- note that n
  * may be bigger than `$sample_size`
  */
-<<__ProvenanceSkipFrame>>
 function sample<Tv>(
   Traversable<Tv> $traversable,
   int $sample_size,
@@ -268,7 +267,7 @@ function sample<Tv>(
  * Time complexity: O(n), where n is the size of the slice
  * Space complexity: O(n), where n is the size of the slice
  */
-<<__Rx, __ProvenanceSkipFrame>>
+<<__Rx>>
 function slice<Tv>(
   Container<Tv> $container,
   int $offset,
@@ -290,7 +289,7 @@ function slice<Tv>(
  * Time complexity: O(n), where n is `$n`
  * Space complexity: O(n), where n is `$n`
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function take<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -322,7 +321,7 @@ function take<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function unique<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -341,7 +340,7 @@ function unique<Tv as arraykey>(
  * Time complexity: O(n * s), where s is the complexity of `$scalar_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function unique_by<Tv, Ts as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,

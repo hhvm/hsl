@@ -19,7 +19,7 @@ use namespace HH\Lib\Vec;
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function reverse<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -38,7 +38,6 @@ function reverse<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__ProvenanceSkipFrame>>
 function shuffle<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $container,
 ): dict<Tk, Tv> {
@@ -60,7 +59,7 @@ function shuffle<Tk as arraykey, Tv>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -95,7 +94,7 @@ function sort<Tk as arraykey, Tv>(
  * complexity of the scalar function
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort_by<Tk as arraykey, Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -124,7 +123,7 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__Rx, __AtMostRxAsArgs>>
 function sort_by_key<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
