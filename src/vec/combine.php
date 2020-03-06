@@ -22,8 +22,7 @@ namespace HH\Lib\Vec;
  */
 <<__Rx, __AtMostRxAsArgs>>
 function concat<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
-  Traversable<Tv> $first,
+  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>> Traversable<Tv> $first,
   Container<Tv> ...$rest
 ): vec<Tv> {
   $result = vec($first);
