@@ -45,6 +45,21 @@ final class CSelectTest extends HackTest {
     expect(C\find($traversable, $value_predicate))->toEqual($expected);
   }
 
+  <<DataProvider('provideTestFind')>>
+  public function testFindx<T>(
+    Traversable<T> $traversable,
+    (function(T): bool) $value_predicate,
+    ?T $expected,
+  ): void {
+    if($expected is null){
+      expect(() ==> C\findx($traversable, $value_predicate))->toThrow(
+        InvariantException::class,
+      );
+    } else {
+      expect(C\findx($traversable, $value_predicate))->toEqual($expected);
+    }
+  }
+
   public static function provideTestFindKey(): varray<mixed> {
     return varray[
       tuple(
