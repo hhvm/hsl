@@ -62,9 +62,12 @@ function reverse<Tv>(
  * Returns a new vec with the values of the given Traversable in a random
  * order.
  *
+ * Vec\shuffle is not using cryptographically secure randomness.
+ *
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
+<<__NonRx('Randomness')>>
 function shuffle<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
