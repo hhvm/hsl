@@ -91,7 +91,7 @@ function sort<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  ?(function(Tv, Tv): int) $comparator = null,
+  ?(function(Tv, Tv): num) $comparator = null,
 ): vec<Tv> {
   $vec = vec($traversable);
   if ($comparator) {
@@ -128,7 +128,7 @@ function sort_by<Tv, Ts>(
   <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
   <<__AtMostRxAsFunc>>
-  ?(function(Ts, Ts): int) $comparator = null,
+  ?(function(Ts, Ts): num) $comparator = null,
 ): vec<Tv> {
   $vec = vec($traversable);
   $order_by = Dict\map($vec, $scalar_func);

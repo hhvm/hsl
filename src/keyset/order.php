@@ -23,7 +23,7 @@ namespace HH\Lib\Keyset;
 function sort<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): int) $comparator = null,
+  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): num) $comparator = null,
 ): keyset<Tv> {
   $keyset = keyset($traversable);
   if ($comparator) {

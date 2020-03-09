@@ -35,7 +35,7 @@ namespace HH\Lib\C;
 function is_sorted<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): int) $comparator = null,
+  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): num) $comparator = null,
 ): bool {
   $vec = vec($traversable);
   if (is_empty($vec)) {
@@ -82,7 +82,7 @@ function is_sorted_by<Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>> (function(Tv): Ts) $scalar_func,
-  <<__AtMostRxAsFunc>> ?(function(Ts, Ts): int) $comparator = null,
+  <<__AtMostRxAsFunc>> ?(function(Ts, Ts): num) $comparator = null,
 ): bool {
   $vec = vec($traversable);
   if (is_empty($vec)) {
