@@ -16,8 +16,9 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class CSelectTest extends HackTest {
 
-  public static function provideTestFind(): varray<mixed> {
-    return varray[
+  public static function provideTestFind(
+  ): vec<(Traversable<mixed>, (function(nothing): bool), mixed)> {
+    return vec[
       tuple(
         varray[],
         $x ==> $x,
@@ -43,6 +44,44 @@ final class CSelectTest extends HackTest {
     ?T $expected,
   ): void {
     expect(C\find($traversable, $value_predicate))->toEqual($expected);
+  }
+
+  public static function provideTestFindx(
+  ): vec<(
+    Traversable<mixed>,
+    (function(nothing): bool),
+    mixed,
+  )> {
+    return Vec\filter(self::provideTestFind(), $it ==> $it[2] !== null);
+  }
+
+  <<DataProvider('provideTestFindx')>>
+  public function testFindx<T>(
+    Traversable<T> $traversable,
+    (function(T): bool) $value_predicate,
+    mixed $expected,
+  ): void {
+    expect(C\findx($traversable, $value_predicate))->toEqual($expected);
+  }
+
+  public static function provideTestFindxException(
+  ): vec<(
+    Traversable<mixed>,
+    (function(nothing): bool),
+    classname<Exception>,
+  )> {
+    return Vec\filter(self::provideTestFind(), $it ==> $it[2] === null)
+      |> Vec\map($$, $it ==> tuple($it[0], $it[1], InvariantException::class));
+  }
+
+  <<DataProvider('provideTestFindxException')>>
+  public function testFindxException<T>(
+    Traversable<T> $traversable,
+    (function(T): bool) $value_predicate,
+    classname<Exception> $expected,
+  ): void {
+    expect(() ==> C\findx($traversable, $value_predicate))
+      ->toThrow($expected);
   }
 
   public static function provideTestFindKey(): varray<mixed> {

@@ -18,6 +18,8 @@ use namespace HH\Lib\{_Private, Str};
  *
  * Time complexity: O(n)
  * Space complexity: O(1)
+ *
+ * @see `C\findx` when a value is required
  */
 <<__Rx, __AtMostRxAsArgs>>
 function find<T>(
@@ -32,6 +34,29 @@ function find<T>(
     }
   }
   return null;
+}
+
+/**
+ * Returns the first value of the given Traversable for which the predicate
+ * returns true, or throws if no such value is found.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
+ *
+ * @see `C\find()` if you would prefer null if not found.
+ */
+<<__Rx, __AtMostRxAsArgs>>
+function findx<T>(
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
+  Traversable<T> $traversable,
+  <<__AtMostRxAsFunc>> (function(T): bool) $value_predicate,
+): T {
+  foreach ($traversable as $value) {
+    if ($value_predicate($value)) {
+      return $value;
+    }
+  }
+  invariant_violation('%s: Couldn\'t find target value.', __FUNCTION__);
 }
 
 /**
