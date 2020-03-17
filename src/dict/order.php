@@ -35,9 +35,12 @@ function reverse<Tk as arraykey, Tv>(
  * Returns a new dict with the key value pairs of the given input container in a random
  * order.
  *
+ * Dict\shuffle is not using cryptographically secure randomness.
+ *
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
+<<__NonRx('Randomness')>>
 function shuffle<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $container,
 ): dict<Tk, Tv> {
