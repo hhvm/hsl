@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Str;
 
-use namespace HH\Lib\{_Private, C, Keyset};
+use namespace HH\Lib\{_Private, C, Keyset, Vec};
 
 /**
  * Returns the string with the first character capitalized.
@@ -195,6 +195,7 @@ function replace_ci(
  * - For a single case-sensitive search/replace, see `Str\replace()`.
  * - For a single case-insensitive search/replace, see `Str\replace_ci()`.
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
+ * - For not having new values searched again, see `Str\replace_every_nonrecursive()`.
  */
 <<__Pure>>
 function replace_every(
@@ -222,6 +223,7 @@ function replace_every(
  * - For a single case-sensitive search/replace, see `Str\replace()`.
  * - For a single case-insensitive search/replace, see `Str\replace_ci()`.
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
+ * - For not having new values searched again, see `Str\replace_every_nonrecursive_ci()`.
  */
 <<__Pure>>
 function replace_every_ci(
@@ -287,29 +289,30 @@ function replace_every_nonrecursive_ci(
   );
 
   $haystack_lc = lowercase($haystack);
-
-  $keys_lc = keyset[];
+  $key_lengths = keyset[];
   $replacements_lc = dict[];
   foreach ($replacements as $key => $value) {
     $key_lc = lowercase($key);
-    if (!C\contains($keys_lc, $key_lc)) {
-      $keys_lc[] = $key_lc;
-      $replacements_lc[$key_lc] = $value;
-    }
+    invariant(
+      !C\contains_key($replacements_lc, $key_lc),
+      'Duplicate case-insensitive search string "%s".',
+      $key_lc,
+    );
+    $key_lengths[] = length($key_lc);
+    $replacements_lc[$key_lc] = $value;
   }
 
-  $key_lengths = Keyset\map($keys_lc, ($key) ==> length($key))
-    |> Keyset\sort($$, ($key1, $key2) ==> -($key1 <=> $key2));
+  // Sort desc instead of asc
+  $key_lengths = Vec\sort($key_lengths, ($key1, $key2) ==> -($key1 <=> $key2));
 
   $output = '';
   for ($pos = 0; $pos < length($haystack); ) {
     $found_match_at_pos = false;
     foreach ($key_lengths as $key_length) {
       $possible_match = slice($haystack_lc, $pos, $key_length);
-      $replacement = $replacements_lc[$possible_match] ?? null;
-      if ($replacement is nonnull) {
+      if (C\contains_key($replacements_lc, $possible_match)) {
         $found_match_at_pos = true;
-        $output .= $replacement;
+        $output .= $replacements_lc[$possible_match];
         $pos += $key_length;
         break;
       }

@@ -500,16 +500,6 @@ final class StrTransformTest extends HackTest {
       tuple(
         'Hello world',
         dict[
-          'h' => 'H',
-          'H' => 'h',
-          'w' => 'W',
-          'W' => 'w',
-        ],
-        'Hello World',
-      ),
-      tuple(
-        'Hello world',
-        dict[
           'Hello' => 'hi',
           'World' => 'universe',
         ],
