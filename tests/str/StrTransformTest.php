@@ -559,7 +559,9 @@ final class StrTransformTest extends HackTest {
 
   public function testReplaceEveryNonrecursiveCIExceptions(): void {
     expect(() ==> Str\replace_every_nonrecursive_ci('hello world', dict['h' => 'H', '' => 'W']))
-      ->toThrow(InvariantException::class);
+      ->toThrow(InvariantException::class, 'empty');
+    expect(() ==> Str\replace_every_nonrecursive_ci('hello world', dict['AbCd' => 'xxx', 'abcd' => 'yyy']))
+      ->toThrow(InvariantException::class, 'Duplicate');
   }
 
   public static function providerReverse(): vec<(string, string)> {
