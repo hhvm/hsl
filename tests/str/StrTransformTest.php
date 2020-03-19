@@ -487,17 +487,17 @@ final class StrTransformTest extends HackTest {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideReplaceEveryNonrecursiveCI(): varray<mixed> {
-    return varray[
-      tuple(
-        'Hello World',
+  public static function provideReplaceEveryNonrecursiveCI(): dict<string, (string, dict<string, string>, string)> {
+    return dict[
+      'Replace lowercase letter with uppercase' => tuple(
+        'Hello world',
         dict[
           'h' => 'H',
           'w' => 'W',
         ],
         'Hello World',
       ),
-      tuple(
+      'Replace multi character strings' => tuple(
         'Hello world',
         dict[
           'Hello' => 'hi',
@@ -505,13 +505,45 @@ final class StrTransformTest extends HackTest {
         ],
         'hi universe',
       ),
-      tuple(
+      'Replace both upper and lowercase strings with differing cases' => tuple(
         'Hi hello world HELLO HI',
         dict[
           'HELLO' => 'hi',
           'HI' => 'Hello',
         ],
         'Hello hi world hi Hello',
+      ),
+      'When a replacer is a prefix of another, the longer one wins' => tuple(
+        '12345',
+        dict[
+          '12' => 'FAIL',
+          '1234' => 'SUCCESS',
+        ],
+        'SUCCESS5',
+      ),
+      "Replacers do not look at the replacements from previous iterations" => tuple(
+        'sub fast',
+        dict[
+          'sub' => 'subject',
+          'bject' => 'FAIL',
+        ],
+        'subject fast',
+      ),
+      "Replacement does not skip a beat if the replacement is shorter than the replacer" => tuple(
+        'red black rEd blAck',
+        dict[
+          'ed' => 'acecars',
+          'lack' => 'ook cover',
+        ],
+        'racecars book cover racecars book cover',
+      ),
+      "Can handle if one replacer is a substring of another and pick the whole" => tuple(
+        'banana',
+        dict[
+          'na' => 'FAIL',
+          'banana' => 'SUCCESS',
+        ],
+        'SUCCESS',
       ),
     ];
   }

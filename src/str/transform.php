@@ -275,8 +275,15 @@ function replace_every_nonrecursive(
  *
  * Once a substring has been replaced, its new value will not be searched
  * again.
+ * If a replacer is the prefix of another (like "car" and "carpet"), the longer
+ * one (carpet) gets replaced, if there is any ambiguity.
+ * When two replacers are passed that are identical except for case
+ * an invariant exception is thrown.
  *
  * - For having new values searched again, see `Str\replace_every_ci()`.
+ *
+ * Time complexity O(length * a) where `length` is the length of the subject
+ * and a is the amount of replacers with different lengths.
  */
 <<__Rx>>
 function replace_every_nonrecursive_ci(
