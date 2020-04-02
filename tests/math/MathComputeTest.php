@@ -319,7 +319,11 @@ final class MathComputeTest extends HackTest {
   }
 
   <<DataProvider('provideTestFromBaseException')>>
-  public function testFromBaseException(string $number, int $from_base): void {
+  public function testFromBaseException(
+    string $number,
+    int $from_base,
+    mixed $_FIXME_too_many_args_from_DataProvider = null,
+  ): void {
     expect(() ==> Math\from_base($number, $from_base))
       ->toThrow(InvariantException::class);
   }
