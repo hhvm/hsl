@@ -101,7 +101,9 @@ function trim(
  * See `Str\trim()` for more details.
  *
  * - To strip from both ends, see `Str\trim()`.
- * - To only strip from the right, see `Str\trim_right()`
+ * - To only strip from the right, see `Str\trim_right()`.
+ * - To strip a specific prefix (instead of all characters matching a mask),
+ *   see `Str\strip_prefix()`.
  */
 <<__Rx>>
 function trim_left(
@@ -121,8 +123,10 @@ function trim_left(
  * Returns the given string with whitespace stripped from the right.
  * See `Str\trim` for more details.
  *
- * - To strip from both ends, see `Str\trim`.
- * - To only strip from the left, see `Str\trim_left`.
+ * - To strip from both ends, see `Str\trim()`.
+ * - To only strip from the left, see `Str\trim_left()`.
+ * - To strip a specific suffix (instead of all characters matching a mask),
+ *   see `Str\strip_suffix()`.
  */
 <<__Rx>>
 function trim_right(
