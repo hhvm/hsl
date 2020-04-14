@@ -28,11 +28,13 @@ use namespace HH\Lib\{Regex, Str};
  * and second,
  *   the integer offset at which this first match occurs in the haystack string.
  */
+<<__Rx>>
 function regex_match<T as Regex\Match>(
   string $haystack,
   Regex\Pattern<T> $pattern,
   int $offset = 0,
 ): ?(T, int) {
+  /* HH_IGNORE_ERROR[4200] keep suppressing warnings from bad callers */
   using new PHPWarningSuppressor();
   $offset = validate_offset($offset, Str\length($haystack));
   $match = darray[];
@@ -58,6 +60,8 @@ function regex_match<T as Regex\Match>(
   } else if ($status === 0) {
     return null;
   } else {
-    throw new Regex\Exception($pattern);
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    throw new Regex\Exception($pattern, \preg_last_error());
   }
 }

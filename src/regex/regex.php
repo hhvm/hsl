@@ -23,6 +23,7 @@ use namespace HH\Lib\{_Private, Str};
  *        the groups' occurrence within the pattern, and
  *    - the results of named capture groups, at string keys matching their respective names.
  */
+<<__Rx>>
 function first_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -37,6 +38,7 @@ function first_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
+<<__Rx>>
 function every_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -72,6 +74,7 @@ function every_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
+<<__Rx>>
 function matches(
   string $haystack,
   Pattern<Match> $pattern,
@@ -107,7 +110,9 @@ function replace(
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
   $haystack3 = \preg_replace($pattern, $replacement, $haystack2);
   if ($haystack3 === null) {
-    throw new Exception($pattern);
+    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    throw new Exception($pattern, \preg_last_error());
   }
   return $haystack1.$haystack3;
 }
@@ -119,10 +124,11 @@ function replace(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
+<<__Rx, __AtMostRxAsArgs>>
 function replace_with<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
-  (function(T): string) $replace_func,
+  <<__AtMostRxAsFunc>> (function(T): string) $replace_func,
   int $offset = 0,
 ): string {
   $haystack_length = Str\length($haystack);
@@ -166,6 +172,7 @@ function replace_with<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$limit` < 2.
  */
+<<__Rx>>
 function split(
   string $haystack,
   Pattern<Match> $delimiter,
@@ -214,6 +221,7 @@ function split(
 /**
  * Renders a Regex Pattern to a string.
  */
+<<__Rx>>
 function to_string(Pattern<Match> $pattern): string {
   return $pattern as string;
 }

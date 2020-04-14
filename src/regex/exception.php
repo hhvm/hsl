@@ -13,7 +13,8 @@ namespace HH\Lib\Regex;
 use namespace HH\Lib\Str;
 
 final class Exception extends \Exception {
-  public function __construct(Pattern<mixed> $pattern): void {
+  <<__Rx>>
+  public function __construct(Pattern<mixed> $pattern, int $code): void {
     $errors = dict[
       \PREG_INTERNAL_ERROR => 'Internal error',
       \PREG_BACKTRACK_LIMIT_ERROR => 'Backtrack limit error',
@@ -24,9 +25,7 @@ final class Exception extends \Exception {
     parent::__construct(
       Str\format(
         "%s: %s",
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-        idx($errors, \preg_last_error(), 'Invalid pattern'),
+        idx($errors, $code, 'Invalid pattern'),
         /* HH_FIXME[4110] Until we have a to_string() function */
         $pattern,
       ),
