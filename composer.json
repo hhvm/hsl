@@ -11,7 +11,7 @@
     "facebook/fbexpect": "^2.5.1",
     "hhvm/hacktest": "^1.0|^2.0",
     "hhvm/hhvm-autoload": "^2.0|^3.0",
-    "hhvm/hsl-experimental": "dev-master"
+    "hhvm/hsl-experimental": "^4.37|dev-master"
   },
   "require": {
     "hhvm": "^4.41"
