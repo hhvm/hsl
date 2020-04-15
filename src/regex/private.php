@@ -40,6 +40,7 @@ function regex_match<T as Regex\Match>(
   $match = darray[];
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4200] Rx error without deregister_phpstdlib */
   $status = \preg_match_with_matches(
     /* HH_IGNORE_ERROR[4110] */ $pattern,
     $haystack,
@@ -62,6 +63,7 @@ function regex_match<T as Regex\Match>(
   } else {
     /* HH_IGNORE_ERROR[2049] __PHPStdLib */
     /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_IGNORE_ERROR[4200] Rx error without deregister_phpstdlib */
     throw new Regex\Exception($pattern, \preg_last_error());
   }
 }
