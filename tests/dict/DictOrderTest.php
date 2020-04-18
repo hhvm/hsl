@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictOrderTest extends HackTest {
 
-  public static function provideTestReverse(): vec<(KeyedTraversable<mixed, mixed>, dict<arraykey, mixed>)> {
+  public static function provideTestReverse(): vec<(KeyedTraversable<arraykey, mixed>, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Map {},
@@ -56,7 +56,7 @@ final class DictOrderTest extends HackTest {
     expect(Dict\reverse($traversable))->toEqual($expected);
   }
 
-  public static function provideTestShuffle(): vec<(KeyedTraversable<mixed, mixed>)> {
+  public static function provideTestShuffle(): vec<(KeyedTraversable<arraykey, mixed>)> {
     return vec[
       tuple(darray['0' => '0', '1' => '1', '2' => '2', '3' => '3']),
       tuple(dict['3' => 3, '2' => 2, '1' => 1, '0' => 0]),
@@ -103,7 +103,7 @@ final class DictOrderTest extends HackTest {
     self::fail('We shuffled 1000 times and the value never changed');
   }
 
-  public static function provideTestSort(): vec<(KeyedTraversable<mixed, mixed>, ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
+  public static function provideTestSort(): vec<(KeyedTraversable<arraykey, mixed>, ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Map {
@@ -177,7 +177,7 @@ final class DictOrderTest extends HackTest {
     expect(Dict\sort($traversable, $value_comparator))->toEqual($expected);
   }
 
-  public static function provideTestSortBy(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): mixed), ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
+  public static function provideTestSortBy(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): mixed), ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped'],
@@ -223,7 +223,7 @@ final class DictOrderTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideTestSortByKey(): vec<(KeyedTraversable<mixed, mixed>, ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
+  public static function provideTestSortByKey(): vec<(KeyedTraversable<arraykey, mixed>, ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Map {

@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetOrderTest extends HackTest {
 
-  public static function provideSort(): vec<(Traversable<mixed>, ?(function(nothing, nothing): int), keyset<arraykey>)> {
+  public static function provideSort(): vec<(Traversable<arraykey>, ?(function(nothing, nothing): int), keyset<arraykey>)> {
     return vec[
       tuple(
         vec['the', 'quick', 'brown', 'fox'],

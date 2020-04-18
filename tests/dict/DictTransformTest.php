@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictTransformTest extends HackTest {
 
-  public static function provideTestChunk(): vec<(KeyedTraversable<mixed, mixed>, int, vec<dict<arraykey, mixed>>)> {
+  public static function provideTestChunk(): vec<(KeyedTraversable<arraykey, mixed>, int, vec<dict<arraykey, mixed>>)> {
     return vec[
       tuple(
         Map {},
@@ -61,7 +61,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\chunk($traversable, $size))->toEqual($expected);
   }
 
-  public static function provideTestCountValues(): vec<(Traversable<mixed>, dict<arraykey, int>)> {
+  public static function provideTestCountValues(): vec<(Traversable<arraykey>, dict<arraykey, int>)> {
     return vec[
       tuple(
         varray[0, '0', 1, 3, 4, 1, 1, 3, '1'],
@@ -96,7 +96,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\count_values($values))->toEqual($expected);
   }
 
-  public static function provideTestFillKeys(): vec<(Traversable<mixed>, mixed, dict<arraykey, mixed>)> {
+  public static function provideTestFillKeys(): vec<(Traversable<arraykey>, mixed, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         darray[],
@@ -211,7 +211,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\flatten($traversables))->toEqual($expected);
   }
 
-  public static function provideTestFlip(): vec<(KeyedTraversable<mixed, mixed>, dict<arraykey, mixed>)> {
+  public static function provideTestFlip(): vec<(KeyedTraversable<mixed, arraykey>, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         darray[],
@@ -251,7 +251,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\flip($traversable))->toEqual($expected);
   }
 
-  public static function provideTestFromKeys(): vec<(Traversable<mixed>, (function(nothing): mixed), dict<arraykey, mixed>)> {
+  public static function provideTestFromKeys(): vec<(Traversable<arraykey>, (function(nothing): mixed), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Set {},
@@ -384,8 +384,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\from_values($values, $key_func))->toEqual($expected);
   }
 
-  // ?nonnull === mixed for DataProviderTypesLinter
-  public static function provideTestGroupBy(): vec<(Traversable<mixed>, (function(nothing): ?nonnull), dict<arraykey, vec<mixed>>)> {
+  public static function provideTestGroupBy(): vec<(Traversable<mixed>, (function(nothing): ?arraykey), dict<arraykey, vec<mixed>>)> {
     return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'],
@@ -420,7 +419,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\group_by($values, $key_func))->toEqual($expected);
   }
 
-  public static function provideTestMap(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): mixed), dict<arraykey, mixed>)> {
+  public static function provideTestMap(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): mixed), dict<arraykey, mixed>)> {
 
     $doubler = $x ==> $x * 2;
     return vec[
@@ -553,7 +552,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\map_keys($traversable, $key_func))->toEqual($expected);
   }
 
-  public static function provideTestMapWithKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing, nothing): mixed), dict<arraykey, mixed>)> {
+  public static function provideTestMapWithKey(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing, nothing): mixed), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         darray[],

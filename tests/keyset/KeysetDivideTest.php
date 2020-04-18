@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetDivideTest extends HackTest {
 
-  public static function providePartition(): vec<(Traversable<mixed>, (function(nothing): bool), (keyset<arraykey>, keyset<arraykey>))> {
+  public static function providePartition(): vec<(Traversable<arraykey>, (function(nothing): bool), (keyset<arraykey>, keyset<arraykey>))> {
     return vec[
       tuple(
         Vec\range(1, 10),

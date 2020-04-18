@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictSelectTest extends HackTest {
 
-  public static function provideTestDiffByKey(): vec<(KeyedTraversable<mixed, mixed>, KeyedTraversable<mixed, mixed>, Container<KeyedContainer<arraykey, mixed>>, dict<arraykey, mixed>)> {
+  public static function provideTestDiffByKey(): vec<(KeyedTraversable<arraykey, mixed>, KeyedTraversable<arraykey, mixed>, Container<KeyedContainer<arraykey, mixed>>, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         darray[],
@@ -57,7 +57,7 @@ final class DictSelectTest extends HackTest {
     expect(Dict\diff_by_key($first, $second, ...$rest))->toEqual($expected);
   }
 
-  public static function provideDrop(): vec<(KeyedTraversable<mixed, mixed>, int, dict<arraykey, mixed>)> {
+  public static function provideDrop(): vec<(KeyedTraversable<arraykey, mixed>, int, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         dict[],
@@ -109,7 +109,7 @@ final class DictSelectTest extends HackTest {
     expect(Dict\drop($traversable, $n))->toEqual($expected);
   }
 
-  public static function provideTestFilter(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), dict<arraykey, mixed>)> {
+  public static function provideTestFilter(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): bool), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         dict[],
@@ -158,7 +158,7 @@ final class DictSelectTest extends HackTest {
     expect(Dict\filter($traversable, $value_predicate))->toEqual($expected);
   }
 
-  public static function provideTestFilterWithKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing, nothing): bool), dict<arraykey, mixed>)> {
+  public static function provideTestFilterWithKey(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing, nothing): bool), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         dict[],
@@ -226,7 +226,7 @@ final class DictSelectTest extends HackTest {
     ]))->toEqual(dict[3 => 3, 4 => 5, 40 => 40, 70 => 'win!']);
   }
 
-  public static function provideTestFilterKeys(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), dict<arraykey, mixed>)> {
+  public static function provideTestFilterKeys(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): bool), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         dict[],
@@ -277,7 +277,7 @@ final class DictSelectTest extends HackTest {
   }
 
   // ?nonnull === mixed, because DataProviderTypesLinter
-  public static function provideTestFilterNulls(): vec<(KeyedTraversable<mixed, ?nonnull>, dict<arraykey, mixed>)> {
+  public static function provideTestFilterNulls(): vec<(KeyedTraversable<arraykey, ?nonnull>, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         darray[
@@ -378,7 +378,7 @@ final class DictSelectTest extends HackTest {
     expect(Dict\select_keys($container, $keys))->toEqual($expected);
   }
 
-  public static function provideTake(): vec<(KeyedTraversable<mixed, mixed>, int, dict<arraykey, mixed>)> {
+  public static function provideTake(): vec<(KeyedTraversable<arraykey, mixed>, int, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         dict[],
@@ -441,7 +441,7 @@ final class DictSelectTest extends HackTest {
     expect(Dict\take($iter, 2))->toEqual(dict[4=>4]);
   }
 
-  public static function provideTestUnique(): vec<(KeyedTraversable<mixed, mixed>, dict<arraykey, mixed>)> {
+  public static function provideTestUnique(): vec<(KeyedTraversable<arraykey, mixed>, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Map {

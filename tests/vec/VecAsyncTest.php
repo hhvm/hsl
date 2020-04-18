@@ -57,7 +57,7 @@ final class VecAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenFilter(): vec<(Container<mixed>, (function(nothing): Awaitable<mixed>), vec<mixed>)> {
+  public static function provideTestGenFilter(): vec<(Container<mixed>, (function(nothing): Awaitable<bool>), vec<mixed>)> {
     return vec[
       tuple(
         darray[

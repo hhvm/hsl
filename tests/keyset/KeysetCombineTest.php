@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetCombineTest extends HackTest {
 
-  public static function provideTestUnion(): vec<(Traversable<mixed>, Traversable<Container<mixed>>, keyset<arraykey>)> {
+  public static function provideTestUnion(): vec<(Traversable<arraykey>, Traversable<Container<arraykey>>, keyset<arraykey>)> {
     return vec[
       tuple(
         varray[],

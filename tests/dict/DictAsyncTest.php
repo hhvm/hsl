@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictAsyncTest extends HackTest {
 
-  public static function provideTestGen(): vec<(KeyedTraversable<mixed, Awaitable<mixed>>, dict<arraykey, mixed>)> {
+  public static function provideTestGen(): vec<(KeyedTraversable<arraykey, Awaitable<mixed>>, dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Vector {
@@ -229,7 +229,7 @@ final class DictAsyncTest extends HackTest {
     expect($actual)->toEqual($expected);
   }
 
-  public static function provideTestGenMap(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
+  public static function provideTestGenMap(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         varray[],
@@ -287,7 +287,7 @@ final class DictAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenMapWithKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing, nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
+  public static function provideTestGenMapWithKey(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing, nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         varray[],

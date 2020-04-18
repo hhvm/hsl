@@ -16,7 +16,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecSelectTest extends HackTest {
 
-  public static function provideTestDiff(): vec<(Traversable<mixed>, Container<Container<mixed>>, vec<mixed>)> {
+  public static function provideTestDiff(): vec<(Traversable<arraykey>, Container<Container<arraykey>>, vec<arraykey>)> {
     return vec[
       tuple(
         varray[],
@@ -522,7 +522,7 @@ final class VecSelectTest extends HackTest {
     expect(Vec\take($iter, 2))->toEqual(vec[4]);
   }
 
-  public static function provideTestUnique(): vec<(Traversable<mixed>, vec<mixed>)> {
+  public static function provideTestUnique(): vec<(Traversable<arraykey>, vec<arraykey>)> {
     return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'],
@@ -545,7 +545,7 @@ final class VecSelectTest extends HackTest {
     expect(Vec\unique($traversable))->toEqual($expected);
   }
 
-  public static function provideTestUniqueBy(): vec<(Traversable<mixed>, (function(nothing): mixed), vec<mixed>)> {
+  public static function provideTestUniqueBy(): vec<(Traversable<mixed>, (function(nothing): arraykey), vec<mixed>)> {
     return vec[
       tuple(
         varray[
