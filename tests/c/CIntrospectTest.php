@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class CIntrospectTest extends HackTest {
 
-  public static function provideTestAny(): varray<mixed> {
-    return varray[
+  public static function provideTestAny(): vec<(Traversable<mixed>, (function(nothing): bool), bool)> {
+    return vec[
       tuple(
         Vector {2, 4, 6, 8, 9, 10, 12},
         $v ==> $v % 2 === 1,
@@ -39,8 +39,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\any($traversable, $predicate))->toEqual($expected);
   }
 
-  public static function provideTestAnyWithoutPredicate(): varray<mixed> {
-    return varray[
+  public static function provideTestAnyWithoutPredicate(): vec<(Traversable<mixed>, bool)> {
+    return vec[
       tuple(
         varray[],
         false,
@@ -67,8 +67,8 @@ final class CIntrospectTest extends HackTest {
   }
 
   public static function provideTestContains(
-  ): varray<(Traversable<mixed>, mixed, bool)> {
-    return varray[
+  ): vec<(Traversable<mixed>, mixed, bool)> {
+    return vec[
       tuple(
         vec[1, 2, 3, 4, 5],
         3,
@@ -131,8 +131,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\contains($traversable, $value))->toEqual($expected);
   }
 
-  public static function provideTestContainsKey(): varray<mixed> {
-    return varray[
+  public static function provideTestContainsKey(): vec<(KeyedContainer<arraykey, mixed>, arraykey, bool)> {
+    return vec[
       tuple(
         darray[3 => 3],
         3,
@@ -175,8 +175,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\contains_key($container, $key))->toEqual($expected);
   }
 
-  public static function provideTestCount(): varray<mixed> {
-    return varray[
+  public static function provideTestCount(): vec<(Container<mixed>, int)> {
+    return vec[
       tuple(varray[], 0),
       tuple(Vec\range(1, 10), 10),
       tuple(Set {1, 2}, 2),
@@ -196,8 +196,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\count($container))->toEqual($expected);
   }
 
-  public static function provideTestEvery(): varray<mixed> {
-    return varray[
+  public static function provideTestEvery(): vec<(Traversable<mixed>, (function(nothing): bool), bool)> {
+    return vec[
       tuple(
         Vector {2, 4, 6, 8, 9, 10, 12},
         $v ==> $v % 2 === 0,
@@ -220,8 +220,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\every($traversable, $predicate))->toEqual($expected);
   }
 
-  public static function provideTestEveryWithoutPredicate(): varray<mixed> {
-    return varray[
+  public static function provideTestEveryWithoutPredicate(): vec<(Traversable<mixed>, bool)> {
+    return vec[
       tuple(
         varray[],
         true,
@@ -241,8 +241,8 @@ final class CIntrospectTest extends HackTest {
     expect(C\every($traversable))->toEqual($expected);
   }
 
-  public static function provideTestIsEmpty(): varray<mixed> {
-    return varray[
+  public static function provideTestIsEmpty(): vec<(Container<mixed>, bool)> {
+    return vec[
       tuple(varray[], true),
       tuple(varray[1], false),
       tuple(darray['foo' => 'bar'], false),

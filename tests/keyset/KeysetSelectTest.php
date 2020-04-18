@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetSelectTest extends HackTest {
 
-  public static function provideTestDiff(): varray<mixed> {
-    return varray[
+  public static function provideTestDiff(): vec<(Traversable<mixed>, Traversable<mixed>, Container<Container<mixed>>, keyset<arraykey>)> {
+    return vec[
       tuple(
         varray[],
         varray[],
@@ -34,7 +34,7 @@ final class KeysetSelectTest extends HackTest {
         Set {1, 3, 5},
         varray[
           Map {'foo' => 7, 'bar' => 9},
-          HackLibTestTraversables::getIterator(Vec\range(11, 30)),
+          Vec\range(11, 30),
         ],
         keyset[0, 2, 4, 6, 8, 10],
       ),
@@ -52,8 +52,8 @@ final class KeysetSelectTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideDrop(): varray<mixed> {
-    return varray[
+  public static function provideDrop(): vec<(Traversable<mixed>, int, keyset<arraykey>)> {
+    return vec[
       tuple(
         vec[],
         5,
@@ -91,8 +91,8 @@ final class KeysetSelectTest extends HackTest {
     expect(Keyset\drop($traversable, $n))->toEqual($expected);
   }
 
-  public static function provideTestFilter(): varray<mixed> {
-    return varray[
+  public static function provideTestFilter(): vec<(Traversable<mixed>, (function(nothing): bool), keyset<arraykey>)> {
+    return vec[
       tuple(
         varray[],
         $x ==> true,
@@ -142,8 +142,9 @@ final class KeysetSelectTest extends HackTest {
     )->toEqual(keyset[3, 5, 40, 'win!']);
   }
 
-  public static function provideTestFilterNulls(): varray<mixed> {
-    return varray[
+  // ?nonnull === mixed for DataProviderTypesLinter
+  public static function provideTestFilterNulls(): vec<(Traversable<?nonnull>, keyset<arraykey>)> {
+    return vec[
       tuple(
         varray[null, null, null],
         keyset[],
@@ -184,8 +185,8 @@ final class KeysetSelectTest extends HackTest {
     expect(Keyset\filter_nulls($traversable))->toEqual($expected);
   }
 
-  public static function provideTestFilterWithKey(): darray<string, mixed> {
-    return darray[
+  public static function provideTestFilterWithKey(): dict<string, (KeyedTraversable<mixed, mixed>, (function(nothing, nothing): bool), keyset<arraykey>)> {
+    return dict[
       'All elements selected' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
         ($key, $value) ==> true,
@@ -207,7 +208,7 @@ final class KeysetSelectTest extends HackTest {
         keyset['fox'],
       ),
       'elements selected starting with "f" 2' => tuple(
-        HackLibTestTraversables::getIterator(
+        HackLibTestTraversables::getKeyedIterator(
           vec['the', 'quick', 'brown', 'fox', 'jumped']
         ),
         ($key, $value) ==> Str\starts_with($value, 'f'),
@@ -226,8 +227,8 @@ final class KeysetSelectTest extends HackTest {
     expect($result)->toEqual($expected);
   }
 
-  public static function provideTestKeys(): varray<mixed> {
-    return varray[
+  public static function provideTestKeys(): vec<(KeyedTraversable<mixed, mixed>, keyset<arraykey>)> {
+    return vec[
       tuple(
         Map {},
         keyset[],
@@ -261,8 +262,8 @@ final class KeysetSelectTest extends HackTest {
     expect(Keyset\keys($traversable))->toEqual($expected);
   }
 
-  public static function provideTestIntersect(): varray<mixed> {
-    return varray[
+  public static function provideTestIntersect(): vec<(Traversable<mixed>, Traversable<mixed>, Container<Container<mixed>>, keyset<arraykey>)> {
+    return vec[
       tuple(
         Vec\range(0, 1000),
         varray[],
@@ -297,7 +298,7 @@ final class KeysetSelectTest extends HackTest {
         new Vector(Vec\range(1, 100)),
         Map {1 => 2, 39 => 40},
         varray[
-          HackLibTestTraversables::getIterator(Vec\range(0, 40)),
+          Vec\range(0, 40),
         ],
         keyset[2, 40],
       ),
@@ -330,8 +331,8 @@ final class KeysetSelectTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideTake(): varray<mixed> {
-    return varray[
+  public static function provideTake(): vec<(Traversable<mixed>, int, keyset<arraykey>)> {
+    return vec[
       tuple(
         keyset[],
         5,

@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class StrFormatTest extends HackTest {
 
-  public static function provideFormat(): varray<mixed> {
-    return varray[
+  public static function provideFormat(): vec<(string, string)> {
+    return vec[
       tuple(
         Str\format('No format specifiers'),
         'No format specifiers',

@@ -29,10 +29,10 @@ final class PollTest extends HackTest {
   }
 
   public static function provideTestInputs(
-  ): varray<(varray<Awaitable<int>>, varray<int>, bool)> {
+  ): vec<(varray<Awaitable<int>>, varray<int>, bool)> {
     $block = async (int $prio) ==> await RescheduleWaitHandle::create(0, $prio);
 
-    return varray[
+    return vec[
       // Empty
       tuple(
         varray[],

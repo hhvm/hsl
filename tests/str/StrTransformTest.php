@@ -16,8 +16,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class StrTransformTest extends HackTest {
 
-  public static function provideCapitalize(): varray<mixed> {
-    return varray[
+  public static function provideCapitalize(): vec<(string, string)> {
+    return vec[
       tuple('foo', 'Foo'),
       tuple('Foo', 'Foo'),
       tuple('123', '123'),
@@ -33,8 +33,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\capitalize($string))->toEqual($expected);
   }
 
-  public static function provideCapitalizeWords(): varray<mixed> {
-    return varray[
+  public static function provideCapitalizeWords(): vec<(string, string)> {
+    return vec[
       tuple(
         'the quick brown Fox',
         'The Quick Brown Fox',
@@ -54,8 +54,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\capitalize_words($string))->toEqual($expected);
   }
 
-  public static function provideCapitalizeWordsCustomDelimiter(): varray<mixed> {
-    return varray[
+  public static function provideCapitalizeWordsCustomDelimiter(): vec<(string, string, string)> {
+    return vec[
       tuple(
         'the_quick brown_Fox',
         '_',
@@ -83,8 +83,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\capitalize_words($string, $delimiter))->toEqual($expected);
   }
 
-  public static function provideFormatNumber(): varray<mixed> {
-    return varray[
+  public static function provideFormatNumber(): vec<(num, int, string, string, string)> {
+    return vec[
       tuple(
         0,
         0,
@@ -139,8 +139,8 @@ final class StrTransformTest extends HackTest {
     ))->toEqual($expected);
   }
 
-  public static function provideLowercase(): varray<mixed> {
-    return varray[
+  public static function provideLowercase(): vec<(string, string)> {
+    return vec[
       tuple('', ''),
       tuple('hello world', 'hello world'),
       tuple('Hello World', 'hello world'),
@@ -156,8 +156,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\lowercase($string))->toEqual($expected);
   }
 
-  public static function providePadLeft(): varray<mixed> {
-    return varray[
+  public static function providePadLeft(): vec<(string, int, string, string)> {
+    return vec[
       tuple('foo', 5, ' ', '  foo'),
       tuple('foo', 5, 'blerg', 'blfoo'),
       tuple('foobar', 1, '0', 'foobar'),
@@ -177,8 +177,8 @@ final class StrTransformTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function providePadRight(): varray<mixed> {
-    return varray[
+  public static function providePadRight(): vec<(string, int, string, string)> {
+    return vec[
       tuple('foo', 5, ' ', 'foo  '),
       tuple('foo', 5, 'blerg', 'foobl'),
       tuple('foobar', 1, '0', 'foobar'),
@@ -198,8 +198,8 @@ final class StrTransformTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideRepeat(): varray<mixed> {
-    return varray[
+  public static function provideRepeat(): vec<(string, int ,string)> {
+    return vec[
       tuple('foo', 3, 'foofoofoo'),
       tuple('foo', 0, ''),
       tuple('', 1000000, ''),
@@ -215,8 +215,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\repeat($string, $multiplier))->toEqual($expected);
   }
 
-  public static function provideReplace(): varray<mixed> {
-    return varray[
+  public static function provideReplace(): vec<(string, string, string, string)> {
+    return vec[
       tuple(
         'goodbye world',
         ' ',
@@ -260,8 +260,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\replace($haystack, $needle, $replacement))->toEqual($expected);
   }
 
-  public static function provideReplaceCI(): varray<mixed> {
-    return varray[
+  public static function provideReplaceCI(): vec<(string, string, string, string)> {
+    return vec[
       tuple(
         'goodbye world',
         ' ',
@@ -306,8 +306,8 @@ final class StrTransformTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideReplaceEvery(): varray<mixed> {
-    return varray[
+  public static function provideReplaceEvery(): vec<(string, KeyedContainer<string, string>, string)> {
+    return vec[
       tuple(
         'hello world',
         dict[
@@ -350,8 +350,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\replace_every($haystack, $replacements))->toEqual($expected);
   }
 
-  public static function provideReplaceEveryCI(): varray<mixed> {
-    return varray[
+  public static function provideReplaceEveryCI(): vec<(string, KeyedContainer<string, string>, string)> {
+    return vec[
       tuple(
         'Hello world',
         dict[
@@ -400,8 +400,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\reverse($input))->toEqual($expected);
   }
 
-  public static function provideSplice(): varray<mixed> {
-    return varray[
+  public static function provideSplice(): vec<(string, string, int, ?int, string)> {
+    return vec[
       tuple(
         '',
         '',
@@ -473,8 +473,8 @@ final class StrTransformTest extends HackTest {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideToInt(): varray<mixed> {
-    return varray[
+  public static function provideToInt(): vec<(string, ?int)> {
+    return vec[
       tuple('', null),
       tuple('0', 0),
       tuple('8675309', 8675309),
@@ -492,8 +492,8 @@ final class StrTransformTest extends HackTest {
     expect(Str\to_int($string))->toEqual($expected);
   }
 
-  public static function provideUppercase(): varray<mixed> {
-    return varray[
+  public static function provideUppercase(): vec<(string, string)> {
+    return vec[
       tuple('', ''),
       tuple('hello world', 'HELLO WORLD'),
       tuple('Hello World', 'HELLO WORLD'),

@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictAsyncTest extends HackTest {
 
-  public static function provideTestGen(): varray<mixed> {
-    return varray[
+  public static function provideTestGen(): vec<(KeyedTraversable<mixed, Awaitable<mixed>>, dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         Vector {
           async {return 'the';},
@@ -66,8 +66,8 @@ final class DictAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenFromKeys(): varray<mixed> {
-    return varray[
+  public static function provideTestGenFromKeys(): vec<(Traversable<mixed>, (function(nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
         async ($word) ==> Str\length($word),
@@ -123,8 +123,8 @@ final class DictAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenFilter(): varray<mixed> {
-    return varray[
+  public static function provideTestGenFilter(): vec<(KeyedContainer<arraykey, mixed>, (function(nothing): Awaitable<bool>), dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         darray[
           2 => 'two',
@@ -177,8 +177,8 @@ final class DictAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenFilterWithKey(): varray<mixed> {
-    return varray[
+  public static function provideTestGenFilterWithKey(): vec<(KeyedContainer<arraykey, mixed>, (function(nothing, nothing): Awaitable<bool>), dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         darray[
           2 => 'two',
@@ -229,8 +229,8 @@ final class DictAsyncTest extends HackTest {
     expect($actual)->toEqual($expected);
   }
 
-  public static function provideTestGenMap(): varray<mixed> {
-    return varray[
+  public static function provideTestGenMap(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         varray[],
         $x ==> $x,
@@ -260,7 +260,7 @@ final class DictAsyncTest extends HackTest {
         ],
       ),
       tuple(
-        HackLibTestTraversables::getIterator(
+        HackLibTestTraversables::getKeyedIterator(
           varray['the', 'quick', 'brown', 'fox'],
         ),
         async ($word) ==> Str\reverse($word),
@@ -287,8 +287,8 @@ final class DictAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenMapWithKey(): varray<mixed> {
-    return varray[
+  public static function provideTestGenMapWithKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing, nothing): Awaitable<mixed>), dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         varray[],
         async ($a, $b) ==> null,

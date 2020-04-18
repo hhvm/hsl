@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictDivideTest extends HackTest {
 
-  public static function providePartition(): varray<mixed> {
-    return varray[
+  public static function providePartition(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), (dict<arraykey, mixed>, dict<arraykey, mixed>))> {
+    return vec[
       tuple(
         Dict\associate(Vec\range(1, 10), Vec\range(11, 20)),
         $val ==> $val % 2 === 0,
@@ -60,8 +60,8 @@ final class DictDivideTest extends HackTest {
     ];
   }
 
-  public static function providePartitionWithKey(): varray<mixed> {
-    return varray[
+  public static function providePartitionWithKey(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing, nothing): bool), (dict<arraykey, mixed>, dict<arraykey, mixed>))> {
+    return vec[
       tuple(
         Dict\associate(Vec\range(1, 10), Vec\range(11, 20)),
         ($key, $val) ==> $val >= 19 || $key <= 3,

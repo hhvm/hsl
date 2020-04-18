@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecDivideTest extends HackTest {
 
-  public static function providePartition(): varray<mixed> {
-    return varray[
+  public static function providePartition(): vec<(Traversable<mixed>, (function(nothing): bool), (vec<mixed>, vec<mixed>))> {
+    return vec[
       tuple(
         Vec\range(1, 10),
         $n ==> $n % 2 === 0,

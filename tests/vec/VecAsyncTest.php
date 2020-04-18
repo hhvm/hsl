@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecAsyncTest extends HackTest {
 
-  public static function provideTestGen(): varray<mixed> {
-    return varray[
+  public static function provideTestGen(): vec<(Traversable<Awaitable<mixed>>, vec<mixed>)> {
+    return vec[
       tuple(
         Vector {
           async {return 'the';},
@@ -57,8 +57,8 @@ final class VecAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenFilter(): varray<mixed> {
-    return varray[
+  public static function provideTestGenFilter(): vec<(Container<mixed>, (function(nothing): Awaitable<mixed>), vec<mixed>)> {
+    return vec[
       tuple(
         darray[
           2 => 'two',
@@ -90,8 +90,8 @@ final class VecAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenMap(): varray<mixed> {
-    return varray[
+  public static function provideTestGenMap(): vec<(Traversable<mixed>, (function(nothing): Awaitable<mixed>), vec<mixed>)> {
+    return vec[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
         async ($word) ==> Str\reverse($word),

@@ -16,8 +16,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecTransformTest extends HackTest {
 
-  public static function provideTestChunk(): varray<mixed> {
-    return varray[
+  public static function provideTestChunk(): vec<(Traversable<mixed>, int, vec<vec<mixed>>)> {
+    return vec[
       tuple(
         Map {},
         10,
@@ -54,8 +54,8 @@ final class VecTransformTest extends HackTest {
     expect(Vec\chunk($traversable, $size))->toEqual($expected);
   }
 
-  public static function provideTestFill(): varray<mixed> {
-    return varray[
+  public static function provideTestFill(): vec<(int, mixed, vec<mixed>)> {
+    return vec[
       tuple(
         0,
         42,
@@ -90,8 +90,8 @@ final class VecTransformTest extends HackTest {
     expect(() ==> Vec\fill(-1, true))->toThrow(InvariantException::class);
   }
 
-  public static function provideTestFlatten(): varray<mixed> {
-    return varray[
+  public static function provideTestFlatten(): vec<(Traversable<Container<mixed>>, vec<mixed>)> {
+    return vec[
       tuple(
         varray[],
         vec[],
@@ -107,7 +107,7 @@ final class VecTransformTest extends HackTest {
           varray['the', 'quick'],
           Vector {'brown', 'fox'},
           Map {'jumped' => 'over'},
-          HackLibTestTraversables::getIterator(varray['the', 'lazy', 'dog']),
+          varray['the', 'lazy', 'dog'],
         ],
         vec['the', 'quick', 'brown', 'fox', 'over', 'the', 'lazy', 'dog'],
       ),
@@ -122,9 +122,9 @@ final class VecTransformTest extends HackTest {
     expect(Vec\flatten($traversables))->toEqual($expected);
   }
 
-  public static function provideTestMap(): varray<mixed> {
+  public static function provideTestMap(): vec<(Traversable<mixed>, (function(nothing): mixed), vec<mixed>)> {
     $doubler = $x ==> $x * 2;
-    return varray[
+    return vec[
       tuple(
         varray[],
         $doubler,
@@ -201,8 +201,8 @@ final class VecTransformTest extends HackTest {
     expect(Vec\map($traversable, $value_func))->toEqual($expected);
   }
 
-  public static function provideTestMapWithKey(): varray<mixed> {
-    return varray[
+  public static function provideTestMapWithKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing, nothing): mixed), vec<mixed>)> {
+    return vec[
       tuple(
         varray[],
         ($a, $b) ==> null,

@@ -8,16 +8,16 @@
  *
  */
 
-use namespace HH\Lib\{C, Math, Str, Vec};
-use function \Facebook\FBExpect\expect; // @oss-enable
+use namespace HH\Lib\{C, Str, Vec};
+use function Facebook\FBExpect\expect; // @oss-enable
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 // @oss-disable: <<Oncalls('hack')>>
 final class VecOrderTest extends HackTest {
 
-  public static function provideTestRange(): varray<mixed> {
-    return varray[
+  public static function provideTestRange(): vec<(num, num, ?num, vec<num>)> {
+    return vec[
       tuple(1, 10, null, vec[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
       tuple(1, 10, 1, vec[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
       tuple(1, 10, 2, vec[1, 3, 5, 7, 9]),
@@ -77,8 +77,8 @@ final class VecOrderTest extends HackTest {
     }
   }
 
-  public static function provideTestRangeException(): varray<mixed> {
-    return varray[
+  public static function provideTestRangeException(): vec<(int, int, int)> {
+    return vec[
       tuple(0, 1, 0),
       tuple(-10, 10, -30),
     ];
@@ -94,8 +94,8 @@ final class VecOrderTest extends HackTest {
       ->toThrow(InvariantException::class);
   }
 
-  public static function provideTestReverse(): varray<mixed> {
-    return varray[
+  public static function provideTestReverse(): vec<(Traversable<mixed>, vec<mixed>)> {
+    return vec[
       tuple(
         vec[1, 2, 3, 4, 5],
         vec[5, 4, 3, 2, 1],
@@ -119,23 +119,23 @@ final class VecOrderTest extends HackTest {
     expect(Vec\reverse($traversable))->toEqual($expected);
   }
 
-  public static function provideTestShuffle(): varray<varray<(function(): Traversable<int>)>> {
-    return varray[
-      varray[
+  public static function provideTestShuffle(): vec<((function(): Traversable<mixed>))> {
+    return vec[
+      tuple(
         () ==> vec[8, 6, 7, 5, 3, 0, 9],
-      ],
-      varray[
+      ),
+      tuple(
         () ==> vec[0, 1, 2, 4, 5, 6, 7],
-      ],
-      varray[
+      ),
+      tuple(
         () ==> HackLibTestTraversables::getIterator(varray[8, 6, 7, 5, 3, 0, 9]),
-      ],
+      ),
     ];
   }
 
   <<DataProvider('provideTestShuffle')>>
   public function testShuffle(
-    (function(): Traversable<int>) $input,
+    (function(): Traversable<mixed>) $input,
   ): void {
     for ($i = 0; $i < 1000; $i++) {
       $shuffled1 = Vec\shuffle($input());
@@ -159,8 +159,8 @@ final class VecOrderTest extends HackTest {
     self::fail('We shuffled 1000 times and the value never changed');
   }
 
-  public static function provideTestSort(): varray<mixed> {
-    return varray[
+  public static function provideTestSort(): vec<(Traversable<mixed>, ?(function(nothing, nothing): int), vec<mixed>)> {
+    return vec[
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
         null,
@@ -190,8 +190,8 @@ final class VecOrderTest extends HackTest {
     expect(Vec\sort($traversable, $comparator))->toEqual($expected);
   }
 
-  public static function provideTestSortBy(): varray<mixed> {
-    return varray[
+  public static function provideTestSortBy(): vec<(Traversable<mixed>, (function(nothing): mixed), ?(function(nothing, nothing): int), vec<mixed>)> {
+    return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped'],
         $s ==> Str\reverse($s),

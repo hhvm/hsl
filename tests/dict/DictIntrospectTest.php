@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictIntrospectTest extends HackTest {
 
-  public static function provideTestEqual(): varray<mixed> {
-    return varray[
+  public static function provideTestEqual(): vec<(dict<arraykey, mixed>, dict<arraykey, mixed>, bool)> {
+    return vec[
       tuple(
         dict[1 => 1, 2 => 2, 3 => 3],
         dict[1 => 1, 2 => 2, 3 => 3],

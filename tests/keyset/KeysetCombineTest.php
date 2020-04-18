@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetCombineTest extends HackTest {
 
-  public static function provideTestUnion(): varray<mixed> {
-    return varray[
+  public static function provideTestUnion(): vec<(Traversable<mixed>, Traversable<Container<mixed>>, keyset<arraykey>)> {
+    return vec[
       tuple(
         varray[],
         varray[
@@ -28,12 +28,12 @@ final class KeysetCombineTest extends HackTest {
         keyset[1, 2, 3],
         varray[
           Vector {'the', 'quick', 'brown'},
-          HackLibTestTraversables::getKeyedIterator(darray[
+          darray[
             'the' => 'the',
             'quick' => 'quick',
             'brown' => 'brown',
             'fox' => 'jumped',
-          ]),
+          ],
         ],
         keyset[1, 2, 3, 'the', 'quick', 'brown', 'jumped'],
       ),
@@ -43,7 +43,7 @@ final class KeysetCombineTest extends HackTest {
   <<DataProvider('provideTestUnion')>>
   public function testUnion<Tv as arraykey>(
     Traversable<Tv> $first,
-    Container<Container<Tv>> $rest,
+    Traversable<Container<Tv>> $rest,
     keyset<Tv> $expected,
   ): void {
     expect(Keyset\union($first, ...$rest))->toEqual($expected);

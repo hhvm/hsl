@@ -16,8 +16,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecSelectTest extends HackTest {
 
-  public static function provideTestDiff(): varray<mixed> {
-    return varray[
+  public static function provideTestDiff(): vec<(Traversable<mixed>, Container<Container<mixed>>, vec<mixed>)> {
+    return vec[
       tuple(
         varray[],
         varray[
@@ -30,7 +30,7 @@ final class VecSelectTest extends HackTest {
         varray[
           Set {1, 3, 5},
           Map {'foo' => 7, 'bar' => 9},
-          HackLibTestTraversables::getIterator(Vec\range(11, 30)),
+          Vec\range(11, 30),
         ],
         vec[0, 2, 4, 6, 8, 10],
       ),
@@ -50,8 +50,8 @@ final class VecSelectTest extends HackTest {
     ))->toEqual($expected);
   }
 
-  public static function provideTestDiffBy(): varray<mixed> {
-    return varray[
+  public static function provideTestDiffBy(): vec<(Traversable<mixed>, Traversable<mixed>, (function(nothing): arraykey), vec<mixed>)> {
+    return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox'],
         varray[],
@@ -86,8 +86,8 @@ final class VecSelectTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideDrop(): varray<mixed> {
-    return varray[
+  public static function provideDrop(): vec<(Traversable<mixed>, int, vec<mixed>)> {
+    return vec[
       tuple(
         vec[],
         5,
@@ -125,8 +125,8 @@ final class VecSelectTest extends HackTest {
     expect(Vec\drop($traversable, $n))->toEqual($expected);
   }
 
-  public static function provideTestFilter(): varray<mixed> {
-    return varray[
+  public static function provideTestFilter(): vec<(Traversable<mixed>, (function(nothing): bool), vec<mixed>)> {
+    return vec[
       tuple(
         dict[],
         $x ==> true,
@@ -175,8 +175,8 @@ final class VecSelectTest extends HackTest {
     ]))->toEqual(vec[3, 5, 40, 'win!']);
   }
 
-  public static function provideTestFilterNulls(): varray<mixed> {
-    return varray[
+  public static function provideTestFilterNulls(): vec<(Traversable<?nonnull>, vec<nonnull>)> {
+    return vec[
       tuple(
         varray[null, null, null],
         vec[],
@@ -218,8 +218,8 @@ final class VecSelectTest extends HackTest {
     expect(Vec\filter_nulls($traversable))->toEqual($expected);
   }
 
-  public static function provideTestFilterWithKey(): darray<string, mixed> {
-    return darray[
+  public static function provideTestFilterWithKey(): dict<string, (KeyedTraversable<mixed, mixed>, (function(nothing, nothing): bool), vec<mixed>)> {
+    return dict[
       'All elements selected' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
         ($key, $value) ==> true,
@@ -241,7 +241,7 @@ final class VecSelectTest extends HackTest {
         vec['fox'],
       ),
       'elements selected starting with "f" 2' => tuple(
-        HackLibTestTraversables::getIterator(
+        HackLibTestTraversables::getKeyedIterator(
           vec['the', 'quick', 'brown', 'fox', 'jumped']
         ),
         ($key, $value) ==> Str\starts_with($value, 'f'),
@@ -260,8 +260,8 @@ final class VecSelectTest extends HackTest {
     expect($result)->toEqual($expected);
   }
 
-  public static function provideTestIntersect(): varray<mixed> {
-    return varray[
+  public static function provideTestIntersect(): vec<(Traversable<mixed>, Traversable<mixed>, Container<Container<mixed>>, vec<mixed>)> {
+    return vec[
       tuple(
         Vec\range(0, 1000),
         varray[],
@@ -296,7 +296,7 @@ final class VecSelectTest extends HackTest {
         new Vector(Vec\range(1, 100)),
         Map {1 => 2, 39 => 40},
         varray[
-          HackLibTestTraversables::getIterator(Vec\range(0, 40)),
+          Vec\range(0, 40),
         ],
         vec[2, 40],
       ),
@@ -319,8 +319,8 @@ final class VecSelectTest extends HackTest {
     expect(Vec\intersect($first, $second, ...$rest))->toEqual($expected);
   }
 
-  public static function provideTestKeys(): varray<mixed> {
-    return varray[
+  public static function provideTestKeys(): vec<(KeyedTraversable<mixed, mixed>, vec<mixed>)> {
+    return vec[
       tuple(
         darray[
           'foo' => null,
@@ -367,8 +367,8 @@ final class VecSelectTest extends HackTest {
     expect(Vec\keys($traversable))->toEqual($expected);
   }
 
-  public static function provideTestSample(): varray<mixed> {
-    return varray[
+  public static function provideTestSample(): vec<(Traversable<mixed>, int)> {
+    return vec[
       tuple(
         Vec\range(0, 5),
         6,
@@ -399,8 +399,8 @@ final class VecSelectTest extends HackTest {
     expect(C\count(Vec\sample($iterator, 3)))->toEqual(3);
   }
 
-  public static function provideTestSlice(): varray<mixed> {
-    return varray[
+  public static function provideTestSlice(): vec<(Traversable<mixed>, int, ?int, vec<mixed>)> {
+    return vec[
       tuple(
         Vec\range(0, 5),
         6,
@@ -475,8 +475,8 @@ final class VecSelectTest extends HackTest {
     expect(() ==> Vec\slice(Vec\range(0, 5), 10, null))->notToThrow();
   }
 
-  public static function provideTake(): varray<mixed> {
-    return varray[
+  public static function provideTake(): vec<(Traversable<mixed>, int, vec<mixed>)> {
+    return vec[
       tuple(
         vec[],
         5,
@@ -522,8 +522,8 @@ final class VecSelectTest extends HackTest {
     expect(Vec\take($iter, 2))->toEqual(vec[4]);
   }
 
-  public static function provideTestUnique(): varray<mixed> {
-    return varray[
+  public static function provideTestUnique(): vec<(Traversable<mixed>, vec<mixed>)> {
+    return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'dog'],
         vec['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'dog'],
@@ -545,8 +545,8 @@ final class VecSelectTest extends HackTest {
     expect(Vec\unique($traversable))->toEqual($expected);
   }
 
-  public static function provideTestUniqueBy(): varray<mixed> {
-    return varray[
+  public static function provideTestUniqueBy(): vec<(Traversable<mixed>, (function(nothing): mixed), vec<mixed>)> {
+    return vec[
       tuple(
         varray[
           'plum',

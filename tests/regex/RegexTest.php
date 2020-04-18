@@ -244,7 +244,7 @@ final class RegexTest extends HackTest {
     string $haystack,
     Regex\Pattern<shape(...)> $pattern,
     int $offset,
-    vec<dict<arraykey, string>> $expected,
+    vec<darray<arraykey, string>> $expected,
   ): void {
     expect(Regex\every_match($haystack, $pattern, $offset))
       ->toEqual($expected);
@@ -308,8 +308,10 @@ final class RegexTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideReplaceWith(): varray<mixed> {
-    return varray[
+  /*HHAST_IGNORE_ERROR[DataProviderTypes]
+    nothing has fewer tokens than shape(...)*/
+  public static function provideReplaceWith(): vec<(string, Regex\Pattern<shape(...)>, (function(nothing): mixed), int, string)> {
+    return vec[
       /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('abc', re"#d#", $x ==> $x[0], 0, 'abc'),
       tuple('abcd', re"#d#", $x ==> 'xyz', 0, 'abcxyz'),

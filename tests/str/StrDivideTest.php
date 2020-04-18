@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class StrDivideTest extends HackTest {
 
-  public static function provideChunk(): varray<mixed> {
-    return varray[
+  public static function provideChunk(): vec<(string, int, vec<string>)> {
+    return vec[
       tuple(
         'hello',
         1,
@@ -44,8 +44,8 @@ final class StrDivideTest extends HackTest {
     expect(Str\chunk($string, $chunk_size))->toEqual($expected);
   }
 
-  public static function provideSplit(): varray<mixed> {
-    return varray[
+  public static function provideSplit(): vec<(string, string, ?int, vec<string>)> {
+    return vec[
       tuple(
         '',
         '',

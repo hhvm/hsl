@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetIntrospectTest extends HackTest {
 
-  public static function provideTestEqual(): varray<mixed> {
-    return varray[
+  public static function provideTestEqual(): vec<(keyset<arraykey>, keyset<arraykey>, bool)> {
+    return vec[
       tuple(
         keyset[1, 2, 3],
         keyset[1, 2, 3],

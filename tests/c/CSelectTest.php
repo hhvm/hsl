@@ -17,11 +17,11 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 final class CSelectTest extends HackTest {
 
   public static function provideTestFind(
-  ): vec<(Traversable<mixed>, (function(nothing): bool), mixed)> {
+  ): vec<(Traversable<mixed>, (function(nothing): bool), ?nonnull)> {
     return vec[
       tuple(
         varray[],
-        $x ==> $x,
+        $x ==> true,
         null,
       ),
       tuple(
@@ -84,8 +84,8 @@ final class CSelectTest extends HackTest {
       ->toThrow($expected);
   }
 
-  public static function provideTestFindKey(): varray<mixed> {
-    return varray[
+  public static function provideTestFindKey(): vec<(KeyedTraversable<arraykey, arraykey>, (function(nothing): bool), ?arraykey)> {
+    return vec[
       tuple(
         varray[],
         $x ==> $x,
@@ -117,8 +117,8 @@ final class CSelectTest extends HackTest {
     expect(C\find_key($traversable, $value_predicate))->toEqual($expected);
   }
 
-  public static function provideTestFirst(): varray<mixed> {
-    return varray[
+  public static function provideTestFirst<T>(): vec<(Traversable<mixed>, mixed)> {
+    return vec[
       tuple(
         varray[],
         null,
@@ -140,13 +140,13 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestFirst')>>
   public function testFirst<T>(
     Traversable<T> $traversable,
-    ?T $expected,
+    mixed $expected,
   ): void {
     expect(C\first($traversable))->toEqual($expected);
   }
 
-  public static function provideTestFirstx(): varray<mixed> {
-    return varray[
+  public static function provideTestFirstx(): vec<(Traversable<mixed>, mixed)> {
+    return vec[
       tuple(
         HackLibTestTraversables::getIterator(Vec\range(1, 5)),
         1,
@@ -251,7 +251,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestFirstKey')>>
   public function testFirstKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    ?Tk $expected,
+    mixed $expected,
   ): void {
     expect(C\first_key($traversable))->toEqual($expected);
   }
@@ -413,7 +413,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestLast')>>
   public function testLast<Tv>(
     Traversable<Tv> $traversable,
-    ?Tv $expected,
+    mixed $expected,
   ): void {
     expect(C\last($traversable))->toEqual($expected);
   }
@@ -578,7 +578,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestLastKey')>>
   public function testLastKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    ?Tk $expected,
+    mixed $expected,
   ): void {
     expect(C\last_key($traversable))->toEqual($expected);
   }
@@ -709,7 +709,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestNfirst')>>
   public function testNfirst<T>(
     ?Traversable<T> $traversable,
-    ?T $expected,
+    mixed $expected,
   ): void {
     expect(C\nfirst($traversable))->toEqual($expected);
   }

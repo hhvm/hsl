@@ -8,15 +8,15 @@
  *
  */
 
-use namespace HH\Lib\{Math, Str};
+use namespace HH\Lib\{Math, Str, Vec};
 use function Facebook\FBExpect\expect; // @oss-enable
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
 final class MathContainersTest extends HackTest {
 
-  public static function provideTestMax(): varray<mixed> {
-    return varray[
+  public static function provideTestMax(): vec<(Traversable<num>, ?num)> {
+    return vec[
       tuple(
         varray[],
         null,
@@ -42,8 +42,9 @@ final class MathContainersTest extends HackTest {
     expect(Math\max($numbers))->toEqual($expected);
   }
 
-  public static function provideTestMaxBy(): varray<mixed> {
-    return varray[
+  // ?nonnull === mixed for DataProviderTypesLinter
+  public static function provideTestMaxBy(): vec<(Traversable<mixed>, (function(nothing): num), ?nonnull)> {
+    return vec[
       tuple(
         varray[],
         $x ==> $x,
@@ -73,10 +74,10 @@ final class MathContainersTest extends HackTest {
     expect(Math\max_by($traversable, $num_func))->toEqual($expected);
   }
 
-  public static function provideTestMean(): varray<mixed> {
-    return varray[
+  public static function provideTestMean(): vec<(Container<num>, ?float)> {
+    return vec[
       tuple(vec[1.0, 2.0, 3, 4], 2.5),
-      tuple(vec[1, 1, 2], 4 / 3),
+      tuple(vec[1, 1, 2], (float)(4 / 3)),
       tuple(vec[-1, 1], 0.0),
       tuple(vec[Math\INT64_MAX,Math\INT64_MAX], (float)Math\INT64_MAX),
       tuple(vec[], null),
@@ -96,8 +97,8 @@ final class MathContainersTest extends HackTest {
     }
   }
 
-  public static function provideTestMedian(): varray<mixed> {
-    return varray[
+  public static function provideTestMedian(): vec<(Container<num>, ?float)> {
+    return vec[
       tuple(vec[], null),
       tuple(vec[1], 1.0),
       tuple(vec[1, 2], 1.5),
@@ -120,8 +121,8 @@ final class MathContainersTest extends HackTest {
     }
   }
 
-  public static function provideTestMin(): varray<mixed> {
-    return varray[
+  public static function provideTestMin(): vec<(Traversable<num>, ?num)> {
+    return vec[
       tuple(
         varray[],
         null,
@@ -151,8 +152,9 @@ final class MathContainersTest extends HackTest {
     expect(Math\min($traversable))->toEqual($expected);
   }
 
-  public static function provideTestMinBy(): varray<mixed> {
-    return varray[
+  // ?nonnull === mixed for DataProviderTypesLinter
+  public static function provideTestMinBy(): vec<(Traversable<mixed>, (function(nothing): num), ?nonnull)> {
+    return vec[
       tuple(
         varray[],
         $x ==> $x,
@@ -182,8 +184,8 @@ final class MathContainersTest extends HackTest {
     expect(Math\min_by($traversable, $num_func))->toEqual($expected);
   }
 
-  public static function provideTestSum(): varray<mixed> {
-    return varray[
+  public static function provideTestSum(): vec<(Traversable<int>, int)> {
+    return vec[
       tuple(
         Vector {},
         0,
@@ -193,9 +195,7 @@ final class MathContainersTest extends HackTest {
         8,
       ),
       tuple(
-        /* HH_FIXME[2049] __PHPStdLib */
-        /* HH_FIXME[4107] __PHPStdLib */
-        HackLibTestTraversables::getIterator(range(1, 4)),
+        HackLibTestTraversables::getIterator(Vec\range(1, 4)),
         10,
       ),
     ];
@@ -209,8 +209,8 @@ final class MathContainersTest extends HackTest {
     expect(Math\sum($traversable))->toEqual($expected);
   }
 
-  public static function provideTestSumFloat(): varray<mixed> {
-    return varray[
+  public static function provideTestSumFloat(): vec<(Traversable<num>, float)> {
+    return vec[
       tuple(
         Vector {},
         0.0,

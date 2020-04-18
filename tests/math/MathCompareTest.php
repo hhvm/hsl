@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class MathCompareTest extends HackTest {
 
-  public static function provideTestMaxva(): varray<mixed> {
-    return varray[
+  public static function provideTestMaxva(): vec<(num, num, Container<num>, num)> {
+    return vec[
       tuple(1, 2, vec[], 2),
       tuple(2, 1, vec[], 2),
       tuple(1.0, 2.0, vec[], 2.0),
@@ -40,8 +40,8 @@ final class MathCompareTest extends HackTest {
     expect(Math\maxva($first, $second, ...$rest))->toEqual($expected);
   }
 
-  public static function provideTestMinva(): varray<mixed> {
-    return varray[
+  public static function provideTestMinva(): vec<(num, num, Container<num>, num)> {
+    return vec[
       tuple(1, 2, vec[], 1),
       tuple(2, 1, vec[], 1),
       tuple(1.0, 2.0, vec[], 1.0),

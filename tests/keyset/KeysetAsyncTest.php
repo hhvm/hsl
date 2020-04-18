@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetAsyncTest extends HackTest {
 
-  public static function provideTestGen(): varray<mixed> {
-    return varray[
+  public static function provideTestGen(): vec<(Traversable<Awaitable<mixed>>, keyset<arraykey>)> {
+    return vec[
       tuple(
         Vector {
           async {return 'the';},
@@ -57,8 +57,8 @@ final class KeysetAsyncTest extends HackTest {
     });
   }
 
-  public static function provideTestGenMap(): varray<mixed> {
-    return varray[
+  public static function provideTestGenMap(): vec<(Traversable<mixed>, (function(nothing): Awaitable<arraykey>), keyset<arraykey>)> {
+    return vec[
       tuple(
         keyset[1,2,3],
         async ($num) ==> $num * 2,

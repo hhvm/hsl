@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class DictCombineTest extends HackTest {
 
-  public static function provideTestAssociate(): varray<mixed> {
-    return varray[
+  public static function provideTestAssociate(): vec<(Traversable<arraykey>, Traversable<mixed>, dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         vec[3, 2, 1],
         Vector {'a', 'b', 'c'},
@@ -62,8 +62,8 @@ final class DictCombineTest extends HackTest {
     expect(Dict\associate($keys, $values))->toEqual($expected);
   }
 
-  public static function provideTestMerge(): varray<mixed> {
-    return varray[
+  public static function provideTestMerge(): vec<(KeyedTraversable<arraykey, mixed>, Container<KeyedContainer<arraykey, mixed>>, dict<arraykey, mixed>)> {
+    return vec[
       tuple(
         Map {},
         darray[],

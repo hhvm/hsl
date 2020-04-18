@@ -15,9 +15,13 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecCombineTest extends HackTest {
 
-  public static function provideTestConcat(): varray<mixed> {
-    return varray[
-      tuple(varray[], varray[], vec[]),
+  public static function provideTestConcat(): vec<(Traversable<mixed>, Container<Container<mixed>>, Traversable<mixed>)> {
+    return vec[
+      tuple(
+        varray[],
+        varray[],
+        vec[],
+      ),
       tuple(
         vec[],
         varray[
@@ -33,7 +37,7 @@ final class VecCombineTest extends HackTest {
         varray[
           Vector {'brown', 'fox'},
           Map {'jumped' => 'over'},
-          HackLibTestTraversables::getIterator(varray['the', 'lazy', 'dog']),
+          varray['the', 'lazy', 'dog'],
         ],
         vec['the', 'quick', 'brown', 'fox', 'over', 'the', 'lazy', 'dog'],
       ),

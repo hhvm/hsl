@@ -15,9 +15,9 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class StrCombineTest extends HackTest {
 
-  public static function provideJoin(): varray<mixed> {
-    $elements = varray['the', 'quick', 'brown', 'fox', 1];
-    return varray[
+  public static function provideJoin(): vec<(Traversable<arraykey>)> {
+    $elements = vec['the', 'quick', 'brown', 'fox', 1];
+    return vec[
       tuple($elements),
       tuple(new Vector($elements)),
       tuple(new Set($elements)),
@@ -31,7 +31,7 @@ final class StrCombineTest extends HackTest {
 
   <<DataProvider('provideJoin')>>
   public function testJoin(
-    Traversable<string> $traversable,
+    Traversable<arraykey> $traversable,
   ): void {
     expect(Str\join($traversable, '-'))
       ->toEqual('the-quick-brown-fox-1');

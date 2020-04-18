@@ -15,8 +15,8 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetTransformTest extends HackTest {
 
-  public static function provideTestChunk(): varray<mixed> {
-    return varray[
+  public static function provideTestChunk(): vec<(Traversable<mixed>, int, vec<keyset<arraykey>>)> {
+    return vec[
       tuple(
         Map {},
         10,
@@ -63,9 +63,9 @@ final class KeysetTransformTest extends HackTest {
     expect(Keyset\chunk($traversable, $size))->toEqual($expected);
   }
 
-  public static function provideTestMap(): varray<mixed> {
+  public static function provideTestMap(): vec<(Traversable<mixed>, (function(nothing): mixed), keyset<arraykey>)> {
     $doubler = $x ==> $x * 2;
-    return varray[
+    return vec[
       tuple(
         varray[],
         $doubler,
@@ -144,8 +144,8 @@ final class KeysetTransformTest extends HackTest {
     expect(Keyset\map($traversable, $value_func))->toEqual($expected);
   }
 
-  public static function provideTestMapWithKey(): varray<mixed> {
-    return varray[
+  public static function provideTestMapWithKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing, nothing): mixed), keyset<arraykey>)> {
+    return vec[
       tuple(
         varray[],
         ($a, $b) ==> null,
