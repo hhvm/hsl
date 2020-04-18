@@ -198,7 +198,7 @@ final class StrTransformTest extends HackTest {
       ->toEqual($expected);
   }
 
-  public static function provideRepeat(): vec<(string, int ,string)> {
+  public static function provideRepeat(): vec<(string, int, string)> {
     return vec[
       tuple('foo', 3, 'foofoofoo'),
       tuple('foo', 0, ''),
