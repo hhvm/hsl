@@ -42,8 +42,7 @@ final class MathContainersTest extends HackTest {
     expect(Math\max($numbers))->toEqual($expected);
   }
 
-  // ?nonnull === mixed for DataProviderTypesLinter
-  public static function provideTestMaxBy(): vec<(Traversable<mixed>, (function(nothing): num), ?nonnull)> {
+  public static function provideTestMaxBy(): vec<(Traversable<mixed>, (function(nothing): num), mixed)> {
     return vec[
       tuple(
         varray[],
@@ -69,7 +68,7 @@ final class MathContainersTest extends HackTest {
   public function testMaxBy<T>(
     Traversable<T> $traversable,
     (function(T): num) $num_func,
-    ?T $expected,
+    mixed $expected,
   ): void {
     expect(Math\max_by($traversable, $num_func))->toEqual($expected);
   }
@@ -152,8 +151,7 @@ final class MathContainersTest extends HackTest {
     expect(Math\min($traversable))->toEqual($expected);
   }
 
-  // ?nonnull === mixed for DataProviderTypesLinter
-  public static function provideTestMinBy(): vec<(Traversable<mixed>, (function(nothing): num), ?nonnull)> {
+  public static function provideTestMinBy(): vec<(Traversable<mixed>, (function(nothing): num), mixed)> {
     return vec[
       tuple(
         varray[],
@@ -179,7 +177,7 @@ final class MathContainersTest extends HackTest {
   public function testMinBy<T>(
     Traversable<T> $traversable,
     (function(T): num) $num_func,
-    ?T $expected,
+    mixed $expected,
   ): void {
     expect(Math\min_by($traversable, $num_func))->toEqual($expected);
   }

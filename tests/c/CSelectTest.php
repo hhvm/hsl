@@ -17,7 +17,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 final class CSelectTest extends HackTest {
 
   public static function provideTestFind(
-  ): vec<(Traversable<mixed>, (function(nothing): bool), ?nonnull)> {
+  ): vec<(Traversable<mixed>, (function(nothing): bool), mixed)> {
     return vec[
       tuple(
         varray[],
@@ -41,7 +41,7 @@ final class CSelectTest extends HackTest {
   public function testFind<T>(
     Traversable<T> $traversable,
     (function(T): bool) $value_predicate,
-    ?T $expected,
+    mixed $expected,
   ): void {
     expect(C\find($traversable, $value_predicate))->toEqual($expected);
   }
@@ -84,7 +84,7 @@ final class CSelectTest extends HackTest {
       ->toThrow($expected);
   }
 
-  public static function provideTestFindKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), ?nonnull)> {
+  public static function provideTestFindKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), mixed)> {
     return vec[
       tuple(
         varray[],
@@ -112,7 +112,7 @@ final class CSelectTest extends HackTest {
   public function testFindKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $value_predicate,
-    ?Tv $expected,
+    mixed $expected,
   ): void {
     expect(C\find_key($traversable, $value_predicate))->toEqual($expected);
   }

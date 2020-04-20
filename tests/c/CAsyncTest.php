@@ -17,7 +17,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 final class CAsyncTest extends HackTest {
 
   public static function provideTestGenFirst(
-  ): vec<(Awaitable<Traversable<mixed>>, ?nonnull)> {
+  ): vec<(Awaitable<Traversable<mixed>>, mixed)> {
     return vec[
       tuple(
         async {
@@ -46,7 +46,7 @@ final class CAsyncTest extends HackTest {
   <<DataProvider('provideTestGenFirst')>>
   public function testFirstAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
-    ?T $expected,
+    mixed $expected,
   ): void {
     /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {

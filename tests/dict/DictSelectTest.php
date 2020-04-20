@@ -276,8 +276,7 @@ final class DictSelectTest extends HackTest {
     ]))->toEqual(dict[1 => 4, 'hi' => 5]);
   }
 
-  // ?nonnull === mixed, because DataProviderTypesLinter
-  public static function provideTestFilterNulls(): vec<(KeyedTraversable<arraykey, ?nonnull>, dict<arraykey, mixed>)> {
+  public static function provideTestFilterNulls(): vec<(KeyedTraversable<arraykey, mixed>, dict<arraykey, nonnull>)> {
     return vec[
       tuple(
         darray[
@@ -329,8 +328,8 @@ final class DictSelectTest extends HackTest {
 
   <<DataProvider('provideTestFilterNulls')>>
   public function testFilterNulls<Tk as arraykey, Tv>(
-    KeyedTraversable<Tk, ?Tv> $traversable,
-    dict<Tk, Tv> $expected,
+    KeyedTraversable<Tk, mixed> $traversable,
+    dict<Tk, nonnull> $expected,
   ): void {
     expect(Dict\filter_nulls($traversable))->toEqual($expected);
   }

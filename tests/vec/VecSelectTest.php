@@ -175,7 +175,7 @@ final class VecSelectTest extends HackTest {
     ]))->toEqual(vec[3, 5, 40, 'win!']);
   }
 
-  public static function provideTestFilterNulls(): vec<(Traversable<?nonnull>, vec<nonnull>)> {
+  public static function provideTestFilterNulls(): vec<(Traversable<mixed>, vec<nonnull>)> {
     return vec[
       tuple(
         varray[null, null, null],
@@ -211,9 +211,9 @@ final class VecSelectTest extends HackTest {
   }
 
   <<DataProvider('provideTestFilterNulls')>>
-  public function testFilterNulls<Tv>(
-  Traversable<?Tv> $traversable,
-  vec<Tv> $expected,
+  public function testFilterNulls(
+  Traversable<mixed> $traversable,
+  vec<nonnull> $expected,
   ): void {
     expect(Vec\filter_nulls($traversable))->toEqual($expected);
   }

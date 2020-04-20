@@ -142,7 +142,6 @@ final class KeysetSelectTest extends HackTest {
     )->toEqual(keyset[3, 5, 40, 'win!']);
   }
 
-  // ?nonnull === mixed for DataProviderTypesLinter
   public static function provideTestFilterNulls(): vec<(Traversable<?arraykey>, keyset<arraykey>)> {
     return vec[
       tuple(
