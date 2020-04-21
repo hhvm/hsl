@@ -309,8 +309,9 @@ final class RegexTest extends HackTest {
   }
 
   /*HHAST_IGNORE_ERROR[DataProviderTypes]
-    `nothing` has fewer tokens than shape(...)*/
-  public static function provideReplaceWith(): vec<(string, Regex\Pattern<shape(...)>, (function(nothing): mixed), int, string)> {
+    `(function(nothing): string)` has fewer tokens than `(function(Regex\Match): string)`
+    and the linter will therefore not be able to compare them.*/
+  public static function provideReplaceWith(): vec<(string, Regex\Pattern<shape(...)>, (function(nothing): string), int, string)> {
     return vec[
       /* HH_FIXME[4297] The type of the lambda argument(s) could not be inferred */
       tuple('abc', re"#d#", $x ==> $x[0], 0, 'abc'),
