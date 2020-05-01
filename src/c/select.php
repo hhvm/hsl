@@ -374,6 +374,7 @@ function onlyx<T>(
         )
         /* HH_IGNORE_ERROR[2049] __PHPStdLib */
         /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+        /* HH_IGNORE_ERROR[4200] __PHPStdLib */
         : \vsprintf($format_string, $format_args),
     );
     $result = $value;
@@ -386,6 +387,7 @@ function onlyx<T>(
       ? 'Expected non-empty Traversable.'
       /* HH_IGNORE_ERROR[2049] __PHPStdLib */
       /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+      /* HH_IGNORE_ERROR[4200] __PHPStdLib */
       : \vsprintf($format_string, $format_args),
   );
   /* HH_IGNORE_ERROR[4110] $first is false implies $result is set to T */
