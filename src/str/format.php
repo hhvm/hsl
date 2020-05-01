@@ -70,5 +70,6 @@ function format(
 ): string {
   /* HH_IGNORE_ERROR[2049] __PHPStdLib */
   /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_IGNORE_ERROR[4200] __PHPStdLib */
   return \vsprintf($format_string, $format_args);
 }
