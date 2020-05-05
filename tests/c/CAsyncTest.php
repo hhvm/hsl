@@ -46,7 +46,7 @@ final class CAsyncTest extends HackTest {
   <<DataProvider('provideTestGenFirst')>>
   public function testFirstAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
-    mixed $expected,
+    T $expected,
   ): void {
     /* @lint-ignore HackLint5542 open source */
     \HH\Asio\join(async {

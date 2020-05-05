@@ -328,8 +328,8 @@ final class DictSelectTest extends HackTest {
 
   <<DataProvider('provideTestFilterNulls')>>
   public function testFilterNulls<Tk as arraykey, Tv>(
-    KeyedTraversable<Tk, mixed> $traversable,
-    dict<Tk, nonnull> $expected,
+    KeyedTraversable<Tk, ?Tv> $traversable,
+    dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\filter_nulls($traversable))->toEqual($expected);
   }

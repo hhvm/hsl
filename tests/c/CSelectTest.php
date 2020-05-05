@@ -41,7 +41,7 @@ final class CSelectTest extends HackTest {
   public function testFind<T>(
     Traversable<T> $traversable,
     (function(T): bool) $value_predicate,
-    mixed $expected,
+    ?T $expected,
   ): void {
     expect(C\find($traversable, $value_predicate))->toEqual($expected);
   }
@@ -59,7 +59,7 @@ final class CSelectTest extends HackTest {
   public function testFindx<T>(
     Traversable<T> $traversable,
     (function(T): bool) $value_predicate,
-    mixed $expected,
+    T $expected,
   ): void {
     expect(C\findx($traversable, $value_predicate))->toEqual($expected);
   }
@@ -84,7 +84,7 @@ final class CSelectTest extends HackTest {
       ->toThrow($expected);
   }
 
-  public static function provideTestFindKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), mixed)> {
+  public static function provideTestFindKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), ?arraykey)> {
     return vec[
       tuple(
         varray[],
@@ -112,7 +112,7 @@ final class CSelectTest extends HackTest {
   public function testFindKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): bool) $value_predicate,
-    mixed $expected,
+    ?Tk $expected,
   ): void {
     expect(C\find_key($traversable, $value_predicate))->toEqual($expected);
   }
@@ -140,7 +140,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestFirst')>>
   public function testFirst<T>(
     Traversable<T> $traversable,
-    mixed $expected,
+    ?T $expected,
   ): void {
     expect(C\first($traversable))->toEqual($expected);
   }
@@ -164,7 +164,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestFirstx')>>
   public function testFirstx<T>(
     Traversable<T> $traversable,
-    mixed $expected,
+    T $expected,
   ): void {
     expect(C\firstx($traversable))->toEqual($expected);
   }
@@ -251,7 +251,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestFirstKey')>>
   public function testFirstKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    mixed $expected,
+    ?Tk $expected,
   ): void {
     expect(C\first_key($traversable))->toEqual($expected);
   }
@@ -413,7 +413,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestLast')>>
   public function testLast<Tv>(
     Traversable<Tv> $traversable,
-    mixed $expected,
+    ?Tv $expected,
   ): void {
     expect(C\last($traversable))->toEqual($expected);
   }
@@ -578,7 +578,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestLastKey')>>
   public function testLastKey<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    mixed $expected,
+    ?Tk $expected,
   ): void {
     expect(C\last_key($traversable))->toEqual($expected);
   }
@@ -643,7 +643,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestLastKeyx')>>
   public function testLastKeyx<Tk, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    mixed $expected,
+    Tk $expected,
   ): void {
     expect(C\last_keyx($traversable))->toEqual($expected);
   }
@@ -709,7 +709,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestNfirst')>>
   public function testNfirst<T>(
     ?Traversable<T> $traversable,
-    mixed $expected,
+    ?T $expected,
   ): void {
     expect(C\nfirst($traversable))->toEqual($expected);
   }
@@ -732,7 +732,7 @@ final class CSelectTest extends HackTest {
   <<DataProvider('provideTestOnlyx')>>
   public function testOnlyx<T>(
     Traversable<T> $traversable,
-    mixed $expected,
+    T $expected,
   ): void {
     expect(C\onlyx($traversable))->toEqual($expected);
   }

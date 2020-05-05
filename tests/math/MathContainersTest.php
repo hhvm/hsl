@@ -68,7 +68,7 @@ final class MathContainersTest extends HackTest {
   public function testMaxBy<T>(
     Traversable<T> $traversable,
     (function(T): num) $num_func,
-    mixed $expected,
+    ?T $expected,
   ): void {
     expect(Math\max_by($traversable, $num_func))->toEqual($expected);
   }
@@ -177,7 +177,7 @@ final class MathContainersTest extends HackTest {
   public function testMinBy<T>(
     Traversable<T> $traversable,
     (function(T): num) $num_func,
-    mixed $expected,
+    ?T $expected,
   ): void {
     expect(Math\min_by($traversable, $num_func))->toEqual($expected);
   }
