@@ -16,7 +16,8 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * Returns a new vec containing the range of numbers from `$start` to `$end`
  * inclusive, with the step between elements being `$step` if provided, or 1 by
  * default. If `$start > $end`, it returns a descending range instead of
- * an empty one.
+ * an empty one. If you are searching for Vec\seq or Vec\sequence, this is
+ * what you want.
  *
  * Time complexity: O(n), where `n` is the size of the resulting vec
  * Space complexity: O(n), where `n` is the size of the resulting vec
