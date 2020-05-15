@@ -169,8 +169,8 @@ final class CSelectTest extends HackTest {
     expect(C\firstx($traversable))->toEqual($expected);
   }
 
-  public static function provideTestFirstxException<T>(
-  ): vec<(Traversable<T>, classname<Exception>)> {
+  public static function provideTestFirstxException(
+  ): vec<(Traversable<UNBOUND_GENERIC_FIXME<nothing>>, classname<Exception>)> {
     return vec[
       tuple(
         varray[],
