@@ -13,14 +13,14 @@ namespace HH\Lib\PseudoRandom;
 use namespace HH\Lib\{_Private, Math, SecureRandom};
 
 /**
- * Returns a pseudorandom float in the range from 0.0 to 1.0, inclusive. This is
- * NOT suitable for cryptographic uses.
+ * Returns a pseudorandom float in the range [0.0, 1.0) (i.e. the return value
+ * is >= 0.0 and < 1.0). This is NOT suitable for cryptographic uses.
  *
  * For secure random floats, see `SecureRandom\float`.
  */
 <<__NonRx('Randomness')>>
 function float(): float {
-  return (float)(namespace\int(0, Math\INT53_MAX) / Math\INT53_MAX);
+  return (float)(namespace\int(0, Math\INT53_MAX - 1) / Math\INT53_MAX);
 }
 
 /**

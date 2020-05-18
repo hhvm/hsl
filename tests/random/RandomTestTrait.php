@@ -44,7 +44,7 @@ trait RandomTestTrait {
     $max_rand = 0.0;
     for ($i = 0; $i < $iterations; $i++) {
       $rand = $this->getRandomFloat();
-      expect($rand)->toBeLessThanOrEqualTo(1.0);
+      expect($rand)->toBeLessThan(1.0);
       expect($rand)->toBeGreaterThanOrEqualTo(0.0);
       $min_rand = Math\minva($min_rand, $rand);
       $max_rand = Math\maxva($max_rand, $rand);
