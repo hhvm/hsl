@@ -170,7 +170,7 @@ final class CSelectTest extends HackTest {
   }
 
   public static function provideTestFirstxException(
-  ): vec<(Traversable<UNBOUND_GENERIC_FIXME<nothing>>, classname<Exception>)> {
+  ): vec<(Traversable<nothing>, classname<Exception>)> {
     return vec[
       tuple(
         varray[],

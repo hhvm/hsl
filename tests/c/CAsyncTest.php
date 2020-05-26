@@ -89,7 +89,7 @@ final class CAsyncTest extends HackTest {
   }
 
   public static function provideTestGenFirstxException(
-  ): vec<(Awaitable<Traversable<UNBOUND_GENERIC_FIXME<nothing>>>, classname<Exception>)> {
+  ): vec<(Awaitable<Traversable<nothing>>, classname<Exception>)> {
     return vec[
       tuple(
         async {
