@@ -34,19 +34,19 @@ function regex_match<T as Regex\Match>(
   Regex\Pattern<T> $pattern,
   int $offset = 0,
 ): ?(T, int) {
-  /* HH_IGNORE_ERROR[4200] keep suppressing warnings from bad callers */
+  /* HH_FIXME[4200] keep suppressing warnings from bad callers */
   using new PHPWarningSuppressor();
   $offset = validate_offset($offset, Str\length($haystack));
   $match = darray[];
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4200] Rx error without deregister_phpstdlib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
+  /* HH_FIXME[4200] Rx error without deregister_phpstdlib */
   $status = \preg_match_with_matches(
-    /* HH_IGNORE_ERROR[4110] */ $pattern,
+    /* HH_FIXME[4110] */ $pattern,
     $haystack,
     inout $match,
-    /* HH_IGNORE_ERROR[2049] using FB__PRIVATE const in open-source code */
-    /* HH_IGNORE_ERROR[4106] using FB__PRIVATE const in open-source code */
+    /* HH_FIXME[2049] using FB__PRIVATE const in open-source code */
+    /* HH_FIXME[4106] using FB__PRIVATE const in open-source code */
     \PREG_FB__PRIVATE__HSL_IMPL | \PREG_OFFSET_CAPTURE,
     $offset,
   );
@@ -61,9 +61,9 @@ function regex_match<T as Regex\Match>(
   } else if ($status === 0) {
     return null;
   } else {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4200] Rx error without deregister_phpstdlib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
+    /* HH_FIXME[4200] Rx error without deregister_phpstdlib */
     throw new Regex\Exception($pattern, \preg_last_error());
   }
 }

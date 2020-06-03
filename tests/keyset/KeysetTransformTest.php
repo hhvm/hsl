@@ -77,8 +77,8 @@ final class KeysetTransformTest extends HackTest {
         keyset[2],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+        /* HH_FIXME[2049] __PHPStdLib */
+        /* HH_FIXME[4107] __PHPStdLib */
         range(10, 15),
         $doubler,
         keyset[20, 22, 24, 26, 28, 30],
@@ -157,15 +157,15 @@ final class KeysetTransformTest extends HackTest {
         keyset['0the', '1quick', '2brown', '3fox'],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+        /* HH_FIXME[2049] __PHPStdLib */
+        /* HH_FIXME[4107] __PHPStdLib */
         HackLibTestTraversables::getKeyedIterator(range(1, 5)),
         ($k, $v) ==> $v * $k,
         keyset[0, 2, 6, 12, 20],
       ),
       tuple(
-        /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-        /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+        /* HH_FIXME[2049] __PHPStdLib */
+        /* HH_FIXME[4107] __PHPStdLib */
         range(1, 6),
         ($k, $v) ==> ($k + $v) % 5,
         keyset[1, 3, 0, 2, 4],

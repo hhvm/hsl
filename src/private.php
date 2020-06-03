@@ -66,14 +66,14 @@ final class PHPWarningSuppressor implements \IDisposable {
   private int $warningLevel;
 
   public function __construct() {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     $this->warningLevel = \error_reporting(0);
   }
 
   public function __dispose(): void {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     \error_reporting($this->warningLevel);
   }
 }

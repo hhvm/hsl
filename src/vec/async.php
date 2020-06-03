@@ -28,7 +28,7 @@ async function from_async<Tv>(
   foreach ($vec as $index => $value) {
     $vec[$index] = \HH\Asio\result($value);
   }
-  /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
+  /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
   return $vec;
 }
 
@@ -89,14 +89,14 @@ async function map_async<Tv1, Tv2>(
     $vec[$i] = $async_func($value);
   }
 
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  /* HH_FIXME[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromVec($vec);
   foreach ($vec as $index => $value) {
-    /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
+    /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $vec[$index] = \HH\Asio\result($value);
   }
-  /* HH_IGNORE_ERROR[4110] Reuse the existing vec to reduce peak memory. */
+  /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
   return $vec;
 }

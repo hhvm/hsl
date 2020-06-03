@@ -27,7 +27,7 @@ async function from_async<Tk as arraykey, Tv>(
   foreach ($awaitables_ as $key => $value) {
     $awaitables_[$key] = \HH\Asio\result($value);
   }
-  /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+  /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
   return $awaitables_;
 }
 
@@ -52,7 +52,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
     /* HH_FIXME[4248] non-awaited awaitable in rx context */
     $awaitables[$key] ??= $async_func($key);
   }
-  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
+  /* HH_FIXME[4135] Unset local variable to reduce peak memory. */
   unset($keys);
 
   /* HH_FIXME[4200] Hide the magic from reactivity */
@@ -61,7 +61,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables[$key] = \HH\Asio\result($value);
   }
-  /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+  /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
   return $awaitables;
 }
 
@@ -139,15 +139,15 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
     $dict[$key] = $value_func($value);
   }
 
-  /* HH_IGNORE_ERROR[4110] Okay to pass in Awaitable */
+  /* HH_FIXME[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($dict);
   foreach ($dict as $key => $value) {
-    /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+    /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $dict[$key] = \HH\Asio\result($value);
   }
-  /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+  /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
   return $dict;
 }
 
@@ -171,7 +171,7 @@ async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
     $container,
     $async_func,
   );
-  /* HH_IGNORE_ERROR[4135] Unset local variable to reduce peak memory. */
+  /* HH_FIXME[4135] Unset local variable to reduce peak memory. */
   unset($container);
   /* HH_FIXME[4200] Hide the magic from reactivity */
   await AwaitAllWaitHandle::fromDict($awaitables);
@@ -179,6 +179,6 @@ async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
     /* HH_FIXME[4200] Hide the magic from reactivity */
     $awaitables[$index] = \HH\Asio\result($value);
   }
-  /* HH_IGNORE_ERROR[4110] Reuse the existing dict to reduce peak memory. */
+  /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
   return $awaitables;
 }

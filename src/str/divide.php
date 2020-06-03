@@ -23,8 +23,8 @@ function chunk(
   int $chunk_size = 1,
 ): vec<string> {
   invariant($chunk_size >= 1, 'Expected positive chunk size.');
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return vec(\str_split($string, $chunk_size));
 }
 
@@ -58,12 +58,12 @@ function split(
       return $result;
     }
   } else if ($limit === null) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     return vec(\explode($delimiter, $string));
   } else {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     return vec(\explode($delimiter, $string, $limit));
   }
 }

@@ -106,12 +106,12 @@ function replace(
   $haystack2 = Str\slice($haystack, $offset);
 
   using new _Private\PHPWarningSuppressor();
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   $haystack3 = \preg_replace($pattern, $replacement, $haystack2);
   if ($haystack3 === null) {
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     throw new Exception($pattern, \preg_last_error());
   }
   return $haystack1.$haystack3;

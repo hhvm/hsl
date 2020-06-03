@@ -39,8 +39,8 @@ function compare_ci(
   string $string1,
   string $string2,
 ): int {
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return \strcasecmp($string1, $string2);
 }
 
@@ -110,8 +110,8 @@ function ends_with(
   $suffix_length = length($suffix);
   return $suffix_length === 0 || (
     length($string) >= $suffix_length &&
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     \substr_compare($string, $suffix, -$suffix_length, $suffix_length) === 0
   );
 }
@@ -129,8 +129,8 @@ function ends_with_ci(
   $suffix_length = length($suffix);
   return $suffix_length === 0 || (
     length($string) >= $suffix_length &&
-    /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-    /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+    /* HH_FIXME[2049] __PHPStdLib */
+    /* HH_FIXME[4107] __PHPStdLib */
     \substr_compare(
       $string,
       $suffix,
@@ -159,8 +159,8 @@ function is_empty(
 function length(
   string $string,
 ): int {
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return \strlen($string);
 }
 
@@ -188,8 +188,8 @@ function search(
   if ($offset !== 0) {
     $offset = _Private\validate_offset($offset, length($haystack));
   }
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   $position = \strpos($haystack, $needle, $offset);
   if ($position === false) {
     return null;
@@ -255,8 +255,8 @@ function search_last(
     $offset >= -$haystack_length && $offset <= $haystack_length,
     'Offset is out-of-bounds.',
   );
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   $position = \strrpos($haystack, $needle, $offset);
   if ($position === false) {
     return null;
@@ -274,8 +274,8 @@ function starts_with(
   string $string,
   string $prefix,
 ): bool {
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return \strncmp($string, $prefix, length($prefix)) === 0;
 }
 
@@ -289,7 +289,7 @@ function starts_with_ci(
   string $string,
   string $prefix,
 ): bool {
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return \strncasecmp($string, $prefix, length($prefix)) === 0;
 }

@@ -47,8 +47,8 @@ function random_string(
     $unpacked_bits = 0; // A count of how many unused, unpacked bits we have
     for ($i = 0; $i < $urandom_length && $length > 0; ++$i) {
       // Unpack 8 bits
-      /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-      /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+      /* HH_FIXME[2049] __PHPStdLib */
+      /* HH_FIXME[4107] __PHPStdLib */
       $unpacked_data = ($unpacked_data << 8) | \unpack('C', $data[$i])[1];
       $unpacked_bits += 8;
 

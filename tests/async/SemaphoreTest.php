@@ -31,15 +31,15 @@ final class SemaphoreTest extends HackTest {
       await HH\Asio\usleep(self::USLEEP_BLOCK);
       return $i;
     });
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 99),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK * 10, self::TIME_DELTA);
     expect($results)->toEqual(Vec\range(0, 99));
@@ -59,15 +59,15 @@ final class SemaphoreTest extends HackTest {
       await HH\Asio\usleep(self::USLEEP_BLOCK);
       throw new \Exception();
     });
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $start = microtime(true);
     await Vec\map_async(
       Vec\range(0, 99),
       async $_ ==> await HH\Asio\wrap($semaphore->waitForAsync(42)),
     );
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK * 10, self::TIME_DELTA);
   }
@@ -84,15 +84,15 @@ final class SemaphoreTest extends HackTest {
       return $i;
     });
 
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 9),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($checker->value)->toBeFalse();
     expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK * 10, self::TIME_DELTA);
@@ -101,15 +101,15 @@ final class SemaphoreTest extends HackTest {
 
   public async function testExtreme1(): Awaitable<void> {
     $semaphore = new Async\Semaphore(1, async ($i) ==> $i);
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 9999),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($end - $start)->toEqualWithDelta(0., self::TIME_DELTA);
     expect($results)->toEqual(Vec\range(0, 9999));
@@ -120,15 +120,15 @@ final class SemaphoreTest extends HackTest {
       await HH\Asio\usleep(self::USLEEP_BLOCK);
       return $i;
     });
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 9999),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK, self::TIME_DELTA);
     expect($results)->toEqual(Vec\range(0, 9999));
@@ -139,15 +139,15 @@ final class SemaphoreTest extends HackTest {
       await stop_eager_execution();
       return $i;
     });
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 9999),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_IGNORE_ERROR[4107] PHP stdlib */
-    /* HH_IGNORE_ERROR[2049] PHP stdlib */
+    /* HH_FIXME[4107] PHP stdlib */
+    /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($end - $start)->toEqualWithDelta(0., self::TIME_DELTA);
     expect($results)->toEqual(Vec\range(0, 9999));

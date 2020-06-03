@@ -275,8 +275,8 @@ function slice<Tv>(
 ): vec<Tv> {
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   $offset = _Private\validate_offset_lower_bound($offset, C\count($container));
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return vec(\array_slice($container, $offset, $length));
 }
 

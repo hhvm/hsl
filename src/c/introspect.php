@@ -75,8 +75,8 @@ function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   <<__MaybeMutable>> KeyedContainer<Tk1, Tv> $container,
   Tk2 $key,
 ): bool {
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return \array_key_exists($key, $container);
 }
 
@@ -90,8 +90,8 @@ function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
 function count(
   <<__MaybeMutable>> Container<mixed> $container,
 ): int {
-  /* HH_IGNORE_ERROR[2049] __PHPStdLib */
-  /* HH_IGNORE_ERROR[4107] __PHPStdLib */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
   return \count($container);
 }
 
