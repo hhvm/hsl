@@ -32,11 +32,9 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   Traversable<Tv2> $second,
   Container<Tv2> ...$rest
 ): vec<Tv1> {
-  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return vec[];
   }
-  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second && !$rest) {
     return vec($first);
   }
@@ -70,11 +68,9 @@ function diff_by<Tv, Ts as arraykey>(
   <<__AtMostRxAsFunc>>
   (function(Tv): Ts) $scalar_func,
 ): vec<Tv> {
-  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return vec[];
   }
-  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second) {
     return vec($first);
   }

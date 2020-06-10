@@ -30,11 +30,9 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   KeyedTraversable<Tk2, mixed> $second,
   KeyedContainer<Tk2, mixed> ...$rest
 ): dict<Tk1, Tv> {
-  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return dict[];
   }
-  /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second && !$rest) {
     return dict($first);
   }
