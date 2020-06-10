@@ -77,7 +77,7 @@ final class COrderTest extends HackTest {
   }
 
   public static function provideNonSortableVecs(
-  ): vec<(vec<string>, (function(string, string): int), bool)> {
+  ): vec<(vec<string>, (function(string, string): num), bool)> {
     $str_len_cmp = (string $a, string $b) ==> Str\length($a) <=> Str\length($b);
     return vec[
       tuple(vec['short', 'longer', 'longest'], $str_len_cmp, true),
@@ -88,14 +88,14 @@ final class COrderTest extends HackTest {
   <<DataProvider('provideNonSortableVecs')>>
   public function testSortingWithComparator(
     vec<string> $t,
-    (function(string, string): int) $comparator,
+    (function(string, string): num) $comparator,
     bool $expect,
   ): void {
     expect(C\is_sorted($t, $comparator))->toEqual($expect);
   }
 
   public static function provideNonSortableTraversables(
-  ): vec<(vec<Traversable<string>>, (function(string, string): int), bool)> {
+  ): vec<(vec<Traversable<string>>, (function(string, string): num), bool)> {
     return Vec\map(
       self::provideNonSortableVecs(),
       $tuple ==>
@@ -106,7 +106,7 @@ final class COrderTest extends HackTest {
   <<DataProvider('provideNonSortableTraversables')>>
   public function testSortingTraversablesWithComparator(
     vec<Traversable<string>> $ts,
-    (function(string, string): int) $cmp,
+    (function(string, string): num) $cmp,
     bool $expect,
   ): void {
     foreach ($ts as $t) {

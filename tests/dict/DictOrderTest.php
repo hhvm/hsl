@@ -103,7 +103,7 @@ final class DictOrderTest extends HackTest {
     self::fail('We shuffled 1000 times and the value never changed');
   }
 
-  public static function provideTestSort(): vec<(KeyedTraversable<arraykey, mixed>, ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
+  public static function provideTestSort(): vec<(KeyedTraversable<arraykey, mixed>, ?(function(nothing, nothing): num), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Map {
@@ -171,13 +171,13 @@ final class DictOrderTest extends HackTest {
   <<DataProvider('provideTestSort')>>
   public function testSort<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    ?(function(Tv, Tv): int) $value_comparator,
+    ?(function(Tv, Tv): num) $value_comparator,
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\sort($traversable, $value_comparator))->toEqual($expected);
   }
 
-  public static function provideTestSortBy(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): mixed), ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
+  public static function provideTestSortBy(): vec<(KeyedTraversable<arraykey, mixed>, (function(nothing): mixed), ?(function(nothing, nothing): num), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped'],
@@ -216,14 +216,14 @@ final class DictOrderTest extends HackTest {
   public function testSortBy<Tk as arraykey, Tv, Ts>(
     KeyedTraversable<Tk, Tv> $traversable,
     (function(Tv): Ts) $scalar_func,
-    ?(function(Ts, Ts): int) $scalar_comparator,
+    ?(function(Ts, Ts): num) $scalar_comparator,
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\sort_by($traversable, $scalar_func, $scalar_comparator))
       ->toEqual($expected);
   }
 
-  public static function provideTestSortByKey(): vec<(KeyedTraversable<arraykey, mixed>, ?(function(nothing, nothing): int), dict<arraykey, mixed>)> {
+  public static function provideTestSortByKey(): vec<(KeyedTraversable<arraykey, mixed>, ?(function(nothing, nothing): num), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         Map {
@@ -259,7 +259,7 @@ final class DictOrderTest extends HackTest {
   <<DataProvider('provideTestSortByKey')>>
   public function testSortByKey<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Tv> $traversable,
-    ?(function(Tk, Tk): int) $key_comparator,
+    ?(function(Tk, Tk): num) $key_comparator,
     dict<Tk, Tv> $expected,
   ): void {
     expect(Dict\sort_by_key($traversable, $key_comparator))

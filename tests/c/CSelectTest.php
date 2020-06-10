@@ -84,7 +84,7 @@ final class CSelectTest extends HackTest {
       ->toThrow($expected);
   }
 
-  public static function provideTestFindKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), ?arraykey)> {
+  public static function provideTestFindKey(): vec<(KeyedTraversable<mixed, mixed>, (function(nothing): bool), mixed)> {
     return vec[
       tuple(
         varray[],

@@ -77,7 +77,7 @@ final class VecOrderTest extends HackTest {
     }
   }
 
-  public static function provideTestRangeException(): vec<(int, int, int)> {
+  public static function provideTestRangeException(): vec<(num, num, num)> {
     return vec[
       tuple(0, 1, 0),
       tuple(-10, 10, -30),
@@ -159,7 +159,7 @@ final class VecOrderTest extends HackTest {
     self::fail('We shuffled 1000 times and the value never changed');
   }
 
-  public static function provideTestSort(): vec<(Traversable<mixed>, ?(function(nothing, nothing): int), vec<mixed>)> {
+  public static function provideTestSort(): vec<(Traversable<mixed>, ?(function(nothing, nothing): num), vec<mixed>)> {
     return vec[
       tuple(
         vec['the', 'quick', 'brown', 'fox'],
@@ -184,13 +184,13 @@ final class VecOrderTest extends HackTest {
   <<DataProvider('provideTestSort')>>
   public function testSort<Tv>(
     Traversable<Tv> $traversable,
-    ?(function(Tv, Tv): int) $comparator,
+    ?(function(Tv, Tv): num) $comparator,
     vec<Tv> $expected,
   ): void {
     expect(Vec\sort($traversable, $comparator))->toEqual($expected);
   }
 
-  public static function provideTestSortBy(): vec<(Traversable<mixed>, (function(nothing): mixed), ?(function(nothing, nothing): int), vec<mixed>)> {
+  public static function provideTestSortBy(): vec<(Traversable<mixed>, (function(nothing): mixed), ?(function(nothing, nothing): num), vec<mixed>)> {
     return vec[
       tuple(
         varray['the', 'quick', 'brown', 'fox', 'jumped'],
@@ -245,7 +245,7 @@ final class VecOrderTest extends HackTest {
   public function testSortBy<Tv, Ts>(
     Traversable<Tv> $traversable,
     (function(Tv): Ts) $scalar_func,
-    ?(function(Ts, Ts): int) $comparator,
+    ?(function(Ts, Ts): num) $comparator,
     vec<Tv> $expected,
   ): void {
     expect(Vec\sort_by($traversable, $scalar_func, $comparator))

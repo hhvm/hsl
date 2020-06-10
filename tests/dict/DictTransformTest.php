@@ -342,7 +342,7 @@ final class DictTransformTest extends HackTest {
     expect(Dict\from_entries($traversable))->toEqual($expected);
   }
 
-  public static function provideTestFromValues(): vec<(Traversable<mixed>, (function(nothing): mixed), dict<arraykey, mixed>)> {
+  public static function provideTestFromValues(): vec<(Traversable<mixed>, (function(nothing): arraykey), dict<arraykey, mixed>)> {
     return vec[
       tuple(
         darray[],
