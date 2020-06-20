@@ -309,8 +309,7 @@ function replace_every_nonrecursive_ci(
     $replacements_lc[$key_lc] = $value;
   }
 
-  // Sort desc instead of asc
-  $key_lengths = Vec\sort($key_lengths, ($key1, $key2) ==> -($key1 <=> $key2));
+  $key_lengths = Vec\sort($key_lengths) |> Vec\reverse($$);
 
   $output = '';
   for ($pos = 0; $pos < length($haystack); ) {
