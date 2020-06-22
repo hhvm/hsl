@@ -104,6 +104,11 @@ final class VecAsyncTest extends HackTest {
         async ($word) ==> Str\reverse($word),
         vec['eht', 'kciuq', 'nworb', 'xof'],
       ),
+      tuple(
+        dict['one' => 'uno', 'two' => 'due', 'three' => 'tre'],
+        async ($word) ==> Str\reverse($word),
+        vec['onu', 'eud', 'ert'],
+      ),
     ];
   }
 
