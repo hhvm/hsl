@@ -24,7 +24,7 @@ namespace HH\Lib\C;
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function any<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -47,7 +47,7 @@ function any<T>(
  * Time complexity: O(n) (O(1) for keysets)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function contains<T1, T2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T1> $traversable,
@@ -70,7 +70,7 @@ function contains<T1, T2>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx>>
+<<__Pure>>
 function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   <<__MaybeMutable>> KeyedContainer<Tk1, Tv> $container,
   Tk2 $key,
@@ -86,7 +86,7 @@ function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx>>
+<<__Pure>>
 function count(
   <<__MaybeMutable>> Container<mixed> $container,
 ): int {
@@ -105,7 +105,7 @@ function count(
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function every<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -127,7 +127,7 @@ function every<T>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx>>
+<<__Pure>>
 function is_empty<T>(
   <<__MaybeMutable>> Container<T> $container,
 ): bool {

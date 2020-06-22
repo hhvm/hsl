@@ -34,7 +34,7 @@ async function from_async<Tv as arraykey>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function filter_async<Tv as arraykey>(
   Container<Tv> $traversable,
   <<__AtMostRxAsFunc>>
@@ -59,7 +59,7 @@ async function filter_async<Tv as arraykey>(
  * Time complexity: O(n * f), where f is the complexity of `$async_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function map_async<Tv, Tk as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,

@@ -21,7 +21,7 @@ use namespace HH\Lib\{_Private, Str};
  *
  * @see `C\findx` when a value is required
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function find<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -45,7 +45,7 @@ function find<T>(
  *
  * @see `C\find()` if you would prefer null if not found.
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function findx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -66,7 +66,7 @@ function findx<T>(
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function find_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -93,7 +93,7 @@ function find_key<Tk, Tv>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function first<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -119,7 +119,7 @@ function first<T>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function firstx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -152,7 +152,7 @@ function firstx<T>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function first_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -175,7 +175,7 @@ function first_key<Tk, Tv>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function first_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -205,7 +205,7 @@ function first_keyx<Tk, Tv>(
  * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function last<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -233,7 +233,7 @@ function last<T>(
  * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function lastx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
@@ -270,7 +270,7 @@ function lastx<T>(
  * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function last_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -297,7 +297,7 @@ function last_key<Tk, Tv>(
  * Time complexity: O(1) if `$traversable` is a `Container`, O(n) otherwise.
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function last_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
@@ -332,7 +332,7 @@ function last_keyx<Tk, Tv>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function nfirst<T>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   ?Traversable<T> $traversable,
@@ -352,7 +352,7 @@ function nfirst<T>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function onlyx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,

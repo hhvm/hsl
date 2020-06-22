@@ -19,7 +19,7 @@ use namespace HH\Lib\C;
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Rx>>
+<<__Pure>>
 function equal<Tv as arraykey>(
   keyset<Tv> $keyset1,
   keyset<Tv> $keyset2,

@@ -23,7 +23,7 @@ use namespace HH\Lib\{_Private, Str};
  *        the groups' occurrence within the pattern, and
  *    - the results of named capture groups, at string keys matching their respective names.
  */
-<<__Rx>>
+<<__Pure>>
 function first_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -38,7 +38,7 @@ function first_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Rx>>
+<<__Pure>>
 function every_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -74,7 +74,7 @@ function every_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Rx>>
+<<__Pure>>
 function matches(
   string $haystack,
   Pattern<Match> $pattern,
@@ -124,7 +124,7 @@ function replace(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function replace_with<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -172,7 +172,7 @@ function replace_with<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$limit` < 2.
  */
-<<__Rx>>
+<<__Pure>>
 function split(
   string $haystack,
   Pattern<Match> $delimiter,
@@ -221,7 +221,7 @@ function split(
 /**
  * Renders a Regex Pattern to a string.
  */
-<<__Rx>>
+<<__Pure>>
 function to_string(Pattern<Match> $pattern): string {
   return $pattern as string;
 }

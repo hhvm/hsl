@@ -40,7 +40,7 @@ async function from_async<Tk as arraykey, Tv>(
  * Time complexity: O(n * f), where f is the complexity of `$async_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function from_keys_async<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
@@ -74,7 +74,7 @@ async function from_keys_async<Tk as arraykey, Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
@@ -98,7 +98,7 @@ async function filter_async<Tk as arraykey, Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
@@ -126,7 +126,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  * Time complexity: O(n * f), where f is the complexity of `$async_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
@@ -160,7 +160,7 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
  * Time complexity: O(n * a), where a is the complexity of each Awaitable
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $container,

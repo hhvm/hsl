@@ -23,7 +23,7 @@ use namespace HH\Lib\Math;
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function chunk<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
@@ -51,7 +51,7 @@ function chunk<Tv as arraykey>(
  * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function map<Tv1, Tv2 as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
@@ -72,7 +72,7 @@ function map<Tv1, Tv2 as arraykey>(
  * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function map_with_key<Tk, Tv1, Tv2 as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
@@ -98,7 +98,7 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
  * Space complexity: O(n), where n is the combined size of all the
  * `$traversables`
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function flatten<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Container<Tv>> $traversables,

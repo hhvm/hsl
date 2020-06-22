@@ -45,7 +45,7 @@ async function from_async<Tv>(
  * The IO operations for each of the calls to `$value_predicate` will happen
  * in parallel.
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function filter_async<Tv>(
   Container<Tv> $container,
   <<__AtMostRxAsFunc>>
@@ -76,7 +76,7 @@ async function filter_async<Tv>(
  * The IO operations for each of calls to `$async_func` will happen in
  * parallel.
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 async function map_async<Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,

@@ -18,7 +18,7 @@ use namespace HH\Lib\_Private;
  *
  * For a case-insensitive comparison, see `Str\compare_ci()`.
  */
-<<__Rx>>
+<<__Pure>>
 function compare(
   string $string1,
   string $string2,
@@ -34,7 +34,7 @@ function compare(
  *
  * For a case-sensitive comparison, see `Str\compare()`.
  */
-<<__Rx>>
+<<__Pure>>
 function compare_ci(
   string $string1,
   string $string2,
@@ -55,7 +55,7 @@ function compare_ci(
  * - To get the position of the needle, see `Str\search()`.
  * - To search for the needle case-insensitively, see `Str\contains_ci()`.
  */
-<<__Rx>>
+<<__Pure>>
 function contains(
   string $haystack,
   string $needle,
@@ -82,7 +82,7 @@ function contains(
  * - To search for the needle case-sensitively, see `Str\contains()`.
  * - To get the position of the needle case-insensitively, see `Str\search_ci()`.
  */
-<<__Rx>>
+<<__Pure>>
 function contains_ci(
   string $haystack,
   string $needle,
@@ -102,7 +102,7 @@ function contains_ci(
  *
  * For a case-insensitive check, see `Str\ends_with_ci()`.
  */
-<<__Rx>>
+<<__Pure>>
 function ends_with(
   string $string,
   string $suffix,
@@ -121,7 +121,7 @@ function ends_with(
  *
  * For a case-sensitive check, see `Str\ends_with()`.
  */
-<<__Rx>>
+<<__Pure>>
 function ends_with_ci(
   string $string,
   string $suffix,
@@ -145,7 +145,7 @@ function ends_with_ci(
  * Returns `true` if `$string` is null or the empty string.
  * Returns `false` otherwise.
  */
-<<__Rx>>
+<<__Pure>>
 function is_empty(
   ?string $string,
 ): bool {
@@ -155,7 +155,7 @@ function is_empty(
 /**
  * Returns the length of the given string, i.e. the number of bytes.
  */
-<<__Rx>>
+<<__Pure>>
 function length(
   string $string,
 ): int {
@@ -179,7 +179,7 @@ function length(
  *
  * Previously known in PHP as `strpos`.
  */
-<<__Rx>>
+<<__Pure>>
 function search(
   string $haystack,
   string $needle,
@@ -212,7 +212,7 @@ function search(
  *
  * Previously known in PHP as `stripos`.
  */
-<<__Rx>>
+<<__Pure>>
 function search_ci(
   string $haystack,
   string $needle,
@@ -244,7 +244,7 @@ function search_ci(
  *
  * Previously known in PHP as `strrpos`.
  */
-<<__Rx>>
+<<__Pure>>
 function search_last(
   string $haystack,
   string $needle,
@@ -269,7 +269,7 @@ function search_last(
  *
  * For a case-insensitive check, see `Str\starts_with_ci()`.
  */
-<<__Rx>>
+<<__Pure>>
 function starts_with(
   string $string,
   string $prefix,
@@ -284,7 +284,7 @@ function starts_with(
  *
  * For a case-sensitive check, see `Str\starts_with()`.
  */
-<<__Rx>>
+<<__Pure>>
 function starts_with_ci(
   string $string,
   string $prefix,

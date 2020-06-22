@@ -22,7 +22,7 @@ use namespace HH\Lib\{C, Math};
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function concat<Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>> Traversable<Tv> $first,
   Container<Tv> ...$rest
@@ -50,7 +50,7 @@ function concat<Tv>(
  * Space complexity: O(min(m, n)), where m is the size of `$first` and n is the
  * size of `$second`
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function zip<Tv, Tu>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
