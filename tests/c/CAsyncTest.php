@@ -44,15 +44,12 @@ final class CAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFirst')>>
-  public function testFirstAsync<T>(
+  public async function testFirstAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
     ?T $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await C\first_async($awaitable);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await C\first_async($awaitable);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenFirstx(
@@ -77,15 +74,12 @@ final class CAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFirstx')>>
-  public function testFirstxAsync<T>(
+  public async function testFirstxAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
     T $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await C\firstx_async($awaitable);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await C\firstx_async($awaitable);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenFirstxException(
@@ -101,15 +95,12 @@ final class CAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFirstxException')>>
-  public function testFirstxExceptionAsync<T>(
+  public async function testFirstxExceptionAsync<T>(
     Awaitable<Traversable<T>> $awaitable,
     classname<Exception> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      expect(
-        async () ==> await C\firstx_async($awaitable),
-      )->toThrow($expected);
-    });
+  ): Awaitable<void> {
+    expect(
+      async () ==> await C\firstx_async($awaitable),
+    )->toThrow($expected);
   }
 }

@@ -46,15 +46,12 @@ final class KeysetAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGen')>>
-  public function testFromAsync<Tv as arraykey>(
+  public async function testFromAsync<Tv as arraykey>(
     Traversable<Awaitable<Tv>> $awaitables,
     keyset<Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Keyset\from_async($awaitables);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Keyset\from_async($awaitables);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenMap(): varray<mixed> {
@@ -78,16 +75,13 @@ final class KeysetAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenMap')>>
-  public function testMapAsync<Tv>(
+  public async function testMapAsync<Tv>(
     Traversable<Tv> $traversable,
     (function(Tv): Awaitable<arraykey>) $async_func,
     keyset<arraykey> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Keyset\map_async($traversable, $async_func);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Keyset\map_async($traversable, $async_func);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenFilter(
@@ -121,15 +115,12 @@ final class KeysetAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFilter')>>
-  public function testFilterAsync<Tv as arraykey>(
+  public async function testFilterAsync<Tv as arraykey>(
     Container<Tv> $traversable,
     (function(Tv): Awaitable<bool>) $async_predicate,
     keyset<Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Keyset\filter_async($traversable, $async_predicate);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Keyset\filter_async($traversable, $async_predicate);
+    expect($actual)->toEqual($expected);
   }
 }

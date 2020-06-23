@@ -46,15 +46,12 @@ final class VecAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGen')>>
-  public function testFromAsync<Tv>(
+  public async function testFromAsync<Tv>(
     Traversable<Awaitable<Tv>> $awaitables,
     vec<Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Vec\from_async($awaitables);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Vec\from_async($awaitables);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenFilter(): varray<mixed> {
@@ -78,16 +75,13 @@ final class VecAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFilter')>>
-  public function testFilterAsync<Tv>(
+  public async function testFilterAsync<Tv>(
     Container<Tv> $container,
     (function(Tv): Awaitable<bool>) $value_predicate,
     vec<Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Vec\filter_async($container, $value_predicate);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Vec\filter_async($container, $value_predicate);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenMap(): varray<mixed> {
@@ -113,15 +107,12 @@ final class VecAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenMap')>>
-  public function testMapAsync<Tk, Tv>(
+  public async function testMapAsync<Tk, Tv>(
     Traversable<Tk> $keys,
     (function(Tk): Awaitable<Tv>) $async_func,
     vec<Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Vec\map_async($keys, $async_func);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Vec\map_async($keys, $async_func);
+    expect($actual)->toEqual($expected);
   }
 }

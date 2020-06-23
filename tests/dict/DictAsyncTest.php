@@ -55,15 +55,12 @@ final class DictAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGen')>>
-  public function testFromAsync<Tk as arraykey, Tv>(
+  public async function testFromAsync<Tk as arraykey, Tv>(
     KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
     dict<Tk, Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Dict\from_async($awaitables);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Dict\from_async($awaitables);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenFromKeys(): varray<mixed> {
@@ -94,33 +91,27 @@ final class DictAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFromKeys')>>
-  public function testFromKeysAsync<Tk as arraykey, Tv>(
+  public async function testFromKeysAsync<Tk as arraykey, Tv>(
     Traversable<Tk> $keys,
     (function(Tk): Awaitable<Tv>) $async_func,
     dict<Tk, Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Dict\from_keys_async($keys, $async_func);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Dict\from_keys_async($keys, $async_func);
+    expect($actual)->toEqual($expected);
   }
 
-  public function testFromKeysDuplicateKeysAsync(): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      // Like Ref<int>, but not a flibism
-      $run_cnt = Map { 'value' => 0 };
-      $actual = await Dict\from_keys_async(
-        vec[1, 1, 2],
-        async ($k) ==> {
-          ++$run_cnt['value'];
-          return $k;
-        },
-      );
-      expect($actual)->toEqual(dict[1 => 1, 2 => 2]);
-      expect($run_cnt['value'])->toEqual(2);
-    });
+  public async function testFromKeysDuplicateKeysAsync(): Awaitable<void> {
+    // Like Ref<int>, but not a flibism
+    $run_cnt = Map { 'value' => 0 };
+    $actual = await Dict\from_keys_async(
+      vec[1, 1, 2],
+      async ($k) ==> {
+        ++$run_cnt['value'];
+        return $k;
+      },
+    );
+    expect($actual)->toEqual(dict[1 => 1, 2 => 2]);
+    expect($run_cnt['value'])->toEqual(2);
   }
 
   public static function provideTestGenFilter(): varray<mixed> {
@@ -165,16 +156,13 @@ final class DictAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenFilter')>>
-  public function testFilterAsync<Tk as arraykey, Tv>(
+  public async function testFilterAsync<Tk as arraykey, Tv>(
     KeyedContainer<Tk, Tv> $traversable,
     (function(Tv): Awaitable<bool>) $value_predicate,
     dict<Tk, Tv> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Dict\filter_async($traversable, $value_predicate);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Dict\filter_async($traversable, $value_predicate);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenFilterWithKey(): varray<mixed> {
@@ -275,16 +263,13 @@ final class DictAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenMap')>>
-  public function testMapAsync<Tk as arraykey, Tv1, Tv2>(
+  public async function testMapAsync<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tv1): Awaitable<Tv2>) $value_func,
     dict<Tk, Tv2> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $actual = await Dict\map_async($traversable, $value_func);
-      expect($actual)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $actual = await Dict\map_async($traversable, $value_func);
+    expect($actual)->toEqual($expected);
   }
 
   public static function provideTestGenMapWithKey(): varray<mixed> {
@@ -324,15 +309,12 @@ final class DictAsyncTest extends HackTest {
   }
 
   <<DataProvider('provideTestGenMapWithKey')>>
-  public function testMapWithKeyAsync<Tk as arraykey, Tv1, Tv2>(
+  public async function testMapWithKeyAsync<Tk as arraykey, Tv1, Tv2>(
     KeyedTraversable<Tk, Tv1> $traversable,
     (function(Tk, Tv1): Awaitable<Tv2>) $value_func,
     dict<Tk, Tv2> $expected,
-  ): void {
-    /* @lint-ignore HackLint5542 open source */
-    \HH\Asio\join(async {
-      $result = await Dict\map_with_key_async($traversable, $value_func);
-      expect($result)->toEqual($expected);
-    });
+  ): Awaitable<void> {
+    $result = await Dict\map_with_key_async($traversable, $value_func);
+    expect($result)->toEqual($expected);
   }
 }
