@@ -15,8 +15,11 @@ use namespace HH\Lib\{C, Dict};
 /**
  * Returns a new dict with each value `await`ed in parallel.
  *
- * Time complexity: O(n * a), where a is the complexity of each Awaitable
+ * Time complexity: O(n * a), where a is the complexity of the synchronous
+ * portions of each Awaitable
  * Space complexity: O(n)
+ *
+ * The IO operations for each Awaitable will happen in parallel.
  */
 async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
@@ -71,8 +74,12 @@ async function from_keys_async<Tk as arraykey, Tv>(
  *
  * For non-async predicates, see `Dict\filter()`.
  *
- * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
+ * Time complexity: O(n * p), where p is the complexity of the synchronous
+ * portions of `$value_predicate`
  * Space complexity: O(n)
+ *
+ * The IO operations for each of the calls to `$value_predicate` will happen
+ * in parallel.
  */
 <<__Pure, __AtMostRxAsArgs>>
 async function filter_async<Tk as arraykey, Tv>(
@@ -123,8 +130,12 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
  *
  * For non-async functions, see `Dict\map()`.
  *
- * Time complexity: O(n * f), where f is the complexity of `$async_func`
+ * Time complexity: O(n * f), where f is the complexity of the synchronous
+ * portions of `$async_func`
  * Space complexity: O(n)
+ *
+ * The IO operations for each of calls to `$async_func` will happen in
+ * parallel.
  */
 <<__Pure, __AtMostRxAsArgs>>
 async function map_async<Tk as arraykey, Tv1, Tv2>(
