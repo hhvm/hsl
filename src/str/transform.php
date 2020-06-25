@@ -282,8 +282,8 @@ function replace_every_nonrecursive(
  *
  * - For having new values searched again, see `Str\replace_every_ci()`.
  *
- * Time complexity O(length * a) where `length` is the length of the subject
- * and a is the amount of replacers with different lengths.
+ * Time complexity O(a + length * b) where a is the sum of all key lengths
+ * and b is the sum of distinct key lengths
  */
 <<__Rx>>
 function replace_every_nonrecursive_ci(
