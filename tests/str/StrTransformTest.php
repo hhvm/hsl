@@ -526,6 +526,8 @@ final class StrTransformTest extends HackTest {
         dict[
           'sub' => 'subject',
           'bject' => 'FAIL',
+          'ject' => 'FAIL',
+          'c' => 'FAIL',
         ],
         'subject fast',
       ),
