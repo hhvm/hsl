@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Str;
 
-use namespace HH\Lib\_Private;
+use namespace HH\Lib\{_Private, C, Keyset, Vec};
 
 /**
  * Returns the string with the first character capitalized.
@@ -192,9 +192,18 @@ function replace_ci(
  * Returns the "haystack" string with all occurrences of the keys of
  * `$replacements` replaced by the corresponding values.
  *
+ * Replacements are applied in the order they are specified in `$replacements`,
+ * and the new values are searched again for subsequent matches. For example,
+ * `dict['a' => 'b', 'b' => 'c']` is equivalent to `dict['a' => 'c']`, but
+ * `dict['b' => 'c', 'a' => 'b']` is not, despite having the same elements.
+ *
+ * If there are multiple overlapping matches, the match occuring earlier in
+ * `$replacements` (not in `$haystack`) takes precedence.
+ *
  * - For a single case-sensitive search/replace, see `Str\replace()`.
  * - For a single case-insensitive search/replace, see `Str\replace_ci()`.
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
+ * - For not having new values searched again, see `Str\replace_every_nonrecursive()`.
  */
 <<__Pure>>
 function replace_every(
@@ -219,9 +228,18 @@ function replace_every(
  * Returns the "haystack" string with all occurrences of the keys of
  * `$replacements` replaced by the corresponding values (case-insensitive).
  *
+ * Replacements are applied in the order they are specified in `$replacements`,
+ * and the new values are searched again for subsequent matches. For example,
+ * `dict['a' => 'b', 'b' => 'c']` is equivalent to `dict['a' => 'c']`, but
+ * `dict['b' => 'c', 'a' => 'b']` is not, despite having the same elements.
+ *
+ * If there are multiple overlapping matches, the match occuring earlier in
+ * `$replacements` (not in `$haystack`) takes precedence.
+ *
  * - For a single case-sensitive search/replace, see `Str\replace()`.
  * - For a single case-insensitive search/replace, see `Str\replace_ci()`.
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
+ * - For not having new values searched again, see `Str\replace_every_nonrecursive_ci()`.
  */
 <<__Pure>>
 function replace_every_ci(
@@ -242,9 +260,102 @@ function replace_every_ci(
   );
 }
 
-function reverse(
-  string $string,
+/**
+ * Returns the "haystack" string with all occurrences of the keys of
+ * `$replacements` replaced by the corresponding values. Once a substring has
+ * been replaced, its new value will not be searched again.
+ *
+ * If there are multiple overlapping matches, the match occuring earlier in
+ * `$haystack` takes precedence. If a replacer is a prefix of another (like
+ * "car" and "carpet"), the longer one (carpet) takes precedence. The ordering
+ * of `$replacements` therefore doesn't matter.
+ *
+ * - For having new values searched again, see `Str\replace_every()`.
+ */
+<<__Rx>>
+function replace_every_nonrecursive(
+  string $haystack,
+  KeyedContainer<string, string> $replacements,
 ): string {
+  invariant(
+    !C\contains_key($replacements, ''),
+    'Expected non-empty keys only.',
+  );
+
+  /* HH_FIXME[2049] calling stdlib directly */
+  /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4200] Rx calling non-rx */
+  return \strtr($haystack, $replacements);
+}
+
+/**
+ * Returns the "haystack" string with all occurrences of the keys of
+ * `$replacements` replaced by the corresponding values (case-insensitive).
+ * Once a substring has been replaced, its new value will not be searched
+ * again.
+ *
+ * If there are multiple overlapping matches, the match occuring earlier in
+ * `$haystack` takes precedence. If a replacer is a case-insensitive prefix of
+ * another (like "Car" and "CARPET"), the longer one (carpet) takes precedence.
+ * The ordering of `$replacements` therefore doesn't matter.
+ *
+ * When two replacers are passed that are identical except for case,
+ * an invariant exception is thrown.
+ *
+ * Time complexity: O(a + length * b), where a is the sum of all key lengths and
+ * b is the sum of distinct key lengths (length is the length of `$haystack`)
+ *
+ * - For having new values searched again, see `Str\replace_every_ci()`.
+ */
+<<__Rx>>
+function replace_every_nonrecursive_ci(
+  string $haystack,
+  KeyedContainer<string, string> $replacements,
+): string {
+  invariant(
+    !C\contains_key($replacements, ''),
+    'Expected non-empty keys only.',
+  );
+
+  $haystack_lc = lowercase($haystack);
+  $key_lengths = keyset[];
+  $replacements_lc = dict[];
+  foreach ($replacements as $key => $value) {
+    $key_lc = lowercase($key);
+    invariant(
+      !C\contains_key($replacements_lc, $key_lc),
+      'Duplicate case-insensitive search string "%s".',
+      $key_lc,
+    );
+    $key_lengths[] = length($key_lc);
+    $replacements_lc[$key_lc] = $value;
+  }
+
+  $key_lengths = Vec\sort($key_lengths) |> Vec\reverse($$);
+
+  $output = '';
+  for ($pos = 0; $pos < length($haystack); ) {
+    $found_match_at_pos = false;
+    foreach ($key_lengths as $key_length) {
+      $possible_match = slice($haystack_lc, $pos, $key_length);
+      if (C\contains_key($replacements_lc, $possible_match)) {
+        $found_match_at_pos = true;
+        $output .= $replacements_lc[$possible_match];
+        $pos += $key_length;
+        break;
+      }
+    }
+
+    if (!$found_match_at_pos) {
+      $output .= $haystack[$pos];
+      $pos++;
+    }
+  }
+
+  return $output;
+}
+
+function reverse(string $string): string {
   for ($lo = 0, $hi = namespace\length($string) - 1; $lo < $hi; $lo++, $hi--) {
     $temp = $string[$lo];
     $string[$lo] = $string[$hi];

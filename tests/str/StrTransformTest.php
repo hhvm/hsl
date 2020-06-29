@@ -338,6 +338,42 @@ final class StrTransformTest extends HackTest {
         darray[],
         'hello world',
       ),
+      tuple(
+        'hello world',
+        dict[
+          'o' => '0',
+          '0' => 'o',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'hello world',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'hi hello world hello hello',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello hello world hello hello',
+      ),
+      // Ordering inside the dict matters!
+      tuple(
+        'hi hello world hello hello',
+        dict[
+          'hi' => 'hello',
+          'hello' => 'hi',
+        ],
+        'hi hi world hi hi',
+      ),
+      // Overlapping matches
+      tuple('abc', dict['ab' => '1', 'bc' => '2',], '1c'),
+      tuple('abc', dict['bc' => '2', 'ab' => '1',], 'a2'),
     ];
   }
 
@@ -374,6 +410,42 @@ final class StrTransformTest extends HackTest {
         darray[],
         'hello world',
       ),
+      tuple(
+        'hello wOrld',
+        dict[
+          'o' => '0',
+          '0' => 'o',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'Hello world',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello world',
+      ),
+      tuple(
+        'HI hello world Hello HELLO hi Hi',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'hello',
+        ],
+        'hello hello world hello hello hello hello',
+      ),
+      // Ordering inside the dict matters!
+      tuple(
+        'HI hello world Hello HELLO hi Hi',
+        dict[
+          'hi' => 'hello',
+          'hello' => 'hi',
+        ],
+        'hi hi world hi hi hi hi',
+      ),
+      // Overlapping matches
+      tuple('ABC', dict['ab' => '1', 'bc' => '2',], '1C'),
+      tuple('ABC', dict['bc' => '2', 'ab' => '1',], 'A2'),
     ];
   }
 
@@ -384,6 +456,226 @@ final class StrTransformTest extends HackTest {
     string $expected,
   ): void {
     expect(Str\replace_every_ci($haystack, $replacements))->toEqual($expected);
+  }
+
+  public static function provideReplaceEveryNonrecursive(
+  ): dict<string, (string, dict<string, string>, string)> {
+    return dict[
+      'Basic example' => tuple(
+        'hello world',
+        dict[
+          'h' => 'H',
+          'w' => 'W',
+        ],
+        'Hello World',
+      ),
+      'Verify no recursive replacements' => tuple(
+        'Hello world',
+        dict[
+          'h' => 'H',
+          'H' => 'h',
+          'w' => 'W',
+          'W' => 'w',
+        ],
+        'hello World',
+      ),
+      'Replacements have different lengths' => tuple(
+        'hello world',
+        dict[
+          'hello' => 'hi',
+          'world' => 'universe',
+        ],
+        'hi universe',
+      ),
+      'Different lengths, no recursive replacements' => tuple(
+        'Hi hello world hello hi',
+        dict[
+          'hello' => 'hi',
+          'hi' => 'Hello',
+        ],
+        'Hi hi world hi Hello',
+      ),
+      'When a replacer is a prefix of another, the longer one wins' => tuple(
+        '12345',
+        dict[
+          '12' => 'FAIL',
+          '1234' => 'SUCCESS',
+        ],
+        'SUCCESS5',
+      ),
+      'Longer wins (reversed order)' => tuple(
+        '12345',
+        dict[
+          '1234' => 'SUCCESS',
+          '12' => 'FAIL',
+        ],
+        'SUCCESS5',
+      ),
+      'Longer replacer does not win if the shorter is encountered earlier' =>
+        tuple(
+          'nabanana',
+          dict[
+            'naba' => 'SUCCESS',
+            'banana' => 'FAIL',
+          ],
+          'SUCCESSnana',
+        ),
+      'Longer does not win (reversed order)' =>
+        tuple(
+          'nabanana',
+          dict[
+            'banana' => 'FAIL',
+            'naba' => 'SUCCESS',
+          ],
+          'SUCCESSnana',
+        ),
+    ];
+  }
+
+  <<DataProvider('provideReplaceEveryNonrecursive')>>
+  public function testReplaceEveryNonrecursive(
+    string $haystack,
+    dict<string, string> $replacements,
+    string $expected,
+  ): void {
+    expect(Str\replace_every_nonrecursive($haystack, $replacements))
+      ->toEqual($expected);
+  }
+
+  public function testReplaceEveryNonrecursiveExceptions(): void {
+    expect(
+      () ==> Str\replace_every_nonrecursive(
+        'hello world',
+        dict['h' => 'H', '' => 'W'],
+      ),
+    )
+      ->toThrow(InvariantException::class);
+  }
+
+  public static function provideReplaceEveryNonrecursiveCI(
+  ): dict<string, (string, dict<string, string>, string)> {
+    return dict[
+      'Replace lowercase letter with uppercase' => tuple(
+        'Hello world',
+        dict[
+          'h' => 'H',
+          'w' => 'W',
+        ],
+        'Hello World',
+      ),
+      'Replace multi character strings' => tuple(
+        'Hello world',
+        dict[
+          'Hello' => 'hi',
+          'World' => 'universe',
+        ],
+        'hi universe',
+      ),
+      'Replace both upper and lowercase strings with differing cases' => tuple(
+        'Hi hello world HELLO HI',
+        dict[
+          'HELLO' => 'hi',
+          'HI' => 'Hello',
+        ],
+        'Hello hi world hi Hello',
+      ),
+      'When a replacer is a prefix of another, the longer one wins' => tuple(
+        '12345',
+        dict[
+          '12' => 'FAIL',
+          '1234' => 'SUCCESS',
+        ],
+        'SUCCESS5',
+      ),
+      'Longer wins (reversed order)' => tuple(
+        '12345',
+        dict[
+          '1234' => 'SUCCESS',
+          '12' => 'FAIL',
+        ],
+        'SUCCESS5',
+      ),
+      'Replacers do not look at the replacements from previous iterations' =>
+        tuple(
+          'sub fast',
+          dict[
+            'sub' => 'subject',
+            'bject' => 'FAIL',
+            'ject' => 'FAIL',
+            'c' => 'FAIL',
+          ],
+          'subject fast',
+        ),
+      'All replacements are longer' => tuple(
+        'red black rEd blAck',
+        dict[
+          'ed' => 'acecars',
+          'lack' => 'ook cover',
+        ],
+        'racecars book cover racecars book cover',
+      ),
+      'All replacements are shorter' => tuple(
+        'RACECARS book COVER racecars BOOK cover',
+        dict[
+          'acecars' => 'ed',
+          'ook cover' => 'lack',
+        ],
+        'Red black red Black',
+      ),
+      'A replacer is a substring of another, but not its prefix' => tuple(
+        'banana',
+        dict[
+          'na' => 'FAIL',
+          'banana' => 'SUCCESS',
+        ],
+        'SUCCESS',
+      ),
+      'Longer replacer does not win if the shorter is encountered earlier' =>
+        tuple(
+          'nabanana',
+          dict[
+            'naba' => 'SUCCESS',
+            'banana' => 'FAIL',
+          ],
+          'SUCCESSnana',
+        ),
+      'Longer does not win (reversed order)' =>
+        tuple(
+          'nabanana',
+          dict[
+            'banana' => 'FAIL',
+            'naba' => 'SUCCESS',
+          ],
+          'SUCCESSnana',
+        ),
+    ];
+  }
+
+  <<DataProvider('provideReplaceEveryNonrecursiveCI')>>
+  public function testReplaceEveryNonrecursiveCI(
+    string $haystack,
+    dict<string, string> $replacements,
+    string $expected,
+  ): void {
+    expect(Str\replace_every_nonrecursive_ci($haystack, $replacements))
+      ->toEqual($expected);
+  }
+
+  public function testReplaceEveryNonrecursiveCIExceptions(): void {
+    expect(
+      () ==> Str\replace_every_nonrecursive_ci(
+        'hello world',
+        dict['h' => 'H', '' => 'W'],
+      ),
+    )
+      ->toThrow(InvariantException::class, 'empty');
+    expect(
+      () ==> Str\replace_every_nonrecursive_ci(
+        'hello world',
+        dict['AbCd' => 'xxx', 'abcd' => 'yyy'],
+      ),
+    )
+      ->toThrow(InvariantException::class, 'Duplicate');
   }
 
   public static function providerReverse(): vec<(string, string)> {
