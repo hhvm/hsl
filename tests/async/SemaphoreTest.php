@@ -22,7 +22,6 @@ use function HH\Lib\_Private\stop_eager_execution;
 // @oss-disable: >>
 final class SemaphoreTest extends HackTest {
 
-  const float TIME_DELTA = 1.;
   const int USLEEP_BLOCK = 500000;
   const float SLEEP_BLOCK = self::USLEEP_BLOCK / 1000000.;
 
@@ -41,7 +40,7 @@ final class SemaphoreTest extends HackTest {
     /* HH_FIXME[4107] PHP stdlib */
     /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
-    expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK * 10, self::TIME_DELTA);
+    expect($end - $start)->toBeGreaterThan(self::SLEEP_BLOCK * 10);
     expect($results)->toEqual(Vec\range(0, 99));
   }
 
@@ -69,7 +68,7 @@ final class SemaphoreTest extends HackTest {
     /* HH_FIXME[4107] PHP stdlib */
     /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
-    expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK * 10, self::TIME_DELTA);
+    expect($end - $start)->toBeGreaterThan(self::SLEEP_BLOCK * 10);
   }
 
   public async function testConcurrencyLimiterSingleAsync(): Awaitable<void> {
@@ -95,23 +94,16 @@ final class SemaphoreTest extends HackTest {
     /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
     expect($checker->value)->toBeFalse();
-    expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK * 10, self::TIME_DELTA);
+    expect($end - $start)->toBeGreaterThan(self::SLEEP_BLOCK * 10);
     expect($results)->toEqual(Vec\range(0, 9));
   }
 
   public async function testExtreme1(): Awaitable<void> {
     $semaphore = new Async\Semaphore(1, async ($i) ==> $i);
-    /* HH_FIXME[4107] PHP stdlib */
-    /* HH_FIXME[2049] PHP stdlib */
-    $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 9999),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_FIXME[4107] PHP stdlib */
-    /* HH_FIXME[2049] PHP stdlib */
-    $end = microtime(true);
-    expect($end - $start)->toEqualWithDelta(0., self::TIME_DELTA);
     expect($results)->toEqual(Vec\range(0, 9999));
   }
 
@@ -130,7 +122,7 @@ final class SemaphoreTest extends HackTest {
     /* HH_FIXME[4107] PHP stdlib */
     /* HH_FIXME[2049] PHP stdlib */
     $end = microtime(true);
-    expect($end - $start)->toEqualWithDelta(self::SLEEP_BLOCK, self::TIME_DELTA);
+    expect($end - $start)->toBeGreaterThan(self::SLEEP_BLOCK);
     expect($results)->toEqual(Vec\range(0, 9999));
   }
 
@@ -139,17 +131,10 @@ final class SemaphoreTest extends HackTest {
       await stop_eager_execution();
       return $i;
     });
-    /* HH_FIXME[4107] PHP stdlib */
-    /* HH_FIXME[2049] PHP stdlib */
-    $start = microtime(true);
     $results = await Vec\map_async(
       Vec\range(0, 9999),
       async $i ==> await $semaphore->waitForAsync($i),
     );
-    /* HH_FIXME[4107] PHP stdlib */
-    /* HH_FIXME[2049] PHP stdlib */
-    $end = microtime(true);
-    expect($end - $start)->toEqualWithDelta(0., self::TIME_DELTA);
     expect($results)->toEqual(Vec\range(0, 9999));
   }
 }
