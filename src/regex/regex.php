@@ -15,6 +15,7 @@ use namespace HH\Lib\{_Private, Str};
 /**
  * Returns the first match found in `$haystack` given the regex pattern `$pattern`
  * and an optional offset at which to start the search.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  * Returns null if there is no match, or a Match containing
@@ -35,6 +36,7 @@ function first_match<T as Match>(
 /**
  * Returns all matches found in `$haystack` given the regex pattern `$pattern`
  * and an optional offset at which to start the search.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
@@ -71,6 +73,7 @@ function every_match<T as Match>(
 /**
  * Returns whether a match exists in `$haystack` given the regex pattern `$pattern`
  * and an optional offset at which to start the search.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
@@ -87,6 +90,7 @@ function matches(
  * Returns `$haystack` with any substring matching `$pattern`
  * replaced by `$replacement`. If `$offset` is given, replacements are made
  * only starting from `$offset`.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
@@ -121,6 +125,7 @@ function replace(
  * Returns `$haystack` with any substring matching `$pattern`
  * replaced by the result of `$replace_func` applied to that match.
  * If `$offset` is given, replacements are made only starting from `$offset`.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
@@ -169,6 +174,7 @@ function replace_with<T as Match>(
  * The last element of the vec will be whatever is left of the haystack string
  * after the appropriate number of splits.
  * If no substrings of `$haystack` match `$delimiter`, a vec containing only `$haystack` will be returned.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  *
  * Throws Invariant[Violation]Exception if `$limit` < 2.
  */
@@ -220,6 +226,7 @@ function split(
 
 /**
  * Renders a Regex Pattern to a string.
+ * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  */
 <<__Pure>>
 function to_string(Pattern<Match> $pattern): string {
