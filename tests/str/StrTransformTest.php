@@ -496,20 +496,20 @@ final class StrTransformTest extends HackTest {
         'Hi hi world hi Hello',
       ),
       'When a replacer is a prefix of another, the longer one wins' => tuple(
-        '12345',
+        'abcde',
         dict[
-          '12' => 'FAIL',
-          '1234' => 'SUCCESS',
+          'ab' => 'FAIL',
+          'abcd' => 'SUCCESS',
         ],
-        'SUCCESS5',
+        'SUCCESSe',
       ),
       'Longer wins (reversed order)' => tuple(
-        '12345',
+        'abcde',
         dict[
-          '1234' => 'SUCCESS',
-          '12' => 'FAIL',
+          'abcd' => 'SUCCESS',
+          'ab' => 'FAIL',
         ],
-        'SUCCESS5',
+        'SUCCESSe',
       ),
       'Longer replacer does not win if the shorter is encountered earlier' =>
         tuple(
