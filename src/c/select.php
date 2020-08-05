@@ -342,7 +342,7 @@ function nfirst<T>(
 
 /**
  * Returns the first and only element of the given Traversable, or throws if the
- * Traversable is empty.
+ * Traversable is empty or contains more than one element.
  *
  * An optional format string (and format arguments) may be passed to specify
  * a custom message for the exception in the error case.
