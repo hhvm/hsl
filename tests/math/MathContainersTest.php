@@ -92,7 +92,7 @@ final class MathContainersTest extends HackTest {
     if ($expected === null) {
       expect($actual)->toBeNull();
     } else {
-      expect($actual)->toAlmostEqual($expected);
+      expect($actual as nonnull)->toAlmostEqual($expected);
     }
   }
 
