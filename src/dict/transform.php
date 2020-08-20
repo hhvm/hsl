@@ -251,7 +251,7 @@ function group_by<Tk as arraykey, Tv>(
  * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 function map<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,

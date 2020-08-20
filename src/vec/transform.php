@@ -95,7 +95,7 @@ function flatten<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 function map<Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
