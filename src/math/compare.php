@@ -66,3 +66,16 @@ function is_nan(num $num): bool {
   /* HH_FIXME[4107] __PHPStdLib */
   return \is_nan((float)$num);
 }
+
+/**
+ * Compares two numbers to see if they are within epsilon of each other.
+ * If the difference equals epsilon this returns false.
+ *
+ * default epsilon of .00000001.
+ *
+ * When comparing large numbers consider passing in a large epsilon
+ */
+<<__Pure>>
+function almost_equals(num $num_one, num $num_two, num $epsilon = .00000001): bool{
+  return Math\abs($num_one - $num_two) < $epsilon;
+}

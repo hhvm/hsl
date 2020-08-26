@@ -81,4 +81,38 @@ final class MathCompareTest extends HackTest {
   public function testIsNan(num $number, bool $is_nan): void {
     expect(Math\is_nan($number))->toEqual($is_nan);
   }
+
+  public static function provideTestAlmostEquals(): vec<(num, num, ?num, bool)>{
+    return vec[
+      tuple(.001, .002, .01, true),
+      tuple(.002, .001, .01, true),
+      tuple(.001, .002, null, false),
+      tuple(.002, .001, null, false),
+      tuple(.001, .002, 0, false),
+      tuple(.002, .001, 0, false),
+      tuple(.001, .001, 0, false),
+      tuple(.001, .001, null, true),
+      tuple(.00000001, .00000002, null, false),
+      tuple(.00000001, .000000001, null, true),
+      tuple(.001, 1, null, false),
+      tuple(.001, 1, 1, true),
+      tuple(1, 2, 1, false),
+      tuple(1, 2, null, false),
+      tuple(2, 1, 2, true),
+    ];
+  }
+
+  <<DataProvider('provideTestAlmostEquals')>>
+  public function testAlmostEquals(
+    num $num_one,
+    num $num_two,
+    ?num $epsilon,
+    bool $expected,
+    ): void{
+    $epsilon is null
+    ? expect(Math\almost_equals($num_one, $num_two))->toEqual($expected,)
+    : expect(Math\almost_equals($num_one, $num_two, $epsilon))->toEqual(
+      $expected
+    );
+  }
 }
