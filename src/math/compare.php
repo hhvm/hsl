@@ -77,5 +77,5 @@ function is_nan(num $num): bool {
  */
 <<__Pure>>
 function almost_equals(num $num_one, num $num_two, num $epsilon = .00000001): bool{
-  return Math\abs($num_one - $num_two) < $epsilon;
+  return namespace\abs($num_one - $num_two) < $epsilon;
 }
