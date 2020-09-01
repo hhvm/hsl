@@ -45,6 +45,8 @@ function chunk<Tv>(
 /**
  * Returns a new vec of size `$size` where all the values are `$value`.
  *
+ * If you need a range of items not repeats, use `Vec\range(0, $n - 1)`.
+ *
  * Time complexity: O(n)
  * Space complexity: O(n)
  */

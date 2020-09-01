@@ -18,6 +18,8 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * default. If `$start > $end`, it returns a descending range instead of
  * an empty one.
  *
+ * If you don't need the items to be enumerated, consider Vec\fill.
+ *
  * Time complexity: O(n), where `n` is the size of the resulting vec
  * Space complexity: O(n), where `n` is the size of the resulting vec
  */
