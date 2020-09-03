@@ -188,9 +188,11 @@ function select_keys<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
 ): dict<Tk, Tv> {
   $result = dict[];
-  foreach ($keys as $key) {
-    if (C\contains_key($container, $key)) {
-      $result[$key] = $container[$key];
+  if (!C\is_empty($container)) {
+    foreach ($keys as $key) {
+      if (C\contains_key($container, $key)) {
+        $result[$key] = $container[$key];
+      }
     }
   }
   return $result;
