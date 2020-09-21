@@ -35,6 +35,7 @@ function regex_match<T as Regex\Match>(
   int $offset = 0,
 ): ?(T, int) {
   /* HH_FIXME[4200] keep suppressing warnings from bad callers */
+  /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
   using new PHPWarningSuppressor();
   $offset = validate_offset($offset, Str\length($haystack));
   $match = darray[];
