@@ -28,7 +28,6 @@ use namespace HH\Lib\{Regex, Str};
  * and second,
  *   the integer offset at which this first match occurs in the haystack string.
  */
-<<__Pure>>
 function regex_match<T as Regex\Match>(
   string $haystack,
   Regex\Pattern<T> $pattern,
@@ -41,7 +40,6 @@ function regex_match<T as Regex\Match>(
   $match = darray[];
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
-  /* HH_FIXME[4200] Rx error without deregister_phpstdlib */
   $status = \preg_match_with_matches(
     /* HH_FIXME[4110] */ $pattern,
     $haystack,
@@ -64,7 +62,6 @@ function regex_match<T as Regex\Match>(
   } else {
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
-    /* HH_FIXME[4200] Rx error without deregister_phpstdlib */
     throw new Regex\Exception($pattern, \preg_last_error());
   }
 }

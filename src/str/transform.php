@@ -176,13 +176,11 @@ function replace(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
-<<__Pure>>
 function replace_ci(
   string $haystack,
   string $needle,
   string $replacement,
 ): string {
-  /* HH_FIXME[4200] Rx calling non-rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_ireplace($needle, $replacement, $haystack);
@@ -241,14 +239,12 @@ function replace_every(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For not having new values searched again, see `Str\replace_every_nonrecursive_ci()`.
  */
-<<__Pure>>
 function replace_every_ci(
   string $haystack,
   KeyedContainer<string, string> $replacements,
 ): string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  /* HH_FIXME[4200] Rx calling non-rx */
   return \str_ireplace(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */

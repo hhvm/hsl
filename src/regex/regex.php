@@ -24,7 +24,6 @@ use namespace HH\Lib\{_Private, Str};
  *        the groups' occurrence within the pattern, and
  *    - the results of named capture groups, at string keys matching their respective names.
  */
-<<__Pure>>
 function first_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -40,7 +39,6 @@ function first_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Pure>>
 function every_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -77,7 +75,6 @@ function every_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Pure>>
 function matches(
   string $haystack,
   Pattern<Match> $pattern,
@@ -129,11 +126,10 @@ function replace(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Pure, __AtMostRxAsArgs>>
 function replace_with<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
-  <<__AtMostRxAsFunc>> (function(T): string) $replace_func,
+  (function(T): string) $replace_func,
   int $offset = 0,
 ): string {
   $haystack_length = Str\length($haystack);
@@ -178,7 +174,6 @@ function replace_with<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$limit` < 2.
  */
-<<__Pure>>
 function split(
   string $haystack,
   Pattern<Match> $delimiter,
