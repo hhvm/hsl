@@ -176,7 +176,7 @@ function replace(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
-<<__Pure>>
+<<__Rx>> // not pure: str_ireplace uses global locale for capitalization
 function replace_ci(
   string $haystack,
   string $needle,
@@ -241,7 +241,7 @@ function replace_every(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For not having new values searched again, see `Str\replace_every_nonrecursive_ci()`.
  */
-<<__Pure>>
+<<__Rx>>
 function replace_every_ci(
   string $haystack,
   KeyedContainer<string, string> $replacements,

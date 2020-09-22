@@ -28,7 +28,7 @@ use namespace HH\Lib\{Regex, Str};
  * and second,
  *   the integer offset at which this first match occurs in the haystack string.
  */
-<<__Pure>>
+<<__Rx>> // not pure due to preg_match_with_matches + preg_last_error
 function regex_match<T as Regex\Match>(
   string $haystack,
   Regex\Pattern<T> $pattern,
