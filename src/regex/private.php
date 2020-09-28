@@ -46,8 +46,6 @@ function regex_match<T as Regex\Match>(
     /* HH_FIXME[4110] */ $pattern,
     $haystack,
     inout $match,
-    /* HH_FIXME[2049] using FB__PRIVATE const in open-source code */
-    /* HH_FIXME[4106] using FB__PRIVATE const in open-source code */
     \PREG_FB__PRIVATE__HSL_IMPL | \PREG_OFFSET_CAPTURE,
     $offset,
   );
