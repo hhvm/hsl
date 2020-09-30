@@ -56,8 +56,7 @@ function every_match<T as Match>(
     $captures = $match[0];
     $result[] = $captures;
     $match_begin = $match[1];
-    /* HH_FIXME[4108] Until we can define Match to have field 0 */
-    $match_length = Str\length($captures[0]);
+    $match_length = Str\length(Shapes::at($captures, 0) as string);
     if ($match_length === 0) {
       $offset = $match_begin + 1;
       if ($offset > $haystack_length) {
@@ -149,8 +148,7 @@ function replace_with<T as Match>(
     // Copy anything between the previous match and this one
     $result .= Str\slice($haystack, $match_end, $match_begin - $match_end);
     $result .= $replace_func($captures);
-    /* HH_FIXME[4108] Until we can define Match to have field 0 */
-    $match_length = Str\length($captures[0]);
+    $match_length = Str\length(Shapes::at($captures, 0) as string);
     $match_end = $match_begin + $match_length;
     if ($match_length === 0) {
       // To get the next match (and avoid looping forever), need to skip forward
@@ -203,8 +201,7 @@ function split(
     $match_begin = $match[1];
     // Copy anything between the previous match and this one
     $result[] = Str\slice($haystack, $match_end, $match_begin - $match_end);
-    /* HH_FIXME[4108] Until we can define Match to have field 0 */
-    $match_length = Str\length($captures[0]);
+    $match_length = Str\length(Shapes::at($captures, 0) as string);
     $match_end = $match_begin + $match_length;
     if ($match_length === 0) {
       // To get the next match (and avoid looping forever), need to skip forward
