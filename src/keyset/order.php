@@ -27,12 +27,12 @@ function sort<Tv as arraykey>(
 ): keyset<Tv> {
   $keyset = keyset($traversable);
   if ($comparator) {
-    /* HH_FIXME[4200] Rx calling non-Rx */
+    /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
     \uksort(inout $keyset, $comparator);
   } else {
-    /* HH_FIXME[4200] Rx calling non-Rx */
+    /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
     \ksort(inout $keyset);

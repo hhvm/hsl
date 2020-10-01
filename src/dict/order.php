@@ -70,12 +70,12 @@ function sort<Tk as arraykey, Tv>(
 ): dict<Tk, Tv> {
   $result = dict($traversable);
   if ($value_comparator) {
-    /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
     \uasort(inout $result, $value_comparator);
   } else {
-    /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
     \asort(inout $result);
@@ -134,12 +134,12 @@ function sort_by_key<Tk as arraykey, Tv>(
 ): dict<Tk, Tv> {
   $result = dict($traversable);
   if ($key_comparator) {
-    /* HH_FIXME[4200] Rx calling non-rx */
+    /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
     \uksort(inout $result, $key_comparator);
   } else {
-    /* HH_FIXME[4200] Calling non-rx */
+    /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */
     \ksort(inout $result);
