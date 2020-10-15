@@ -10,7 +10,7 @@
 
 namespace HH\Lib\Dict;
 
-use namespace HH\Lib\C;
+use namespace HH\Lib\{C, Vec};
 
 /**
  * Returns a new dict where each element in `$keys` maps to the
@@ -28,8 +28,8 @@ function associate<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 ): dict<Tk, Tv> {
-  $key_vec = vec($keys);
-  $value_vec = vec($values);
+  $key_vec = Vec\cast_clear_legacy_array_mark($keys);
+  $value_vec = Vec\cast_clear_legacy_array_mark($values);
   invariant(
     C\count($key_vec) === C\count($value_vec),
     'Expected length of keys and values to be the same',
@@ -56,7 +56,7 @@ function merge<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $first,
   KeyedContainer<Tk, Tv> ...$rest
 ): dict<Tk, Tv> {
-  $result = dict($first);
+  $result = cast_clear_legacy_array_mark($first);
   foreach ($rest as $traversable) {
     foreach ($traversable as $key => $value) {
       $result[$key] = $value;

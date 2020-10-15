@@ -10,6 +10,8 @@
 
 namespace HH\Lib\Str;
 
+use namespace HH\Lib\Vec;
+
 /**
  * Returns a string formed by joining the elements of the Traversable with the
  * given `$glue` string.
@@ -29,5 +31,5 @@ function join(
   }
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
-  return \implode($glue, vec($pieces));
+  return \implode($glue, Vec\cast_clear_legacy_array_mark($pieces));
 }

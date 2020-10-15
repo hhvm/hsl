@@ -51,7 +51,7 @@ function reverse<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 ): vec<Tv> {
-  $vec = vec($traversable);
+  $vec = cast_clear_legacy_array_mark($traversable);
   for ($lo = 0, $hi = C\count($vec) - 1; $lo < $hi; $lo++, $hi--) {
     $temp = $vec[$lo];
     $vec[$lo] = $vec[$hi];
@@ -73,7 +73,7 @@ function reverse<Tv>(
 function shuffle<Tv>(
   Traversable<Tv> $traversable,
 ): vec<Tv> {
-  $vec = vec($traversable);
+  $vec = cast_clear_legacy_array_mark($traversable);
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   \shuffle(inout $vec);
@@ -98,7 +98,7 @@ function sort<Tv>(
   <<__AtMostRxAsFunc>>
   ?(function(Tv, Tv): num) $comparator = null,
 ): vec<Tv> {
-  $vec = vec($traversable);
+  $vec = cast_clear_legacy_array_mark($traversable);
   if ($comparator) {
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
@@ -135,7 +135,7 @@ function sort_by<Tv, Ts>(
   <<__AtMostRxAsFunc>>
   ?(function(Ts, Ts): num) $comparator = null,
 ): vec<Tv> {
-  $vec = vec($traversable);
+  $vec = cast_clear_legacy_array_mark($traversable);
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {
     /* HH_FIXME[2049] calling stdlib directly */

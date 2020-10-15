@@ -27,7 +27,7 @@ function concat<Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>> Traversable<Tv> $first,
   Container<Tv> ...$rest
 ): vec<Tv> {
-  $result = vec($first);
+  $result = cast_clear_legacy_array_mark($first);
   foreach ($rest as $traversable) {
     foreach ($traversable as $value) {
       $result[] = $value;
@@ -57,8 +57,8 @@ function zip<Tv, Tu>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tu> $second,
 ): vec<(Tv, Tu)> {
-  $one = vec($first);
-  $two = vec($second);
+  $one = cast_clear_legacy_array_mark($first);
+  $two = cast_clear_legacy_array_mark($second);
   $result = vec[];
   $lesser_count = Math\minva(C\count($one), C\count($two));
   for ($i = 0; $i < $lesser_count; ++$i) {

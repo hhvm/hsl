@@ -38,7 +38,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   }
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second && !$rest) {
-    return vec($first);
+    return cast_clear_legacy_array_mark($first);
   }
   $union = !$rest
     ? keyset($second)
@@ -76,7 +76,7 @@ function diff_by<Tv, Ts as arraykey>(
   }
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second) {
-    return vec($first);
+    return cast_clear_legacy_array_mark($first);
   }
   $set = Keyset\map($second, $scalar_func);
   return filter(

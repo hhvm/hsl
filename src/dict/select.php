@@ -36,7 +36,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   }
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$second && !$rest) {
-    return dict($first);
+    return cast_clear_legacy_array_mark($first);
   }
   $union = merge($second, ...$rest);
   return filter_keys(

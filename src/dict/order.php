@@ -24,7 +24,7 @@ function reverse<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 ): dict<Tk, Tv> {
-  $dict = dict($traversable);
+  $dict = cast_clear_legacy_array_mark($traversable);
   return $dict
     |> Vec\keys($$)
     |> Vec\reverse($$)
@@ -44,7 +44,7 @@ function reverse<Tk as arraykey, Tv>(
 function shuffle<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $container,
 ): dict<Tk, Tv> {
-  $dict = dict($container);
+  $dict = cast_clear_legacy_array_mark($container);
   return Vec\keys($container)
     |> Vec\shuffle($$)
     |> from_keys($$, ($k) ==> $dict[$k]);
@@ -68,7 +68,7 @@ function sort<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>> ?(function(Tv, Tv): num) $value_comparator = null,
 ): dict<Tk, Tv> {
-  $result = dict($traversable);
+  $result = cast_clear_legacy_array_mark($traversable);
   if ($value_comparator) {
     /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */
@@ -132,7 +132,7 @@ function sort_by_key<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>> ?(function(Tk, Tk): num) $key_comparator = null,
 ): dict<Tk, Tv> {
-  $result = dict($traversable);
+  $result = cast_clear_legacy_array_mark($traversable);
   if ($key_comparator) {
     /* HH_FIXME[4387] __Pure calling impure */
     /* HH_FIXME[2049] __PHPStdLib */

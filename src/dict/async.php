@@ -24,7 +24,7 @@ use namespace HH\Lib\{C, Dict};
 async function from_async<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
 ): Awaitable<dict<Tk, Tv>> {
-  $awaitables_ = dict($awaitables);
+  $awaitables_ = cast_clear_legacy_array_mark($awaitables);
 
   await AwaitAllWaitHandle::fromDict($awaitables_);
   foreach ($awaitables_ as $key => $value) {

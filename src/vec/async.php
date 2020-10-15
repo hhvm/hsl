@@ -22,7 +22,7 @@ namespace HH\Lib\Vec;
 async function from_async<Tv>(
   Traversable<Awaitable<Tv>> $awaitables,
 ): Awaitable<vec<Tv>> {
-  $vec = vec($awaitables);
+  $vec = cast_clear_legacy_array_mark($awaitables);
 
   await AwaitAllWaitHandle::fromVec($vec);
   foreach ($vec as $index => $value) {

@@ -11,6 +11,8 @@
 
 namespace HH\Lib\C;
 
+use namespace HH\Lib\Vec;
+
 /**
  * Returns true if the given Traversable<Tv> is sorted in ascending order.
  * If two neighbouring elements compare equal, this will be considered sorted.
@@ -37,7 +39,7 @@ function is_sorted<Tv>(
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>> ?(function(Tv, Tv): num) $comparator = null,
 ): bool {
-  $vec = vec($traversable);
+  $vec = Vec\cast_clear_legacy_array_mark($traversable);
   if (is_empty($vec)) {
     return true;
   }
@@ -84,7 +86,7 @@ function is_sorted_by<Tv, Ts>(
   <<__AtMostRxAsFunc>> (function(Tv): Ts) $scalar_func,
   <<__AtMostRxAsFunc>> ?(function(Ts, Ts): num) $comparator = null,
 ): bool {
-  $vec = vec($traversable);
+  $vec = Vec\cast_clear_legacy_array_mark($traversable);
   if (is_empty($vec)) {
     return true;
   }
