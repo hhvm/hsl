@@ -146,10 +146,7 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   <<__AtMostRxAsFunc>>
   (function(Tv1): Awaitable<Tv2>) $value_func,
 ): Awaitable<dict<Tk, Tv2>> {
-  $dict = \HH\is_dict_or_darray($traversable)
-    /* HH_FIXME[4259] Rx doesn't understand array_unmark_legacy */
-    ? dict(\HH\array_unmark_legacy($traversable))
-    : dict($traversable);
+  $dict = cast_clear_legacy_array_mark($traversable);
   foreach ($dict as $key => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
     $dict[$key] = $value_func($value);

@@ -83,10 +83,7 @@ async function map_async<Tv1, Tv2>(
   <<__AtMostRxAsFunc>>
   (function(Tv1): Awaitable<Tv2>) $async_func,
 ): Awaitable<vec<Tv2>> {
-  $vec = \HH\is_vec_or_varray($traversable)
-    /* HH_FIXME[4259] Rx doesn't understand array_unmark_legacy */
-    ? vec(\HH\array_unmark_legacy($traversable))
-    : vec($traversable);
+  $vec = cast_clear_legacy_array_mark($traversable);
   foreach ($vec as $i => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromVec is like await */
     $vec[$i] = $async_func($value);
