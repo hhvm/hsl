@@ -91,7 +91,7 @@ function filter<Tk as arraykey, Tv>(
   <<__AtMostRxAsFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): dict<Tk, Tv> {
-  $value_predicate ??= fun('\\HH\\Lib\\_Private\\boolval');
+  $value_predicate ??= \HH\Lib\_Private\boolval<>;
   $dict = dict[];
   foreach ($traversable as $key => $value) {
     if ($value_predicate($value)) {
@@ -142,7 +142,7 @@ function filter_keys<Tk as arraykey, Tv>(
   <<__AtMostRxAsFunc>>
   ?(function(Tk): bool) $key_predicate = null,
 ): dict<Tk, Tv> {
-  $key_predicate ??= fun('\\HH\\Lib\\_Private\\boolval');
+  $key_predicate ??= \HH\Lib\_Private\boolval<>;
   $dict = dict[];
   foreach ($traversable as $key => $value) {
     if ($key_predicate($key)) {

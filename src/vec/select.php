@@ -131,7 +131,7 @@ function filter<Tv>(
   <<__AtMostRxAsFunc>>
   ?(function(Tv): bool) $value_predicate = null,
 ): vec<Tv> {
-  $value_predicate ??= fun('\\HH\\Lib\\_Private\\boolval');
+  $value_predicate ??= _Private\boolval<>;
   $result = vec[];
   foreach ($traversable as $value) {
     if ($value_predicate($value)) {

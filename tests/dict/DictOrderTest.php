@@ -199,7 +199,7 @@ final class DictOrderTest extends HackTest {
           3 => varray['joffrey', 'boratheon'],
           4 => varray['daenerys', 'targaryen'],
         },
-        fun('HH\\Lib\\Vec\\reverse'),
+        Vec\reverse<>,
         ($a, $b) ==> $b <=> $a,
         dict[
           4 => varray['daenerys', 'targaryen'],
