@@ -14,6 +14,6 @@
     "hhvm/hsl-experimental": "^4.37|dev-master"
   },
   "require": {
-    "hhvm": "^4.72"
+    "hhvm": "^4.79"
   }
 }
