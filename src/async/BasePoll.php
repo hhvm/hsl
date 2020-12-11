@@ -123,6 +123,7 @@ abstract class BasePoll<Tk, Tv> {
     $this->notifiers = AwaitAllWaitHandle::fromVec($notifiers);
   }
 
+  <<__ProvenanceSkipFrame>>
   private async function waitForThenNotify(
     Tk $key,
     Awaitable<Tv> $awaitable,
