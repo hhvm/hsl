@@ -24,13 +24,13 @@ use namespace HH\Lib\{_Private, Str};
  *        the groups' occurrence within the pattern, and
  *    - the results of named capture groups, at string keys matching their respective names.
  */
-<<__Rx>>
+<<__Pure>>
 function first_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
   int $offset = 0,
 ): ?T {
-  return _Private\regex_match($haystack, $pattern, $offset)[0] ?? null;
+  return _Private\regex_match($haystack, $pattern, inout $offset);
 }
 
 /**
@@ -40,7 +40,7 @@ function first_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Rx>>
+<<__Pure>>
 function every_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -49,21 +49,19 @@ function every_match<T as Match>(
   $haystack_length = Str\length($haystack);
   $result = vec[];
   while (true) {
-    $match = _Private\regex_match($haystack, $pattern, $offset);
+    $match = _Private\regex_match($haystack, $pattern, inout $offset);
     if ($match === null) {
       break;
     }
-    $captures = $match[0];
-    $result[] = $captures;
-    $match_begin = $match[1];
-    $match_length = Str\length(Shapes::at($captures, 0) as string);
+    $result[] = $match;
+    $match_length = Str\length(Shapes::at($match, 0) as string);
     if ($match_length === 0) {
-      $offset = $match_begin + 1;
+      $offset++;
       if ($offset > $haystack_length) {
         break;
       }
     } else {
-      $offset = $match_begin + $match_length;
+      $offset += $match_length;
     }
   }
   return $result;
@@ -76,13 +74,13 @@ function every_match<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Rx>>
+<<__Pure>>
 function matches(
   string $haystack,
   Pattern<Match> $pattern,
   int $offset = 0,
 ): bool {
-  return _Private\regex_match($haystack, $pattern, $offset) !== null;
+  return _Private\regex_match($haystack, $pattern, inout $offset) !== null;
 }
 
 /**
@@ -93,31 +91,36 @@ function matches(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
+<<__Pure>>
 function replace(
   string $haystack,
   Pattern<Match> $pattern,
   string $replacement,
   int $offset = 0,
 ): string {
-  // replace is the only one of these functions that calls into a preg
-  // function other than preg_match. It needs to call into preg_replace
-  // to be able to handle backreferencing in the `$replacement` string.
-  // preg_replace does not support offsets, so we handle them ourselves,
-  // consistently with _Private\regex_match.
+  // replace is the only one of these functions that calls into a native
+  // helper other than match. It needs its own helper to be able to handle
+  // backreferencing in the `$replacement` string. Our offset handling is
+  // trivial so we do it here rather than pushing it down into the helper.
   $offset = _Private\validate_offset($offset, Str\length($haystack));
+
+  if ($offset === 0) {
+    list ($result, $error) =
+      _Private\_Regex\replace($haystack, $pattern, $replacement);
+    if ($error is nonnull) {
+      throw new Regex\Exception($pattern, $error);
+    }
+    return $result as nonnull;
+  }
+
   $haystack1 = Str\slice($haystack, 0, $offset);
   $haystack2 = Str\slice($haystack, $offset);
-
-  using new _Private\PHPWarningSuppressor();
-  /* HH_FIXME[2049] __PHPStdLib */
-  /* HH_FIXME[4107] __PHPStdLib */
-  $haystack3 = \preg_replace($pattern, $replacement, $haystack2);
-  if ($haystack3 === null) {
-    /* HH_FIXME[2049] __PHPStdLib */
-    /* HH_FIXME[4107] __PHPStdLib */
-    throw new Exception($pattern, \preg_last_error());
+  list ($result, $error) =
+    _Private\_Regex\replace($haystack2, $pattern, $replacement);
+  if ($error is nonnull) {
+    throw new Regex\Exception($pattern, $error);
   }
-  return $haystack1.$haystack3;
+  return $haystack1 . $result;
 }
 
 /**
@@ -128,7 +131,7 @@ function replace(
  *
  * Throws Invariant[Violation]Exception if `$offset` is not within plus/minus the length of `$haystack`.
  */
-<<__Rx, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs>>
 function replace_with<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
@@ -139,22 +142,20 @@ function replace_with<T as Match>(
   $result = Str\slice($haystack, 0, 0);
   $match_end = 0;
   while (true) {
-    $match = _Private\regex_match($haystack, $pattern, $offset);
+    $match = _Private\regex_match($haystack, $pattern, inout $offset);
     if ($match === null) {
       break;
     }
-    $captures = $match[0];
-    $match_begin = $match[1];
     // Copy anything between the previous match and this one
-    $result .= Str\slice($haystack, $match_end, $match_begin - $match_end);
-    $result .= $replace_func($captures);
-    $match_length = Str\length(Shapes::at($captures, 0) as string);
-    $match_end = $match_begin + $match_length;
+    $result .= Str\slice($haystack, $match_end, $offset - $match_end);
+    $result .= $replace_func($match);
+    $match_length = Str\length(Shapes::at($match, 0) as string);
+    $match_end = $offset + $match_length;
     if ($match_length === 0) {
       // To get the next match (and avoid looping forever), need to skip forward
       // before searching again
       // Note that `$offset` is for searching and `$match_end` is for copying
-      $offset = $match_begin + 1;
+      $offset++;
       if ($offset > $haystack_length) {
         break;
       }
@@ -176,7 +177,7 @@ function replace_with<T as Match>(
  *
  * Throws Invariant[Violation]Exception if `$limit` < 2.
  */
-<<__Rx>>
+<<__Pure>>
 function split(
   string $haystack,
   Pattern<Match> $delimiter,
@@ -195,19 +196,17 @@ function split(
   $offset = 0;
   $match_end = 0;
   $count = 1;
-  $match = _Private\regex_match($haystack, $delimiter, $offset);
+  $match = _Private\regex_match($haystack, $delimiter, inout $offset);
   while ($match && $count < $limit) {
-    $captures = $match[0];
-    $match_begin = $match[1];
     // Copy anything between the previous match and this one
-    $result[] = Str\slice($haystack, $match_end, $match_begin - $match_end);
-    $match_length = Str\length(Shapes::at($captures, 0) as string);
-    $match_end = $match_begin + $match_length;
+    $result[] = Str\slice($haystack, $match_end, $offset - $match_end);
+    $match_length = Str\length(Shapes::at($match, 0) as string);
+    $match_end = $offset + $match_length;
     if ($match_length === 0) {
       // To get the next match (and avoid looping forever), need to skip forward
       // before searching again
       // Note that `$offset` is for searching and `$match_end` is for copying
-      $offset = $match_begin + 1;
+      $offset++;
       if ($offset > $haystack_length) {
         break;
       }
@@ -215,7 +214,7 @@ function split(
       $offset = $match_end;
     }
     $count++;
-    $match = _Private\regex_match($haystack, $delimiter, $offset);
+    $match = _Private\regex_match($haystack, $delimiter, inout $offset);
   }
   $result[] = Str\slice($haystack, $match_end);
   return $result;
