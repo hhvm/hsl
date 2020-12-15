@@ -108,7 +108,7 @@ function replace(
     list ($result, $error) =
       _Private\_Regex\replace($haystack, $pattern, $replacement);
     if ($error is nonnull) {
-      throw new Regex\Exception($pattern, $error);
+      throw new namespace\Exception($pattern, $error);
     }
     return $result as nonnull;
   }
@@ -118,7 +118,7 @@ function replace(
   list ($result, $error) =
     _Private\_Regex\replace($haystack2, $pattern, $replacement);
   if ($error is nonnull) {
-    throw new Regex\Exception($pattern, $error);
+    throw new namespace\Exception($pattern, $error);
   }
   return $haystack1 . $result;
 }
