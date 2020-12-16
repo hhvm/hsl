@@ -63,6 +63,7 @@ class Condition<T> {
    * issued only once, asynchronous execution unrelated to $notifiers is
    * allowed to trigger the notification.
    */
+  <<__ProvenanceSkipFrame>>
   final public async function waitForNotificationAsync(
     Awaitable<void> $notifiers,
   ): Awaitable<T> {
