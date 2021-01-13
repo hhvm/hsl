@@ -21,7 +21,7 @@ implements \HH\Rx\Iterator<Tv>, \HH\Rx\KeyedIterator<Tk, Tv> {
   private vec<Tk> $keys;
 
   <<__Pure>>
-  public function __construct(private dict<Tk, Tv> $data) {
+  public function __construct(private dict<Tk, Tv> $data)[] {
     $this->keys = Vec\keys($data);
   }
 

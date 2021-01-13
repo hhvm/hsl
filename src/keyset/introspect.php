@@ -23,6 +23,6 @@ use namespace HH\Lib\C;
 function equal<Tv as arraykey>(
   keyset<Tv> $keyset1,
   keyset<Tv> $keyset2,
-): bool {
+)[]: bool {
   return $keyset1 == $keyset2;
 }

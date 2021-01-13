@@ -67,7 +67,7 @@ type SprintfFormatString = \HH\FormatString<SprintfFormat>;
 function format(
   SprintfFormatString $format_string,
   mixed ...$format_args
-): string {
+)[]: string {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   /* HH_FIXME[4200] __PHPStdLib */

@@ -21,7 +21,7 @@ function maxva<T as num>(
   T $first,
   T $second,
   T ...$rest
-): T {
+)[]: T {
   $max = $first > $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number > $max) {
@@ -42,7 +42,7 @@ function minva<T as num>(
   T $first,
   T $second,
   T ...$rest
-): T {
+)[]: T {
   $min = $first < $second ? $first : $second;
   foreach ($rest as $number) {
     if ($number < $min) {
@@ -76,6 +76,6 @@ function is_nan(num $num): bool {
  * When comparing large numbers consider passing in a large epsilon
  */
 <<__Pure>>
-function almost_equals(num $num_one, num $num_two, num $epsilon = .00000001): bool{
+function almost_equals(num $num_one, num $num_two, num $epsilon = .00000001)[]: bool{
   return namespace\abs($num_one - $num_two) < $epsilon;
 }

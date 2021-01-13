@@ -29,7 +29,7 @@ function regex_match<T as Regex\Match>(
   string $haystack,
   Regex\Pattern<T> $pattern,
   inout int $offset,
-): ?T {
+)[]: ?T {
   $offset = validate_offset($offset, Str\length($haystack));
   list ($matches, $error) = _Regex\match($haystack, $pattern, inout $offset);
   if ($error is nonnull) {

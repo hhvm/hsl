@@ -28,7 +28,7 @@ function chunk<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $size,
-): vec<keyset<Tv>> {
+)[]: vec<keyset<Tv>> {
   invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
   $result = vec[];
   $ii = 0;
@@ -56,8 +56,8 @@ function map<Tv1, Tv2 as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv1): Tv2) $value_func,
-): keyset<Tv2> {
+  (function(Tv1)[_]: Tv2) $value_func,
+)[ctx $value_func]: keyset<Tv2> {
   $result = keyset[];
   foreach ($traversable as $value) {
     $result[] = $value_func($value);
@@ -77,8 +77,8 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv1): Tv2) $value_func,
-): keyset<Tv2> {
+  (function(Tk, Tv1)[_]: Tv2) $value_func,
+)[ctx $value_func]: keyset<Tv2> {
   $result = keyset[];
   foreach ($traversable as $key => $value) {
     $result[] = $value_func($key, $value);
@@ -102,7 +102,7 @@ function map_with_key<Tk, Tv1, Tv2 as arraykey>(
 function flatten<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Container<Tv>> $traversables,
-): keyset<Tv> {
+)[]: keyset<Tv> {
   $result = keyset[];
   foreach ($traversables as $traversable) {
     foreach ($traversable as $value) {

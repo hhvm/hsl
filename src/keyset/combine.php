@@ -26,7 +26,7 @@ function union<Tv as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
   Container<Tv> ...$rest
-): keyset<Tv> {
+)[]: keyset<Tv> {
   $result = keyset($first);
   foreach ($rest as $traversable) {
     foreach ($traversable as $value) {

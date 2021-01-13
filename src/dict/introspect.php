@@ -23,7 +23,7 @@ use namespace HH\Lib\C;
 function equal<Tk as arraykey, Tv>(
   dict<Tk, Tv> $dict1,
   dict<Tk, Tv> $dict2,
-): bool {
+)[]: bool {
   if ($dict1 === $dict2) {
     return true;
   }

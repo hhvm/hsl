@@ -37,8 +37,8 @@ use namespace HH\Lib\Vec;
 function is_sorted<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): num) $comparator = null,
-): bool {
+  <<__AtMostRxAsFunc>> ?(function(Tv, Tv)[_]: num) $comparator = null,
+)[ctx $comparator]: bool {
   $vec = Vec\cast_clear_legacy_array_mark($traversable);
   if (is_empty($vec)) {
     return true;
@@ -83,9 +83,9 @@ function is_sorted<Tv>(
 function is_sorted_by<Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>> (function(Tv): Ts) $scalar_func,
-  <<__AtMostRxAsFunc>> ?(function(Ts, Ts): num) $comparator = null,
-): bool {
+  <<__AtMostRxAsFunc>> (function(Tv)[_]: Ts) $scalar_func,
+  <<__AtMostRxAsFunc>> ?(function(Ts, Ts)[_]: num) $comparator = null,
+)[ctx $scalar_func, ctx $comparator]: bool {
   $vec = Vec\cast_clear_legacy_array_mark($traversable);
   if (is_empty($vec)) {
     return true;

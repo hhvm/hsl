@@ -23,7 +23,7 @@ use namespace HH\Lib\Vec;
 function reverse<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   $dict = cast_clear_legacy_array_mark($traversable);
   return $dict
     |> Vec\keys($$)
@@ -66,8 +66,8 @@ function shuffle<Tk as arraykey, Tv>(
 function sort<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tv, Tv): num) $value_comparator = null,
-): dict<Tk, Tv> {
+  <<__AtMostRxAsFunc>> ?(function(Tv, Tv)[_]: num) $value_comparator = null,
+)[ctx $value_comparator]: dict<Tk, Tv> {
   $result = cast_clear_legacy_array_mark($traversable);
   if ($value_comparator) {
     /* HH_FIXME[4387] __Pure calling impure */
@@ -101,9 +101,9 @@ function sort<Tk as arraykey, Tv>(
 function sort_by<Tk as arraykey, Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>> (function(Tv): Ts) $scalar_func,
-  <<__AtMostRxAsFunc>> ?(function(Ts, Ts): num) $scalar_comparator = null,
-): dict<Tk, Tv> {
+  <<__AtMostRxAsFunc>> (function(Tv)[_]: Ts) $scalar_func,
+  <<__AtMostRxAsFunc>> ?(function(Ts, Ts)[_]: num) $scalar_comparator = null,
+)[ctx $scalar_func, ctx $scalar_comparator]: dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
     ? ((Ts, Tv) $a, (Ts, Tv) $b) ==> $scalar_comparator($a[0], $b[0])
     /* HH_FIXME[4240] need Scalar type */
@@ -130,8 +130,8 @@ function sort_by<Tk as arraykey, Tv, Ts>(
 function sort_by_key<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tk, Tk): num) $key_comparator = null,
-): dict<Tk, Tv> {
+  <<__AtMostRxAsFunc>> ?(function(Tk, Tk)[_]: num) $key_comparator = null,
+)[ctx $key_comparator]: dict<Tk, Tv> {
   $result = cast_clear_legacy_array_mark($traversable);
   if ($key_comparator) {
     /* HH_FIXME[4387] __Pure calling impure */

@@ -31,7 +31,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv2> $second,
   Container<Tv2> ...$rest
-): vec<Tv1> {
+)[]: vec<Tv1> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return vec[];
@@ -68,8 +68,8 @@ function diff_by<Tv, Ts as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Ts) $scalar_func,
-): vec<Tv> {
+  (function(Tv)[_]: Ts) $scalar_func,
+)[ctx $scalar_func]: vec<Tv> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return vec[];
@@ -99,7 +99,7 @@ function drop<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
-): vec<Tv> {
+)[]: vec<Tv> {
   invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
   $result = vec[];
   $ii = -1;
@@ -129,8 +129,8 @@ function filter<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  ?(function(Tv): bool) $value_predicate = null,
-): vec<Tv> {
+  ?(function(Tv)[_]: bool) $value_predicate = null,
+)[ctx $value_predicate]: vec<Tv> {
   $value_predicate ??= _Private\boolval<>;
   $result = vec[];
   foreach ($traversable as $value) {
@@ -152,7 +152,7 @@ function filter<Tv>(
 function filter_nulls<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
-): vec<Tv> {
+)[]: vec<Tv> {
   $result = vec[];
   foreach ($traversable as $value) {
     if ($value !== null) {
@@ -176,8 +176,8 @@ function filter_with_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv): bool) $predicate,
-): vec<Tv> {
+  (function(Tk, Tv)[_]: bool) $predicate,
+)[ctx $predicate]: vec<Tv> {
   $result = vec[];
   foreach ($traversable as $key => $value) {
     if ($predicate($key, $value)) {
@@ -202,7 +202,7 @@ function intersect<Tv as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
   Container<Tv> ...$rest
-): vec<Tv> {
+)[]: vec<Tv> {
   $intersection = Keyset\intersect($first, $second, ...$rest);
   if (!$intersection) {
     return vec[];
@@ -223,7 +223,7 @@ function intersect<Tv as arraykey>(
 function keys<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): vec<Tk> {
+)[]: vec<Tk> {
   $result = vec[];
   foreach ($traversable as $key => $_) {
     $result[] = $key;
@@ -272,7 +272,7 @@ function slice<Tv>(
   Container<Tv> $container,
   int $offset,
   ?int $length = null,
-): vec<Tv> {
+)[]: vec<Tv> {
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   $offset = _Private\validate_offset_lower_bound($offset, C\count($container));
   /* HH_FIXME[2049] __PHPStdLib */
@@ -294,7 +294,7 @@ function take<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
-): vec<Tv> {
+)[]: vec<Tv> {
   if ($n === 0) {
     return vec[];
   }
@@ -325,7 +325,7 @@ function take<Tv>(
 function unique<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-): vec<Tv> {
+)[]: vec<Tv> {
   return vec(keyset($traversable));
 }
 
@@ -345,7 +345,7 @@ function unique_by<Tv, Ts as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Ts) $scalar_func,
-): vec<Tv> {
+  (function(Tv)[_]: Ts) $scalar_func,
+)[ctx $scalar_func]: vec<Tv> {
   return vec(Dict\from_values($traversable, $scalar_func));
 }

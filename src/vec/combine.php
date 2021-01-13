@@ -26,7 +26,7 @@ use namespace HH\Lib\{C, Math};
 function concat<Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>> Traversable<Tv> $first,
   Container<Tv> ...$rest
-): vec<Tv> {
+)[]: vec<Tv> {
   $result = cast_clear_legacy_array_mark($first);
   foreach ($rest as $traversable) {
     foreach ($traversable as $value) {
@@ -56,7 +56,7 @@ function zip<Tv, Tu>(
   Traversable<Tv> $first,
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tu> $second,
-): vec<(Tv, Tu)> {
+)[]: vec<(Tv, Tu)> {
   $one = cast_clear_legacy_array_mark($first);
   $two = cast_clear_legacy_array_mark($second);
   $result = vec[];

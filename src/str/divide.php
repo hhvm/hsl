@@ -21,7 +21,7 @@ use namespace HH\Lib\Str;
 function chunk(
   string $string,
   int $chunk_size = 1,
-): vec<string> {
+)[]: vec<string> {
   invariant($chunk_size >= 1, 'Expected positive chunk size.');
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
@@ -44,7 +44,7 @@ function split(
   string $string,
   string $delimiter,
   ?int $limit = null,
-): vec<string> {
+)[]: vec<string> {
   if ($delimiter === '') {
     if ($limit === null || $limit >= Str\length($string)) {
       return chunk($string);

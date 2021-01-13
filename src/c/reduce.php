@@ -26,9 +26,9 @@ function reduce<Tv, Ta>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Ta, Tv): Ta) $accumulator,
+  (function(Ta, Tv)[_]: Ta) $accumulator,
   Ta $initial,
-): Ta {
+)[ctx $accumulator]: Ta {
   $result = $initial;
   foreach ($traversable as $value) {
     $result = $accumulator($result, $value);
@@ -49,9 +49,9 @@ function reduce_with_key<Tk, Tv, Ta>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Ta, Tk, Tv): Ta) $accumulator,
+  (function(Ta, Tk, Tv)[_]: Ta) $accumulator,
   Ta $initial,
-): Ta {
+)[ctx $accumulator]: Ta {
   $result = $initial;
   foreach ($traversable as $key => $value) {
     $result = $accumulator($result, $key, $value);

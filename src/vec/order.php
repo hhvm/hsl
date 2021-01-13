@@ -28,7 +28,7 @@ function range<Tv as num>(
   Tv $start,
   Tv $end,
   ?Tv $step = null,
-): vec<Tv> {
+)[]: vec<Tv> {
   $step ??= 1;
   invariant($step > 0, 'Expected positive step.');
   if ($step > Math\abs($end - $start)) {
@@ -50,7 +50,7 @@ function range<Tv as num>(
 function reverse<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-): vec<Tv> {
+)[]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);
   for ($lo = 0, $hi = C\count($vec) - 1; $lo < $hi; $lo++, $hi--) {
     $temp = $vec[$lo];
@@ -96,8 +96,8 @@ function sort<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  ?(function(Tv, Tv): num) $comparator = null,
-): vec<Tv> {
+  ?(function(Tv, Tv)[_]: num) $comparator = null,
+)[ctx $comparator]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);
   if ($comparator) {
     /* HH_FIXME[2049] calling stdlib directly */
@@ -131,10 +131,10 @@ function sort_by<Tv, Ts>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Ts) $scalar_func,
+  (function(Tv)[_]: Ts) $scalar_func,
   <<__AtMostRxAsFunc>>
-  ?(function(Ts, Ts): num) $comparator = null,
-): vec<Tv> {
+  ?(function(Ts, Ts)[_]: num) $comparator = null,
+)[ctx $scalar_func, ctx $comparator]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);
   $order_by = Dict\map($vec, $scalar_func);
   if ($comparator) {

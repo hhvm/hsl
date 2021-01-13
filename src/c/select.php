@@ -26,8 +26,8 @@ function find<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(T): bool) $value_predicate,
-): ?T {
+  (function(T)[_]: bool) $value_predicate,
+)[ctx $value_predicate]: ?T {
   foreach ($traversable as $value) {
     if ($value_predicate($value)) {
       return $value;
@@ -49,8 +49,8 @@ function find<T>(
 function findx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__AtMostRxAsFunc>> (function(T): bool) $value_predicate,
-): T {
+  <<__AtMostRxAsFunc>> (function(T)[_]: bool) $value_predicate,
+)[ctx $value_predicate]: T {
   foreach ($traversable as $value) {
     if ($value_predicate($value)) {
       return $value;
@@ -71,8 +71,8 @@ function find_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): bool) $value_predicate,
-): ?Tk {
+  (function(Tv)[_]: bool) $value_predicate,
+)[ctx $value_predicate]: ?Tk {
   foreach ($traversable as $key => $value) {
     if ($value_predicate($value)) {
       return $key;
@@ -97,7 +97,7 @@ function find_key<Tk, Tv>(
 function first<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-): ?T {
+)[]: ?T {
   if ($traversable is Container<_>) {
     return _Private\Native\first($traversable);
   }
@@ -123,7 +123,7 @@ function first<T>(
 function firstx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-): T {
+)[]: T {
   if ($traversable is Container<_>) {
     $first_value = _Private\Native\first($traversable);
     if ($first_value is nonnull) {
@@ -156,7 +156,7 @@ function firstx<T>(
 function first_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): ?Tk {
+)[]: ?Tk {
   if ($traversable is KeyedContainer<_, _>) {
     return _Private\Native\first_key($traversable);
   }
@@ -179,7 +179,7 @@ function first_key<Tk, Tv>(
 function first_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): Tk {
+)[]: Tk {
   if ($traversable is KeyedContainer<_, _>) {
     $first_key = _Private\Native\first_key($traversable);
     invariant(
@@ -209,13 +209,14 @@ function first_keyx<Tk, Tv>(
 function last<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-): ?T {
+)[]: ?T {
   if ($traversable is Container<_>) {
     return _Private\Native\last($traversable);
   }
   if ($traversable is Iterable<_>) {
     /* HH_FIXME[4200] intersection of Iterable and Rx\Traversable is reactive */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4390] need ctx constants */
     return $traversable->lastValue();
   }
   $value = null;
@@ -238,7 +239,7 @@ function last<T>(
 function lastx<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-): T {
+)[]: T {
   if ($traversable is Container<_>) {
     $last_value = _Private\Native\last($traversable);
     if ($last_value is nonnull) {
@@ -275,13 +276,14 @@ function lastx<T>(
 function last_key<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): ?Tk {
+)[]: ?Tk {
   if ($traversable is KeyedContainer<_, _>) {
     return _Private\Native\last_key($traversable);
   }
   if ($traversable is KeyedIterable<_, _>) {
     /* HH_FIXME[4200] intersection of Iterable and Rx\Traversable is reactive */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4390] need ctx constants */
     return $traversable->lastKey();
   }
   $key = null;
@@ -303,7 +305,7 @@ function last_key<Tk, Tv>(
 function last_keyx<Tk, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): Tk {
+)[]: Tk {
   if ($traversable is KeyedContainer<_, _>) {
     $last_key = _Private\Native\last_key($traversable);
     invariant(
@@ -338,7 +340,7 @@ function last_keyx<Tk, Tv>(
 function nfirst<T>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   ?Traversable<T> $traversable,
-): ?T {
+)[]: ?T {
   return $traversable is nonnull ? first($traversable) : null;
 }
 
@@ -360,7 +362,7 @@ function onlyx<T>(
   Traversable<T> $traversable,
   ?Str\SprintfFormatString $format_string = null,
   mixed ...$format_args
-): T {
+)[]: T {
   $first = true;
   $result = null;
   foreach ($traversable as $value) {

@@ -27,7 +27,7 @@ function associate<Tk as arraykey, Tv>(
   Traversable<Tk> $keys,
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   $key_vec = Vec\cast_clear_legacy_array_mark($keys);
   $value_vec = Vec\cast_clear_legacy_array_mark($values);
   invariant(
@@ -55,7 +55,7 @@ function merge<Tk as arraykey, Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $first,
   KeyedContainer<Tk, Tv> ...$rest
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   $result = cast_clear_legacy_array_mark($first);
   foreach ($rest as $traversable) {
     foreach ($traversable as $key => $value) {

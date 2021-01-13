@@ -45,8 +45,8 @@ async function from_async<Tv as arraykey>(
 async function filter_async<Tv as arraykey>(
   Container<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Awaitable<bool>) $value_predicate,
-): Awaitable<keyset<Tv>> {
+  (function(Tv)[_]: Awaitable<bool>) $value_predicate,
+)[ctx $value_predicate]: Awaitable<keyset<Tv>> {
   $tests = await Vec\map_async($traversable, $value_predicate);
   $result = keyset[];
   $ii = 0;
@@ -75,8 +75,8 @@ async function map_async<Tv, Tk as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Awaitable<Tk>) $async_func,
-): Awaitable<keyset<Tk>> {
+  (function(Tv)[_]: Awaitable<Tk>) $async_func,
+)[ctx $async_func]: Awaitable<keyset<Tk>> {
   $vec = await Vec\map_async($traversable, $async_func);
   return keyset($vec);
 }

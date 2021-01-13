@@ -14,7 +14,7 @@ use namespace HH\Lib\Str;
 
 final class Exception extends \Exception {
   <<__Pure>>
-  public function __construct(Pattern<mixed> $pattern, int $code): void {
+  public function __construct(Pattern<mixed> $pattern, int $code)[]: void {
     $errors = dict[
       \PREG_INTERNAL_ERROR => 'Internal error',
       \PREG_BACKTRACK_LIMIT_ERROR => 'Backtrack limit error',

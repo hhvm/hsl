@@ -29,7 +29,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv2> $second,
   Container<Tv2> ...$rest
-): keyset<Tv1> {
+)[]: keyset<Tv1> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first) {
     return keyset[];
@@ -60,7 +60,7 @@ function drop<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
-): keyset<Tv> {
+)[]: keyset<Tv> {
   invariant($n >= 0, 'Expected non-negative N, got %d.', $n);
   $result = keyset[];
   $ii = -1;
@@ -88,8 +88,8 @@ function filter<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  ?(function(Tv): bool) $value_predicate = null,
-): keyset<Tv> {
+  ?(function(Tv)[_]: bool) $value_predicate = null,
+)[ctx $value_predicate]: keyset<Tv> {
   $value_predicate ??= \HH\Lib\_Private\boolval<>;
   $result = keyset[];
   foreach ($traversable as $value) {
@@ -111,7 +111,7 @@ function filter<Tv as arraykey>(
 function filter_nulls<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
-): keyset<Tv> {
+)[]: keyset<Tv> {
   $result = keyset[];
   foreach ($traversable as $value) {
     if ($value !== null) {
@@ -135,8 +135,8 @@ function filter_with_key<Tk, Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv): bool) $predicate,
-): keyset<Tv> {
+  (function(Tk, Tv)[_]: bool) $predicate,
+)[ctx $predicate]: keyset<Tv> {
   $result = keyset[];
   foreach ($traversable as $key => $value) {
     if ($predicate($key, $value)) {
@@ -154,7 +154,7 @@ function filter_with_key<Tk, Tv as arraykey>(
 function keys<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): keyset<Tk> {
+)[]: keyset<Tk> {
   $result = keyset[];
   foreach ($traversable as $key => $_) {
     $result[] = $key;
@@ -177,7 +177,7 @@ function intersect<Tv as arraykey>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
   Container<Tv> ...$rest
-): keyset<Tv> {
+)[]: keyset<Tv> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
   if (!$first || !$second) {
     return keyset[];
@@ -216,7 +216,7 @@ function take<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
-): keyset<Tv> {
+)[]: keyset<Tv> {
   if ($n === 0) {
     return keyset[];
   }

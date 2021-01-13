@@ -25,7 +25,7 @@ function chunk<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $size,
-): vec<vec<Tv>> {
+)[]: vec<vec<Tv>> {
   invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
   $result = vec[];
   $ii = 0;
@@ -54,7 +54,7 @@ function chunk<Tv>(
 function fill<Tv>(
   int $size,
   Tv $value,
-): vec<Tv> {
+)[]: vec<Tv> {
   invariant($size >= 0, 'Expected non-negative fill size, got %d.', $size);
   $result = vec[];
   for ($i = 0; $i < $size; $i++) {
@@ -78,7 +78,7 @@ function fill<Tv>(
 function flatten<Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Container<Tv>> $traversables,
-): vec<Tv> {
+)[]: vec<Tv> {
   $result = vec[];
   foreach ($traversables as $traversable) {
     foreach ($traversable as $value) {
@@ -102,8 +102,8 @@ function map<Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv1): Tv2) $value_func,
-): vec<Tv2> {
+  (function(Tv1)[_]: Tv2) $value_func,
+)[ctx $value_func]: vec<Tv2> {
   $result = vec[];
   foreach ($traversable as $value) {
     $result[] = $value_func($value);
@@ -123,8 +123,8 @@ function map_with_key<Tk, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv1): Tv2) $value_func,
-): vec<Tv2> {
+  (function(Tk, Tv1)[_]: Tv2) $value_func,
+)[ctx $value_func]: vec<Tv2> {
   $result = vec[];
   foreach ($traversable as $key => $value) {
     $result[] = $value_func($key, $value);

@@ -22,7 +22,7 @@ use namespace HH\Lib\{C, Math, Vec};
 function max<T as num>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $numbers,
-): ?T {
+)[]: ?T {
   $max = null;
   foreach ($numbers as $number) {
     if ($max === null || $number > $max) {
@@ -46,8 +46,8 @@ function max_by<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(T): num) $num_func,
-): ?T {
+  (function(T)[_]: num) $num_func,
+)[ctx $num_func]: ?T {
   $max = null;
   $max_num = null;
   foreach ($traversable as $value) {
@@ -68,7 +68,7 @@ function max_by<T>(
  * - To find the minimum, see `Math\min()`.
  */
 <<__Pure>>
-function mean(Container<num> $numbers): ?float {
+function mean(Container<num> $numbers)[]: ?float {
   $count = (float)C\count($numbers);
   if ($count === 0.0) {
     return null;
@@ -86,7 +86,7 @@ function mean(Container<num> $numbers): ?float {
  * To find the mean, see `Math\mean()`.
  */
 <<__Pure>>
-function median(Container<num> $numbers): ?float {
+function median(Container<num> $numbers)[]: ?float {
   $numbers = Vec\sort($numbers);
   $count = C\count($numbers);
   if ($count === 0) {
@@ -112,7 +112,7 @@ function median(Container<num> $numbers): ?float {
 function min<T as num>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $numbers,
-): ?T {
+)[]: ?T {
   $min = null;
   foreach ($numbers as $number) {
     if ($min === null || $number < $min) {
@@ -136,8 +136,8 @@ function min_by<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(T): num) $num_func,
-): ?T {
+  (function(T)[_]: num) $num_func,
+)[ctx $num_func]: ?T {
   $min = null;
   $min_num = null;
   foreach ($traversable as $value) {
@@ -159,7 +159,7 @@ function min_by<T>(
 function sum(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<int> $traversable,
-): int {
+)[]: int {
   $result = 0;
   foreach ($traversable as $value) {
     $result += $value;
@@ -176,7 +176,7 @@ function sum(
 function sum_float<T as num>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-): float {
+)[]: float {
   $result = 0.0;
   foreach ($traversable as $value) {
     $result += $value;

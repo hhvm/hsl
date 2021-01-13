@@ -48,8 +48,8 @@ async function from_keys_async<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   <<__AtMostRxAsFunc>>
-  (function(Tk): Awaitable<Tv>) $async_func,
-): Awaitable<dict<Tk, Tv>> {
+  (function(Tk)[_]: Awaitable<Tv>) $async_func,
+)[ctx $async_func]: Awaitable<dict<Tk, Tv>> {
   $awaitables = dict[];
   foreach ($keys as $key) {
     /* HH_FIXME[4248] non-awaited awaitable in rx context */
@@ -87,8 +87,8 @@ async function from_keys_async<Tk as arraykey, Tv>(
 async function filter_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Awaitable<bool>) $value_predicate,
-): Awaitable<dict<Tk, Tv>> {
+  (function(Tv)[_]: Awaitable<bool>) $value_predicate,
+)[ctx $value_predicate]: Awaitable<dict<Tk, Tv>> {
   $tests = await map_async($traversable, $value_predicate);
   $result = dict[];
   foreach ($traversable as $key => $value) {
@@ -111,8 +111,8 @@ async function filter_async<Tk as arraykey, Tv>(
 async function filter_with_key_async<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv): Awaitable<bool>) $predicate,
-): Awaitable<dict<Tk, Tv>> {
+  (function(Tk, Tv)[_]: Awaitable<bool>) $predicate,
+)[ctx $predicate]: Awaitable<dict<Tk, Tv>> {
   $tests = await map_with_key_async(
     $traversable,
     async ($k, $v) ==> await $predicate($k, $v),
@@ -144,8 +144,8 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv1): Awaitable<Tv2>) $value_func,
-): Awaitable<dict<Tk, Tv2>> {
+  (function(Tv1)[_]: Awaitable<Tv2>) $value_func,
+)[ctx $value_func]: Awaitable<dict<Tk, Tv2>> {
   $dict = cast_clear_legacy_array_mark($traversable);
   foreach ($dict as $key => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
@@ -180,8 +180,8 @@ async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $container,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv1): Awaitable<Tv2>) $async_func
-): Awaitable<dict<Tk, Tv2>> {
+  (function(Tk, Tv1)[_]: Awaitable<Tv2>) $async_func
+)[ctx $async_func]: Awaitable<dict<Tk, Tv2>> {
   $awaitables = Dict\map_with_key(
     $container,
     $async_func,

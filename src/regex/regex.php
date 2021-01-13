@@ -29,7 +29,7 @@ function first_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
   int $offset = 0,
-): ?T {
+)[]: ?T {
   return _Private\regex_match($haystack, $pattern, inout $offset);
 }
 
@@ -45,7 +45,7 @@ function every_match<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
   int $offset = 0,
-): vec<T> {
+)[]: vec<T> {
   $haystack_length = Str\length($haystack);
   $result = vec[];
   while (true) {
@@ -79,7 +79,7 @@ function matches(
   string $haystack,
   Pattern<Match> $pattern,
   int $offset = 0,
-): bool {
+)[]: bool {
   return _Private\regex_match($haystack, $pattern, inout $offset) !== null;
 }
 
@@ -97,7 +97,7 @@ function replace(
   Pattern<Match> $pattern,
   string $replacement,
   int $offset = 0,
-): string {
+)[]: string {
   // replace is the only one of these functions that calls into a native
   // helper other than match. It needs its own helper to be able to handle
   // backreferencing in the `$replacement` string. Our offset handling is
@@ -135,9 +135,9 @@ function replace(
 function replace_with<T as Match>(
   string $haystack,
   Pattern<T> $pattern,
-  <<__AtMostRxAsFunc>> (function(T): string) $replace_func,
+  <<__AtMostRxAsFunc>> (function(T)[_]: string) $replace_func,
   int $offset = 0,
-): string {
+)[ctx $replace_func]: string {
   $haystack_length = Str\length($haystack);
   $result = Str\slice($haystack, 0, 0);
   $match_end = 0;
@@ -182,7 +182,7 @@ function split(
   string $haystack,
   Pattern<Match> $delimiter,
   ?int $limit = null,
-): vec<string> {
+)[]: vec<string> {
   if ($limit === null) {
     $limit = \INF;
   }
@@ -225,6 +225,6 @@ function split(
  * The regex pattern follows the PCRE library: https://www.pcre.org/original/doc/html/pcresyntax.html.
  */
 <<__Pure>>
-function to_string(Pattern<Match> $pattern): string {
+function to_string(Pattern<Match> $pattern)[]: string {
   return $pattern as string;
 }

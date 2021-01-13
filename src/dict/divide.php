@@ -22,8 +22,8 @@ function partition<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): bool) $predicate,
-): (dict<Tk, Tv>, dict<Tk, Tv>) {
+  (function(Tv)[_]: bool) $predicate,
+)[ctx $predicate]: (dict<Tk, Tv>, dict<Tk, Tv>) {
   $success = dict[];
   $failure = dict[];
   foreach ($traversable as $key => $value) {
@@ -48,8 +48,8 @@ function partition_with_key<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv): bool) $predicate,
-): (dict<Tk, Tv>, dict<Tk, Tv>) {
+  (function(Tk, Tv)[_]: bool) $predicate,
+)[ctx $predicate]: (dict<Tk, Tv>, dict<Tk, Tv>) {
   $success = dict[];
   $failure = dict[];
   foreach ($traversable as $key => $value) {

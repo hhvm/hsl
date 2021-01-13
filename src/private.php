@@ -18,7 +18,7 @@ namespace HH\Lib\_Private;
 function validate_offset(
   int $offset,
   int $length,
-): int {
+)[]: int {
   $original_offset = $offset;
   if ($offset < 0) {
     $offset += $length;
@@ -39,7 +39,7 @@ function validate_offset(
 function validate_offset_lower_bound(
   int $offset,
   int $length,
-): int {
+)[]: int {
   $original_offset = $offset;
   if ($offset < 0) {
     $offset += $length;
@@ -49,7 +49,7 @@ function validate_offset_lower_bound(
 }
 
 <<__Pure>>
-function boolval(mixed $val): bool {
+function boolval(mixed $val)[]: bool {
   return (bool)$val;
 }
 

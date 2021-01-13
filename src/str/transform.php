@@ -62,7 +62,7 @@ function format_number(
   int $decimals = 0,
   string $decimal_point = '.',
   string $thousands_separator = ',',
-): string {
+)[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \number_format(
@@ -79,7 +79,7 @@ function format_number(
 <<__Pure>>
 function lowercase(
   string $string,
-): string {
+)[]: string {
   /* HH_FIXME[4200] PHPStdLib HHI is not marked Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -101,7 +101,7 @@ function pad_left(
   string $string,
   int $total_length,
   string $pad_string = ' ',
-): string {
+)[]: string {
   invariant($pad_string !== '', 'Expected non-empty pad string.');
   invariant($total_length >= 0, 'Expected non-negative total length.');
   /* HH_FIXME[2049] calling stdlib directly */
@@ -124,7 +124,7 @@ function pad_right(
   string $string,
   int $total_length,
   string $pad_string = ' ',
-): string {
+)[]: string {
   invariant($pad_string !== '', 'Expected non-empty pad string.');
   invariant($total_length >= 0, 'Expected non-negative total length.');
   /* HH_FIXME[2049] calling stdlib directly */
@@ -141,7 +141,7 @@ function pad_right(
 function repeat(
   string $string,
   int $multiplier,
-): string {
+)[]: string {
   invariant($multiplier >= 0, 'Expected non-negative multiplier');
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -161,7 +161,7 @@ function replace(
   string $haystack,
   string $needle,
   string $replacement,
-): string {
+)[]: string {
   /* HH_FIXME[4200] Rx calling non-Rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -209,7 +209,7 @@ function replace_ci(
 function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
-): string {
+)[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   /* HH_FIXME[4200] Rx calling non-rx */
@@ -380,7 +380,7 @@ function splice(
   string $replacement,
   int $offset,
   ?int $length = null,
-): string {
+)[]: string {
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   $offset = _Private\validate_offset($offset, length($string));
   return $length === null
@@ -398,7 +398,7 @@ function splice(
 <<__Pure>>
 function to_int(
   string $string,
-): ?int {
+)[]: ?int {
   if ((string)(int)$string === $string) {
     return (int)$string;
   }
@@ -411,7 +411,7 @@ function to_int(
 <<__Pure>>
 function uppercase(
   string $string,
-): string {
+)[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   /* HH_FIXME[4200] Rx calling non-rx */

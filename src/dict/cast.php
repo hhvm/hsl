@@ -18,7 +18,7 @@ namespace HH\Lib\Dict;
 function cast_clear_legacy_array_mark<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $x,
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   return \HH\is_dict_or_darray($x)
     /* HH_FIXME[4259] Rx doesn't understand array_unmark_legacy */
     ? dict(\HH\array_unmark_legacy($x))

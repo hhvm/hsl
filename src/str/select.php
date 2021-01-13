@@ -27,7 +27,7 @@ function slice(
   string $string,
   int $offset,
   ?int $length = null,
-): string {
+)[]: string {
   invariant($length === null || $length >= 0, 'Expected non-negative length.');
   $offset = _Private\validate_offset($offset, length($string));
   $result = $length === null
@@ -47,7 +47,7 @@ function slice(
 function strip_prefix(
   string $string,
   string $prefix,
-): string {
+)[]: string {
   if ($prefix === '' || !starts_with($string, $prefix)) {
     return $string;
   }
@@ -62,7 +62,7 @@ function strip_prefix(
 function strip_suffix(
   string $string,
   string $suffix,
-): string {
+)[]: string {
   if ($suffix === '' || !ends_with($string, $suffix)) {
     return $string;
   }
@@ -86,7 +86,7 @@ function strip_suffix(
 function trim(
   string $string,
   ?string $char_mask = null,
-): string {
+)[]: string {
   return $char_mask === null
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
@@ -109,7 +109,7 @@ function trim(
 function trim_left(
   string $string,
   ?string $char_mask = null,
-): string {
+)[]: string {
   return $char_mask === null
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
@@ -132,7 +132,7 @@ function trim_left(
 function trim_right(
   string $string,
   ?string $char_mask = null,
-): string {
+)[]: string {
   return $char_mask === null
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */

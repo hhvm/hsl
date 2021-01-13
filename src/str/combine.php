@@ -23,7 +23,7 @@ function join(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<arraykey> $pieces,
   string $glue,
-): string {
+)[]: string {
   if ($pieces is Container<_>) {
     /* HH_FIXME[2049] __PHPStdLib */
     /* HH_FIXME[4107] __PHPStdLib */

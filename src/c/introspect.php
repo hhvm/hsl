@@ -29,8 +29,8 @@ function any<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__AtMostRxAsFunc>>
-  ?(function(T): bool) $predicate = null,
-): bool {
+  ?(function(T)[_]: bool) $predicate = null,
+)[ctx $predicate]: bool {
   $predicate ??= \HH\Lib\_Private\boolval<>;
   foreach ($traversable as $value) {
     if ($predicate($value)) {
@@ -52,7 +52,7 @@ function contains<T1, T2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T1> $traversable,
   T2 $value,
-): bool {
+)[]: bool {
   if ($traversable is keyset<_>) {
     return $value is arraykey && contains_key($traversable, $value);
   }
@@ -74,7 +74,7 @@ function contains<T1, T2>(
 function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
   <<__MaybeMutable>> KeyedContainer<Tk1, Tv> $container,
   Tk2 $key,
-): bool {
+)[]: bool {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \array_key_exists($key, $container);
@@ -89,7 +89,7 @@ function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
 <<__Pure>>
 function count(
   <<__MaybeMutable>> Container<mixed> $container,
-): int {
+)[]: int {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \count($container);
@@ -110,8 +110,8 @@ function every<T>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
   <<__AtMostRxAsFunc>>
-  ?(function(T): bool) $predicate = null,
-): bool {
+  ?(function(T)[_]: bool) $predicate = null,
+)[ctx $predicate]: bool {
   $predicate ??= \HH\Lib\_Private\boolval<>;
   foreach ($traversable as $value) {
     if (!$predicate($value)) {
@@ -130,7 +130,7 @@ function every<T>(
 <<__Pure>>
 function is_empty<T>(
   <<__MaybeMutable>> Container<T> $container,
-): bool {
+)[]: bool {
   if ($container is \ConstCollection<_>) {
     return $container->isEmpty();
   }

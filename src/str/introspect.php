@@ -22,7 +22,7 @@ use namespace HH\Lib\_Private;
 function compare(
   string $string1,
   string $string2,
-): int {
+)[]: int {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \strcmp($string1, $string2);
@@ -38,7 +38,7 @@ function compare(
 function compare_ci(
   string $string1,
   string $string2,
-): int {
+)[]: int {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \strcasecmp($string1, $string2);
@@ -60,7 +60,7 @@ function contains(
   string $haystack,
   string $needle,
   int $offset = 0,
-): bool {
+)[]: bool {
   if ($needle === '') {
     if ($offset !== 0) {
       _Private\validate_offset($offset, length($haystack));
@@ -87,7 +87,7 @@ function contains_ci(
   string $haystack,
   string $needle,
   int $offset = 0,
-): bool {
+)[]: bool {
   if ($needle === '') {
     if ($offset !== 0) {
       _Private\validate_offset($offset, length($haystack));
@@ -106,7 +106,7 @@ function contains_ci(
 function ends_with(
   string $string,
   string $suffix,
-): bool {
+)[]: bool {
   $suffix_length = length($suffix);
   return $suffix_length === 0 || (
     length($string) >= $suffix_length &&
@@ -125,7 +125,7 @@ function ends_with(
 function ends_with_ci(
   string $string,
   string $suffix,
-): bool {
+)[]: bool {
   $suffix_length = length($suffix);
   return $suffix_length === 0 || (
     length($string) >= $suffix_length &&
@@ -148,7 +148,7 @@ function ends_with_ci(
 <<__Pure>>
 function is_empty(
   ?string $string,
-): bool {
+)[]: bool {
   return $string === null || $string === '';
 }
 
@@ -158,7 +158,7 @@ function is_empty(
 <<__Pure>>
 function length(
   string $string,
-): int {
+)[]: int {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \strlen($string);
@@ -184,7 +184,7 @@ function search(
   string $haystack,
   string $needle,
   int $offset = 0,
-): ?int {
+)[]: ?int {
   if ($offset !== 0) {
     $offset = _Private\validate_offset($offset, length($haystack));
   }
@@ -217,7 +217,7 @@ function search_ci(
   string $haystack,
   string $needle,
   int $offset = 0,
-): ?int {
+)[]: ?int {
   if ($offset !== 0) {
     $offset = _Private\validate_offset($offset, length($haystack));
   }
@@ -249,7 +249,7 @@ function search_last(
   string $haystack,
   string $needle,
   int $offset = 0,
-): ?int {
+)[]: ?int {
   $haystack_length = length($haystack);
   invariant(
     $offset >= -$haystack_length && $offset <= $haystack_length,
@@ -273,7 +273,7 @@ function search_last(
 function starts_with(
   string $string,
   string $prefix,
-): bool {
+)[]: bool {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \strncmp($string, $prefix, length($prefix)) === 0;
@@ -288,7 +288,7 @@ function starts_with(
 function starts_with_ci(
   string $string,
   string $prefix,
-): bool {
+)[]: bool {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \strncasecmp($string, $prefix, length($prefix)) === 0;

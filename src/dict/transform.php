@@ -27,7 +27,7 @@ function chunk<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $size,
-): vec<dict<Tk, Tv>> {
+)[]: vec<dict<Tk, Tv>> {
   invariant($size > 0, 'Expected positive chunk size, got %d.', $size);
   $result = vec[];
   $ii = 0;
@@ -80,7 +80,7 @@ function count_values<Tv as arraykey>(
 function flatten<Tk as arraykey, Tv>(
   <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<KeyedContainer<Tk, Tv>> $traversables,
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   $result = dict[];
   foreach ($traversables as $traversable) {
     foreach ($traversable as $key => $value) {
@@ -101,7 +101,7 @@ function fill_keys<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   Tv $value,
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   $result = dict[];
   foreach ($keys as $key) {
     $result[$key] = $value;
@@ -123,7 +123,7 @@ function fill_keys<Tk as arraykey, Tv>(
 function flip<Tk, Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-): dict<Tv, Tk> {
+)[]: dict<Tv, Tk> {
   $result = dict[];
   foreach ($traversable as $key => $value) {
     $result[$value] = $key;
@@ -147,8 +147,8 @@ function from_keys<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   <<__AtMostRxAsFunc>>
-  (function(Tk): Tv) $value_func,
-): dict<Tk, Tv> {
+  (function(Tk)[_]: Tv) $value_func,
+)[ctx $value_func]: dict<Tk, Tv> {
   $result = dict[];
   foreach ($keys as $key) {
     $result[$key] = $value_func($key);
@@ -175,7 +175,7 @@ function from_keys<Tk as arraykey, Tv>(
 function from_entries<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<(Tk, Tv)> $entries,
-): dict<Tk, Tv> {
+)[]: dict<Tk, Tv> {
   $result = dict[];
   foreach ($entries as list($key, $value)) {
     $result[$key] = $value;
@@ -202,8 +202,8 @@ function from_values<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
   <<__AtMostRxAsFunc>>
-  (function(Tv): Tk) $key_func,
-): dict<Tk, Tv> {
+  (function(Tv)[_]: Tk) $key_func,
+)[ctx $key_func]: dict<Tk, Tv> {
   $result = dict[];
   foreach ($values as $value) {
     $result[$key_func($value)] = $value;
@@ -228,8 +228,8 @@ function group_by<Tk as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
   <<__AtMostRxAsFunc>>
-  (function(Tv): ?Tk) $key_func,
-): dict<Tk, vec<Tv>> {
+  (function(Tv)[_]: ?Tk) $key_func,
+)[ctx $key_func]: dict<Tk, vec<Tv>> {
   $result = dict[];
   foreach ($values as $value) {
     $key = $key_func($value);
@@ -256,8 +256,8 @@ function map<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv1): Tv2) $value_func,
-): dict<Tk, Tv2> {
+  (function(Tv1)[_]: Tv2) $value_func,
+)[ctx $value_func]: dict<Tk, Tv2> {
   $result = dict[];
   foreach ($traversable as $key => $value) {
     $result[$key] = $value_func($value);
@@ -278,8 +278,8 @@ function map_keys<Tk1, Tk2 as arraykey, Tv>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk1): Tk2) $key_func,
-): dict<Tk2, Tv> {
+  (function(Tk1)[_]: Tk2) $key_func,
+)[ctx $key_func]: dict<Tk2, Tv> {
   $result = dict[];
   foreach ($traversable as $key => $value) {
     $result[$key_func($key)] = $value;
@@ -299,8 +299,8 @@ function map_with_key<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv1): Tv2) $value_func,
-): dict<Tk, Tv2> {
+  (function(Tk, Tv1)[_]: Tv2) $value_func,
+)[ctx $value_func]: dict<Tk, Tv2> {
   $result = dict[];
   foreach ($traversable as $key => $value) {
     $result[$key] = $value_func($key, $value);
@@ -324,10 +324,10 @@ function pull<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv1): Tv2) $value_func,
+  (function(Tv1)[_]: Tv2) $value_func,
   <<__AtMostRxAsFunc>>
-  (function(Tv1): Tk) $key_func,
-): dict<Tk, Tv2> {
+  (function(Tv1)[_]: Tk) $key_func,
+)[ctx $value_func, ctx $key_func]: dict<Tk, Tv2> {
   $result = dict[];
   foreach ($traversable as $value) {
     $result[$key_func($value)] = $value_func($value);
@@ -351,10 +351,10 @@ function pull_with_key<Tk1, Tk2 as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk1, Tv1): Tv2) $value_func,
+  (function(Tk1, Tv1)[_]: Tv2) $value_func,
   <<__AtMostRxAsFunc>>
-  (function(Tk1, Tv1): Tk2) $key_func,
-): dict<Tk2, Tv2> {
+  (function(Tk1, Tv1)[_]: Tk2) $key_func,
+)[ctx $value_func, ctx $key_func]: dict<Tk2, Tv2> {
   $result = dict[];
   foreach ($traversable as $key => $value) {
     $result[$key_func($key, $value)] = $value_func($key, $value);

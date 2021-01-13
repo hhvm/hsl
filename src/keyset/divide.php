@@ -22,8 +22,8 @@ function partition<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tv): bool) $predicate,
-): (keyset<Tv>, keyset<Tv>) {
+  (function(Tv)[_]: bool) $predicate,
+)[ctx $predicate]: (keyset<Tv>, keyset<Tv>) {
   $success = keyset[];
   $failure = keyset[];
   foreach ($traversable as $value) {

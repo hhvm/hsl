@@ -15,10 +15,10 @@ use namespace HH\Lib\{Math, Str};
 <<__Pure, __AtMostRxAsArgs>>
 function random_string(
   <<__AtMostRxAsFunc>>
-  (function (int): string) $random_bytes,
+  (function (int)[_]: string) $random_bytes,
   int $length,
   ?string $alphabet = null,
-): string {
+)[ctx $random_bytes]: string {
   invariant($length >= 0, 'Expected positive length, got %d', $length);
   if ($length === 0) {
     return '';
