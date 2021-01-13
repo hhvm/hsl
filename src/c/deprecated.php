@@ -25,3 +25,20 @@ async function first_async<T>(
 ): Awaitable<?T> {
   return first(await $awaitable);
 }
+
+/**
+ * Returns the first element of the result of the given Awaitable, or throws if
+ * the Traversable is empty.
+ *
+ * For non-Awaitable Traversables, see `C\firstx`.
+ *
+ * Time complexity: O(1)
+ * Space complexity: O(1)
+ */
+<<__Deprecated('use C\\firstx(await #A)')>>
+async function firstx_async<T>(
+  Awaitable<Traversable<T>> $awaitable,
+): Awaitable<T> {
+  $traversable = await $awaitable;
+  return firstx($traversable);
+}
