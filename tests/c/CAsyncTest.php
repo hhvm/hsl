@@ -16,42 +16,6 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class CAsyncTest extends HackTest {
 
-  public static function provideTestGenFirst(
-  ): vec<(Awaitable<Traversable<mixed>>, mixed)> {
-    return vec[
-      tuple(
-        async {
-          return varray[];
-        },
-        null,
-      ),
-      tuple(
-        async {
-          return HackLibTestTraversables::getIterator(Vec\range(1, 5));
-        },
-        1,
-      ),
-      tuple(
-        async {
-          return dict[
-            '5' => '10',
-            '10' => '20',
-          ];
-        },
-        '10',
-      ),
-    ];
-  }
-
-  <<DataProvider('provideTestGenFirst')>>
-  public async function testFirstAsync<T>(
-    Awaitable<Traversable<T>> $awaitable,
-    ?T $expected,
-  ): Awaitable<void> {
-    $actual = await C\first_async($awaitable);
-    expect($actual)->toEqual($expected);
-  }
-
   public static function provideTestGenFirstx(
   ): vec<(Awaitable<Traversable<mixed>>, mixed)> {
     return vec[
