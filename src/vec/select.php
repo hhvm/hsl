@@ -277,7 +277,7 @@ function slice<Tv>(
   $offset = _Private\validate_offset_lower_bound($offset, C\count($container));
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
-  return vec(\array_slice($container, $offset, $length));
+  return cast_clear_legacy_array_mark(\array_slice($container, $offset, $length));
 }
 
 /**
