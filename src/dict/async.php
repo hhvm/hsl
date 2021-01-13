@@ -60,10 +60,12 @@ async function from_keys_async<Tk as arraykey, Tv>(
 
   /* HH_FIXME[4200] Hide the magic from reactivity */
   /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+  /* HH_FIXME[4390] Magic Function */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $key => $value) {
     /* HH_FIXME[4200] Hide the magic from reactivity */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4390] Magic Function */
     $awaitables[$key] = \HH\Asio\result($value);
   }
   /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
@@ -149,17 +151,20 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
   $dict = cast_clear_legacy_array_mark($traversable);
   foreach ($dict as $key => $value) {
     /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
+    /* HH_FIXME[4401] need to make this safe to coeffects */
     $dict[$key] = $value_func($value);
   }
 
   /* HH_FIXME[4110] Okay to pass in Awaitable */
   /* HH_FIXME[4200] Hide the magic from reactivity */
   /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+  /* HH_FIXME[4390] Magic Function */
   await AwaitAllWaitHandle::fromDict($dict);
   foreach ($dict as $key => $value) {
     /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
     /* HH_FIXME[4200] Hide the magic from reactivity */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4390] Magic Function */
     $dict[$key] = \HH\Asio\result($value);
   }
   /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
@@ -190,10 +195,12 @@ async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
   unset($container);
   /* HH_FIXME[4200] Hide the magic from reactivity */
   /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+  /* HH_FIXME[4390] Magic Function */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $index => $value) {
     /* HH_FIXME[4200] Hide the magic from reactivity */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4390] Magic Function */
     $awaitables[$index] = \HH\Asio\result($value);
   }
   /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
