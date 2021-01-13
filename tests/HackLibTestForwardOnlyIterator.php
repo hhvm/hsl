@@ -22,22 +22,21 @@ implements \HH\Rx\Iterator<Tv>, \HH\Rx\KeyedIterator<Tk, Tv> {
 
   <<__Pure>>
   public function __construct(private dict<Tk, Tv> $data) {
-    /* HH_FIXME[4200] Mark things as pure to unblock releasing hack */
     $this->keys = Vec\keys($data);
   }
 
   <<__Pure, __MaybeMutable>>
-  public function current(): Tv  {
+  public function current()[]: Tv  {
     return $this->data[$this->keys[$this->keyIdx]];
   }
 
   <<__Pure, __MaybeMutable>>
-  public function key(): Tk {
+  public function key()[]: Tk {
     return $this->keys[$this->keyIdx];
   }
 
   <<__Pure, __Mutable>>
-  public function rewind(): void {
+  public function rewind()[]: void {
     if ($this->used) {
       $this->next();
       $this->used = false;
@@ -45,13 +44,12 @@ implements \HH\Rx\Iterator<Tv>, \HH\Rx\KeyedIterator<Tk, Tv> {
   }
 
   <<__Pure, __MaybeMutable>>
-  public function valid(): bool {
-    /* HH_FIXME[4200] Mark things as pure to unblock releasing hack */
+  public function valid()[]: bool {
     return C\contains_key($this->keys, $this->keyIdx);
   }
 
   <<__Pure, __Mutable>>
-  public function next(): void {
+  public function next()[]: void {
     $this->used = true;
     $this->keyIdx++;
   }
