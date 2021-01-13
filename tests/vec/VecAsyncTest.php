@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecAsyncTest extends HackTest {
 
-  public static function provideTestGen(): varray<mixed> {
+  public static function provideTestFromAsync(): varray<mixed> {
     return varray[
       tuple(
         Vector {
@@ -45,7 +45,7 @@ final class VecAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGen')>>
+  <<DataProvider('provideTestFromAsync')>>
   public async function testFromAsync<Tv>(
     Traversable<Awaitable<Tv>> $awaitables,
     vec<Tv> $expected,
