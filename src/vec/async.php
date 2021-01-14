@@ -11,28 +11,6 @@
 namespace HH\Lib\Vec;
 
 /**
- * Returns a new vec with each value `await`ed in parallel.
- *
- * Time complexity: O(n * a), where a is the complexity of synchronous
- * portions of each Awaitable
- * Space complexity: O(n)
- *
- * The IO operations for each Awaitable will happen in parallel.
- */
-async function from_async<Tv>(
-  Traversable<Awaitable<Tv>> $awaitables,
-): Awaitable<vec<Tv>> {
-  $vec = cast_clear_legacy_array_mark($awaitables);
-
-  await AwaitAllWaitHandle::fromVec($vec);
-  foreach ($vec as $index => $value) {
-    $vec[$index] = \HH\Asio\result($value);
-  }
-  /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
-  return $vec;
-}
-
-/**
  * Returns a new vec containing only the values for which the given async
  * predicate returns `true`.
  *
@@ -100,6 +78,28 @@ async function map_async<Tv1, Tv2>(
     /* HH_FIXME[4200] Hide the magic from reactivity */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
     /* HH_FIXME[4390] Magic Function */
+    $vec[$index] = \HH\Asio\result($value);
+  }
+  /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
+  return $vec;
+}
+
+/**
+ * Returns a new vec with each value `await`ed in parallel.
+ *
+ * Time complexity: O(n * a), where a is the complexity of synchronous
+ * portions of each Awaitable
+ * Space complexity: O(n)
+ *
+ * The IO operations for each Awaitable will happen in parallel.
+ */
+async function from_async<Tv>(
+  Traversable<Awaitable<Tv>> $awaitables,
+): Awaitable<vec<Tv>> {
+  $vec = cast_clear_legacy_array_mark($awaitables);
+
+  await AwaitAllWaitHandle::fromVec($vec);
+  foreach ($vec as $index => $value) {
     $vec[$index] = \HH\Asio\result($value);
   }
   /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
