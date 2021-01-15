@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ ubuntu ]
         hhvm:
-          - '4.79'
+          - '4.92'
           - latest
           - nightly
     runs-on: ${{matrix.os}}-latest
@@ -57,8 +57,10 @@ jobs:
       - name: Create branch for version alias
         run: git checkout -b CI_current_pull_request
       - name: Install project dependencies
-        run: php ${{runner.temp}}/composer.phar install
+        run: php ${{runner.temp}}/composer.phar install --no-autoloader
+      - name: Generate autoload map
+        run: hhvm -c hhvm.ini vendor/bin/hh-autoload
       - name: Typecheck
         run: hh_client
       - name: Run tests
-        run: vendor/bin/hacktest tests/
+        run: hhvm -c hhvm.ini vendor/bin/hacktest tests/
