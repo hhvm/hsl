@@ -58,7 +58,10 @@ jobs:
         run: git checkout -b CI_current_pull_request
       - name: Install project dependencies
         run: php ${{runner.temp}}/composer.phar install
+      - name: Build autoload map
+        # Composer runs this without the coeefects flag, which fails.
+        run: hhvm -dhhvm.hack.lang.enable_coeffects=true vendor/bin/hh-autoload.hack
       - name: Typecheck
         run: hh_client
       - name: Run tests
-        run: vendor/bin/hacktest tests/
+        run: hhvm -dhhvm.hack.lang.enable_coeffects=true vendor/bin/hacktest tests/
