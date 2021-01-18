@@ -140,6 +140,7 @@ abstract class BasePoll<Tk, Tv> {
     }
   }
 
+  <<__ProvenanceSkipFrame>>
   final public async function next(): Awaitable<?(Tk, Tv)> {
     invariant(
       $this->lastAwaited !== null,
