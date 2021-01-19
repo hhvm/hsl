@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ ubuntu ]
         hhvm:
-          - '4.92'
+          - '4.93'
           - latest
           - nightly
     runs-on: ${{matrix.os}}-latest
@@ -59,8 +59,8 @@ jobs:
       - name: Install project dependencies
         run: php ${{runner.temp}}/composer.phar install --no-autoloader
       - name: Generate autoload map
-        run: hhvm -c hhvm.ini vendor/bin/hh-autoload
+        run: hhvm vendor/bin/hh-autoload
       - name: Typecheck
         run: hh_client
       - name: Run tests
-        run: hhvm -c hhvm.ini vendor/bin/hacktest tests/
+        run: hhvm vendor/bin/hacktest tests/
