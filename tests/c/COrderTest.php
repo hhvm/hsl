@@ -191,8 +191,8 @@ final class COrderTest extends HackTest {
     return vec[
       $vec,
       $traversable_to_generator($vec),
-      varray($vec),
-      darray($vec),
+      HH\array_mark_legacy(varray($vec)),
+      HH\array_mark_legacy(darray($vec)),
       dict($vec),
       new Vector($vec),
       new ImmVector($vec),
