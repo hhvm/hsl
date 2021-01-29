@@ -790,4 +790,85 @@ final class CSelectTest extends HackTest {
     )
       ->toEqual(42);
   }
+
+  public static function provideTestPopBack(
+  ): vec<(Container<mixed>, Container<mixed>, mixed)> {
+    return vec[
+      tuple(vec[1], vec[], 1),
+      tuple(vec[1, 2, 3], vec[1, 2], 3),
+      tuple(vec[], vec[], null),
+      tuple(vec[null], vec[], null),
+      tuple(keyset['apple', 'banana'], keyset['apple'], 'banana'),
+      tuple(varray[1, 2, 3], varray[1, 2], 3),
+      tuple(dict['a' => 1, 'b' => 2], dict['a' => 1], 2),
+      tuple(Vector {1, 2, 3}, Vector {1, 2}, 3),
+      tuple(Set {}, Set {}, null),
+    ];
+  }
+
+  <<DataProvider('provideTestPopBack')>>
+  public function testPopBack(
+    Container<mixed> $before,
+    Container<mixed> $after,
+    mixed $value,
+  ): void {
+    $return_value = C\pop_back(inout $before);
+    invariant(
+      $after is KeyedContainer<_, _>,
+      '->toHaveSameContentAs() takes a KeyedContainer.'.
+      'There are currently no Containers in Hack which are not also KeyedContainers.',
+    );
+    expect($before)->toHaveSameContentAs($after);
+    expect($return_value)->toEqual($value);
+  }
+
+  public static function provideTestPopBackx(
+  ): vec<(Container<mixed>, Container<mixed>, mixed)> {
+    return vec[
+      tuple(vec[1], vec[], 1),
+      tuple(vec[1, 2, 3], vec[1, 2], 3),
+      tuple(keyset['apple', 'banana'], keyset['apple'], 'banana'),
+      tuple(varray[1, 2, 3], varray[1, 2], 3),
+      tuple(dict['a' => 1, 'b' => 2], dict['a' => 1], 2),
+      tuple(Vector {1, 2, 3}, Vector {1, 2}, 3),
+      tuple(vec[null], vec[], null),
+    ];
+  }
+
+  <<DataProvider('provideTestPopBackx')>>
+  public function testPopBackx(
+    Container<mixed> $before,
+    Container<mixed> $after,
+    mixed $value,
+  ): void {
+    $return_value = C\pop_backx(inout $before);
+    invariant(
+      $after is KeyedContainer<_, _>,
+      '->toHaveSameContentAs() takes a KeyedContainer.'.
+      'There are currently no Containers in Hack which are not also KeyedContainers.',
+    );
+    expect($before)->toHaveSameContentAs($after);
+    expect($return_value)->toEqual($value);
+  }
+
+  public static function provideTestPopBackxThrowsOnEmptyContainers(
+  ): vec<(Container<mixed>)> {
+    return vec[
+      tuple(vec[]),
+      tuple(dict[]),
+      tuple(keyset[]),
+      tuple(Vector {}),
+      tuple(Map {}),
+    ];
+  }
+
+  <<DataProvider('provideTestPopBackxThrowsOnEmptyContainers')>>
+  public function testPopBackxThrowOnEmptyContainers(
+    Container<mixed> $container,
+  ): void {
+    expect(() ==> C\pop_backx(inout $container))->toThrow(
+      InvariantException::class,
+      'Expected at least one element',
+    );
+  }
 }

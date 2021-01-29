@@ -397,3 +397,51 @@ function onlyx<T>(
   /* HH_FIXME[4110] $first is false implies $result is set to T */
   return $result;
 }
+
+/**
+ * Removes the last element from a Container and returns it.
+ * If the Container is empty, null will be returned.
+ *
+ * When an immutable Hack Collection is passed, the result will
+ * be defined by your version of hhvm and not give the expected results.
+ *
+ * For non-empty Containers, see `pop_backx`.
+ *
+ * Time complexity: O(1 or N) If the operation can happen in-place, O(1)
+ *   if it must copy the Container, O(N).
+ * Space complexity: O(1 or N) If the operation can happen in-place, O(1)
+ *   if it must copy the Container, O(N).
+ */
+function pop_back<T as Container<Tv>, Tv>(inout T $container): ?Tv {
+  if (is_empty($container)) {
+    return null;
+  }
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
+  return \array_pop(inout $container);
+}
+
+/**
+ * Removes the last element from a Container and returns it.
+ * If the Container is empty, an `InvariantException` is thrown.
+ *
+ * When an immutable Hack Collection is passed, the result will
+ * be defined by your version of hhvm and not give the expected results.
+ *
+ * For maybe empty Containers, see `pop_back`.
+ *
+ * Time complexity: O(1 or N) If the operation can happen in-place, O(1)
+ *   if it must copy the Container, O(N).
+ * Space complexity: O(1 or N) If the operation can happen in-place, O(1)
+ *   if it must copy the Container, O(N).
+ */
+function pop_backx<T as Container<Tv>, Tv>(inout T $container): Tv {
+  invariant(
+    !is_empty($container),
+    '%s: Expected at least one element',
+    __FUNCTION__,
+  );
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
+  return \array_pop(inout $container);
+}
