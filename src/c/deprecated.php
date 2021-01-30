@@ -39,6 +39,5 @@ async function first_async<T>(
 async function firstx_async<T>(
   Awaitable<Traversable<T>> $awaitable,
 ): Awaitable<T> {
-  $traversable = await $awaitable;
-  return firstx($traversable);
+  return firstx(await $awaitable);
 }

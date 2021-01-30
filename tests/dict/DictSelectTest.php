@@ -334,9 +334,6 @@ final class DictSelectTest extends HackTest {
     expect(Dict\filter_nulls($traversable))->toEqual($expected);
   }
 
-  public function testFilterAsync(): void {
-  }
-
   public static function provideTestSelectKeys(): varray<mixed> {
     return varray[
       tuple(

@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class VecAsyncTest extends HackTest {
 
-  public static function provideTestGen(): varray<mixed> {
+  public static function provideTestFromAsync(): varray<mixed> {
     return varray[
       tuple(
         Vector {
@@ -45,7 +45,7 @@ final class VecAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGen')>>
+  <<DataProvider('provideTestFromAsync')>>
   public async function testFromAsync<Tv>(
     Traversable<Awaitable<Tv>> $awaitables,
     vec<Tv> $expected,
@@ -54,7 +54,7 @@ final class VecAsyncTest extends HackTest {
     expect($actual)->toEqual($expected);
   }
 
-  public static function provideTestGenFilter(): varray<mixed> {
+  public static function provideTestFilterAsync(): varray<mixed> {
     return varray[
       tuple(
         darray[
@@ -74,7 +74,7 @@ final class VecAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGenFilter')>>
+  <<DataProvider('provideTestFilterAsync')>>
   public async function testFilterAsync<Tv>(
     Container<Tv> $container,
     (function(Tv): Awaitable<bool>) $value_predicate,
@@ -84,7 +84,7 @@ final class VecAsyncTest extends HackTest {
     expect($actual)->toEqual($expected);
   }
 
-  public static function provideTestGenMap(): varray<mixed> {
+  public static function provideTestMapAsync(): varray<mixed> {
     return varray[
       tuple(
         Vector {'the', 'quick', 'brown', 'fox'},
@@ -106,7 +106,7 @@ final class VecAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGenMap')>>
+  <<DataProvider('provideTestMapAsync')>>
   public async function testMapAsync<Tk, Tv>(
     Traversable<Tk> $keys,
     (function(Tk): Awaitable<Tv>) $async_func,

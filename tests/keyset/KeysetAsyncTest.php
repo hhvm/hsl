@@ -15,7 +15,7 @@ use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: <<Oncalls('hack')>>
 final class KeysetAsyncTest extends HackTest {
 
-  public static function provideTestGen(): varray<mixed> {
+  public static function provideTestFromAsync(): varray<mixed> {
     return varray[
       tuple(
         Vector {
@@ -45,7 +45,7 @@ final class KeysetAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGen')>>
+  <<DataProvider('provideTestFromAsync')>>
   public async function testFromAsync<Tv as arraykey>(
     Traversable<Awaitable<Tv>> $awaitables,
     keyset<Tv> $expected,
@@ -54,7 +54,7 @@ final class KeysetAsyncTest extends HackTest {
     expect($actual)->toEqual($expected);
   }
 
-  public static function provideTestGenMap(): varray<mixed> {
+  public static function provideTestMapAsync(): varray<mixed> {
     return varray[
       tuple(
         keyset[1,2,3],
@@ -74,7 +74,7 @@ final class KeysetAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGenMap')>>
+  <<DataProvider('provideTestMapAsync')>>
   public async function testMapAsync<Tv>(
     Traversable<Tv> $traversable,
     (function(Tv): Awaitable<arraykey>) $async_func,
@@ -84,7 +84,7 @@ final class KeysetAsyncTest extends HackTest {
     expect($actual)->toEqual($expected);
   }
 
-  public static function provideTestGenFilter(
+  public static function provideTestFilterAsync(
   ): vec<(
     Container<arraykey>,
     (function(arraykey): Awaitable<bool>),
@@ -114,7 +114,7 @@ final class KeysetAsyncTest extends HackTest {
     ];
   }
 
-  <<DataProvider('provideTestGenFilter')>>
+  <<DataProvider('provideTestFilterAsync')>>
   public async function testFilterAsync<Tv as arraykey>(
     Container<Tv> $traversable,
     (function(Tv): Awaitable<bool>) $async_predicate,

@@ -21,11 +21,12 @@ use namespace HH\Lib\Vec;
  *
  * The IO operations for each Awaitable will happen in parallel.
  */
+<<__Pure, __AtMostRxAsArgs>>
 async function from_async<Tv as arraykey>(
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
-): Awaitable<keyset<Tv>> {
-  $vec = await Vec\from_async($awaitables);
-  return keyset($vec);
+)[]: Awaitable<keyset<Tv>> {
+  return keyset(await Vec\from_async($awaitables));
 }
 
 /**
@@ -43,14 +44,14 @@ async function from_async<Tv as arraykey>(
  */
 <<__Pure, __AtMostRxAsArgs>>
 async function filter_async<Tv as arraykey>(
-  Container<Tv> $traversable,
+  Container<Tv> $container,
   <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Awaitable<bool>) $value_predicate,
 )[ctx $value_predicate]: Awaitable<keyset<Tv>> {
-  $tests = await Vec\map_async($traversable, $value_predicate);
+  $tests = await Vec\map_async($container, $value_predicate);
   $result = keyset[];
   $ii = 0;
-  foreach ($traversable as $value) {
+  foreach ($container as $value) {
     if ($tests[$ii]) {
       $result[] = $value;
     }
@@ -77,6 +78,5 @@ async function map_async<Tv, Tk as arraykey>(
   <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Awaitable<Tk>) $async_func,
 )[ctx $async_func]: Awaitable<keyset<Tk>> {
-  $vec = await Vec\map_async($traversable, $async_func);
-  return keyset($vec);
+  return keyset(await Vec\map_async($traversable, $async_func));
 }

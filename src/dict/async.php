@@ -21,17 +21,23 @@ use namespace HH\Lib\{C, Dict};
  *
  * The IO operations for each Awaitable will happen in parallel.
  */
+<<__Pure, __AtMostRxAsArgs>>
 async function from_async<Tk as arraykey, Tv>(
+  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Awaitable<Tv>> $awaitables,
-): Awaitable<dict<Tk, Tv>> {
-  $awaitables_ = cast_clear_legacy_array_mark($awaitables);
+)[]: Awaitable<dict<Tk, Tv>> {
+  $dict = cast_clear_legacy_array_mark($awaitables);
 
-  await AwaitAllWaitHandle::fromDict($awaitables_);
-  foreach ($awaitables_ as $key => $value) {
-    $awaitables_[$key] = \HH\Asio\result($value);
+  /* HH_FIXME[4387] Hide the magic from reactivity */
+  /* HH_FIXME[4390] Magic Function */
+  await AwaitAllWaitHandle::fromDict($dict);
+  foreach ($dict as $key => $value) {
+    /* HH_FIXME[4387] Hide the magic from reactivity */
+    /* HH_FIXME[4390] Magic Function */
+    $dict[$key] = \HH\Asio\result($value);
   }
   /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
-  return $awaitables_;
+  return $dict;
 }
 
 /**
@@ -52,19 +58,16 @@ async function from_keys_async<Tk as arraykey, Tv>(
 )[ctx $async_func]: Awaitable<dict<Tk, Tv>> {
   $awaitables = dict[];
   foreach ($keys as $key) {
-    /* HH_FIXME[4248] non-awaited awaitable in rx context */
     $awaitables[$key] ??= $async_func($key);
   }
   /* HH_FIXME[4135] Unset local variable to reduce peak memory. */
   unset($keys);
 
-  /* HH_FIXME[4200] Hide the magic from reactivity */
-  /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+  /* HH_FIXME[4387] Hide the magic from reactivity */
   /* HH_FIXME[4390] Magic Function */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $key => $value) {
-    /* HH_FIXME[4200] Hide the magic from reactivity */
-    /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4387] Hide the magic from reactivity */
     /* HH_FIXME[4390] Magic Function */
     $awaitables[$key] = \HH\Asio\result($value);
   }
@@ -102,7 +105,7 @@ async function filter_async<Tk as arraykey, Tv>(
 }
 
 /**
- * Like `gen_filter`, but lets you utilize the keys of your dict too.
+ * Like `filter_async`, but lets you utilize the keys of your dict too.
  *
  * For non-async filters with key, see `Dict\filter_with_key()`.
  *
@@ -115,10 +118,7 @@ async function filter_with_key_async<Tk as arraykey, Tv>(
   <<__AtMostRxAsFunc>>
   (function(Tk, Tv)[_]: Awaitable<bool>) $predicate,
 )[ctx $predicate]: Awaitable<dict<Tk, Tv>> {
-  $tests = await map_with_key_async(
-    $traversable,
-    async ($k, $v) ==> await $predicate($k, $v),
-  );
+  $tests = await map_with_key_async($traversable, $predicate);
   $result = dict[];
   foreach ($tests as $k => $v) {
     if ($v) {
@@ -150,20 +150,17 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
 )[ctx $value_func]: Awaitable<dict<Tk, Tv2>> {
   $dict = cast_clear_legacy_array_mark($traversable);
   foreach ($dict as $key => $value) {
-    /* HH_FIXME[4248] AwaitAllWaitHandle::fromDict is like await */
     /* HH_FIXME[4401] need to make this safe to coeffects */
     $dict[$key] = $value_func($value);
   }
 
   /* HH_FIXME[4110] Okay to pass in Awaitable */
-  /* HH_FIXME[4200] Hide the magic from reactivity */
-  /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+  /* HH_FIXME[4387] Hide the magic from reactivity */
   /* HH_FIXME[4390] Magic Function */
   await AwaitAllWaitHandle::fromDict($dict);
   foreach ($dict as $key => $value) {
     /* HH_FIXME[4110] Reuse the existing dict to reduce peak memory. */
-    /* HH_FIXME[4200] Hide the magic from reactivity */
-    /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4387] Hide the magic from reactivity */
     /* HH_FIXME[4390] Magic Function */
     $dict[$key] = \HH\Asio\result($value);
   }
@@ -183,23 +180,19 @@ async function map_async<Tk as arraykey, Tv1, Tv2>(
 <<__Pure, __AtMostRxAsArgs>>
 async function map_with_key_async<Tk as arraykey, Tv1, Tv2>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
-  KeyedTraversable<Tk, Tv1> $container,
+  KeyedTraversable<Tk, Tv1> $traversable,
   <<__AtMostRxAsFunc>>
-  (function(Tk, Tv1)[_]: Awaitable<Tv2>) $async_func
+  (function(Tk, Tv1)[_]: Awaitable<Tv2>) $async_func,
 )[ctx $async_func]: Awaitable<dict<Tk, Tv2>> {
-  $awaitables = Dict\map_with_key(
-    $container,
-    $async_func,
-  );
+  $awaitables = map_with_key($traversable, $async_func);
   /* HH_FIXME[4135] Unset local variable to reduce peak memory. */
-  unset($container);
-  /* HH_FIXME[4200] Hide the magic from reactivity */
-  /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+  unset($traversable);
+
+  /* HH_FIXME[4387] Hide the magic from reactivity */
   /* HH_FIXME[4390] Magic Function */
   await AwaitAllWaitHandle::fromDict($awaitables);
   foreach ($awaitables as $index => $value) {
-    /* HH_FIXME[4200] Hide the magic from reactivity */
-    /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
+    /* HH_FIXME[4387] Hide the magic from reactivity */
     /* HH_FIXME[4390] Magic Function */
     $awaitables[$index] = \HH\Asio\result($value);
   }
