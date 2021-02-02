@@ -412,8 +412,10 @@ function onlyx<T>(
  * Space complexity: O(1 or N) If the operation can happen in-place, O(1)
  *   if it must copy the Container, O(N).
  */
-<<__Pure>>
-function pop_back<T as Container<Tv>, Tv>(inout T $container)[]: ?Tv {
+<<__Pure, __AtMostRxAsArgs>>
+function pop_back<T as Container<Tv>, Tv>(
+  <<__OnlyRxIfImpl(AnyArray::class)>> inout T $container,
+)[]: ?Tv {
   if (is_empty($container)) {
     return null;
   }
@@ -436,8 +438,10 @@ function pop_back<T as Container<Tv>, Tv>(inout T $container)[]: ?Tv {
  * Space complexity: O(1 or N) If the operation can happen in-place, O(1)
  *   if it must copy the Container, O(N).
  */
-<<__Pure>>
-function pop_backx<T as Container<Tv>, Tv>(inout T $container)[]: Tv {
+<<__Pure, __AtMostRxAsArgs>>
+function pop_backx<T as Container<Tv>, Tv>(
+  <<__OnlyRxIfImpl(AnyArray::class)>> inout T $container,
+)[]: Tv {
   invariant(
     !is_empty($container),
     '%s: Expected at least one element',
