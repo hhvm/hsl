@@ -50,7 +50,7 @@ function concat<Tv>(
  * Space complexity: O(min(m, n)), where m is the size of `$first` and n is the
  * size of `$second`
  */
-<<__Pure, __AtMostRxAsArgs>>
+<<__Pure, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
 function zip<Tv, Tu>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
