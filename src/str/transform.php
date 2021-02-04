@@ -24,7 +24,7 @@ use namespace HH\Lib\{_Private, C, Keyset, Vec};
 <<__RxLocal>>
 function capitalize(
   string $string,
-): string {
+)[rx_local]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \ucfirst($string);
@@ -43,7 +43,7 @@ function capitalize(
 function capitalize_words(
   string $string,
   string $delimiters = " \t\r\n\f\v",
-): string {
+)[rx_local]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \ucwords($string, $delimiters);
@@ -181,7 +181,7 @@ function replace_ci(
   string $haystack,
   string $needle,
   string $replacement,
-): string {
+)[rx]: string {
   /* HH_FIXME[4200] Rx calling non-rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -245,7 +245,7 @@ function replace_every(
 function replace_every_ci(
   string $haystack,
   KeyedContainer<string, string> $replacements,
-): string {
+)[rx]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   /* HH_FIXME[4200] Rx calling non-rx */
@@ -276,7 +276,7 @@ function replace_every_ci(
 function replace_every_nonrecursive(
   string $haystack,
   KeyedContainer<string, string> $replacements,
-): string {
+)[rx]: string {
   invariant(
     !C\contains_key($replacements, ''),
     'Expected non-empty keys only.',
@@ -311,7 +311,7 @@ function replace_every_nonrecursive(
 function replace_every_nonrecursive_ci(
   string $haystack,
   KeyedContainer<string, string> $replacements,
-): string {
+)[rx]: string {
   invariant(
     !C\contains_key($replacements, ''),
     'Expected non-empty keys only.',

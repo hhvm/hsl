@@ -54,7 +54,7 @@ function chunk<Tk as arraykey, Tv>(
 function count_values<Tv as arraykey>(
   <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
-): dict<Tv, int> {
+)[rx_shallow]: dict<Tv, int> {
   $result = dict[];
   foreach ($values as $value) {
     $result[$value] = idx($result, $value, 0) + 1;

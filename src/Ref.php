@@ -24,5 +24,5 @@ namespace HH\Lib;
  */
 final class Ref<T> {
   <<__RxShallow>>
-  public function __construct(public T $value) {}
+  public function __construct(public T $value)[rx_shallow] {}
 }
