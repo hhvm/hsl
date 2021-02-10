@@ -180,7 +180,7 @@ function replace_ci(
   string $needle,
   string $replacement,
 )[rx]: string {
-  /* HH_FIXME[4200] Rx calling non-rx */
+  /* HH_FIXME[4390] Rx calling non-rx */
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \str_ireplace($needle, $replacement, $haystack);
@@ -245,7 +245,7 @@ function replace_every_ci(
 )[rx]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
-  /* HH_FIXME[4200] Rx calling non-rx */
+  /* HH_FIXME[4390] Rx calling non-rx */
   return \str_ireplace(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */
