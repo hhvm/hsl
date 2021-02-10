@@ -15,18 +15,16 @@ namespace HH\Lib\_Private;
  * offset as a positive integer.
  */
 <<__Pure>>
-function validate_offset(
-  int $offset,
-  int $length,
-)[]: int {
+function validate_offset(int $offset, int $length)[]: int {
   $original_offset = $offset;
   if ($offset < 0) {
     $offset += $length;
   }
   invariant(
     $offset >= 0 && $offset <= $length,
-    'Offset (%d) was out-of-bounds.',
+    'Offset %d was out-of-bounds for length %d',
     $original_offset,
+    $length,
   );
   return $offset;
 }
@@ -36,15 +34,17 @@ function validate_offset(
  * offset as a positive integer.
  */
 <<__Pure>>
-function validate_offset_lower_bound(
-  int $offset,
-  int $length,
-)[]: int {
+function validate_offset_lower_bound(int $offset, int $length)[]: int {
   $original_offset = $offset;
   if ($offset < 0) {
     $offset += $length;
   }
-  invariant($offset >= 0, 'Offset (%d) was out-of-bounds.', $original_offset);
+  invariant(
+    $offset >= 0,
+    'Offset %d was out-of-bounds for length %d',
+    $original_offset,
+    $length,
+  );
   return $offset;
 }
 
