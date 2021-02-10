@@ -50,9 +50,7 @@ function chunk<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__RxShallow, __AtMostRxAsArgs>>
 function count_values<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 )[rx_shallow]: dict<Tv, int> {
   $result = dict[];

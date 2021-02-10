@@ -36,7 +36,6 @@ function abs<T as num>(T $number)[]: T {
  * - To convert a string in some base to an int, see `Math\from_base()`.
  * - To convert an int to a string in some base, see `Math\to_base()`.
  */
-<<__RxLocal>>
 function base_convert(string $value, int $from_base, int $to_base)[rx_local]: string {
   invariant(
     $value !== '',
@@ -307,7 +306,6 @@ function tan(num $arg)[]: float {
  *
  * To base convert a string to an int, see `Math\from_base()`.
  */
-<<__RxShallow>>
 function to_base(int $number, int $to_base)[rx_shallow]: string {
   invariant(
     $to_base >= 2 && $to_base <= 36,

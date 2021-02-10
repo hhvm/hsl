@@ -21,7 +21,6 @@ use namespace HH\Lib\{_Private, C, Keyset, Vec};
  * - To capitalize all characters, see `Str\uppercase()`.
  * - To capitalize all words, see `Str\capitalize_words()`.
  */
-<<__RxLocal>>
 function capitalize(
   string $string,
 )[rx_local]: string {
@@ -39,7 +38,6 @@ function capitalize(
  * - To capitalize all characters, see `Str\uppercase()`.
  * - To capitalize only the first character, see `Str\capitalize()`.
  */
-<<__RxLocal>>
 function capitalize_words(
   string $string,
   string $delimiters = " \t\r\n\f\v",
@@ -176,7 +174,7 @@ function replace(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
-<<__Rx>> // not pure: str_ireplace uses global locale for capitalization
+// not pure: str_ireplace uses global locale for capitalization
 function replace_ci(
   string $haystack,
   string $needle,
@@ -241,7 +239,6 @@ function replace_every(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For not having new values searched again, see `Str\replace_every_nonrecursive_ci()`.
  */
-<<__Rx>>
 function replace_every_ci(
   string $haystack,
   KeyedContainer<string, string> $replacements,
@@ -272,7 +269,6 @@ function replace_every_ci(
  *
  * - For having new values searched again, see `Str\replace_every()`.
  */
-<<__Rx>>
 function replace_every_nonrecursive(
   string $haystack,
   KeyedContainer<string, string> $replacements,
@@ -307,7 +303,6 @@ function replace_every_nonrecursive(
  *
  * - For having new values searched again, see `Str\replace_every_ci()`.
  */
-<<__Rx>>
 function replace_every_nonrecursive_ci(
   string $haystack,
   KeyedContainer<string, string> $replacements,
