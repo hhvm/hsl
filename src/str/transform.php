@@ -23,7 +23,7 @@ use namespace HH\Lib\{_Private, C, Keyset, Vec};
  */
 function capitalize(
   string $string,
-)[rx_local]: string {
+)[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \ucfirst($string);
@@ -41,7 +41,7 @@ function capitalize(
 function capitalize_words(
   string $string,
   string $delimiters = " \t\r\n\f\v",
-)[rx_local]: string {
+)[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
   return \ucwords($string, $delimiters);
