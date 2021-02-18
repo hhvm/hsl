@@ -406,6 +406,7 @@ function onlyx<T>(
  * be defined by your version of hhvm and not give the expected results.
  *
  * For non-empty Containers, see `pop_backx`.
+ * To get the first element, see `pop_front`.
  *
  * Time complexity: O(1 or N) If the operation can happen in-place, O(1)
  *   if it must copy the Container, O(N).
@@ -432,6 +433,7 @@ function pop_back<T as Container<Tv>, Tv>(
  * be defined by your version of hhvm and not give the expected results.
  *
  * For maybe empty Containers, see `pop_back`.
+ * To get the first element, see `pop_frontx`.
  *
  * Time complexity: O(1 or N) If the operation can happen in-place, O(1)
  *   if it must copy the Container, O(N).
@@ -450,4 +452,51 @@ function pop_backx<T as Container<Tv>, Tv>(
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
   return \array_pop(inout $container);
+}
+
+/**
+ * Like `pop_back`, but removes the first item.
+ *
+ * Removes the first element from a Container and returns it.
+ * If the Container is empty, null is returned.
+ *
+ * When an immutable Hack Collection is passed, the result will
+ * be defined by your version of hhvm and not give the expected results.
+ *
+ * To enforce that the container is not empty, see `pop_backx`.
+ * To get the first element, see `pop_front`.
+ *
+ * Note that removing an item from the input array may not be "cheap." Keyed
+ * containers such as `dict` can easily have the first item removed, but indexed
+ * containers such as `vec` need to be wholly rewritten so the new [0] is the
+ * old [1].
+ *
+ * Time complexity: O(1 or N): If the operation can happen in-place, O(1);
+ *   if it must copy the Container, O(N).
+ * Space complexity: O(1 or N): If the operation can happen in-place, O(1);
+ *   if it must copy the Container, O(N).
+ */
+function pop_front<T as Container<Tv>, Tv>(inout T $container): ?Tv {
+  if (C\is_empty($container)) {
+    return null;
+  }
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
+  return \array_shift(inout $container);
+}
+
+/**
+ * Like `pop_front` but enforces non-empty container as input.
+ */
+function pop_frontx<T as Container<Tv>, Tv>(inout T $container): Tv {
+  invariant(
+    !is_empty($container),
+    '%s: Expected at least one element',
+    __FUNCTION__,
+  );
+  /* HH_FIXME[4110] null is valid if Tv is nullable, otherwise it means that
+     there was no item in the array, which already threw */
+  /* HH_FIXME[2049] __PHPStdLib */
+  /* HH_FIXME[4107] __PHPStdLib */
+  return \array_shift(inout $container);
 }
