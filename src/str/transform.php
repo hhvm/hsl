@@ -26,6 +26,7 @@ function capitalize(
 )[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4390] \ucfirst is missing [] */
   return \ucfirst($string);
 }
 
@@ -44,6 +45,7 @@ function capitalize_words(
 )[]: string {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
+  /* HH_FIXME[4390] \ucwords is missing [] */
   return \ucwords($string, $delimiters);
 }
 
