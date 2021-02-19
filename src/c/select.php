@@ -477,7 +477,7 @@ function pop_backx<T as Container<Tv>, Tv>(
  *   if it must copy the Container, O(N).
  */
 function pop_front<T as Container<Tv>, Tv>(inout T $container): ?Tv {
-  if (C\is_empty($container)) {
+  if (is_empty($container)) {
     return null;
   }
   /* HH_FIXME[2049] __PHPStdLib */
