@@ -120,7 +120,7 @@ function replace(
   if ($error is nonnull) {
     throw new namespace\Exception($pattern, $error);
   }
-  return $haystack1 . $result;
+  return $haystack1 . ($result as nonnull);
 }
 
 /**
