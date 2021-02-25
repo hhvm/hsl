@@ -463,8 +463,8 @@ function pop_backx<T as Container<Tv>, Tv>(
  * When an immutable Hack Collection is passed, the result will
  * be defined by your version of hhvm and not give the expected results.
  *
- * To enforce that the container is not empty, see `pop_backx`.
- * To get the first element, see `pop_front`.
+ * To enforce that the container is not empty, see `pop_frontx`.
+ * To get the last element, see `pop_back`.
  *
  * Note that removing an item from the input array may not be "cheap." Keyed
  * containers such as `dict` can easily have the first item removed, but indexed
