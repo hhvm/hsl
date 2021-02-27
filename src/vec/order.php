@@ -23,7 +23,6 @@ use namespace HH\Lib\{C, Dict, Math, Str};
  * Time complexity: O(n), where `n` is the size of the resulting vec
  * Space complexity: O(n), where `n` is the size of the resulting vec
  */
-<<__Pure>>
 function range<Tv as num>(
   Tv $start,
   Tv $end,
@@ -46,9 +45,7 @@ function range<Tv as num>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function reverse<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 )[]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);
@@ -91,11 +88,8 @@ function shuffle<Tv>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function sort<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(Tv, Tv)[_]: num) $comparator = null,
 )[ctx $comparator]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);
@@ -126,13 +120,9 @@ function sort<Tv>(
  * complexity of the scalar function
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function sort_by<Tv, Ts>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Ts) $scalar_func,
-  <<__AtMostRxAsFunc>>
   ?(function(Ts, Ts)[_]: num) $comparator = null,
 )[ctx $scalar_func, ctx $comparator]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);

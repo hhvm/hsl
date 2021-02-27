@@ -18,9 +18,7 @@ use namespace HH\Lib\Vec;
  *
  * Previously known as `implode` in PHP.
  */
-<<__Pure, __AtMostRxAsArgs>>
 function join(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<arraykey> $pieces,
   string $glue,
 )[]: string {

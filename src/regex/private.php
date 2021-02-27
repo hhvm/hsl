@@ -24,7 +24,6 @@ use namespace HH\Lib\{Regex, Str};
  *       the groups' occurrence within the pattern, and
  *   - the results of named capture groups, at string keys matching their respective names,
  */
-<<__Pure>>
 function regex_match<T as Regex\Match>(
   string $haystack,
   Regex\Pattern<T> $pattern,

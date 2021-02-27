@@ -14,9 +14,7 @@ namespace HH\Lib\Dict;
  * Casts the given traversable to a dict, resetting the legacy array mark
  * if applicable.
  */
-<<__Pure, __AtMostRxAsArgs>>
 function cast_clear_legacy_array_mark<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $x,
 )[]: dict<Tk, Tv> {
   return \HH\is_dict_or_darray($x)

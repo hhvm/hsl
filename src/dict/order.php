@@ -19,9 +19,7 @@ use namespace HH\Lib\Vec;
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function reverse<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 )[]: dict<Tk, Tv> {
   $dict = cast_clear_legacy_array_mark($traversable);
@@ -62,11 +60,9 @@ function shuffle<Tk as arraykey, Tv>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function sort<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tv, Tv)[_]: num) $value_comparator = null,
+  ?(function(Tv, Tv)[_]: num) $value_comparator = null,
 )[ctx $value_comparator]: dict<Tk, Tv> {
   $result = cast_clear_legacy_array_mark($traversable);
   if ($value_comparator) {
@@ -97,12 +93,10 @@ function sort<Tk as arraykey, Tv>(
  * complexity of the scalar function
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function sort_by<Tk as arraykey, Tv, Ts>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>> (function(Tv)[_]: Ts) $scalar_func,
-  <<__AtMostRxAsFunc>> ?(function(Ts, Ts)[_]: num) $scalar_comparator = null,
+  (function(Tv)[_]: Ts) $scalar_func,
+  ?(function(Ts, Ts)[_]: num) $scalar_comparator = null,
 )[ctx $scalar_func, ctx $scalar_comparator]: dict<Tk, Tv> {
   $tuple_comparator = $scalar_comparator
     ? ((Ts, Tv) $a, (Ts, Tv) $b) ==> $scalar_comparator($a[0], $b[0])
@@ -126,11 +120,9 @@ function sort_by<Tk as arraykey, Tv, Ts>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function sort_by_key<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tk, Tk)[_]: num) $key_comparator = null,
+  ?(function(Tk, Tk)[_]: num) $key_comparator = null,
 )[ctx $key_comparator]: dict<Tk, Tv> {
   $result = cast_clear_legacy_array_mark($traversable);
   if ($key_comparator) {

@@ -16,7 +16,6 @@ namespace HH\Lib\Math;
  * - To find the smallest number, see `Math\minva()`.
  * - For Traversables, see `Math\max()`.
  */
-<<__Pure>>
 function maxva<T as num>(
   T $first,
   T $second,
@@ -37,7 +36,6 @@ function maxva<T as num>(
  * - To find the largest number, see `Math\maxva()`.
  * - For Traversables, see `Math\min()`.
  */
-<<__Pure>>
 function minva<T as num>(
   T $first,
   T $second,
@@ -75,7 +73,6 @@ function is_nan(num $num): bool {
  *
  * When comparing large numbers consider passing in a large epsilon
  */
-<<__Pure>>
 function almost_equals(num $num_one, num $num_two, num $epsilon = .00000001)[]: bool{
   return namespace\abs($num_one - $num_two) < $epsilon;
 }

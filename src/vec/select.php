@@ -24,11 +24,8 @@ use namespace HH\Lib\{C, Dict, Keyset, _Private};
  * size of `$second` plus all the `...$rest` -- note that this is bigger than
  * O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $first,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv2> $second,
   Container<Tv2> ...$rest
 )[]: vec<Tv1> {
@@ -61,13 +58,9 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * Space complexity: O(n + m), where n is the size of `$first` and m is the size
  * of `$second` -- note that this is bigger than O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function diff_by<Tv, Ts as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Ts) $scalar_func,
 )[ctx $scalar_func]: vec<Tv> {
   /* HH_FIXME[4276] optimized for Containers but others still work overall */
@@ -94,9 +87,7 @@ function diff_by<Tv, Ts as arraykey>(
  * Time complexity: O(n), where n is the size of `$traversable`
  * Space complexity: O(n), where n is the size of `$traversable`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function drop<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 )[]: vec<Tv> {
@@ -124,11 +115,8 @@ function drop<Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(Tv)[_]: bool) $value_predicate = null,
 )[ctx $value_predicate]: vec<Tv> {
   $value_predicate ??= _Private\boolval<>;
@@ -148,9 +136,7 @@ function filter<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_nulls<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
 )[]: vec<Tv> {
   $result = vec[];
@@ -171,11 +157,8 @@ function filter_nulls<Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$predicate`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_with_key<Tk, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk, Tv)[_]: bool) $predicate,
 )[ctx $predicate]: vec<Tv> {
   $result = vec[];
@@ -195,11 +178,8 @@ function filter_with_key<Tk, Tv>(
  * size of `$second` plus all the `...$rest`
  * Space complexity: O(n), where n is size of `$first`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function intersect<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
   Container<Tv> ...$rest
 )[]: vec<Tv> {
@@ -219,9 +199,7 @@ function intersect<Tv as arraykey>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function keys<Tk, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 )[]: vec<Tk> {
   $result = vec[];
@@ -267,7 +245,6 @@ function sample<Tv>(
  * Time complexity: O(n), where n is the size of the slice
  * Space complexity: O(n), where n is the size of the slice
  */
-<<__Pure>>
 function slice<Tv>(
   Container<Tv> $container,
   int $offset,
@@ -289,9 +266,7 @@ function slice<Tv>(
  * Time complexity: O(n), where n is `$n`
  * Space complexity: O(n), where n is `$n`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function take<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 )[]: vec<Tv> {
@@ -321,9 +296,7 @@ function take<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function unique<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
 )[]: vec<Tv> {
   return vec(keyset($traversable));
@@ -340,11 +313,8 @@ function unique<Tv as arraykey>(
  * Time complexity: O(n * s), where s is the complexity of `$scalar_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function unique_by<Tv, Ts as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Ts) $scalar_func,
 )[ctx $scalar_func]: vec<Tv> {
   return vec(Dict\from_values($traversable, $scalar_func));

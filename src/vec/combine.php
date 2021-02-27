@@ -22,9 +22,8 @@ use namespace HH\Lib\{C, Math};
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function concat<Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>> Traversable<Tv> $first,
+  Traversable<Tv> $first,
   Container<Tv> ...$rest
 )[]: vec<Tv> {
   $result = cast_clear_legacy_array_mark($first);
@@ -50,11 +49,9 @@ function concat<Tv>(
  * Space complexity: O(min(m, n)), where m is the size of `$first` and n is the
  * size of `$second`
  */
-<<__Pure, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__ProvenanceSkipFrame>>
 function zip<Tv, Tu>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tu> $second,
 )[]: vec<(Tv, Tu)> {
   $one = cast_clear_legacy_array_mark($first);

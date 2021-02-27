@@ -17,11 +17,8 @@ namespace HH\Lib\Dict;
  * Time complexity: O(n * p), where p is the complexity of `$predicate`.
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function partition<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: bool) $predicate,
 )[ctx $predicate]: (dict<Tk, Tv>, dict<Tk, Tv>) {
   $success = dict[];
@@ -43,11 +40,8 @@ function partition<Tk as arraykey, Tv>(
  * Time complexity: O(n * p), where p is the complexity of `$predicate`.
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function partition_with_key<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk, Tv)[_]: bool) $predicate,
 )[ctx $predicate]: (dict<Tk, Tv>, dict<Tk, Tv>) {
   $success = dict[];

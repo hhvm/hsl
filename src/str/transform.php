@@ -56,7 +56,6 @@ function capitalize_words(
  * The optional `$decimal_point` and `$thousands_separator` arguments define the
  * strings used for decimals and commas, respectively.
  */
-<<__Pure>>
 function format_number(
   num $number,
   int $decimals = 0,
@@ -76,7 +75,6 @@ function format_number(
 /**
  * Returns the string with all alphabetic characters converted to lowercase.
  */
-<<__Pure>>
 function lowercase(
   string $string,
 )[]: string {
@@ -96,7 +94,6 @@ function lowercase(
  *
  * To pad the string on the right, see `Str\pad_right()`.
  */
-<<__Pure>>
 function pad_left(
   string $string,
   int $total_length,
@@ -119,7 +116,6 @@ function pad_left(
  *
  * To pad the string on the left, see `Str\pad_left()`.
  */
-<<__Pure>>
 function pad_right(
   string $string,
   int $total_length,
@@ -137,7 +133,6 @@ function pad_right(
  *
  * If the multiplier is 0, the empty string will be returned.
  */
-<<__Pure>>
 function repeat(
   string $string,
   int $multiplier,
@@ -156,7 +151,6 @@ function repeat(
  * - For multiple case-sensitive searches/replacements, see `Str\replace_every()`.
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  */
-<<__Pure>>
 function replace(
   string $haystack,
   string $needle,
@@ -205,7 +199,6 @@ function replace_ci(
  * - For multiple case-insensitive searches/replacements, see `Str\replace_every_ci()`.
  * - For not having new values searched again, see `Str\replace_every_nonrecursive()`.
  */
-<<__Pure>>
 function replace_every(
   string $haystack,
   KeyedContainer<string, string> $replacements,
@@ -371,7 +364,6 @@ function reverse(string $string): string {
  *
  * Previously known in PHP as `substr_replace`.
  */
-<<__Pure>>
 function splice(
   string $string,
   string $replacement,
@@ -392,7 +384,6 @@ function splice(
 /**
  * Returns the given string as an integer, or null if the string isn't numeric.
  */
-<<__Pure>>
 function to_int(
   string $string,
 )[]: ?int {
@@ -405,7 +396,6 @@ function to_int(
 /**
  * Returns the string with all alphabetic characters converted to uppercase.
  */
-<<__Pure>>
 function uppercase(
   string $string,
 )[]: string {

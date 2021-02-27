@@ -33,11 +33,9 @@ use namespace HH\Lib\Vec;
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function is_sorted<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>> ?(function(Tv, Tv)[_]: num) $comparator = null,
+  ?(function(Tv, Tv)[_]: num) $comparator = null,
 )[ctx $comparator]: bool {
   $vec = Vec\cast_clear_legacy_array_mark($traversable);
   if (is_empty($vec)) {
@@ -79,12 +77,10 @@ function is_sorted<Tv>(
  * comparator function (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function is_sorted_by<Tv, Ts>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>> (function(Tv)[_]: Ts) $scalar_func,
-  <<__AtMostRxAsFunc>> ?(function(Ts, Ts)[_]: num) $comparator = null,
+  (function(Tv)[_]: Ts) $scalar_func,
+  ?(function(Ts, Ts)[_]: num) $comparator = null,
 )[ctx $scalar_func, ctx $comparator]: bool {
   $vec = Vec\cast_clear_legacy_array_mark($traversable);
   if (is_empty($vec)) {

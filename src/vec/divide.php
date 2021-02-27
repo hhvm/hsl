@@ -17,11 +17,8 @@ namespace HH\Lib\Vec;
  * Time complexity: O(n * p), where p is the complexity of `$predicate`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function partition<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: bool) $predicate,
 )[ctx $predicate]: (vec<Tv>, vec<Tv>) {
   $success = vec[];

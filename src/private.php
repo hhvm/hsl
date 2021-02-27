@@ -14,7 +14,6 @@ namespace HH\Lib\_Private;
  * Verifies that the `$offset` is within plus/minus `$length`. Returns the
  * offset as a positive integer.
  */
-<<__Pure>>
 function validate_offset(int $offset, int $length)[]: int {
   $original_offset = $offset;
   if ($offset < 0) {
@@ -33,7 +32,6 @@ function validate_offset(int $offset, int $length)[]: int {
  * Verifies that the `$offset` is not less than minus `$length`. Returns the
  * offset as a positive integer.
  */
-<<__Pure>>
 function validate_offset_lower_bound(int $offset, int $length)[]: int {
   $original_offset = $offset;
   if ($offset < 0) {
@@ -48,7 +46,6 @@ function validate_offset_lower_bound(int $offset, int $length)[]: int {
   return $offset;
 }
 
-<<__Pure>>
 function boolval(mixed $val)[]: bool {
   return (bool)$val;
 }

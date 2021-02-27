@@ -24,11 +24,8 @@ namespace HH\Lib\C;
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function any<T>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(T)[_]: bool) $predicate = null,
 )[ctx $predicate]: bool {
   $predicate ??= \HH\Lib\_Private\boolval<>;
@@ -47,9 +44,7 @@ function any<T>(
  * Time complexity: O(n) (O(1) for keysets)
  * Space complexity: O(1)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function contains<T1, T2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T1> $traversable,
   T2 $value,
 )[]: bool {
@@ -70,9 +65,8 @@ function contains<T1, T2>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Pure>>
 function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
-  <<__MaybeMutable>> KeyedContainer<Tk1, Tv> $container,
+  KeyedContainer<Tk1, Tv> $container,
   Tk2 $key,
 )[]: bool {
   /* HH_FIXME[2049] __PHPStdLib */
@@ -86,9 +80,8 @@ function contains_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Pure>>
 function count(
-  <<__MaybeMutable>> Container<mixed> $container,
+  Container<mixed> $container,
 )[]: int {
   /* HH_FIXME[2049] __PHPStdLib */
   /* HH_FIXME[4107] __PHPStdLib */
@@ -105,11 +98,8 @@ function count(
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function every<T>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<T> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(T)[_]: bool) $predicate = null,
 )[ctx $predicate]: bool {
   $predicate ??= \HH\Lib\_Private\boolval<>;
@@ -127,9 +117,8 @@ function every<T>(
  * Time complexity: O(1)
  * Space complexity: O(1)
  */
-<<__Pure>>
 function is_empty<T>(
-  <<__MaybeMutable>> Container<T> $container,
+  Container<T> $container,
 )[]: bool {
   if ($container is \ConstCollection<_>) {
     return $container->isEmpty();

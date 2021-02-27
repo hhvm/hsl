@@ -19,9 +19,7 @@ namespace HH\Lib\Vec;
  *
  * The IO operations for each Awaitable will happen in parallel.
  */
-<<__Pure, __AtMostRxAsArgs>>
 async function from_async<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Awaitable<Tv>> $awaitables,
 )[]: Awaitable<vec<Tv>> {
   $vec = cast_clear_legacy_array_mark($awaitables);
@@ -51,10 +49,8 @@ async function from_async<Tv>(
  * The IO operations for each of the calls to `$value_predicate` will happen
  * in parallel.
  */
-<<__Pure, __AtMostRxAsArgs>>
 async function filter_async<Tv>(
   Container<Tv> $container,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Awaitable<bool>) $value_predicate,
 )[ctx $value_predicate]: Awaitable<vec<Tv>> {
   $tests = await map_async($container, $value_predicate);
@@ -82,11 +78,8 @@ async function filter_async<Tv>(
  * The IO operations for each of calls to `$async_func` will happen in
  * parallel.
  */
-<<__Pure, __AtMostRxAsArgs>>
 async function map_async<Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv1)[_]: Awaitable<Tv2>) $async_func,
 )[ctx $async_func]: Awaitable<vec<Tv2>> {
   $vec = cast_clear_legacy_array_mark($traversable);

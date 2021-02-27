@@ -22,7 +22,6 @@ use const HH\Lib\_Private\ALPHABET_ALPHANUMERIC;
  * meaning the function can return a negative result in that case. To ensure
  * an int is non-negative for hashing use `$v & PHP_INT_MAX` instead.
  */
-<<__Pure>>
 function abs<T as num>(T $number)[]: T {
   /* HH_FIXME[4110]: This returns a num, which may be a *supertype* of T */
   return $number < 0 ? -$number : $number;
@@ -111,7 +110,6 @@ function base_convert(string $value, int $from_base, int $to_base)[rx_local]: st
  * To find the largest integer value less than or equal to `$value`, see
  * `Math\floor()`.
  */
-<<__Pure>>
 function ceil(num $value)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -124,7 +122,6 @@ function ceil(num $value)[]: float {
  * - To find the sine, see `Math\sin()`.
  * - To find the tangent, see `Math\tan()`.
  */
-<<__Pure>>
 function cos(num $arg)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -137,7 +134,6 @@ function cos(num $arg)[]: float {
  *
  * To base convert an int into a string, see `Math\to_base()`.
  */
-<<__Pure>>
 function from_base(string $number, int $from_base)[]: int {
   invariant(
     $number !== '',
@@ -193,7 +189,6 @@ function from_base(string $number, int $from_base)[]: int {
  *
  * To find the logarithm, see `Math\log()`.
  */
-<<__Pure>>
 function exp(num $arg)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -208,7 +203,6 @@ function exp(num $arg)[]: float {
  * - To find the largest integer value less than or equal to a ratio, see
  *   `Math\int_div()`.
  */
-<<__Pure>>
 function floor(num $value)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -220,7 +214,6 @@ function floor(num $value)[]: float {
  *
  * To round a single value, see `Math\floor()`.
  */
-<<__Pure>>
 function int_div(int $numerator, int $denominator)[]: int {
   if ($denominator === 0) {
     throw new \DivisionByZeroException();
@@ -235,7 +228,6 @@ function int_div(int $numerator, int $denominator)[]: int {
  *
  * For the exponential function, see `Math\exp()`.
  */
-<<__Pure>>
 function log(num $arg, ?num $base = null)[]: float {
   invariant($arg > 0, 'Expected positive argument for log, got %f', $arg);
   if ($base === null) {
@@ -256,7 +248,6 @@ function log(num $arg, ?num $base = null)[]: float {
  * rounds to the nearest power of ten. For example, a precision of 1 rounds to
  * the nearest tenth whereas a precision of -1 rounds to the nearest ten.
  */
-<<__Pure>>
 function round(num $val, int $precision = 0)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -269,7 +260,6 @@ function round(num $val, int $precision = 0)[]: float {
  * - To find the cosine, see `Math\cos()`.
  * - To find the tangent, see `Math\tan()`.
  */
-<<__Pure>>
 function sin(num $arg)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */
@@ -279,7 +269,6 @@ function sin(num $arg)[]: float {
 /**
  * Returns the square root of `$arg`.
  */
-<<__Pure>>
 function sqrt(num $arg)[]: float {
   invariant($arg >= 0, 'Expected non-negative argument to sqrt, got %f', $arg);
   /* HH_FIXME[2049] calling stdlib directly */
@@ -293,7 +282,6 @@ function sqrt(num $arg)[]: float {
  * - To find the cosine, see `Math\cos()`.
  * - To find the sine, see `Math\sin()`.
  */
-<<__Pure>>
 function tan(num $arg)[]: float {
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */

@@ -21,11 +21,8 @@ namespace HH\Lib\C;
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function reduce<Tv, Ta>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Ta, Tv)[_]: Ta) $accumulator,
   Ta $initial,
 )[ctx $accumulator]: Ta {
@@ -44,11 +41,8 @@ function reduce<Tv, Ta>(
  * Time complexity: O(n)
  * Space complexity: O(1)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function reduce_with_key<Tk, Tv, Ta>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Ta, Tk, Tv)[_]: Ta) $accumulator,
   Ta $initial,
 )[ctx $accumulator]: Ta {

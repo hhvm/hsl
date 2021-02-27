@@ -17,11 +17,8 @@ namespace HH\Lib\Keyset;
  * Time complexity: O(n * p), where p is the complexity of `$predicate`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function partition<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: bool) $predicate,
 )[ctx $predicate]: (keyset<Tv>, keyset<Tv>) {
   $success = keyset[];

@@ -22,6 +22,7 @@ implements \HH\Rx\Iterator<Tv>, \HH\Rx\KeyedIterator<Tk, Tv> {
 
   <<__Pure>>
   public function __construct(private dict<Tk, Tv> $data)[] {
+    /* HH_FIXME[4387] Will get autocleaned up after coeffecs migration */
     $this->keys = Vec\keys($data);
   }
 
@@ -45,6 +46,7 @@ implements \HH\Rx\Iterator<Tv>, \HH\Rx\KeyedIterator<Tk, Tv> {
 
   <<__Pure, __MaybeMutable>>
   public function valid()[]: bool {
+    /* HH_FIXME[4387] Will get autocleaned up after coeffecs migration */
     return C\contains_key($this->keys, $this->keyIdx);
   }
 

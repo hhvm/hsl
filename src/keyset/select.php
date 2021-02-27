@@ -22,11 +22,8 @@ use namespace HH\Lib\C;
  * size of `$second` plus all the `...$rest` -- note that this is bigger than
  * O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function diff<Tv1 as arraykey, Tv2 as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $first,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv2> $second,
   Container<Tv2> ...$rest
 )[]: keyset<Tv1> {
@@ -55,9 +52,7 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
  * Time complexity: O(n), where n is the size of `$traversable`
  * Space complexity: O(n), where n is the size of `$traversable`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function drop<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 )[]: keyset<Tv> {
@@ -83,11 +78,8 @@ function drop<Tv as arraykey>(
  * Time complexity: O(n * p), where p is the complexity of `$value_predicate`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(Tv)[_]: bool) $value_predicate = null,
 )[ctx $value_predicate]: keyset<Tv> {
   $value_predicate ??= \HH\Lib\_Private\boolval<>;
@@ -107,9 +99,7 @@ function filter<Tv as arraykey>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_nulls<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<?Tv> $traversable,
 )[]: keyset<Tv> {
   $result = keyset[];
@@ -130,11 +120,8 @@ function filter_nulls<Tv as arraykey>(
  * Time complexity: O(n * p), where p is the complexity of `$predicate`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_with_key<Tk, Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk, Tv)[_]: bool) $predicate,
 )[ctx $predicate]: keyset<Tv> {
   $result = keyset[];
@@ -150,9 +137,7 @@ function filter_with_key<Tk, Tv as arraykey>(
  * Returns a new keyset containing the keys of the given KeyedTraversable,
  * maintaining the iteration order.
  */
-<<__Pure, __AtMostRxAsArgs>>
 function keys<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 )[]: keyset<Tk> {
   $result = keyset[];
@@ -170,11 +155,8 @@ function keys<Tk as arraykey, Tv>(
  * size of `$second` plus all the `...$rest`
  * Space complexity: O(n), where n is size of `$first`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function intersect<Tv as arraykey>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $first,
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $second,
   Container<Tv> ...$rest
 )[]: keyset<Tv> {
@@ -211,9 +193,7 @@ function intersect<Tv as arraykey>(
  * Time complexity: O(n), where n is `$n`
  * Space complexity: O(n), where n is `$n`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function take<Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $n,
 )[]: keyset<Tv> {

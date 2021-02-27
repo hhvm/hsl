@@ -21,11 +21,8 @@ use namespace HH\Lib\{C, Vec};
  * Space complexity: O(n) where n is the size of `$keys` (which must be the same
  * as the size of `$values`)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function associate<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
 )[]: dict<Tk, Tv> {
   $key_vec = Vec\cast_clear_legacy_array_mark($keys);
@@ -50,9 +47,7 @@ function associate<Tk as arraykey, Tv>(
  * Space complexity: O(n + m), where n is the size of `$first` and m is the
  * combined size of all the `...$rest`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function merge<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $first,
   KeyedContainer<Tk, Tv> ...$rest
 )[]: dict<Tk, Tv> {

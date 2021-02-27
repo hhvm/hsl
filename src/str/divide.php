@@ -17,7 +17,6 @@ use namespace HH\Lib\Str;
  *
  * To split the string on a delimiter, see `Str\split()`.
  */
-<<__Pure>>
 function chunk(
   string $string,
   int $chunk_size = 1,
@@ -39,7 +38,6 @@ function chunk(
  *
  * Previously known as `explode` in PHP.
  */
-<<__Pure>>
 function split(
   string $string,
   string $delimiter,

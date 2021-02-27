@@ -22,11 +22,8 @@ use namespace HH\Lib\C;
  * size of `$second` plus all the `...$rest` -- note that this is bigger than
  * O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv> $first,
-  <<__OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk2, mixed> $second,
   KeyedContainer<Tk2, mixed> ...$rest
 )[]: dict<Tk1, Tv> {
@@ -54,9 +51,7 @@ function diff_by_key<Tk1 as arraykey, Tk2 as arraykey, Tv>(
  * Time complexity: O(n), where n is the size of `$traversable`
  * Space complexity: O(n), where n is the size of `$traversable`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function drop<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 )[]: dict<Tk, Tv> {
@@ -84,11 +79,8 @@ function drop<Tk as arraykey, Tv>(
  * (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(Tv)[_]: bool) $value_predicate = null,
 )[ctx $value_predicate]: dict<Tk, Tv> {
   $value_predicate ??= \HH\Lib\_Private\boolval<>;
@@ -111,11 +103,8 @@ function filter<Tk as arraykey, Tv>(
  * (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_with_key<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk, Tv)[_]: bool) $predicate,
 )[ctx $predicate]: dict<Tk, Tv> {
   $dict = dict[];
@@ -135,11 +124,8 @@ function filter_with_key<Tk as arraykey, Tv>(
  * (which is O(1) if not provided explicitly)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_keys<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   ?(function(Tk)[_]: bool) $key_predicate = null,
 )[ctx $key_predicate]: dict<Tk, Tv> {
   $key_predicate ??= \HH\Lib\_Private\boolval<>;
@@ -159,9 +145,7 @@ function filter_keys<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function filter_nulls<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, ?Tv> $traversable,
 )[]: dict<Tk, Tv> {
   $result = dict[];
@@ -181,10 +165,8 @@ function filter_nulls<Tk as arraykey, Tv>(
  * Time complexity: O(k), where k is the size of `$keys`.
  * Space complexity: O(k), where k is the size of `$keys`.
  */
-<<__Pure, __AtMostRxAsArgs>>
 function select_keys<Tk as arraykey, Tv>(
   KeyedContainer<Tk, Tv> $container,
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
 )[]: dict<Tk, Tv> {
   $result = dict[];
@@ -207,9 +189,7 @@ function select_keys<Tk as arraykey, Tv>(
  * Time complexity: O(n), where n is `$n`
  * Space complexity: O(n), where n is `$n`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function take<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $n,
 )[]: dict<Tk, Tv> {
@@ -238,9 +218,7 @@ function take<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function unique<Tk as arraykey, Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 )[]: dict<Tk, Tv> {
   return flip(flip($traversable));
@@ -257,10 +235,8 @@ function unique<Tk as arraykey, Tv as arraykey>(
  * Time complexity: O(n * s), where s is the complexity of `$scalar_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function unique_by<Tk as arraykey, Tv, Ts as arraykey>(
   KeyedContainer<Tk, Tv> $container,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Ts) $scalar_func,
 )[ctx $scalar_func]: dict<Tk, Tv> {
   // We first convert the container to dict[scalar_key => original_key] to

@@ -22,9 +22,7 @@ use namespace HH\Lib\Math;
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function chunk<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
   int $size,
 )[]: vec<dict<Tk, Tv>> {
@@ -74,9 +72,7 @@ function count_values<Tv as arraykey>(
  * Space complexity: O(n), where n is the combined size of all the
  * `$traversables`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function flatten<Tk as arraykey, Tv>(
-  <<__OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<KeyedContainer<Tk, Tv>> $traversables,
 )[]: dict<Tk, Tv> {
   $result = dict[];
@@ -94,9 +90,7 @@ function flatten<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function fill_keys<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
   Tv $value,
 )[]: dict<Tk, Tv> {
@@ -117,9 +111,7 @@ function fill_keys<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function flip<Tk, Tv as arraykey>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv> $traversable,
 )[]: dict<Tv, Tk> {
   $result = dict[];
@@ -140,11 +132,8 @@ function flip<Tk, Tv as arraykey>(
  * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function from_keys<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tk> $keys,
-  <<__AtMostRxAsFunc>>
   (function(Tk)[_]: Tv) $value_func,
 )[ctx $value_func]: dict<Tk, Tv> {
   $result = dict[];
@@ -169,9 +158,7 @@ function from_keys<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function from_entries<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<(Tk, Tv)> $entries,
 )[]: dict<Tk, Tv> {
   $result = dict[];
@@ -195,11 +182,8 @@ function from_entries<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function from_values<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: Tk) $key_func,
 )[ctx $key_func]: dict<Tk, Tv> {
   $result = dict[];
@@ -221,11 +205,8 @@ function from_values<Tk as arraykey, Tv>(
   * Time complexity: O(n * f), where f is the complexity of `$key_func`
   * Space complexity: O(n)
   */
-<<__Pure, __AtMostRxAsArgs>>
 function group_by<Tk as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $values,
-  <<__AtMostRxAsFunc>>
   (function(Tv)[_]: ?Tk) $key_func,
 )[ctx $key_func]: dict<Tk, vec<Tv>> {
   $result = dict[];
@@ -249,11 +230,9 @@ function group_by<Tk as arraykey, Tv>(
  * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__ProvenanceSkipFrame>>
 function map<Tk as arraykey, Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv1)[_]: Tv2) $value_func,
 )[ctx $value_func]: dict<Tk, Tv2> {
   $result = dict[];
@@ -271,11 +250,8 @@ function map<Tk as arraykey, Tv1, Tv2>(
  * Time complexity: O(n * f), where f is the complexity of `$key_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function map_keys<Tk1, Tk2 as arraykey, Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk1)[_]: Tk2) $key_func,
 )[ctx $key_func]: dict<Tk2, Tv> {
   $result = dict[];
@@ -292,11 +268,8 @@ function map_keys<Tk1, Tk2 as arraykey, Tv>(
  * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function map_with_key<Tk as arraykey, Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk, Tv1)[_]: Tv2) $value_func,
 )[ctx $value_func]: dict<Tk, Tv2> {
   $result = dict[];
@@ -317,13 +290,9 @@ function map_with_key<Tk as arraykey, Tv1, Tv2>(
  * and f2 is the complexity of `$key_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function pull<Tk as arraykey, Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv1)[_]: Tv2) $value_func,
-  <<__AtMostRxAsFunc>>
   (function(Tv1)[_]: Tk) $key_func,
 )[ctx $value_func, ctx $key_func]: dict<Tk, Tv2> {
   $result = dict[];
@@ -344,13 +313,9 @@ function pull<Tk as arraykey, Tv1, Tv2>(
  * and f2 is the complexity of `$key_func`
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function pull_with_key<Tk1, Tk2 as arraykey, Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk1, Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk1, Tv1)[_]: Tv2) $value_func,
-  <<__AtMostRxAsFunc>>
   (function(Tk1, Tv1)[_]: Tk2) $key_func,
 )[ctx $value_func, ctx $key_func]: dict<Tk2, Tv2> {
   $result = dict[];

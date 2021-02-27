@@ -20,9 +20,7 @@ use namespace HH\Lib\Math;
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function chunk<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv> $traversable,
   int $size,
 )[]: vec<vec<Tv>> {
@@ -50,7 +48,6 @@ function chunk<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure>>
 function fill<Tv>(
   int $size,
   Tv $value,
@@ -74,9 +71,7 @@ function fill<Tv>(
  * Space complexity: O(n), where n is the combined size of all the
  * `$traversables`
  */
-<<__Pure, __AtMostRxAsArgs>>
 function flatten<Tv>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Container<Tv>> $traversables,
 )[]: vec<Tv> {
   $result = vec[];
@@ -97,11 +92,9 @@ function flatten<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs, __ProvenanceSkipFrame>>
+<<__ProvenanceSkipFrame>>
 function map<Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\Traversable::class)>>
   Traversable<Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tv1)[_]: Tv2) $value_func,
 )[ctx $value_func]: vec<Tv2> {
   $result = vec[];
@@ -118,11 +111,8 @@ function map<Tv1, Tv2>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__Pure, __AtMostRxAsArgs>>
 function map_with_key<Tk, Tv1, Tv2>(
-  <<__MaybeMutable, __OnlyRxIfImpl(\HH\Rx\KeyedTraversable::class)>>
   KeyedTraversable<Tk, Tv1> $traversable,
-  <<__AtMostRxAsFunc>>
   (function(Tk, Tv1)[_]: Tv2) $value_func,
 )[ctx $value_func]: vec<Tv2> {
   $result = vec[];
