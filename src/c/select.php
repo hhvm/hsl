@@ -196,7 +196,6 @@ function last<T>(
     return _Private\Native\last($traversable);
   }
   if ($traversable is Iterable<_>) {
-    /* HH_FIXME[4200] intersection of Iterable and Rx\Traversable is reactive */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
     /* HH_FIXME[4390] need ctx constants */
     return $traversable->lastValue();
@@ -259,7 +258,6 @@ function last_key<Tk, Tv>(
     return _Private\Native\last_key($traversable);
   }
   if ($traversable is KeyedIterable<_, _>) {
-    /* HH_FIXME[4200] intersection of Iterable and Rx\Traversable is reactive */
     /* HH_FIXME[4387] reported here as of 2020.09.21, hack v4.51.0 */
     /* HH_FIXME[4390] need ctx constants */
     return $traversable->lastKey();
