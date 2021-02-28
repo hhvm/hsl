@@ -18,8 +18,7 @@ use namespace HH\Lib\{_Private, Math, Str};
  *
  * For pseudorandom floats, see `PseudoRandom\float`.
  */
-<<__NonRx('Randomness')>>
-function float(): float {
+function float()[defaults]: float {
   return (float)(namespace\int(0, Math\INT53_MAX - 1) / Math\INT53_MAX);
 }
 
@@ -29,11 +28,10 @@ function float(): float {
  *
  * For pseudorandom integers, see `PseudoRandom\int`.
  */
-<<__NonRx('Randomness')>>
 function int(
   int $min = \PHP_INT_MIN,
   int $max = \PHP_INT_MAX,
-): int {
+)[defaults]: int {
   invariant(
     $min <= $max,
     'Expected $min (%d) to be less than or equal to $max (%d).',
@@ -49,11 +47,10 @@ function int(
  *
  * For pseudorandom strings, see `PseudoRandom\string`.
  */
-<<__NonRx('Randomness')>>
 function string(
   int $length,
   ?string $alphabet = null,
-): string {
+)[defaults]: string {
   return _Private\random_string(
     /* HH_FIXME[2049] calling stdlib directly */
     /* HH_FIXME[4107] calling stdlib directly */

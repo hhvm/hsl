@@ -66,10 +66,9 @@ function reverse<Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__NonRx('Randomness')>>
 function shuffle<Tv>(
   Traversable<Tv> $traversable,
-): vec<Tv> {
+)[defaults]: vec<Tv> {
   $vec = cast_clear_legacy_array_mark($traversable);
   /* HH_FIXME[2049] calling stdlib directly */
   /* HH_FIXME[4107] calling stdlib directly */

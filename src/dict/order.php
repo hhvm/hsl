@@ -38,10 +38,9 @@ function reverse<Tk as arraykey, Tv>(
  * Time complexity: O(n)
  * Space complexity: O(n)
  */
-<<__NonRx('Randomness')>>
 function shuffle<Tk as arraykey, Tv>(
   KeyedTraversable<Tk, Tv> $container,
-): dict<Tk, Tv> {
+)[defaults]: dict<Tk, Tv> {
   $dict = cast_clear_legacy_array_mark($container);
   return Vec\keys($container)
     |> Vec\shuffle($$)
