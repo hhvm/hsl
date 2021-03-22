@@ -17,18 +17,8 @@ final class KeysetSelectTest extends HackTest {
 
   public static function provideTestDiff(): varray<mixed> {
     return varray[
-      tuple(
-        varray[],
-        varray[],
-        varray[],
-        keyset[],
-      ),
-      tuple(
-        vec[1, 3, 5, 7],
-        dict[],
-        varray[],
-        keyset[1, 3, 5, 7],
-      ),
+      tuple(varray[], varray[], varray[], keyset[]),
+      tuple(vec[1, 3, 5, 7], dict[], varray[], keyset[1, 3, 5, 7]),
       tuple(
         new Vector(Vec\range(0, 20)),
         Set {1, 3, 5},
@@ -54,26 +44,10 @@ final class KeysetSelectTest extends HackTest {
 
   public static function provideDrop(): varray<mixed> {
     return varray[
-      tuple(
-        vec[],
-        5,
-        keyset[],
-      ),
-      tuple(
-        Vec\range(0, 5),
-        0,
-        keyset[0, 1, 2, 3, 4, 5],
-      ),
-      tuple(
-        new Vector(Vec\range(0, 5)),
-        10,
-        keyset[],
-      ),
-      tuple(
-        new Set(Vec\range(0, 5)),
-        2,
-        keyset[2, 3, 4, 5],
-      ),
+      tuple(vec[], 5, keyset[]),
+      tuple(Vec\range(0, 5), 0, keyset[0, 1, 2, 3, 4, 5]),
+      tuple(new Vector(Vec\range(0, 5)), 10, keyset[]),
+      tuple(new Set(Vec\range(0, 5)), 2, keyset[2, 3, 4, 5]),
       tuple(
         HackLibTestTraversables::getIterator(varray[0, 1, 2, 3, 4, 5, 5, 5]),
         5,
@@ -93,26 +67,10 @@ final class KeysetSelectTest extends HackTest {
 
   public static function provideTestFilter(): varray<mixed> {
     return varray[
-      tuple(
-        varray[],
-        $x ==> true,
-        keyset[],
-      ),
-      tuple(
-        dict[0 => 1],
-        $x ==> true,
-        keyset[1],
-      ),
-      tuple(
-        dict[0 => 1],
-        $x ==> false,
-        keyset[],
-      ),
-      tuple(
-        Vec\range(1, 10),
-        $x ==> $x % 2 === 0,
-        keyset[2, 4, 6, 8, 10],
-      ),
+      tuple(varray[], $x ==> true, keyset[]),
+      tuple(dict[0 => 1], $x ==> true, keyset[1]),
+      tuple(dict[0 => 1], $x ==> false, keyset[]),
+      tuple(Vec\range(1, 10), $x ==> $x % 2 === 0, keyset[2, 4, 6, 8, 10]),
       tuple(
         Map {'donald' => 'duck', 'daffy' => 'duck', 'mickey' => 'mouse'},
         $x ==> $x === 'duck',
@@ -137,17 +95,14 @@ final class KeysetSelectTest extends HackTest {
   }
 
   public function testFilterWithoutPredicate(): void {
-    expect(
-      Keyset\filter(varray[0, 3, 5, 40, '', '0', 'win!'])
-    )->toEqual(keyset[3, 5, 40, 'win!']);
+    expect(Keyset\filter(varray[0, 3, 5, 40, '', '0', 'win!']))->toEqual(
+      keyset[3, 5, 40, 'win!'],
+    );
   }
 
   public static function provideTestFilterNulls(): varray<mixed> {
     return varray[
-      tuple(
-        varray[null, null, null],
-        keyset[],
-      ),
+      tuple(varray[null, null, null], keyset[]),
       tuple(
         Map {
           'bar' => null,
@@ -199,7 +154,7 @@ final class KeysetSelectTest extends HackTest {
       'odd elements selected' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
         ($key, $value) ==> $key % 2 === 1,
-        keyset['quick','fox'],
+        keyset['quick', 'fox'],
       ),
       'elements selected starting with "f"' => tuple(
         vec['the', 'quick', 'brown', 'fox', 'jumped'],
@@ -208,7 +163,7 @@ final class KeysetSelectTest extends HackTest {
       ),
       'elements selected starting with "f" 2' => tuple(
         HackLibTestTraversables::getIterator(
-          vec['the', 'quick', 'brown', 'fox', 'jumped']
+          vec['the', 'quick', 'brown', 'fox', 'jumped'],
         ),
         ($key, $value) ==> Str\starts_with($value, 'f'),
         keyset['fox'],
@@ -228,10 +183,7 @@ final class KeysetSelectTest extends HackTest {
 
   public static function provideTestKeys(): varray<mixed> {
     return varray[
-      tuple(
-        Map {},
-        keyset[],
-      ),
+      tuple(Map {}, keyset[]),
       tuple(
         dict[
           2 => 4,
@@ -263,12 +215,7 @@ final class KeysetSelectTest extends HackTest {
 
   public static function provideTestIntersect(): varray<mixed> {
     return varray[
-      tuple(
-        Vec\range(0, 1000),
-        varray[],
-        varray[],
-        keyset[],
-      ),
+      tuple(Vec\range(0, 1000), varray[], varray[], keyset[]),
       tuple(
         Vec\range(1, 10),
         Vec\range(1, 5),
@@ -278,12 +225,7 @@ final class KeysetSelectTest extends HackTest {
         ],
         keyset[3, 4, 5],
       ),
-      tuple(
-        Set {},
-        Vec\range(1, 100),
-        varray[],
-        keyset[],
-      ),
+      tuple(Set {}, Vec\range(1, 100), varray[], keyset[]),
       tuple(
         Vec\range(1, 1000),
         Map {},
@@ -301,12 +243,7 @@ final class KeysetSelectTest extends HackTest {
         ],
         keyset[2, 40],
       ),
-      tuple(
-        varray[3, 4, 4, 5],
-        varray[3, 4],
-        varray[],
-        keyset[3, 4],
-      ),
+      tuple(varray[3, 4, 4, 5], varray[3, 4], varray[], keyset[3, 4]),
       tuple(
         vec[1, 2, 3, 4],
         vec[1, 2, 3, 4],
@@ -332,26 +269,10 @@ final class KeysetSelectTest extends HackTest {
 
   public static function provideTake(): varray<mixed> {
     return varray[
-      tuple(
-        keyset[],
-        5,
-        keyset[],
-      ),
-      tuple(
-        Vec\range(0, 5),
-        0,
-        keyset[],
-      ),
-      tuple(
-        new Vector(Vec\range(0, 5)),
-        10,
-        keyset[0, 1, 2, 3, 4, 5],
-      ),
-      tuple(
-        new Set(Vec\range(0, 5)),
-        2,
-        keyset[0, 1],
-      ),
+      tuple(keyset[], 5, keyset[]),
+      tuple(Vec\range(0, 5), 0, keyset[]),
+      tuple(new Vector(Vec\range(0, 5)), 10, keyset[0, 1, 2, 3, 4, 5]),
+      tuple(new Set(Vec\range(0, 5)), 2, keyset[0, 1]),
       tuple(
         HackLibTestTraversables::getIterator(varray[0, 0, 1, 1, 2, 2, 3, 3]),
         5,

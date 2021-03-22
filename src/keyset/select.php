@@ -33,13 +33,8 @@ function diff<Tv1 as arraykey, Tv2 as arraykey>(
   if (!$second && !$rest) {
     return keyset($first);
   }
-  $union = !$rest
-    ? keyset($second)
-    : union($second, ...$rest);
-  return filter(
-    $first,
-    $value ==> !C\contains_key($union, $value),
-  );
+  $union = !$rest ? keyset($second) : union($second, ...$rest);
+  return filter($first, $value ==> !C\contains_key($union, $value));
 }
 /**
  * Returns a new keyset containing all except the first `$n` elements of
