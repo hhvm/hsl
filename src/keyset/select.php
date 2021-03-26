@@ -160,8 +160,9 @@ function intersect<Tv as arraykey>(
   $rest[] = $second;
   foreach ($rest as $traversable) {
     $next_intersection = keyset[];
-    foreach ($traversable as $value) {
-      if (C\contains_key($intersection, $value)) {
+    $keyed_traversable = keyset($traversable);
+    foreach ($intersection as $value) {
+      if (C\contains_key($keyed_traversable, $value)) {
         $next_intersection[] = $value;
       }
     }
