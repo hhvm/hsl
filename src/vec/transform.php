@@ -108,7 +108,7 @@ function map<Tv1, Tv2>(
  * Returns a new vec where each value is the result of calling the given
  * function on the original key and value.
  *
- * Time complexity: O(n)
+ * Time complexity: O(n * f), where f is the complexity of `$value_func`
  * Space complexity: O(n)
  */
 function map_with_key<Tk, Tv1, Tv2>(
