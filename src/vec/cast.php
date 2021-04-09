@@ -17,7 +17,7 @@ namespace HH\Lib\Vec;
 function cast_clear_legacy_array_mark<T>(
   Traversable<T> $x,
 )[]: vec<T> {
-  return \HH\is_vec_or_varray($x)
+  return ($x is vec<_>)
     /* HH_FIXME[4259] Rx doesn't understand array_unmark_legacy */
     ? vec(\HH\array_unmark_legacy($x))
     : vec($x);
