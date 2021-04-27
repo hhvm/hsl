@@ -148,7 +148,7 @@ function sum(
 )[]: int {
   $result = 0;
   foreach ($traversable as $value) {
-    $result += $value;
+    $result += (int)$value;
   }
   return $result;
 }
@@ -163,7 +163,7 @@ function sum_float<T as num>(
 )[]: float {
   $result = 0.0;
   foreach ($traversable as $value) {
-    $result += $value;
+    $result += (float)$value;
   }
   return $result;
 }
