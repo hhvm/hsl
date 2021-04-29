@@ -35,6 +35,7 @@ function chunk(
  * the last element is the remainder of the string.
  *
  * To split the string into equally-sized chunks, see `Str\chunk()`.
+ * To use a pattern as delimiter, see `Regex\split()`.
  *
  * Previously known as `explode` in PHP.
  */
