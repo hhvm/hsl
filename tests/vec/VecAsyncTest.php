@@ -115,4 +115,29 @@ final class VecAsyncTest extends HackTest {
     $actual = await Vec\map_async($keys, $async_func);
     expect($actual)->toEqual($expected);
   }
+
+  public static function provideTestPartitionAsync(): varray<mixed> {
+    return varray[
+      tuple(
+        Vec\range(1, 10),
+        async $n ==> $n % 2 === 0,
+        tuple(vec[2, 4, 6, 8, 10], vec[1, 3, 5, 7, 9]),
+      ),
+      tuple(
+        dict['one' => 1, 'two' => 2, 'three' => 3, 'four' => 4, 'five' => 5],
+        async $n ==> $n % 2 === 0,
+        tuple(vec[2, 4], vec[1, 3, 5]),
+      ),
+    ];
+  }
+
+  <<DataProvider('provideTestPartitionAsync')>>
+  public async function testPartitionAsync<Tv>(
+    Container<Tv> $container,
+    (function(Tv): Awaitable<bool>) $value_predicate,
+    (vec<Tv>, vec<Tv>) $expected,
+  ): Awaitable<void> {
+    $actual = await Vec\partition_async($container, $value_predicate);
+    expect($actual)->toEqual($expected);
+  }
 }

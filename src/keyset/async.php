@@ -73,3 +73,35 @@ async function map_async<Tv, Tk as arraykey>(
 )[ctx $async_func]: Awaitable<keyset<Tk>> {
   return keyset(await Vec\map_async($traversable, $async_func));
 }
+
+/**
+ * Returns a 2-tuple containing keysets for which the given async
+ * predicate returned `true` and `false`, respectively.
+ *
+ * For non-async predicates, see `Keyset\partition()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of synchronous portions
+ * of `$value_predicate`
+ * Space complexity: O(n)
+ *
+ * The IO operations for each of the calls to `$value_predicate` will happen
+ * in parallel.
+ */
+async function partition_async<Tv as arraykey>(
+  Container<Tv> $container,
+  (function(Tv)[_]: Awaitable<bool>) $value_predicate,
+)[ctx $value_predicate]: Awaitable<(keyset<Tv>, keyset<Tv>)> {
+  $tests = await Vec\map_async($container, $value_predicate);
+  $success = keyset[];
+  $failure = keyset[];
+  $ii = 0;
+  foreach ($container as $value) {
+    if ($tests[$ii]) {
+      $success[] = $value;
+    } else {
+      $failure[] = $value;
+    }
+    $ii++;
+  }
+  return tuple($success, $failure);
+}

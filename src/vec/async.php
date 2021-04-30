@@ -101,3 +101,35 @@ async function map_async<Tv1, Tv2>(
   /* HH_FIXME[4110] Reuse the existing vec to reduce peak memory. */
   return $vec;
 }
+
+/**
+ * Returns a 2-tuple containing vecs for which the given async
+ * predicate returned `true` and `false`, respectively.
+ *
+ * For non-async predicates, see `Vec\partition()`.
+ *
+ * Time complexity: O(n * p), where p is the complexity of synchronous portions
+ * of `$value_predicate`
+ * Space complexity: O(n)
+ *
+ * The IO operations for each of the calls to `$value_predicate` will happen
+ * in parallel.
+ */
+async function partition_async<Tv>(
+  Container<Tv> $container,
+  (function(Tv)[_]: Awaitable<bool>) $value_predicate,
+)[ctx $value_predicate]: Awaitable<(vec<Tv>, vec<Tv>)> {
+  $tests = await map_async($container, $value_predicate);
+  $success = vec[];
+  $failure = vec[];
+  $ii = 0;
+  foreach ($container as $value) {
+    if ($tests[$ii]) {
+      $success[] = $value;
+    } else {
+      $failure[] = $value;
+    }
+    $ii++;
+  }
+  return tuple($success, $failure);
+}

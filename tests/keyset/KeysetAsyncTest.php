@@ -123,4 +123,29 @@ final class KeysetAsyncTest extends HackTest {
     $actual = await Keyset\filter_async($traversable, $async_predicate);
     expect($actual)->toEqual($expected);
   }
+   
+  public static function provideTestPartitionAsync(): varray<mixed> {
+    return varray[
+      tuple(
+        Vec\concat(Vec\range(1, 10), Vec\range(1, 10)),
+        async $n ==> $n % 2 === 0,
+        tuple(keyset[2, 4, 6, 8, 10], keyset[1, 3, 5, 7, 9]),
+      ),
+      tuple(
+        dict['one' => 1, 'two' => 2, 'three' => 3, 'four' => 4, 'five' => 5],
+        async $n ==> $n % 2 === 0,
+        tuple(keyset[2, 4], keyset[1, 3, 5]),
+      ),
+    ];
+  }
+ 
+  <<DataProvider('provideTestPartitionAsync')>>
+  public async function testPartitionAsync<Tv as arraykey>(
+    Container<Tv> $container,
+    (function(Tv): Awaitable<bool>) $async_predicate,
+    (vec<Tv>, vec<Tv>) $expected,
+  ): Awaitable<void> {
+    $actual = await Keyset\partition_async($container, $async_predicate);
+    expect($actual)->toEqual($expected);
+  }
 }
