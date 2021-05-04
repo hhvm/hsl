@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\{Keyset, Str};
+use namespace HH\Lib\{Keyset, Str, Vec};
 use function Facebook\FBExpect\expect; // @oss-enable
 use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
 
