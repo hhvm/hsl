@@ -1,9 +1,6 @@
 {
   "roots": [
-    "tests/"
   ],
-  "devRoots": [
-    "tests/"
-  ],
+  "devRoots": [ "tests/" ],
   "parser": "ext-factparse"
 }
