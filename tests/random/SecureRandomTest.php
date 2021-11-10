@@ -10,7 +10,7 @@
 
 
 use namespace HH\Lib\SecureRandom;
-use type Facebook\HackTest\HackTest; // @oss-enable
+use type HH\__Private\MiniTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
 final class SecureRandomTest extends HackTest {

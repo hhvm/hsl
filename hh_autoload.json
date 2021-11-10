@@ -1,6 +1,0 @@
-{
-  "roots": [
-  ],
-  "devRoots": [ "tests/" ],
-  "parser": "ext-factparse"
-}

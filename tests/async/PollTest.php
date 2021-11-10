@@ -10,8 +10,8 @@
 
 use namespace HH\Lib\Async;
 
-use function Facebook\FBExpect\expect; // @oss-enable
-use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
+use function HH\__Private\MiniTest\expect; // @oss-enable
+use type HH\__Private\MiniTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: use type HackTest;
 
 // @oss-disable: <<Oncalls('hphp_hphpi')>>

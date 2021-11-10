@@ -9,8 +9,8 @@
  */
 
 use namespace HH\Lib\Math;
-use function Facebook\FBExpect\expect; // @oss-enable
-use type Facebook\HackTest\HackTest; // @oss-enable
+use function HH\__Private\MiniTest\expect; // @oss-enable
+use type HH\__Private\MiniTest\HackTest; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 // @oss-disable: <<Oncalls('hack')>>

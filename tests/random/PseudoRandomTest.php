@@ -10,8 +10,8 @@
 
 
 use namespace HH\Lib\PseudoRandom;
-use function Facebook\FBExpect\expect;
-use type Facebook\HackTest\HackTest; // @oss-enable
+use function HH\__Private\MiniTest\expect;
+use type HH\__Private\MiniTest\HackTest; // @oss-enable
 
 // @oss-disable: <<Oncalls('hack')>>
 final class PseudoRandomTest extends HackTest {

@@ -10,8 +10,8 @@
 
 use namespace HH\Lib\{C, Dict, Math, Str, Vec, _Private};
 
-use function Facebook\FBExpect\expect; // @oss-enable
-use type Facebook\HackTest\{DataProvider, HackTest}; // @oss-enable
+use function HH\__Private\MiniTest\expect; // @oss-enable
+use type HH\__Private\MiniTest\{DataProvider, HackTest}; // @oss-enable
 // @oss-disable: use InvariantViolationException as InvariantException;
 
 trait RandomTestTrait {
