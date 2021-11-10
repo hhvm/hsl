@@ -11,17 +11,25 @@ jobs:
       # Run tests on all OS's and HHVM versions, even if one fails
       fail-fast: false
       matrix:
-        os: [ ubuntu ]
+        os: [ ubuntu, macos ]
         hhvm:
-          - '4.108'
-          - latest
           - nightly
     runs-on: ${{matrix.os}}-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create branch for version alias
-        run: git checkout -b CI_current_pull_request
-      - uses: hhvm/actions/hack-lint-test@master
+      - name: "Install hack"
+        uses: hhvm/actions/install-hack@master
         with:
           hhvm: ${{matrix.hhvm}}
-          skip_lint: true
+      - name: Print HHVM version
+        run: hhvm --version
+      - name: Install Watchman (apt)
+        if: ${{ matrix.os == 'ubuntu' }}
+        run: DEBIAN_FRONTEND=noninteractive sudo apt install -y watchman
+      - name: Install Watchman (brew)
+        if: ${{ matrix.os == 'macos' }}
+        run: brew install watchman
+      - name: Typecheck
+        run: hh_client
+      - name: Run tests
+        run: ./minitest.sh
