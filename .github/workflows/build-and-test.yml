@@ -26,6 +26,12 @@ jobs:
       - name: Install Watchman (apt)
         if: ${{ matrix.os == 'ubuntu' }}
         run: DEBIAN_FRONTEND=noninteractive sudo apt install -y watchman
+      - name: Install locale support (apt)
+        if: ${{ matrix.os == 'ubuntu' }}
+        run: |
+          DEBIAN_FRONTEND=noninteractive \
+          sudo apt install -y locales
+          sudo locale-gen en_US fr_FR tr_TR en_US.UTF-8 fr_FR.UTF-8 tr_TR.UTF-8
       - name: Install Watchman (brew)
         if: ${{ matrix.os == 'macos' }}
         run: brew install watchman
