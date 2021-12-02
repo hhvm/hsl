@@ -58,7 +58,7 @@ final class StrLocaleTest extends HackTest {
     $emoji = "😀😀😀😀";
     expect(Str\chunk_l(Locale\c(), $emoji, 2))
       ->toEqual(\str_split($emoji, 2));
-    expect(Str\chunk_l(Locale\create('en_US.US-ASCII'), $emoji, 2))
+    expect(Str\chunk_l(Locale\create('en_US.ISO8859-1'), $emoji, 2))
       ->toEqual(\str_split($emoji, 2));
     expect(Str\chunk_l(Locale\create('en_US.UTF-8'), $emoji, 2))
       ->toEqual(vec["😀😀", "😀😀"]);
@@ -111,7 +111,7 @@ final class StrLocaleTest extends HackTest {
     expect(Str\contains_l($l, $emoji, $emoji))->toBeTrue();
     expect(Str\contains_l($l, $emoji, $emoji[0]))->toBeTrue();
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\contains_l($l, $e_combined_acute, 'e'))->toBeTrue();
     expect(Str\contains_l($l, $e_acute, 'e'))->toBeFalse();
     expect(Str\contains_l($l, $e_combined_acute, $e_acute))->toBeFalse();
@@ -141,7 +141,7 @@ final class StrLocaleTest extends HackTest {
     expect(Str\contains_ci_l($l, $emoji, $emoji))->toBeTrue();
     expect(Str\contains_ci_l($l, $emoji, $emoji[0]))->toBeTrue();
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\contains_ci_l($l, $e_combined_acute, 'e'))->toBeTrue();
     expect(Str\contains_ci_l($l, $e_acute, 'e'))->toBeFalse();
     expect(Str\contains_ci_l($l, $e_combined_acute, $e_acute))->toBeFalse();
@@ -161,7 +161,7 @@ final class StrLocaleTest extends HackTest {
   public function testEndsWithL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\ends_with_l($l, $def, "e\u{0301}f"))->toBeTrue();
     expect(Str\ends_with_l($l, $def, "\u{00e9}f"))->toBeFalse();
     expect(Str\ends_with_l($l, $def, "E\u{0301}f"))->toBeFalse();
@@ -175,7 +175,7 @@ final class StrLocaleTest extends HackTest {
   public function testEndsWithCIL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\ends_with_ci_l($l, $def, "E\u{0301}f"))->toBeTrue();
     expect(Str\ends_with_ci_l($l, $def, "\u{00c9}f"))->toBeFalse();
 
@@ -187,12 +187,12 @@ final class StrLocaleTest extends HackTest {
   public function testLengthL(): void {
     $emoji = "😀😀😀😀";
     expect(Str\length_l(Locale\create('en_US.UTF-8'), $emoji))->toEqual(4);
-    expect(Str\length_l(Locale\create('en_US.US-ASCII'), $emoji))->toEqual(16);
+    expect(Str\length_l(Locale\create('en_US.ISO8859-1'), $emoji))->toEqual(16);
   }
 
   public function testLowercaseL(): void {
     expect(Str\lowercase_l(Locale\c(), "IFOO"))->toEqual('ifoo');
-    expect(Str\lowercase_l(Locale\create('en_US.US-ASCII'), "IFOO"))->toEqual('ifoo');
+    expect(Str\lowercase_l(Locale\create('en_US.ISO8859-1'), "IFOO"))->toEqual('ifoo');
     expect(Str\lowercase_l(Locale\create('en_US.UTF-8'), "IFOO"))->toEqual('ifoo');
     expect(Str\lowercase_l(Locale\create('tr_TR.UTF-8'), "IFOO"))->toEqual('ıfoo');
   }
@@ -200,7 +200,7 @@ final class StrLocaleTest extends HackTest {
   public function testPadLeftL(): void {
     $emoji = "😀😀😀😀";
     expect(Str\pad_left_l(Locale\c(), $emoji, 5, '!'))->toEqual($emoji);
-    expect(Str\pad_left_l(Locale\create('en_US.US-ASCII'), $emoji, 5, '!'))->toEqual($emoji);
+    expect(Str\pad_left_l(Locale\create('en_US.ISO8859-1'), $emoji, 5, '!'))->toEqual($emoji);
     expect(Str\pad_left_l(Locale\create('en_US.UTF-8'), $emoji, 5, '!'))->toEqual('!'.$emoji);
     expect(Str\pad_left_l(Locale\create('en_US.UTF-8'), $emoji, 6, '!'))->toEqual('!!'.$emoji);
     expect(Str\pad_left_l(Locale\create('en_US.UTF-8'), $emoji, 6, '😀'))->toEqual('😀😀'.$emoji);
@@ -209,7 +209,7 @@ final class StrLocaleTest extends HackTest {
   public function testPadRightL(): void {
     $emoji = "😀😀😀😀";
     expect(Str\pad_right_l(Locale\c(), $emoji, 5, '!'))->toEqual($emoji);
-    expect(Str\pad_right_l(Locale\create('en_US.US-ASCII'), $emoji, 5, '!'))->toEqual($emoji);
+    expect(Str\pad_right_l(Locale\create('en_US.ISO8859-1'), $emoji, 5, '!'))->toEqual($emoji);
     expect(Str\pad_right_l(Locale\create('en_US.UTF-8'), $emoji, 5, '!'))->toEqual($emoji.'!');
     expect(Str\pad_right_l(Locale\create('en_US.UTF-8'), $emoji, 6, '!'))->toEqual($emoji.'!!');
     expect(Str\pad_right_l(Locale\create('en_US.UTF-8'), $emoji, 6, '😀'))->toEqual($emoji.'😀😀');
@@ -218,7 +218,7 @@ final class StrLocaleTest extends HackTest {
   public function testReplaceL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\replace_l($l, $def, 'e', 'E'))->toEqual("dE\u{0301}f");
     expect(Str\replace_l($l, $def, "\u{00e9}", '!'))->toEqual($def);
     expect(Str\replace_l($l, $def, "\u{00c9}", '!'))->toEqual($def);
@@ -232,7 +232,7 @@ final class StrLocaleTest extends HackTest {
   public function testReplaceCIL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\replace_ci_l($l, $def, 'e', 'E'))->toEqual("dE\u{0301}f");
     expect(Str\replace_ci_l($l, $def, "\u{00e9}", '!'))->toEqual($def);
     expect(Str\replace_ci_l($l, $def, "\u{00c9}", '!'))->toEqual($def);
@@ -253,9 +253,9 @@ final class StrLocaleTest extends HackTest {
     $emoji = '😀💩';
     $ijome = '💩😀';
 
-    expect(Str\reverse_l(Locale\create('en_US.US-ASCII'), $emoji))
+    expect(Str\reverse_l(Locale\create('en_US.ISO8859-1'), $emoji))
       ->toNotEqual($ijome);
-    expect(Str\reverse_l(Locale\create('en_US.US-ASCII'), $emoji))
+    expect(Str\reverse_l(Locale\create('en_US.ISO8859-1'), $emoji))
       ->toEqual(\strrev($emoji));
 
     expect(Str\reverse_l(Locale\create('en_US.UTF-8'), $emoji))
@@ -265,7 +265,7 @@ final class StrLocaleTest extends HackTest {
   public function testSearchL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\search_l($l, $def, 'e'))->toEqual(1);
     expect(Str\search_l($l, $def, 'f'))->toEqual(4);
     expect(Str\search_l($l, $def, 'F'))->toEqual(null);
@@ -279,7 +279,7 @@ final class StrLocaleTest extends HackTest {
   public function testSearchCIL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\search_ci_l($l, $def, 'e'))->toEqual(1);
     expect(Str\search_ci_l($l, $def, 'f'))->toEqual(4);
     expect(Str\search_ci_l($l, $def, 'F'))->toEqual(4);
@@ -293,7 +293,7 @@ final class StrLocaleTest extends HackTest {
   public function testSearchLastL(): void {
     $def = "d\u{00e9}fde\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\search_last_l($l, $def, 'e'))->toEqual(5);
     expect(Str\search_last_l($l, $def, "\u{00e9}"))->toEqual(1);
     expect(Str\search_last_l($l, $def, "E"))->toEqual(null);
@@ -308,7 +308,7 @@ final class StrLocaleTest extends HackTest {
 
   public function testSliceL(): void {
     $emoji = "😀😀😀😀";
-    expect(Str\slice_l(Locale\create('en_US.US-ASCII'), $emoji, 0, 2))
+    expect(Str\slice_l(Locale\create('en_US.ISO8859-1'), $emoji, 0, 2))
       ->toEqual(\substr($emoji, 0, 2));
     expect(Str\slice_l(Locale\create('en_US.UTF-8'), $emoji, 0, 2))
       ->toNotEqual(\substr($emoji, 0, 2));
@@ -318,7 +318,7 @@ final class StrLocaleTest extends HackTest {
 
   public function testSpliceL(): void {
     $def = "de\u{0301}f";
-    expect(Str\splice_l(Locale\create('en_US.US-ASCII'), $def, 'E', 1, 1))
+    expect(Str\splice_l(Locale\create('en_US.ISO8859-1'), $def, 'E', 1, 1))
       ->toEqual("dE\u{0301}f");
     expect(Str\splice_l(Locale\create('en_US.UTF-8'), $def, 'E', 1, 1))
       ->toEqual("dEf");
@@ -347,7 +347,7 @@ final class StrLocaleTest extends HackTest {
   public function testStartsWithL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\starts_with_l($l, $def, "de\u{0301}"))->toBeTrue();
     expect(Str\starts_with_l($l, $def, "d\u{00e9}"))->toBeFalse();
     expect(Str\starts_with_l($l, $def, "dE\u{0301}"))->toBeFalse();
@@ -361,7 +361,7 @@ final class StrLocaleTest extends HackTest {
   public function testStartsWithCIL(): void {
     $def = "de\u{0301}f";
 
-    $l = Locale\create('en_US.US-ASCII');
+    $l = Locale\create('en_US.ISO8859-1');
     expect(Str\starts_with_ci_l($l, $def, "de\u{0301}"))->toBeTrue();
     expect(Str\starts_with_ci_l($l, $def, "d\u{00e9}"))->toBeFalse();
     expect(Str\starts_with_ci_l($l, $def, "dE\u{0301}"))->toBeTrue();
@@ -375,7 +375,7 @@ final class StrLocaleTest extends HackTest {
   public function testStripPrefixL(): void {
     $def = "de\u{0301}f";
 
-    expect(Str\strip_prefix_l(Locale\create('en_US.US-ASCII'), $def, "d\u{00e9}"))
+    expect(Str\strip_prefix_l(Locale\create('en_US.ISO8859-1'), $def, "d\u{00e9}"))
       ->toEqual($def);
     expect(Str\strip_prefix_l(Locale\create('en_US.UTF-8'), $def, "d\u{00e9}"))
       ->toEqual('f');
@@ -384,7 +384,7 @@ final class StrLocaleTest extends HackTest {
   public function testStripSuffixL(): void {
     $def = "de\u{0301}f";
 
-    expect(Str\strip_suffix_l(Locale\create('en_US.US-ASCII'), $def, "\u{00e9}f"))
+    expect(Str\strip_suffix_l(Locale\create('en_US.ISO8859-1'), $def, "\u{00e9}f"))
       ->toEqual($def);
     expect(Str\strip_suffix_l(Locale\create('en_US.UTF-8'), $def, "\u{00e9}f"))
       ->toEqual('d');
@@ -393,7 +393,7 @@ final class StrLocaleTest extends HackTest {
   public function testTrimL(): void {
     // \u{00a0} is unicode non-breaking space
     $sample = " \u{00a0}!\u{00a0} ";
-    expect(Str\trim_l(Locale\create('en_US.US-ASCII'), $sample))
+    expect(Str\trim_l(Locale\create('en_US.ISO8859-1'), $sample))
       ->toEqual("\u{00a0}!\u{00a0}");
     expect(Str\trim_l(Locale\create('en_US.UTF-8'), $sample))
       ->toEqual("!");
@@ -402,7 +402,7 @@ final class StrLocaleTest extends HackTest {
   public function testTrimLeftL(): void {
     // 00a0 == nbsp
     $sample = " \u{00a0}!\u{00a0} ";
-    expect(Str\trim_left_l(Locale\create('en_US.US-ASCII'), $sample))
+    expect(Str\trim_left_l(Locale\create('en_US.ISO8859-1'), $sample))
       ->toEqual("\u{00a0}!\u{00a0} ");
     expect(Str\trim_left_l(Locale\create('en_US.UTF-8'), $sample))
       ->toEqual("!\u{00a0} ");
@@ -411,7 +411,7 @@ final class StrLocaleTest extends HackTest {
   public function testTrimRightL(): void {
     // 00a0 == nbsp
     $sample = " \u{00a0}!\u{00a0} ";
-    expect(Str\trim_right_l(Locale\create('en_US.US-ASCII'), $sample))
+    expect(Str\trim_right_l(Locale\create('en_US.ISO8859-1'), $sample))
       ->toEqual(" \u{00a0}!\u{00a0}");
     expect(Str\trim_right_l(Locale\create('en_US.UTF-8'), $sample))
       ->toEqual(" \u{00a0}!");
