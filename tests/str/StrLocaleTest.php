@@ -25,7 +25,7 @@ final class StrLocaleTest extends HackTest {
   public function testSystemDefaultEncoding(): void {
     // This is undefined behavior, but let's make sure that we act like
     // everything else on the current platform
-    $emoji = "😀😀"
+    $emoji = "😀😀";
     $actual = Str\slice_l(Locale\create('en_US'), 1, 1);
     if (\HH\Lib\_Private\_OS\IS_MACOS) {
       // UTF-8
