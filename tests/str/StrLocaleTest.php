@@ -8,7 +8,7 @@
  *
  */
 
-use namespace HH\Lib\{Locale, OS};
+use namespace HH\Lib\{Locale, OS, Str};
 use function HH\__Private\MiniTest\expect;
 use type HH\__Private\MiniTest\{DataProvider, HackTest};
 
