@@ -189,6 +189,31 @@ enum PosixSpawnFlag : int {
 }
 type posix_spawn_file_actions_t = vec[
   shape(
+    // Should set one and only one of the following fields
+    ?'posix_spawn_file_actions_addchdir' => string,
+    ?'posix_spawn_file_actions_adddup2' => shape(
+      'filedes' => FileDescriptor,
+      'newfiledes' => int,
+    ),
+  )
+];
+```
+
+Since the original C function `posix_spawn_file_actions_adddup2` accepts three
+parameters, the second parameter and the third parameter are packed
+into a `shape`.
+
+Note even though all the setters are defined in the same `shape`, the user
+should set one and only one of the fields. A runtime check should be performed
+by the HSL implementation, ensuring only one of them is set.
+
+The above `shape` encoding should be
+assumed as the following union type.
+
+``` hack
+// If union types is enabled
+type posix_spawn_file_actions_t = vec[
+  shape(
     'posix_spawn_file_actions_addchdir' => string,
   )|
   shape(
@@ -200,24 +225,5 @@ type posix_spawn_file_actions_t = vec[
 ];
 ```
 
-Since the original C function `posix_spawn_file_actions_adddup2` accepts three
-parameters, the second parameter and the third parameter are packed
-into a `shape`.
-
-Note that union types are not currently enabled for HSL. As a fallback encoding,
-we should put all the setters in the same `shape` and perform runtime check
-ensuring only one of them is set, unless union types are enabled.
-
-``` hack
-// Union type free fallback encoding
-type posix_spawn_file_actions_t = vec[
-  shape(
-    // Should set one and only one of the following fields
-    ?'posix_spawn_file_actions_addchdir' => string,
-    ?'posix_spawn_file_actions_adddup2' => shape(
-      'filedes' => FileDescriptor,
-      'newfiledes' => int,
-    ),
-  )
-];
-```
+However we cannot actually encode the setters as a true union type because union types are not
+enabled for the HSL code base.
