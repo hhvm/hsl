@@ -111,7 +111,7 @@ inspiration for several decisions in this library.
 | C type | Hack type |
 |---|---|
 | `int` or `short` as a bit set | `keyset<Flag>` where `Flag` is an `enum` |
-| long-lived `int socket` or `int filedes` | `HH\Lib\OS\FileDescriptor` or other wrapper classes |
+| `int socket` or `int filedes`, or other long-lived system resources | `HH\Lib\OS\FileDescriptor` or other wrapper classes |
 | `void *` or `struct *` or other short-lived pointers that do not hold expensive system resource | `shape` or `vec`, see [Appendix: short-lived C pointer encoding](#appendix-short-lived-c-pointer-encoding) |
 
 ## Appendix: short-lived C pointer encoding
