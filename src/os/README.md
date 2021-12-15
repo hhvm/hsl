@@ -50,19 +50,20 @@ inspiration for several decisions in this library.
 - do not use `OS\ErrnoException` if the error condition would not be indicated
   by the `errno` variable in C. Consider adding another similar class, e.g.
   add `OS\HErrnoException` if you want to report an error exposed via `h_errno`
-- add and use Hack classes (not type aliases) for 'handle'-like parameters and
-  return values, e.g. `OS\open()` returns a `HH\Lib\FileDescriptor` instead of
-  an `int`; as well as aiding type safety, this prevents requests from interfering
-  with resources that belong to another request.
+- add and use Hack classes (not type aliases) for long-lived 'handle'-like
+  parameters and return values, e.g. `OS\open()` returns a
+  `HH\Lib\FileDescriptor` instead of an `int`; as well as aiding type safety,
+  this prevents requests from interfering with resources that belong to another
+  request.
 - Avoid `inout` parameters; return tuples instead. For example, prefer
   `function mkstemp(string $pattern): (FileDescriptor, string)` to
   `function mkstemp(inout string $in_pattern_out_path): FileDescriptor`
   - this can aid for common use by allowing string literals, rather than
     requiring otherwise-unused locals
-  - if the primary purpose of a function is to mutate its parameters, this
-    should be considered case-by-case; for example, if we were to add something
-    similar to `array_pop()`, it probably should take an `inout` container - but
-    probably shouldn't be in `OS\`
+  - if the primary purpose of a set of functions is to create, mutate and
+    destroy a short-lived opaque C pointer, they should be exposed as a `shape`
+    or `vec`. See [Appendix: opaque C pointer
+    encoding](#appendix-opaque-c-pointer-encoding) section for more detail.
 
 ## Implementation notes
 
@@ -104,3 +105,125 @@ inspiration for several decisions in this library.
 - that said, if an operation is extremely efficient and almost always wanted,
   consider doing it natively, automatically. For example, ints in HSL
   `sockaddr` are always in host byte order, not network byte order.
+
+## Appendix:  C / Hack type mapping cheat sheet
+
+| C type | Hack type |
+|---|---|
+| `int` or `short` as a bit set | `keyset<Flag>` where `Flag` is an `enum` |
+| long-lived `int socket` or `int filedes` | `HH\Lib\OS\FileDescriptor` or other wrapper classes |
+| short-lived `void *` or `struct *` | `shape` or `vec`, see [Appendix: opaque C pointer encoding](#appendix-opaque-c-pointer-encoding) |
+
+## Appendix: opaque C pointer encoding
+
+A common practice in C library is to expose a set of functions, including a
+constructor, a destructor and several setters, to manipulate an opaque C
+pointer. Instead of directly provide Hack version of these functions, a `shape`
+or `vec` corresponds to the opaque C pointer should be expose, and the underlying C
+struct should be internally created on demand from the `shape` or `vec`, when
+another underlying C function requires the opaque C pointer.
+
+### Unordered setters
+
+An opaque C pointers should map to a `shape` definition if the order to invoke
+setters does not matter. For example, given the following opaque C pointer and
+the related utility functions:
+
+``` c
+// The opaque C pointer
+typedef void *posix_spawnattr_t;
+
+// The constructor
+int posix_spawnattr_init(posix_spawnattr_t *attr);
+
+// The setters
+int posix_spawnattr_setpgroup(posix_spawnattr_t *attr, pid_t pgroup);
+
+#define	POSIX_SPAWN_RESETIDS 0x0001
+#define	POSIX_SPAWN_SETPGROUP 0x0002
+int posix_spawnattr_setflags(posix_spawnattr_t *attr, short flags);
+
+// The destructor
+int posix_spawnattr_destroy(posix_spawnattr_t *attr);
+```
+
+The corresponding Hack definition should be:
+
+``` hack
+newtype pid_t = int;
+enum PosixSpawnFlag : int {
+  POSIX_SPAWN_RESETIDS = 0x0001;
+  POSIX_SPAWN_SETPGROUP = 0x0002;
+}
+type posix_spawnattr_t = shape(
+  'posix_spawnattr_setpgroup' => pid_t,
+  'posix_spawnattr_setflags' => keyset<PosixSpawnFlag>,
+);
+```
+
+Note that the second parameter of `posix_spawnattr_setflags` is bit set,
+which maps to a `keyset` of `enum` in Hack.
+
+### Ordered repeatable setters
+
+An opaque C pointers should map to a `vec` definition if the setters can be
+invoked more than once and the order to invoke setters matters. For example,
+given the following opaque C pointer and the related utility functions:
+
+``` c
+// The opaque C pointer
+typedef void *posix_spawn_file_actions_t;
+
+// The constructor
+int posix_spawn_file_actions_init(posix_spawn_file_actions_t *file_actions);
+
+// The setters
+int posix_spawn_file_actions_addchdir(posix_spawn_file_actions_t *file_actions, const char *restrict path);
+int posix_spawn_file_actions_adddup2(posix_spawn_file_actions_t *file_actions, int filedes, int newfiledes);
+
+// The destructor
+int posix_spawn_file_actions_destroy(posix_spawn_file_actions_t *file_actions);
+```
+
+The corresponding Hack definition should be:
+
+``` hack
+newtype pid_t = int;
+enum PosixSpawnFlag : int {
+  POSIX_SPAWN_RESETIDS = 0x0001;
+  POSIX_SPAWN_SETPGROUP = 0x0002;
+}
+type posix_spawn_file_actions_t = vec[
+  shape(
+    'posix_spawn_file_actions_addchdir' => string,
+  )|
+  shape(
+    'posix_spawn_file_actions_adddup2' => shape(
+      'filedes' => FileDescriptor,
+      'newfiledes' => int,
+    ),
+  ),
+];
+```
+
+Since the original C function `posix_spawn_file_actions_adddup2` accepts three
+parameters, the second parameter and the third parameter are packed
+into a `shape`.
+
+Note that union types are not currently enabled for HSL. As a fallback encoding,
+we should put all the setters in the same `shape` and perform runtime check
+ensuring only one of them is set, unless union types are enabled.
+
+``` hack
+// Union type free fallback encoding
+type posix_spawn_file_actions_t = vec[
+  shape(
+    // Should set one and only one of the following fields
+    ?'posix_spawn_file_actions_addchdir' => string,
+    ?'posix_spawn_file_actions_adddup2' => shape(
+      'filedes' => FileDescriptor,
+      'newfiledes' => int,
+    ),
+  )
+];
+```
