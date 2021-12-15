@@ -112,7 +112,7 @@ inspiration for several decisions in this library.
 |---|---|
 | `int` or `short` as a bit set | `keyset<Flag>` where `Flag` is an `enum` |
 | long-lived `int socket` or `int filedes` | `HH\Lib\OS\FileDescriptor` or other wrapper classes |
-| short-lived pointer `void *` or `struct *` that does not hold expensive system resource | `shape` or `vec`, see [Appendix: short-lived C pointer encoding](#appendix-short-lived-c-pointer-encoding) |
+| `void *` or `struct *` or other short-lived pointers that do not hold expensive system resource | `shape` or `vec`, see [Appendix: short-lived C pointer encoding](#appendix-short-lived-c-pointer-encoding) |
 
 ## Appendix: short-lived C pointer encoding
 
@@ -120,7 +120,7 @@ A common practice in C library is to expose a set of functions, including a
 constructor, a destructor and several setters, to manipulate an short-lived C
 pointer. Instead of directly provide Hack version of these functions, a `shape`
 or `vec` corresponds to the short-lived C pointer should be expose, and the underlying C
-struct should be internally created on demand from the `shape` or `vec`, when
+`struct` should be internally created on demand from the `shape` or `vec`, when
 another underlying C function requires the short-lived C pointer.
 
 ### Unordered setters
@@ -151,18 +151,12 @@ The corresponding Hack definition should be:
 
 ``` hack
 newtype pid_t = int;
-enum PosixSpawnFlag : int {
-  POSIX_SPAWN_RESETIDS = 0x0001;
-  POSIX_SPAWN_SETPGROUP = 0x0002;
-}
+type PosixSpawnFlags = ...;
 type posix_spawnattr_t = shape(
   'posix_spawnattr_setpgroup' => pid_t,
-  'posix_spawnattr_setflags' => keyset<PosixSpawnFlag>,
+  'posix_spawnattr_setflags' => PosixSpawnFlags,
 );
 ```
-
-Note that the second parameter of `posix_spawnattr_setflags` is bit set,
-which maps to a `keyset` of `enum` in Hack.
 
 ### Ordered repeatable setters
 
