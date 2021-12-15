@@ -50,6 +50,7 @@ inspiration for several decisions in this library.
 - do not use `OS\ErrnoException` if the error condition would not be indicated
   by the `errno` variable in C. Consider adding another similar class, e.g.
   add `OS\HErrnoException` if you want to report an error exposed via `h_errno`
+- use `keyset<Flag>` to represent a C bit set, where `Flag` is a Hack `enum`.
 - add and use Hack classes (not type aliases) for long-lived 'handle'-like
   parameters and return values, e.g. `OS\open()` returns a
   `HH\Lib\FileDescriptor` instead of an `int`; as well as aiding type safety,
@@ -64,6 +65,8 @@ inspiration for several decisions in this library.
     destroy a short-lived opaque C pointer, they should be exposed as a `shape`
     or `vec`. See [Appendix: opaque C pointer
     encoding](#appendix-opaque-c-pointer-encoding) section for more detail.
+- Functions that are not available in all the Hack supported operating systems
+  should put into separate namespaces, e.g. `HH\Lib\OS\Bsd` or `HH\Lib\OS\Linux`.
 
 ## Implementation notes
 
