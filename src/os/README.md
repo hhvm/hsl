@@ -50,6 +50,7 @@ inspiration for several decisions in this library.
 - do not use `OS\ErrnoException` if the error condition would not be indicated
   by the `errno` variable in C. Consider adding another similar class, e.g.
   add `OS\HErrnoException` if you want to report an error exposed via `h_errno`
+- use `keyset<Flag>` to represent a C bit set, where `Flag` is a Hack `enum`.
 - add and use Hack classes (not type aliases) for long-lived 'handle'-like
   parameters and return values, e.g. `OS\open()` returns a
   `HH\Lib\FileDescriptor` instead of an `int`; as well as aiding type safety,
@@ -61,10 +62,8 @@ inspiration for several decisions in this library.
   - this can aid for common use by allowing string literals, rather than
     requiring otherwise-unused locals
   - if the primary purpose of a set of functions is to create, mutate and
-    destroy a C data structure, whose reference would not be held by C
-    libraries, they should be exposed as a `vec`. See [Appendix:
-    short-lived C pointer encoding](#appendix-short-lived-c-pointer-encoding)
-    section for more detail.
+- Functions that are not available in all the Hack supported operating systems
+  should put into separate namespaces, e.g. `HH\Lib\OS\Bsd` or `HH\Lib\OS\Linux`.
 
 ## Implementation notes
 
@@ -111,6 +110,7 @@ inspiration for several decisions in this library.
 
 | C type | Hack type |
 |---|---|
+| `int` or `short` as a bit set | `keyset<Flag>` where `Flag` is an `enum` |
 | `int socket` or `int filedes`, or other long-lived system resources | `HH\Lib\OS\FileDescriptor` or other wrapper classes |
 | Setters for `void *` or `struct *` whose reference would not be held by C libraries | `vec`, see [Appendix: encoding lightweight C data types with setters](#appendix-encoding-lightweight-c-data-types-with-setters) |
 
