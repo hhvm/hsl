@@ -50,19 +50,20 @@ inspiration for several decisions in this library.
 - do not use `OS\ErrnoException` if the error condition would not be indicated
   by the `errno` variable in C. Consider adding another similar class, e.g.
   add `OS\HErrnoException` if you want to report an error exposed via `h_errno`
-- add and use Hack classes (not type aliases) for 'handle'-like parameters and
-  return values, e.g. `OS\open()` returns a `HH\Lib\FileDescriptor` instead of
-  an `int`; as well as aiding type safety, this prevents requests from interfering
-  with resources that belong to another request.
+- use `keyset<Flag>` to represent a C bit set, where `Flag` is a Hack `enum`.
+- add and use Hack classes (not type aliases) for long-lived 'handle'-like
+  parameters and return values, e.g. `OS\open()` returns a
+  `HH\Lib\FileDescriptor` instead of an `int`; as well as aiding type safety,
+  this prevents requests from interfering with resources that belong to another
+  request.
 - Avoid `inout` parameters; return tuples instead. For example, prefer
   `function mkstemp(string $pattern): (FileDescriptor, string)` to
   `function mkstemp(inout string $in_pattern_out_path): FileDescriptor`
   - this can aid for common use by allowing string literals, rather than
     requiring otherwise-unused locals
-  - if the primary purpose of a function is to mutate its parameters, this
-    should be considered case-by-case; for example, if we were to add something
-    similar to `array_pop()`, it probably should take an `inout` container - but
-    probably shouldn't be in `OS\`
+  - if the primary purpose of a set of functions is to create, mutate and
+- Functions that are not available in all the Hack supported operating systems
+  should put into separate namespaces, e.g. `HH\Lib\OS\Bsd` or `HH\Lib\OS\Linux`.
 
 ## Implementation notes
 
@@ -104,3 +105,64 @@ inspiration for several decisions in this library.
 - that said, if an operation is extremely efficient and almost always wanted,
   consider doing it natively, automatically. For example, ints in HSL
   `sockaddr` are always in host byte order, not network byte order.
+
+## Appendix:  C / Hack type mapping cheat sheet
+
+| C type | Hack type |
+|---|---|
+| `int` or `short` as a bit set | `keyset<Flag>` where `Flag` is an `enum` |
+| `int socket` or `int filedes`, or other long-lived system resources | `HH\Lib\OS\FileDescriptor` or other wrapper classes |
+| Setters for `void *` or `struct *` whose reference would not be held by C libraries | `vec`, see [Appendix: encoding lightweight C data types with setters](#appendix-encoding-lightweight-c-data-types-with-setters) |
+
+## Appendix: encoding lightweight C data types with setters
+
+A common practice in C library is to expose a set of functions, including a
+constructor, a destructor and several setters, to manipulate a C data type. If
+the C data type represents a native resource, e.g. `int filedes`, we should
+create a closeable Hack class wrappers for the C native resource, otherwise we
+should a create a garbage-collectable mirror in Hack, which creates and destroys
+the underlying C data type on demand. The rest of this section describes the
+encoding of the garbage-collectable mirror corresponding to the C data type.
+
+### Setters as a `vec` of an interface
+
+The general way to encode a lightweight C data type and its setters is to
+consider the data type as a `vec` of setter interface, and to create a class
+implements the interface for each setter function. For example, given the
+following short-lived C pointer and the related utility functions:
+
+``` c
+// The short-lived C pointer
+typedef void *posix_spawn_file_actions_t;
+
+// The constructor
+int posix_spawn_file_actions_init(posix_spawn_file_actions_t *file_actions);
+
+// The setters
+int posix_spawn_file_actions_addchdir(posix_spawn_file_actions_t *file_actions, const char *restrict path);
+int posix_spawn_file_actions_adddup2(posix_spawn_file_actions_t *file_actions, int filedes, int newfiledes);
+
+// The destructor
+int posix_spawn_file_actions_destroy(posix_spawn_file_actions_t *file_actions);
+```
+
+The corresponding Hack definition should be:
+
+``` hack
+<<__Sealed(
+  posix_spawn_file_actions_addchdir::class,
+  posix_spawn_file_actions_adddup2::class
+)>>
+interface PosixSpawnFileActionsSetter {}
+final class posix_spawn_file_actions_addchdir implements PosixSpawnFileActionsSetter {
+  function __construct(readonly public string $path) {}
+}
+final class posix_spawn_file_actions_adddup2 implements PosixSpawnFileActionsSetter {
+  function __construct(
+    readonly public FileDescriptor $filedes,
+    readonly public int $newfiledes,
+  ) {}
+}
+
+type posix_spawn_file_actions_t = vec[PosixSpawnFileActionsSetter];
+```
