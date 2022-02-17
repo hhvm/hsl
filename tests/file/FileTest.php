@@ -80,6 +80,9 @@ final class FileTest extends HackTest {
     expect(\file_exists($tf1->getPath()))->toBeTrue();
     await $tf2->writeAllAsync('hello');
     $tf2->close();
+
+    // Make sure that the write completed, and no deletions or truncates
+    // happened
     expect(\file_get_contents($tf2->getPath()))->toEqual('hello');
 
     \unlink($tf1->getPath());

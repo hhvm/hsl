@@ -16,7 +16,7 @@ use namespace HH\Lib\_Private\_File;
  *
  * The file is automatically deleted when the disposable is removed.
  *
- * - If the prefix starts with `.`, it is interpretered relative to the current
+ * - If the prefix starts with `.`, it is interpreted relative to the current
  *   working directory.
  * - If the prefix statis with `/`, it is treated as an absolute path.
  * - Otherwise, it is created in the system temporary directory.
