@@ -48,7 +48,7 @@ async function from_async<Tv>(
  * in parallel.
  */
 async function filter_async<Tv>(
-  Container<Tv> $container,
+  Traversable<Tv> $container,
   (function(Tv)[_]: Awaitable<bool>) $value_predicate,
 )[ctx $value_predicate]: Awaitable<vec<Tv>> {
   $tests = await map_async($container, $value_predicate);
@@ -111,7 +111,7 @@ async function map_async<Tv1, Tv2>(
  * in parallel.
  */
 async function partition_async<Tv>(
-  Container<Tv> $container,
+  Traversable<Tv> $container,
   (function(Tv)[_]: Awaitable<bool>) $value_predicate,
 )[ctx $value_predicate]: Awaitable<(vec<Tv>, vec<Tv>)> {
   $tests = await map_async($container, $value_predicate);
