@@ -122,7 +122,7 @@ function every<T>(
  * Space complexity: O(1)
  */
 function is_empty<T>(
-  readonly Container<T> $container,
+  readonly Traversable<T> $container,
 )[]: bool {
   if ($container is \ConstCollection<_>) {
     return $container->isEmpty();
