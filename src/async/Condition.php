@@ -20,15 +20,31 @@ class Condition<T> {
   /**
    * Notify the condition variable of success and set the result.
    */
-  final public function succeed(T $result): void {
+  final public function xsucceed(T $result): void {
     invariant($this->trySucceed($result), 'Unable to notify Condition twice');
   }
 
   /**
    * Notify the condition variable of failure and set the exception.
    */
-  final public function fail(\Exception $exception): void {
+  final public function xfail(\Exception $exception): void {
     invariant($this->tryFail($exception), 'Unable to notify Condition twice');
+  }
+
+  /**
+   * Notify the condition variable of success and set the result.
+   */
+  <<__Deprecated('use xsucceed() instead')>>
+  final public function succeed(T $result): void {
+    $this->xsucceed($result);
+  }
+
+  /**
+   * Notify the condition variable of failure and set the exception.
+   */
+  <<__Deprecated('use xfail() instead')>>
+  final public function fail(\Exception $exception): void {
+    $this->xfail($exception);
   }
 
   /**
