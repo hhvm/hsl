@@ -230,7 +230,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "" and object t5
 -1
 !@#$%codegentest:cmp "" and object xml
-0
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "" and pair p2
@@ -518,7 +518,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "-1" and object t5
 -1
 !@#$%codegentest:cmp "-1" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "-1" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "-1" and pair p2
@@ -806,7 +806,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "-1.0" and object t5
 -1
 !@#$%codegentest:cmp "-1.0" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "-1.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "-1.0" and pair p2
@@ -1094,7 +1094,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "0" and object t5
 -1
 !@#$%codegentest:cmp "0" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "0" and pair p2
@@ -1382,7 +1382,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "0.0" and object t5
 -1
 !@#$%codegentest:cmp "0.0" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "0.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "0.0" and pair p2
@@ -1670,7 +1670,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "99" and object t5
 -1
 !@#$%codegentest:cmp "99" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "99" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "99" and pair p2
@@ -1958,7 +1958,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "99.0" and object t5
 -1
 !@#$%codegentest:cmp "99.0" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "99.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "99.0" and pair p2
@@ -2246,7 +2246,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "99x" and object t5
 -1
 !@#$%codegentest:cmp "99x" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "99x" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "99x" and pair p2
@@ -2534,7 +2534,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "BAZ" and object t5
 -1
 !@#$%codegentest:cmp "BAZ" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "BAZ" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "BAZ" and pair p2
@@ -2822,7 +2822,7 @@ Cannot compare string and HH\Set using a relational operator
 !@#$%codegentest:cmp "foo" and object t5
 -1
 !@#$%codegentest:cmp "foo" and object xml
-1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp "foo" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:cmp "foo" and pair p2
@@ -8332,7 +8332,7 @@ Cannot compare HH\vec and bool using a relational operator
 !@#$%codegentest:cmp array arr3 and vec vec4
 -1
 !@#$%codegentest:cmp array arr3 and vec vec5
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp array arr3 and vec vec7
 -1
 !@#$%codegentest:cmp array arr3 and vec vec8
@@ -24094,11 +24094,11 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object a1 and object a5
 1
 !@#$%codegentest:cmp object a1 and object a6
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a1 and object a7
-1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a1 and object a8
-1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a1 and object a9
 -1
 !@#$%codegentest:cmp object a1 and object ad1
@@ -26398,11 +26398,11 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object a2 and object a5
 1
 !@#$%codegentest:cmp object a2 and object a6
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a2 and object a7
-1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a2 and object a8
-1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a2 and object a9
 -1
 !@#$%codegentest:cmp object a2 and object ad1
@@ -27262,11 +27262,11 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object a5 and object a5
 0
 !@#$%codegentest:cmp object a5 and object a6
--1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a5 and object a7
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a5 and object a8
-1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a5 and object a9
 -1
 !@#$%codegentest:cmp object a5 and object ad1
@@ -27526,7 +27526,7 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object a6 and null
 1
 !@#$%codegentest:cmp object a6 and object a1
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a6 and object a11
 1
 !@#$%codegentest:cmp object a6 and object a12
@@ -27542,13 +27542,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:cmp object a6 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:cmp object a6 and object a2
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a6 and object a3
 1
 !@#$%codegentest:cmp object a6 and object a4
 1
 !@#$%codegentest:cmp object a6 and object a5
-1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a6 and object a6
 0
 !@#$%codegentest:cmp object a6 and object a7
@@ -27814,7 +27814,7 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object a7 and null
 1
 !@#$%codegentest:cmp object a7 and object a1
--1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a7 and object a11
 1
 !@#$%codegentest:cmp object a7 and object a12
@@ -27830,13 +27830,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:cmp object a7 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:cmp object a7 and object a2
--1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a7 and object a3
 1
 !@#$%codegentest:cmp object a7 and object a4
 1
 !@#$%codegentest:cmp object a7 and object a5
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a7 and object a6
 -1
 !@#$%codegentest:cmp object a7 and object a7
@@ -28102,7 +28102,7 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object a8 and null
 1
 !@#$%codegentest:cmp object a8 and object a1
--1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a8 and object a11
 1
 !@#$%codegentest:cmp object a8 and object a12
@@ -28118,13 +28118,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:cmp object a8 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:cmp object a8 and object a2
--1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a8 and object a3
 1
 !@#$%codegentest:cmp object a8 and object a4
 1
 !@#$%codegentest:cmp object a8 and object a5
--1
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp object a8 and object a6
 -1
 !@#$%codegentest:cmp object a8 and object a7
@@ -33120,25 +33120,25 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:cmp object t5 and vector v6
 Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a collection with an integer, double, string, array, or object
 !@#$%codegentest:cmp object xml and ""
-0
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "-1"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "-1.0"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "0"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "0.0"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "99"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "99.0"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "99x"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "BAZ"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and "foo"
--1
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:cmp object xml and -INF
 1
 !@#$%codegentest:cmp object xml and INF
@@ -38648,7 +38648,7 @@ Cannot compare HH\vec and HH\dict using a relational operator
 !@#$%codegentest:cmp vec vec5 and array arr22
 1
 !@#$%codegentest:cmp vec vec5 and array arr3
-0
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:cmp vec vec5 and array arr4
 -1
 !@#$%codegentest:cmp vec vec5 and array arr5
@@ -41702,7 +41702,7 @@ false
 !@#$%codegentest:gt "" and object t5
 false
 !@#$%codegentest:gt "" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "" and pair p2
@@ -41990,7 +41990,7 @@ false
 !@#$%codegentest:gt "-1" and object t5
 false
 !@#$%codegentest:gt "-1" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "-1" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "-1" and pair p2
@@ -42278,7 +42278,7 @@ false
 !@#$%codegentest:gt "-1.0" and object t5
 false
 !@#$%codegentest:gt "-1.0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "-1.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "-1.0" and pair p2
@@ -42566,7 +42566,7 @@ false
 !@#$%codegentest:gt "0" and object t5
 false
 !@#$%codegentest:gt "0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "0" and pair p2
@@ -42854,7 +42854,7 @@ false
 !@#$%codegentest:gt "0.0" and object t5
 false
 !@#$%codegentest:gt "0.0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "0.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "0.0" and pair p2
@@ -43142,7 +43142,7 @@ false
 !@#$%codegentest:gt "99" and object t5
 false
 !@#$%codegentest:gt "99" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "99" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "99" and pair p2
@@ -43430,7 +43430,7 @@ false
 !@#$%codegentest:gt "99.0" and object t5
 false
 !@#$%codegentest:gt "99.0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "99.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "99.0" and pair p2
@@ -43718,7 +43718,7 @@ false
 !@#$%codegentest:gt "99x" and object t5
 false
 !@#$%codegentest:gt "99x" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "99x" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "99x" and pair p2
@@ -44006,7 +44006,7 @@ false
 !@#$%codegentest:gt "BAZ" and object t5
 false
 !@#$%codegentest:gt "BAZ" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "BAZ" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "BAZ" and pair p2
@@ -44294,7 +44294,7 @@ false
 !@#$%codegentest:gt "foo" and object t5
 false
 !@#$%codegentest:gt "foo" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt "foo" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gt "foo" and pair p2
@@ -49804,7 +49804,7 @@ false
 !@#$%codegentest:gt array arr3 and vec vec4
 false
 !@#$%codegentest:gt array arr3 and vec vec5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt array arr3 and vec vec7
 false
 !@#$%codegentest:gt array arr3 and vec vec8
@@ -65566,11 +65566,11 @@ false
 !@#$%codegentest:gt object a1 and object a5
 true
 !@#$%codegentest:gt object a1 and object a6
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a1 and object a7
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a1 and object a8
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a1 and object a9
 false
 !@#$%codegentest:gt object a1 and object ad1
@@ -67870,11 +67870,11 @@ false
 !@#$%codegentest:gt object a2 and object a5
 true
 !@#$%codegentest:gt object a2 and object a6
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a2 and object a7
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a2 and object a8
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a2 and object a9
 false
 !@#$%codegentest:gt object a2 and object ad1
@@ -68734,11 +68734,11 @@ false
 !@#$%codegentest:gt object a5 and object a5
 false
 !@#$%codegentest:gt object a5 and object a6
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a5 and object a7
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a5 and object a8
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a5 and object a9
 false
 !@#$%codegentest:gt object a5 and object ad1
@@ -68998,7 +68998,7 @@ false
 !@#$%codegentest:gt object a6 and null
 true
 !@#$%codegentest:gt object a6 and object a1
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a6 and object a11
 false
 !@#$%codegentest:gt object a6 and object a12
@@ -69014,13 +69014,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:gt object a6 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:gt object a6 and object a2
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a6 and object a3
 false
 !@#$%codegentest:gt object a6 and object a4
 false
 !@#$%codegentest:gt object a6 and object a5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a6 and object a6
 false
 !@#$%codegentest:gt object a6 and object a7
@@ -69286,7 +69286,7 @@ false
 !@#$%codegentest:gt object a7 and null
 true
 !@#$%codegentest:gt object a7 and object a1
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a7 and object a11
 false
 !@#$%codegentest:gt object a7 and object a12
@@ -69302,13 +69302,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:gt object a7 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:gt object a7 and object a2
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a7 and object a3
 false
 !@#$%codegentest:gt object a7 and object a4
 false
 !@#$%codegentest:gt object a7 and object a5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a7 and object a6
 false
 !@#$%codegentest:gt object a7 and object a7
@@ -69574,7 +69574,7 @@ false
 !@#$%codegentest:gt object a8 and null
 true
 !@#$%codegentest:gt object a8 and object a1
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a8 and object a11
 false
 !@#$%codegentest:gt object a8 and object a12
@@ -69590,13 +69590,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:gt object a8 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:gt object a8 and object a2
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a8 and object a3
 false
 !@#$%codegentest:gt object a8 and object a4
 false
 !@#$%codegentest:gt object a8 and object a5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt object a8 and object a6
 false
 !@#$%codegentest:gt object a8 and object a7
@@ -74592,25 +74592,25 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:gt object t5 and vector v6
 Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a collection with an integer, double, string, array, or object
 !@#$%codegentest:gt object xml and ""
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "-1"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "-1.0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "0.0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "99"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "99.0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "99x"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "BAZ"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and "foo"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gt object xml and -INF
 true
 !@#$%codegentest:gt object xml and INF
@@ -80120,7 +80120,7 @@ false
 !@#$%codegentest:gt vec vec5 and array arr22
 true
 !@#$%codegentest:gt vec vec5 and array arr3
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gt vec vec5 and array arr4
 false
 !@#$%codegentest:gt vec vec5 and array arr5
@@ -83174,7 +83174,7 @@ false
 !@#$%codegentest:gte "" and object t5
 false
 !@#$%codegentest:gte "" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "" and pair p2
@@ -83462,7 +83462,7 @@ false
 !@#$%codegentest:gte "-1" and object t5
 false
 !@#$%codegentest:gte "-1" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "-1" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "-1" and pair p2
@@ -83750,7 +83750,7 @@ false
 !@#$%codegentest:gte "-1.0" and object t5
 false
 !@#$%codegentest:gte "-1.0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "-1.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "-1.0" and pair p2
@@ -84038,7 +84038,7 @@ false
 !@#$%codegentest:gte "0" and object t5
 false
 !@#$%codegentest:gte "0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "0" and pair p2
@@ -84326,7 +84326,7 @@ false
 !@#$%codegentest:gte "0.0" and object t5
 false
 !@#$%codegentest:gte "0.0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "0.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "0.0" and pair p2
@@ -84614,7 +84614,7 @@ false
 !@#$%codegentest:gte "99" and object t5
 false
 !@#$%codegentest:gte "99" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "99" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "99" and pair p2
@@ -84902,7 +84902,7 @@ false
 !@#$%codegentest:gte "99.0" and object t5
 false
 !@#$%codegentest:gte "99.0" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "99.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "99.0" and pair p2
@@ -85190,7 +85190,7 @@ false
 !@#$%codegentest:gte "99x" and object t5
 false
 !@#$%codegentest:gte "99x" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "99x" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "99x" and pair p2
@@ -85478,7 +85478,7 @@ false
 !@#$%codegentest:gte "BAZ" and object t5
 false
 !@#$%codegentest:gte "BAZ" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "BAZ" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "BAZ" and pair p2
@@ -85766,7 +85766,7 @@ false
 !@#$%codegentest:gte "foo" and object t5
 false
 !@#$%codegentest:gte "foo" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte "foo" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:gte "foo" and pair p2
@@ -91276,7 +91276,7 @@ false
 !@#$%codegentest:gte array arr3 and vec vec4
 false
 !@#$%codegentest:gte array arr3 and vec vec5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte array arr3 and vec vec7
 false
 !@#$%codegentest:gte array arr3 and vec vec8
@@ -107038,11 +107038,11 @@ false
 !@#$%codegentest:gte object a1 and object a5
 true
 !@#$%codegentest:gte object a1 and object a6
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a1 and object a7
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a1 and object a8
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a1 and object a9
 false
 !@#$%codegentest:gte object a1 and object ad1
@@ -109342,11 +109342,11 @@ false
 !@#$%codegentest:gte object a2 and object a5
 true
 !@#$%codegentest:gte object a2 and object a6
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a2 and object a7
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a2 and object a8
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a2 and object a9
 false
 !@#$%codegentest:gte object a2 and object ad1
@@ -110206,11 +110206,11 @@ false
 !@#$%codegentest:gte object a5 and object a5
 true
 !@#$%codegentest:gte object a5 and object a6
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a5 and object a7
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a5 and object a8
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a5 and object a9
 false
 !@#$%codegentest:gte object a5 and object ad1
@@ -110470,7 +110470,7 @@ false
 !@#$%codegentest:gte object a6 and null
 true
 !@#$%codegentest:gte object a6 and object a1
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a6 and object a11
 false
 !@#$%codegentest:gte object a6 and object a12
@@ -110486,13 +110486,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:gte object a6 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:gte object a6 and object a2
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a6 and object a3
 false
 !@#$%codegentest:gte object a6 and object a4
 false
 !@#$%codegentest:gte object a6 and object a5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a6 and object a6
 true
 !@#$%codegentest:gte object a6 and object a7
@@ -110758,7 +110758,7 @@ false
 !@#$%codegentest:gte object a7 and null
 true
 !@#$%codegentest:gte object a7 and object a1
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a7 and object a11
 false
 !@#$%codegentest:gte object a7 and object a12
@@ -110774,13 +110774,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:gte object a7 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:gte object a7 and object a2
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a7 and object a3
 false
 !@#$%codegentest:gte object a7 and object a4
 false
 !@#$%codegentest:gte object a7 and object a5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a7 and object a6
 false
 !@#$%codegentest:gte object a7 and object a7
@@ -111046,7 +111046,7 @@ false
 !@#$%codegentest:gte object a8 and null
 true
 !@#$%codegentest:gte object a8 and object a1
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a8 and object a11
 false
 !@#$%codegentest:gte object a8 and object a12
@@ -111062,13 +111062,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:gte object a8 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:gte object a8 and object a2
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a8 and object a3
 false
 !@#$%codegentest:gte object a8 and object a4
 false
 !@#$%codegentest:gte object a8 and object a5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte object a8 and object a6
 false
 !@#$%codegentest:gte object a8 and object a7
@@ -116064,25 +116064,25 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:gte object t5 and vector v6
 Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a collection with an integer, double, string, array, or object
 !@#$%codegentest:gte object xml and ""
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "-1"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "-1.0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "0.0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "99"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "99.0"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "99x"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "BAZ"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and "foo"
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:gte object xml and -INF
 true
 !@#$%codegentest:gte object xml and INF
@@ -121592,7 +121592,7 @@ false
 !@#$%codegentest:gte vec vec5 and array arr22
 true
 !@#$%codegentest:gte vec vec5 and array arr3
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:gte vec vec5 and array arr4
 false
 !@#$%codegentest:gte vec vec5 and array arr5
@@ -124646,7 +124646,7 @@ true
 !@#$%codegentest:lt "" and object t5
 true
 !@#$%codegentest:lt "" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "" and pair p2
@@ -124934,7 +124934,7 @@ true
 !@#$%codegentest:lt "-1" and object t5
 true
 !@#$%codegentest:lt "-1" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "-1" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "-1" and pair p2
@@ -125222,7 +125222,7 @@ true
 !@#$%codegentest:lt "-1.0" and object t5
 true
 !@#$%codegentest:lt "-1.0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "-1.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "-1.0" and pair p2
@@ -125510,7 +125510,7 @@ true
 !@#$%codegentest:lt "0" and object t5
 true
 !@#$%codegentest:lt "0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "0" and pair p2
@@ -125798,7 +125798,7 @@ true
 !@#$%codegentest:lt "0.0" and object t5
 true
 !@#$%codegentest:lt "0.0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "0.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "0.0" and pair p2
@@ -126086,7 +126086,7 @@ true
 !@#$%codegentest:lt "99" and object t5
 true
 !@#$%codegentest:lt "99" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "99" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "99" and pair p2
@@ -126374,7 +126374,7 @@ true
 !@#$%codegentest:lt "99.0" and object t5
 true
 !@#$%codegentest:lt "99.0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "99.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "99.0" and pair p2
@@ -126662,7 +126662,7 @@ true
 !@#$%codegentest:lt "99x" and object t5
 true
 !@#$%codegentest:lt "99x" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "99x" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "99x" and pair p2
@@ -126950,7 +126950,7 @@ true
 !@#$%codegentest:lt "BAZ" and object t5
 true
 !@#$%codegentest:lt "BAZ" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "BAZ" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "BAZ" and pair p2
@@ -127238,7 +127238,7 @@ true
 !@#$%codegentest:lt "foo" and object t5
 true
 !@#$%codegentest:lt "foo" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt "foo" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lt "foo" and pair p2
@@ -132748,7 +132748,7 @@ true
 !@#$%codegentest:lt array arr3 and vec vec4
 true
 !@#$%codegentest:lt array arr3 and vec vec5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt array arr3 and vec vec7
 true
 !@#$%codegentest:lt array arr3 and vec vec8
@@ -148510,11 +148510,11 @@ true
 !@#$%codegentest:lt object a1 and object a5
 false
 !@#$%codegentest:lt object a1 and object a6
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a1 and object a7
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a1 and object a8
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a1 and object a9
 true
 !@#$%codegentest:lt object a1 and object ad1
@@ -150814,11 +150814,11 @@ true
 !@#$%codegentest:lt object a2 and object a5
 false
 !@#$%codegentest:lt object a2 and object a6
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a2 and object a7
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a2 and object a8
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a2 and object a9
 true
 !@#$%codegentest:lt object a2 and object ad1
@@ -151678,11 +151678,11 @@ true
 !@#$%codegentest:lt object a5 and object a5
 false
 !@#$%codegentest:lt object a5 and object a6
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a5 and object a7
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a5 and object a8
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a5 and object a9
 true
 !@#$%codegentest:lt object a5 and object ad1
@@ -151942,7 +151942,7 @@ false
 !@#$%codegentest:lt object a6 and null
 false
 !@#$%codegentest:lt object a6 and object a1
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a6 and object a11
 false
 !@#$%codegentest:lt object a6 and object a12
@@ -151958,13 +151958,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:lt object a6 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:lt object a6 and object a2
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a6 and object a3
 false
 !@#$%codegentest:lt object a6 and object a4
 false
 !@#$%codegentest:lt object a6 and object a5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a6 and object a6
 false
 !@#$%codegentest:lt object a6 and object a7
@@ -152230,7 +152230,7 @@ false
 !@#$%codegentest:lt object a7 and null
 false
 !@#$%codegentest:lt object a7 and object a1
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a7 and object a11
 false
 !@#$%codegentest:lt object a7 and object a12
@@ -152246,13 +152246,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:lt object a7 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:lt object a7 and object a2
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a7 and object a3
 false
 !@#$%codegentest:lt object a7 and object a4
 false
 !@#$%codegentest:lt object a7 and object a5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a7 and object a6
 true
 !@#$%codegentest:lt object a7 and object a7
@@ -152518,7 +152518,7 @@ false
 !@#$%codegentest:lt object a8 and null
 false
 !@#$%codegentest:lt object a8 and object a1
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a8 and object a11
 false
 !@#$%codegentest:lt object a8 and object a12
@@ -152534,13 +152534,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:lt object a8 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:lt object a8 and object a2
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a8 and object a3
 false
 !@#$%codegentest:lt object a8 and object a4
 false
 !@#$%codegentest:lt object a8 and object a5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt object a8 and object a6
 true
 !@#$%codegentest:lt object a8 and object a7
@@ -157536,25 +157536,25 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:lt object t5 and vector v6
 Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a collection with an integer, double, string, array, or object
 !@#$%codegentest:lt object xml and ""
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "-1"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "-1.0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "0.0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "99"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "99.0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "99x"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "BAZ"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and "foo"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lt object xml and -INF
 false
 !@#$%codegentest:lt object xml and INF
@@ -163064,7 +163064,7 @@ true
 !@#$%codegentest:lt vec vec5 and array arr22
 false
 !@#$%codegentest:lt vec vec5 and array arr3
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lt vec vec5 and array arr4
 true
 !@#$%codegentest:lt vec vec5 and array arr5
@@ -166118,7 +166118,7 @@ true
 !@#$%codegentest:lte "" and object t5
 true
 !@#$%codegentest:lte "" and object xml
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "" and pair p2
@@ -166406,7 +166406,7 @@ true
 !@#$%codegentest:lte "-1" and object t5
 true
 !@#$%codegentest:lte "-1" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "-1" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "-1" and pair p2
@@ -166694,7 +166694,7 @@ true
 !@#$%codegentest:lte "-1.0" and object t5
 true
 !@#$%codegentest:lte "-1.0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "-1.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "-1.0" and pair p2
@@ -166982,7 +166982,7 @@ true
 !@#$%codegentest:lte "0" and object t5
 true
 !@#$%codegentest:lte "0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "0" and pair p2
@@ -167270,7 +167270,7 @@ true
 !@#$%codegentest:lte "0.0" and object t5
 true
 !@#$%codegentest:lte "0.0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "0.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "0.0" and pair p2
@@ -167558,7 +167558,7 @@ true
 !@#$%codegentest:lte "99" and object t5
 true
 !@#$%codegentest:lte "99" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "99" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "99" and pair p2
@@ -167846,7 +167846,7 @@ true
 !@#$%codegentest:lte "99.0" and object t5
 true
 !@#$%codegentest:lte "99.0" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "99.0" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "99.0" and pair p2
@@ -168134,7 +168134,7 @@ true
 !@#$%codegentest:lte "99x" and object t5
 true
 !@#$%codegentest:lte "99x" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "99x" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "99x" and pair p2
@@ -168422,7 +168422,7 @@ true
 !@#$%codegentest:lte "BAZ" and object t5
 true
 !@#$%codegentest:lte "BAZ" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "BAZ" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "BAZ" and pair p2
@@ -168710,7 +168710,7 @@ true
 !@#$%codegentest:lte "foo" and object t5
 true
 !@#$%codegentest:lte "foo" and object xml
-false
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte "foo" and pair p1
 Cannot compare string and HH\Pair using a relational operator
 !@#$%codegentest:lte "foo" and pair p2
@@ -174220,7 +174220,7 @@ true
 !@#$%codegentest:lte array arr3 and vec vec4
 true
 !@#$%codegentest:lte array arr3 and vec vec5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte array arr3 and vec vec7
 true
 !@#$%codegentest:lte array arr3 and vec vec8
@@ -189982,11 +189982,11 @@ true
 !@#$%codegentest:lte object a1 and object a5
 false
 !@#$%codegentest:lte object a1 and object a6
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a1 and object a7
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a1 and object a8
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a1 and object a9
 true
 !@#$%codegentest:lte object a1 and object ad1
@@ -192286,11 +192286,11 @@ true
 !@#$%codegentest:lte object a2 and object a5
 false
 !@#$%codegentest:lte object a2 and object a6
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a2 and object a7
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a2 and object a8
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a2 and object a9
 true
 !@#$%codegentest:lte object a2 and object ad1
@@ -193150,11 +193150,11 @@ true
 !@#$%codegentest:lte object a5 and object a5
 true
 !@#$%codegentest:lte object a5 and object a6
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a5 and object a7
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a5 and object a8
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a5 and object a9
 true
 !@#$%codegentest:lte object a5 and object ad1
@@ -193414,7 +193414,7 @@ false
 !@#$%codegentest:lte object a6 and null
 false
 !@#$%codegentest:lte object a6 and object a1
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a6 and object a11
 false
 !@#$%codegentest:lte object a6 and object a12
@@ -193430,13 +193430,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:lte object a6 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:lte object a6 and object a2
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a6 and object a3
 false
 !@#$%codegentest:lte object a6 and object a4
 false
 !@#$%codegentest:lte object a6 and object a5
-false
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a6 and object a6
 true
 !@#$%codegentest:lte object a6 and object a7
@@ -193702,7 +193702,7 @@ false
 !@#$%codegentest:lte object a7 and null
 false
 !@#$%codegentest:lte object a7 and object a1
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a7 and object a11
 false
 !@#$%codegentest:lte object a7 and object a12
@@ -193718,13 +193718,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:lte object a7 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:lte object a7 and object a2
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a7 and object a3
 false
 !@#$%codegentest:lte object a7 and object a4
 false
 !@#$%codegentest:lte object a7 and object a5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a7 and object a6
 true
 !@#$%codegentest:lte object a7 and object a7
@@ -193990,7 +193990,7 @@ false
 !@#$%codegentest:lte object a8 and null
 false
 !@#$%codegentest:lte object a8 and object a1
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a8 and object a11
 false
 !@#$%codegentest:lte object a8 and object a12
@@ -194006,13 +194006,13 @@ Object of class HH\__Private\MiniTest\CoercionsTestToString could not be convert
 !@#$%codegentest:lte object a8 and object a17
 Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to float
 !@#$%codegentest:lte object a8 and object a2
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a8 and object a3
 false
 !@#$%codegentest:lte object a8 and object a4
 false
 !@#$%codegentest:lte object a8 and object a5
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte object a8 and object a6
 true
 !@#$%codegentest:lte object a8 and object a7
@@ -199008,25 +199008,25 @@ Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a coll
 !@#$%codegentest:lte object t5 and vector v6
 Cannot use relational comparison operators (<, <=, >, >=, <=>) to compare a collection with an integer, double, string, array, or object
 !@#$%codegentest:lte object xml and ""
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "-1"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "-1.0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "0.0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "99"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "99.0"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "99x"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "BAZ"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and "foo"
-true
+Object of class SimpleXMLElement could not be converted to string
 !@#$%codegentest:lte object xml and -INF
 false
 !@#$%codegentest:lte object xml and INF
@@ -204536,7 +204536,7 @@ true
 !@#$%codegentest:lte vec vec5 and array arr22
 false
 !@#$%codegentest:lte vec vec5 and array arr3
-true
+Object of class HH\__Private\MiniTest\CoercionsTestToString could not be converted to string
 !@#$%codegentest:lte vec vec5 and array arr4
 true
 !@#$%codegentest:lte vec vec5 and array arr5
