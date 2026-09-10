@@ -12,6 +12,7 @@ namespace HH\Lib\Locale;
 
 use namespace HH\Lib\_Private\_Locale;
 
+<<__AllowUncheckedEnumValues>>
 enum Category: int {
   LC_ALL = _Locale\LC_ALL;
   LC_COLLATE = _Locale\LC_COLLATE;

@@ -12,6 +12,7 @@ namespace HH\Lib\OS;
 
 use namespace HH\Lib\_Private\_OS;
 
+<<__AllowUncheckedEnumValues>>
 enum AddressFamily: int {
   AF_UNIX = _OS\AF_UNIX;
   AF_INET = _OS\AF_INET;

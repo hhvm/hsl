@@ -12,6 +12,7 @@ namespace HH\Lib\OS;
 
 use namespace HH\Lib\_Private\_OS;
 
+<<__AllowUncheckedEnumValues>>
 enum SeekWhence: int as int {
   SEEK_SET = _OS\SEEK_SET;
   SEEK_CUR = _OS\SEEK_CUR;

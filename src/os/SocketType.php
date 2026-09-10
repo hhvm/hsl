@@ -12,6 +12,7 @@ namespace HH\Lib\OS;
 
 use namespace HH\Lib\_Private\_OS;
 
+<<__AllowUncheckedEnumValues>>
 enum SocketType: int {
   SOCK_STREAM = _OS\SOCK_STREAM;
   SOCK_DGRAM = _OS\SOCK_DGRAM;

@@ -12,6 +12,7 @@ namespace HH\Lib\File;
 
 use namespace HH\Lib\OS;
 
+<<__AllowUncheckedEnumValues>>
 enum WriteMode: int {
   /**
    * Open the file for writing only; place the file pointer at the beginning of

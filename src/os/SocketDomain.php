@@ -12,6 +12,7 @@ namespace HH\Lib\OS;
 
 use namespace HH\Lib\_Private\_OS;
 
+<<__AllowUncheckedEnumValues>>
 enum SocketDomain: int {
   PF_UNIX = _OS\PF_UNIX;
   PF_INET = _OS\PF_INET;

@@ -12,6 +12,7 @@ namespace HH\Lib\File;
 
 use namespace HH\Lib\OS;
 
+<<__AllowUncheckedEnumValues>>
 enum LockType: int as int {
   /**
    * Any number of processes may have a shared lock simultaneously. It is

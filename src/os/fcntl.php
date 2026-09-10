@@ -13,6 +13,7 @@ namespace HH\Lib\OS;
 use namespace HH\Lib\_Private\_OS;
 
 /** Supported operations for `fcntl()` */
+<<__AllowUncheckedEnumValues>>
 enum FcntlOp: int {
   F_GETFD = _OS\F_GETFD;
   F_GETFL = _OS\F_GETFL;

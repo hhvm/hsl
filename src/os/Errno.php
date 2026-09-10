@@ -34,6 +34,7 @@ use namespace HH\Lib\_Private\_OS;
  * if they are defined on all supported platforms; in this enum we manually
  * specify the non-portable ones for now.
  */
+<<__AllowUncheckedEnumValues>>
 enum Errno: int as int {
   /* SUCCESS = 0 */
   EPERM           = _OS\EPERM;
